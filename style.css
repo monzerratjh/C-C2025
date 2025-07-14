@@ -1,0 +1,92 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f2f0; 
+  padding: 0px;
+  margin: 0px;
+}
+
+
+header{
+  display: flex;
+  justify-content: flex-end;
+  padding:1rem;
+}
+
+header img {
+  width: 100px;
+}
+
+nav{
+  text-align: center;
+}
+
+nav h1 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin: 0px;
+}
+
+nav p {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 4%;
+}
+
+main{
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+section{
+  width: 230px;
+  height: 260px;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  padding-top: 30px; 
+  padding-bottom: 0;
+}
+
+section img{
+  width: 50%;
+}
+
+.opcion span {
+  background-color: white;
+  color: black;
+  width: 100%;
+  height: 80px;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  font-weight: bold;
+  font-size: 1.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section:hover {
+  transform: scale(1.05);
+}
+
+.estudiante {
+  background-color: #2E66C3;
+}
+
+.adscripto {
+  background-color: #40C1B3;
+}
+
+.docente {
+  background-color: #F4B97D;
+}
+
+.secretaria {
+  background-color: #DEA5C4;
+}
+
