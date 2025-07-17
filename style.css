@@ -91,3 +91,28 @@ section:hover {
   background-color: #DEA5C4;
 }
 
+@media (max-width: 1024px) {
+  main {
+   width: 200px;
+  }
+}
+
+@media (width > 1024px) and (width < 768px) {
+  main {
+    flex-wrap: wrap; 
+    max-width: 490px;
+    margin: 0 auto;
+    gap: 30px;
+  }
+}
+
+@media (width < 76px) {
+  main {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  section {
+    flex: 0 0 230px; /* ancho fijo */
+  }
+}
