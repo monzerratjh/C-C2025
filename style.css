@@ -5,7 +5,6 @@ body {
   margin: 0px;
 }
 
-
 header{
   display: flex;
   justify-content: flex-end;
@@ -69,6 +68,11 @@ section img{
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease; /*significa que la animación empieza lenta, luego va más rápido y termina lenta*/
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 section:hover {
