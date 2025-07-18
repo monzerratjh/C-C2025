@@ -16,6 +16,10 @@ a{
   padding:1rem;
 }
 
+.encabezado-index img {
+  width: 100px;
+}
+
 .bienvenida-index{
   text-align: center;
 }
