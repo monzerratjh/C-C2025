@@ -131,7 +131,7 @@ a {
 
     .barra-lateral {
       background-color: #4ec1b2;
-      height: 710px;
+      height: auto;
       border-top-right-radius: 20px;
       border-bottom-right-radius: 20px;
       padding: 30px 25px;
@@ -176,6 +176,7 @@ a {
     .nav-opciones{
       font-size: 1.1rem;
       margin-bottom: 20px;
+      margin-left: 30px;
       color: black;
       border: none;
       background-color: transparent;
@@ -186,12 +187,13 @@ a {
 
     .seleccionado{
       border-style: solid;  
-      border-color: #f1eeea;
-      border-width: 15px 300px 15px 15px;
+      border-color: #f4f2f0;
+      border-width: 15px 400px 15px 15px;
       border-radius: 40px 40px 40px 40px;
-      background-color: #f1eeea;
+      background-color: #f4f2f0;
       color: black;
       margin-bottom: 15px;
+      margin-left: 30px;
     }
 
     .logo {
