@@ -174,7 +174,7 @@ a {
 
 
     .nav-opciones{
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       margin-bottom: 20px;
       margin-left: 30px;
       color: black;
@@ -186,6 +186,7 @@ a {
 
 
     .seleccionado{
+      font-size: 1.3rem;
       border-style: solid;  
       border-color: #f4f2f0;
       border-width: 15px 400px 15px 15px;
@@ -247,3 +248,50 @@ a {
       color: gray;
       font-size: 1.2rem;
     }
+
+        /*PAGINA ADSCRIPTOS LOGIN*/
+
+    .seccion-form{
+      display: flex;
+      background-color: #db9dc3; 
+      padding: 5rem 4rem;
+      border-radius: 1rem;
+    }
+
+    .icono-usuario-login {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    left: 50%;
+    z-index: 2;
+    color: #3c6fa9;
+    background-color: white;
+    border-radius: 40%; /*Sirve para que el backround  no sea cuadrado*/
+    top: 10rem;
+    }
+      
+    .formulario{
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      
+    }
+    
+    .formulario input{
+      border-radius: 0.6rem;
+      border: 1px solid #454545;
+    }
+    .formulario button{
+      background-color: #3569b2;
+      border-radius: 1rem;
+      border: none;
+      padding: 0.5rem;
+      color: white;
+    }
+
+
