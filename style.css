@@ -9,6 +9,7 @@ a{
   text-decoration: none;
 }
 
+
 .encabezado-index{
   display: flex;
   justify-content: flex-end;
@@ -72,12 +73,6 @@ a{
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /*significa que la animación empieza lenta, luego va más rápido y termina lenta*/
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
 }
 
 .opcion:hover {
@@ -100,38 +95,53 @@ a {
   background-color: #DEA5C4;
 }
 
-@media (max-width: 1024px) {
-  main {
-   width: 200px;
+
+   
+@media (max-width: 767px) {
+  .barra-lateral {
+    display: none;
+  }
+
+  .hamburguesa {
+    display: block;
+  }
+
+  .logo {
+      position: absolute;
+      right: 70px;
+      top: 50;
+      width: 100px;
   }
 }
 
-@media (width > 1024px) and (width < 768px) {
-  main {
-    flex-wrap: wrap; 
-    max-width: 490px;
-    margin: 0 auto;
-    gap: 30px;
+@media (min-width: 768px) {
+  .barra-lateral {
+    display: flex;
+  }
+
+  .hamburguesa {
+    display: none;
   }
 }
 
-@media (width < 76px) {
-  main {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-  section {
-    flex: 0 0 230px; /* ancho fijo */
-  }
+ .btn{
+  color: #2c5aa0;
+  border: solid;
+  border-width: 2px;
+  margin-left: 10px;
+  margin-top: 20px;
 }
+
+ .mb-3 .bi-arrow-left-circle-fill{
+    color:#2c5aa0
+   }
 
 /*ESTRUCTURA MENU*/
 
 
     .barra-lateral {
       background-color: #4ec1b2;
-      height: auto;
+      height: 710px;
       border-top-right-radius: 20px;
       border-bottom-right-radius: 20px;
       padding: 30px 25px;
@@ -174,9 +184,8 @@ a {
 
 
     .nav-opciones{
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       margin-bottom: 20px;
-      margin-left: 30px;
       color: black;
       border: none;
       background-color: transparent;
@@ -186,15 +195,13 @@ a {
 
 
     .seleccionado{
-      font-size: 1.3rem;
       border-style: solid;  
       border-color: #f4f2f0;
-      border-width: 15px 400px 15px 15px;
+      border-width: 15px 300px 15px 15px;
       border-radius: 40px 40px 40px 40px;
       background-color: #f4f2f0;
       color: black;
       margin-bottom: 15px;
-      margin-left: 30px;
     }
 
     .logo {
@@ -249,49 +256,13 @@ a {
       font-size: 1.2rem;
     }
 
-        /*PAGINA ADSCRIPTOS LOGIN*/
+   /*Pagina de horarios estudiantes*/
 
-    .seccion-form{
-      display: flex;
-      background-color: #db9dc3; 
-      padding: 5rem 4rem;
-      border-radius: 1rem;
-    }
+   .horarios-estudiantes{
+      height: 650px;
+      display: block;
+      position: relative;
+      align-items: center;
+   }
 
-    .icono-usuario-login {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    width: 70px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 5rem;
-    left: 50%;
-    z-index: 2;
-    color: #3c6fa9;
-    background-color: white;
-    border-radius: 40%; /*Sirve para que el backround  no sea cuadrado*/
-    top: 10rem;
-    }
-      
-    .formulario{
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      
-    }
-    
-    .formulario input{
-      border-radius: 0.6rem;
-      border: 1px solid #454545;
-    }
-    .formulario button{
-      background-color: #3569b2;
-      border-radius: 1rem;
-      border: none;
-      padding: 0.5rem;
-      color: white;
-    }
-
-
+  

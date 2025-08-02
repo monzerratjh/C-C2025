@@ -14,54 +14,72 @@
 
 <body>
 
-<div class="container-fluid"> <!-- Boostrap -->
-  <div class="row"> <!-- Boostrap -->
-
-    <!-- Barra lateral -->
-    <div class="col-md-3 barra-lateral"> <!-- Boostrap  col-md-3 menu-->
-
-      <!--volver-->
-      <div class="volverGeneral">
-        <div class="volver">
-        <a href="index.html"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a> <!-- Boostrap iconos-->
-        <a href="">Volver</a>
-        
-        </div>
-        <i class="bi bi-mortarboard-fill icono-usuario"></i>  <!-- Boostrap iconos-->
-      </div>
-      
-      <a href="estudiantes.html" class="fw-semibold seleccionado">Estudiantes</a> <!-- Boostrap negrita-->
-      <a href="adscriptos_log.html" class="nav-opciones">Adscriptos</a>
-      <a href="" class="nav-opciones">Docente</a>
-      <a href="" class="nav-opciones">Secretaría</a>
-
+  <!-- Menú hamburguesa para móviles -->
+  <nav class="d-md-none">
+    <div class="container-fluid">
+      <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
+        <i class="bi bi-list"></i>
+      </button>
     </div>
+  </nav>
 
-    <!-- Contenido principal-->
-    <div class="col-md-9 principal-estudiantes"> <!-- Boostrap contendio al lado del menu -->
-      <img src="logo.png" alt="Logo" class="logo"> 
-      <h2>ESTUDIANTE</h2>
-      <p>Ingresa tu grupo correspondiente</p>
-
-    
-      <div class="busqueda-estudiantes"> <!-- Boostrap contenedor de busqueda-->
-        <i class="bi bi-search icono-busqueda"></i> <!-- Boostrap icono de lupa -->
-         <input type="text" class="diseno-busqueda" placeholder="Ingrese su grupo" list="lista-grupos" id="grupoInput" />
-          <datalist id="lista-grupos">
-              <option value="1° MD">
-              <option value="2° MD">
-              <option value="3° MD">
-              <option value="3° MB">
-          </datalist>
-      </div>
+  <!-- Menú lateral (para celulares/tablets) -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
+    <div class="offcanvas-header">
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
-
-
+    <div class="offcanvas-body d-flex flex-column">
+      <a href="index.html" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
+      <a href="estudiantes.html" class="fw-semibold seleccionado mb-2">Estudiantes</a>
+      <a href="adscriptos_log.html" class="nav-opciones mb-2">Adscriptos</a>
+      <a href="#" class="nav-opciones mb-2">Docente</a>
+      <a href="#" class="nav-opciones mb-2">Secretaría</a>
+    </div>
   </div>
-</div>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="app.js"></script>
+  <!-- Contenedor general -->
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- Barra lateral visible solo en pantallas grandes -->
+      <div class="col-md-3 barra-lateral d-none d-md-flex">
+        <div class="volverGeneral">
+          <div class="volver">
+            <a href="index.html"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="">Volver</a>
+          </div>
+          <i class="bi bi-mortarboard-fill icono-usuario"></i>
+        </div>
+
+        <a href="estudiantes.html" class="fw-semibold seleccionado">Estudiantes</a>
+        <a href="adscriptos_log.html" class="nav-opciones">Adscriptos</a>
+        <a href="" class="nav-opciones">Docente</a>
+        <a href="" class="nav-opciones">Secretaría</a>
+      </div>
+
+      <!-- Contenido principal -->
+      <div class="col-md-9 col-12 principal-estudiantes">
+        <img src="logo.png" alt="Logo" class="logo"> 
+        <h2>ESTUDIANTE</h2>
+        <p>Ingresa tu grupo correspondiente</p>
+
+        <div class="busqueda-estudiantes">
+          <i class="bi bi-search icono-busqueda"></i>
+          <input type="text" class="diseno-busqueda" placeholder="Ingrese su grupo" list="lista-grupos" id="grupoInput" />
+          <datalist id="lista-grupos">
+            <option value="1° MD">
+            <option value="2° MD">
+            <option value="3° MD">
+            <option value="3° MB">
+          </datalist>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
