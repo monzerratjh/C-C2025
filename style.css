@@ -156,10 +156,10 @@ a{
 
     .seleccionado{
       border-style: solid;  
-      border-color: #f1eeea;
+      border-color: #f4f2f0;
       border-width: 15px 300px 15px 15px;
       border-radius: 40px 40px 40px 40px;
-      background-color: #f1eeea;
+      background-color: #f4f2f0;
       color: black;
       margin-bottom: 15px;
     }
@@ -216,6 +216,16 @@ a{
       font-size: 1.2rem;
     }
   
+
+    .grupos{
+
+
+    }
+
+    .grupos h2{
+      margin-top: 100px;
+      color: red;
+    }
 
 
 
