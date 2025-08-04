@@ -124,9 +124,18 @@ a{
     display: none;
   }
 
+  .offcanvas{
+    background-color: #4ec1b2;
+  }
+
+  .mb-3{
+    color: black;
+  }
+
   .logo {
       display: none;
   }
+
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -224,10 +233,10 @@ a{
       height: 650px;
       display: flex;
       align-items: center;
-      justify-content: center;
       flex-direction: column;
       position: relative;
       text-align: center;
+      justify-content: center;
     }
 
     .principal-estudiantes h2 {
