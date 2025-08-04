@@ -103,15 +103,29 @@ a{
     margin: 0 auto;
     gap: 30px;
    }
+
+   .menuResponsive{
+    width: 30px;
+    margin-top: 30px;
+    margin-left: 8px;
+   }
+
+   .logoResponsive{
+    width: 100px;
+    padding-top: 25px;
+   }
+
+   nav > .container-fluid{
+    display: flex;
+    justify-content: space-between;
+   }
+
   .barra-lateral {
     display: none;
   }
 
   .logo {
-      position: absolute;
-      right: 70px;
-      top: 50;
-      width: 100px;
+      display: none;
   }
 }
 
@@ -130,18 +144,6 @@ a{
     display: none;
   }
 }
-
- .btn{
-  color: #2c5aa0;
-  border: solid;
-  border-width: 2px;
-  margin-left: 10px;
-  margin-top: 20px;
-}
-
- .mb-3 .bi-arrow-left-circle-fill{
-    color:#2c5aa0
-   }
 
 /*ESTRUCTURA MENU*/
     .barra-lateral {
@@ -269,6 +271,8 @@ a{
       position: relative;
       align-items: center;
    }
+
+   
 
   
         /*PAGINA ADSCRIPTOS LOGIN*/
