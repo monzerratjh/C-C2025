@@ -101,7 +101,7 @@ a{
    main {
     flex-wrap: wrap; 
     max-width: 490px;
-    margin: 0 auto;
+    margin-bottom: 1rem;
     gap: 30px;
    }
 
@@ -135,6 +135,10 @@ a{
 
   .logo {
       display: none;
+  }
+  .seccion-form{
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 
 }
