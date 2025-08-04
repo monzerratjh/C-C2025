@@ -98,12 +98,14 @@ a{
 
    
 @media (max-width: 767px) {
+   main {
+    flex-wrap: wrap; 
+    max-width: 490px;
+    margin: 0 auto;
+    gap: 30px;
+   }
   .barra-lateral {
     display: none;
-  }
-
-  .hamburguesa {
-    display: block;
   }
 
   .logo {
@@ -114,7 +116,13 @@ a{
   }
 }
 
-@media (min-width: 768px) {
+@media (width > 1024px) and (width < 768px) {
+   main {
+    max-width: 490px;
+    margin: 0 auto;
+    gap: 30px;
+   }
+
   .barra-lateral {
     display: flex;
   }
