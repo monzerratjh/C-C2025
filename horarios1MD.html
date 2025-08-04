@@ -14,28 +14,52 @@
 
 <body>
 
-<div class="container-fluid"> <!-- Boostrap -->
-  <div class="row"> <!-- Boostrap -->
 
-    <!-- Barra lateral -->
-    <div class="col-md-3 barra-lateral"> <!-- Boostrap  col-md-3 menu-->
 
-      <!--volver-->
-      <div class="volverGeneral">
-        <div class="volver">
-        <a href="estudiantes.html"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a> <!-- Boostrap iconos-->
-        <a href="">Volver</a>
-        
-        </div>
-        <i class="bi bi-mortarboard-fill icono-usuario"></i>  <!-- Boostrap iconos-->
-      </div>
-      
-      <a href="estudiantes.html" class="fw-semibold seleccionado">Estudiantes</a> <!-- Boostrap negrita-->
-      <a href="adscriptos_log.html" class="nav-opciones">Adscriptos</a>
-      <a href="" class="nav-opciones">Docente</a>
-      <a href="" class="nav-opciones">Secretaría</a>
-
+<!-- Menú hamburguesa para móviles -->
+  <nav class="d-md-none">
+    <div class="container-fluid">
+      <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
+        <img class="menuResponsive" src="menu.png" alt="menu">
+      </button>
+      <img class="logoResponsive" src="logo.png" alt="logoRespnsive">
     </div>
+  </nav>
+
+  <!-- Menú lateral (para celulares/tablets) -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
+    <div class="offcanvas-header">
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+      <a href="index.html" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
+
+      <a href="estudiantes.html" class="fw-semibold seleccionado mb-2">Estudiantes</a>
+      <a href="adscriptos_log.html" class="nav-opciones mb-2">Adscriptos</a>
+      <a href="docente_log.html" class="nav-opciones mb-2">Docente</a>
+      <a href="secretaria_log.html" class="nav-opciones mb-2">Secretaría</a>
+    </div>
+  </div>
+
+  <!-- Contenedor general -->
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- Banner pantallas grandes -->
+      <div class="col-md-3 barra-lateral d-none d-md-flex">
+        <div class="volverGeneral">
+          <div class="volver">
+            <a href="index.html"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="">Volver</a>
+          </div>
+          <i class="bi bi-mortarboard-fill icono-usuario"></i>
+        </div>
+
+        <a href="estudiantes.html" class="fw-semibold seleccionado">Estudiantes</a>
+        <a href="adscriptos_log.html" class="nav-opciones">Adscriptos</a>
+        <a href="docente_log.html" class="nav-opciones">Docente</a>
+        <a href="secretaria_log.html" class="nav-opciones">Secretaría</a>
+      </div>
 
     <!-- Contenido principal-->
     <div class="col-md-9 horarios-estudiantes"> <!-- Boostrap contendio al lado del menu -->

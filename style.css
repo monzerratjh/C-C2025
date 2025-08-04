@@ -157,7 +157,7 @@ a{
 /*ESTRUCTURA MENU*/
     .barra-lateral {
       background-color: #4ec1b2;
-      height: 710px;
+      height: 100vh;
       border-top-right-radius: 20px;
       border-bottom-right-radius: 20px;
       padding: 30px 25px;
@@ -230,7 +230,7 @@ a{
     /*PAGINA ESTUDIANTES*/
 
     .principal-estudiantes{
-      height: 650px;
+      height: 100vh;
       display: flex;
       align-items: center;
       flex-direction: column;
@@ -240,7 +240,7 @@ a{
     }
 
     .principal-estudiantes h2 {
-      font-weight: 700;
+      font-weight: 700px;
     }
 
     .principal-estudiantes p{
@@ -291,6 +291,7 @@ a{
       background-color: #db9dc3; 
       padding: 4rem 3rem;
       border-radius: 1rem;
+      margin-top: 80px;
     }
 
     .icono-usuario-login {
