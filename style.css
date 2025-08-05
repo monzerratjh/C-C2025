@@ -286,9 +286,7 @@ a{
    }
 
    .horarios-estudiantes{
-
     display: flex;
-
    }
 
    .titulo-horario {
@@ -296,8 +294,10 @@ a{
   margin-bottom: 20px;
 }
 
-.accordion {
-  width: 320px;
+.acordion {
+  width: 600px;
+  position: absolute;
+  left: 200px;
 }
 
 .dia {
@@ -364,9 +364,28 @@ a{
 .jueves {
   background-color: #56c8c3;
 }
-   
 
-  
+.viernes{
+  background-color: rgb(62, 69, 123);
+}
+
+@media (max-width: 767px) {
+  .acordion {
+  width: 250px;
+  position: absolute;
+  left: 130px;
+}
+} 
+
+
+@media (min-width: 768px) and (max-width:1100px) {
+   .acordion {
+  width: 400px;
+  position: absolute;
+  left: 10px;
+}
+}
+
         /*PAGINA ADSCRIPTOS LOGIN*/
 
     .seccion-form{
