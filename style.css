@@ -141,10 +141,6 @@ a{
     margin-right: 1rem;
   }
 
-  .icono-usuario-login{
-    margin-top: 1rem;
-  }
-
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -161,10 +157,7 @@ a{
   .hamburguesa {
     display: none;
   }
-  
-   .icono-usuario-login{
-    margin-top: 1rem;
-  }
+
 }
 
 /*ESTRUCTURA MENU*/
