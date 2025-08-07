@@ -58,6 +58,7 @@ a{
 
 .opcion img{
   width: 50%;
+  padding-top: 1.4rem;
 }
 
 .opcion span {
@@ -100,7 +101,7 @@ a{
    main {
     flex-wrap: wrap; 
     max-width: 490px;
-    margin: 0 auto;
+    margin-bottom: 1rem;
     gap: 30px;
    }
 
@@ -135,6 +136,10 @@ a{
   .logo {
       display: none;
   }
+  .seccion-form{
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
 
   .icono-usuario-login{
     margin-top: 1rem;
@@ -165,7 +170,7 @@ a{
 /*ESTRUCTURA MENU*/
     .barra-lateral {
       background-color: #4ec1b2;
-      height: 100vh;
+      height: 710px;
       border-top-right-radius: 20px;
       border-bottom-right-radius: 20px;
       padding: 30px 25px;
@@ -238,7 +243,7 @@ a{
     /*PAGINA ESTUDIANTES*/
 
     .principal-estudiantes{
-      height: 100vh;
+      height: 650px;
       display: flex;
       align-items: center;
       flex-direction: column;
@@ -248,7 +253,7 @@ a{
     }
 
     .principal-estudiantes h2 {
-      font-weight: 700px;
+      font-weight: 700;
     }
 
     .principal-estudiantes p{
@@ -268,7 +273,6 @@ a{
       padding: 12px 20px 12px 50px;
       width: 100%;
       font-size: 1rem;
-      font-family: 'Poppins', sans-serif;
     }
 
     .icono-busqueda {
@@ -289,9 +293,107 @@ a{
       align-items: center;
    }
 
-   
+   .horarios-estudiantes{
+    display: flex;
+   }
 
-  
+   .titulo-horario {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.acordion {
+  width: 600px;
+  position: absolute;
+  left: 200px;
+}
+
+.dia {
+  margin-bottom: 12px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.boton-dia {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+  border-radius: 12px;
+}
+
+.boton-dia::after {
+  content: "▼";
+  position: absolute;
+  right: 15px;
+  transition: transform 0.3s ease;
+}
+
+.boton-dia.activo::after {
+  transform: rotate(180deg);
+}
+
+.contenido-dia {
+  display: none;
+  background-color: white;
+  border-top: 1px solid #ccc;
+  border-radius: 0 0 12px 12px;
+}
+
+.tabla-horario {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-horario th,
+.tabla-horario td {
+  border: 1px solid #000;
+  padding: 8px;
+  text-align: center;
+}
+
+/* Colores por día */
+.lunes {
+  background-color: #3366cc;
+}
+
+.martes {
+  background-color: #f2c086;
+}
+
+.miercoles {
+  background-color: #e3a4cc;
+}
+
+.jueves {
+  background-color: #56c8c3;
+}
+
+.viernes{
+  background-color: rgb(62, 69, 123);
+}
+
+@media (max-width: 767px) {
+  .acordion {
+  width: 250px;
+  position: absolute;
+  left: 130px;
+}
+} 
+
+
+@media (min-width: 768px) and (max-width:1100px) {
+   .acordion {
+  width: 400px;
+  position: absolute;
+  left: 10px;
+}
+}
+
         /*PAGINA ADSCRIPTOS LOGIN*/
 
     .seccion-form{
@@ -299,7 +401,6 @@ a{
       background-color: #db9dc3; 
       padding: 4rem 3rem;
       border-radius: 1rem;
-      margin-top: 80px;
     }
 
     .icono-usuario-login {
