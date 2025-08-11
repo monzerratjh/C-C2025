@@ -80,11 +80,11 @@ a{
 }
 
 .estudiante {
-  background-color: #2E66C3;
+  background-color: #6a98e3;
 }
 
 .adscripto {
-  background-color: #40C1B3;
+  background-color: #61dcb1;
 }
 
 .docente {
@@ -389,9 +389,8 @@ a{
 
         /*PAGINA ADSCRIPTOS LOGIN*/
 
-    .seccion-form{
+    .seccion-form {
       display: flex;
-      background-color: #db9dc3; 
       padding: 4rem 3rem;
       border-radius: 1rem;
     }
@@ -407,7 +406,7 @@ a{
     font-size: 5rem;
     left: 50%;
     z-index: 2;
-    color: #3c6fa9;
+    color: rgb(53, 83, 78);
     background-color: white;
     border-radius: 40%; /*Sirve para que el backround  no sea cuadrado*/
     top: 10rem;
@@ -429,9 +428,9 @@ a{
     }
 
     .formulario button{
-      background-color: #3569b2;
+      background-color: #ffffff;
       border-radius: 1rem;
       border: none;
       padding: 0.5rem;
-      color: white;
+      color: rgb(42, 43, 48);
     }
