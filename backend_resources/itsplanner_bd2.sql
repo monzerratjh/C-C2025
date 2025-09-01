@@ -5,8 +5,10 @@ CREATE TABLE grupo (
 	nombre_grupo varchar(50) NOT NULL,
 	cantidad_alumno_grupo int NOT NULL,
 	id_adscripo int NOT NULL,
-	id_secretario int NOT NULL
-);
+	id_secretario int NOT NULL -- porq la secretaria crea el grupo
+); 
+
+
 
 CREATE TABLE secretario_administra_recurso (
 	id_secretario int NOT NULL,
@@ -113,3 +115,106 @@ CREATE TABLE docente_dicta_asignatura (
 	id_asignatura int NOT NULL
 );
 
+
+-- CLAVES FORANEAS
+
+
+
+-- Tabla grupo
+ALTER TABLE grupo
+    ADD CONSTRAINT fk_grupo_adscripto
+    FOREIGN KEY (id_adscripo) REFERENCES adcripto(id_adscripto);
+
+ALTER TABLE grupo
+    ADD CONSTRAINT fk_grupo_secretario
+    FOREIGN KEY (id_secretario) REFERENCES secretario(id_secretario);
+
+
+-- Tabla secretario_administra_recurso
+ALTER TABLE secretario_administra_recurso
+    ADD CONSTRAINT fk_secretario_administra_recurso_secretario
+    FOREIGN KEY (id_secretario) REFERENCES secretario(id_secretario);
+
+ALTER TABLE secretario_administra_recurso
+    ADD CONSTRAINT fk_secretario_administra_recurso_recurso
+    FOREIGN KEY (id_recurso) REFERENCES recurso(id_recurso);
+
+-- Tabla recurso
+ALTER TABLE recurso
+    ADD CONSTRAINT fk_recurso_espacio
+    FOREIGN KEY (id_espacio) REFERENCES espacio(id_espacio);
+
+-- Tabla secretario
+ALTER TABLE secretario
+    ADD CONSTRAINT fk_secretario_usuario
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario);
+
+-- Tabla docente
+ALTER TABLE docente
+    ADD CONSTRAINT fk_docente_usuario
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario);
+
+-- Tabla docente_pide_recurso
+ALTER TABLE docente_pide_recurso
+    ADD CONSTRAINT fk_docente_pide_recurso_docente
+    FOREIGN KEY (id_docente) REFERENCES docente(id_docente);
+
+ALTER TABLE docente_pide_recurso
+    ADD CONSTRAINT fk_docente_pide_recurso_recurso
+    FOREIGN KEY (id_recurso) REFERENCES recurso(id_recurso);
+
+-- Tabla adcripto
+ALTER TABLE adcripto
+    ADD CONSTRAINT fk_adscripto_usuario
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario);
+
+-- Tabla adscripto_organiza_horario_clase
+ALTER TABLE adscripto_organiza_horario_clase
+    ADD CONSTRAINT fk_adscripto_organiza_horario_adscripto
+    FOREIGN KEY (id_adscripto) REFERENCES adcripto(id_adscripto);
+
+ALTER TABLE adscripto_organiza_horario_clase
+    ADD CONSTRAINT fk_adscripto_organiza_horario_clase
+    FOREIGN KEY (id_horario_clase) REFERENCES horario_clase(id_horario_clase);
+
+-- Tabla horario_clase
+ALTER TABLE horario_clase
+    ADD CONSTRAINT fk_horario_clase_asignatura
+    FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura);
+
+
+-- Tabla asignatura_docente_solicita_espacio
+ALTER TABLE asignatura_docente_solicita_espacio
+    ADD CONSTRAINT fk_asignatura_docente_solicita_espacio_asignatura
+    FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura);
+
+ALTER TABLE asignatura_docente_solicita_espacio
+    ADD CONSTRAINT fk_asignatura_docente_solicita_espacio_docente
+    FOREIGN KEY (id_docente) REFERENCES docente(id_docente);
+
+ALTER TABLE asignatura_docente_solicita_espacio
+    ADD CONSTRAINT fk_asignatura_docente_solicita_espacio_espacio
+    FOREIGN KEY (id_espacio) REFERENCES espacio(id_espacio);
+
+
+-- Tabla docente_tiene_grupo
+ALTER TABLE docente_tiene_grupo
+    ADD CONSTRAINT fk_docente_tiene_grupo_grupo
+    FOREIGN KEY (id_grupo) REFERENCES grupo(id_grupo);
+
+ALTER TABLE docente_tiene_grupo
+    ADD CONSTRAINT fk_docente_tiene_grupo_docente
+    FOREIGN KEY (id_docente) REFERENCES docente(id_docente);
+
+ALTER TABLE docente_tiene_grupo
+    ADD CONSTRAINT fk_docente_tiene_grupo_asignatura
+    FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura);
+
+-- Tabla docente_dicta_asignatura
+ALTER TABLE docente_dicta_asignatura
+    ADD CONSTRAINT fk_docente_dicta_asignatura_docente
+    FOREIGN KEY (id_docente) REFERENCES docente(id_docente);
+
+ALTER TABLE docente_dicta_asignatura
+    ADD CONSTRAINT fk_docente_dicta_asignatura_asignatura
+    FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura);
