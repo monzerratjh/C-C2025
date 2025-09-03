@@ -307,7 +307,7 @@ a{
   overflow: hidden;
 }
 
-.boton-dia {
+.boton-opciones {
   width: 100%;
   padding: 15px;
   border: none;
@@ -317,17 +317,14 @@ a{
   text-align: left;
   position: relative;
   border-radius: 12px;
+  margin-bottom: 10px;
 }
 
-.boton-dia::after {
+.boton-opciones::after {
   content: "▼";
   position: absolute;
   right: 15px;
   transition: transform 0.3s ease;
-}
-
-.boton-dia.activo::after {
-  transform: rotate(180deg);
 }
 
 .contenido-dia {
@@ -347,6 +344,14 @@ a{
   border: 1px solid #000;
   padding: 8px;
   text-align: center;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+   .acordion{
+    display: flex;
+    margin-left: 2000px;
+   }
+
 }
 
 /* Colores por día */
@@ -439,3 +444,9 @@ a{
   display: none;
 }
 
+
+/*BIENVENIDA*/
+
+.bienvenida{
+  font-size: 60px;
+}
