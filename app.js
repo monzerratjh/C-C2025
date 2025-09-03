@@ -1,17 +1,21 @@
-// Código para redireccionar según grupo seleccionado
-document.getElementById('grupoInput').addEventListener('change', function () {
-  const inputValue = this.value.trim();
+document.addEventListener("DOMContentLoaded", () => {
+  const botones = document.querySelectorAll(".boton-dia");
 
-  const validValues = {
-    '1° MD': 'horarios1MD.html',
-    '2° MD': 'horarios2MD.html',
-    '3° MD': 'horarios3MD.html',
-    '3° MB': 'horarios3MB.html'
-  };
+  botones.forEach(boton => {
+    boton.addEventListener("click", () => {
+      const contenido = boton.nextElementSibling; // div.contenido-dia
 
-  if (validValues[inputValue]) {
-    window.location.href = validValues[inputValue];
-  } else {
-    alert('Grupo no válido');
-  }
+      // Si ya está visible, lo oculta; si está oculto, lo muestra
+      if (contenido.style.display === "block") {
+        contenido.style.display = "none";
+      } else {
+        // Opcional: cerrar todos los demás antes de abrir este
+        document.querySelectorAll(".contenido-dia").forEach(div => {
+          div.style.display = "none";
+        });
+
+        contenido.style.display = "block";
+      }
+    });
+  });
 });

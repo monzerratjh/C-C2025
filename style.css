@@ -434,3 +434,8 @@ a{
       padding: 0.5rem;
       color: rgb(42, 43, 48);
     }
+
+    .contenido-dia {
+  display: none;
+}
+
