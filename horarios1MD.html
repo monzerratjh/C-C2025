@@ -32,10 +32,10 @@
     <div class="offcanvas-body d-flex flex-column">
       <a href="index.html" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
 
-      <a href="estudiantes.html" class="fw-semibold seleccionado mb-2">Estudiantes</a>
-      <a href="adscriptos_log.html" class="nav-opciones mb-2">Adscriptos</a>
+      <a href="estudiante.html" class="fw-semibold seleccionado mb-2">Estudiantes</a>
+      <a href="adscripto_log.html" class="nav-opciones mb-2">Adscriptos</a>
       <a href="docente_log.html" class="nav-opciones mb-2">Docente</a>
-      <a href="secretaria_log.html" class="nav-opciones mb-2">Secretaría</a>
+      <a href="secretario_log.html" class="nav-opciones mb-2">Secretaría</a>
     </div>
   </div>
 
@@ -62,6 +62,7 @@
     <div class="col-md-9 horarios-estudiantes"> <!-- Boostrap contendio al lado del menu -->
       <img src="img/logo.png" alt="Logo" class="logo">
 
+      <div class="acordion-total">
   <div class="acordion">
 
     <h2 class="titulo-horario">3°MD</h2>
@@ -71,12 +72,6 @@
       <button class="boton-opciones lunes">Lunes</button>
       <div class="contenido-dia">
         <table class="tabla-horario">
-          <tr><th>Hora</th><th>Materia</th><th>Salón</th></tr>
-          <tr><td>1era</td><td>materia 1</td><td><b>salón</b></td></tr>
-          <tr><td>2da</td><td>materia 2</td><td><b>salón</b></td></tr>
-          <tr><td>3ra</td><td>materia 3</td><td><b>salón</b></td></tr>
-          <tr><td>4ta</td><td>materia 4</td><td><b>salón</b></td></tr>
-          <tr><td>5ta</td><td>materia 4</td><td><b>salón</b></td></tr>
         </table>
       </div>
     </div>
@@ -86,8 +81,6 @@
       <button class="boton-opciones martes">Martes</button>
       <div class="contenido-dia">
         <table class="tabla-horario">
-          <tr><th>Hora</th><th>Materia</th><th>Salón</th></tr>
-          <tr><td>1era</td><td>---</td><td>---</td></tr>
         </table>
       </div>
     </div>
@@ -95,28 +88,23 @@
     <!-- Día -->
     <div class="dia">
       <button class="boton-opciones miercoles">Miércoles</button>
-      <div class="dia">
+      <div class="contenido-dia">
+      </div>
+    </div>
 
     <!-- Día -->
     <div class="dia">
       <button class="boton-opciones jueves">Jueves</button>
       <div class="contenido-dia">
-        <table class="tabla-horario">
-          <tr><th>Hora</th><th>Materia</th><th>Salón</th></tr>
-          <tr><td>1era</td><td>---</td><td>---</td></tr>
-        </table>
       </div>
     </div>
 
     <div class="dia">
       <button class="boton-opciones viernes">Viernes</button>
       <div class="contenido-dia">
-        <table class="tabla-horario">
-          <tr><th>Hora</th><th>Materia</th><th>Salón</th></tr>
-          <tr><td>1era</td><td>---</td><td>---</td></tr>
-        </table>
       </div>
     </div>
+    
 
 <!-- Bootstrap JS -->
 <script src="app.js"></script>

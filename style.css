@@ -277,28 +277,35 @@ a{
       font-size: 1.2rem;
     }
 
-   /*Pagina de horarios estudiantes*/
 
-   .horarios-estudiantes{
-      height: 650px;
-      display: block;
-      position: relative;
-      align-items: center;
-   }
+/* --- CONTENIDO PRINCIPAL --- */
+.horarios-estudiantes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; 
+  padding: 20px;
+  position: relative;
+}
 
-   .horarios-estudiantes{
-    display: flex;
-   }
-
-   .titulo-horario {
-  font-size: 24px;
-  margin-bottom: 20px;
+.acordion-total {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .acordion {
-  width: 600px;
-  position: absolute;
-  left: 200px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.titulo-horario {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .dia {
@@ -346,50 +353,42 @@ a{
   text-align: center;
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
-   .acordion{
-    display: flex;
-    margin-left: 2000px;
-   }
-
-}
-
 /* Colores por día */
-.lunes {
-  background-color: #3366cc;
-}
+.lunes { background-color: #3366cc; }
+.martes { background-color: #f2c086; }
+.miercoles { background-color: #e3a4cc; }
+.jueves { background-color: #56c8c3; }
+.viernes { background-color: rgb(62, 69, 123); }
 
-.martes {
-  background-color: #f2c086;
-}
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .barra-lateral {
+    display: none;
+  }
 
-.miercoles {
-  background-color: #e3a4cc;
-}
-
-.jueves {
-  background-color: #56c8c3;
-}
-
-.viernes{
-  background-color: rgb(62, 69, 123);
-}
-
-@media (max-width: 767px) {
   .acordion {
-  width: 250px;
-  position: absolute;
-  left: 130px;
+    max-width: 350px;
+  }
+  .titulo-horario {
+    font-size: 20px;
+  }
+  .boton-opciones {
+    font-size: 16px;
+    padding: 12px;
+  }
 }
-} 
 
-
-@media (min-width: 768px) and (max-width:1100px) {
-   .acordion {
-  width: 400px;
-  position: absolute;
-  left: 10px;
-}
+@media (max-width: 480px) {
+  .acordion {
+    max-width: 280px;
+  }
+  .titulo-horario {
+    font-size: 18px;
+  }
+  .boton-opciones {
+    font-size: 14px;
+    padding: 10px;
+  }
 }
 
         /*PAGINA ADSCRIPTOS LOGIN*/
