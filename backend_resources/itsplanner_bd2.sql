@@ -123,7 +123,7 @@ CREATE TABLE docente_dicta_asignatura (
 -- Tabla grupo
 ALTER TABLE grupo
     ADD CONSTRAINT fk_grupo_adscripto
-    FOREIGN KEY (id_adscripo) REFERENCES adcripto(id_adscripto);
+    FOREIGN KEY (id_adscripto) REFERENCES adcripto(id_adscripto);
 
 ALTER TABLE grupo
     ADD CONSTRAINT fk_grupo_secretario
