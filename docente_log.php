@@ -28,12 +28,12 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <a href="index.html" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
+      <a href="./index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
       
-      <a href="estudiante.html" class="nav-opciones mb-2">Estudiante</a>
-      <a href="adscripto_log.html" class="nav-opciones mb-2">Adscripto</a>
-      <a href="docente_log.html" class="fw-semibold seleccionado">Docente</a>
-      <a href="secretario_log.html" class="nav-opciones mb-2">Secretario</a>
+      <a href="./estudiante.php" class="nav-opciones mb-2">Estudiante</a>
+      <a href="./adscripto_log.php" class="nav-opciones mb-2">Adscripto</a>
+      <a href="./docente_log.php" class="fw-semibold seleccionado">Docente</a>
+      <a href="./secretario_log.php" class="nav-opciones mb-2">Secretario</a>
     </div>
   </div>
 
@@ -45,15 +45,15 @@
       <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="index.html"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="index.html">Volver</a>
+            <a href="./index.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="./index.php">Volver</a>
           </div>
         </div>
 
-        <a href="estudiante.html" class="nav-opciones">Estudiante</a>
-        <a href="adscripto_log.html" class="nav-opciones">Adscripto</a>
-        <a href="docente_log.html" class="fw-semibold seleccionado">Docente</a>
-        <a href="secretario_log.html" class="nav-opciones">Secretario</a>
+        <a href="./estudiante.php" class="nav-opciones">Estudiante</a>
+        <a href="./adscripto_log.php" class="nav-opciones">Adscripto</a>
+        <a href="./docente_log.php" class="fw-semibold seleccionado">Docente</a>
+        <a href="./secretario_log.php" class="nav-opciones">Secretario</a>
       </div>
 
 <!-- Contenido principal -->
@@ -66,8 +66,12 @@
       <div class="icono-usuario-login">
         <i class="bi bi-person-circle"></i>
       </div>
-
-      <form action="#" method="post" class="formulario">
+      <?php
+        if(isset($_GET['message'])) {
+          echo"<h6>".$_GET['message']."</h6>";
+        }
+      ?>
+      <form action="insert_data_login.php" method="POST" class="formulario">
         
         <div class="input-group mb-3">
           <span class="input-group-text"><i class="bi bi-person"></i></span>
@@ -84,7 +88,7 @@
         <!-- Indicamos el rol -->
         <input type="hidden" name="rol" value="docente">
 
-        <button type="submit" id="boton">Iniciar Sesión</button>
+        <button type="submit" id="boton" name="btn-log-in" value="1">Iniciar Sesión</button>
       </form>
 
     </section>

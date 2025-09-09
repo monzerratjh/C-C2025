@@ -20,28 +20,28 @@
 
   <main class="opciones">
     
-    <a href="estudiante.html">
+    <a href="./estudiante.php">
       <section class="opcion estudiante">
         <img src="img/estudiante.png" alt="Estudiante">
         <span>Estudiante</span>
       </section>
     </a>
 
-    <a href="adscripto_log.html">
+    <a href="./adscripto_log.php">
       <section class="opcion adscripto">
         <img src="img/adscripto.png" alt="Adscripto">
         <span>Adscripto</span>
       </section>
     </a>
 
-    <a href="docente_log.html">
+    <a href="./docente_log.php">
       <section class="opcion docente">
         <img src="img/profesor.png" alt="Profesor">
         <span>Docente</span>
       </section>
     </a>
 
-    <a href="secretario_log.html">
+    <a href="./secretario_log.php">
     <section class="opcion secretaria">
       <img src="img/secretario.png" alt="Secretario">
       <span>Secretario</span>

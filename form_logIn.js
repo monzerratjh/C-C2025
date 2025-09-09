@@ -29,8 +29,6 @@ function validarConstrasenia (password){
 }
 
 domForm.addEventListener('submit', function(event){
-    event.preventDefault();
-
     const cedula = document.getElementById('cedula').value.trim();
     const password = document.getElementById('password').value.trim();
     const rol = this.rol.value;

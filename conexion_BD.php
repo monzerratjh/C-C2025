@@ -2,13 +2,12 @@
 function conectar_bd(){
 
 $servidor = "localhost";
-$bd = "itsplanner_bd_2";
+$bd = "itsplanner_bd2";
 $usuario = "root";
 $pass = "";
 
 //definir la conexion usando las variables.
-
-$conn = mysqli_connect($servidor, $usuario, $pass, $bd);
+$conn = mysqli_connect($servidor, $usuario, $pass, $bd); 
 
 
 // Comprobar la conexión

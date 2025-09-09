@@ -1,10 +1,10 @@
 CREATE TABLE grupo (
-	id_grupo int PRIMARY KEY NOT NULL,
+	id_grupo int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	orientacion_grupo varchar(50) NOT NULL,
 	turno_grupo varchar(50) NOT NULL,
 	nombre_grupo varchar(50) NOT NULL,
 	cantidad_alumno_grupo int NOT NULL,
-	id_adscripo int NOT NULL,
+	id_adscripto int NOT NULL,
 	id_secretario int NOT NULL -- porq la secretaria crea el grupo
 ); 
 
@@ -17,7 +17,7 @@ CREATE TABLE secretario_administra_recurso (
 
 
 CREATE TABLE recurso (
-	id_recurso int PRIMARY KEY NOT NULL,
+	id_recurso int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	disponibilidad_recurso varchar(30) NOT NULL,
 	nombre_recurso varchar(100) NOT NULL,
 	historial_recurso varchar(300),
@@ -29,7 +29,7 @@ CREATE TABLE recurso (
 
 
 CREATE TABLE usuario (
-	id_usuario int PRIMARY KEY NOT NULL,
+	id_usuario int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	nombre_usuario varchar(120) NOT NULL,
 	apellido_usuario varchar(120) NOT NULL,
 	gmail_usuario varchar(200) NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE usuario (
 
 
 CREATE TABLE secretario (
-	id_secretario int PRIMARY KEY NOT NULL,
+	id_secretario int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	grado_secretario varchar(50) NOT NULL,
 	horario_trabajo_secretario time NOT NULL,
     id_usuario int NOT NULL
@@ -46,7 +46,7 @@ CREATE TABLE secretario (
 
 
 CREATE TABLE docente (
-	id_docente int PRIMARY KEY NOT NULL,
+	id_docente int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	grado_docente varchar(30) NOT NULL,
     id_usuario int NOT NULL
 );
@@ -59,7 +59,7 @@ CREATE TABLE docente_pide_recurso (
 
 
 CREATE TABLE adcripto (
-	id_adscripto int PRIMARY KEY NOT NULL,
+	id_adscripto int PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_usuario int NOT NULL,
 	cantidad_grupos_asignados int NOT NULL,
 	horario_trabajo_adscripto time NOT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE adcripto (
 
 
 CREATE TABLE espacio (
-	id_espacio int PRIMARY KEY NOT NULL, 
+	id_espacio int PRIMARY KEY NOT NULL AUTO_INCREMENT, 
 	nombre_espacio varchar (120) NOT NULL,
 	capacidad_espacio int NOT NULL,
 	historial_espacio varchar(300),
@@ -76,7 +76,7 @@ CREATE TABLE espacio (
 );
 
 CREATE TABLE horario_clase (
-    id_horario_clase int PRIMARY KEY NOT NULL,
+    id_horario_clase int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	hora_reloj_horario_clase time NOT NULL,
 	id_asignatura int NOT NULL
 );
@@ -97,7 +97,7 @@ CREATE TABLE asignatura_docente_solicita_espacio (
 
 
 CREATE TABLE asignatura (
-	id_asignatura int PRIMARY KEY NOT NULL,
+	id_asignatura int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	cantidad_horas_asignatura int NOT NULL,
 	nombre_asignatura varchar(30) NOT NULL
  );
