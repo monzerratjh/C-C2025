@@ -170,6 +170,7 @@ a{
       color: black;
       display: flex;
       flex-direction: column;
+      gap: 1.2rem;
     }
 
     .volverGeneral {
@@ -188,7 +189,8 @@ a{
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: 15px;
+      margin-bottom: 2rem;
     }
 
     .icono-volver {
@@ -206,24 +208,26 @@ a{
 
 
     .nav-opciones{
-      font-size: 1.1rem;
-      margin-bottom: 20px;
+      display: flex;
+      font-size: 1.3rem;
       color: black;
       border: none;
       background-color: transparent;
       text-align: left;
-      padding: 0 20px;
+      padding: 0 35px;
     }
 
 
     .seleccionado{
+      display: flex;
+      font-size: 1.2rem;
       border-style: solid;  
       border-color: #f4f2f0;
       border-width: 15px 350px 15px 15px;
       border-radius: 40px 40px 40px 40px;
       background-color: #f4f2f0;
       color: black;
-      margin-bottom: 15px;
+      padding: 0 20px;
     }
 
     .logo {
