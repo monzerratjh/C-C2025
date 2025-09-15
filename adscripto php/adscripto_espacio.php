@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="/style/style.css">
 </head>
 
 <body>
@@ -16,9 +16,9 @@
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="img/menu.png" alt="menu">
+        <img class="menuResponsive" src="/img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="/img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -26,10 +26,11 @@
   <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
     <div class="offcanvas-body d-flex flex-column">
       <p class="fw-semibold seleccionado mb-">USERNAME</p>
-      <a href="./adscripto_espacios.php" class="fw-semibold seleccionado mb-2">Espacios</a>
-      <a href="./adscripto_reservas.php" class="nav-opciones mb-2">Reservas</a>
-      <a href="./adscripto_faltasDocentes.php" class="nav-opciones mb-2">Faltas de docentes</a>
-    </div>
+      <a href="/adscripto php/adscripto_espacio.php" class="fw-semibold seleccionado">Espacios</a>
+      <a href="/adscripto php/reservas-adscripto.php" class="nav-opciones">Reservas</a>
+        <a href="/adscripto php/faltaDocentes.php" class="nav-opciones">Faltas docentes</a>
+        <a href="/adscripto php/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
+      </div>
   </div>
 
   <!-- Contenedor general -->
@@ -39,30 +40,31 @@
       <!-- Banner pantallas grandes -->
       <div class="col-md-3 barra-lateral d-none d-md-flex">
          <p class="fw-semibold seleccionado mb-">USERNAME</p>
-        <a href="./adscripto_espacios.php" class="fw-semibold seleccionado">Espacios</a>
-        <a href="./adscripto_reservas.php" class="nav-opciones">Reservas</a>
-        <a href="./adscripto_faltasDocentes.php" class="nav-opciones">Faltas docentes</a>
+        <a href="/adscripto php/adscripto_espacio.php" class="fw-semibold seleccionado">Espacios</a>
+        <a href="/adscripto php/reservas-adscripto.php" class="nav-opciones">Reservas</a>
+        <a href="/adscripto php/faltaDocentes.php" class="nav-opciones">Faltas docentes</a>
+        <a href="/adscripto php/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
          </div>
 
 <!-- Contenido principal -->
 <main class="col-md-9 principal-estudiantes" >
 
-    <img src="img/logo.png" alt="Logo" class="logo"> 
+    <img src="/img/logo.png" alt="Logo" class="logo"> 
     
     
     <div class="acordion">
 
     <!-- Opcion 1 -->
       <div>
-      <button class="boton-opciones adscripto">Salones</button>
+      <a href="/adscripto php/index-salon.php"><button class="boton-opciones adscripto">Salones</button></a>
       <div class="dia">
 
       <div>
-      <button class="boton-opciones adscripto">Aulas</button>
+      <a href="/adscripto php/index-aula.php"><button class="boton-opciones adscripto">Aulas</button></a>
       <div class="dia">
 
       <div>
-      <button class="boton-opciones adscripto">Laboratorios</button>
+      <a href="/adscripto php/index-laboratorio.php"><button class="boton-opciones adscripto">Laboratorios</button></a>
       <div class="dia">
 
     </div>
