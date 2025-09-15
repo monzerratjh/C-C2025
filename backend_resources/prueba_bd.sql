@@ -1,9 +1,9 @@
 -- Tabla usuario
 INSERT INTO usuario (id_usuario, nombre_usuario, apellido_usuario, gmail_usuario, telefono_usuario, ci_usuario)
 VALUES 
-(1, 'Alfonsina', 'Coiro', 'alfonsina@email.com', 12345678, 56545265),
-(2, 'Juan', 'Perez', 'juan@email.com', 23456789, 59599305),
-(3, 'Ana', 'Gomez', 'ana@email.com', 34567890, 51595435);
+(1, 'Alfonsina', 'Coiro', 'alfonsina@email.com', 123456789, 56545265),
+(2, 'Juan', 'Perez', 'juan@email.com', 234567890, 59599305),
+(3, 'Ana', 'Gomez', 'ana@email.com', 345678901, 51595435);
 
 -- Tabla secretario
 INSERT INTO secretario (id_secretario, grado_secretario, horario_trabajo_secretario, id_usuario)
