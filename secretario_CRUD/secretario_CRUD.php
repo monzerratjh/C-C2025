@@ -20,17 +20,18 @@ $query = mysqli_query($conn, $sql); //mysqli_query FUNCIÓN de php para EJECUTAR
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <form>
-        <input type="number" name="usuario_ci" placeholder="CI" required>
-        <input type="text" name="usuario_nombre" placeholder="Nombres" required>
-        <input type="text" name="usuario_apellido" placeholder="Apellidos" required>
-        <input type="gmail" name="usuario_gmail" placeholder="Gmail" required>
-        <input type="number" name="usuario_telefono" placeholder="Telefono" required>
-        <select name="tipo_Usuario" id="tipoUsuario" placeholder="Cargo" required>
-            <option value="tipo_usuario_Docente">Docente</option>
-            <option value="tipo_usuario_Adscripto">Adscripto</option>
-            <option value="tipo_usuario_Secretario">Secretario</option>
+    <form action='./insert_user_secretario.php' method="POST">
+        <input type="number" name="ci_usuario" placeholder="CI" required>
+        <input type="text" name="nombre_usuario" placeholder="Nombres" required>
+        <input type="text" name="apellido_usuario" placeholder="Apellidos" required>
+        <input type="gmail" name="gmail_usuario" placeholder="Gmail" required>
+        <input type="number" name="telefono_usuario" placeholder="Telefono" required>
+        <select name="cargo_usuario" id="usuarioTipo" placeholder="Cargo" required>
+            <option value="cargo_Docente_usuario">Docente</option>
+            <option value="cargo_Adscripto_usuario">Adscripto</option>
+            <option value="cargo_Secretario_usuario">Secretario</option>
         </select>
+        <input type="password" name="contrasenia_usuario" placeholder="Contraseña" required>
         <input type="submit" value="agregacion_Usuario">
     </form>
 
