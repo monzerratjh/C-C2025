@@ -33,7 +33,8 @@ CREATE TABLE usuario (
 	nombre_usuario varchar(120) NOT NULL,
 	apellido_usuario varchar(120) NOT NULL,
 	gmail_usuario varchar(200) NOT NULL,
-	telefono_usuario int NOT NULL
+	telefono_usuario int NOT NULL,
+	ci_usuario int(8) NOT NULL
 );
 
 
