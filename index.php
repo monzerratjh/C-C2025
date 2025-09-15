@@ -27,21 +27,21 @@
       </section>
     </a>
 
-    <a href="/adscripto php/adscripto-bienvenida.php">
+    <a href="./adscripto php/adscripto_log.php">
       <section class="opcion adscripto">
         <img src="img/adscripto.png" alt="Adscripto">
         <span>Adscripto</span>
       </section>
     </a>
 
-    <a href="./docente_log.php">
+    <a href="./docente php/docente_log.php">
       <section class="opcion docente">
         <img src="img/profesor.png" alt="Profesor">
         <span>Docente</span>
       </section>
     </a>
 
-    <a href="./secretario_log.php">
+    <a href="./secretario php/secretario_log.php">
     <section class="opcion secretaria">
       <img src="img/secretario.png" alt="Secretario">
       <span>Secretario</span>
