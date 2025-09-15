@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Panel Estudiante</title>
+  <title>Grupos secretario</title>
 
   <!-- Bootstrap CSS + Iconos + letras-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
@@ -32,10 +32,10 @@
     <div class="offcanvas-body d-flex flex-column">
       <a href="../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
 
-      <a href="/estudiante php/estudiante.php" class="fw-semibold seleccionado mb-2">Estudiante</a>
-      <a href="/adscripto php/adscripto_log.php" class="nav-opciones mb-2">Adscripto</a>
+      <a href="/estudiante php/estudiante.php" class="nav-opciones mb-2">Estudiantes</a>
+      <a href="/adscripto php/adscripto_log.php" class="nav-opciones mb-2">Adscriptos</a>
       <a href="/docente php/docente_log.php" class="nav-opciones mb-2">Docente</a>
-      <a href="/secretario php/secretario_log.php" class="nav-opciones mb-2">Secretario</a>
+      <a href="/secretario php/secretario_log.php" class="fw-semibold seleccionado mb-2">Secretaría</a>
     </div>
   </div>
 
@@ -52,36 +52,56 @@
           </div>
         </div>
 
-        <a href="/estudiante php/estudiante.php" class="fw-semibold seleccionado">Estudiante</a>
+        <a href="/estudiante php/estudiante.php" class="nav-opciones">Estudiante</a>
         <a href="/adscripto php/adscripto_log.php" class="nav-opciones">Adscripto</a>
         <a href="/docente php/docente_log.php" class="nav-opciones">Docente</a>
-        <a href="/secretario php/secretario_log.php" class="nav-opciones">Secretario</a>
-        
+        <a href="/secretario php/secretario_log.php" class="fw-semibold seleccionado">Secretario</a>
       </div>
 
-      <!-- Contenido principal -->
-      <div class="col-md-9 col-12 principal-estudiantes">
-        <img src="/img/logo.png" alt="Logo" class="logo"> 
-        <h2>ESTUDIANTE</h2>
-        <p>Ingresa tu grupo correspondiente</p>
+    <!-- Contenido principal-->
+    <div class="col-md-9 horarios-estudiantes"> <!-- Boostrap contendio al lado del menu -->
+      <img src="/img/logo.png" alt="Logo" class="logo">
 
-        <div class="busqueda-estudiantes">
-          <i class="bi bi-search icono-busqueda"></i>
-          <input type="text" class="diseno-busqueda" placeholder="Ingrese su grupo" list="lista-grupos" id="grupoInput" />
-          <datalist id="lista-grupos">
-            <option value="1° MD">
-            <option value="2° MD">
-            <option value="3° MD">
-            <option value="3° MB">
-          </datalist>
-        </div>
+      <div class="acordion-total">
+  <div class="acordion">
+
+    <!-- Día -->
+    <div class="dia">
+      <button class="boton-opciones miercoles">3MD</button>
+      <div class="contenido-dia">
+        <table class="tabla-horario">
+        </table>
       </div>
-
     </div>
-  </div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="app.js"></script>
+    <!-- Día -->
+    <div class="dia">
+      <button class="boton-opciones miercoles">1 MD</button>
+      <div class="contenido-dia">
+        <table class="tabla-horario">
+        </table>
+      </div>
+    </div>
+
+    <!-- Día -->
+    <div class="dia">
+      <button class="boton-opciones miercoles">2 MB</button>
+      <div class="contenido-dia">
+      </div>
+    </div>
+
+     <!-- Día -->
+    <div class="dia">
+      <button class="boton-opciones miercoles">2 MB</button>
+      <div class="contenido-dia">
+      </div>
+    </div>
+
+<!-- Bootstrap JS -->
+<script src="app.js"></script>
+
+<!-- Bootstrap Bundle JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
