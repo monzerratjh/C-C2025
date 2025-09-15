@@ -58,7 +58,7 @@ CREATE TABLE docente_pide_recurso (
 );
 
 
-CREATE TABLE adcripto (
+CREATE TABLE adscripto (
 	id_adscripto int PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_usuario int NOT NULL,
 	cantidad_grupos_asignados int NOT NULL,
@@ -123,7 +123,7 @@ CREATE TABLE docente_dicta_asignatura (
 -- Tabla grupo
 ALTER TABLE grupo
     ADD CONSTRAINT fk_grupo_adscripto
-    FOREIGN KEY (id_adscripto) REFERENCES adcripto(id_adscripto);
+    FOREIGN KEY (id_adscripto) REFERENCES adscripto(id_adscripto);
 
 ALTER TABLE grupo
     ADD CONSTRAINT fk_grupo_secretario
@@ -164,14 +164,14 @@ ALTER TABLE docente_pide_recurso
     FOREIGN KEY (id_recurso) REFERENCES recurso(id_recurso);
 
 -- Tabla adcripto
-ALTER TABLE adcripto
+ALTER TABLE adscripto
     ADD CONSTRAINT fk_adscripto_usuario
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario);
 
 -- Tabla adscripto_organiza_horario_clase
 ALTER TABLE adscripto_organiza_horario_clase
     ADD CONSTRAINT fk_adscripto_organiza_horario_adscripto
-    FOREIGN KEY (id_adscripto) REFERENCES adcripto(id_adscripto);
+    FOREIGN KEY (id_adscripto) REFERENCES adscripto(id_adscripto);
 
 ALTER TABLE adscripto_organiza_horario_clase
     ADD CONSTRAINT fk_adscripto_organiza_horario_clase
