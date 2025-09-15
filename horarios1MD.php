@@ -104,7 +104,6 @@
       <div class="contenido-dia">
       </div>
     </div>
-    
 
 <!-- Bootstrap JS -->
 <script src="app.js"></script>
