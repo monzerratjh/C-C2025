@@ -11,7 +11,7 @@ $sql = "DELETE FROM usuario WHERE id_usuario='$id'";
 $query = mysqli_query($con, $sql);
 
 if ($query) {
-    Header("Location: index.php");
+    Header("Location: index.php"); // redirige si se elimina correctamente
     exit();
 } else {
     echo "Error al eliminar: " . mysqli_error($con);
