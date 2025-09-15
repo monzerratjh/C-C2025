@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
@@ -26,9 +26,9 @@
   <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
     <div class="offcanvas-body d-flex flex-column">
       <p class="fw-semibold seleccionado mb-">USERNAME</p>
-      <a href="adscripto_espacios.html" class="fw-semibold seleccionado mb-2">Espacios</a>
-      <a href="adscripto_reservas.html" class="nav-opciones mb-2">Reservas</a>
-      <a href="adscripto_faltasDocentes.html" class="nav-opciones mb-2">Faltas de docentes</a>
+      <a href="./adscripto_espacios.php" class="fw-semibold seleccionado mb-2">Espacios</a>
+      <a href="./adscripto_reservas.php" class="nav-opciones mb-2">Reservas</a>
+      <a href="./adscripto_faltasDocentes.php" class="nav-opciones mb-2">Faltas de docentes</a>
     </div>
   </div>
 
@@ -42,9 +42,9 @@
          <p class="fw-semibold seleccionado mb-">USERNAME</p>
         </div>
 
-        <a href="adscripto_espacios.html" class="fw-semibold seleccionado">Espacios</a>
-        <a href="adscripto_reservas.html" class="nav-opciones">Reservas</a>
-        <a href="adscripto_faltasDocentes.html" class="nav-opciones">Faltas docentes</a>
+        <a href="./adscripto_espacios.php" class="fw-semibold seleccionado">Espacios</a>
+        <a href="./adscripto_reservas.php" class="nav-opciones">Reservas</a>
+        <a href="./adscripto_faltasDocentes.php" class="nav-opciones">Faltas docentes</a>
          </div>
 
 <!-- Contenido principal -->

@@ -22,5 +22,5 @@ return $conn;
 }
 
 
-$con= conectar_bd();
+$con = conectar_bd();
 ?>

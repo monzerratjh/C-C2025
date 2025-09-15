@@ -26,9 +26,9 @@
   <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
     <div class="offcanvas-body d-flex flex-column">
       <p class="fw-semibold seleccionado mb-">USERNAME</p>
-      <a href="adscripto_espacios.html" class="fw-semibold seleccionado mb-2">Espacios</a>
-      <a href="adscripto_reservas.html" class="nav-opciones mb-2">Reservas</a>
-      <a href="adscripto_faltasDocentes.html" class="nav-opciones mb-2">Faltas de docentes</a>
+      <a href="./adscripto_espacios.php" class="fw-semibold seleccionado mb-2">Espacios</a>
+      <a href="./adscripto_reservas.php" class="nav-opciones mb-2">Reservas</a>
+      <a href="./adscripto_faltasDocentes.php" class="nav-opciones mb-2">Faltas de docentes</a>
     </div>
   </div>
 
@@ -39,9 +39,9 @@
       <!-- Banner pantallas grandes -->
       <div class="col-md-3 barra-lateral d-none d-md-flex">
          <p class="fw-semibold seleccionado mb-">USERNAME</p>
-        <a href="adscripto_espacios.html" class="fw-semibold seleccionado">Espacios</a>
-        <a href="adscripto_reservas.html" class="nav-opciones">Reservas</a>
-        <a href="adscripto_faltasDocentes.html" class="nav-opciones">Faltas docentes</a>
+        <a href="./adscripto_espacios.php" class="fw-semibold seleccionado">Espacios</a>
+        <a href="./adscripto_reservas.php" class="nav-opciones">Reservas</a>
+        <a href="./adscripto_faltasDocentes.php" class="nav-opciones">Faltas docentes</a>
          </div>
 
 <!-- Contenido principal -->
