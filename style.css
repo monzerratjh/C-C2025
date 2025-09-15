@@ -555,3 +555,87 @@ a{
 .centrar{
     margin-left: 100px;
 }
+
+
+/*SOLICITUD DE RESERVA*/
+/* Contenedor principal */
+.contenedor-reservas {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+/* Título verde */
+/* Contenedor principal centrado */
+.contenedor-reservas {
+  max-width: 900px;
+  margin: 0 auto;          /* centra horizontal */
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;  /* coloca título y tabla en columna */
+  align-items: center;     /* centra horizontalmente */
+  justify-content: center; /* centra vertical si hay espacio */
+  min-height: 100vh;       /* ocupa alto completo */
+}
+
+/* Título */
+.reserva-titulo h3 {
+  background: #55c4b3;
+  padding: 15px 40px;
+  border-radius: 30px;
+  color: #000;
+  font-weight: bold;
+  font-size: 1.6rem;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* La tabla centrada */
+.tabla-reserva {
+  width: 100%;
+  max-width: 800px;
+  border-collapse: collapse;
+  background-color: #d9f3f1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+.tabla-reserva thead {
+  background-color: #55c4b3;
+  color: #000;
+}
+
+.tabla-reserva th,
+.tabla-reserva td {
+  padding: 12px;
+  text-align: center;
+}
+
+.tabla-reserva tbody tr:nth-child(even) { /*Las celdas pares cambian d color*/
+  background-color: #eaf9f7;
+}
+
+.confirmada {
+  font-weight: bold;
+  color: green;
+}
+
+.pendiente {
+  font-weight: bold;
+  color: #0a4f79;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tabla-reserva th,
+  .tabla-reserva td {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .reserva-titulo h3 {
+    font-size: 1.1rem;
+    padding: 10px 20px;
+  }
+}
