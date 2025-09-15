@@ -18,7 +18,7 @@
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="img/menu.png" alt="menu">
+        <img class="menuResponsive" src="/img/menu.png" alt="menu">
       </button>
       <img class="logoResponsive" src="/img/logo.png" alt="logoRespnsive">
     </div>
@@ -47,8 +47,8 @@
       <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="index.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="index.php">Volver</a>
+            <a href="../index.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="../index.php">Volver</a>
           </div>
         </div>
 

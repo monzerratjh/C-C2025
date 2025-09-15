@@ -30,7 +30,7 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <a href="./index.html" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
+      <a href="../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
 
       <a href="/estudiante php/estudiante.php" class="nav-opciones mb-2">Estudiantes</a>
       <a href="/adscripto php/adscripto_log.php" class="nav-opciones mb-2">Adscriptos</a>
