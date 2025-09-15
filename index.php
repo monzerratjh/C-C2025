@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pagina Principal</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/style/style.css">
 </head>
 <body>
 
@@ -20,14 +20,14 @@
 
   <main class="opciones">
     
-    <a href="./estudiante.php">
+    <a href="./estudiante php/estudiante.php">
       <section class="opcion estudiante">
         <img src="img/estudiante.png" alt="Estudiante">
         <span>Estudiante</span>
       </section>
     </a>
 
-    <a href="./adscripto_log.php">
+    <a href="/adscripto php/adscripto-bienvenida.php">
       <section class="opcion adscripto">
         <img src="img/adscripto.png" alt="Adscripto">
         <span>Adscripto</span>
