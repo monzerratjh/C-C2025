@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -23,14 +23,18 @@
   </nav>
 
   <!-- Menú lateral (para celulares/tablets) -->
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
-    <div class="offcanvas-body d-flex flex-column">
-      <p class="fw-semibold seleccionado mb-">USERNAME</p>
-       <a href="/adscripto php/adscripto_espacio.php" class="nav-opciones mb-2">Espacios</a>
-      <a href="/adscripto php/reservas-adscripto.php" class="fw-semibold seleccionado mb-2">Reservas</a>
-      <a href="/adscripto php/faltaDocentes.php" class="nav-opciones mb-2">Faltas de docentes</a>
-      <a href="/adscripto php/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
+ <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
+    <div class="offcanvas-header">
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
+    <div class="offcanvas-body d-flex flex-column">
+      <a href="reservas-adscripto.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
+
+       <a href="/adscripto php/adscripto_espacio.php" class="nav-opciones">Espacios</a>
+        <a href="/adscripto php/reservas-adscripto.php" class="fw-semibold seleccionado mb-2">Reservas</a>
+        <a href="/adscripto php/faltaDocentes.php" class="nav-opciones">Faltas docentes</a>
+        <a href="/adscripto php/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
+     </div>
   </div>
 
   <!-- Contenedor general -->
@@ -39,8 +43,14 @@
 
       <!-- Banner pantallas grandes -->
       <div class="col-md-3 barra-lateral d-none d-md-flex">
-         <p class="fw-semibold seleccionado usuario mb-">USERNAME</p>
-        <a href="/adscripto php/adscripto_espacio.php" class="nav-opciones mb-2">Espacios</a>
+        <div class="volverGeneral">
+          <div class="volver">
+            <a href="reservas-adscripto.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="reservas-adscripto.php">Volver</a>
+          </div>
+        </div>
+
+       <a href="/adscripto php/adscripto_espacio.php" class="nav-opciones mb-2">Espacios</a>
       <a href="/adscripto php/reservas-adscripto.php" class="fw-semibold seleccionado mb-2">Reservas</a>
       <a href="/adscripto php/faltaDocentes.php" class="nav-opciones mb-2">Faltas de docentes</a>
       <a href="/adscripto php/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
