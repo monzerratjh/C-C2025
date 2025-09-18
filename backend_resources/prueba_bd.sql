@@ -11,8 +11,8 @@ VALUES
 (1, 'Senior', '08:00:00', 1),
 (2, 'Junior', '09:00:00', 2);
 
--- Tabla adcripto
-INSERT INTO adcripto (id_adscripto, id_usuario, cantidad_grupos_asignados, horario_trabajo_adscripto, caracter_cargo_adscripto)
+-- Tabla adscripto
+INSERT INTO adscripto (id_adscripto, id_usuario, cantidad_grupos_asignados, horario_trabajo_adscripto, caracter_cargo_adscripto)
 VALUES
 (1, 3, 2, '10:00:00', 'Coordinador');
 
@@ -28,7 +28,7 @@ VALUES
 (2, 3, 'Historia');
 
 -- Tabla grupo
-INSERT INTO grupo (id_grupo, orientacion_grupo, turno_grupo, nombre_grupo, cantidad_alumno_grupo, id_adscripo, id_secretario)
+INSERT INTO grupo (id_grupo, orientacion_grupo, turno_grupo, nombre_grupo, cantidad_alumno_grupo, id_adscripto, id_secretario)
 VALUES
 (1, 'Ciencias', 'Mañana', '1A', 25, 1, 1);
 

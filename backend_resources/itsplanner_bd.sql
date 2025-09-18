@@ -34,7 +34,7 @@ CREATE TABLE usuario (
 	apellido_usuario varchar(120) NOT NULL,
 	gmail_usuario varchar(200) NOT NULL,
 	telefono_usuario varchar(9) NOT NULL,
-	ci_usuario int(8) NOT NULL
+	ci_usuario int(8) NOT NULL --FALTA CONTRASEÑA¿
 );
 
 
@@ -124,98 +124,98 @@ CREATE TABLE docente_dicta_asignatura (
 -- Tabla grupo
 ALTER TABLE grupo
     ADD CONSTRAINT fk_grupo_adscripto
-    FOREIGN KEY (id_adscripto) REFERENCES adscripto(id_adscripto);
+    FOREIGN KEY (id_adscripto) REFERENCES adscripto(id_adscripto) ON DELETE CASCADE;
 
 ALTER TABLE grupo
     ADD CONSTRAINT fk_grupo_secretario
-    FOREIGN KEY (id_secretario) REFERENCES secretario(id_secretario);
+    FOREIGN KEY (id_secretario) REFERENCES secretario(id_secretario) ON DELETE CASCADE;
 
 
 -- Tabla secretario_administra_recurso
 ALTER TABLE secretario_administra_recurso
     ADD CONSTRAINT fk_secretario_administra_recurso_secretario
-    FOREIGN KEY (id_secretario) REFERENCES secretario(id_secretario);
+    FOREIGN KEY (id_secretario) REFERENCES secretario(id_secretario) ON DELETE CASCADE;
 
 ALTER TABLE secretario_administra_recurso
     ADD CONSTRAINT fk_secretario_administra_recurso_recurso
-    FOREIGN KEY (id_recurso) REFERENCES recurso(id_recurso);
+    FOREIGN KEY (id_recurso) REFERENCES recurso(id_recurso) ON DELETE CASCADE;
 
 -- Tabla recurso
 ALTER TABLE recurso
     ADD CONSTRAINT fk_recurso_espacio
-    FOREIGN KEY (id_espacio) REFERENCES espacio(id_espacio);
+    FOREIGN KEY (id_espacio) REFERENCES espacio(id_espacio) ON DELETE CASCADE;
 
 -- Tabla secretario
 ALTER TABLE secretario
     ADD CONSTRAINT fk_secretario_usuario
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario);
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE;
 
 -- Tabla docente
 ALTER TABLE docente
     ADD CONSTRAINT fk_docente_usuario
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario);
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE;
 
 -- Tabla docente_pide_recurso
 ALTER TABLE docente_pide_recurso
     ADD CONSTRAINT fk_docente_pide_recurso_docente
-    FOREIGN KEY (id_docente) REFERENCES docente(id_docente);
+    FOREIGN KEY (id_docente) REFERENCES docente(id_docente) ON DELETE CASCADE;
 
 ALTER TABLE docente_pide_recurso
     ADD CONSTRAINT fk_docente_pide_recurso_recurso
-    FOREIGN KEY (id_recurso) REFERENCES recurso(id_recurso);
+    FOREIGN KEY (id_recurso) REFERENCES recurso(id_recurso) ON DELETE CASCADE;
 
--- Tabla adcripto
+-- Tabla adscripto
 ALTER TABLE adscripto
     ADD CONSTRAINT fk_adscripto_usuario
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario);
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE;
 
 -- Tabla adscripto_organiza_horario_clase
 ALTER TABLE adscripto_organiza_horario_clase
     ADD CONSTRAINT fk_adscripto_organiza_horario_adscripto
-    FOREIGN KEY (id_adscripto) REFERENCES adscripto(id_adscripto);
+    FOREIGN KEY (id_adscripto) REFERENCES adscripto(id_adscripto) ON DELETE CASCADE;
 
 ALTER TABLE adscripto_organiza_horario_clase
     ADD CONSTRAINT fk_adscripto_organiza_horario_clase
-    FOREIGN KEY (id_horario_clase) REFERENCES horario_clase(id_horario_clase);
+    FOREIGN KEY (id_horario_clase) REFERENCES horario_clase(id_horario_clase) ON DELETE CASCADE;
 
 -- Tabla horario_clase
 ALTER TABLE horario_clase
     ADD CONSTRAINT fk_horario_clase_asignatura
-    FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura);
+    FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE CASCADE;
 
 
 -- Tabla asignatura_docente_solicita_espacio
 ALTER TABLE asignatura_docente_solicita_espacio
     ADD CONSTRAINT fk_asignatura_docente_solicita_espacio_asignatura
-    FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura);
+    FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE CASCADE;
 
 ALTER TABLE asignatura_docente_solicita_espacio
     ADD CONSTRAINT fk_asignatura_docente_solicita_espacio_docente
-    FOREIGN KEY (id_docente) REFERENCES docente(id_docente);
+    FOREIGN KEY (id_docente) REFERENCES docente(id_docente) ON DELETE CASCADE;
 
 ALTER TABLE asignatura_docente_solicita_espacio
     ADD CONSTRAINT fk_asignatura_docente_solicita_espacio_espacio
-    FOREIGN KEY (id_espacio) REFERENCES espacio(id_espacio);
+    FOREIGN KEY (id_espacio) REFERENCES espacio(id_espacio) ON DELETE CASCADE;
 
 
 -- Tabla docente_tiene_grupo
 ALTER TABLE docente_tiene_grupo
     ADD CONSTRAINT fk_docente_tiene_grupo_grupo
-    FOREIGN KEY (id_grupo) REFERENCES grupo(id_grupo);
+    FOREIGN KEY (id_grupo) REFERENCES grupo(id_grupo) ON DELETE CASCADE;
 
 ALTER TABLE docente_tiene_grupo
     ADD CONSTRAINT fk_docente_tiene_grupo_docente
-    FOREIGN KEY (id_docente) REFERENCES docente(id_docente);
+    FOREIGN KEY (id_docente) REFERENCES docente(id_docente) ON DELETE CASCADE;
 
 ALTER TABLE docente_tiene_grupo
     ADD CONSTRAINT fk_docente_tiene_grupo_asignatura
-    FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura);
+    FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE CASCADE;
 
 -- Tabla docente_dicta_asignatura
 ALTER TABLE docente_dicta_asignatura
     ADD CONSTRAINT fk_docente_dicta_asignatura_docente
-    FOREIGN KEY (id_docente) REFERENCES docente(id_docente);
+    FOREIGN KEY (id_docente) REFERENCES docente(id_docente) ON DELETE CASCADE;
 
 ALTER TABLE docente_dicta_asignatura
     ADD CONSTRAINT fk_docente_dicta_asignatura_asignatura
-    FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura);
+    FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE CASCADE;
