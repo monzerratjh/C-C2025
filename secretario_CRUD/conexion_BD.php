@@ -14,7 +14,7 @@ $conn = mysqli_connect($servidor, $usuario, $pass, $bd);
 if (!$conn) {
     die("Error de conexion " . mysqli_connect_error());
 }
-echo "Conectado correctamente <hr>";
+//echo "Conectado correctamente <hr>";
 
 //devuelvo la conexion  
 return $conn;

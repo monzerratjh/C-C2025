@@ -68,7 +68,7 @@
       </div>
       <?php
         if(isset($_GET['message'])) {
-          echo"<h6>".$_GET['message']."</h6>";
+          echo"<h6>".$_GET['message']."</h6>"; /*Imprime el mensaje de error en la validación de php*/
         }
       ?>
       <form action="./insert_data_login.php" method="POST" class="formulario">
