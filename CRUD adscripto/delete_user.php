@@ -7,7 +7,7 @@ $con = connection();
 $id = $_GET["id_usuario"];
 
 // Sentencia SQL ajustada a tu tabla real
-$sql = "DELETE FROM usuario WHERE id_usuario='$id'";
+$sql = "DELETE  FROM usuario WHERE id_usuario='$id'";
 $query = mysqli_query($con, $sql);
 
 if ($query) {

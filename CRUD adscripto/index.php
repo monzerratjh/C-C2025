@@ -63,7 +63,7 @@ $query = mysqli_query($con, $sql);
         <p style="color:red; font-weight:bold;"><?= $message ?></p>
     <?php endif; ?>
 
-    <form action="" method="POST">
+    <form action="" method="POST"> <!-- get?-->
         <input type="text" name="nombre_usuario" placeholder="Nombre" 
                value="<?= (!$success && isset($_POST['nombre_usuario'])) ? $_POST['nombre_usuario'] : '' ?>" required>
 

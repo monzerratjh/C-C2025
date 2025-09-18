@@ -4,7 +4,7 @@ function connection(){
     $host = "localhost";
     $user = "root";
     $pass = "";
-    $bd = "itsplanner_bd_prueba_datos";
+    $bd = "itsplanner";
 
     $connect=mysqli_connect($host, $user, $pass);
 
