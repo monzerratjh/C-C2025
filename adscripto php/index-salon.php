@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -28,7 +28,7 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <a href="adscripto-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
+      <a href="adscripto_espacio.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
 
        <a href="/adscripto php/adscripto_espacio.php" class="fw-semibold seleccionado mb-2">Espacios</a>
         <a href="/adscripto php/reservas-adscripto.php" class="nav-opciones">Reservas</a>
@@ -45,8 +45,8 @@
       <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="adscripto-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="adscripto-bienvenida.php">Volver</a>
+            <a href="adscripto_espacio.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="adscripto_espacio.php">Volver</a>
           </div>
         </div>
 
@@ -74,7 +74,7 @@
         <div class="espacio-cuerpo"></div>
         <div class="espacio-footer d-flex justify-content-between align-items-center">
           <button class="btn btn-sm btn-light">
-            <i class="bi bi-pencil-square"></i>
+            <a href="editar-propiedades-espacios.php"><i class="bi bi-pencil-square"></i></a>
           </button>
           <span>Salón 1</span>
           <button class="btn btn-sm btn-light">
@@ -90,7 +90,7 @@
         <div class="espacio-cuerpo"></div>
         <div class="espacio-footer d-flex justify-content-between align-items-center">
           <button class="btn btn-sm btn-light">
-            <i class="bi bi-pencil-square"></i>
+            <a href="editar-propiedades-espacios.php"><i class="bi bi-pencil-square"></i></a>
           </button>
           <span>Salón 2</span>
           <button class="btn btn-sm btn-light">
@@ -106,7 +106,7 @@
         <div class="espacio-cuerpo"></div>
         <div class="espacio-footer d-flex justify-content-between align-items-center">
           <button class="btn btn-sm btn-light">
-            <i class="bi bi-pencil-square"></i>
+            <a href="editar-propiedades-espacios.php"><i class="bi bi-pencil-square"></i></a>
           </button>
           <span>Salón 3</span>
           <button class="btn btn-sm btn-light">

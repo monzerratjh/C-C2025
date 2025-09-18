@@ -531,8 +531,16 @@ a{
   border-radius: 30px;
   padding: 8px 30px;
   border: none;
+  cursor: pointer;
+
+  /* transición suave */
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
+.espacio-btn:hover {
+  background: #3da493; 
+  color: #fff;
+}
 
 .espacio-input {
   border: none;
