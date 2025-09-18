@@ -24,13 +24,17 @@
 
   <!-- Menú lateral (para celulares/tablets) -->
   <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
-    <div class="offcanvas-body d-flex flex-column">
-      <p class="fw-semibold seleccionado mb-">USERNAME</p>
-        <a href="/adscripto php/adscripto_espacio.php" class="fw-semibold seleccionado mb-2">Espacios</a>
-      <a href="/adscripto php/reservas-adscripto.php" class="nav-opciones mb-2">Reservas</a>
-      <a href="/adscripto php/faltaDocentes.php" class="nav-opciones mb-2">Faltas de docentes</a>
-      <a href="/adscripto php/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
+    <div class="offcanvas-header">
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
+    <div class="offcanvas-body d-flex flex-column">
+      <a href="adscripto-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
+
+       <a href="/adscripto php/adscripto_espacio.php" class="fw-semibold seleccionado mb-2">Espacios</a>
+        <a href="/adscripto php/reservas-adscripto.php" class="nav-opciones">Reservas</a>
+        <a href="/adscripto php/faltaDocentes.php" class="nav-opciones">Faltas docentes</a>
+        <a href="/adscripto php/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
+     </div>
   </div>
 
   <!-- Contenedor general -->
@@ -39,12 +43,18 @@
 
       <!-- Banner pantallas grandes -->
       <div class="col-md-3 barra-lateral d-none d-md-flex">
-         <p class="fw-semibold seleccionado usuario mb-">USERNAME</p>
-           <a href="/adscripto php/adscripto_espacio.php" class="fw-semibold seleccionado mb-2">Espacios</a>
+        <div class="volverGeneral">
+          <div class="volver">
+            <a href="adscripto-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="adscripto-bienvenida.php">Volver</a>
+          </div>
+        </div>
+
+       <a href="/adscripto php/adscripto_espacio.php" class="fw-semibold seleccionado mb-2">Espacios</a>
       <a href="/adscripto php/reservas-adscripto.php" class="nav-opciones mb-2">Reservas</a>
       <a href="/adscripto php/faltaDocentes.php" class="nav-opciones mb-2">Faltas de docentes</a>
       <a href="/adscripto php/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
-     </div>
+    </div>
 
 <!-- Contenido principal -->
 <main class="col-md-9 principal-estudiantes" >

@@ -30,14 +30,13 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <a href="../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
+      <a href="adscripto-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
 
-           <p class="fw-semibold seleccionado usuario mb-">USERNAME</p>
-      <a href="/adscripto php/adscripto_espacio.php" class="nav-opciones mb-2">Espacios</a>
-      <a href="/adscripto php/reservas-adscripto.php" class="fw-semibold seleccionado mb-2">Reservas</a>
-      <a href="/adscripto php/faltaDocentes.php" class="nav-opciones mb-2">Faltas de docentes</a>
-      <a href="/adscripto php/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
-    </div>
+       <a href="/adscripto php/adscripto_espacio.php" class="nav-opciones">Espacios</a>
+        <a href="/adscripto php/reservas-adscripto.php" class="fw-semibold seleccionado mb-2">Reservas</a>
+        <a href="/adscripto php/faltaDocentes.php" class="nav-opciones">Faltas docentes</a>
+        <a href="/adscripto php/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
+     </div>
   </div>
 
   <!-- Contenedor general -->
@@ -48,8 +47,8 @@
       <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="../index.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="../index.php">Volver</a>
+            <a href="adscripto-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="adscripto-bienvenida.php">Volver</a>
           </div>
         </div>
 
