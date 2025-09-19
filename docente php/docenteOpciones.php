@@ -60,7 +60,7 @@
 
     <!-- Contenido principal-->
     <div class="col-md-9 horarios-estudiantes"> <!-- Boostrap contendio al lado del menu -->
-     <img src="/img/logo.png" alt="Logo" class="logo"> 
+     <img src="../logo.png" alt="Logo" class="logo"> 
 
   <div class="acordion">
 
