@@ -74,7 +74,7 @@
             <option value="3° MD">
             <option value="3° MB">
             <option value="2° MB">
-          </datalist>
+          </datalist> 
         </div>
       </div>
 
