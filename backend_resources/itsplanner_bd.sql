@@ -32,7 +32,8 @@ CREATE TABLE usuario (
 	apellido_usuario varchar(120) NOT NULL,
 	gmail_usuario varchar(200) NOT NULL,
 	telefono_usuario varchar(9) NOT NULL,
-	ci_usuario int(8) NOT NULL --FALTA CONTRASEÑA¿
+	ci_usuario int(8) NOT NULL,
+	contraseña_usuario VARCHAR(255) NOT NULL
 );
 
 
