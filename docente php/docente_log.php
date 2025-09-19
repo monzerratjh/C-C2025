@@ -18,7 +18,7 @@
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
         <img class="menuResponsive" src="../menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="../logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="../img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -59,7 +59,7 @@
 <!-- Contenido principal -->
 <main class="col-md-9 principal-estudiantes" >
 
-    <img src="../logo.png" alt="Logo" class="logo"> 
+    <img src="../img/logo.png" alt="Logo" class="logo"> 
     
     <section class="seccion-form docente">
 
