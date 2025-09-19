@@ -73,6 +73,7 @@
             <option value="2° MD">
             <option value="3° MD">
             <option value="3° MB">
+            <option value="2° MB">
           </datalist>
         </div>
       </div>
@@ -82,6 +83,6 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="app.js"></script>
+  <script src="redireccionarGrupos.js"></script>
 </body>
 </html>

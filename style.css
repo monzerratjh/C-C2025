@@ -647,3 +647,34 @@ a{
     padding: 10px 20px;
   }
 }
+
+/*Tablas para estudiantes*/
+table {
+  width: 80%;
+  margin: 20px auto;
+  background: #fffafc; 
+  color: #444;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-size: 15px;
+}
+
+table th, table td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid #f1d9e3;
+}
+
+table th {
+  background: #a9cbc1; /* rosado pastel */
+  color: #333;
+  font-weight: bold;
+}
+
+table tr:nth-child(even) {
+  background: #e2e8e6; /* celeste pastel */
+}
+
+table tr:hover {
+  background: #c8d3cf; /* lila pastel suave */
+}
