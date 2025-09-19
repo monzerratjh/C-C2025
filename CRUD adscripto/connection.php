@@ -9,6 +9,11 @@ function connection(){
     $connect=mysqli_connect($host, $user, $pass);
 
     mysqli_select_db($connect, $bd);
+    
+    // Verificar conexión
+    if (!$connect) {
+        die("Error de conexión: " . mysqli_connect_error());
+    }
 
     return $connect;
 

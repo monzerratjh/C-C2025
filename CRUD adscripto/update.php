@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $gmail    = $_POST['gmail_usuario'];
         $telefono = $_POST['telefono_usuario']; 
         $cedula   = $_POST['ci_usuario'];
+        $pass = $_POST['password_usuario'];
 
         // Validación: cédula 8 dígitos
         if (!preg_match('/^\d{8}$/', $cedula)) {
@@ -86,6 +87,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <input type="text" name="ci_usuario" placeholder="Cédula" value="<?= $row['ci_usuario'] ?>" required
                    pattern="\d{8}" title="Debe ingresar exactamente 8 números">
+
+            <input type="password" name="password_usuario" placeholder="Contraseña" required>
+
 
             <input type="submit" value="Actualizar">
         </form>

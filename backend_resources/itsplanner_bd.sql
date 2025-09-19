@@ -90,10 +90,10 @@ CREATE TABLE adscripto_organiza_horario_clase (
 CREATE TABLE asignatura_docente_solicita_espacio (
 	id_asignatura int NOT NULL,
 	id_docente int NOT NULL,
-	fecha_hora_reserva timestamp NOT NULL,
 	hora_clase time NOT NULL,
 	id_espacio int NOT NULL,
-	estado_reserva ENUM('pendiente','aceptada','rechazada','cancelada') NOT NULL DEFAULT 'pendiente'
+	estado_reserva ENUM('pendiente','aceptada','rechazada','cancelada') NOT NULL DEFAULT 'pendiente',
+	fecha_hora_reserva TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP -- auto se guarda fecha y hora
 );
 
 
