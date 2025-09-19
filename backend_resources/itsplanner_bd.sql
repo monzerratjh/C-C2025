@@ -9,7 +9,6 @@ CREATE TABLE grupo (
 ); 
 
 
-
 CREATE TABLE secretario_administra_recurso (
 	id_secretario int NOT NULL,
 	id_recurso int NOT NULL
@@ -22,10 +21,9 @@ CREATE TABLE recurso (
 	nombre_recurso varchar(100) NOT NULL,
 	historial_recurso varchar(300),
 	tipo_recurso varchar(100) NOT NULL,
-	estado_recurso varchar(50) NOT NULL,
+	estado_recurso ENUM('operativo','en_reparacion','baja') NOT NULL DEFAULT 'operativo',
 	id_espacio int NOT NULL
 );
-
 
 
 CREATE TABLE usuario (
@@ -73,7 +71,7 @@ CREATE TABLE espacio (
 	nombre_espacio varchar (120) NOT NULL,
 	capacidad_espacio int NOT NULL,
 	historial_espacio varchar(300),
-    disponibilidad_espacio varchar(300)
+    disponibilidad_espacio ENUM('libre','reservado','en_uso','mantenimiento') NOT NULL DEFAULT 'libre'
 );
 
 CREATE TABLE horario_clase (
@@ -93,7 +91,8 @@ CREATE TABLE asignatura_docente_solicita_espacio (
 	id_docente int NOT NULL,
 	fecha_hora_reserva timestamp NOT NULL,
 	hora_clase time NOT NULL,
-	id_espacio int NOT NULL
+	id_espacio int NOT NULL,
+	estado_reserva ENUM('pendiente','aceptada','rechazada','cancelada') NOT NULL DEFAULT 'pendiente'
 );
 
 
@@ -119,8 +118,6 @@ CREATE TABLE docente_dicta_asignatura (
 
 -- CLAVES FORANEAS
 
-
-
 -- Tabla grupo
 ALTER TABLE grupo
     ADD CONSTRAINT fk_grupo_adscripto
@@ -140,20 +137,24 @@ ALTER TABLE secretario_administra_recurso
     ADD CONSTRAINT fk_secretario_administra_recurso_recurso
     FOREIGN KEY (id_recurso) REFERENCES recurso(id_recurso) ON DELETE CASCADE;
 
+
 -- Tabla recurso
 ALTER TABLE recurso
     ADD CONSTRAINT fk_recurso_espacio
     FOREIGN KEY (id_espacio) REFERENCES espacio(id_espacio) ON DELETE CASCADE;
+
 
 -- Tabla secretario
 ALTER TABLE secretario
     ADD CONSTRAINT fk_secretario_usuario
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE;
 
+
 -- Tabla docente
 ALTER TABLE docente
     ADD CONSTRAINT fk_docente_usuario
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE;
+
 
 -- Tabla docente_pide_recurso
 ALTER TABLE docente_pide_recurso
@@ -164,10 +165,12 @@ ALTER TABLE docente_pide_recurso
     ADD CONSTRAINT fk_docente_pide_recurso_recurso
     FOREIGN KEY (id_recurso) REFERENCES recurso(id_recurso) ON DELETE CASCADE;
 
+
 -- Tabla adscripto
 ALTER TABLE adscripto
     ADD CONSTRAINT fk_adscripto_usuario
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE;
+
 
 -- Tabla adscripto_organiza_horario_clase
 ALTER TABLE adscripto_organiza_horario_clase
@@ -177,6 +180,7 @@ ALTER TABLE adscripto_organiza_horario_clase
 ALTER TABLE adscripto_organiza_horario_clase
     ADD CONSTRAINT fk_adscripto_organiza_horario_clase
     FOREIGN KEY (id_horario_clase) REFERENCES horario_clase(id_horario_clase) ON DELETE CASCADE;
+
 
 -- Tabla horario_clase
 ALTER TABLE horario_clase
@@ -210,6 +214,7 @@ ALTER TABLE docente_tiene_grupo
 ALTER TABLE docente_tiene_grupo
     ADD CONSTRAINT fk_docente_tiene_grupo_asignatura
     FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE CASCADE;
+
 
 -- Tabla docente_dicta_asignatura
 ALTER TABLE docente_dicta_asignatura
