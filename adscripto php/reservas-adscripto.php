@@ -32,10 +32,10 @@
     <div class="offcanvas-body d-flex flex-column">
       <a href="adscripto-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
 
-       <a href="/adscripto php/adscripto_espacio.php" class="nav-opciones">Espacios</a>
-        <a href="/adscripto php/reservas-adscripto.php" class="fw-semibold seleccionado mb-2">Reservas</a>
-        <a href="/adscripto php/faltaDocentes.php" class="nav-opciones">Faltas docentes</a>
-        <a href="/adscripto php/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
+       <a href="../adscripto php/adscripto_espacio.php" class="nav-opciones">Espacios</a>
+        <a href="../adscripto php/reservas-adscripto.php" class="fw-semibold seleccionado mb-2">Reservas</a>
+        <a href="../adscripto php/faltaDocentes.php" class="nav-opciones">Faltas docentes</a>
+        <a href="../adscripto php/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
      </div>
   </div>
 
@@ -52,10 +52,10 @@
           </div>
         </div>
 
-       <a href="/adscripto php/adscripto_espacio.php" class="nav-opciones mb-2">Espacios</a>
-      <a href="/adscripto php/reservas-adscripto.php" class="fw-semibold seleccionado mb-2">Reservas</a>
-      <a href="/adscripto php/faltaDocentes.php" class="nav-opciones mb-2">Faltas de docentes</a>
-      <a href="/adscripto php/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
+       <a href="../adscripto php/adscripto_espacio.php" class="nav-opciones mb-2">Espacios</a>
+      <a href="../adscripto php/reservas-adscripto.php" class="fw-semibold seleccionado mb-2">Reservas</a>
+      <a href="../adscripto php/faltaDocentes.php" class="nav-opciones mb-2">Faltas de docentes</a>
+      <a href="../adscripto php/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
     </div>
 
     <!-- Contenido principal-->

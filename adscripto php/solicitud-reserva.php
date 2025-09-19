@@ -50,10 +50,10 @@
           </div>
         </div>
 
-       <a href="/adscripto php/adscripto_espacio.php" class="nav-opciones mb-2">Espacios</a>
-      <a href="/adscripto php/reservas-adscripto.php" class="fw-semibold seleccionado mb-2">Reservas</a>
-      <a href="/adscripto php/faltaDocentes.php" class="nav-opciones mb-2">Faltas de docentes</a>
-      <a href="/adscripto php/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
+       <a href="../adscripto php/adscripto_espacio.php" class="nav-opciones mb-2">Espacios</a>
+      <a href="../adscripto php/reservas-adscripto.php" class="fw-semibold seleccionado mb-2">Reservas</a>
+      <a href="../adscripto php/faltaDocentes.php" class="nav-opciones mb-2">Faltas de docentes</a>
+      <a href="../adscripto php/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
     </div>
 
 
