@@ -18,9 +18,9 @@
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="img/menu.png" alt="menu">
+        <img class="menuResponsive" src="../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="../img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -32,10 +32,10 @@
     <div class="offcanvas-body d-flex flex-column">
       <a href="index.html" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
 
-      <a href="estudiantes.html" class="fw-semibold seleccionado mb-2">Estudiante</a>
-      <a href="adscriptos_log.html" class="nav-opciones mb-2">Adscripto</a>
-      <a href="docente_log.html" class="nav-opciones mb-2">Docente</a>
-      <a href="secretaria_log.html" class="nav-opciones mb-2">Secretario</a>
+      <a href="../estudiante php/estudiante.php" class="nav-opciones mb-2">Estudiante</a>
+      <a href="../adscripto php/adscripto_log.php" class="nav-opciones mb-2">Adscripto</a>
+      <a href="../docente php/docente_log.php" class="fw-semibold seleccionado">Docente</a>
+      <a href="../secretario php/secretario_log.php" class="nav-opciones mb-2">Secretario</a>
     </div>
   </div>
 
@@ -52,15 +52,15 @@
           </div>
         </div>
 
-        <a href="estudiante.html" class="nav-opciones">Estudiante</a>
-        <a href="adscripto_log.html" class="nav-opciones">Adscripto</a>
-        <a href="docente_log.html" class="fw-semibold seleccionado">Docente</a>
-        <a href="secretario_log.html" class="nav-opciones">Secretario</a>
-      </div>
+        <a href="../estudiante php/estudiante.php" class="nav-opciones mb-2">Estudiante</a>
+      <a href="../adscripto php/adscripto_log.php" class="nav-opciones mb-2">Adscripto</a>
+      <a href="../docente php/docente_log.php" class="fw-semibold seleccionado">Docente</a>
+      <a href="../secretario php/secretario_log.php" class="nav-opciones mb-2">Secretario</a>
+   </div>
 
     <!-- Contenido principal-->
     <div class="col-md-9 horarios-estudiantes"> <!-- Boostrap contendio al lado del menu -->
-     <img src="/img/logo.png" alt="Logo" class="logo"> 
+     <img src="../img/logo.png" alt="Logo" class="logo"> 
 
   <div class="acordion">
 

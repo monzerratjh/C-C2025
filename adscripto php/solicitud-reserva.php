@@ -16,9 +16,9 @@
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="/img/menu.png" alt="menu">
+        <img class="menuResponsive" src="../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="/img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="../img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -50,16 +50,16 @@
           </div>
         </div>
 
-       <a href="/adscripto php/adscripto_espacio.php" class="nav-opciones mb-2">Espacios</a>
-      <a href="/adscripto php/reservas-adscripto.php" class="fw-semibold seleccionado mb-2">Reservas</a>
-      <a href="/adscripto php/faltaDocentes.php" class="nav-opciones mb-2">Faltas de docentes</a>
-      <a href="/adscripto php/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
+       <a href="../adscripto php/adscripto_espacio.php" class="nav-opciones mb-2">Espacios</a>
+      <a href="../adscripto php/reservas-adscripto.php" class="fw-semibold seleccionado mb-2">Reservas</a>
+      <a href="../adscripto php/faltaDocentes.php" class="nav-opciones mb-2">Faltas de docentes</a>
+      <a href="../adscripto php/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
     </div>
 
 
   <main class="contenedor-reservas">
 
-    <img src="/img/logo.png" alt="Logo" class="logo"> 
+    <img src="../img/logo.png" alt="Logo" class="logo"> 
 
     
     <div class="reserva-titulo">
