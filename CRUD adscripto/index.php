@@ -3,21 +3,25 @@ include("connection.php");
 $con = connection();
 
 $message = ""; // Mensaje de error o éxito
-$success = false; // Indica si la inserción fue correcta
+$success = false; // Inserción correcta
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $nombre   = $_POST['nombre_usuario'];
-    $apellido = $_POST['apellido_usuario'];
-    $gmail    = $_POST['gmail_usuario'];
-    $telefono = $_POST['telefono_usuario'];
-    $cedula   = $_POST['ci_usuario'];
+    // Escapar entradas para seguridad
+    $nombre   = mysqli_real_escape_string($con, $_POST['nombre_usuario']);
+    $apellido = mysqli_real_escape_string($con, $_POST['apellido_usuario']);
+    $gmail    = mysqli_real_escape_string($con, $_POST['gmail_usuario']);
+    $telefono = mysqli_real_escape_string($con, $_POST['telefono_usuario']);
+    $cedula   = mysqli_real_escape_string($con, $_POST['ci_usuario']);
+    $password = mysqli_real_escape_string($con, $_POST['contraseña_usuario']); // NUEVO campo
 
-    // Validaciones de formato
+    // Validaciones
     if (!preg_match('/^\d{8}$/', $cedula)) {
         $message = "La cédula debe tener exactamente 8 números.";
     } elseif (!preg_match('/^\d{9}$/', $telefono)) {
         $message = "El teléfono debe tener exactamente 9 números.";
+    } elseif (strlen($password) < 6) {
+        $message = "La contraseña debe tener al menos 6 caracteres.";
     } else {
         // Verificar si usuario ya existe
         $sql_check = "SELECT * FROM usuario WHERE ci_usuario='$cedula' OR gmail_usuario='$gmail'";
@@ -26,14 +30,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (mysqli_num_rows($query_check) > 0) {
             $message = "El usuario con esta cédula o correo ya existe en la base de datos.";
         } else {
+            // Hashear la contraseña
+            $hash_password = password_hash($password, PASSWORD_BCRYPT);
+
             // Insertar usuario
-            $sql_insert = "INSERT INTO usuario (nombre_usuario, apellido_usuario, gmail_usuario, telefono_usuario, ci_usuario) 
-                           VALUES ('$nombre', '$apellido', '$gmail', '$telefono', '$cedula')";
+            $sql_insert = "INSERT INTO usuario (nombre_usuario, apellido_usuario, gmail_usuario, telefono_usuario, ci_usuario, contraseña_usuario) 
+                           VALUES ('$nombre', '$apellido', '$gmail', '$telefono', '$cedula', '$hash_password')";
             $query_insert = mysqli_query($con, $sql_insert);
 
             if ($query_insert) {
                 $message = "Usuario creado correctamente.";
-                $success = true; // Inserción correcta
+                $success = true;
             } else {
                 $message = "Error al insertar: " . mysqli_error($con);
             }
@@ -42,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Traer todos los usuarios
-$sql = "SELECT * FROM usuario";
+$sql = "SELECT id_usuario, nombre_usuario, apellido_usuario, gmail_usuario, telefono_usuario, ci_usuario FROM usuario";
 $query = mysqli_query($con, $sql);
 ?>
 
@@ -63,7 +70,7 @@ $query = mysqli_query($con, $sql);
         <p style="color:red; font-weight:bold;"><?= $message ?></p>
     <?php endif; ?>
 
-    <form action="" method="POST"> <!-- get?-->
+    <form action="" method="POST">
         <input type="text" name="nombre_usuario" placeholder="Nombre" 
                value="<?= (!$success && isset($_POST['nombre_usuario'])) ? $_POST['nombre_usuario'] : '' ?>" required>
 
@@ -74,12 +81,12 @@ $query = mysqli_query($con, $sql);
                value="<?= (!$success && isset($_POST['gmail_usuario'])) ? $_POST['gmail_usuario'] : '' ?>" required>
 
         <input type="text" name="telefono_usuario" placeholder="Teléfono" 
-               value="<?= (!$success && isset($_POST['telefono_usuario'])) ? $_POST['telefono_usuario'] : '' ?>" 
-               required pattern="\d{9}" title="Debe ingresar exactamente 9 números">
+               value="<?= (!$success && isset($_POST['telefono_usuario'])) ? $_POST['telefono_usuario'] : '' ?>" required>
 
         <input type="text" name="ci_usuario" placeholder="Cédula" 
-               value="<?= (!$success && isset($_POST['ci_usuario'])) ? $_POST['ci_usuario'] : '' ?>" 
-               required pattern="\d{8}" title="Debe ingresar exactamente 8 números">
+               value="<?= (!$success && isset($_POST['ci_usuario'])) ? $_POST['ci_usuario'] : '' ?>" required>
+
+        <input type="password" name="contraseña_usuario" placeholder="Contraseña" required>
 
         <input type="submit" value="Agregar">
     </form>

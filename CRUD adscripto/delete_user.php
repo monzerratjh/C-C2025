@@ -12,6 +12,7 @@ $query = mysqli_query($con, $sql);
 
 if ($query) {
     Header("Location: index.php"); // redirige si se elimina correctamente
+    echo "Eliminado correctamente";
     exit();
 } else {
     echo "Error al eliminar: " . mysqli_error($con);
