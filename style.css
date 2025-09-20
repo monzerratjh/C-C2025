@@ -678,3 +678,45 @@ table tr:nth-child(even) {
 table tr:hover {
   background: #c8d3cf; /* lila pastel suave */
 }
+/*BLOQUE PARA AGREGAR COSAS*/
+
+  /* Bloque Agregar */
+  .bloque-agregar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+    justify-content: center;
+  }
+
+  .bloque-agregar .etiqueta {
+    background: #e69ac6;
+    color: #000;
+    border: none;
+    padding: 12px 40px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+  }
+
+  .bloque-agregar .agregar {
+    width: 44px;
+    height: 44px;
+    border: 2px solid #e69ac6;
+    color: #e69ac6;
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 10px;
+    background: transparent;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+    transition: all 0.3s;
+  }
+
+  .bloque-agregar .agregar:hover {
+    background: #e69ac6;
+    color: #fff;
+  }

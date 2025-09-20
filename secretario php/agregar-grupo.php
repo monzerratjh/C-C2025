@@ -30,13 +30,12 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <a href="../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
-
-      <a href="../estudiante php/estudiante.php" class="nav-opciones mb-2">Estudiantes</a>
-      <a href="../adscripto php/adscripto_log.php" class="nav-opciones mb-2">Adscriptos</a>
-      <a href="../docente php/docente_log.php" class="nav-opciones mb-2">Docente</a>
-      <a href="../secretario php/secretario_log.php" class="fw-semibold seleccionado mb-2">Secretaría</a>
-    </div>
+      <a href="../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
+ 
+       <a href="secretario-usuario.php" class="nav-opciones">Usuarios</a>
+        <a href="secretario-horario.php" class="nav-opciones">Horarios</a>
+        <a href="secretario-grupo.php" class="fw-semibold seleccionado mb-2">Grupos</a>
+        </div>
   </div>
 
   <!-- Contenedor general -->
@@ -47,16 +46,14 @@
       <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="../index.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="../index.php">Volver</a>
-          </div>
+            <a href="../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
+        </div>
         </div>
 
-        <a href="../estudiante php/estudiante.php" class="nav-opciones">Estudiante</a>
-        <a href="../adscripto php/adscripto_log.php" class="nav-opciones">Adscripto</a>
-        <a href="../docente php/docente_log.php" class="nav-opciones">Docente</a>
-        <a href="../secretario php/secretario_log.php" class="fw-semibold seleccionado">Secretario</a>
-      </div>
+        <a href="secretario-usuario.php" class="nav-opciones">Usuarios</a>
+        <a href="secretario-horario.php" class="nav-opciones">Horarios</a>
+        <a href="secretario-grupo.php" class="fw-semibold seleccionado mb-2">Grupos</a>
+       </div>
 
     <!-- Contenido principal-->
     <div class="col-md-9 horarios-estudiantes"> <!-- Boostrap contendio al lado del menu -->
@@ -65,40 +62,12 @@
       <div class="acordion-total">
   <div class="acordion">
 
-    <!-- Día -->
-    <div class="dia">
-      <button class="boton-opciones miercoles">3MD</button>
-      <div class="contenido-dia">
-        <table class="tabla-horario">
-        </table>
-      </div>
-    </div>
-
-    <!-- Día -->
-    <div class="dia">
-      <button class="boton-opciones miercoles">1 MD</button>
-      <div class="contenido-dia">
-        <table class="tabla-horario">
-        </table>
-      </div>
-    </div>
-
-    <!-- Día -->
-    <div class="dia">
-      <button class="boton-opciones miercoles">2 MB</button>
-      <div class="contenido-dia">
-      </div>
-    </div>
-
-     <!-- Día -->
-    <div class="dia">
-      <button class="boton-opciones miercoles">2 MB</button>
-      <div class="contenido-dia">
-      </div>
-    </div>
-
+    <div class="bloque-agregar">
+    <button class="etiqueta">Grupos</button>
+    <a href="agregar-grupo.php"><button class="agregar">+</button></a>
+  </div>
 <!-- Bootstrap JS -->
-<script src="app.js"></script>
+<script src="desplegarCaracteristicas.js"></script>
 
 <!-- Bootstrap Bundle JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

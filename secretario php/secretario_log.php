@@ -87,6 +87,7 @@
 
         <!-- Indicamos el rol -->
         <input type="hidden" name="rol" value="Secretario">
+        <a href="secretario-bienvenida.php">Alternativo por ahora</a>
 
         <button type="submit" id="boton" name="btn-log-in" value="1">Iniciar Sesión</button>
       </form>
