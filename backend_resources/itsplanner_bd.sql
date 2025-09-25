@@ -1,6 +1,14 @@
 CREATE TABLE grupo (
 	id_grupo int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	orientacion_grupo varchar(50) NOT NULL,
+	orientacion_grupo ENUM(
+		'Tecnologías de la Información',
+		'Tecnologías de la Información Bilingüe',
+		'Finest IT y Redes',
+		'Redes y Comunicaciones Ópticas',
+		'Diseño Gráfico en Comunicación Visual',
+		'Secretariado Bilingüe - Inglés',
+		'Tecnólogo en Ciberseguridad'
+		) NOT NULL,
 	turno_grupo varchar(50) NOT NULL,
 	nombre_grupo varchar(50) NOT NULL,
 	cantidad_alumno_grupo int NOT NULL,

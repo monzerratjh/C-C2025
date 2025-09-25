@@ -64,17 +64,17 @@ Une cada adscripto con el usuario asociado para obtener nombre y apellido.
 <!-- Tabla -->
 <table class="table table-bordered">
 <tr>
-<th>ID</th>
-<th>Nombre</th>
+<th>ID</th> <!-- ID SE VA DESP -->
+<th>Nombre del grupo</th>
 <th>Orientación</th>
 <th>Turno</th>
-<th>Cantidad</th>
+<th>Cantidad alumnos</th>
 <th>Adscripto</th>
-<th>Acciones</th>
+<th></th>
 </tr>
 <?php while($row = $result->fetch_assoc()){ ?>
 <tr>
-<td><?php echo $row['id_grupo']; ?></td>
+<td><?php echo $row['id_grupo']; ?></td> <!-- ID SE VA DESP -->
 <td><?php echo $row['nombre_grupo']; ?></td>
 <td><?php echo $row['orientacion_grupo']; ?></td>
 <td><?php echo $row['turno_grupo']; ?></td>
@@ -108,20 +108,26 @@ Une cada adscripto con el usuario asociado para obtener nombre y apellido.
 <input type="hidden" id="id_grupo" name="id_grupo">
 
 <div class="mb-3">
-<label>Nombre</label>
+<label>Nombre del grupo</label>
 <input type="text" class="form-control" id="nombre" name="nombre" required>
 </div>
 
 <div class="mb-3">
-  <label>Orientación</label>
-  <select class="form-control" id="orientacion" name="orientacion" required>
-      <option value="">Seleccione...</option>
-      <option value="Ciencias">Ciencias</option>
-      <option value="Humanidades">Humanidades</option>
-      <option value="Tecnología">Tecnología</option>
-      <option value="Arte">Arte</option>
-  </select>
+    <label for="orientacion">Orientación</label>
+    <input type="text" name="orientacion" class="form-control"
+        placeholder="Ingrese la orientación" list="orientaciones" id="orientacionInput" required />
+
+    <datalist id="orientaciones">
+        <option value="Tecnologías de la Información"></option>
+        <option value="Tecnologías de la Información Bilingüe"></option>
+        <option value="Finest IT y Redes"></option>
+        <option value="Redes y Comunicaciones Ópticas"></option>
+        <option value="Diseño Gráfico en Comunicación Visual"></option>
+        <option value="Secretariado Bilingüe - Inglés"></option>
+        <option value="Tecnólogo en Ciberseguridad"></option>
+    </datalist>
 </div>
+
 
 <div class="mb-3">
   <label>Turno</label>
@@ -133,7 +139,7 @@ Une cada adscripto con el usuario asociado para obtener nombre y apellido.
   </select>
 </div>
 <div class="mb-3">
-<label>Cantidad alumnos</label>
+<label>Cantidad de alumnos</label>
 <input type="number" class="form-control" id="cantidad" name="cantidad" required>
 </div>
 <div class="mb-3">
@@ -150,6 +156,11 @@ while($a = $ads->fetch_assoc()){
 
 <div class="mb-3">
 <input type="hidden" name="id_secretario" value="1"> <!-- fijo para pruebas -->
+<!--
+
+<input type="hidden" name="id_secretario" value="<?php echo $_SESSION['id_secretario']; ?>">
+
+-->
 </div>
 
 </div>

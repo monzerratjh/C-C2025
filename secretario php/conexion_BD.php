@@ -2,7 +2,7 @@
 function conectar_bd(){
 
 $servidor = "localhost";
-$bd = "itsplanner_bd2";
+$bd = "itsplanner";
 $usuario = "root";
 $pass = "";
 

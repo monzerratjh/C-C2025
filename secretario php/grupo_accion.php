@@ -1,6 +1,6 @@
 <?php
-include("connection.php");
-$conn = connection();
+include("conexion_BD.php");   // Incluye la conexión a la base de datos
+$conn = conectar_bd();
 
 $accion = $_POST['accion'] ?? '';
 
@@ -32,7 +32,7 @@ if($accion == 'insertar'){
     $stmt->bind_param("sssiii",$orientacion,$turno,$nombre,$cantidad,$id_adscripto,$id_secretario);
     $stmt->execute();
     $stmt->close();
-    header("Location: grupo_secretario.php?message=Grupo creado");
+    header("Location: agregar-grupo.php?message=Grupo creado");
 }
 
 if($accion == 'editar'){
@@ -51,7 +51,7 @@ if($accion == 'editar'){
     $stmt->bind_param("sssii",$orientacion,$turno,$nombre,$cantidad,$id);
     $stmt->execute();
     $stmt->close();
-    header("Location: grupo_secretario.php?message=Grupo actualizado");
+    header("Location: agregar-grupo.php?message=Grupo actualizado");
 }
 
 if($accion == 'eliminar'){
@@ -60,6 +60,6 @@ if($accion == 'eliminar'){
     $stmt->bind_param("i",$id);
     $stmt->execute();
     $stmt->close();
-    header("Location: grupo_secretario.php?message=Grupo eliminado");
+    header("Location: agregar-grupo.php?message=Grupo eliminado");
 }
 ?>
