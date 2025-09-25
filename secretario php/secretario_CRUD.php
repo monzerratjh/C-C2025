@@ -19,7 +19,7 @@ $message = "";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/CRUD adscripto/style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -44,42 +44,6 @@ $message = "";
             <input type="password" name="contrasenia_usuario" placeholder="Contraseña" id="contrasenia_usuario" >
             <input type="submit" value="agregacion_Usuario">
         </form>
-    </div>
-    <div>
-        <h2>Usuarios creados:</h2>
-        <table> 
-            <thead> <!-- HEAD de una TABLA en HTML-->
-                <tr> <!-- FILA en la tabla-->
-                  <th>I.D</th>  <!-- Define una CELDA de ENCABEZADO en una tabla. Estas celdas suelen contener títulos o descripciones que identifican el contenido de las filas o columnas de la tabla -->
-                  <th>C.I</th>
-                  <th>Nombre(s)</th>
-                  <th>Apellido(s)</th>
-                  <!--<th>Cargo</th>-->
-                  <th>Gmail</th>
-                  <th>Teléfono</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                while($row = mysqli_fetch_array($query)):
-                ?>
-                <tr>
-                    <th><?= $row['id_usuario']  ?></th>
-                    <th><?= $row['ci_usuario']  ?></th>
-                    <th><?= $row['nombre_usuario']  ?></th>
-                    <th><?= $row['apellido_usuario']  ?></th>
-                    <th><?= $row['gmail_usuario']  ?></th>
-                    <th><?= $row['telefono_usuario']  ?></th>
-                    <th><!--CARGO--></th>
-                
-                    <th><a href="./update_user_secretario.php?id_usuario=<?= $row['id_usuario'] ?>">Editar Usuario</a></th>
-                    <th><a href="./delete_user_secretario.php?id_usuario=<?= $row['id_usuario']  ?>">Eliminar Usuario</a></th>
-                </tr>
-                <?php 
-                endwhile;
-                ?>
-            </tbody>
-        </table>
     </div>
 
     <script src="./validation.js"> </script>

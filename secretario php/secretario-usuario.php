@@ -1,3 +1,14 @@
+<?php 
+include('conexion_BD.php');
+
+$conn = conectar_bd();
+
+$sql = "SELECT * FROM usuario";
+$query = mysqli_query($conn, $sql); //mysqli_query FUNCIÓN de php para EJECUTAR SQL
+/*Esta variable llamada query lo que hace es contener info. de la conección (si está conectada o no a la BD) y a la CONSULTA que se necesita hacerl.*/
+$message = "";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,7 +75,7 @@
     
     <div class="bloque-agregar">
     <button class="etiqueta">Usuarios</button>
-    <a href="agregar-grupo.php"><button class="agregar">+</button></a>
+    <a href="./secretario_CRUD.php"><button class="agregar">+</button></a>
   </div>
 
     <table class="tabla-reserva">
@@ -80,60 +91,21 @@
         </tr>
       </thead>
       <tbody>
+        <?php
+            while($row = mysqli_fetch_array($query)):
+            ?>
        <tr>
-          <td>Ines</td>
-          <td>Lopez</td>
-          <td>ineslopez@gmail.com</td>
-          <td>091526378</td>
-          <td>517281911</td>
-          <td><i class="bi bi-pencil"></i></td>
-          <td><i class="bi bi-trash"></i></td>
+          <td><?= $row['nombre_usuario']  ?></td>
+          <td><?= $row['apellido_usuario']  ?></td>
+          <td><?= $row['gmail_usuario']  ?></td>
+          <td><?= $row['telefono_usuario']  ?></td>
+          <td><?= $row['ci_usuario']  ?></td>
+          <td><a href="./update_user_secretario.php?id_usuario=<?= $row['id_usuario'] ?>"<i class="bi bi-pencil"></i></a></td>
+          <td><a href="./delete_user_secretario.php?id_usuario=<?= $row['id_usuario']  ?>"><i class="bi bi-trash"></a></i></td>
         </tr>
-        <tr>
-          <td>Ines</td>
-          <td>Lopez</td>
-          <td>ineslopez@gmail.com</td>
-          <td>091526378</td>
-          <td>517281911</td>
-          <td><i class="bi bi-pencil"></i></td>
-          <td><i class="bi bi-trash"></i></td>
-        </tr>
-       <tr>
-          <td>Ines</td>
-          <td>Lopez</td>
-          <td>ineslopez@gmail.com</td>
-          <td>091526378</td>
-          <td>517281911</td>
-          <td><i class="bi bi-pencil"></i></td>
-          <td><i class="bi bi-trash"></i></td>
-        </tr>
-        <tr>
-          <td>Ines</td>
-          <td>Lopez</td>
-          <td>ineslopez@gmail.com</td>
-          <td>091526378</td>
-          <td>517281911</td>
-          <td><i class="bi bi-pencil"></i></td>
-          <td><i class="bi bi-trash"></i></td>
-        </tr>
-          <tr>
-          <td>Ines</td>
-          <td>Lopez</td>
-          <td>ineslopez@gmail.com</td>
-          <td>091526378</td>
-          <td>517281911</td>
-          <td><i class="bi bi-pencil"></i></td>
-          <td><i class="bi bi-trash"></i></td>
-        </tr>
-       <tr>
-          <td>Ines</td>
-          <td>Lopez</td>
-          <td>ineslopez@gmail.com</td>
-          <td>091526378</td>
-          <td>517281911</td>
-        <td><i class="bi bi-pencil"></i></td>
-          <td><i class="bi bi-trash"></i></td>
-        </tr>
+        <?php 
+            endwhile;
+            ?>
       </tbody>
     </table>
 </main>
