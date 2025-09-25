@@ -28,7 +28,7 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <a href="../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
+      <a href="logOut.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
 
          <a href="secretario-usuario.php" class="nav-opciones">Usuarios</a>
         <a href="secretario-horario.php" class="nav-opciones">Horarios</a>
@@ -44,8 +44,8 @@
        <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="../index.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="../index.php">Cerrar Sesión</a>
+            <a href="logOut.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="logOut.php">Cerrar Sesión</a>
           </div>
         </div>
 

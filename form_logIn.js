@@ -1,37 +1,8 @@
-const domForm = document.querySelector('form');
-
-function validarCampos(cedula, password) {
-    if (!cedula || !password) {
-        alert("Por favor, complete todos los campos");
-        return false;
-    }
-    return true;
-}
-
-function validarCedula(cedula) {
-    if (cedula.length !== 8 || isNaN(cedula)) {
-        alert("La cédula debe tener 8 números válidos");
-        return false;
-    }
-    return true;
-}
-
-function validarConstrasenia (password){
-    if (password.length < 5) {
-        alert("La contraseña debe tener al menos 5 caracteres.");
-            return false; // Evitar el envío del formulario
-        }
-        if (!/[A-Z]/.test(password) || !/[0-9]/.test(password)) {
-        alert("La contraseña debe contener al menos una letra mayúscula y un número.");
-            return false; // Evitar el envío del formulario
-        }
-    return true;
-}
-
 domForm.addEventListener('submit', function(event){
+    event.preventDefault(); // Evitamos el envío normal
+
     const cedula = document.getElementById('cedula').value.trim();
     const password = document.getElementById('password').value.trim();
-    const rol = this.rol.value;
 
     // Validaciones
     if (!validarCampos(cedula, password)) return;
@@ -40,9 +11,21 @@ domForm.addEventListener('submit', function(event){
 
     const formData = new FormData(this);
 
-    fetch("", {
+    fetch(this.action, {
         method: "POST",
-        body: formDataConversion
+        body: formData
     })
-    .catch(err => console.error(err)); // Solo captura errores de red
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            // Redirigir según rol
+            // Si el login fue exitoso:
+            // redirige automáticamente al usuario a la página correspondiente
+            // según su rol (adscripto, docente o secretario)
+            window.location.href = data.redirect;
+        } else {
+            alert(data.message); // Mostrar error
+        }
+    })
+    .catch(err => console.error(err));
 });
