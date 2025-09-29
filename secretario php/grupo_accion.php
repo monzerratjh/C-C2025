@@ -23,9 +23,13 @@ if($accion == 'insertar'){
     $id_adscripto = $_POST['id_adscripto'];
     $id_secretario = $_POST['id_secretario'];
 
+    // validar cantidad
+    if (!is_numeric($cantidad) || $cantidad < 1) { die("Cantidad inválida"); }
+
     // validación de orientacion
     if (!in_array($orientacion, $orientaciones_validas)) {
-        die("Orientación no válida."); 
+        header("Location: grupo_secretario.php?message=Error: Orientación no válida");
+        exit();
     }
 
     $stmt = $conn->prepare("INSERT INTO grupo (orientacion_grupo, turno_grupo, nombre_grupo, cantidad_alumno_grupo, id_adscripto, id_secretario) VALUES (?, ?, ?, ?, ?, ?)");
@@ -33,6 +37,7 @@ if($accion == 'insertar'){
     $stmt->execute();
     $stmt->close();
     header("Location: agregar-grupo.php?message=Grupo creado");
+    exit();
 }
 
 if($accion == 'editar'){
@@ -42,9 +47,12 @@ if($accion == 'editar'){
     $nombre = $_POST['nombre'];
     $cantidad = $_POST['cantidad'];
 
+    if (!is_numeric($cantidad) || $cantidad < 1) { die("Cantidad inválida"); }
+
     // validación de orientación
     if (!in_array($orientacion, $orientaciones_validas)) {
-        die("Orientación no válida."); 
+        header("Location: grupo_secretario.php?message=Error: Orientación no válida");
+        exit();
     }
 
     $stmt = $conn->prepare("UPDATE grupo SET orientacion_grupo=?, turno_grupo=?, nombre_grupo=?, cantidad_alumno_grupo=? WHERE id_grupo=?");
@@ -52,6 +60,7 @@ if($accion == 'editar'){
     $stmt->execute();
     $stmt->close();
     header("Location: agregar-grupo.php?message=Grupo actualizado");
+    exit();
 }
 
 if($accion == 'eliminar'){
@@ -61,5 +70,9 @@ if($accion == 'eliminar'){
     $stmt->execute();
     $stmt->close();
     header("Location: agregar-grupo.php?message=Grupo eliminado");
+    exit();
 }
+
+$conn->close(); // no necesario, pero buena practica
+
 ?>

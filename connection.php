@@ -1,6 +1,6 @@
 <?php
 
-function connection(){
+function conectar_bd(){
     $host = "localhost";
     $user = "root";
     $pass = "";
