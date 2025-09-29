@@ -3,7 +3,7 @@
 -- ===========================
 
 -- USUARIOS
-INSERT INTO usuario (nombre_usuario, apellido_usuario, gmail_usuario, telefono_usuario, cargo_usuario, ci_usuario, contraseña_usuario) VALUES
+INSERT INTO usuario (nombre_usuario, apellido_usuario, gmail_usuario, telefono_usuario, cargo_usuario, ci_usuario, contrasenia_usuario) VALUES
 ('Laura',   'Martínez', 'laura.martinez@itu.edu', '091234567', 'Secretario', 45678912, 'hashpass1'),
 ('Carlos',  'Gómez',    'carlos.gomez@itu.edu',  '092345678', 'Secretario', 56789123, 'hashpass2'),
 ('Lucía',   'Pérez',    'lucia.perez@itu.edu',   '093456789', 'Adscripto',  67891234, 'hashpass3'),

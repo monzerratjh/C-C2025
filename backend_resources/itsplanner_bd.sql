@@ -42,7 +42,7 @@ CREATE TABLE usuario (
 	telefono_usuario varchar(9) NOT NULL,
 	cargo_usuario VARCHAR(100) NOT NULL,
 	ci_usuario int(8) NOT NULL,
-	contraseña_usuario VARCHAR(255) NOT NULL
+	contrasenia_usuario VARCHAR(255) NOT NULL
 );
 
 
