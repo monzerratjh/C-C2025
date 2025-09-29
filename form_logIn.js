@@ -1,31 +1,36 @@
-domForm.addEventListener('submit', function(event){
-    event.preventDefault(); // Evitamos el envío normal
+document.addEventListener('DOMContentLoaded', () => {
+    const domForm = document.getElementById('form-login-adscripto');
 
-    const cedula = document.getElementById('cedula').value.trim();
-    const password = document.getElementById('password').value.trim();
+    domForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const cedula = document.getElementById('cedula').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const mensajeError = document.getElementById('mensaje-error');
+        mensajeError.textContent = '';
 
-    // Validaciones
-    if (!validarCampos(cedula, password)) return;
-    if (!validarCedula(cedula)) return;
-    if (!validarConstrasenia(password)) return;
-
-    const formData = new FormData(this);
-
-    fetch(this.action, {
-        method: "POST",
-        body: formData
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (data.success) {
-            // Redirigir según rol
-            // Si el login fue exitoso:
-            // redirige automáticamente al usuario a la página correspondiente
-            // según su rol (adscripto, docente o secretario)
-            window.location.href = data.redirect;
-        } else {
-            alert(data.message); // Mostrar error
+        if (!cedula || !password) {
+            mensajeError.textContent = "Todos los campos son obligatorios.";
+            return;
         }
-    })
-    .catch(err => console.error(err));
+
+        const formData = new FormData(this);
+
+        fetch(this.action, {
+            method: "POST",
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if (data.success) {
+                window.location.href = data.redirect;
+            } else {
+                mensajeError.textContent = data.message;
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            mensajeError.textContent = "Error al conectar con el servidor.";
+        });
+    });
 });

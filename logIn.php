@@ -1,17 +1,16 @@
-<?php require("connection.php");
-
+<?php 
+require("conexion.php");
 $con = conectar_bd();
 
 // Verificamos que los datos vienen por POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $cedula = $_POST['cedula'] ?? ''; //"Si la variable existe y no es null, úsala; si no, usa este valor por defecto".
+    $cedula         = $_POST['cedula'] ?? ''; //"Si la variable existe y no es null, úsala; si no, usa este valor por defecto".
+    $contrasenia    = $_POST['password'] ?? '';
+    $rolFormulario  = strtolower($_POST['rol'] ?? ''); // lowercase para evitar problemas
 
-    $contrasenia = $_POST['password'] ?? '';
-    $rol = $_POST['rol'] ?? '';
-
-    // Llamamos a la función login
-    $respuesta = logear($con, $cedula, $contrasenia, $rol);
+    // llamamos la funcion *logear
+    $respuesta = logear($con, $cedula, $contrasenia, $rolFormulario);
 
     // Devolvemos respuesta en JSON
     header('Content-Type: application/json');
@@ -19,52 +18,67 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit();
 }
 
-// Esta función busca al usuario en la base de datos por su cédula
-// y devuelve todos sus datos (nombre, apellido, email, etc.)
-// para poder usarlos después en la sesión o en el home del usuario.
-function traer_datos_usuario($con, $cedula){
-    $sql = "SELECT * FROM usuario WHERE ci_usuario = '$cedula'";
-    $resultado = mysqli_query($con, $sql);
-    $row = mysqli_fetch_array($resultado);
+// Esta función busca al usuario en la base de datos por su cédula y devuelve todos sus datos (nombre, apellido, email, etc.) para poder usarlos después en la sesión o en el home del usuario.
+function traer_datos_usuario($con, $cedula) {
+    $sql = "SELECT id_usuario, nombre_usuario, apellido_usuario, gmail_usuario,
+                   telefono_usuario, ci_usuario, contrasenia_usuario, cargo_usuario
+            FROM usuario WHERE ci_usuario = ?";
 
-    if(mysqli_num_rows($resultado)>0){
-        return [
-            'id' => $row['id_usuario'],
-            'nombre' => $row['nombre_usuario'],
-            'apellido' => $row['apellido_usuario'],
-            'email'=> $row['gmail_usuario'],
-            'telefono'=> $row['telefono_usuario'],
-            'cedula'=> $row['ci_usuario'],
-            'contrasenia' => $row['contraseña_usuario']
-        ];
-     } else{
-        return null;
-    }
+
+        // stmt => statement (sentencia preparada) que devuelve la función mysqli_prepare()
+    $stmt = mysqli_prepare($con, $sql); 
+
+    /*  
+        función de PHP/MySQLi que “vincula” (bind) las variables PHP a los parámetros de una sentencia preparada ($stmt).
+
+        "s" -> string: cadena de tipos que indica el tipo de dato de cada parámetro que vas a pasar. al ser un solo parámetro (ci_usuario), que es texto: "s". 
+*/  mysqli_stmt_bind_param($stmt, "s", $cedula); // vincula el valor de $cedula
+    
+    mysqli_stmt_execute($stmt); // ejecuta con el dato ya asociado
+
+    $resultado = mysqli_stmt_get_result($stmt);
+
+    /* 
+        función de PHP/MySQLi que:
+            - toma el siguiente registro (fila) del resultado de una consulta SQL.
+            - devuelve ese registro como un array asociativo [cada columna de la tabla se guarda en el array usando el nombre de la columna como CLAVE].
+*/  return mysqli_fetch_assoc($resultado) ?: null;
 }
 
-function logear($con, $cedula, $contrasenia, $rol) {
+
+function logear($con, $cedula, $contrasenia, $rolFormulario) {
     $datos_usr = traer_datos_usuario($con, $cedula);
 
     if (!$datos_usr) {
         return ['success' => false, 'message' => 'Usuario no encontrado'];
     }
 
-    if (!password_verify($contrasenia, $datos_usr['contrasenia'])) {
-        return ['success' => false, 'message' => 'Contraseña incorrecta']; 
-        //permite que JS muestre un alert o mensaje sin recargar la página.
+    // Verificar contraseña
+    if (!password_verify($contrasenia, $datos_usr['contrasenia_usuario'])) {
+        return ['success' => false, 'message' => 'Contraseña incorrecta'];
+    }
+
+    
+    // Verificar rol
+    $rolReal = strtolower($datos_usr['cargo_usuario']);
+    if ($rolFormulario !== $rolReal) {
+        return ['success' => false, 'message' => "El cargo seleccionado no coincide con el registrado"];
     }
 
     // Inicio de sesión
     session_start();
-    $_SESSION['ci_usuario'] = $cedula;
-    $_SESSION['nombre_usuario'] = $datos_usr['nombre'];
-    $_SESSION['rol'] = $rol;
+    $_SESSION['ci_usuario']     = $datos_usr['ci_usuario'];
+    $_SESSION['nombre_usuario'] = $datos_usr['nombre_usuario'];
+    $_SESSION['rol']            = $rolReal;
 
-    // Redirigir según rol
+    
+    // Redirección según rol
     $url = '';
-    if ($rol === 'adscripto') $url = 'adscripto-bienvenida.php';
-    elseif ($rol === 'docente') $url = '';
-    elseif ($rol === 'secretario') $url = 'secretario-bienvenida.php';
+    if ($rolReal === 'adscripto') {
+        $url = 'adscripto-bienvenida.php'; 
+    } elseif ($rolReal === 'docente') {
+        $url = 'docente php/docente-bienvenida.php'; 
+    } elseif ($rolReal === 'secretario')$url = 'secretario php/secretario-bienvenida.php';
 
     return ['success' => true, 'redirect' => $url];
 }
