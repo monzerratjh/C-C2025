@@ -49,7 +49,8 @@ CREATE TABLE usuario (
 CREATE TABLE secretario (
 	id_secretario int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	grado_secretario varchar(50) NOT NULL,
-	horario_trabajo_secretario time NOT NULL,
+	horario_entrada_secretario time NOT NULL,
+	horario_salida_secretario time NOT NULL,
     id_usuario int NOT NULL
 );
 
@@ -71,7 +72,8 @@ CREATE TABLE adscripto (
 	id_adscripto int PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_usuario int NOT NULL,
 	cantidad_grupos_asignados int NOT NULL,
-	horario_trabajo_adscripto time NOT NULL,
+	horario_entrada_adscripto time NOT NULL,
+	horario_salida_adscripto time NOT NULL,
 	caracter_cargo_adscripto varchar(100) NOT NULL
 );
 

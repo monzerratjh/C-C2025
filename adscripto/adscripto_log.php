@@ -30,10 +30,10 @@
     <div class="offcanvas-body d-flex flex-column">
       <a href="../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
       
-      <a href="../estudiante php/estudiante.php" class="nav-opciones mb-2">Estudiante</a>
-      <a href="../adscripto php/adscripto_log.php" class="fw-semibold seleccionado mb-2">Adscripto</a>
-      <a href="../docente php/docente_log.php" class="nav-opciones mb-2">Docente</a>
-      <a href="../secretario php/secretario_log.php" class="nav-opciones mb-2">Secretario</a>
+      <a href="../estudiante/estudiante.php" class="nav-opciones mb-2">Estudiante</a>
+      <a href="../adscripto/adscripto_log.php" class="fw-semibold seleccionado mb-2">Adscripto</a>
+      <a href="../docente/docente_log.php" class="nav-opciones mb-2">Docente</a>
+      <a href="../secretario/secretario_log.php" class="nav-opciones mb-2">Secretario</a>
     </div>
   </div>
 
@@ -50,10 +50,10 @@
           </div>
         </div>
 
-        <a href="../estudiante php/estudiante.php" class="nav-opciones">Estudiante</a>
-        <a href="../adscripto php/adscripto_log.php" class="fw-semibold seleccionado">Adscripto</a>
-        <a href="../docente php/docente_log.php" class="nav-opciones">Docente</a>
-        <a href="../secretario php/secretario_log.php" class="nav-opciones">Secretario</a>
+        <a href="../estudiante/estudiante.php" class="nav-opciones">Estudiante</a>
+        <a href="../adscripto/adscripto_log.php" class="fw-semibold seleccionado">Adscripto</a>
+        <a href="../docente/docente_log.php" class="nav-opciones">Docente</a>
+        <a href="../secretario/secretario_log.php" class="nav-opciones">Secretario</a>
       </div>
 
 <!-- Contenido principal -->
@@ -62,38 +62,35 @@
     <img src="../img/logo.png" alt="Logo" class="logo"> 
     
     <section class="seccion-form adscripto">
-
-      <div class="icono-usuario-login">
+    <div class="icono-usuario-login">
         <i class="bi bi-person-circle"></i>
-      </div>
-      <?php
-        if(isset($_GET['message'])) {
-          echo"<h6>".$_GET['message']."</h6>"; /*Imprime el mensaje de error en la validación de php*/
-        }
-      ?>
-      <form action="../logIn.php" method="POST" class="formulario">
-        
-        <div class="input-group mb-3">
-          <span class="input-group-text"><i class="bi bi-person"></i></span>
-          <input type="text" class="form-control" placeholder="Cédula de Identidad"
-          name="cedula" id="cedula" required>
-        </div>
+    </div>
 
-        <div class="input-group mb-3">
-          <span class="input-group-text" ><i class="bi bi-lock"></i></span>
-          <input type="password" class="form-control" placeholder="Contraseña"
-          name="password" id="password" required>
-        </div>
+    <div id="mensaje-error" style="color:red; font-weight:bold;"></div>
 
-         <!-- Indicamos el rol -->
-        <input type="hidden" name="rol" value="adscripto">
+  <form id="form-login-adscripto" class="formulario" action="../logIn.php" method="POST">
+    <div class="input-group mb-3">
+        <span class="input-group-text"><i class="bi bi-person"></i></span>
+        <input type="text" class="form-control" placeholder="Cédula de Identidad"
+               name="cedula" id="cedula" required>
+    </div>
 
-        <button type="submit" id="boton" name="btn-log-in" value="1">Iniciar Sesión</button>
-      </form>
+    <div class="input-group mb-3">
+        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+        <input type="password" class="form-control" placeholder="Contraseña"
+               name="password" id="password" required>
+    </div>
 
-    </section>
+    <input type="hidden" name="rol" value="adscripto">
+    <button type="submit" id="boton" name="btn-log-in">Iniciar Sesión</button>
+</form>
+
+<div id="mensaje-error" style="color:red; font-weight:bold;"></div>
+
+  </section>
+
 </main>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../form_logIn.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
