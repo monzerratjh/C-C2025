@@ -33,9 +33,9 @@
       <a href="../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
 
       <a href="../estudiante/estudiante.php" class="fw-semibold seleccionado mb-2">Estudiante</a>
-      <a href="../adscripto/adscripto_log.php" class="nav-opciones mb-2">Adscripto</a>
-      <a href="../docente/docente_log.php" class="nav-opciones mb-2">Docente</a>
-      <a href="../secretario/secretario_log.php" class="nav-opciones mb-2">Secretario</a>
+      <a href="../adscripto/adscripto-log.php" class="nav-opciones mb-2">Adscripto</a>
+      <a href="../docente/docente-log.php" class="nav-opciones mb-2">Docente</a>
+      <a href="../secretario/secretario-log.php" class="nav-opciones mb-2">Secretario</a>
     </div>
   </div>
 
@@ -53,9 +53,9 @@
         </div>
 
         <a href="../estudiante/estudiante.php" class="fw-semibold seleccionado">Estudiante</a>
-        <a href="../adscripto/adscripto_log.php" class="nav-opciones">Adscripto</a>
-        <a href="../docente/docente_log.php" class="nav-opciones">Docente</a>
-        <a href="../secretario/secretario_log.php" class="nav-opciones">Secretario</a>
+        <a href="../adscripto/adscripto-log.php" class="nav-opciones">Adscripto</a>
+        <a href="../docente/docente-log.php" class="nav-opciones">Docente</a>
+        <a href="../secretario/secretario-log.php" class="nav-opciones">Secretario</a>
         
       </div>
 
@@ -83,6 +83,6 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="redireccionarGrupos.js"></script>
+  <script src="redireccionar-grupo.js"></script>
 </body>
 </html>

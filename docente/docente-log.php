@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel Adscriptos</title>
+    <title>Panel Docente</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="../menu.png" alt="menu">
       </button>
       <img class="logoResponsive" src="../img/logo.png" alt="logoRespnsive">
     </div>
@@ -31,9 +31,9 @@
       <a href="../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
       
       <a href="../estudiante/estudiante.php" class="nav-opciones mb-2">Estudiante</a>
-      <a href="../adscripto/adscripto_log.php" class="fw-semibold seleccionado mb-2">Adscripto</a>
-      <a href="../docente/docente_log.php" class="nav-opciones mb-2">Docente</a>
-      <a href="../secretario/secretario_log.php" class="nav-opciones mb-2">Secretario</a>
+      <a href="../adscripto/adscripto-log.php" class="nav-opciones mb-2">Adscripto</a>
+      <a href="../docente/docente-log.php" class="fw-semibold seleccionado">Docente</a>
+      <a href="../secretario/secretario-log.php" class="nav-opciones mb-2">Secretario</a>
     </div>
   </div>
 
@@ -46,14 +46,14 @@
         <div class="volverGeneral">
           <div class="volver">
             <a href="../index.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="./index.php">Volver</a>
+            <a href="../index.php">Volver</a>
           </div>
         </div>
 
         <a href="../estudiante/estudiante.php" class="nav-opciones">Estudiante</a>
-        <a href="../adscripto/adscripto_log.php" class="fw-semibold seleccionado">Adscripto</a>
-        <a href="../docente/docente_log.php" class="nav-opciones">Docente</a>
-        <a href="../secretario/secretario_log.php" class="nav-opciones">Secretario</a>
+        <a href="../adscripto/adscripto-log.php" class="nav-opciones">Adscripto</a>
+        <a href="../docente/docente-log.php" class="fw-semibold seleccionado">Docente</a>
+        <a href="../secretario/secretario-log.php" class="nav-opciones">Secretario</a>
       </div>
 
 <!-- Contenido principal -->
@@ -61,36 +61,39 @@
 
     <img src="../img/logo.png" alt="Logo" class="logo"> 
     
-    <section class="seccion-form adscripto">
-    <div class="icono-usuario-login">
+    <section class="seccion-form docente">
+
+      <div class="icono-usuario-login">
         <i class="bi bi-person-circle"></i>
-    </div>
+      </div>
+      <?php
+        if(isset($_GET['message'])) {
+          echo"<h6>".$_GET['message']."</h6>";
+        }
+      ?>
+      <form action="../logIn.php" method="POST" class="formulario">
+        
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="bi bi-person"></i></span>
+          <input type="text" class="form-control" placeholder="Cédula de Identidad"
+          name="cedula" id="cedula" required>
+        </div>
 
-    <div id="mensaje-error" style="color:red; font-weight:bold;"></div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" ><i class="bi bi-lock"></i></span>
+          <input type="password" class="form-control" placeholder="Contraseña"
+          name="password" id="password" required>
+        </div>
 
-  <form id="form-login-adscripto" class="formulario" action="../logIn.php" method="POST">
-    <div class="input-group mb-3">
-        <span class="input-group-text"><i class="bi bi-person"></i></span>
-        <input type="text" class="form-control" placeholder="Cédula de Identidad"
-               name="cedula" id="cedula" required>
-    </div>
+        <!-- Indicamos el rol -->
+        <input type="hidden" name="rol" value="docente">
 
-    <div class="input-group mb-3">
-        <span class="input-group-text"><i class="bi bi-lock"></i></span>
-        <input type="password" class="form-control" placeholder="Contraseña"
-               name="password" id="password" required>
-    </div>
+        <button type="submit" id="boton" name="btn-log-in" value="1">Iniciar Sesión</button>
+      </form>
 
-    <input type="hidden" name="rol" value="adscripto">
-    <button type="submit" id="boton" name="btn-log-in">Iniciar Sesión</button>
-</form>
-
-<div id="mensaje-error" style="color:red; font-weight:bold;"></div>
-
-  </section>
-
+    </section>
 </main>
-<script src="../form_logIn.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="form_logIn.js"></script>
 </body>
 </html>

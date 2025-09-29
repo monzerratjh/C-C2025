@@ -33,9 +33,9 @@
       <a href="index.html" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
 
       <a href="../estudiante/estudiante.php" class="nav-opciones mb-2">Estudiante</a>
-      <a href="../adscripto/adscripto_log.php" class="nav-opciones mb-2">Adscripto</a>
-      <a href="../docente/docente_log.php" class="fw-semibold seleccionado">Docente</a>
-      <a href="../secretario/secretario_log.php" class="nav-opciones mb-2">Secretario</a>
+      <a href="../adscripto/adscripto-log.php" class="nav-opciones mb-2">Adscripto</a>
+      <a href="../docente/docente-log.php" class="fw-semibold seleccionado">Docente</a>
+      <a href="../secretario/secretario-log.php" class="nav-opciones mb-2">Secretario</a>
     </div>
   </div>
 
@@ -53,9 +53,9 @@
         </div>
 
         <a href="../estudiante/estudiante.php" class="nav-opciones mb-2">Estudiante</a>
-      <a href="../adscripto/adscripto_log.php" class="nav-opciones mb-2">Adscripto</a>
-      <a href="../docente/docente_log.php" class="fw-semibold seleccionado">Docente</a>
-      <a href="../secretario/secretario_log.php" class="nav-opciones mb-2">Secretario</a>
+      <a href="../adscripto/adscripto-log.php" class="nav-opciones mb-2">Adscripto</a>
+      <a href="../docente/docente-log.php" class="fw-semibold seleccionado">Docente</a>
+      <a href="../secretario/secretario-log.php" class="nav-opciones mb-2">Secretario</a>
    </div>
 
     <!-- Contenido principal-->
