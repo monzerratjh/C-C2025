@@ -36,16 +36,19 @@ $message = "";
             <input type="text" name="apellido_usuario" placeholder="Apellidos" id="apellido_usuario" >
             <input type="gmail" name="gmail_usuario" placeholder="Gmail" id="gmail_usuario">
             <input type="number" name="telefono_usuario" placeholder="Telefono" id="telefono_usuario">
-            <!--<select name="cargo_usuario" id="usuarioTipo" placeholder="Cargo" required>
-            <option value="cargo_Docente_usuario">Docente</option>
-            <option value="cargo_Adscripto_usuario">Adscripto</option>
-            <option value="cargo_Secretario_usuario">Secretario</option>
-            </select>-->
+            <select name="cargo_usuario" id="usuarioTipo" placeholder="Cargo" required>
+                <option value="">Seleccionar</option>
+                <option value="Docente">Docente</option>
+                <option value="Adscripto">Adscripto</option>
+                <option value="Secretario">Secretario</option>
+            </select>
             <input type="password" name="contrasenia_usuario" placeholder="Contraseña" id="contrasenia_usuario" >
-            <input type="submit" value="agregacion_Usuario">
+            <div id="extra-inputs"></div>
+            <input type="submit" value="Agregar Usuario">
         </form>
     </div>
 
-    <script src="./validation.js"> </script>
+    <script src="./validation.js"></script>
+    <script src="./extra-inputs.js"></script>
 </body>
 </html>
