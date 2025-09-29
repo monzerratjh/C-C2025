@@ -1,6 +1,7 @@
 <?php
-include("conexion_BD.php");   // Incluye la conexión a la base de datos
-$conn = conectar_bd();
+include('C:\xampp\htdocs\C-C2025\connection.php');
+
+$conn = connection();
 
 // Consulta para obtener todos los grupos con información del adscripto
 $result = $conn->query("SELECT g.*, a.id_adscripto, a.id_usuario AS id_usuario_adscripto, u.nombre_usuario, u.apellido_usuario 

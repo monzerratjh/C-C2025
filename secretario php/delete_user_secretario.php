@@ -1,6 +1,7 @@
 <?php
-include('conexion_BD.php');
-$conn = conectar_bd();
+include('C:\xampp\htdocs\C-C2025\connection.php');
+
+$conn = connection();
 
 $id_usuario = $_GET['id_usuario'] ?? null; // Si no viene nada, queda null
 if (!$id_usuario) {
