@@ -86,6 +86,7 @@ $message = "";
           <th>Cedula</th>
           <th>Cargo</th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>

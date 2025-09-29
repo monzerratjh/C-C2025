@@ -4,7 +4,6 @@ function conectar_bd(){
 
 $servidor = "localhost";
 $bd = "itsplanner";
-$bd = "itsplanner_bd";
 $usuario = "root";
 $pass = "";
 
