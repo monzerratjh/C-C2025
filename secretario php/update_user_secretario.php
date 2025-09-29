@@ -35,11 +35,11 @@ $row = mysqli_fetch_assoc($query); // $row ahora tiene los datos del usuario
         <input type="text" name="apellido_usuario" placeholder="Apellidos" value="<?= $row['apellido_usuario']  ?>" id="apellido_usuario">
         <input type="email" name="gmail_usuario" placeholder="Gmail" value="<?= $row['gmail_usuario']  ?>" id="gmail_usuario">
         <input type="number" name="telefono_usuario" placeholder="Telefono" value="<?= $row['telefono_usuario']  ?>" id="telefono_usuario">
-        <!--<select name="cargo_usuario" id="usuarioTipo" value="<?= $row['cargo_usuario']  ?>">
-         <option value="cargo_Docente_usuario">Docente</option>
+        <select name="cargo_usuario" id="usuarioTipo" value="<?= $row['cargo_usuario']  ?>">
+            <option value="cargo_Docente_usuario">Docente</option>
             <option value="cargo_Adscripto_usuario">Adscripto</option>
             <option value="cargo_Secretario_usuario">Secretario</option>
-        </select>-->
+        </select>
         <input type="password" name="contrasenia_usuario" placeholder="Contraseña" value="<?= $row['contrasenia_usuario']  ?>" id="contrasenia_usuario" >
         <input type="submit" value="Editar usuario">
     </form>

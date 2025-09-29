@@ -86,7 +86,7 @@ $message = "";
           <th>Email</th>
           <th>Telefono</th>
           <th>Cedula</th>
-          <th></th>
+          <th>Cargo</th>
           <th></th>
         </tr>
       </thead>
@@ -100,6 +100,7 @@ $message = "";
           <td><?= $row['gmail_usuario']  ?></td>
           <td><?= $row['telefono_usuario']  ?></td>
           <td><?= $row['ci_usuario']  ?></td>
+          <td><?= $row['cargo_usuario']  ?></td>
           <td><a href="./update_user_secretario.php?id_usuario=<?= $row['id_usuario'] ?>"<i class="bi bi-pencil"></i></a></td>
           <td><a href="./delete_user_secretario.php?id_usuario=<?= $row['id_usuario']  ?>"><i class="bi bi-trash"></a></i></td>
         </tr>
