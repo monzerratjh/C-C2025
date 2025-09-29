@@ -1,6 +1,7 @@
 <?php
-include("conexion_BD.php");   // Incluye la conexión a la base de datos
-$conn = conectar_bd();
+include('..\conexion.php');
+
+$conn = connection();
 
 $accion = $_POST['accion'] ?? '';
 

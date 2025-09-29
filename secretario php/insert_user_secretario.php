@@ -1,5 +1,5 @@
 <?php
-include('C:\xampp\htdocs\C-C2025\connection.php');
+include('..\conexion.php');
 
 $conn = connection();
 
