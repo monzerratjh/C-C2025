@@ -30,10 +30,10 @@
     <div class="offcanvas-body d-flex flex-column">
       <a href="adscripto_espacio.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
 
-       <a href="../adscripto php/adscripto_espacio.php" class="fw-semibold seleccionado mb-2">Espacios</a>
-        <a href="../adscripto php/reservas-adscripto.php" class="nav-opciones">Reservas</a>
-        <a href="../adscripto php/faltaDocentes.php" class="nav-opciones">Faltas docentes</a>
-        <a href="../adscripto php/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
+       <a href="../adscripto/adscripto_espacio.php" class="fw-semibold seleccionado mb-2">Espacios</a>
+        <a href="../adscripto/reservas-adscripto.php" class="nav-opciones">Reservas</a>
+        <a href="../adscripto/faltaDocentes.php" class="nav-opciones">Faltas docentes</a>
+        <a href="../adscripto/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
      </div>
   </div>
 
@@ -50,10 +50,10 @@
           </div>
         </div>
 
-       <a href="../adscripto php/adscripto_espacio.php" class="fw-semibold seleccionado mb-2">Espacios</a>
-      <a href="../adscripto php/reservas-adscripto.php" class="nav-opciones mb-2">Reservas</a>
-      <a href="../adscripto php/faltaDocentes.php" class="nav-opciones mb-2">Faltas de docentes</a>
-      <a href="../adscripto php/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
+       <a href="../adscripto/adscripto_espacio.php" class="fw-semibold seleccionado mb-2">Espacios</a>
+      <a href="../adscripto/reservas-adscripto.php" class="nav-opciones mb-2">Reservas</a>
+      <a href="../adscripto/faltaDocentes.php" class="nav-opciones mb-2">Faltas de docentes</a>
+      <a href="../adscripto/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
     </div>
 
 <!-- Contenido principal -->
@@ -118,7 +118,7 @@
 
     <div class="col-6 mb-4">
       <div class="espacio-card espacio-agregar d-flex justify-content-center align-items-center">
-      <a href="/adscripto php/agregar-espacio.php"><span class="espacio-plus">+</span></a>  
+      <a href="/adscripto/agregar-espacio.php"><span class="espacio-plus">+</span></a>  
       </div>
     </div>
   </div>

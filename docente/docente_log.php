@@ -30,10 +30,10 @@
     <div class="offcanvas-body d-flex flex-column">
       <a href="../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
       
-      <a href="../estudiante php/estudiante.php" class="nav-opciones mb-2">Estudiante</a>
-      <a href="../adscripto php/adscripto_log.php" class="nav-opciones mb-2">Adscripto</a>
-      <a href="../docente php/docente_log.php" class="fw-semibold seleccionado">Docente</a>
-      <a href="../secretario php/secretario_log.php" class="nav-opciones mb-2">Secretario</a>
+      <a href="../estudiante/estudiante.php" class="nav-opciones mb-2">Estudiante</a>
+      <a href="../adscripto/adscripto_log.php" class="nav-opciones mb-2">Adscripto</a>
+      <a href="../docente/docente_log.php" class="fw-semibold seleccionado">Docente</a>
+      <a href="../secretario/secretario_log.php" class="nav-opciones mb-2">Secretario</a>
     </div>
   </div>
 
@@ -50,10 +50,10 @@
           </div>
         </div>
 
-        <a href="../estudiante php/estudiante.php" class="nav-opciones">Estudiante</a>
-        <a href="../adscripto php/adscripto_log.php" class="nav-opciones">Adscripto</a>
-        <a href="../docente php/docente_log.php" class="fw-semibold seleccionado">Docente</a>
-        <a href="../secretario php/secretario_log.php" class="nav-opciones">Secretario</a>
+        <a href="../estudiante/estudiante.php" class="nav-opciones">Estudiante</a>
+        <a href="../adscripto/adscripto_log.php" class="nav-opciones">Adscripto</a>
+        <a href="../docente/docente_log.php" class="fw-semibold seleccionado">Docente</a>
+        <a href="../secretario/secretario_log.php" class="nav-opciones">Secretario</a>
       </div>
 
 <!-- Contenido principal -->
@@ -71,7 +71,7 @@
           echo"<h6>".$_GET['message']."</h6>";
         }
       ?>
-      <form action="insert_data_login.php" method="POST" class="formulario">
+      <form action="../logIn.php" method="POST" class="formulario">
         
         <div class="input-group mb-3">
           <span class="input-group-text"><i class="bi bi-person"></i></span>

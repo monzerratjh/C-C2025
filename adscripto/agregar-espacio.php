@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar espacios</title>
+    <title>Agregar espacios</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -28,12 +28,12 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <a href="index-salon.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
+      <a href="adscripto_espacio.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
 
-       <a href="../adscripto php/adscripto_espacio.php" class="fw-semibold seleccionado mb-2">Espacios</a>
-        <a href="../adscripto php/reservas-adscripto.php" class="nav-opciones">Reservas</a>
-        <a href="../adscripto php/faltaDocentes.php" class="nav-opciones">Faltas docentes</a>
-        <a href="../adscripto php/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
+       <a href="../adscripto/adscripto_espacio.php" class="fw-semibold seleccionado mb-2">Espacios</a>
+        <a href="../adscripto/reservas-adscripto.php" class="nav-opciones">Reservas</a>
+        <a href="../adscripto/faltaDocentes.php" class="nav-opciones">Faltas docentes</a>
+        <a href="../adscripto/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
      </div>
   </div>
 
@@ -45,27 +45,26 @@
       <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="index-salon.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="index-salon.php">Volver</a>
+            <a href="adscripto_espacio.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="adscripto_espacio.php">Volver</a>
           </div>
         </div>
 
-       <a href="../adscripto php/adscripto_espacio.php" class="fw-semibold seleccionado mb-2">Espacios</a>
-      <a href="../adscripto php/reservas-adscripto.php" class="nav-opciones mb-2">Reservas</a>
-      <a href="../adscripto php/faltaDocentes.php" class="nav-opciones mb-2">Faltas de docentes</a>
-      <a href="../adscripto php/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
+       <a href="../adscripto/adscripto_espacio.php" class="fw-semibold seleccionado mb-2">Espacios</a>
+      <a href="../adscripto/reservas-adscripto.php" class="nav-opciones mb-2">Reservas</a>
+      <a href="../adscripto/faltaDocentes.php" class="nav-opciones mb-2">Faltas de docentes</a>
+      <a href="../adscripto/cargaHorarios.php" class="nav-opciones mb-2">Cargar horarios</a>
     </div>
+
 
 <!-- Contenido principal -->
 <main class="col-md-9 principal-estudiantes" >
-
- <img src="../img/logo.png" alt="Logo" class="logo"> 
-
+<img src="../img/logo.png" alt="Logo" class="logo"> 
 <div class="container my-4 espacio-contenedor">
 
 <!-- Título con input -->
 <div class="espacio-titulo centrar text-center mb-4">
-  <input type="text" class="espacio-input" placeholder="Editar nombre">
+  <input type="text" class="espacio-input" placeholder="Nombre del salón">
 </div>
 
   <!-- Formulario -->
@@ -114,7 +113,7 @@
 
     <!-- Botón -->
     <div class="text-center">
-      <button type="submit" class="btn centrar espacio-btn">Guardar cambios</button>
+      <button type="submit" class="btn centrar espacio-btn">Agregar Salón</button>
     </div>
   </form>
 </div>

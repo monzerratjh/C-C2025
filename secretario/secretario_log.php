@@ -71,7 +71,7 @@
           echo"<h6>".$_GET['message']."</h6>";
         }
       ?>
-      <form action="./insert_data_login.php" method="POST" class="formulario">
+      <form action="./logIn.php" method="POST" class="formulario">
         
         <div class="input-group mb-3">
           <span class="input-group-text"><i class="bi bi-person"></i></span>

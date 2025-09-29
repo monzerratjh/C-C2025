@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Horario 1MD</title>
+  <title>Horario 2MB</title>
 
   <!-- Bootstrap CSS + Iconos + letras-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
@@ -32,10 +32,10 @@
     <div class="offcanvas-body d-flex flex-column">
       <a href="../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
 
-      <a href="../../estudiante php/estudiante.php" class="fw-semibold seleccionado mb-2">Estudiantes</a>
-      <a href="../../adscripto php/adscripto_log.php" class="nav-opciones mb-2">Adscriptos</a>
-      <a href="../../docente php/docente_log.php" class="nav-opciones mb-2">Docente</a>
-      <a href="../../secretario php/secretario_log.php" class="nav-opciones mb-2">Secretaría</a>
+      <a href="../../estudiante/estudiante.php" class="fw-semibold seleccionado mb-2">Estudiantes</a>
+      <a href="../../adscripto/adscripto_log.php" class="nav-opciones mb-2">Adscriptos</a>
+      <a href="../../docente/docente_log.php" class="nav-opciones mb-2">Docente</a>
+      <a href="../../secretario/secretario_log.php" class="nav-opciones mb-2">Secretaría</a>
     </div>
   </div>
 
@@ -52,10 +52,10 @@
           </div>
         </div>
 
-        <a href="../../estudiante php/estudiante.php" class="fw-semibold seleccionado">Estudiante</a>
-        <a href="../../adscripto php/adscripto_log.php" class="nav-opciones">Adscripto</a>
-        <a href="../../docente php/docente_log.php" class="nav-opciones">Docente</a>
-        <a href="../../secretario php/secretario_log.php" class="nav-opciones">Secretario</a>
+        <a href="../../estudiante/estudiante.php" class="fw-semibold seleccionado">Estudiante</a>
+        <a href="../../adscripto/adscripto_log.php" class="nav-opciones">Adscripto</a>
+        <a href="../../docente/docente_log.php" class="nav-opciones">Docente</a>
+        <a href="../../secretario/secretario_log.php" class="nav-opciones">Secretario</a>
       </div>
 
     <!-- Contenido principal-->
@@ -64,7 +64,7 @@
 
       <div class="acordion-total">
         <div class="acordion">
-          <h2 class="titulo-horario">1°MD</h2>
+          <h2 class="titulo-horario">2°MB</h2>
 
           <!-- LUNES -->
           <div class="dia">
