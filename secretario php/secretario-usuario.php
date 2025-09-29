@@ -1,8 +1,6 @@
 <?php 
-include('conexion_BD.php');
-
-$conn = conectar_bd();
-
+include('C:\xampp\htdocs\C-C2025\connection.php');
+$conn = connection();
 $sql = "SELECT * FROM usuario";
 $query = mysqli_query($conn, $sql); //mysqli_query FUNCIÓN de php para EJECUTAR SQL
 /*Esta variable llamada query lo que hace es contener info. de la conección (si está conectada o no a la BD) y a la CONSULTA que se necesita hacerl.*/

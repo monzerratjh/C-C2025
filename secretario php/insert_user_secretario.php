@@ -1,6 +1,7 @@
 <?php
-include('conexion_BD.php');
-$conn = conectar_bd();
+include('C:\xampp\htdocs\C-C2025\connection.php');
+
+$conn = connection();
 
 $id_usuario = null;
 $ci_usuario = $_POST['ci_usuario'];

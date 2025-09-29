@@ -1,7 +1,7 @@
 <?php 
-include('conexion_BD.php');
+include('C:\xampp\htdocs\C-C2025\connection.php');
 
-$conn = conectar_bd();
+$conn = connection();
 
 $sql = "SELECT * FROM usuario";
 $query = mysqli_query($conn, $sql); //mysqli_query FUNCIÓN de php para EJECUTAR SQL
