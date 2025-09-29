@@ -30,10 +30,10 @@
     <div class="offcanvas-body d-flex flex-column">
       <a href="../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
       
-      <a href="../estudiante php/estudiante.php" class="nav-opciones mb-2">Estudiante</a>
-      <a href="../adscripto php/adscripto_log.php" class="nav-opciones mb-2">Adscripto</a>
-      <a href="../docente php/docente_log.php" class="nav-opciones mb-2">Docente</a>
-      <a href="../secretario php/secretario_log.php" class="fw-semibold seleccionado mb-2">Secretario</a>
+      <a href="../estudiante/estudiante.php" class="nav-opciones mb-2">Estudiante</a>
+      <a href="../adscripto/adscripto-log.php" class="nav-opciones mb-2">Adscripto</a>
+      <a href="../docente/docente-log.php" class="nav-opciones mb-2">Docente</a>
+      <a href="../secretario/secretario-log.php" class="fw-semibold seleccionado mb-2">Secretario</a>
     </div>
   </div>
 
@@ -50,10 +50,10 @@
           </div>
         </div>
 
-        <a href="../estudiante php/estudiante.php" class="nav-opciones">Estudiante</a>
-        <a href="../adscripto php/adscripto_log.php" class="nav-opciones">Adscripto</a>
-        <a href="../docente php/docente_log.php" class="nav-opciones">Docente</a>
-        <a href="../secretario php/secretario_log.php" class="fw-semibold seleccionado">Secretario</a>
+        <a href="../estudiante/estudiante.php" class="nav-opciones">Estudiante</a>
+        <a href="../adscripto/adscripto-log.php" class="nav-opciones">Adscripto</a>
+        <a href="../docente/docente-log.php" class="nav-opciones">Docente</a>
+        <a href="../secretario php/secretario-log.php" class="fw-semibold seleccionado">Secretario</a>
       </div>
 
 <!-- Contenido principal -->
