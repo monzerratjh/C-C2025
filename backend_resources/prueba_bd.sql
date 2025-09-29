@@ -3,7 +3,9 @@
 -- ===========================
 
 -- USUARIOS
-INSERT INTO usuario (nombre_usuario, apellido_usuario, gmail_usuario, telefono_usuario, cargo_usuario, ci_usuario, contrasenia_usuario) VALUES
+INSERT INTO usuario
+(nombre_usuario, apellido_usuario, gmail_usuario, telefono_usuario, cargo_usuario, ci_usuario, contrasenia_usuario)
+VALUES
 ('Laura',   'Martínez', 'laura.martinez@itu.edu', '091234567', 'Secretario', 45678912, 'hashpass1'),
 ('Carlos',  'Gómez',    'carlos.gomez@itu.edu',  '092345678', 'Secretario', 56789123, 'hashpass2'),
 ('Lucía',   'Pérez',    'lucia.perez@itu.edu',   '093456789', 'Adscripto',  67891234, 'hashpass3'),
@@ -14,14 +16,18 @@ INSERT INTO usuario (nombre_usuario, apellido_usuario, gmail_usuario, telefono_u
 ('Diego',   'Castro',   'diego.castro@itu.edu',  '098901234','Docente',   23456789, 'hashpass8');
 
 -- SECRETARIO
-INSERT INTO secretario (grado_secretario, horario_trabajo_secretario, id_usuario) VALUES
-('Administrativo', '08:00:00', 1),
-('Administrativo', '12:00:00', 2);
+INSERT INTO secretario
+(grado_secretario, horario_entrada_secretario, horario_salida_secretario, id_usuario)
+VALUES
+('Administrativo', '08:00:00', '16:00:00', 1),
+('Administrativo', '12:00:00', '20:00:00', 2);
 
 -- ADSCRIPTO
-INSERT INTO adscripto (id_usuario, cantidad_grupos_asignados, horario_trabajo_adscripto, caracter_cargo_adscripto) VALUES
-(3, 2, '09:00:00', 'Adscripto Principal'),
-(4, 1, '14:00:00', 'Adscripto Suplente');
+INSERT INTO adscripto
+(id_usuario, cantidad_grupos_asignados, horario_entrada_adscripto, horario_salida_adscripto, caracter_cargo_adscripto)
+VALUES
+(3, 2, '09:00:00', '17:00:00', 'Adscripto Principal'),
+(4, 1, '14:00:00', '20:00:00', 'Adscripto Suplente');
 
 -- DOCENTE
 INSERT INTO docente (grado_docente, id_usuario) VALUES
@@ -31,25 +37,33 @@ INSERT INTO docente (grado_docente, id_usuario) VALUES
 ('Titular', 8);
 
 -- ESPACIO
-INSERT INTO espacio (nombre_espacio, capacidad_espacio, historial_espacio, disponibilidad_espacio) VALUES
+INSERT INTO espacio
+(nombre_espacio, capacidad_espacio, historial_espacio, disponibilidad_espacio)
+VALUES
 ('Laboratorio Informática 1', 30, 'Renovado en 2024', 'libre'),
 ('Aula 204', 25, NULL, 'libre'),
 ('Laboratorio Redes', 20, 'Cambio de routers en 2023', 'mantenimiento');
 
 -- RECURSO
-INSERT INTO recurso (disponibilidad_recurso, nombre_recurso, historial_recurso, tipo_recurso, estado_recurso, id_espacio) VALUES
+INSERT INTO recurso
+(disponibilidad_recurso, nombre_recurso, historial_recurso, tipo_recurso, estado_recurso, id_espacio)
+VALUES
 ('disponible','Proyector Epson X1', 'Reparación lámpara 2023','Proyector','operativo',1),
 ('disponible','Switch Cisco 24p',  'Cambio firmware 2024','Redes','operativo',3),
 ('no disponible','Notebook Dell',  'En reparación teclado','Computadora','en_reparacion',1);
 
 -- GRUPO
-INSERT INTO grupo (orientacion_grupo, turno_grupo, nombre_grupo, cantidad_alumno_grupo, id_adscripto, id_secretario) VALUES
+INSERT INTO grupo
+(orientacion_grupo, turno_grupo, nombre_grupo, cantidad_alumno_grupo, id_adscripto, id_secretario)
+VALUES
 ('Tecnologías de la Información','Matutino','TI-1',28,1,1),
 ('Redes y Comunicaciones Ópticas','Vespertino','RCO-2',22,2,1),
 ('Diseño Gráfico en Comunicación Visual','Nocturno','DG-3',18,1,2);
 
 -- ASIGNATURA
-INSERT INTO asignatura (cantidad_horas_asignatura, nombre_asignatura) VALUES
+INSERT INTO asignatura
+(cantidad_horas_asignatura, nombre_asignatura)
+VALUES
 (4,'Programación Web'),
 (3,'Redes Avanzadas'),
 (2,'Diseño Digital');
