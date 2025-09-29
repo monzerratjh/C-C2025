@@ -1,7 +1,6 @@
 <?php
 include('..\conexion.php');
-
-$conn = connection();
+$conn = conectar_bd();
 
 $accion = $_POST['accion'] ?? '';
 

@@ -1,7 +1,6 @@
 <?php 
 include('..\conexion.php');
-
-$conn = connection();
+$conn = conectar_bd();
 
 $sql = "SELECT * FROM usuario";
 $query = mysqli_query($conn, $sql); //mysqli_query FUNCIÓN de php para EJECUTAR SQL

@@ -1,7 +1,6 @@
 <?php
 include('..\conexion.php');
-
-$conn = connection();
+$conn = conectar_bd();
 
 $id_usuario = null;
 $ci_usuario = $_POST['ci_usuario'];

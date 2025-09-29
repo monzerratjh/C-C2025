@@ -1,7 +1,6 @@
 <?php 
 include('..\conexion.php');
-
-$conn = connection();
+$conn = conectar_bd();
 
 $id_usuario = $_GET['id_usuario'] ?? null; // Si no viene nada, queda null
 if (!$id_usuario) {

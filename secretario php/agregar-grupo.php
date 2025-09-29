@@ -1,8 +1,6 @@
 <?php
 include('..\conexion.php');
-
-$conn = connection();
-
+$conn = conectar_bd();
 // Consulta para obtener todos los grupos con información del adscripto
 $result = $conn->query("SELECT g.*, a.id_adscripto, a.id_usuario AS id_usuario_adscripto, u.nombre_usuario, u.apellido_usuario 
                         FROM grupo g
