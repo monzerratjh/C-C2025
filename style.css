@@ -1,6 +1,21 @@
+:root {
+  /* 🎨 Colores principales */
+  --color-fondo: #f4f2f0;          /* Fondo general */
+  --color-barra-lateral: #4ec1b2;  /* Barra lateral */
+
+  /* 🟢 Roles */
+  --color-estudiante: #6a98e3;
+  --color-adscripto: #61dcb1;
+  --color-docente: #F4B97D;
+  --color-secretaria: #DEA5C4;
+  --color-secretaria-2:
+
+}
+
+
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f4f2f0; 
+  background-color: var(--color-fondo); 
   padding: 0px;
   margin: 0px;
 }
@@ -80,19 +95,19 @@ a{
 }
 
 .estudiante {
-  background-color: #6a98e3;
+  background-color: var(--color-estudiante);
 }
 
 .adscripto {
-  background-color: #61dcb1;
+  background-color: var(--color-adscripto);
 }
 
 .docente {
-  background-color: #F4B97D;
+  background-color: var(--color-docente);
 }
 
 .secretaria {
-  background-color: #DEA5C4;
+  background-color: var(--color-secretaria);
 }
 
 
@@ -126,7 +141,7 @@ a{
   }
 
   .offcanvas{
-    background-color: #4ec1b2;
+    background-color: var(--color-barra-lateral);
   }
 
   .mb-3{
@@ -162,7 +177,7 @@ a{
 
 /*ESTRUCTURA MENU*/
     .barra-lateral {
-      background-color: #4ec1b2;
+      background-color: var(--color-barra-lateral);
       height: 710px;
       border-top-right-radius: 20px;
       border-bottom-right-radius: 20px;
@@ -222,10 +237,10 @@ a{
       display: flex;
       font-size: 1.2rem;
       border-style: solid;  
-      border-color: #f4f2f0;
+      border-color: var(--color-fondo);
       border-width: 15px 350px 15px 15px;
       border-radius: 40px 40px 40px 40px;
-      background-color: #f4f2f0;
+      background-color: var(--color-fondo);
       color: black;
       padding: 0 20px;
     }
@@ -573,7 +588,7 @@ a{
   padding: 20px;
 }
 
-/* Título verde */
+
 /* Contenedor principal centrado */
 .contenedor-reservas {
   max-width: 900px;
@@ -603,7 +618,7 @@ a{
   width: 100%;
   max-width: 800px;
   border-collapse: collapse;
-  background-color: #d9f3f1;
+  background-color: #f3d9f1;
   border-radius: 8px;
   overflow: hidden;
 }
@@ -621,7 +636,7 @@ a{
 }
 
 .tabla-reserva tbody tr:nth-child(even) { /*Las celdas pares cambian d color*/
-  background-color: #eaf9f7;
+  background-color: #f9eaf8;
 }
 
 .confirmada {
@@ -666,7 +681,7 @@ table th, table td {
 }
 
 table th {
-  background: #a9cbc1; /* rosado pastel */
+  background: var(--color-secretaria); /* rosado pastel */
   color: #333;
   font-weight: bold;
 }
