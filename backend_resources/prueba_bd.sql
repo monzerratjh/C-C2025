@@ -3,15 +3,15 @@
 -- ===========================
 
 -- USUARIOS
-INSERT INTO usuario (nombre_usuario, apellido_usuario, gmail_usuario, telefono_usuario, ci_usuario, contraseña_usuario) VALUES
-('Laura',   'Martínez', 'laura.martinez@itu.edu', '091234567', 45678912, 'hashpass1'),
-('Carlos',  'Gómez',    'carlos.gomez@itu.edu',  '092345678', 56789123, 'hashpass2'),
-('Lucía',   'Pérez',    'lucia.perez@itu.edu',   '093456789', 67891234, 'hashpass3'),
-('Andrés',  'Fernández','andres.fernandez@itu.edu','094567890',78912345,'hashpass4'),
-('María',   'Rodríguez','maria.rodriguez@itu.edu','095678901',89123456,'hashpass5'),
-('Jorge',   'Silva',    'jorge.silva@itu.edu',   '096789012',91234567, 'hashpass6'),
-('Ana',     'Lopez',    'ana.lopez@itu.edu',     '097890123',12345678, 'hashpass7'),
-('Diego',   'Castro',   'diego.castro@itu.edu',  '098901234',23456789, 'hashpass8');
+INSERT INTO usuario (nombre_usuario, apellido_usuario, gmail_usuario, telefono_usuario, cargo_usuario, ci_usuario, contrasenia_usuario) VALUES
+('Laura',   'Martínez', 'laura.martinez@itu.edu', '091234567', 'Secretario', 45678912, 'hashpass1'),
+('Carlos',  'Gómez',    'carlos.gomez@itu.edu',  '092345678', 'Secretario', 56789123, 'hashpass2'),
+('Lucía',   'Pérez',    'lucia.perez@itu.edu',   '093456789', 'Adscripto',  67891234, 'hashpass3'),
+('Andrés',  'Fernández','andres.fernandez@itu.edu','094567890','Adscripto', 78912345, 'hashpass4'),
+('María',   'Rodríguez','maria.rodriguez@itu.edu','095678901','Docente',   89123456, 'hashpass5'),
+('Jorge',   'Silva',    'jorge.silva@itu.edu',   '096789012','Docente',   91234567, 'hashpass6'),
+('Ana',     'Lopez',    'ana.lopez@itu.edu',     '097890123','Docente',   12345678, 'hashpass7'),
+('Diego',   'Castro',   'diego.castro@itu.edu',  '098901234','Docente',   23456789, 'hashpass8');
 
 -- SECRETARIO
 INSERT INTO secretario (grado_secretario, horario_trabajo_secretario, id_usuario) VALUES
