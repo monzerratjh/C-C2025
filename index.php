@@ -30,6 +30,7 @@
 
   <main class="opciones">
     
+  
     <a href="./estudiante/estudiante.php">
       <section class="opcion estudiante">
         <img src="img/estudiante.png" alt="Estudiante">

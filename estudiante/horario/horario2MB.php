@@ -32,7 +32,7 @@
     <div class="offcanvas-body d-flex flex-column">
       <div>
       <a href="../estudiante.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
-      <i class="bi bi-translate"></i>
+      <i class="bi bi-translate traductor-menu"></i>
       </div>
       <a href="../../estudiante/estudiante.php" class="fw-semibold seleccionado mb-2">Estudiantes</a>
       <a href="../../adscripto/adscripto-log.php" class="nav-opciones mb-2">Adscriptos</a>
@@ -52,7 +52,7 @@
             <a href="../estudiante.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
             <a href="../estudiante.php">Volver</a>
           </div>
-           <i class="bi bi-translate"></i>
+           <i class="bi bi-translate traductor-menu"></i>
         </div>
 
         <a href="../../estudiante/estudiante.php" class="fw-semibold seleccionado">Estudiante</a>
