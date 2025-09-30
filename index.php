@@ -6,11 +6,20 @@
 
   <title>Pagina Principal</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+ 
 </head>
 <body>
-
+  
   <header class="encabezado-index">
+
+    <div>
+    <i class="bi bi-translate traductor-index"></i>  
+    </div>
+
+    <div>
     <img src="img/logo.png" alt="Logo">
+    </div>
  </header>
 
 

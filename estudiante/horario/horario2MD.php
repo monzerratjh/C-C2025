@@ -30,8 +30,10 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <a href="../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
-
+      <div>
+      <a href="../estudiante.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
+      <i class="bi bi-translate"></i>
+      </div>
       <a href="../../estudiante/estudiante.php" class="fw-semibold seleccionado mb-2">Estudiantes</a>
       <a href="../../adscripto/adscripto-log.php" class="nav-opciones mb-2">Adscriptos</a>
       <a href="../../docente/docente-log.php" class="nav-opciones mb-2">Docente</a>
@@ -47,9 +49,10 @@
       <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="../../index.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="../../index.php">Volver</a>
+            <a href="../estudiante.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="../estudiante.php">Volver</a>
           </div>
+           <i class="bi bi-translate"></i>
         </div>
 
         <a href="../../estudiante/estudiante.php" class="fw-semibold seleccionado">Estudiante</a>
@@ -59,7 +62,7 @@
       </div>
 
     <!-- Contenido principal-->
-    <div class="col-md-9 horarios-estudiantes">
+    <div class="col-md-9 horarios-estudiante">
       <img src="../../img/logo.png" alt="Logo" class="logo">
 
       <div class="acordion-total">

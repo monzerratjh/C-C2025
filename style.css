@@ -1,3 +1,5 @@
+/*GENERAL*/
+
 :root {
   /* 🎨 Colores principales */
   --color-fondo: #f4f2f0;          /* Fondo general */
@@ -12,6 +14,21 @@
 
 }
 
+.estudiante {
+  background-color: var(--color-estudiante);
+}
+
+.adscripto {
+  background-color: var(--color-adscripto);
+}
+
+.docente {
+  background-color: var(--color-docente);
+}
+
+.secretaria {
+  background-color: var(--color-secretaria);
+}
 
 body {
   font-family: 'Segoe UI', sans-serif;
@@ -24,10 +41,169 @@ a{
   text-decoration: none;
 }
 
+
+/*ESTRUCTURA MENU*/
+    .barra-lateral {
+      background-color: var(--color-barra-lateral);
+      height: 710px;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+      padding: 30px 25px;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .volverGeneral {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 1.2rem;
+      color: black;
+      text-decoration: none;
+      margin-bottom: 40px;
+      font-weight: 500;
+    }
+
+    .volver{
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 15px;
+      margin-bottom: 2rem;
+    }
+
+    .icono-volver {
+      font-size: 2rem;
+    }
+
+    .icono-usuario{
+      font-size: 5rem;
+    }
+
+    .volver a{
+      color: black;
+    }
+
+    .nav-opciones{
+      display: flex;
+      font-size: 1.3rem;
+      color: black;
+      border: none;
+      background-color: transparent;
+      text-align: left;
+      padding: 0 35px;
+    }
+
+    .seleccionado{
+      display: flex;
+      font-size: 1.2rem;
+      border-style: solid;  
+      border-color: var(--color-fondo);
+      border-width: 15px 350px 15px 15px;
+      border-radius: 40px 40px 40px 40px;
+      background-color: var(--color-fondo);
+      color: black;
+      padding: 0 20px;
+    }
+
+    .logo {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      width: 100px;
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+   main {
+    max-width: 490px;
+    margin: 0 auto;
+    gap: 30px;
+   }
+
+  .barra-lateral {
+    display: flex;
+  }
+
+  .hamburguesa {
+    display: none;
+  }
+
+}
+
+@media (max-width: 767px) {
+   main {
+    flex-wrap: wrap; 
+    max-width: 490px;
+    margin-bottom: 1rem;
+    gap: 30px;
+   }
+
+   .menuResponsive{
+    width: 30px;
+    margin-top: 30px;
+    margin-left: 8px;
+   }
+
+   .logoResponsive{
+    width: 100px;
+    padding-top: 25px;
+   }
+
+   nav > .container-fluid{
+    display: flex;
+    justify-content: space-between;
+   }
+
+  .barra-lateral {
+    display: none;
+  }
+
+  .offcanvas{
+    background-color: var(--color-barra-lateral);
+  }
+
+  .mb-3{
+    color: black;
+    font-size: 18px;
+        margin: 40px;
+  }
+
+  .bi-translate::before{
+    margin-left: 110px;
+    margin-bottom: 70px;
+  }
+
+  .logo {
+      display: none;
+  }
+  .seccion-form{
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+ 
+    /*TERMINA LA ESTRUCTURA DEL MENU*/
+
+/*INDEX*/
+
 .encabezado-index{
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding:1rem;
+  align-items: center;
+}
+
+.traductor-index{
+  margin: 10px;
+  font-size: 40px;
+}
+
+.bi-translate{
+  margin: 20px;
+  font-size: 30px;
 }
 
 .encabezado-index img {
@@ -68,7 +244,6 @@ a{
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   padding-top: 30px; 
-  padding-bottom: 0;
 }
 
 .opcion img{
@@ -94,167 +269,11 @@ a{
   transform: scale(1.05);
 }
 
-.estudiante {
-  background-color: var(--color-estudiante);
-}
-
-.adscripto {
-  background-color: var(--color-adscripto);
-}
-
-.docente {
-  background-color: var(--color-docente);
-}
-
-.secretaria {
-  background-color: var(--color-secretaria);
-}
-
-
-   
-@media (max-width: 767px) {
-   main {
-    flex-wrap: wrap; 
-    max-width: 490px;
-    margin-bottom: 1rem;
-    gap: 30px;
-   }
-
-   .menuResponsive{
-    width: 30px;
-    margin-top: 30px;
-    margin-left: 8px;
-   }
-
-   .logoResponsive{
-    width: 100px;
-    padding-top: 25px;
-   }
-
-   nav > .container-fluid{
-    display: flex;
-    justify-content: space-between;
-   }
-
-  .barra-lateral {
-    display: none;
-  }
-
-  .offcanvas{
-    background-color: var(--color-barra-lateral);
-  }
-
-  .mb-3{
-    color: black;
-  }
-
-  .logo {
-      display: none;
-  }
-  .seccion-form{
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-   main {
-    max-width: 490px;
-    margin: 0 auto;
-    gap: 30px;
-   }
-
-  .barra-lateral {
-    display: flex;
-  }
-
-  .hamburguesa {
-    display: none;
-  }
-
-}
-
-/*ESTRUCTURA MENU*/
-    .barra-lateral {
-      background-color: var(--color-barra-lateral);
-      height: 710px;
-      border-top-right-radius: 20px;
-      border-bottom-right-radius: 20px;
-      padding: 30px 25px;
-      color: black;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    .volverGeneral {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      font-size: 1.2rem;
-      color: black;
-      text-decoration: none;
-      margin-bottom: 40px;
-      font-weight: 500;
-    }
-
-    .volver{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-      margin-bottom: 2rem;
-    }
-
-    .icono-volver {
-      font-size: 2rem;
-    }
-
-    .icono-usuario{
-      font-size: 5rem;
-    }
-
-    .volver a{
-      margin-top: 15px;
-      color: black;
-    }
-
-
-    .nav-opciones{
-      display: flex;
-      font-size: 1.3rem;
-      color: black;
-      border: none;
-      background-color: transparent;
-      text-align: left;
-      padding: 0 35px;
-    }
-
-
-    .seleccionado{
-      display: flex;
-      font-size: 1.2rem;
-      border-style: solid;  
-      border-color: var(--color-fondo);
-      border-width: 15px 350px 15px 15px;
-      border-radius: 40px 40px 40px 40px;
-      background-color: var(--color-fondo);
-      color: black;
-      padding: 0 20px;
-    }
-
-    .logo {
-      position: absolute;
-      top: 30px;
-      right: 30px;
-      width: 100px;
-    }
+/*TERMINA INDEX*/
 
     /*PAGINA ESTUDIANTES*/
 
-    .principal-estudiantes{
+    .principal-estudiante{
       height: 650px;
       display: flex;
       align-items: center;
@@ -264,16 +283,16 @@ a{
       justify-content: center;
     }
 
-    .principal-estudiantes h2 {
+    .principal-estudiante h2 {
       font-weight: 700;
     }
 
-    .principal-estudiantes p{
+    .principal-estudiante p{
       font-size: 1.2rem;
       font-weight: 550;
     }
 
-    .busqueda-estudiantes {
+    .busqueda {
       width: 100%;
       max-width: 500px;
       position: relative;
@@ -296,9 +315,15 @@ a{
       font-size: 1.2rem;
     }
 
+    @media (max-width: 576px) {
+  .principal-estudiante {
+    height: 450px;
+  }
+}
+
 
 /* --- CONTENIDO PRINCIPAL --- */
-.horarios-estudiantes {
+.horarios-estudiante {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -663,7 +688,7 @@ a{
   }
 }
 
-/*Tablas para estudiantes*/
+/*Tablas para estudiante*/
 table {
   width: 80%;
   margin: 20px auto;
