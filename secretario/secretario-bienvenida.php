@@ -25,7 +25,7 @@ include('../encabezado.php');
     </div>
     <div class="offcanvas-body d-flex flex-column">
       <div>
-      <a href="logOut.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
+      <a href="log-out.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
       <i class="bi bi-translate traductor-menu"></i>
       </div>
         <a href="" class="nav-opciones">Usuarios</a>
@@ -42,8 +42,8 @@ include('../encabezado.php');
        <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="../logOut.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="../logOut.php">Cerrar Sesión</a>
+            <a href="../log-out.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="../log-out.php">Cerrar Sesión</a>
           </div>
           <i class="bi bi-translate traductor-menu"></i>
         </div>
@@ -55,7 +55,7 @@ include('../encabezado.php');
 
 
 <!-- Contenido principal -->
-<main class="col-md-9 principal-estudiante" >
+<main class="col-md-9 principal" >
 
     <img src="../img/logo.png" alt="Logo" class="logo"> 
     
