@@ -14,6 +14,15 @@
 
 }
 
+/* ocultar selector de Google - */
+    #google_translate_element { 
+      display: none; 
+    }
+    .goog-te-banner-frame { 
+      display: none !important; 
+    }
+
+    
 .estudiante {
   background-color: var(--color-estudiante);
 }
