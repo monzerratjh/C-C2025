@@ -2,8 +2,11 @@
 include('../encabezado.php');
 ?>
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Bienvenida secretario</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenida Docente</title>
 </head>
 
 <body>
@@ -24,14 +27,12 @@ include('../encabezado.php');
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <div>
-      <a href="logOut.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
-      <i class="bi bi-translate traductor-menu"></i>
-      </div>
-         <a href="secretario-usuario.php" class="nav-opciones">Usuarios</a>
-        <a href="secretario-horario.php" class="nav-opciones">Horarios</a>
-        <a href="secretario-grupo.php" class="nav-opciones">Grupos</a>
-      </div>
+      <a href="../log-out.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
+
+       <a href="" class="nav-opciones">Grupos</a>
+        <a href="docente-reservar.php" class="nav-opciones">Reservar Espacio</a>
+        <a href="" class="nav-opciones">Avisar Falta</a>
+     </div>
   </div>
 
   <!-- Contenedor general -->
@@ -42,16 +43,15 @@ include('../encabezado.php');
        <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="../logOut.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="../logOut.php">Cerrar Sesión</a>
+            <a href="../log-out.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="../log-out.php">Cerrar Sesión</a>
           </div>
-          <i class="bi bi-translate traductor-menu"></i>
         </div>
 
-        <a href="" class="nav-opciones">Usuarios</a>
-        <a href="secretario-horario.php" class="nav-opciones">Horarios</a>
-        <a href="/secretario/grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
-       </div>
+      <a href="" class="nav-opciones mb-2">Grupos</a>
+      <a href="docente-reservar.php" class="nav-opciones mb-2">Reservar Espacio</a>
+      <a href="" class="nav-opciones mb-2">Avisar Falta</a>
+    </div>
 
 
 <!-- Contenido principal -->
@@ -60,8 +60,8 @@ include('../encabezado.php');
     <img src="../img/logo.png" alt="Logo" class="logo"> 
     
     <h1 class="bienvenida">Bienvenid@</h1>
-    <h1 class="bienvenida">Secretari@ @username</h1>
-    </div>
+    <h1 class="bienvenida">Docente @username</h1>
+
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

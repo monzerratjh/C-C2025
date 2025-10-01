@@ -57,7 +57,7 @@
       </div>
 
 <!-- Contenido principal -->
-<main class="col-md-9 principal-estudiante" >
+<main class="col-md-9 principal" >
 
     <img src="../img/logo.png" alt="Logo" class="logo"> 
     

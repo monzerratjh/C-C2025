@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Panel Estudiante</title>
+  <title>Reservar Espacio</title>
 
   <!-- Bootstrap CSS + Iconos + letras-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
@@ -30,12 +30,11 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <a href="index.html" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
+      <a href="docente-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
 
-      <a href="../estudiante/estudiante.php" class="nav-opciones mb-2">Estudiante</a>
-      <a href="../adscripto/adscripto-log.php" class="nav-opciones mb-2">Adscripto</a>
-      <a href="../docente/docente-log.php" class="fw-semibold seleccionado">Docente</a>
-      <a href="../secretario/secretario-log.php" class="nav-opciones mb-2">Secretario</a>
+      <a href="" class="nav-opciones mb-2">Grupos</a>
+      <a href="docente-reservar.php" class="fw-semibold seleccionado">Reservar Espacio</a>
+      <a href="" class="nav-opciones mb-2">Avisar Falta</a>
     </div>
   </div>
 
@@ -47,19 +46,18 @@
       <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="index.html"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="index.html">Volver</a>
+            <a href="docente-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="docente-bienvenida.php">Volver</a>
           </div>
         </div>
 
-        <a href="../estudiante/estudiante.php" class="nav-opciones mb-2">Estudiante</a>
-      <a href="../adscripto/adscripto-log.php" class="nav-opciones mb-2">Adscripto</a>
-      <a href="../docente/docente-log.php" class="fw-semibold seleccionado">Docente</a>
-      <a href="../secretario/secretario-log.php" class="nav-opciones mb-2">Secretario</a>
+      <a href="" class="nav-opciones mb-2">Grupos</a>
+      <a href="docente-bienvenida.php" class="fw-semibold seleccionado">Reservar Espacio</a>
+      <a href="" class="nav-opciones mb-2">Avisar Falta</a>
    </div>
 
     <!-- Contenido principal-->
-    <div class="col-md-9 horarios-estudiantes"> <!-- Boostrap contendio al lado del menu -->
+    <div class="col-md-9 horarios-estudiante"> <!-- Boostrap contendio al lado del menu -->
      <img src="../img/logo.png" alt="Logo" class="logo"> 
 
   <div class="acordion">
