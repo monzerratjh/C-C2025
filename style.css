@@ -14,15 +14,6 @@
 
 }
 
-/* ocultar selector de Google - */
-    #google_translate_element { 
-      display: none; 
-    }
-    .goog-te-banner-frame { 
-      display: none !important; 
-    }
-
-    
 .estudiante {
   background-color: var(--color-estudiante);
 }
@@ -177,7 +168,7 @@ a{
   .mb-3{
     color: black;
     font-size: 18px;
-    margin: 40px;
+        margin: 40px;
   }
 
   .traductor-menu::before{
@@ -208,13 +199,11 @@ a{
 .traductor-index{
   margin: 10px;
   font-size: 40px;
-  cursor: pointer;
 }
 
 .traductor-menu{
   margin: 20px;
   font-size: 30px;
-  cursor: pointer;
 }
 
 .encabezado-index img {
@@ -455,12 +444,6 @@ a{
   .boton-opciones {
     font-size: 14px;
     padding: 10px;
-  }
-}
-
-@media (max-width: 576px) {
-  .acordion-total {
-    height: 450px;
   }
 }
 

@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $cedula         = $_POST['cedula'] ?? ''; //"Si la variable existe y no es null, úsala; si no, usa este valor por defecto".
     $contrasenia    = $_POST['password'] ?? '';
-    $rolFormulario  = strtolower($_POST['rol'] ?? ''); // lowercase para evitar problemas
+    $rolFormulario  = strtolower($_POST['rol'] ?? ''); // lowercase para evitar problemas. Convierte todo el texto a minúsculas.
 
     // llamamos la funcion *logear
     $respuesta = logear($con, $cedula, $contrasenia, $rolFormulario);
@@ -32,7 +32,8 @@ function traer_datos_usuario($con, $cedula) {
         función de PHP/MySQLi que “vincula” (bind) las variables PHP a los parámetros de una sentencia preparada ($stmt).
 
         "s" -> string: cadena de tipos que indica el tipo de dato de cada parámetro que vas a pasar. al ser un solo parámetro (ci_usuario), que es texto: "s". 
-*/  mysqli_stmt_bind_param($stmt, "s", $cedula); // vincula el valor de $cedula
+*/  
+    mysqli_stmt_bind_param($stmt, "s", $cedula); // vincula el valor de $cedula
     
     mysqli_stmt_execute($stmt); // ejecuta con el dato ya asociado
 
@@ -42,7 +43,10 @@ function traer_datos_usuario($con, $cedula) {
         función de PHP/MySQLi que:
             - toma el siguiente registro (fila) del resultado de una consulta SQL.
             - devuelve ese registro como un array asociativo [cada columna de la tabla se guarda en el array usando el nombre de la columna como CLAVE].
-*/  return mysqli_fetch_assoc($resultado) ?: null;
+
+*/  
+
+    return mysqli_fetch_assoc($resultado) ?: null; //si la expresión de la izquierda es verdadera, devuélvela; si no, devuelve lo de la derecha
 }
 
 
