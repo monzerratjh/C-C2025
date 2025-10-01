@@ -28,7 +28,7 @@ include('../encabezado.php');
       <a href="logOut.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
       <i class="bi bi-translate traductor-menu"></i>
       </div>
-         <a href="secretario-usuario.php" class="nav-opciones">Usuarios</a>
+        <a href="" class="nav-opciones">Usuarios</a>
         <a href="secretario-horario.php" class="nav-opciones">Horarios</a>
         <a href="secretario-grupo.php" class="nav-opciones">Grupos</a>
       </div>
@@ -55,13 +55,13 @@ include('../encabezado.php');
 
 
 <!-- Contenido principal -->
-<main class="col-md-9 principal" >
+<main class="col-md-9 principal-estudiante" >
 
     <img src="../img/logo.png" alt="Logo" class="logo"> 
     
     <h1 class="bienvenida">Bienvenid@</h1>
     <h1 class="bienvenida">Secretari@ @username</h1>
-    </div>
+  
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -59,7 +59,7 @@ include('../encabezado.php');
 
 
 <!-- Contenido principal -->
-<main class="col-md-9 principal" >
+<main class="col-md-9 principal-estudiante" >
 
 
     <img src="../img/logo.png" alt="Logo" class="logo"> 
