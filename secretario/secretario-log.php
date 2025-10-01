@@ -1,13 +1,9 @@
+<?php 
+include('../encabezado.php');
+?>
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel Secretaría</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -28,12 +24,14 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
+      <div>
       <a href="../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
-      
+      <i class="bi bi-translate traductor-menu"></i>
+      </div>
       <a href="../estudiante/estudiante.php" class="nav-opciones mb-2">Estudiante</a>
       <a href="../adscripto/adscripto-log.php" class="nav-opciones mb-2">Adscripto</a>
       <a href="../docente/docente-log.php" class="nav-opciones mb-2">Docente</a>
-      <a href="../secretario/secretario-log.php" class="fw-semibold seleccionado mb-2">Secretario</a>
+      <a href="secretario-log.php" class="fw-semibold seleccionado mb-2">Secretario</a>
     </div>
   </div>
 
@@ -44,16 +42,17 @@
       <!-- Banner pantallas grandes -->
       <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
-          <div class="volver">
+           <div class="volver">
             <a href="../index.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
             <a href="../index.php">Volver</a>
           </div>
+          <i class="bi bi-translate traductor-menu"></i>
         </div>
 
         <a href="../estudiante/estudiante.php" class="nav-opciones">Estudiante</a>
         <a href="../adscripto/adscripto-log.php" class="nav-opciones">Adscripto</a>
         <a href="../docente/docente-log.php" class="nav-opciones">Docente</a>
-        <a href="../secretario php/secretario-log.php" class="fw-semibold seleccionado">Secretario</a>
+        <a href="secretario-log.php" class="fw-semibold seleccionado">Secretario</a>
       </div>
 
 <!-- Contenido principal -->

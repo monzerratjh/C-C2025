@@ -1,13 +1,9 @@
+<?php 
+include('../encabezado.php');
+?>
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenida secretario</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -28,8 +24,10 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
+      <div>
       <a href="logOut.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
-
+      <i class="bi bi-translate traductor-menu"></i>
+      </div>
          <a href="secretario-usuario.php" class="nav-opciones">Usuarios</a>
         <a href="secretario-horario.php" class="nav-opciones">Horarios</a>
         <a href="secretario-grupo.php" class="nav-opciones">Grupos</a>
@@ -47,11 +45,12 @@
             <a href="../logOut.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
             <a href="../logOut.php">Cerrar Sesión</a>
           </div>
+          <i class="bi bi-translate traductor-menu"></i>
         </div>
 
-     <a href="secretario-usuario.php" class="nav-opciones">Usuarios</a>
+        <a href="" class="nav-opciones">Usuarios</a>
         <a href="secretario-horario.php" class="nav-opciones">Horarios</a>
-        <a href="secretario-grupo.php" class="nav-opciones">Grupos</a>
+        <a href="/secretario/grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
        </div>
 
 
@@ -62,7 +61,7 @@
     
     <h1 class="bienvenida">Bienvenid@</h1>
     <h1 class="bienvenida">Secretari@ @username</h1>
-
+    </div>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../form_logIn.js"></script>
