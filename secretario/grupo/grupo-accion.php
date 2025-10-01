@@ -1,78 +1,51 @@
 <?php
 include('../../conexion.php');
 $con = conectar_bd();
+session_start();
 
-$accion = $_POST['accion'] ?? '';
+// Recibimos los datos del formulario
+$accion       = $_POST['accion'] ?? '';
+$id_grupo     = $_POST['id_grupo'] ?? null;
+$nombre       = $_POST['nombre'] ?? '';
+$orientacion  = $_POST['orientacion'] ?? '';
+$turno        = $_POST['turno'] ?? '';
+$cantidad     = $_POST['cantidad'] ?? '';
+$id_adscripto = $_POST['id_adscripto'] ?? '';
+$id_secretario = $_SESSION['id_secretario'] ?? 1; // fallback a 1 si no hay sesión
 
-// Lista de orientaciones válidas
-$orientaciones_validas = [
-    "Tecnologías de la Información",
-    "Tecnologías de la Información Bilingüe",
-    "Finest IT y Redes",
-    "Redes y Comunicaciones Ópticas",
-    "Diseño Gráfico en Comunicación Visual",
-    "Secretariado Bilingüe - Inglés",
-    "Tecnólogo en Ciberseguridad"
-];
+$message = '';
+$type = 'success';
 
-if($accion == 'insertar'){
-    $orientacion = $_POST['orientacion'];
-    $turno = $_POST['turno'];
-    $nombre = $_POST['nombre'];
-    $cantidad = $_POST['cantidad'];
-    $id_adscripto = $_POST['id_adscripto'];
-    $id_secretario = $_POST['id_secretario'];
-
-    // validar cantidad
-    if (!is_numeric($cantidad) || $cantidad < 1) { die("Cantidad inválida"); }
-
-    // validación de orientacion
-    if (!in_array($orientacion, $orientaciones_validas)) {
-        header("Location: secretario-grupo.php?message=Error: Orientación no válida");
-        exit();
+try {
+    if($accion === 'insertar') {
+        $stmt = $con->prepare("INSERT INTO grupo (nombre_grupo, orientacion_grupo, turno_grupo, cantidad_alumno_grupo, id_adscripto, id_secretario) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssiii", $nombre, $orientacion, $turno, $cantidad, $id_adscripto, $id_secretario);
+        if(!$stmt->execute()) {
+            throw new Exception($stmt->error);
+        }
+        $message = "Grupo agregado correctamente.";
+    } elseif($accion === 'editar') {
+        $stmt = $con->prepare("UPDATE grupo SET nombre_grupo=?, orientacion_grupo=?, turno_grupo=?, cantidad_alumno_grupo=?, id_adscripto=? WHERE id_grupo=?");
+        $stmt->bind_param("sssiii", $nombre, $orientacion, $turno, $cantidad, $id_adscripto, $id_grupo);
+        if(!$stmt->execute()) {
+            throw new Exception($stmt->error);
+        }
+        $message = "Grupo actualizado correctamente.";
+    } elseif($accion === 'eliminar') {
+        $stmt = $con->prepare("DELETE FROM grupo WHERE id_grupo=?");
+        $stmt->bind_param("i", $id_grupo);
+        if(!$stmt->execute()) {
+            throw new Exception($stmt->error);
+        }
+        $message = "Grupo eliminado correctamente.";
+    } else {
+        throw new Exception("Acción no reconocida.");
     }
-
-    $stmt = $con->prepare("INSERT INTO grupo (orientacion_grupo, turno_grupo, nombre_grupo, cantidad_alumno_grupo, id_adscripto, id_secretario) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssiii",$orientacion,$turno,$nombre,$cantidad,$id_adscripto,$id_secretario);
-    $stmt->execute();
-    $stmt->close();
-    header("Location: agregar-grupo.php?message=Grupo creado");
-    exit();
+} catch(Exception $e) {
+    $message = "Error: ".$e->getMessage();
+    $type = 'error';
 }
 
-if($accion == 'editar'){
-    $id = $_POST['id_grupo'];
-    $orientacion = $_POST['orientacion'];
-    $turno = $_POST['turno'];
-    $nombre = $_POST['nombre'];
-    $cantidad = $_POST['cantidad'];
-
-    if (!is_numeric($cantidad) || $cantidad < 1) { die("Cantidad inválida"); }
-
-    // validación de orientación
-    if (!in_array($orientacion, $orientaciones_validas)) {
-        header("Location: secretario-grupo.php?message=Error: Orientación no válida");
-        exit();
-    }
-
-    $stmt = $con->prepare("UPDATE grupo SET orientacion_grupo=?, turno_grupo=?, nombre_grupo=?, cantidad_alumno_grupo=? WHERE id_grupo=?");
-    $stmt->bind_param("sssii",$orientacion,$turno,$nombre,$cantidad,$id);
-    $stmt->execute();
-    $stmt->close();
-    header("Location: agregar-grupo.php?message=Grupo actualizado");
-    exit();
-}
-
-if($accion == 'eliminar'){
-    $id = $_POST['id_grupo'];
-    $stmt = $con->prepare("DELETE FROM grupo WHERE id_grupo=?");
-    $stmt->bind_param("i",$id);
-    $stmt->execute();
-    $stmt->close();
-    header("Location: agregar-grupo.php?message=Grupo eliminado");
-    exit();
-}
-
-$con->close(); // no necesario, pero buena practica
-
-?>
+// Redirigimos de vuelta con SweetAlert usando GET
+header("Location: secretario-grupo.php?message=".urlencode($message)."&type=".$type);
+exit;

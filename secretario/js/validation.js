@@ -53,3 +53,47 @@ form.addEventListener('submit', function(e) {
         e.preventDefault();
     }
 });
+
+
+// grupo
+const orientacionesValidas = [
+    "Tecnologías de la Información",
+    "Tecnologías de la Información Bilingüe",
+    "Finest IT y Redes",
+    "Redes y Comunicaciones Ópticas",
+    "Diseño Gráfico en Comunicación Visual",
+    "Secretariado Bilingüe - Inglés",
+    "Tecnólogo en Ciberseguridad"
+];
+
+document.getElementById('formGrupo').addEventListener('submit', function(e) {
+    e.preventDefault(); // Evita que el formulario se envíe directamente
+
+    const nombre = document.getElementById('nombre').value.trim();
+    const orientacion = document.getElementById('orientacionInput').value.trim();
+    const turno = document.getElementById('turno').value;
+    const cantidad = parseInt(document.getElementById('cantidad').value);
+
+    if (nombre === '') {
+        Swal.fire({ icon: 'error', title: 'Error', text: 'Ingrese el nombre del grupo' });
+        return;
+    }
+
+    if (!orientacionesValidas.includes(orientacion)) {
+        Swal.fire({ icon: 'error', title: 'Error', text: 'La orientación no es válida' });
+        return;
+    }
+
+    if (turno === '') {
+        Swal.fire({ icon: 'error', title: 'Error', text: 'Seleccione un turno' });
+        return;
+    }
+
+    if (isNaN(cantidad) || cantidad < 1) {
+        Swal.fire({ icon: 'error', title: 'Error', text: 'Cantidad de alumnos inválida' });
+        return;
+    }
+
+    // Si pasó todas las validaciones, enviar el formulario
+    this.submit();
+});
