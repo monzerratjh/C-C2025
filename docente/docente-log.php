@@ -71,7 +71,7 @@
           echo"<h6>".$_GET['message']."</h6>";
         }
       ?>
-      <form action="../logIn.php" method="POST" class="formulario">
+      <form action="../log-in.php" method="POST" class="formulario">
         
         <div class="input-group mb-3">
           <span class="input-group-text"><i class="bi bi-person"></i></span>
@@ -94,6 +94,6 @@
     </section>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="form_logIn.js"></script>
+<script src="../form-logIn.js"></script>
 </body>
 </html>
