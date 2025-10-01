@@ -1,3 +1,6 @@
+<?php 
+include('encabezado.php');
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,7 +9,6 @@
 
   <title>Pagina Principal</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
   
