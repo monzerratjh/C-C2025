@@ -56,7 +56,7 @@ Relaciones:
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
@@ -158,7 +158,7 @@ Relaciones:
 
                   <form id="formEliminar<?php echo $row['id_grupo'];?>" 
                         method="POST" 
-                        action="grupo_accion.php" 
+                        action="grupo-accion.php" 
                         style="display:inline;">
                       <input type="hidden" name="accion" value="eliminar">
                       <input type="hidden" name="id_grupo" value="<?php echo $row['id_grupo']; ?>">
@@ -181,7 +181,7 @@ Relaciones:
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                   </div>
 
-                  <form method="POST" action="grupo_accion.php">
+                  <form method="POST" action="grupo-accion.php" id="formGrupo">
                     <div class="modal-body">
 
                       <input type="hidden" id="accion" name="accion">
@@ -256,9 +256,27 @@ Relaciones:
     </div>
   </div>
 
+ <!-- Mostrar mensaje del servidor con SweetAlert2 -->
+  <?php if(isset($_GET['message']) && $_GET['message'] != ''): ?>
+  <script>
+  Swal.fire({
+      icon: '<?php echo $_GET['type'] ?? 'success'; ?>', // 'success' o 'error'
+      title: '<?php echo $_GET['type'] == 'error' ? 'Error' : 'Éxito'; ?>',
+      text: '<?php echo addslashes($_GET['message']); ?>'
+  });
+  </script>
+  <?php endif; ?>
+
   <!-- Scripts -->
+
+   <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   <script src="../js/grupo.js"></script>
+  <script src="../js/validation.js"></script>
   <script src="../js/desplegarCaracteristicas.js"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
