@@ -1,7 +1,6 @@
 <?php 
 include('../encabezado.php');
 ?>
-
 <!DOCTYPE html>
 <head>
   <title>Panel Estudiante</title>
@@ -59,7 +58,7 @@ include('../encabezado.php');
       </div>
 
       <!-- Contenido principal -->
-      <div class="col-md-9 col-12 principal-estudiante">
+      <div class="col-md-9 col-12 principal">
         <img src="../img/logo.png" alt="Logo" class="logo"> 
         <h2>ESTUDIANTE</h2>
         <p>Ingresa tu grupo correspondiente</p>

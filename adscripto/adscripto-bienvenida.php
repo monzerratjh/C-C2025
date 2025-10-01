@@ -27,13 +27,16 @@ include('../encabezado.php');
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
+      <div>
       <a href="../log-out.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
+      <i class="bi bi-translate traductor-menu"></i>
+      </div>
 
-       <a href="" class="nav-opciones">Espacio</a>
-        <a href="../adscripto/reserva-adscripto.php" class="nav-opciones">Reserva</a>
-        <a href="../adscripto/falta-docente.php" class="nav-opciones">Falta docente</a>
-        <a href="../adscripto/carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
-     </div>
+       <a href="../adscripto/espacio/adscripto-espacio.php" class="nav-opciones mb-2">Espacio</a>
+      <a href="../adscripto/reserva-adscripto.php" class="nav-opciones mb-2">Reserva</a>
+      <a href="../adscripto/falta-docente.php" class="nav-opciones mb-2">Falta docente</a>
+      <a href="../adscripto/carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
+    </div>
   </div>
 
   <!-- Contenedor general -->
@@ -47,9 +50,10 @@ include('../encabezado.php');
             <a href="../log-out.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
             <a href="../log-out.php">Cerrar Sesión</a>
           </div>
+           <i class="bi bi-translate traductor-menu"></i>
         </div>
 
-      <a href="../adscripto/adscripto-espacio.php" class="nav-opciones mb-2">Espacio</a>
+      <a href="../adscripto/espacio/adscripto-espacio.php" class="nav-opciones mb-2">Espacio</a>
       <a href="../adscripto/reserva-adscripto.php" class="nav-opciones mb-2">Reserva</a>
       <a href="../adscripto/falta-docente.php" class="nav-opciones mb-2">Falta docente</a>
       <a href="../adscripto/carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
@@ -57,7 +61,7 @@ include('../encabezado.php');
 
 
 <!-- Contenido principal -->
-<main class="col-md-9 principal-estudiantes" >
+<main class="col-md-9 principal" >
 
     <img src="../img/logo.png" alt="Logo" class="logo"> 
     
@@ -66,6 +70,5 @@ include('../encabezado.php');
 
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../form-logIn.js"></script>
 </body>
 </html>
