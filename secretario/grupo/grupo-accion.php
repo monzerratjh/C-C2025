@@ -1,6 +1,6 @@
 <?php
-include('..\conexion.php');
-$conn = conectar_bd();
+include('../../conexion.php');
+$con = conectar_bd();
 
 $accion = $_POST['accion'] ?? '';
 
@@ -28,11 +28,11 @@ if($accion == 'insertar'){
 
     // validación de orientacion
     if (!in_array($orientacion, $orientaciones_validas)) {
-        header("Location: grupo_secretario.php?message=Error: Orientación no válida");
+        header("Location: secretario-grupo.php?message=Error: Orientación no válida");
         exit();
     }
 
-    $stmt = $conn->prepare("INSERT INTO grupo (orientacion_grupo, turno_grupo, nombre_grupo, cantidad_alumno_grupo, id_adscripto, id_secretario) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt = $con->prepare("INSERT INTO grupo (orientacion_grupo, turno_grupo, nombre_grupo, cantidad_alumno_grupo, id_adscripto, id_secretario) VALUES (?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("sssiii",$orientacion,$turno,$nombre,$cantidad,$id_adscripto,$id_secretario);
     $stmt->execute();
     $stmt->close();
@@ -51,11 +51,11 @@ if($accion == 'editar'){
 
     // validación de orientación
     if (!in_array($orientacion, $orientaciones_validas)) {
-        header("Location: grupo_secretario.php?message=Error: Orientación no válida");
+        header("Location: secretario-grupo.php?message=Error: Orientación no válida");
         exit();
     }
 
-    $stmt = $conn->prepare("UPDATE grupo SET orientacion_grupo=?, turno_grupo=?, nombre_grupo=?, cantidad_alumno_grupo=? WHERE id_grupo=?");
+    $stmt = $con->prepare("UPDATE grupo SET orientacion_grupo=?, turno_grupo=?, nombre_grupo=?, cantidad_alumno_grupo=? WHERE id_grupo=?");
     $stmt->bind_param("sssii",$orientacion,$turno,$nombre,$cantidad,$id);
     $stmt->execute();
     $stmt->close();
@@ -65,7 +65,7 @@ if($accion == 'editar'){
 
 if($accion == 'eliminar'){
     $id = $_POST['id_grupo'];
-    $stmt = $conn->prepare("DELETE FROM grupo WHERE id_grupo=?");
+    $stmt = $con->prepare("DELETE FROM grupo WHERE id_grupo=?");
     $stmt->bind_param("i",$id);
     $stmt->execute();
     $stmt->close();
@@ -73,6 +73,6 @@ if($accion == 'eliminar'){
     exit();
 }
 
-$conn->close(); // no necesario, pero buena practica
+$con->close(); // no necesario, pero buena practica
 
 ?>
