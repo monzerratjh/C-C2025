@@ -12,11 +12,12 @@
 
 <body>
 
+  
   <!-- Menú hamburguesa para móviles -->
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="../menu.png" alt="menu">
+        <img class="menuResponsive" src="../img/menu.png" alt="menu">
       </button>
       <img class="logoResponsive" src="../img/logo.png" alt="logoRespnsive">
     </div>
@@ -28,11 +29,13 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
+      <div>
       <a href="../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
-      
+      <i class="bi bi-translate traductor-menu"></i>
+      </div>
       <a href="../estudiante/estudiante.php" class="nav-opciones mb-2">Estudiante</a>
       <a href="../adscripto/adscripto-log.php" class="nav-opciones mb-2">Adscripto</a>
-      <a href="../docente/docente-log.php" class="fw-semibold seleccionado">Docente</a>
+      <a href="../docente/docente-log.php" class="fw-semibold seleccionado mb-2">Docente</a>
       <a href="../secretario/secretario-log.php" class="nav-opciones mb-2">Secretario</a>
     </div>
   </div>
@@ -44,10 +47,11 @@
       <!-- Banner pantallas grandes -->
       <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
-          <div class="volver">
+           <div class="volver">
             <a href="../index.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
             <a href="../index.php">Volver</a>
           </div>
+          <i class="bi bi-translate traductor-menu"></i>
         </div>
 
         <a href="../estudiante/estudiante.php" class="nav-opciones">Estudiante</a>
@@ -55,6 +59,7 @@
         <a href="../docente/docente-log.php" class="fw-semibold seleccionado">Docente</a>
         <a href="../secretario/secretario-log.php" class="nav-opciones">Secretario</a>
       </div>
+
 
 <!-- Contenido principal -->
 <main class="col-md-9 principal" >
@@ -66,11 +71,9 @@
       <div class="icono-usuario-login">
         <i class="bi bi-person-circle"></i>
       </div>
-      <?php
-        if(isset($_GET['message'])) {
-          echo"<h6>".$_GET['message']."</h6>";
-        }
-      ?>
+
+      <div id="mensaje-error" style="color:red; font-weight:bold;"></div>
+
       <form action="../log-in.php" method="POST" class="formulario">
         
         <div class="input-group mb-3">
@@ -87,9 +90,10 @@
 
         <!-- Indicamos el rol -->
         <input type="hidden" name="rol" value="docente">
-
         <button type="submit" id="boton" name="btn-log-in" value="1">Iniciar Sesión</button>
       </form>
+
+      <div id="mensaje-error" style="color:red; font-weight:bold;"></div>
 
     </section>
 </main>

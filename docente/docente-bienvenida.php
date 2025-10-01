@@ -29,9 +29,9 @@ include('../encabezado.php');
     <div class="offcanvas-body d-flex flex-column">
       <a href="../log-out.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
 
-       <a href="" class="nav-opciones">Grupos</a>
+       <a href="docente-grupo.php" class="nav-opciones">Grupos a Cargo</a>
         <a href="docente-reservar.php" class="nav-opciones">Reservar Espacio</a>
-        <a href="" class="nav-opciones">Avisar Falta</a>
+        <a href="docente-falta.php" class="nav-opciones">Avisar Falta</a>
      </div>
   </div>
 
@@ -48,9 +48,9 @@ include('../encabezado.php');
           </div>
         </div>
 
-      <a href="" class="nav-opciones mb-2">Grupos</a>
+      <a href="docente-grupo.php" class="nav-opciones mb-2">Grupos a Cargo</a>
       <a href="docente-reservar.php" class="nav-opciones mb-2">Reservar Espacio</a>
-      <a href="" class="nav-opciones mb-2">Avisar Falta</a>
+      <a href="docente-falta.php" class="nav-opciones mb-2">Avisar Falta</a>
     </div>
 
 

@@ -1,16 +1,15 @@
 /*GENERAL*/
 
 :root {
-  /* 🎨 Colores principales */
+  /*Colores principales */
   --color-fondo: #f4f2f0;          /* Fondo general */
   --color-barra-lateral: #4ec1b2;  /* Barra lateral */
 
-  /* 🟢 Roles */
+  /*Roles */
   --color-estudiante: #6a98e3;
   --color-adscripto: #61dcb1;
   --color-docente: #F4B97D;
   --color-secretaria: #DEA5C4;
-  --color-secretaria-2:
 
 }
 
@@ -393,6 +392,12 @@ a{
   transition: transform 0.3s ease;
 }
 
+/* Cuando un botón tenga esta clase, se anula la flecha */
+.boton-opciones.sin-flecha::after {
+  content: none; /* "content: none" elimina lo que agregaba el ::after */
+}
+
+
 .contenido-dia {
   display: none;
   background-color: white;
@@ -742,6 +747,19 @@ table tr:hover {
     gap: 12px;
     margin: 20px 0;
     justify-content: center;
+  }
+
+  .bloque-agregar .etiqueta2 {
+    background: martes;
+    color: #000;
+    border: none;
+    padding: 12px 40px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s;
   }
 
   .bloque-agregar .etiqueta {

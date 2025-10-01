@@ -65,11 +65,9 @@ include('../encabezado.php');
       <div class="icono-usuario-login">
         <i class="bi bi-person-circle"></i>
       </div>
-      <?php
-        if(isset($_GET['message'])) {
-          echo"<h6>".$_GET['message']."</h6>";
-        }
-      ?>
+
+<div id="mensaje-error" style="color:red; font-weight:bold;"></div>
+
       <form action="../log-in.php" method="POST" class="formulario">
         
         <div class="input-group mb-3">
@@ -90,6 +88,8 @@ include('../encabezado.php');
 
         <button type="submit" id="boton" name="btn-log-in" value="1">Iniciar Sesión</button>
       </form>
+
+        <div id="mensaje-error" style="color:red; font-weight:bold;"></div>
 
     </section>
 </main>

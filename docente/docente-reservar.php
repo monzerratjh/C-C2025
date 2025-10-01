@@ -32,9 +32,9 @@
     <div class="offcanvas-body d-flex flex-column">
       <a href="docente-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
 
-      <a href="" class="nav-opciones mb-2">Grupos</a>
+      <a href="docente-grupo.php" class="nav-opciones mb-2">Grupos a Cargo</a>
       <a href="docente-reservar.php" class="fw-semibold seleccionado">Reservar Espacio</a>
-      <a href="" class="nav-opciones mb-2">Avisar Falta</a>
+      <a href="docente-falta.php" class="nav-opciones mb-2">Avisar Falta</a>
     </div>
   </div>
 
@@ -51,9 +51,9 @@
           </div>
         </div>
 
-      <a href="" class="nav-opciones mb-2">Grupos</a>
+      <a href="docente-grupo.php" class="nav-opciones mb-2">Grupos a Cargo</a>
       <a href="docente-bienvenida.php" class="fw-semibold seleccionado">Reservar Espacio</a>
-      <a href="" class="nav-opciones mb-2">Avisar Falta</a>
+      <a href="docente-falta.php" class="nav-opciones mb-2">Avisar Falta</a>
    </div>
 
     <!-- Contenido principal-->

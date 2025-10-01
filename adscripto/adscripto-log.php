@@ -64,13 +64,15 @@ include('../encabezado.php');
     <img src="../img/logo.png" alt="Logo" class="logo"> 
     
     <section class="seccion-form adscripto">
-    <div class="icono-usuario-login">
+
+      <div class="icono-usuario-login">
         <i class="bi bi-person-circle"></i>
-    </div>
+      </div>
 
     <div id="mensaje-error" style="color:red; font-weight:bold;"></div>
 
   <form id="form-login-adscripto" class="formulario" action="../log-in.php" method="POST">
+    
     <div class="input-group mb-3">
         <span class="input-group-text"><i class="bi bi-person"></i></span>
         <input type="text" class="form-control" placeholder="Cédula de Identidad"
