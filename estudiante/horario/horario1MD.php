@@ -57,7 +57,7 @@ include('../../encabezado.php');
       </div>
 
     <!-- Contenido principal-->
-    <div class="col-md-9 horarios-estudiante">
+   <main class="col-md-9 principal-estudiante" >
       <img src="../../img/logo.png" alt="Logo" class="logo">
 
       <div class="acordion-total">
