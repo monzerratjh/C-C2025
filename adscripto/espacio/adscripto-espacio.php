@@ -1,13 +1,9 @@
+<?php 
+include('../../encabezado.php');
+?>
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espacio adscripto</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
+    <title>Espacio - Adscripto</title>
 </head>
 
 <body>
@@ -59,7 +55,7 @@
 <!-- Contenido principal -->
 <main class="col-md-9 principal-estudiantes" >
 
-    <img src="../img/logo.png" alt="Logo" class="logo"> 
+    <img src="../../img/logo.png" alt="Logo" class="logo"> 
     
     
     <div class="acordion">
