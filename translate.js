@@ -38,7 +38,7 @@ function updateContent() {
 }
 
 // Botón para cambiar idioma
-document.getElementById("btn-translate").addEventListener("click", () => {
+document.querySelector(".traductor").addEventListener("click", () => {
   const newLang = i18next.language === "es" ? "en" : "es";
   i18next.changeLanguage(newLang, updateContent);
 });

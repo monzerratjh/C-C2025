@@ -1,17 +1,15 @@
-<?php 
-include('encabezado.php');
-?>
 <!DOCTYPE html>
 <head>
   <title>Pagina Principal</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
   
   <header class="encabezado-index">
     <div>
       <!-- Botón de traducción -->
-      <i class="bi bi-translate traductor-index" id="btn-translate"></i>  
+      <i class="bi bi-translate traductor" id="btn-translate"></i>  
     </div>
 
     <div>
