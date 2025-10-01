@@ -67,7 +67,7 @@ include('../encabezado.php');
 
     <div id="mensaje-error" style="color:red; font-weight:bold;"></div>
 
-  <form id="form-login-adscripto" class="formulario" action="../logIn.php" method="POST">
+  <form id="form-login-adscripto" class="formulario" action="../log-in.php" method="POST">
     <div class="input-group mb-3">
         <span class="input-group-text"><i class="bi bi-person"></i></span>
         <input type="text" class="form-control" placeholder="Cédula de Identidad"

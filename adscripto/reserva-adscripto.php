@@ -27,7 +27,7 @@ include('../encabezado.php');
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <a href="reservas-adscripto.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
+      <a href="adscripto-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
 
        <a href="/adscripto/adscripto-espacio.php" class="nav-opciones">Espacio</a>
         <a href="/adscripto/reserva-adscripto.php" class="fw-semibold seleccionado mb-2">Reserva</a>
@@ -44,8 +44,8 @@ include('../encabezado.php');
       <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="reserva-adscripto.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="reserva-adscripto.php">Volver</a>
+            <a href="adscripto-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="adscripto-bienvenida.php">Volver</a>
           </div>
         </div>
 

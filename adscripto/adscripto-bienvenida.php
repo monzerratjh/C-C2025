@@ -27,9 +27,9 @@ include('../encabezado.php');
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <a href="logOut.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
+      <a href="../log-out.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
 
-       <a href="../adscripto/adscripto-espacio.php" class="nav-opciones">Espacio</a>
+       <a href="" class="nav-opciones">Espacio</a>
         <a href="../adscripto/reserva-adscripto.php" class="nav-opciones">Reserva</a>
         <a href="../adscripto/falta-docente.php" class="nav-opciones">Falta docente</a>
         <a href="../adscripto/carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
@@ -44,8 +44,8 @@ include('../encabezado.php');
        <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="logOut.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="logOut.php">Cerrar Sesión</a>
+            <a href="../log-out.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="../log-out.php">Cerrar Sesión</a>
           </div>
         </div>
 
@@ -66,6 +66,6 @@ include('../encabezado.php');
 
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="./form_logIn.js"></script>
+<script src="../form-logIn.js"></script>
 </body>
 </html>
