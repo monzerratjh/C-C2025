@@ -156,33 +156,6 @@ JOIN usuario ON adscripto.id_usuario = usuario.id_usuario
 </div>
 <?php endwhile; ?>
 
-
-<?php while($row = $result->fetch_assoc()){ ?>
-              <tr>
-                <td><?php echo $row['id_grupo']; ?></td>
-                <td><?php echo $row['nombre_grupo']; ?></td>
-                <td><?php echo $row['orientacion_grupo']; ?></td>
-                <td><?php echo $row['turno_grupo']; ?></td>
-                <td><?php echo $row['cantidad_alumno_grupo']; ?></td>
-                <td><?php echo $row['nombre_usuario']." ".$row['apellido_usuario']; ?></td>
-                <td>
-                  <button class="btn btn-sm btn-warning" 
-                          data-bs-toggle="modal" 
-                          data-bs-target="#modalGrupo"
-                          onclick="cargarEditar(
-                              '<?php echo $row['id_grupo']; ?>',
-                              '<?php echo $row['orientacion_grupo']; ?>',
-                              '<?php echo $row['turno_grupo']; ?>',
-                              '<?php echo $row['nombre_grupo']; ?>',
-                              '<?php echo $row['cantidad_alumno_grupo']; ?>'
-                          )">
-                      Editar
-                  </button>
-                </td>
-              </tr>
-              <?php } ?>
-            </table>
-
             <!-- Modal para insertar o editar grupo -->
             <div class="modal fade" id="modalGrupo" tabindex="-1">
               <div class="modal-dialog">
