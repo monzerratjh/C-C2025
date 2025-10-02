@@ -1,15 +1,39 @@
 <?php
 include('../../conexion.php');
+include('../../encabezado.php');
 $con = conectar_bd();
 
-// Consulta para traer todos los grupos con su adscripto
+// Consulta para obtener todos los grupos con información del adscripto y usuario
 $result = $con->query("
-    SELECT grupo.id_grupo, grupo.nombre_grupo, grupo.orientacion_grupo, grupo.turno_grupo,
-           grupo.cantidad_alumno_grupo, adscripto.id_adscripto, usuario.nombre_usuario, usuario.apellido_usuario
+    SELECT grupo.id_grupo,
+           grupo.nombre_grupo,
+           grupo.orientacion_grupo,
+           grupo.turno_grupo,
+           grupo.cantidad_alumno_grupo,
+           adscripto.id_adscripto,
+           adscripto.id_usuario AS id_usuario_adscripto,
+           usuario.nombre_usuario,
+           usuario.apellido_usuario
     FROM grupo
-    JOIN adscripto ON grupo.id_adscripto = adscripto.id_adscripto
-    JOIN usuario ON adscripto.id_usuario = usuario.id_usuario
+    JOIN adscripto
+        ON grupo.id_adscripto = adscripto.id_adscripto
+    JOIN usuario
+        ON adscripto.id_usuario = usuario.id_usuario
 ");
+
+/*
+ adscripto.id_usuario AS id_usuario_adscripto
+  * Columna de adscripto renombrada para diferenciarla de usuario.id_usuario.
+
+ usuario.nombre_usuario, usuario.apellido_usuario
+  * asociados al adscripto.
+
+JOIN adscripto ON grupo.id_adscripto = adscripto.id_adscripto
+  * Cada grupo se asocia con su adscripto.
+
+JOIN usuario ON adscripto.id_usuario = usuario.id_usuario
+  * Cada adscripto se asocia con su usuario.
+*/
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +41,7 @@ $result = $con->query("
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Grupos secretario</title>
+  <title>Grupos - secretario</title>
 
   <!-- Bootstrap CSS + Iconos + letras-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
