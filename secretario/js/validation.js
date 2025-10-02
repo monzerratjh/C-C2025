@@ -77,7 +77,10 @@ document.getElementById('formGrupo').addEventListener('submit', function(e) {
     if (nombre === '') {
         Swal.fire({ icon: 'error', title: 'Error', text: 'Ingrese el nombre del grupo' });
         return;
-    }
+    } else if (nombre.length > 6){
+        Swal.fire({ icon: 'error', title: 'Error', text: 'El nombre del grupo debe ser menor a 6 caracteres' });
+        return;
+    } 
 
     if (!orientacionesValidas.includes(orientacion)) {
         Swal.fire({ icon: 'error', title: 'Error', text: 'La orientación no es válida' });
