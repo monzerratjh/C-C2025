@@ -1,9 +1,12 @@
+/*  ANTES DEL SWEETALERT
 
 function confirmarEliminar(id){
     if(confirm("¿Seguro quieres eliminar este grupo?")){
         document.getElementById('formEliminar'+id).submit();
     }
-}
+}   
+    
+    */
 
 function cargarEditar(id, orientacion, turno, nombre, cantidad, id_adscripto) {
     document.getElementById('accion').value = 'editar';

@@ -34,7 +34,7 @@ $result = $con->query("
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
         <img class="menuResponsive" src="../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="../img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="../../img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -71,16 +71,22 @@ $result = $con->query("
 
     <!-- Contenido principal-->
     <div class="col-md-9 horarios-estudiantes"> <!-- Boostrap contendio al lado del menu -->
-      <img src="../img/logo.png" alt="Logo" class="logo">
+      <img src="../../img/logo.png" alt="Logo" class="logo">
 
       <div class="acordion-total">
   <div class="acordion">
 
-    
-          <div class="bloque-agregar">
-            <button class="etiqueta">Características de los grupos</button>
-            <a href="agregar-grupo.php"><button class="agregar">+</button></a>
-          </div>
+  <div class="bloque-agregar">
+              <button class="etiqueta">Grupos</button>
+              <button class="agregar" 
+                      data-bs-toggle="modal" 
+                      data-bs-target="#modalGrupo" 
+                      onclick="document.getElementById('accion').value='insertar';">
+                  +
+              </button>
+  </div>
+
+  
 
           <?php while($row = $result->fetch_assoc()): ?>
           <div class="dia">
@@ -88,22 +94,168 @@ $result = $con->query("
             <div class="contenido-dia">
               <table class="tabla-horario">
                 <tr><td>Orientación: <?php echo $row['orientacion_grupo']; ?></td></tr>
+                <tr><td>Turno: <?php echo $row['turno_grupo']; ?></td></tr>
                 <tr><td>Cantidad de alumnos: <?php echo $row['cantidad_alumno_grupo']; ?></td></tr>
                 <tr><td>Adscripto: <?php echo $row['nombre_usuario'].' '.$row['apellido_usuario']; ?></td></tr>
-                <tr><td>Turno: <?php echo $row['turno_grupo']; ?></td></tr>
               </table>
             </div>
           </div>
           <?php endwhile; ?>
 
+<?php while($row = $result->fetch_assoc()){ ?>
+              <tr>
+                <td><?php echo $row['id_grupo']; ?></td>
+                <td><?php echo $row['nombre_grupo']; ?></td>
+                <td><?php echo $row['orientacion_grupo']; ?></td>
+                <td><?php echo $row['turno_grupo']; ?></td>
+                <td><?php echo $row['cantidad_alumno_grupo']; ?></td>
+                <td><?php echo $row['nombre_usuario']." ".$row['apellido_usuario']; ?></td>
+                <td>
+                  <button class="btn btn-sm btn-warning" 
+                          data-bs-toggle="modal" 
+                          data-bs-target="#modalGrupo"
+                          onclick="cargarEditar(
+                              '<?php echo $row['id_grupo']; ?>',
+                              '<?php echo $row['orientacion_grupo']; ?>',
+                              '<?php echo $row['turno_grupo']; ?>',
+                              '<?php echo $row['nombre_grupo']; ?>',
+                              '<?php echo $row['cantidad_alumno_grupo']; ?>'
+                          )">
+                      Editar
+                  </button>
+
+                  <form id="formEliminar<?php echo $row['id_grupo'];?>" 
+                        method="POST" 
+                        action="grupo-accion.php" 
+                        style="display:inline;">
+                      <input type="hidden" name="accion" value="eliminar">
+                      <input type="hidden" name="id_grupo" value="<?php echo $row['id_grupo']; ?>">
+                      
+                      <button type="button" 
+                              class="btn btn-sm btn-danger eliminar-grupo-btn" 
+                              data-id="<?php echo $row['id_grupo']; ?>">
+                          Eliminar
+                      </button>
+                  </form>
+                </td>
+              </tr>
+              <?php } ?>
+            </table>
+
+            <!-- Modal para insertar o editar grupo -->
+            <div class="modal fade" id="modalGrupo" tabindex="-1">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Grupo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+
+                  <form method="POST" action="grupo-accion.php" id="formGrupo">
+                    <div class="modal-body">
+
+                      <input type="hidden" id="accion" name="accion">
+                      <input type="hidden" id="id_grupo" name="id_grupo">
+
+                      <div class="mb-3">
+                        <label>Nombre del grupo</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="orientacion">Orientación</label>
+                        <input type="text" name="orientacion" class="form-control"
+                               placeholder="Ingrese la orientación" list="orientaciones" id="orientacionInput" required />
+                        <datalist id="orientaciones">
+                            <option value="Tecnologías de la Información"></option>
+                            <option value="Tecnologías de la Información Bilingüe"></option>
+                            <option value="Finest IT y Redes"></option>
+                            <option value="Redes y Comunicaciones Ópticas"></option>
+                            <option value="Diseño Gráfico en Comunicación Visual"></option>
+                            <option value="Secretariado Bilingüe - Inglés"></option>
+                            <option value="Tecnólogo en Ciberseguridad"></option>
+                        </datalist>
+                      </div>
+
+                      <div class="mb-3">
+                        <label>Turno</label>
+                        <select class="form-control" id="turno" name="turno" required>
+                            <option value="">Seleccione...</option>
+                            <option value="Matutino">Matutino</option>
+                            <option value="Vespertino">Vespertino</option>
+                            <option value="Nocturno">Nocturno</option>
+                        </select>
+                      </div>
+
+                      <div class="mb-3">
+                        <label>Cantidad de alumnos</label>
+                        <input type="number" class="form-control" id="cantidad" name="cantidad" required>
+                      </div>
+
+                      <div class="mb-3">
+                        <label>Adscripto</label>
+                        <select class="form-control" name="id_adscripto" required>
+                        <?php
+                        $adscriptoResult = $con->query("SELECT adscripto.id_adscripto, usuario.nombre_usuario, usuario.apellido_usuario 
+                                                         FROM adscripto 
+                                                         JOIN usuario ON adscripto.id_usuario=usuario.id_usuario");
+                        while($adscriptoRow = $adscriptoResult->fetch_assoc()){
+                            echo "<option value='".$adscriptoRow['id_adscripto']."'>".$adscriptoRow['nombre_usuario']." ".$adscriptoRow['apellido_usuario']."</option>";
+                        }
+                        ?>
+                        </select>
+                      </div>
+
+                      <div class="mb-3">
+                        <input type="hidden" name="id_secretario" value="1">
+                      </div>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                      <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<script src="../js/desplegarCaracteristicas.js"></script>
+
+  <!-- Scripts -->
+
+   <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script src="../js/grupo.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/desplegarCaracteristicas.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+ <!-- Mostrar mensaje del servidor con SweetAlert2 -->
+<?php if(isset($_GET['message']) && $_GET['message'] != ''): ?>
+<script>
+Swal.fire({
+  icon: '<?php echo $_GET['type'] ?? 'success'; ?>',
+  title: '<?php echo ($_GET['type'] ?? 'success') == 'error' ? 'Error' : 'Éxito'; ?>',
+  text: '<?php echo addslashes($_GET['message']); ?>',
+  timer: 2000,
+  showConfirmButton: false
+});
+
+// limpiar los parámetros para que al recargar no vuelva a aparecer
+if (window.history.replaceState) {
+  window.history.replaceState(null, null, window.location.pathname);
+}
+</script>
+<?php endif; ?>
+
 
 </body>
 </html>

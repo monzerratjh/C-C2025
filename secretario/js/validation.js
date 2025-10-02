@@ -55,7 +55,7 @@ form.addEventListener('submit', function(e) {
 });
 
 
-// grupo
+    // GRUPOS
 const orientacionesValidas = [
     "Tecnologías de la Información",
     "Tecnologías de la Información Bilingüe",
@@ -96,4 +96,30 @@ document.getElementById('formGrupo').addEventListener('submit', function(e) {
 
     // Si pasó todas las validaciones, enviar el formulario
     this.submit();
+});
+
+// confirmación para eliminar con SweetAlert2
+document.addEventListener('click', function(e){
+  if(e.target.matches('.eliminar-grupo-btn')) {
+    const id = e.target.dataset.id;
+    Swal.fire({
+      title: '¿Eliminar grupo?',
+      text: "Esta acción no se puede deshacer.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if(result.isConfirmed) {
+        // crear y enviar un form POST para eliminar
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = 'grupo-accion.php';
+        form.innerHTML = '<input type="hidden" name="accion" value="eliminar">' +
+                         '<input type="hidden" name="id_grupo" value="' + id + '">';
+        document.body.appendChild(form);
+        form.submit();
+      }
+    });
+  }
 });

@@ -49,15 +49,12 @@ Relaciones:
 <!DOCTYPE html>
 <head>
   <title>Grupos secretario</title>
-<<<<<<< HEAD
-=======
 
   <!-- Bootstrap CSS + Iconos + letras-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../style.css">
->>>>>>> ffa84287c2b839d9def9402d940b2ff10a8aef0b
 </head>
 
 <body>
@@ -65,9 +62,9 @@ Relaciones:
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="../img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="../../img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -77,7 +74,7 @@ Relaciones:
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <a href="../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
+      <a href="../../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
       <a href="secretario-usuario.php" class="nav-opciones">Usuarios</a>
       <a href="secretario-horario.php" class="nav-opciones">Horarios</a>
       <a href="secretario-grupo.php" class="fw-semibold seleccionado mb-2">Grupos</a>
@@ -103,7 +100,7 @@ Relaciones:
 
       <!-- Contenido principal-->
       <div class="col-md-9 horarios-estudiantes">
-        <img src="../img/logo.png" alt="Logo" class="logo">
+        <img src="../../img/logo.png" alt="Logo" class="logo">
 
         <div class="acordion-total">
           <div class="acordion">
@@ -163,8 +160,10 @@ Relaciones:
                         style="display:inline;">
                       <input type="hidden" name="accion" value="eliminar">
                       <input type="hidden" name="id_grupo" value="<?php echo $row['id_grupo']; ?>">
-                      <button type="button" class="btn btn-sm btn-danger" 
-                              onclick="confirmarEliminar(<?php echo $row['id_grupo']; ?>)">
+                      
+                      <button type="button" 
+                              class="btn btn-sm btn-danger eliminar-grupo-btn" 
+                              data-id="<?php echo $row['id_grupo']; ?>">
                           Eliminar
                       </button>
                   </form>
