@@ -101,7 +101,7 @@ JOIN usuario ON adscripto.id_usuario = usuario.id_usuario
   <div class="acordion">
 
   <div class="bloque-agregar">
-              <button class="etiqueta">Grupos</button>
+              <h1 class="etiqueta">Grupos</h1>
               <button class="agregar" 
                       data-bs-toggle="modal" 
                       data-bs-target="#modalGrupo" 
