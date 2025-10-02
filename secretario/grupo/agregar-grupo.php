@@ -1,4 +1,8 @@
 <?php
+
+// ESTE ARCHIVO ESTA PARA BORRAR -> falta botones para editar y emilinar grupo,LUEGO BORRAR ESTE ARCHIVO
+
+
 include('../../conexion.php');
 include('../../encabezado.php');
 $con = conectar_bd();

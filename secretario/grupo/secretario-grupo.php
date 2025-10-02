@@ -111,20 +111,51 @@ JOIN usuario ON adscripto.id_usuario = usuario.id_usuario
   </div>
 
   
+<?php while($row = $result->fetch_assoc()): ?>
+<div class="dia">
+    <button class="boton-opciones miercoles"><?php echo $row['nombre_grupo']; ?></button>
+    <div class="contenido-dia">
+        <table class="tabla-horario">
+            <tr><td>Orientación: <?php echo $row['orientacion_grupo']; ?></td></tr>
+            <tr><td>Turno: <?php echo $row['turno_grupo']; ?></td></tr>
+            <tr><td>Cantidad de alumnos: <?php echo $row['cantidad_alumno_grupo']; ?></td></tr>
+            <tr><td>Adscripto: <?php echo $row['nombre_usuario'].' '.$row['apellido_usuario']; ?></td></tr>
+        </table>
 
-          <?php while($row = $result->fetch_assoc()): ?>
-          <div class="dia">
-            <button class="boton-opciones miercoles"><?php echo $row['nombre_grupo']; ?></button>
-            <div class="contenido-dia">
-              <table class="tabla-horario">
-                <tr><td>Orientación: <?php echo $row['orientacion_grupo']; ?></td></tr>
-                <tr><td>Turno: <?php echo $row['turno_grupo']; ?></td></tr>
-                <tr><td>Cantidad de alumnos: <?php echo $row['cantidad_alumno_grupo']; ?></td></tr>
-                <tr><td>Adscripto: <?php echo $row['nombre_usuario'].' '.$row['apellido_usuario']; ?></td></tr>
-              </table>
-            </div>
-          </div>
-          <?php endwhile; ?>
+        <!-- Botones provisionales Editar / Eliminar -->
+        <div class="mt-2">
+            <button class="btn btn-sm btn-warning" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#modalGrupo"
+                    onclick="cargarEditar(
+                        '<?php echo $row['id_grupo']; ?>',
+                        '<?php echo $row['orientacion_grupo']; ?>',
+                        '<?php echo $row['turno_grupo']; ?>',
+                        '<?php echo $row['nombre_grupo']; ?>',
+                        '<?php echo $row['cantidad_alumno_grupo']; ?>',
+                        '<?php echo $row['id_adscripto']; ?>' // muestra los datos que estan guardados (y ahora seran editados)
+                    )">
+                Editar
+            </button>
+
+            <form id="formEliminar<?php echo $row['id_grupo'];?>" 
+                        method="POST" 
+                        action="grupo-accion.php" 
+                        style="display:inline;">
+                      <input type="hidden" name="accion" value="eliminar">
+                      <input type="hidden" name="id_grupo" value="<?php echo $row['id_grupo']; ?>">
+                      
+                      <button type="button" 
+                              class="btn btn-sm btn-danger eliminar-grupo-btn" 
+                              data-id="<?php echo $row['id_grupo']; ?>">
+                          Eliminar
+                      </button>
+            </form>
+        </div>
+    </div>
+</div>
+<?php endwhile; ?>
+
 
 <?php while($row = $result->fetch_assoc()){ ?>
               <tr>
@@ -147,20 +178,6 @@ JOIN usuario ON adscripto.id_usuario = usuario.id_usuario
                           )">
                       Editar
                   </button>
-
-                  <form id="formEliminar<?php echo $row['id_grupo'];?>" 
-                        method="POST" 
-                        action="grupo-accion.php" 
-                        style="display:inline;">
-                      <input type="hidden" name="accion" value="eliminar">
-                      <input type="hidden" name="id_grupo" value="<?php echo $row['id_grupo']; ?>">
-                      
-                      <button type="button" 
-                              class="btn btn-sm btn-danger eliminar-grupo-btn" 
-                              data-id="<?php echo $row['id_grupo']; ?>">
-                          Eliminar
-                      </button>
-                  </form>
                 </td>
               </tr>
               <?php } ?>
