@@ -74,7 +74,7 @@
 
       <div id="mensaje-error" style="color:red; font-weight:bold;"></div>
 
-      <form action="../log-in.php" method="POST" class="formulario">
+      <form id="form-login" action="../log-in.php" method="POST" class="formulario">
         
         <div class="input-group mb-3">
           <span class="input-group-text"><i class="bi bi-person"></i></span>
@@ -97,7 +97,8 @@
 
     </section>
 </main>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../form-logIn.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

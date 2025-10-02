@@ -4,9 +4,14 @@ include('../encabezado.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel Adscriptos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+
 </head>
 
 <body>
@@ -69,9 +74,7 @@ include('../encabezado.php');
         <i class="bi bi-person-circle"></i>
       </div>
 
-    <div id="mensaje-error" style="color:red; font-weight:bold;"></div>
-
-  <form id="form-login-adscripto" class="formulario" action="../log-in.php" method="POST">
+  <form id="form-login" class="formulario" action="../log-in.php" method="POST">
     
     <div class="input-group mb-3">
         <span class="input-group-text"><i class="bi bi-person"></i></span>
@@ -89,11 +92,11 @@ include('../encabezado.php');
     <button type="submit" id="boton" name="btn-log-in">Iniciar Sesión</button>
 </form>
 
-<div id="mensaje-error" style="color:red; font-weight:bold;"></div>
 
   </section>
 
 </main>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../form-logIn.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
