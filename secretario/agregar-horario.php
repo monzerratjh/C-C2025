@@ -1,5 +1,5 @@
 <?php 
-include('..\conexion.php');
+include('../conexion.php');
 include('../encabezado.php');
 $conn = conectar_bd();
 
@@ -10,9 +10,8 @@ $message = "";
 ?>
 
 <!DOCTYPE html>
-
 <head>
-    <title>Ingreso de Usuarios</title>
+    <title>Ingreso de Horario</title>
 </head>
 
 <body>
@@ -42,6 +41,6 @@ $message = "";
         </form>
     </div>
 
-    <script src="./validation.js"> </script>
+    <script src=""> </script>
 </body>
 </html>

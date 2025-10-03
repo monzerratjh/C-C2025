@@ -11,4 +11,4 @@
 
 
 <!-- CSS propio -->
-<link rel="stylesheet" href="../../..style.css">
+<link rel="stylesheet" href="/css/style.css">
