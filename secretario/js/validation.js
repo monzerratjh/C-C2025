@@ -97,13 +97,33 @@ document.getElementById('formGrupo').addEventListener('submit', function(e) {
         return;
     }
 
-    // Si pasó todas las validaciones, enviar el formulario
-    this.submit();
+    // Si pasó las validaciones, enviar por fetch
+    const formData = new FormData(this);
+
+  fetch("grupo-accion.php", {
+    method: "POST",
+    body: formData
+  })
+    .then(resultadoGrupo => resultadoGrupo.json())
+    .then(data => {
+      Swal.fire({
+        icon: data.type,
+        title: data.type === "error" ? "Error" : "Éxito",
+        text: data.message
+        }).then(() => {
+            if(data.type === 'success') {
+                location.reload(); // recarga la página (lista de grupos) SOLO si todo salió bien
+            }
+        });
+    })
+    .catch(err => {
+        Swal.fire({ icon: 'error', title: 'Error', text: 'No se pudo procesar la solicitud' });
+    });
 });
 
-// confirmación para eliminar con SweetAlert2
-document.addEventListener('click', function(e){
-  if(e.target.matches('.eliminar-grupo-btn')) {
+
+document.addEventListener('click', function(e) {
+  if (e.target.matches('.eliminar-grupo-btn')) {
     const id = e.target.dataset.id;
     Swal.fire({
       title: '¿Eliminar grupo?',
@@ -113,15 +133,33 @@ document.addEventListener('click', function(e){
       confirmButtonText: 'Sí, eliminar',
       cancelButtonText: 'Cancelar'
     }).then((result) => {
-      if(result.isConfirmed) {
-        // crear y enviar un form POST para eliminar
-        const form = document.createElement('form');
-        form.method = 'POST';
-        form.action = 'grupo-accion.php';
-        form.innerHTML = '<input type="hidden" name="accion" value="eliminar">' +
-                         '<input type="hidden" name="id_grupo" value="' + id + '">';
-        document.body.appendChild(form);
-        form.submit();
+      if (result.isConfirmed) {
+        const form = new FormData();
+        form.append("accion", "eliminar");
+        form.append("id_grupo", id);
+
+        fetch("grupo-accion.php", {
+          method: "POST",
+          body: form
+        })
+          .then(res => res.json())
+          .then(result => {
+            Swal.fire({
+              icon: result.type,
+              title: result.type === "error" ? "Error" : "Éxito",
+              text: result.message,
+              timer: 2000,
+              showConfirmButton: false
+            });
+
+            if (result.type === "success") {
+              setTimeout(() => location.reload(), 2000);
+            }
+          })
+          .catch(err => {
+            Swal.fire({ icon: 'error', title: 'Error', text: 'No se pudo eliminar el grupo.' });
+            console.error(err);
+          });
       }
     });
   }

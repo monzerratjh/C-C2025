@@ -113,13 +113,13 @@ JOIN usuario ON adscripto.id_usuario = usuario.id_usuario
   
 <?php while($row = $result->fetch_assoc()): ?>
 <div class="dia">
-    <button class="boton-opciones miercoles"><?php echo $row['nombre_grupo']; ?></button>
+    <button class="boton-opciones miercoles"><?php echo strip_tags($row['nombre_grupo']); ?></button>
     <div class="contenido-dia">
         <table class="tabla-horario">
-            <tr><td>Orientación: <?php echo $row['orientacion_grupo']; ?></td></tr>
+            <tr><td>Orientación: <?php echo strip_tags($row['orientacion_grupo']); //se usa para eliminar etiquetas HTML y PHP de un string. ?></td></tr>
             <tr><td>Turno: <?php echo $row['turno_grupo']; ?></td></tr>
             <tr><td>Cantidad de alumnos: <?php echo $row['cantidad_alumno_grupo']; ?></td></tr>
-            <tr><td>Adscripto: <?php echo $row['nombre_usuario'].' '.$row['apellido_usuario']; ?></td></tr>
+            <tr><td>Adscripto: <?php echo strip_tags($row['nombre_usuario']).' '. strip_tags($row['apellido_usuario']); ?></td></tr>
         </table>
 
         <!-- Botones provisionales Editar / Eliminar -->
@@ -140,7 +140,6 @@ JOIN usuario ON adscripto.id_usuario = usuario.id_usuario
 
             <form id="formEliminar<?php echo $row['id_grupo'];?>" 
                         method="POST" 
-                        action="grupo-accion.php" 
                         style="display:inline;">
                       <input type="hidden" name="accion" value="eliminar">
                       <input type="hidden" name="id_grupo" value="<?php echo $row['id_grupo']; ?>">
@@ -165,7 +164,7 @@ JOIN usuario ON adscripto.id_usuario = usuario.id_usuario
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                   </div>
 
-                  <form method="POST" action="grupo-accion.php" id="formGrupo">
+                  <form method="POST"  id="formGrupo">
                     <div class="modal-body">
 
                       <input type="hidden" id="accion" name="accion">
