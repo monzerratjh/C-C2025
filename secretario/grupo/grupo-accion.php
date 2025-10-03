@@ -34,12 +34,15 @@ try {
         $stmt = $con->prepare("SELECT COUNT(*) as total FROM grupo WHERE nombre_grupo = ?");
         $stmt->bind_param("s", $nombre);
         $stmt->execute();
+
+        // get_result() convierte el resultado en un objeto mysqli_result, y fetch_assoc() devuelve la primera fila como array asociativo: por ejemplo ['total' => 1].
         $resultado = $stmt->get_result()->fetch_assoc();
 
+            // Se mira el valor de total (la cantidad de filas que cumplen la condición). Si es mayor a 0, el nombre ya existe.
             if ($resultado['total'] > 0) {
             echo json_encode([
                 "type" => "error",
-                "message" => "El nombre de grupo '$nombre' ya existe en la base de datos."
+                'message' => 'El nombre de grupo "' . htmlspecialchars($nombre, ENT_SUBSTITUTE) . '" ya existe.'
             ]);
             exit;
             }
