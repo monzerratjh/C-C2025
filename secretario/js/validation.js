@@ -100,6 +100,10 @@ document.getElementById('formGrupo').addEventListener('submit', function(e) {
     // Si pasó las validaciones, enviar por fetch
     const formData = new FormData(this);
 
+    // actualiza info del formulario para q los valores sean los mismos que en la validacion
+    formData.set("nombre", nombre);
+
+    
   fetch("grupo-accion.php", {
     method: "POST",
     body: formData
