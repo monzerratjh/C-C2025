@@ -1,15 +1,13 @@
+<?php 
+include('../conexion.php');
+include('../encabezado.php');
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Reservar Espacio</title>
-
-  <!-- Bootstrap CSS + Iconos + letras-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -31,6 +29,7 @@
     </div>
     <div class="offcanvas-body d-flex flex-column">
       <a href="docente-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
+      <i class="bi bi-translate traductor-menu"></i>
 
       <a href="docente-grupo.php" class="nav-opciones mb-2">Grupos a Cargo</a>
       <a href="docente-reservar.php" class="fw-semibold seleccionado">Reservar Espacio</a>
@@ -49,6 +48,7 @@
             <a href="docente-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
             <a href="docente-bienvenida.php">Volver</a>
           </div>
+          <i class="bi bi-translate traductor-menu"></i>
         </div>
 
       <a href="docente-grupo.php" class="nav-opciones mb-2">Grupos a Cargo</a>

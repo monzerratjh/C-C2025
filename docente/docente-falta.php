@@ -7,10 +7,10 @@ include('../encabezado.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grupos a Cargo</title>
+    <title>Aviso de Falta</title>
 </head>
 <body>
-
+     <!-- Menú hamburguesa para móviles -->
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
@@ -29,14 +29,13 @@ include('../encabezado.php');
       <a href="docente-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
       <i class="bi bi-translate traductor-menu"></i>
 
-      <a href="docente-grupo.php">Grupos a Cargo</a>
+      <a href="docente-grupo.php" class="nav-opciones mb-2">Grupos a Cargo</a>
       <a href="docente-reservar.php" class="nav-opciones mb-2">Reservar Espacio</a>
-      <a href="docente-falta.php" class="nav-opciones mb-2">Avisar Falta</a>
+      <a href="docente-falta.php" class="fw-semibold seleccionado">Avisar Falta</a>
     </div>
   </div>
 
   <!-- Contenedor general -->
-
   <div class="container-fluid">
     <div class="row">
 
@@ -50,47 +49,32 @@ include('../encabezado.php');
           <i class="bi bi-translate traductor-menu"></i>
         </div>
 
-      <a href="docente-grupo.php" class="fw-semibold seleccionado">Grupos a Cargo</a>
+      <a href="docente-grupo.php" class="nav-opciones mb-2">Grupos a Cargo</a>
       <a href="docente-reservar.php" class="nav-opciones mb-2">Reservar Espacio</a>
-      <a href="docente-falta.php" class="nav-opciones mb-2">Avisar Falta</a>
+      <a href="docente-falta.php" class="fw-semibold seleccionado">Avisar Falta</a>
    </div>
 
-    <!-- Contenido principal-->
-<main class="col-md-9 principal" >
-
-    <img src="../../img/logo.png" alt="Logo" class="logo"> 
-    
-    
+   <main class="col-md-9 principal-estudiante" >
     <div class="bloque-agregar">
-      <button class="etiqueta2">Grupos a Cargo</button>
+      <button class="etiqueta2">Avisar Falta</button>
     </div>
-    
-<div class="acordion">
-  <div>
-      <button class="boton-opciones sin-flecha docente">3MD</button>
-      <div class="dia">
+    <form method="POST" id="formGrupo">
+                    <div class="modal-body">
 
-      <div>
-      <button class="boton-opciones sin-flecha docente">3MD</button>
-      <div class="dia">
+                      <div class="mb-3">
+                        <label>Fecha</label>
+                        <input type="date" class="form-control" id="fecha" name="fecha" required>
+                      </div>
 
-      <div>
-      <button class="boton-opciones sin-flecha docente">3MD</button>
-      <div class="dia">
-
-            <button class="boton-opciones sin-flecha docente">3MD</button>
-      <div class="dia">
-
-      <div>
-      <button class="boton-opciones sin-flecha docente">3MD</button>
-      <div class="dia">
-
-      <div>
-      <button class="boton-opciones sin-flecha docente">3MD</button>
-      <div class="dia"></div>
-
-  </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+                      <div class="mb-3">
+                        <label>Motivo</label>
+                        <input type="number" class="form-control" id="cantidad" name="cantidad" required>
+                      </div>
+                    </div>
+                      <button type="submit" class="btn btn-primary">Avisar</button>
+                    </div>
+                  </form>
+   </main>  
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>  
 </body>
 </html>

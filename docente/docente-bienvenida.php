@@ -10,8 +10,7 @@ include('../encabezado.php');
 </head>
 
 <body>
-
-  <!-- Menú hamburguesa para móviles -->
+ <!-- Menú hamburguesa para móviles -->
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
@@ -27,12 +26,14 @@ include('../encabezado.php');
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <a href="../log-out.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
-
-       <a href="docente-grupo.php" class="nav-opciones">Grupos a Cargo</a>
+      <div>
+      <a href="log-out.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
+      <i class="bi bi-translate traductor-menu"></i>
+      </div>
+        <a href="docente-grupo.php" class="nav-opciones">Grupos a Cargo</a>
         <a href="docente-reservar.php" class="nav-opciones">Reservar Espacio</a>
         <a href="docente-falta.php" class="nav-opciones">Avisar Falta</a>
-     </div>
+      </div>
   </div>
 
   <!-- Contenedor general -->
@@ -46,13 +47,13 @@ include('../encabezado.php');
             <a href="../log-out.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
             <a href="../log-out.php">Cerrar Sesión</a>
           </div>
+          <i class="bi bi-translate traductor-menu"></i>
         </div>
 
-      <a href="docente-grupo.php" class="nav-opciones mb-2">Grupos a Cargo</a>
-      <a href="docente-reservar.php" class="nav-opciones mb-2">Reservar Espacio</a>
-      <a href="docente-falta.php" class="nav-opciones mb-2">Avisar Falta</a>
-    </div>
-
+        <a href="docente-falta.php" class="nav-opciones">Grupos a Cargo</a>
+        <a href="docente-reservar.php" class="nav-opciones">Reservar Espacio</a>
+        <a href="docente-falta.php" class="nav-opciones">Avisar Falta</a>
+       </div>
 
 <!-- Contenido principal -->
 <main class="col-md-9 principal" >
