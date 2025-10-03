@@ -30,6 +30,24 @@ $response = ["type" => "success", "message" => ""]; //Esto es lo que el JavaScri
 // TRY intenta ejecutar las acciones que podrían fallar
 try {
     if($accion === 'insertar') {
+        // Verificar si el nombre ya existe en la bd
+        $stmt = $con->prepare("SELECT COUNT(*) as total FROM grupo WHERE nombre_grupo = ?");
+        $stmt->bind_param("s", $nombre);
+        $stmt->execute();
+
+        // get_result() convierte el resultado en un objeto mysqli_result, y fetch_assoc() devuelve la primera fila como array asociativo: por ejemplo ['total' => 1].
+        $resultado = $stmt->get_result()->fetch_assoc();
+
+            // Se mira el valor de total (la cantidad de filas que cumplen la condición). Si es mayor a 0, el nombre ya existe.
+            if ($resultado['total'] > 0) {
+            echo json_encode([
+                "type" => "error",
+                'message' => 'El nombre de grupo "' . htmlspecialchars($nombre, ENT_SUBSTITUTE) . '" ya existe.'
+            ]);
+            exit;
+            }
+
+        // Si no existe, insertar
         $stmt = $con->prepare("INSERT INTO grupo (nombre_grupo, orientacion_grupo, turno_grupo, cantidad_alumno_grupo, id_adscripto, id_secretario) VALUES (?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("sssiii", $nombre, $orientacion, $turno, $cantidad, $id_adscripto, $id_secretario);
         if(!$stmt->execute()) throw new Exception($stmt->error); //Si falla, se lanza una excepción con el mensaje de error.

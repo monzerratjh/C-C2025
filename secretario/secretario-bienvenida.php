@@ -12,9 +12,9 @@ include('../encabezado.php');
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="/img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="../img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="/img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -45,7 +45,7 @@ include('../encabezado.php');
             <a href="../log-out.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
             <a href="../log-out.php">Cerrar Sesión</a>
           </div>
-          <i class="bi bi-translate traductor-menu"></i>
+           <i class="bi bi-translate traductor-menu"></i>
         </div>
 
         <a href="" class="nav-opciones">Usuarios</a>
@@ -57,7 +57,7 @@ include('../encabezado.php');
 <!-- Contenido principal -->
 <main class="col-md-9 principal" >
 
-    <img src="../img/logo.png" alt="Logo" class="logo"> 
+    <img src="/img/logo.png" alt="Logo" class="logo"> 
     
     <h1 class="bienvenida">Bienvenid@</h1>
     <h1 class="bienvenida">Secretari@ @username</h1>

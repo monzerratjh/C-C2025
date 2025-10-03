@@ -103,13 +103,14 @@ JOIN usuario ON adscripto.id_usuario = usuario.id_usuario
   
 <?php while($row = $result->fetch_assoc()): ?>
 <div class="dia">
-    <button class="boton-opciones miercoles"><?php echo strip_tags($row['nombre_grupo']); ?></button>
+    <button class="boton-opciones miercoles"><?php echo htmlspecialchars($row['nombre_grupo'], ENT_SUBSTITUTE); ?></button>
     <div class="contenido-dia">
         <table class="tabla-horario">
-            <tr><td>Orientación: <?php echo strip_tags($row['orientacion_grupo']); //se usa para eliminar etiquetas HTML y PHP de un string. ?></td></tr>
+            <!--- htmlspecialchars = encodes html special characters such as <, ", /, etc to prevent XSS (Cross Site Scripting)-->
+            <tr><td>Orientación: <?php echo htmlspecialchars($row['orientacion_grupo'], ENT_SUBSTITUTE); //se usa para eliminar etiquetas HTML y PHP de un string. ?></td></tr>
             <tr><td>Turno: <?php echo $row['turno_grupo']; ?></td></tr>
             <tr><td>Cantidad de alumnos: <?php echo $row['cantidad_alumno_grupo']; ?></td></tr>
-            <tr><td>Adscripto: <?php echo strip_tags($row['nombre_usuario']).' '. strip_tags($row['apellido_usuario']); ?></td></tr>
+            <tr><td>Adscripto: <?php echo htmlspecialchars($row['nombre_usuario'], ENT_SUBSTITUTE).' '. htmlspecialchars($row['apellido_usuario'], ENT_SUBSTITUTE); ?></td></tr>
         </table>
 
         <!-- Botones provisionales Editar / Eliminar -->
