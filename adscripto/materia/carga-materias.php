@@ -1,0 +1,88 @@
+<?php 
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Adscriptos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+  <!-- Menú hamburguesa para móviles -->
+  <nav class="d-md-none">
+    <div class="container-fluid">
+      <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
+        <img class="menuResponsive" src="../../img/menu.png" alt="menu">
+      </button>
+      <img class="logoResponsive" src="../../img/logo.png" alt="logoRespnsive">
+    </div>
+  </nav>
+
+  <!-- Menú lateral (para celulares/tablets) -->
+ <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
+    <div class="offcanvas-header">
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+        <div>
+      <a href="../adscripto-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
+      <i class="bi bi-translate traductor-menu"></i>
+      </div>
+      <a href="../espacio/adscripto-espacio.php" class="nav-opciones mb-2">Espacio</a>
+      <a href="../reserva-adscripto.php" class="nav-opciones mb-2">Reserva</a>
+      <a href="../falta-docente.php" class="nav-opciones mb-2">Falta docente</a>
+      <a href="carga-materias.php" class="fw-semibold seleccionado mb-2">Materias</a>
+     </div>
+  </div>
+
+  <!-- Contenedor general -->
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- Banner pantallas grandes -->
+      <div class="col-md-3 barra-lateral d-none d-md-flex">
+        <div class="volverGeneral">
+          <div class="volver">
+            <a href="adscripto-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="adscripto-bienvenida.php">Volver</a>
+          </div>
+            <i class="bi bi-translate traductor-menu"></i>
+        </div>
+
+       <a href="../espacio/adscripto-espacio.php" class="nav-opciones mb-2">Espacio</a>
+      <a href="../reserva-adscripto.php" class="nav-opciones mb-2">Reserva</a>
+      <a href="../falta-docente.php" class="nav-opciones mb-2">Falta docente</a>
+      <a href="carga-materias.php" class="fw-semibold seleccionado mb-2">Materias</a>
+    </div>
+
+
+<!-- Contenido principal -->
+      <div class="col-md-9 col-12 principal">
+        <img src="../../img/logo.png" alt="Logo" class="logo"> 
+        <h2>Cargar materias</h2>
+        <p>Ingrese el grupo en el cual va a agregar la materia.</p>
+
+        <div class="busqueda">
+          <i class="bi bi-search icono-busqueda"></i>
+          <input type="text" class="diseno-busqueda" placeholder="Ingrese el grupo" list="lista-grupos" id="grupoInput" />
+          <datalist id="lista-grupos">
+            <option value="1° MD">
+            <option value="2° MD">
+            <option value="3° MD">
+          </datalist> 
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="redireccionar-grupo.js"></script>
+</body>
+</html>

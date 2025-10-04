@@ -27,12 +27,14 @@ include('../encabezado.php');
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <a href="adscripto-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
-
-       <a href="/adscripto/adscripto-espacio.php" class="nav-opciones">Espacio</a>
-        <a href="/adscripto/reserva-adscripto.php" class="fw-semibold seleccionado mb-2">Reserva</a>
-        <a href="/adscripto/falta-docente.php" class="nav-opciones">Falta docente</a>
-        <a href="/adscripto/carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
+        <div>
+      <a href="../adscripto-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
+      <i class="bi bi-translate traductor-menu"></i>
+      </div>
+      <a href="espacio/adscripto-espacio.php" class="nav-opciones mb-2">Espacio</a>
+      <a href="reserva-adscripto.php" class="fw-semibold seleccionado mb-2">Reserva</a>
+      <a href="falta-docente.php" class="nav-opciones mb-2">Falta docente</a>
+      <a href="materia/carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
      </div>
   </div>
 
@@ -47,12 +49,13 @@ include('../encabezado.php');
             <a href="adscripto-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
             <a href="adscripto-bienvenida.php">Volver</a>
           </div>
+            <i class="bi bi-translate traductor-menu"></i>
         </div>
 
-       <a href="../adscripto/adscripto-espacio.php" class="nav-opciones mb-2">Espacio</a>
-      <a href="../adscripto/reserva-adscripto.php" class="fw-semibold seleccionado mb-2">Reserva</a>
-      <a href="../adscripto/falta-docente.php" class="nav-opciones mb-2">Falta docente</a>
-      <a href="../adscripto/carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
+       <a href="espacio/adscripto-espacio.php" class="nav-opciones mb-2">Espacio</a>
+      <a href="reserva-adscripto.php" class="fw-semibold seleccionado mb-2">Reserva</a>
+      <a href="falta-docente.php" class="nav-opciones mb-2">Falta docente</a>
+      <a href="materia/carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
     </div>
 
 
@@ -61,9 +64,9 @@ include('../encabezado.php');
     <img src="../img/logo.png" alt="Logo" class="logo"> 
 
     
-    <div class="reserva-titulo">
-      <h3>Solicitudes de Reserva</h3>
-    </div>
+  
+      <h1>Solicitudes de Reserva</h1>
+
 
     <table class="tabla-reserva">
       <thead>

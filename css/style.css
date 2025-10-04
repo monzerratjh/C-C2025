@@ -529,14 +529,6 @@ a{
   max-width: 700px; /* más angosto */
 }
 
-.espacio-titulo h3 {
-  background: #55c4b3;
-  display: inline-block;
-  padding: 10px 40px;
-  border-radius: 30px;
-  color: #000;
-  font-weight: normal;
-}
 
 /* Tarjetas generales */
 .espacio-card {
@@ -646,18 +638,6 @@ a{
   min-height: 100vh;       /* ocupa alto completo */
 }
 
-/* Título */
-.reserva-titulo h3 {
-  background: #55c4b3;
-  padding: 15px 40px;
-  border-radius: 30px;
-  color: #000;
-  font-weight: bold;
-  font-size: 1.6rem;
-  margin-bottom: 25px;
-  text-align: center;
-}
-
 /* La tabla centrada */
 .tabla-reserva {
   width: 100%;
@@ -700,11 +680,6 @@ a{
   .tabla-reserva td {
     font-size: 0.9rem;
     padding: 8px;
-  }
-
-  .reserva-titulo h3 {
-    font-size: 1.1rem;
-    padding: 10px 20px;
   }
 }
 

@@ -62,9 +62,8 @@ include('../../encabezado.php');
     <img src="../../img/logo.png" alt="Logo" class="logo"> 
 
     <div class="container my-4 espacio-contenedor">
-  <div class="espacio-titulo text-center">
     <h3>Laboratorios</h3>
-  </div>
+
 
   <div class="row justify-content-center mt-4">
     

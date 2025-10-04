@@ -31,7 +31,7 @@ include('../../encabezado.php');
       <a href="adscripto-espacio.php" class="fw-semibold seleccionado mb-2">Espacio</a>
       <a href="../reserva-adscripto.php" class="nav-opciones mb-2">Reserva</a>
       <a href="../falta-docente.php" class="nav-opciones mb-2">Falta docente</a>
-      <a href="../carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
+      <a href="../materia/carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
      </div>
   </div>
 
@@ -52,7 +52,7 @@ include('../../encabezado.php');
        <a href="adscripto-espacio.php" class="fw-semibold seleccionado mb-2">Espacio</a>
       <a href="../reserva-adscripto.php" class="nav-opciones mb-2">Reserva</a>
       <a href="../falta-docente.php" class="nav-opciones mb-2">Falta docente</a>
-      <a href="../carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
+      <a href="../materia/carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
     </div>
 
 <!-- Contenido principal -->
