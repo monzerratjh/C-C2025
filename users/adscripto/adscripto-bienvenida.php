@@ -28,15 +28,17 @@ include('../../encabezado.php');
     </div>
     <div class="offcanvas-body d-flex flex-column">
       <div>
-      <a href="/utils/log-out.php" class="mb-3" data-i18n="sessionClose"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
-      <i class="bi bi-translate traductor-menu"></i>
-      </div>
-      
+        <a href="/utils/log-out.php" class="mb-3">
+          <i class="bi bi-arrow-left-circle-fill me-2"></i>
+          <span data-i18n="sessionClose">Cerrar Sesión</span>
+        </a>
+        <i class="bi bi-translate traductor-menu"></i>
+      </div>   
 
-      <a href="espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="space">Espacio</a>
+      <a href="espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="materia/carga-materias.php" class="nav-opciones mb-2" data-i18n="loadSubjects">Cargar materias</a>
+      <a href="materia/carga-materias.php" class="nav-opciones mb-2" data-i18n="uploadSubjects">Cargar materias</a>
     </div>
   </div>
 
@@ -54,10 +56,10 @@ include('../../encabezado.php');
            <i class="bi bi-translate traductor-menu"></i>
         </div>
 
-      <a href="espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="space">Espacio</a>
+      <a href="espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="materia/carga-materias.php" class="nav-opciones mb-2" data-i18n="loadSubjects">Cargar materias</a>
+      <a href="materia/carga-materias.php" class="nav-opciones mb-2" data-i18n="uploadSubjects">Cargar materias</a>
     </div>
 
 

@@ -16,10 +16,10 @@ i18next.init({
         sessionClose: "Cerrar Sesión",
         goBack: "Volver",
         //adscripto
-        space: "Espacio",
+        facility: "Espacio",
         reservation: "Reserva",
         teacherAbsence: "Falta docente",
-        loadSubjects: "Cargar materias",
+        uploadSubjects: "Cargar materias",
         //
         idCard: "Cédula de Identidad",
         password: "Contraseña",
@@ -40,10 +40,10 @@ i18next.init({
         sessionClose: "Log Out",
         goBack: "Go Back",
         //adscripto
-        space: "Space",
+        facility: "Facility", // Más institucional y abarca todo tipo de espacio físico (aulas, laboratorios, oficinas). Ideal para un sistema educativo.
         reservation: "Reservation",
         teacherAbsence: "Teacher absence",
-        loadSubjects: "Load subjects",
+        uploadSubjects: "Upload subjects",
         //
         idCard: "ID Card",
         password: "Password",
