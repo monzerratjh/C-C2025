@@ -28,15 +28,18 @@ include('../../encabezado.php');
     </div>
     <div class="offcanvas-body d-flex flex-column">
       <div>
-        <a href="../../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2" data-i18n="goBack"></i>Volver</a>
+        <a href="../../index.php" class="mb-3">
+          <i class="bi bi-arrow-left-circle-fill me-2"></i>
+          <span data-i18n="goBack">Volver</span>
+        </a>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
 
-      <a href="/estudiante/estudiante.php" class="nav-opciones mb-2" data-i18n="student">Estudiante</a>
+      <a href="/users/estudiante/estudiante.php" class="nav-opciones mb-2" data-i18n="student">Estudiante</a>
 
-      <a href="/adscripto/adscripto-log.php" class="fw-semibold seleccionado mb-2" data-i18n="adscripto">Adscripto</a>
+      <a href="/users/adscripto/adscripto-log.php" class="fw-semibold seleccionado mb-2" data-i18n="adscripto">Adscripto</a>
 
-      <a href="/docente/docente-log.php" class="nav-opciones mb-2" data-i18n="teacher">Docente</a>
+      <a href="/users/docente/docente-log.php" class="nav-opciones mb-2" data-i18n="teacher">Docente</a>
 
       <a href="/users/secretario/secretario-log.php" class="nav-opciones mb-2" data-i18n="secretary">Secretario</a>
     </div>
