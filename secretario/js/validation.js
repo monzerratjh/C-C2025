@@ -67,25 +67,40 @@ function validarGrupo() {
     const cantidad = parseInt(document.getElementById('cantidad').value);
 
     if (nombre === '') {
-        Swal.fire({ icon: 'error', title: 'Error', text: 'Ingrese el nombre del grupo' });
+        Swal.fire({ 
+            icon: 'error', 
+            title: 'Error', 
+            text: 'Ingrese el nombre del grupo' });
         return false;
     } else if (nombre.length > 6) {
-        Swal.fire({ icon: 'error', title: 'Error', text: 'El nombre del grupo debe ser menor a 6 caracteres' });
+        Swal.fire({ 
+            icon: 'error', 
+            title: 'Error', 
+            text: 'El nombre del grupo debe ser menor a 6 caracteres' });
         return false;
     }
 
     if (orientacion === '') {
-        Swal.fire({ icon: 'error', title: 'Error', text: 'Seleccione una orientación de las del sistema' });
+        Swal.fire({ 
+            icon: 'error', 
+            title: 'Error', 
+            text: 'La orientación debe coincidir con una de las opciones del sistema.' });
         return false;
     }
 
     if (turno === '') {
-        Swal.fire({ icon: 'error', title: 'Error', text: 'Seleccione un turno' });
+        Swal.fire({ 
+            icon: 'error', 
+            title: 'Error', 
+            text: 'Seleccione un turno' });
         return false;
     }
 
     if (isNaN(cantidad) || cantidad < 1) {
-        Swal.fire({ icon: 'error', title: 'Error', text: 'Cantidad de alumnos inválida' });
+        Swal.fire({ 
+            icon: 'error', 
+            title: 'Error', 
+            text: 'Cantidad de alumnos inválida' });
         return false;
     }
 
@@ -129,7 +144,10 @@ function enviarGrupo(formData) {
         });
     })
     .catch(err => {
-        Swal.fire({ icon: 'error', title: 'Error', text: 'No se pudo procesar la solicitud' });
+        Swal.fire({ 
+            icon: 'error', 
+            title: 'Error', 
+            text: 'No se pudo procesar la solicitud' });
         console.error(err);
     });
 }
@@ -169,3 +187,8 @@ document.addEventListener('click', function(e) {
         });
     }
 });
+
+// limpiar los parámetros para que al recargar no vuelva a aparecer
+if (window.history.replaceState) {
+  window.history.replaceState(null, null, window.location.pathname);
+}

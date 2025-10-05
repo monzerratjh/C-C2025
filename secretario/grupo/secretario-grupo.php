@@ -3,7 +3,7 @@ include('../../conexion.php');
 include('../../encabezado.php');
 $con = conectar_bd();
 
-// Consulta para obtener todos los grupos con información del adscripto y usuario
+// Consulta SQL para obtener todos los grupos junto con el adscripto asociado y el nombre del usuario adscripto
 $result = $con->query("
     SELECT grupo.id_grupo,
            grupo.nombre_grupo,
@@ -63,6 +63,8 @@ JOIN adscripto ON grupo.id_adscripto = adscripto.id_adscripto
 JOIN usuario ON adscripto.id_usuario = usuario.id_usuario
   * Cada adscripto se asocia con su usuario.
 */
+
+$con->close(); // cierro conexión cuando ya tengo todos los datos
 ?>
 
 <!DOCTYPE html>
@@ -264,24 +266,6 @@ JOIN usuario ON adscripto.id_usuario = usuario.id_usuario
   <script src="../js/desplegarCaracteristicas.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
- <!-- Mostrar mensaje del servidor con SweetAlert2 -->
-<?php if(isset($_GET['message']) && $_GET['message'] != ''): ?>
-<script>
-Swal.fire({
-  icon: '<?php echo $_GET['type'] ?? 'success'; ?>',
-  title: '<?php echo ($_GET['type'] ?? 'success') == 'error' ? 'Error' : 'Éxito'; ?>',
-  text: '<?php echo addslashes($_GET['message']); ?>',
-  timer: 2000,
-  showConfirmButton: false
-});
-
-// limpiar los parámetros para que al recargar no vuelva a aparecer
-if (window.history.replaceState) {
-  window.history.replaceState(null, null, window.location.pathname);
-}
-</script>
-<?php endif; ?>
 
 
 </body>
