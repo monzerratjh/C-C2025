@@ -31,6 +31,7 @@ i18next.init({
         thRequestedDate: "Fecha solicitada",
         thReservationStatus: "Estado reserva",
         //
+        teacherAbsence: "Falta docentes",
 
       }
     },
@@ -61,6 +62,8 @@ i18next.init({
         thFacilityRequested: "Requested Facility",
         thRequestedDate: "Requested date",
         thReservationStatus: "Reservation status",
+        //
+        teacherAbsence: "Teacher Absence",
       }
     }
   }
