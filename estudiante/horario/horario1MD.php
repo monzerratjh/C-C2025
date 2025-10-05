@@ -56,8 +56,8 @@ include('../../encabezado.php');
         <a href="../../secretario/secretario-log.php" class="nav-opciones">Secretario</a>
       </div>
 
-    <!-- Contenido principal-->
-   <main class="col-md-9 principal-estudiante" >
+    <!-- Contenido horarios-estudiante-->
+   <main class="col-md-9 horarios-estudiante" >
       <img src="../../img/logo.png" alt="Logo" class="logo">
 
       <div class="acordion-total">
