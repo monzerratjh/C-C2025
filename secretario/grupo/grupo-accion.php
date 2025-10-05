@@ -3,10 +3,20 @@ include('../../conexion.php');
 $con = conectar_bd();
 session_start();
 
+header("Content-Type: application/json"); // Todas las respuestas serán JSON
+
+
 /* Recibimos los datos del formulario:
     Si $_POST['accion'] existe y no es null, lo asigna.
     
     Si no existe usa '' (valor por defecto).
+
+    es lo mismo que si fuese:
+            if (isset($_POST['accion'])) {
+                $accion = $_POST['accion'];
+            } else {
+                $accion = '';
+            }
     */
 $accion       = $_POST['accion'] ?? '';
 $id_grupo     = $_POST['id_grupo'] ?? null; //?? es el operador null coalescing, que dice: si no existe el valor, usar el valor de la derecha (por ejemplo '' o null).
@@ -17,37 +27,33 @@ $cantidad     = $_POST['cantidad'] ?? '';
 $id_adscripto = $_POST['id_adscripto'] ?? '';
 $id_secretario = $_SESSION['id_secretario'] ?? 1; // fallback a 1 si no hay sesión
 
-
-// Se indica que la respuesta sera JSON, no HTML
-header("Content-Type: application/json");
-
-// Se indica que la respuesta será JSON, no HTML.
-$response = ["type" => "success", "message" => ""]; //Esto es lo que el JavaScript con fetch() va a leer y mostrar con SweetAlert.
-// $message = '';  Texto que se mostrará.
-// $type = 'success'; Tipo de alerta (success o error).
+// Obtener orientaciones válidas
+$orientacionesValidas = obtenerOrientacionesValidas($con);
 
 
 // TRY intenta ejecutar las acciones que podrían fallar
 try {
     if($accion === 'insertar') {
-        // Verificar si el nombre ya existe en la bd
-        $stmt = $con->prepare("SELECT COUNT(*) as total FROM grupo WHERE nombre_grupo = ?");
-        $stmt->bind_param("s", $nombre);
-        $stmt->execute();
-
-        // get_result() convierte el resultado en un objeto mysqli_result, y fetch_assoc() devuelve la primera fila como array asociativo: por ejemplo ['total' => 1].
-        $resultado = $stmt->get_result()->fetch_assoc();
-
-            // Se mira el valor de total (la cantidad de filas que cumplen la condición). Si es mayor a 0, el nombre ya existe.
-            if ($resultado['total'] > 0) {
+        
+        // Validar nombre 
+        if (nombreGrupoExiste($con, $nombre)) {
             echo json_encode([
                 "type" => "error",
-                'message' => 'El nombre de grupo "' . htmlspecialchars($nombre, ENT_SUBSTITUTE) . '" ya existe.'
+                "message" => "El nombre de grupo '$nombre' ya existe."
             ]);
             exit;
-            }
+        }
 
-        // Si no existe, insertar
+        // Validar orientación (independientemente a mayúsculas/tildes)
+        $orientacionValida = validarOrientacion($orientacion, $orientacionesValidas);
+        if (!$orientacionValida) {
+            echo json_encode([
+                "type" => "error",
+                "message" => "La orientación '$orientacion' no es válida. Debe coincidir con una de las opciones del sistema."
+            ]);
+            exit;
+        }
+
         $stmt = $con->prepare("INSERT INTO grupo (nombre_grupo, orientacion_grupo, turno_grupo, cantidad_alumno_grupo, id_adscripto, id_secretario) VALUES (?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("sssiii", $nombre, $orientacion, $turno, $cantidad, $id_adscripto, $id_secretario);
         if(!$stmt->execute()) throw new Exception($stmt->error); //Si falla, se lanza una excepción con el mensaje de error.
@@ -67,6 +73,17 @@ try {
         */
 
     elseif($accion === 'editar') { // WHERE id_grupo=? -> Indica qué grupo se actualizará según su ID.
+        
+        // validar orientación
+        $orientacionValida = validarOrientacion($orientacion, $orientacionesValidas);
+        if (!$orientacionValida) {
+            echo json_encode([
+                "type" => "error",
+                "message" => "La orientación '$orientacion' no es válida. Debe coincidir con una de las opciones del sistema."
+            ]);
+            exit;
+        }
+        
         $stmt = $con->prepare("UPDATE grupo SET nombre_grupo=?, orientacion_grupo=?, turno_grupo=?, cantidad_alumno_grupo=?, id_adscripto=? WHERE id_grupo=?");
         $stmt->bind_param("sssiii", $nombre, $orientacion, $turno, $cantidad, $id_adscripto, $id_grupo);
         if(!$stmt->execute()) throw new Exception($stmt->error);
@@ -96,5 +113,51 @@ try {
 4. Si es éxito → recarga la lista o cierra el modal.
    Si es error → muestra el error.
 
-    AJAX -> AJAX (Asynchronous JavaScript and XML) es una técnica que permite que tu página se comunique con el servidor sin recargar toda la página.Hoy en día se usa JSON
+    AJAX -> (Asynchronous JavaScript and XML) es una técnica que permite que tu página se comunique con el servidor sin recargar toda la página.Hoy en día se usa JSON
 */
+
+// Normaliza texto (minúsculas y sin tildes)
+function normalizarTexto($texto) {
+    // Convierte a minúsculas
+    $texto = mb_strtolower($texto, 'UTF-8');
+
+    // Sustituye tildes, diéresis y eñes manualmente
+    $buscar  = ['á','é','í','ó','ú','ü','ñ'];
+    $reempl  = ['a','e','i','o','u','u','n'];
+    $texto = str_replace($buscar, $reempl, $texto);
+
+    // También elimina posibles espacios extras
+    return trim($texto);
+};
+
+
+// obtiene todas las orientaciones válidas desde el ENUM de la BD
+function obtenerOrientacionesValidas($con) {
+    $resEnum = $con->query("SHOW COLUMNS FROM grupo LIKE 'orientacion_grupo'");
+    $rowEnum = $resEnum->fetch_assoc();
+    preg_match_all("/'([^']+)'/", $rowEnum['Type'], $coincidencias);
+    return $coincidencias[1];
+}
+
+
+//  Valida si una orientación enviada por el usuario es válida (ignora mayúsculas y tildes)
+function validarOrientacion($orientacionUsuario, $orientacionesValidas) {
+    $normalizadoUsuario = normalizarTexto($orientacionUsuario);
+
+    foreach ($orientacionesValidas as $valida) {
+        if ($normalizadoUsuario === normalizarTexto($valida)) {
+            return $valida; // devuelve la versión original (exacta) del ENUM
+        }
+    }
+    return false; // No coincide con ninguna orientación
+}
+
+
+// Verifica si un nombre de grupo ya existe
+function nombreGrupoExiste($con, $nombre) {
+    $stmt = $con->prepare("SELECT COUNT(*) AS total FROM grupo WHERE nombre_grupo = ?");
+    $stmt->bind_param("s", $nombre);
+    $stmt->execute();
+    $resultado = $stmt->get_result()->fetch_assoc();
+    return $resultado['total'] > 0;
+}

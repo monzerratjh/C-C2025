@@ -21,7 +21,36 @@ $result = $con->query("
         ON adscripto.id_usuario = usuario.id_usuario
 ");
 
-/*
+// Obtener nombre y apellido adscripto mediante id (usuario)
+$adscriptoResult = $con->query("SELECT adscripto.id_adscripto, usuario.nombre_usuario, usuario.apellido_usuario 
+                                                         FROM adscripto 
+                                                         JOIN usuario ON adscripto.id_usuario=usuario.id_usuario");
+
+// Obtener las opciones del ENUM "orientacion_grupo" directamente desde la BD
+$ENUMresult = $con->query("SHOW COLUMNS FROM grupo LIKE 'orientacion_grupo'");
+$rowENUM = $ENUMresult->fetch_assoc();
+
+// Extraer los valores entre comillas simples del tipo ENUM
+preg_match_all("/'([^']+)'/", $rowENUM['Type'], $coincidencias);
+$orientaciones = $coincidencias[1]; /* Array con todas las orientaciones válidas
+
+ * preg_match_all -> match=coincidencia
+ 
+$coincidencias[0] = ["'Tecnologías de la Información'", "'Diseño Gráfico'", "'Secretariado'"];
+$coincidencias[1] = ["Tecnologías de la Información", "Diseño Gráfico", "Secretariado"];
+
+
+fetch_assoc() funcion q toma una fila del resultado de una consulta SQL y la devuelve como un array asociativo.
+
+[
+  "id_usuario" => 1,
+  "nombre" => "Ana",
+  "apellido" => "Pérez"
+]
+
+
+  SQL
+
  adscripto.id_usuario AS id_usuario_adscripto
   * Columna de adscripto renombrada para diferenciarla de usuario.id_usuario.
 
@@ -169,15 +198,11 @@ JOIN usuario ON adscripto.id_usuario = usuario.id_usuario
                       <div class="mb-3">
                         <label for="orientacion">Orientación</label>
                         <input type="text" name="orientacion" class="form-control"
-                               placeholder="Ingrese la orientación" list="orientaciones" id="orientacionInput" required />
+                              placeholder="Ingrese la orientación" list="orientaciones" id="orientacionInput" required />
                         <datalist id="orientaciones">
-                            <option value="Tecnologías de la Información"></option>
-                            <option value="Tecnologías de la Información Bilingüe"></option>
-                            <option value="Finest IT y Redes"></option>
-                            <option value="Redes y Comunicaciones Ópticas"></option>
-                            <option value="Diseño Gráfico en Comunicación Visual"></option>
-                            <option value="Secretariado Bilingüe - Inglés"></option>
-                            <option value="Tecnólogo en Ciberseguridad"></option>
+                          <?php foreach($orientaciones as $o): ?>
+                            <option value="<?php echo htmlspecialchars($o, ENT_QUOTES, 'UTF-8'); ?>"></option>
+                          <?php endforeach; ?>
                         </datalist>
                       </div>
 
@@ -200,9 +225,6 @@ JOIN usuario ON adscripto.id_usuario = usuario.id_usuario
                         <label>Adscripto</label>
                         <select class="form-control" name="id_adscripto" required>
                         <?php
-                        $adscriptoResult = $con->query("SELECT adscripto.id_adscripto, usuario.nombre_usuario, usuario.apellido_usuario 
-                                                         FROM adscripto 
-                                                         JOIN usuario ON adscripto.id_usuario=usuario.id_usuario");
                         while($adscriptoRow = $adscriptoResult->fetch_assoc()){
                             echo "<option value='".$adscriptoRow['id_adscripto']."'>".$adscriptoRow['nombre_usuario']." ".$adscriptoRow['apellido_usuario']."</option>";
                         }
@@ -210,8 +232,9 @@ JOIN usuario ON adscripto.id_usuario = usuario.id_usuario
                         </select>
                       </div>
 
-                      <div class="mb-3">
-                        <input type="hidden" name="id_secretario" value="1">
+                      <div class="mb-3"> <!-- id del secretario asociado con el grupo creado para que se gusrade en la bd -->
+                        <input type="hidden" name="id_secretario" value="1"> <!-- SESSION <input type="hidden" name="id_secretario" value="<?php echo $_SESSION['id_secretario']; ?>">
+ -->
                       </div>
 
                     </div>

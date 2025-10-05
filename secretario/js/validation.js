@@ -56,19 +56,11 @@ form.addEventListener('submit', function(e) {
 
 
     // GRUPOS
-const orientacionesValidas = [
-    "Tecnologías de la Información",
-    "Tecnologías de la Información Bilingüe",
-    "Finest IT y Redes",
-    "Redes y Comunicaciones Ópticas",
-    "Diseño Gráfico en Comunicación Visual",
-    "Secretariado Bilingüe - Inglés",
-    "Tecnólogo en Ciberseguridad"
-];
 
-document.getElementById('formGrupo').addEventListener('submit', function(e) {
-    e.preventDefault(); // Evita que el formulario se envíe directamente
-
+// ----------------------------
+// VALIDACIÓN DEL FORMULARIO GRUPOS
+// ----------------------------
+function validarGrupo() {
     const nombre = document.getElementById('nombre').value.trim();
     const orientacion = document.getElementById('orientacionInput').value.trim();
     const turno = document.getElementById('turno').value;
@@ -76,95 +68,104 @@ document.getElementById('formGrupo').addEventListener('submit', function(e) {
 
     if (nombre === '') {
         Swal.fire({ icon: 'error', title: 'Error', text: 'Ingrese el nombre del grupo' });
-        return;
-    } else if (nombre.length > 6){
+        return false;
+    } else if (nombre.length > 6) {
         Swal.fire({ icon: 'error', title: 'Error', text: 'El nombre del grupo debe ser menor a 6 caracteres' });
-        return;
-    } 
+        return false;
+    }
 
-    if (!orientacionesValidas.includes(orientacion)) {
-        Swal.fire({ icon: 'error', title: 'Error', text: 'La orientación no es válida' });
-        return;
+    if (orientacion === '') {
+        Swal.fire({ icon: 'error', title: 'Error', text: 'Seleccione una orientación de las del sistema' });
+        return false;
     }
 
     if (turno === '') {
         Swal.fire({ icon: 'error', title: 'Error', text: 'Seleccione un turno' });
-        return;
+        return false;
     }
 
     if (isNaN(cantidad) || cantidad < 1) {
         Swal.fire({ icon: 'error', title: 'Error', text: 'Cantidad de alumnos inválida' });
-        return;
+        return false;
     }
 
-    // Si pasó las validaciones, enviar por fetch
-    const formData = new FormData(this);
+    return true; // Todo bien
+}
 
-    // actualiza info del formulario para q los valores sean los mismos que en la validacion
-    formData.set("nombre", nombre);
+// ----------------------------
+// OBTENER DATOS DEL FORMULARIO
+// ----------------------------
+function obtenerDatosGrupo() {
+    const form = document.getElementById('formGrupo');
+    const formData = new FormData(form);
 
-    
-  fetch("grupo-accion.php", {
-    method: "POST",
-    body: formData
-  })
-    .then(resultadoGrupo => resultadoGrupo.json())
+    // Asegurarse de que los valores sean los mismos que validamos
+    formData.set("nombre", document.getElementById('nombre').value.trim());
+    formData.set("orientacion", document.getElementById('orientacionInput').value.trim());
+    formData.set("turno", document.getElementById('turno').value);
+    formData.set("cantidad", document.getElementById('cantidad').value);
+
+    return formData;
+}
+
+// ----------------------------
+// ENVÍO DE DATOS AL PHP
+// ----------------------------
+function enviarGrupo(formData) {
+    fetch("grupo-accion.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.json())
     .then(data => {
-      Swal.fire({
-        icon: data.type,
-        title: data.type === "error" ? "Error" : "Éxito",
-        text: data.message
+        Swal.fire({
+            icon: data.type,
+            title: data.type === "error" ? "Error" : "Éxito",
+            text: data.message
         }).then(() => {
-            if(data.type === 'success') {
-                location.reload(); // recarga la página (lista de grupos) SOLO si todo salió bien
+            if (data.type === 'success') {
+                location.reload(); // recarga la lista SOLO si todo salió bien
             }
         });
     })
     .catch(err => {
         Swal.fire({ icon: 'error', title: 'Error', text: 'No se pudo procesar la solicitud' });
+        console.error(err);
     });
+}
+
+// ----------------------------
+// EVENTO SUBMIT FORMULARIO GRUPOS
+// ----------------------------
+document.getElementById('formGrupo').addEventListener('submit', function(e) {
+    e.preventDefault(); // Evita envío directo
+
+    if (validarGrupo()) {
+        const formData = obtenerDatosGrupo();
+        enviarGrupo(formData);
+    }
 });
 
-
+// ----------------------------
+// ELIMINAR GRUPO
+// ----------------------------
 document.addEventListener('click', function(e) {
-  if (e.target.matches('.eliminar-grupo-btn')) {
-    const id = e.target.dataset.id;
-    Swal.fire({
-      title: '¿Eliminar grupo?',
-      text: "Esta acción no se puede deshacer.",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Sí, eliminar',
-      cancelButtonText: 'Cancelar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        const form = new FormData();
-        form.append("accion", "eliminar");
-        form.append("id_grupo", id);
-
-        fetch("grupo-accion.php", {
-          method: "POST",
-          body: form
-        })
-          .then(res => res.json())
-          .then(result => {
-            Swal.fire({
-              icon: result.type,
-              title: result.type === "error" ? "Error" : "Éxito",
-              text: result.message,
-              timer: 2000,
-              showConfirmButton: false
-            });
-
-            if (result.type === "success") {
-              setTimeout(() => location.reload(), 2000);
+    if (e.target.matches('.eliminar-grupo-btn')) {
+        const id = e.target.dataset.id;
+        Swal.fire({
+            title: '¿Eliminar grupo?',
+            text: "Esta acción no se puede deshacer.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const form = new FormData();
+                form.append("accion", "eliminar");
+                form.append("id_grupo", id);
+                enviarGrupo(form);
             }
-          })
-          .catch(err => {
-            Swal.fire({ icon: 'error', title: 'Error', text: 'No se pudo eliminar el grupo.' });
-            console.error(err);
-          });
-      }
-    });
-  }
+        });
+    }
 });
