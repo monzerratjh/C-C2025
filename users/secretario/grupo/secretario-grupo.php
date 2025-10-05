@@ -1,6 +1,6 @@
 <?php
-include('../../conexion.php');
-include('../../encabezado.php');
+include('../../../conexion.php');
+include('../../../encabezado.php');
 $con = conectar_bd();
 
 // Consulta SQL para obtener todos los grupos junto con el adscripto asociado y el nombre del usuario adscripto

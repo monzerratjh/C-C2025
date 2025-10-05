@@ -1,0 +1,81 @@
+// Inicialización de i18next con recursos embebidos
+i18next.init({
+  lng: "es", // idioma inicial
+  debug: true,
+  resources: {
+    es: {
+      translation: {
+        welcome: "¡Bienvenido!",
+        whoAreYou: "¿Quién eres?",
+        student: "Estudiante",
+        adscripto: "Adscripto",
+        teacher: "Docente",
+        secretary: "Secretario",
+        //
+        welcom3: "Bienvenid@",
+        sessionClose: "Cerrar Sesión",
+        goBack: "Volver",
+        //adscripto
+        space: "Espacio",
+        reservation: "Reserva",
+        teacherAbsence: "Falta docente",
+        loadSubjects: "Cargar materias",
+        //
+        idCard: "Cédula de Identidad",
+        password: "Contraseña",
+        logIn: "Iniciar Sesión",
+        //
+      }
+    },
+    en: {
+      translation: {
+        welcome: "Welcome!",
+        whoAreYou: "Who are you?",
+        student: "Student",
+        adscripto: "Advisor",
+        teacher: "Teacher",
+        secretary: "Secretary",
+        //
+        welcom3: "Welcome",
+        sessionClose: "Log Out",
+        goBack: "Go Back",
+        //adscripto
+        space: "Space",
+        reservation: "Reservation",
+        teacherAbsence: "Teacher absence",
+        loadSubjects: "Load subjects",
+        //
+        idCard: "ID Card",
+        password: "Password",
+        logIn: "Log In",
+        //
+      }
+    }
+  }
+},
+ function(err, t) {
+  if (err) return console.error("Error al cargar traducciones", err);
+  updateContent();
+});
+
+// Función para aplicar traducciones a los elementos NORMALES con data-i18n
+function updateContent() {
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+    el.innerHTML = i18next.t(key);
+  });
+  // Placeholders
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+    const key = el.getAttribute("data-i18n-placeholder");
+    el.placeholder = i18next.t(key);
+  });
+}
+
+
+// Botón para cambiar idioma (puede haber varios botones)
+document.querySelectorAll(".bi-translate").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const newLang = i18next.language === "es" ? "en" : "es";
+    i18next.changeLanguage(newLang, updateContent);
+  });
+});

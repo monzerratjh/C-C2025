@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     icon: 'success',
                     title: '¡Bienvenido!',
                     text: 'Inicio de sesión exitoso',
-                    timer: 1500, //se cierra despues de 1.5 segundos
+                    timer: 2000, //se cierra despues de 2 segundos
                     showConfirmButton: false //oculta el boton por defecto
                 }).then(() => {
                     window.location.href = data.redirect;
