@@ -38,7 +38,7 @@ include('../../encabezado.php');
       <a href="espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="materia/carga-materias.php" class="nav-opciones mb-2" data-i18n="uploadSubjects">Cargar materias</a>
+      <a href="materia/carga-materias.php" class="nav-opciones mb-2" data-i18n="addSubjects">Cargar materias</a>
     </div>
   </div>
 
@@ -59,7 +59,7 @@ include('../../encabezado.php');
       <a href="espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="materia/carga-materias.php" class="nav-opciones mb-2" data-i18n="uploadSubjects">Cargar materias</a>
+      <a href="materia/carga-materias.php" class="nav-opciones mb-2" data-i18n="addSubjects">Cargar materias</a>
     </div>
 
 

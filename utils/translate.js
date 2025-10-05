@@ -19,12 +19,19 @@ i18next.init({
         facility: "Espacio",
         reservation: "Reserva",
         teacherAbsence: "Falta docente",
-        uploadSubjects: "Cargar materias",
+        addSubjects: "Cargar materias",
         //
         idCard: "Cédula de Identidad",
         password: "Contraseña",
         logIn: "Iniciar Sesión",
         //
+        reservationRequests: "Solicitudes de Reserva",
+        thTeacher: "Docente",
+        thFacilityRequested: "Espacio solicitado",
+        thRequestedDate: "Fecha solicitada",
+        thReservationStatus: "Estado reserva",
+        //
+
       }
     },
     en: {
@@ -43,12 +50,17 @@ i18next.init({
         facility: "Facility", // Más institucional y abarca todo tipo de espacio físico (aulas, laboratorios, oficinas). Ideal para un sistema educativo.
         reservation: "Reservation",
         teacherAbsence: "Teacher absence",
-        uploadSubjects: "Upload subjects",
+        addSubjects: "Add subjects",
         //
         idCard: "ID Card",
         password: "Password",
         logIn: "Log In",
         //
+        reservationRequests: "Reservation Requests",
+        thTeacher: "Teacher",
+        thFacilityRequested: "Requested Facility",
+        thRequestedDate: "Requested date",
+        thReservationStatus: "Reservation status",
       }
     }
   }

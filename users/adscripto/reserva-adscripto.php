@@ -38,7 +38,7 @@ include('../../encabezado.php');
       <a href="espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="materia/carga-materias.php" class="nav-opciones mb-2" data-i18n="uploadSubjects">Cargar materias</a>
+      <a href="materia/carga-materias.php" class="nav-opciones mb-2" data-i18n="addSubjects">Cargar materias</a>
     </div>
   </div>
 
@@ -59,22 +59,22 @@ include('../../encabezado.php');
       <a href="espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="materia/carga-materias.php" class="nav-opciones mb-2" data-i18n="uploadSubjects">Cargar materias</a>
+      <a href="materia/carga-materias.php" class="nav-opciones mb-2" data-i18n="addSubjects">Cargar materias</a>
     </div>
 
 
   <main class="contenedor-reservas">
     <img src="/img/logo.png" alt="Logo" class="logo"> 
 
-      <h1>Solicitudes de Reserva</h1>
+    <h1 data-i18n="reservationRequests">Solicitudes de Reserva</h1>
 
     <table class="tabla-reserva">
       <thead>
         <tr>
-          <th>Docente</th>
-          <th>Espacio solicitado</th>
-          <th>Fecha Solicitada</th>
-          <th>Estado reserva</th>
+          <th data-i18n="thTeacher">Docente</th>
+          <th data-i18n="thFacilityRequested">Espacio solicitado</th>
+          <th data-i18n="thRequestedDate">Fecha Solicitada</th>
+          <th data-i18n="thReservationStatus">Estado reserva</th>
         </tr>
       </thead>
       <tbody>
