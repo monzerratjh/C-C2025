@@ -96,11 +96,11 @@ function validarGrupo() {
         return false;
     }
 
-    if (isNaN(cantidad) || cantidad < 1) {
+    if (isNaN(cantidad) || cantidad < 1 || cantidad > 50 ) {
         Swal.fire({ 
             icon: 'error', 
             title: 'Error', 
-            text: 'Cantidad de alumnos inválida' });
+            text: 'Cantidad de alumnos inválida. Debe ser entre 1 y 50' });
         return false;
     }
 
@@ -188,7 +188,127 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// limpiar los parámetros para que al recargar no vuelva a aparecer
+// ----------------------------
+// VALIDACIÓN DEL FORMULARIO
+// ----------------------------
+function validarHorario() {
+    const id_grupo = document.getElementById('id_grupo').value;
+    const dia = document.getElementById('dia').value;
+    const hora_inicio = document.getElementById('hora_inicio').value;
+    const hora_fin = document.getElementById('hora_fin').value;
+    const turno = document.getElementById('turno').value;
+
+    if (!id_grupo) {
+        Swal.fire({ icon: 'error', title: 'Error', text: 'Seleccione un grupo' });
+        return false;
+    }
+
+    if (!dia) {
+        Swal.fire({ icon: 'error', title: 'Error', text: 'Seleccione un día' });
+        return false;
+    }
+
+    if (!hora_inicio) {
+        Swal.fire({ icon: 'error', title: 'Error', text: 'Ingrese la hora de inicio' });
+        return false;
+    }
+
+    if (!hora_fin) {
+        Swal.fire({ icon: 'error', title: 'Error', text: 'Ingrese la hora de fin' });
+        return false;
+    }
+
+    if (hora_inicio >= hora_fin) {
+        Swal.fire({ icon: 'error', title: 'Error', text: 'La hora de inicio debe ser menor que la hora de fin' });
+        return false;
+    }
+
+    if (!turno) {
+        Swal.fire({ icon: 'error', title: 'Error', text: 'Seleccione un turno' });
+        return false;
+    }
+
+    return true;
+}
+
+// ----------------------------
+// OBTENER DATOS DEL FORMULARIO
+// ----------------------------
+function obtenerDatosHorario() {
+    const formulario = document.getElementById('formularioGestionHorario');
+    const formData = new FormData(formulario);
+
+    formData.set('id_grupo', document.getElementById('id_grupo').value);
+    formData.set('dia', document.getElementById('dia').value);
+    formData.set('hora_inicio', document.getElementById('hora_inicio').value);
+    formData.set('hora_fin', document.getElementById('hora_fin').value);
+    formData.set('turno', document.getElementById('turno').value);
+
+    return formData;
+}
+
+// ----------------------------
+// ENVIAR DATOS AL PHP
+// ----------------------------
+function enviarHorario(formData) {
+    fetch('horario-accion.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(respuesta => respuesta.json())
+    .then(datos => {
+        Swal.fire({
+            icon: datos.type,
+            title: datos.type === 'error' ? 'Error' : 'Éxito',
+            text: datos.message
+        }).then(() => {
+            if (datos.type === 'success') {
+                location.reload();
+            }
+        });
+    })
+    .catch(error => {
+        Swal.fire({ icon: 'error', title: 'Error', text: 'No se pudo procesar la solicitud' });
+        console.error(error);
+    });
+}
+
+// ----------------------------
+// EVENTO SUBMIT FORMULARIO
+// ----------------------------
+document.getElementById('formularioGestionHorario').addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (validarHorario()) {
+        const datosFormulario = obtenerDatosHorario();
+        enviarHorario(datosFormulario);
+    }
+});
+
+// ----------------------------
+// ELIMINAR HORARIO
+// ----------------------------
+document.addEventListener('click', function(e) {
+    if (e.target.matches('.eliminar-horario-btn')) {
+        const id_horario = e.target.dataset.id;
+        Swal.fire({
+            title: '¿Desea eliminar este horario?',
+            text: 'Esta acción no se puede deshacer',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((resultado) => {
+            if (resultado.isConfirmed) {
+                const formData = new FormData();
+                formData.append('accion', 'eliminar');
+                formData.append('id_horario', id_horario);
+                enviarHorario(formData);
+            }
+        });
+    }
+});
+
+// limpiar los parámetros para que al recargar no vuelva a aparecer (Evitar reenvío)
 if (window.history.replaceState) {
   window.history.replaceState(null, null, window.location.pathname);
 }

@@ -1,124 +1,152 @@
-<?php 
-include('../encabezado.php');
+<?php
+//include('../encabezado.php');
+include('../../../conexion.php');
+$conexion = conectar_bd();
+session_start();
+
+// Obtener todos los horarios con información del grupo
+$consulta_horarios = $conexion->query("
+    SELECT horario_clase.id_horario, horario_clase.dia, horario_clase.hora_inicio, horario_clase.hora_fin,
+           horario_clase.turno, horario_clase.id_grupo, grupo.nombre_grupo
+    FROM horario_clase
+    JOIN grupo ON horario_clase.id_grupo = grupo.id_grupo
+");
+
+// Obtener lista de grupos para el select
+$consulta_grupos = $conexion->query("SELECT id_grupo, nombre_grupo FROM grupo");
+
+$conexion->close();
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenida secretario</title>
+    <title>Gestión de Horarios</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-
 <body>
 
-  <!-- Menú hamburguesa para móviles -->
-  <nav class="d-md-none">
-    <div class="container-fluid">
-      <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="../img/menu.png" alt="menu">
-      </button>
-      <img class="logoResponsive" src="../img/logo.png" alt="logoRespnsive">
-    </div>
-  </nav>
+<div class="container mt-4">
+    <h1>Gestión de Horarios de Clase</h1>
+    <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#modalGestionHorario" 
+            onclick="document.getElementById('accionHorario').value='insertar';">
+        Agregar Horario
+    </button>
 
-  <!-- Menú lateral (para celulares/tablets) -->
-   <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
-    <div class="offcanvas-header">
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-    </div>
-    <div class="offcanvas-body d-flex flex-column">
-      <a href="../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre del Grupo</th>
+                <th>Día</th>
+                <th>Hora de Inicio</th>
+                <th>Hora de Fin</th>
+                <th>Turno</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php while($registro_horario = $consulta_horarios->fetch_assoc()): ?>
+            <tr>
+                <td><?= htmlspecialchars($registro_horario['nombre_grupo'], ENT_QUOTES) ?></td>
+                <td><?= $registro_horario['dia'] ?></td>
+                <td><?= $registro_horario['hora_inicio'] ?></td>
+                <td><?= $registro_horario['hora_fin'] ?></td>
+                <td><?= $registro_horario['turno'] ?></td>
+                <td>
+                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modalGestionHorario"
+                        onclick="cargarEditarHorario(
+                            '<?= $registro_horario['id_horario'] ?>',
+                            '<?= $registro_horario['id_grupo'] ?>',
+                            '<?= $registro_horario['dia'] ?>',
+                            '<?= $registro_horario['hora_inicio'] ?>',
+                            '<?= $registro_horario['hora_fin'] ?>',
+                            '<?= $registro_horario['turno'] ?>'
+                        )">Editar</button>
 
-         <a href="secretario-usuario.php" class="nav-opciones">Usuarios</a>
-        <a href="secretario-horario.php" class="fw-semibold seleccionado mb-2">Horarios</a>
-        <a href="secretario-grupo.php" class="nav-opciones">Grupos</a>
-      </div>
-  </div>
-
-  <!-- Contenedor general -->
-  <div class="container-fluid">
-    <div class="row">
-
-      <!-- Banner pantallas grandes -->
-       <div class="col-md-3 barra-lateral d-none d-md-flex">
-        <div class="volverGeneral">
-          <div class="volver">
-            <a href="../index.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="../index.php">Cerrar Sesión</a>
-          </div>
-        </div>
-
-     <a href="secretario-usuario.php" class="nav-opciones">Usuarios</a>
-        <a href="secretario-horario.php" class="fw-semibold seleccionado mb-2">Horarios</a>
-        <a href="secretario-grupo.php" class="nav-opciones">Grupos</a>
-       </div>
-
-
-<!-- Contenido principal -->
-<main class="col-md-9 principal-estudiante" >
-
-
-    <img src="../img/logo.png" alt="Logo" class="logo"> 
-
-    
-    <div class="bloque-agregar">
-    <button class="etiqueta">Horarios</button>
-    <a href="agregar-horario.php"><button class="agregar">+</button></a>
-  </div>
-
-    <table class="tabla-reserva">
-      <thead>
-        <tr>
-          <th>Horario de entrada</th>
-          <th>Horario de salida</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-       <tr>
-          <td>10:15</td>
-          <td>11:05 </td>
-          <td><i class="bi bi-pencil"></i></td>
-          <td><i class="bi bi-trash"></i></td>
-        </tr>
-        <tr>
-          <td>10:15</td>
-          <td>11:05</td>
-          <td><i class="bi bi-pencil"></i></td>
-          <td><i class="bi bi-trash"></i></td>
-        </tr>
-       <tr>
-          <td>10:15</td>
-          <td>11:05</td>
-          <td><i class="bi bi-pencil"></i></td>
-          <td><i class="bi bi-trash"></i></td>
-        </tr>
-        <tr>
-          <td>10:15</td>
-          <td>11:05</td>
-          <td><i class="bi bi-pencil"></i></td>
-          <td><i class="bi bi-trash"></i></td>
-        </tr>
-          <tr>
-         <td>10:15</td>
-          <td>11:05</td>
-          <td><i class="bi bi-pencil"></i></td>
-          <td><i class="bi bi-trash"></i></td>
-        </tr>
-       <tr>
-         <td>10:15</td>
-          <td>11:05</td>
-          <td><i class="bi bi-pencil"></i></td>
-          <td><i class="bi bi-trash"></i></td>    
-        </tr>
-      </tbody>
+                    <button class="btn btn-danger btn-sm eliminar-horario-btn" data-id="<?= $registro_horario['id_horario'] ?>">
+                        Eliminar
+                    </button>
+                </td>
+            </tr>
+            <?php endwhile; ?>
+        </tbody>
     </table>
-</main>
+</div>
+
+<!-- Modal para agregar/editar horario -->
+<div class="modal fade" id="modalGestionHorario" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="formularioGestionHorario">
+      <div class="modal-header">
+        <h5 class="modal-title">Gestión de Horario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+          <input type="hidden" name="accion" id="accionHorario">
+          <input type="hidden" name="id_horario" id="id_horario">
+
+          <div class="mb-3">
+              <label for="id_grupo">Grupo</label>
+              <select class="form-control" name="id_grupo" id="id_grupo" required>
+                  <option value="">Seleccione un grupo</option>
+                  <?php while($grupo = $consulta_grupos->fetch_assoc()): ?>
+                      <option value="<?= $grupo['id_grupo'] ?>"><?= htmlspecialchars($grupo['nombre_grupo'], ENT_QUOTES) ?></option>
+                  <?php endwhile; ?>
+              </select>
+          </div>
+
+          <div class="mb-3">
+              <label for="dia">Día de la Semana</label>
+              <select class="form-control" name="dia" id="dia" required>
+                  <option value="">Seleccione un día</option>
+                  <option value="Lunes">Lunes</option>
+                  <option value="Martes">Martes</option>
+                  <option value="Miércoles">Miércoles</option>
+                  <option value="Jueves">Jueves</option>
+                  <option value="Viernes">Viernes</option>
+              </select>
+          </div>
+
+          <div class="mb-3">
+              <label for="hora_inicio">Hora de Inicio</label>
+              <input type="time" class="form-control" name="hora_inicio" id="hora_inicio" required>
+          </div>
+
+          <div class="mb-3">
+              <label for="hora_fin">Hora de Fin</label>
+              <input type="time" class="form-control" name="hora_fin" id="hora_fin" required>
+          </div>
+
+          <div class="mb-3">
+              <label for="turno">Turno</label>
+              <select class="form-control" name="turno" id="turno" required>
+                  <option value="">Seleccione un turno</option>
+                  <option value="Matutino">Matutino</option>
+                  <option value="Vespertino">Vespertino</option>
+                  <option value="Nocturno">Nocturno</option>
+              </select>
+          </div>
+
+          <input type="hidden" name="id_secretario" value="<?= $_SESSION['id_secretario'] ?? 1 ?>">
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Guardar Horario</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="../js/horario.js"></script>
+<script src="../js/validation.js"></script>
+
 </body>
 </html>

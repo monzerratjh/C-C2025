@@ -8,7 +8,7 @@ $nombre_secretario = $_SESSION['nombre_usuario'] ?? 'Secretario/a';
 
 */
 
-include('../../encabezado.php');
+//include('../../encabezado.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -16,6 +16,12 @@ include('../../encabezado.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bienvenida secretario</title>
+    <!-- Bootstrap CSS + Iconos + letras-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- CSS propio -->
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 
 <body>
@@ -24,9 +30,9 @@ include('../../encabezado.php');
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="/img/menu.png" alt="menu">
+        <img class="menuResponsive" src="../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="/img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="../../img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -44,8 +50,8 @@ include('../../encabezado.php');
         <i class="bi bi-translate traductor-menu"></i>
       </div>  
         <a href="" class="nav-opciones">Usuarios</a>
-        <a href="secretario-horario.php" class="nav-opciones">Horarios</a>
-        <a href="secretario-grupo.php" class="nav-opciones">Grupos</a>
+        <a href="/users/secretario/horario/horario-secretario.php" class="nav-opciones">Horarios</a>
+        <a href="/users/secretario/grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
       </div>
     </div>
 
@@ -57,22 +63,22 @@ include('../../encabezado.php');
        <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="/utils/log-out.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="/utils/log-out.php">Cerrar Sesión</a>
+            <a href="../../utils/log-out.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="../../utils/log-out.php">Cerrar Sesión</a>
           </div>
            <i class="bi bi-translate traductor-menu"></i>
         </div>
 
         <a href="" class="nav-opciones">Usuarios</a>
-        <a href="secretario-horario.php" class="nav-opciones">Horarios</a>
-        <a href="/secretario/grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
+        <a href="/users/secretario/horario/horario-secretario.php" class="nav-opciones">Horarios</a>
+        <a href="/users/secretario/grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
        </div>
 
 
 <!-- Contenido principal -->
 <main class="col-md-9 principal" >
 
-    <img src="/img/logo.png" alt="Logo" class="logo"> 
+    <img src="../../img/logo.png" alt="Logo" class="logo"> 
     
     <h1 class="bienvenida">Bienvenid@</h1>
     <h1 class="bienvenida">Secretari@ @username</h1>

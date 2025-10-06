@@ -35,11 +35,20 @@ $orientacionesValidas = obtenerOrientacionesValidas($con);
 try {
     if($accion === 'insertar') {
         
-        // Validar nombre a-zA-Z0-9°
+        // Validar nombre 
         if (nombreGrupoExiste($con, $nombre)) {
             echo json_encode([
                 "type" => "error",
                 "message" => "El nombre de grupo '$nombre' ya existe."
+            ]);
+            exit;
+        }
+
+        // Validar formato del nombre
+        if (!preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9° \-_]+$/u', $nombre)) {
+            echo json_encode([
+                "type" => "error",
+                "message" => "El nombre del grupo solo puede contener letras, números y los símbolos '°', '-', '_'."
             ]);
             exit;
         }
@@ -74,6 +83,15 @@ try {
 
     elseif($accion === 'editar') { // WHERE id_grupo=? -> Indica qué grupo se actualizará según su ID.
         
+        // Validar formato del nombre
+        if (!preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9° \-_]+$/u', $nombre)) {
+            echo json_encode([
+                "type" => "error",
+                "message" => "El nombre del grupo solo puede contener letras, números y los símbolos '°', '-', '_'."
+            ]);
+            exit;
+        }
+
         // validar orientación
         $orientacionValida = validarOrientacion($orientacion, $orientacionesValidas);
         if (!$orientacionValida) {
@@ -161,3 +179,4 @@ function nombreGrupoExiste($con, $nombre) {
     $resultado = $stmt->get_result()->fetch_assoc();
     return $resultado['total'] > 0;
 }
+

@@ -1,6 +1,6 @@
 <?php
 include('../../../conexion.php');
-include('../../../encabezado.php');
+//include('../../../encabezado.php');
 $con = conectar_bd();
 
 // Consulta SQL para obtener todos los grupos junto con el adscripto asociado y el nombre del usuario adscripto
@@ -70,6 +70,12 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
 <!DOCTYPE html>
 <head>
   <title> Grupos </title>
+    <!-- Bootstrap CSS + Iconos + letras-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- CSS propio -->
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
@@ -89,11 +95,11 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <a href="../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
+      <a href="v" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
  
-       <a href="secretario-usuario.php" class="nav-opciones">Usuarios</a>
-        <a href="secretario-horario.php" class="nav-opciones">Horarios</a>
-        <a href="secretario-grupo.php" class="fw-semibold seleccionado mb-2">Grupos</a>
+       <a href="" class="nav-opciones">Usuarios</a>
+        <a href="../horario/horario-secretario" class="nav-opciones">Horarios</a>
+        <a href="../grupo/secretario-grupo.php" class="fw-semibold seleccionado mb-2">Grupos</a>
         </div>
   </div>
 
@@ -105,17 +111,17 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
       <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
+            <a href="../../../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
         </div>
         </div>
 
-        <a href="secretario-usuario.php" class="nav-opciones">Usuarios</a>
-        <a href="secretario-horario.php" class="nav-opciones">Horarios</a>
-        <a href="secretario-grupo.php" class="fw-semibold seleccionado mb-2">Grupos</a>
+        <a href="" class="nav-opciones">Usuarios</a>
+        <a href="../horario/horario-secretario.php" class="nav-opciones">Horarios</a>
+        <a href="../grupo/secretario-grupo.php" class="fw-semibold seleccionado mb-2">Grupos</a>
        </div>
 
     <!-- Contenido principal-->
-    <div class="col-md-9 horarios-estudiantes"> <!-- Boostrap contendio al lado del menu -->
+    <div class="col-md-9 horarios-estudiante"> <!-- Boostrap contendio al lado del menu -->
       <img src="/img/logo.png" alt="Logo" class="logo">
 
       <div class="acordion-total">
@@ -261,7 +267,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
    <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  <script src="../js/grupo.js"></script>
+  <script src="../js/editar.js"></script>
   <script src="../js/validation.js"></script>
   <script src="../js/desplegarCaracteristicas.js"></script>
 
