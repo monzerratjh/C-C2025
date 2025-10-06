@@ -35,7 +35,7 @@ $orientacionesValidas = obtenerOrientacionesValidas($con);
 try {
     if($accion === 'insertar') {
         
-        // Validar nombre 
+        // Validar nombre a-zA-Z0-9°
         if (nombreGrupoExiste($con, $nombre)) {
             echo json_encode([
                 "type" => "error",
