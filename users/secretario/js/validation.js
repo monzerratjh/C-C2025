@@ -96,11 +96,11 @@ function validarGrupo() {
         return false;
     }
 
-    if (isNaN(cantidad) || cantidad < 1) {
+    if (isNaN(cantidad) || cantidad < 1 || cantidad > 50 ) {
         Swal.fire({ 
             icon: 'error', 
             title: 'Error', 
-            text: 'Cantidad de alumnos inválida' });
+            text: 'Cantidad de alumnos inválida. Debe ser entre 1 y 50' });
         return false;
     }
 
