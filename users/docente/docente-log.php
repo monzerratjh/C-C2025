@@ -13,7 +13,7 @@ include('../../conexion.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- CSS propio -->
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -36,7 +36,7 @@ include('../../conexion.php');
     </div>
     <div class="offcanvas-body d-flex flex-column">
       <div>
-      <a href="../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
+      <a href="../../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
       <i class="bi bi-translate traductor-menu"></i>
       </div>
       <a href="../estudiante/estudiante.php" class="nav-opciones mb-2">Estudiante</a>
@@ -54,8 +54,8 @@ include('../../conexion.php');
       <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
            <div class="volver">
-            <a href="../index.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="../index.php">Volver</a>
+            <a href="../../index.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="../../index.php">Volver</a>
           </div>
           <i class="bi bi-translate traductor-menu"></i>
         </div>

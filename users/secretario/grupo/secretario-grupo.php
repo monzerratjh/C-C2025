@@ -75,7 +75,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- CSS propio -->
-    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
@@ -267,7 +267,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
    <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  <script src="../js/grupo.js"></script>
+  <script src="../js/editar.js"></script>
   <script src="../js/validation.js"></script>
   <script src="../js/desplegarCaracteristicas.js"></script>
 

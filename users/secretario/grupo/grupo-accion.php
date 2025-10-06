@@ -45,7 +45,7 @@ try {
         }
 
         // Validar formato del nombre
-        if (!preg_match('/^[a-zA-Z0-9°\-_]+$/u', $nombre)) {
+        if (!preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9° \-_]+$/u', $nombre)) {
             echo json_encode([
                 "type" => "error",
                 "message" => "El nombre del grupo solo puede contener letras, números y los símbolos '°', '-', '_'."
@@ -84,10 +84,10 @@ try {
     elseif($accion === 'editar') { // WHERE id_grupo=? -> Indica qué grupo se actualizará según su ID.
         
         // Validar formato del nombre
-        if (!preg_match('/^[a-zA-Z0-9°\-_]+$/u', $nombre)) {
+        if (!preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9° \-_]+$/u', $nombre)) {
             echo json_encode([
                 "type" => "error",
-                "message" => "El nombre del grupo solo puede contener letras, números y los símbolos ° - _."
+                "message" => "El nombre del grupo solo puede contener letras, números y los símbolos '°', '-', '_'."
             ]);
             exit;
         }
