@@ -76,63 +76,55 @@ include('../../encabezado.php');
   <div class="acordion">
 
     <div class="bloque-agregar">
-    <h2 data-i18n="teacherAbsence">Falta docentes</h2>
-  </div>
+      <h2 data-i18n="teacherAbsence">Falta docentes</h2>
+    </div>
 
           <div class="dia">
               <button class="boton-opciones miercoles">Docente 1</button>
             <div class="contenido-dia">
               <table class="tabla-horario">
-               <tr><td>Nombre: Fcaundo Rubil</td></tr>
-               <tr><td>Materia: Programacion</td></tr>
-                <tr><td>Grupo a la que falta: 3MD</td></tr>
-                <tr><td>Dia: 20/10/2025</td></tr>
-                <tr><td>Cuantas horas falta: 3</td></tr>
+<!-- <td><span data-i18n="teacherName">Nombre:</span> <?= htmlspecialchars($docente['nombre']); ?></td>
+ -->
+                <tr><td><span data-i18n="teacherName">Nombre:</span> Facundo Rubil</td></tr>
+                <tr><td><span data-i18n="subject">Materia:</span> Programación</td></tr>
+                <tr><td><span data-i18n="groupMissing">Grupo a la que falta:</span> 3MD</td></tr>
+                <tr><td><span data-i18n="day">Día:</span> 20/10/2025</td></tr>
+                <tr><td><span data-i18n="hoursMissing">Cuántas horas falta:</span> 3</td></tr>
               </table>
             </div>
           </div>
 
           <div class="dia">
-            <button class="boton-opciones miercoles">Docente 1</button>
+              <button class="boton-opciones miercoles">Docente 1</button>
             <div class="contenido-dia">
               <table class="tabla-horario">
-               <tr><td>Nombre: Fcaundo Rubil</td></tr>
-               <tr><td>Materia: Programacion</td></tr>
-                <tr><td>Grupo a la que falta: 3MD</td></tr>
-                <tr><td>Dia: 20/10/2025</td></tr>
-                <tr><td>Cuantas horas falta: 3</td></tr>
+<!-- <td><span data-i18n="teacherName">Nombre:</span> <?= htmlspecialchars($docente['nombre']); ?></td>
+ -->
+                <tr><td><span data-i18n="teacherName">Nombre:</span> Facundo Rubil</td></tr>
+                <tr><td><span data-i18n="subject">Materia:</span> Programación</td></tr>
+                <tr><td><span data-i18n="groupMissing">Grupo a la que falta:</span> 3MD</td></tr>
+                <tr><td><span data-i18n="day">Día:</span> 20/10/2025</td></tr>
+                <tr><td><span data-i18n="hoursMissing">Cuántas horas falta:</span> 3</td></tr>
               </table>
             </div>
           </div>
 
-
-           <div class="dia">
-            <button class="boton-opciones miercoles">Docente 1</button>
+          <div class="dia">
+              <button class="boton-opciones miercoles">Docente 1</button>
             <div class="contenido-dia">
               <table class="tabla-horario">
-               <tr><td>Nombre: Fcaundo Rubil</td></tr>
-               <tr><td>Materia: Programacion</td></tr>
-                <tr><td>Grupo a la que falta: 3MD</td></tr>
-                <tr><td>Dia: 20/10/2025</td></tr>
-                <tr><td>Cuantas horas falta: 3</td></tr>
+<!-- <td><span data-i18n="teacherName">Nombre:</span> <?= htmlspecialchars($docente['nombre']); ?></td>
+ -->
+                <tr><td><span data-i18n="teacherName">Nombre:</span> Facundo Rubil</td></tr>
+                <tr><td><span data-i18n="subject">Materia:</span> Programación</td></tr>
+                <tr><td><span data-i18n="groupMissing">Grupo a la que falta:</span> 3MD</td></tr>
+                <tr><td><span data-i18n="day">Día:</span> 20/10/2025</td></tr>
+                <tr><td><span data-i18n="hoursMissing">Cuántas horas falta:</span> 3</td></tr>
               </table>
             </div>
           </div>
-
-
-           <div class="dia">
-            <button class="boton-opciones miercoles">Docente 1</button>
-            <div class="contenido-dia">
-              <table class="tabla-horario">
-               <tr><td>Nombre: Fcaundo Rubil</td></tr>
-               <tr><td>Materia: Programacion</td></tr>
-                <tr><td>Grupo a la que falta: 3MD</td></tr>
-                <tr><td>Dia: 20/10/2025</td></tr>
-                <tr><td>Cuantas horas falta: 3</td></tr>
-              </table>
-            </div>
-          </div>
-          </div>
+          
+        </div>
       </div>
     </div>
   </div>

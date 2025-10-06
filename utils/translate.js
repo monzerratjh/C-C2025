@@ -32,11 +32,17 @@ i18next.init({
         thReservationStatus: "Estado reserva",
         //
         teacherAbsence: "Falta docentes",
-
+        teacherName: "Nombre del docente:",
+        subject: "Materia:",
+        groupMissing: "Grupo al que falta:",
+        day: "Día:",
+        hoursMissing: "Cantidad de horas que falta:",
+        //
       }
     },
     en: {
       translation: {
+        // clave: "valor"
         welcome: "Welcome!",
         whoAreYou: "Who are you?",
         student: "Student",
@@ -64,6 +70,11 @@ i18next.init({
         thReservationStatus: "Reservation status",
         //
         teacherAbsence: "Teacher Absence",
+        teacherName: "Teacher's Name:",
+        subject: "Subject:",
+        groupMissing: "Group Missed:",
+        day: "Date:",
+        hoursMissing: "Hours Absent:",
       }
     }
   }
