@@ -1,6 +1,6 @@
 <?php 
-include('../conexion.php');
-include('../encabezado.php');
+include('../../conexion.php');
+include('../../encabezado.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -16,9 +16,9 @@ include('../encabezado.php');
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="/img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="../img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="/img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -52,13 +52,13 @@ include('../encabezado.php');
         </div>
 
       <a href="docente-grupo.php" class="nav-opciones mb-2">Grupos a Cargo</a>
-      <a href="docente-bienvenida.php" class="fw-semibold seleccionado">Reservar Espacio</a>
+      <a href="docente-reservar.php" class="fw-semibold seleccionado">Reservar Espacio</a>
       <a href="docente-falta.php" class="nav-opciones mb-2">Avisar Falta</a>
    </div>
 
     <!-- Contenido principal-->
     <div class="col-md-9 horarios-estudiante"> <!-- Boostrap contendio al lado del menu -->
-     <img src="../img/logo.png" alt="Logo" class="logo"> 
+     <img src="/img/logo.png" alt="Logo" class="logo"> 
 
   <div class="acordion">
 

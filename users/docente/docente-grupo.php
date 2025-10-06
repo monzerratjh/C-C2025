@@ -1,6 +1,6 @@
 <?php 
-include('../conexion.php');
-include('../encabezado.php');
+include('../../conexion.php');
+include('../../encabezado.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,9 +14,9 @@ include('../encabezado.php');
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="/img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="../img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="/img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -56,13 +56,10 @@ include('../encabezado.php');
    </div>
 
     <!-- Contenido principal-->
-<main class="col-md-9 principal" >
-
-    <img src="../../img/logo.png" alt="Logo" class="logo"> 
-    
-    
-    <div class="bloque-agregar">
-      <button class="etiqueta2">Grupos a Cargo</button>
+   <main class="col-md-9 principal" >
+     <img src="/img/logo.png" alt="Logo" class="logo"> 
+    <div>
+      <h2>Grupos a Cargo</h2>
     </div>
     
 <div class="acordion">

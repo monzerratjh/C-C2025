@@ -1,6 +1,6 @@
 <?php 
-include('../conexion.php');
-include('../encabezado.php');
+include('../../conexion.php');
+include('../../encabezado.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,9 +17,9 @@ include('../encabezado.php');
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="/img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="../img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="/img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -64,7 +64,7 @@ include('../encabezado.php');
 <!-- Contenido principal -->
 <main class="col-md-9 principal" >
 
-    <img src="../img/logo.png" alt="Logo" class="logo"> 
+    <img src="/img/logo.png" alt="Logo" class="logo"> 
     
     <section class="seccion-form docente">
 
@@ -72,9 +72,7 @@ include('../encabezado.php');
         <i class="bi bi-person-circle"></i>
       </div>
 
-      <div id="mensaje-error" style="color:red; font-weight:bold;"></div>
-
-      <form id="form-login" action="../log-in.php" method="POST" class="formulario">
+      <form id="form-login" class="formulario" action="/utils/log-in.php" method="POST">
         
         <div class="input-group mb-3">
           <span class="input-group-text"><i class="bi bi-person"></i></span>
@@ -93,12 +91,11 @@ include('../encabezado.php');
         <button type="submit" id="boton" name="btn-log-in" value="1">Iniciar Sesión</button>
       </form>
 
-      <div id="mensaje-error" style="color:red; font-weight:bold;"></div>
-
     </section>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="../form-logIn.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/utils/form-log-in.js"></script>
+
 </body>
 </html>

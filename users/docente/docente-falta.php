@@ -1,22 +1,23 @@
 <?php 
-include('../conexion.php');
-include('../encabezado.php');
+include('../../conexion.php');
+include('../../encabezado.php');
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aviso de Falta</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aviso de Falta</title>
 </head>
 <body>
-     <!-- Menú hamburguesa para móviles -->
+
+  <!-- Menú hamburguesa para móviles -->
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="/img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="../img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="/img/logo.png" alt="logoResponsive">
     </div>
   </nav>
 
@@ -26,55 +27,101 @@ include('../encabezado.php');
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <a href="docente-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
-      <i class="bi bi-translate traductor-menu"></i>
-
+      <div>
+        <a href="docente-bienvenida.php" class="mb-3">
+          <i class="bi bi-arrow-left-circle-fill me-2"></i>Volver
+        </a>
+        <i class="bi bi-translate traductor-menu"></i>
+      </div>
       <a href="docente-grupo.php" class="nav-opciones mb-2">Grupos a Cargo</a>
       <a href="docente-reservar.php" class="nav-opciones mb-2">Reservar Espacio</a>
-      <a href="docente-falta.php" class="fw-semibold seleccionado">Avisar Falta</a>
+      <a href="docente-falta.php" class="fw-semibold seleccionado mb-2">Avisar Falta</a>
     </div>
   </div>
 
-  <!-- Contenedor general -->
+  <!-- Contenido principal -->
   <div class="container-fluid">
     <div class="row">
 
-      <!-- Banner pantallas grandes -->
+      <!-- Barra lateral (vista escritorio) -->
       <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="docente-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="docente-bienvenida.php">
+              <i class="bi bi-arrow-left-circle-fill icono-volver"></i>
+            </a>
             <a href="docente-bienvenida.php">Volver</a>
           </div>
           <i class="bi bi-translate traductor-menu"></i>
         </div>
 
-      <a href="docente-grupo.php" class="nav-opciones mb-2">Grupos a Cargo</a>
-      <a href="docente-reservar.php" class="nav-opciones mb-2">Reservar Espacio</a>
-      <a href="docente-falta.php" class="fw-semibold seleccionado">Avisar Falta</a>
-   </div>
+        <a href="docente-grupo.php" class="nav-opciones mb-2">Grupos a Cargo</a>
+        <a href="docente-reservar.php" class="nav-opciones mb-2">Reservar Espacio</a>
+        <a href="docente-falta.php" class="fw-semibold seleccionado">Avisar Falta</a>
+      </div>
 
-   <main class="col-md-9 principal-estudiante" >
-    <div class="bloque-agregar">
-      <button class="etiqueta2">Avisar Falta</button>
-    </div>
-    <form method="POST" id="formGrupo">
-                    <div class="modal-body">
+      <!-- Sección principal -->
+      <main class="col-md-9 principal">
+        <img src="/img/logo.png" alt="Logo" class="logo">
+        
+        <div>
+          <button data-bs-toggle="modal" data-bs-target="#modalFalta">Avisar Falta</button>
+        </div>
 
-                      <div class="mb-3">
-                        <label>Fecha</label>
-                        <input type="date" class="form-control" id="fecha" name="fecha" required>
-                      </div>
+        <!-- Modal para enviar aviso de falta -->
+        <div class="modal fade" id="modalFalta" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
 
-                      <div class="mb-3">
-                        <label>Motivo</label>
-                        <input type="number" class="form-control" id="cantidad" name="cantidad" required>
-                      </div>
-                    </div>
-                      <button type="submit" class="btn btn-primary">Avisar</button>
-                    </div>
-                  </form>
-   </main>  
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>  
+              <div class="modal-header">
+                <h5 class="modal-title">Avisar Falta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+
+              <!-- Formulario -->
+              <form method="POST" id="formFalta">
+                <div class="modal-body">
+                  <div class="mb-3">
+                    <label for="materia">Materia</label>
+                    <input type="text" class="form-control" id="materia" name="materia" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="grupo">Grupo al que falta</label>
+                    <input type="text" class="form-control" id="grupo" name="grupo" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="fecha">Fecha</label>
+                    <input type="date" class="form-control" id="fecha" name="fecha" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="horas">Cantidad de horas</label>
+                    <input type="number" class="form-control" id="horas" name="horas" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="motivo">Motivo</label>
+                    <textarea class="form-control" id="motivo" name="motivo" required></textarea>
+                  </div>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary">Avisar</button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </main>
+
+    </div> 
+  </div> 
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

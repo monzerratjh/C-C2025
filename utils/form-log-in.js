@@ -16,11 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        if (cedula <7 && cedula >8){
+        if (isNaN(cedula)){
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'La cédula debe tener 8 números válidos'
+                text: 'La cédula deben ser solo números'
         });
             return;
         }
@@ -33,16 +33,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
             return;
         }
+//contraseña usuario = Base de Datos? (Sabri va a entender)
 
-            // Validación de contraseña segura
+        /*    // Validación de contraseña 
         if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>_]).{6,}$/.test(password)) {
         Swal.fire({
         icon: 'error',
-        title: 'Contraseña insegura',
+        title: 'Contraseña Incorrecta',
         text: 'Debe tener mínimo 8 caracteres, al menos una mayúscula, una minúscula, un número y un carácter especial'
-    });
-    return;
-}
+    }); */
+
 //.test() es un método de los objetos RegExp (expresiones regulares).
 //(?=...) -> lookahead positivo, significa "la cadena debe contener esto en algún lugar".
 //el . indica que puede haber cualquier carácter antes o después de los requisitos
@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
 //(?=.*[!@#$%^&*(),.?":{}|<>]) -> asegura que haya al menos un carácter especial
 //{8,} -> al menos 8 caracteres de longitud
 
-        // Si todas las validaciones pasan, se envía el formulario usando fetch
 
+        // Si todas las validaciones pasan, se envía el formulario usando fetch
         const formData = new FormData(this);
 
         fetch(this.action, {
