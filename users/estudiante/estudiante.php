@@ -1,9 +1,12 @@
 <?php 
-include('../encabezado.php');
+include('../../encabezado.php');
 ?>
 <!DOCTYPE html>
+<html lang="es">
 <head>
-  <title>Panel Estudiante</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Estudiante</title>
 </head>
 
 <body>
@@ -12,9 +15,9 @@ include('../encabezado.php');
   <nav class="d-md-none"> <!--oculta este <nav> en pantallas medianas (≥768px) y más grandes-->
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral"> <!-- le dice a Bootstrap que al hacer clic debe abrir un menú lateral.-->
-        <img class="menuResponsive" src="../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="/img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="../img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="/img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -25,7 +28,7 @@ include('../encabezado.php');
     </div>
     <div class="offcanvas-body d-flex flex-column">
       <div>
-      <a href="../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
+      <a href="../../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
       <i class="bi bi-translate traductor-menu"></i>
       </div>
 
@@ -44,8 +47,8 @@ include('../encabezado.php');
       <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="../index.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="../index.php">Volver</a>
+            <a href="../../index.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="../../index.php">Volver</a>
           </div>
           <i class="bi bi-translate traductor-menu"></i>
         </div>
@@ -59,7 +62,7 @@ include('../encabezado.php');
 
       <!-- Contenido principal -->
       <div class="col-md-9 col-12 principal">
-        <img src="../img/logo.png" alt="Logo" class="logo"> 
+        <img src="/img/logo.png" alt="Logo" class="logo"> 
         <h2>ESTUDIANTE</h2>
         <p>Ingresa tu grupo correspondiente</p>
 

@@ -1,9 +1,12 @@
 <?php 
-include('../../encabezado.php');
+include('../../../encabezado.php');
 ?>
 <!DOCTYPE html>
+<html lang="es">
 <head>
-  <title>Horario 3MD</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horario 3MD</title>
 </head>
 
 <body>
@@ -12,9 +15,9 @@ include('../../encabezado.php');
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="../../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="/img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="../../img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="/img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -57,7 +60,7 @@ include('../../encabezado.php');
 
     <!-- Contenido horarios-estudiante-->
     <div class="col-md-9 horarios-estudiante">
-      <img src="../../img/logo.png" alt="Logo" class="logo">
+      <img src="/img/logo.png" alt="Logo" class="logo">
 
       <div class="acordion-total">
         <div class="acordion">
