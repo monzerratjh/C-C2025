@@ -7,4 +7,4 @@
 
 
 <!-- CSS propio -->
-<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="/general/css/style.css">

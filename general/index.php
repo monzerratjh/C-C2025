@@ -1,5 +1,5 @@
 <?php 
-include('encabezado.php');
+include('./general/encabezado.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -27,28 +27,28 @@ include('encabezado.php');
   </nav>
 
   <main class="opciones">
-    <a href="/users/estudiante/estudiante.php">
+    <a href="./users/estudiante/estudiante.php">
       <section class="opcion estudiante">
         <img src="img/estudiante.png" alt="Estudiante">
         <span data-i18n="student">Estudiante</span>
       </section>
     </a>
 
-    <a href="/users/adscripto/adscripto-log.php">
+    <a href="./users/adscripto/adscripto-log.php">
       <section class="opcion adscripto">
         <img src="img/adscripto.png" alt="Adscripto">
         <span data-i18n="adscripto">Adscripto</span>
       </section>
     </a>
 
-    <a href="/users/docente/docente-log.php">
+    <a href="./users/docente/docente-log.php">
       <section class="opcion docente">
         <img src="img/profesor.png" alt="Profesor">
         <span data-i18n="teacher">Docente</span>
       </section>
     </a>
 
-    <a href="/users/secretario/secretario-log.php">
+    <a href="./users/secretario/secretario-log.php">
       <section class="opcion secretaria">
         <img src="img/secretario.png" alt="Secretario">
         <span data-i18n="secretary">Secretario</span>
@@ -58,6 +58,6 @@ include('encabezado.php');
 
   <!-- i18next desde CDN -->
   <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
-  <script src="/utils/translate.js"></script>
+  <script src="./utils/translate.js"></script>
 </body>
 </html>
