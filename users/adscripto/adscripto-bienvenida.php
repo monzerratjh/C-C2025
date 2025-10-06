@@ -22,9 +22,9 @@
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="/img/menu.png" alt="menu">
+        <img class="menuResponsive" src="../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="/img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="../../img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -57,8 +57,8 @@
        <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="/utils/log-out.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="/utils/log-out.php" data-i18n="sessionClose" >Cerrar Sesión</a>
+            <a href="../../utils/log-out.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="../../utils/log-out.php" data-i18n="sessionClose" >Cerrar Sesión</a>
           </div>
            <i class="bi bi-translate traductor-menu"></i>
         </div>
@@ -73,7 +73,7 @@
 <!-- Contenido principal -->
 <main class="col-md-9 principal" >
 
-    <img src="/img/logo.png" alt="Logo" class="logo"> 
+    <img src="../../img/logo.png" alt="Logo" class="logo"> 
     
     <h1 class="bienvenida"  data-i18n="welcom3">Bienvenid@</h1>
     <h1 class="bienvenida">Adscript@ @username</h1>

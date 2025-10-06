@@ -21,9 +21,9 @@
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="/img/menu.png" alt="menu">
+        <img class="menuResponsive" src="../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="/img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="../../img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -70,7 +70,7 @@
 
 
   <main class="contenedor-reservas principal">
-    <img src="/img/logo.png" alt="Logo" class="logo"> 
+    <img src="../../img/logo.png" alt="Logo" class="logo"> 
 
     <h2 data-i18n="reservationRequests">Solicitudes de Reserva</h2>
 
