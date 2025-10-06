@@ -1,6 +1,6 @@
 // Inicialización de i18next con recursos embebidos
 i18next.init({
-  lng: "es", // idioma inicial
+  lng: localStorage.getItem('language') || "es", // Recuperar el idioma desde localStorage, si no existe, usar "es" por defecto
   debug: true,
   resources: {
     es: {
@@ -101,7 +101,14 @@ function updateContent() {
 // Botón para cambiar idioma (puede haber varios botones)
 document.querySelectorAll(".bi-translate").forEach((btn) => {
   btn.addEventListener("click", () => {
-    const newLang = i18next.language === "es" ? "en" : "es";
-    i18next.changeLanguage(newLang, updateContent);
+    let newLang = i18next.language === "es" ? "en" : "es";
+    
+    // Cambiar el idioma en i18next
+    i18next.changeLanguage(newLang, () => {
+      // Actualizar el contenido de la página con el nuevo idioma
+      updateContent();
+      // Guardar el idioma seleccionado en localStorage
+      localStorage.setItem('language', newLang);
+    });
   });
 });

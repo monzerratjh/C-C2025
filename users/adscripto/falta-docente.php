@@ -80,7 +80,7 @@ include('../../encabezado.php');
     </div>
 
           <div class="dia">
-              <button class="boton-opciones miercoles">Docente 1</button>
+              <button class="boton-opciones miercoles">Nombre Docente</button>
             <div class="contenido-dia">
               <table class="tabla-horario">
 <!-- <td><span data-i18n="teacherName">Nombre:</span> <?= htmlspecialchars($docente['nombre']); ?></td>
@@ -95,7 +95,7 @@ include('../../encabezado.php');
           </div>
 
           <div class="dia">
-              <button class="boton-opciones miercoles">Docente 1</button>
+              <button class="boton-opciones miercoles">Nombre Docente</button>
             <div class="contenido-dia">
               <table class="tabla-horario">
 <!-- <td><span data-i18n="teacherName">Nombre:</span> <?= htmlspecialchars($docente['nombre']); ?></td>
@@ -110,7 +110,7 @@ include('../../encabezado.php');
           </div>
 
           <div class="dia">
-              <button class="boton-opciones miercoles">Docente 1</button>
+              <button class="boton-opciones miercoles">Nombre Docente</button>
             <div class="contenido-dia">
               <table class="tabla-horario">
 <!-- <td><span data-i18n="teacherName">Nombre:</span> <?= htmlspecialchars($docente['nombre']); ?></td>
