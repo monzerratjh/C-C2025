@@ -1,5 +1,5 @@
 <?php 
-include './general/encabezado.php'
+include('C:\Users\56931132\Documents\GitHub\C-C2025\general\encabezado.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
