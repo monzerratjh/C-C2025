@@ -27,7 +27,7 @@ include('../../encabezado.php');
     </div>
     <div class="offcanvas-body d-flex flex-column">
       <div>
-      <a href="log-out.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
+      <a href="/utils/log-out.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
       <i class="bi bi-translate traductor-menu"></i>
       </div>
         <a href="docente-grupo.php" class="nav-opciones">Grupos a Cargo</a>
@@ -44,8 +44,8 @@ include('../../encabezado.php');
        <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="../log-out.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="../log-out.php">Cerrar Sesión</a>
+            <a href="/utils/log-out.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="/utils/log-out.php">Cerrar Sesión</a>
           </div>
           <i class="bi bi-translate traductor-menu"></i>
         </div>

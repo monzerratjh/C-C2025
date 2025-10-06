@@ -57,8 +57,8 @@ include('../../encabezado.php');
        <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="../log-out.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="../log-out.php">Cerrar Sesión</a>
+            <a href="/utils/log-out.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="/utils/log-out.php">Cerrar Sesión</a>
           </div>
            <i class="bi bi-translate traductor-menu"></i>
         </div>
