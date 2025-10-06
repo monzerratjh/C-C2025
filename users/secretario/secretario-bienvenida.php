@@ -4,6 +4,7 @@ include('../encabezado.php');
 <!DOCTYPE html>
 <head>
     <title>Bienvenida secretario</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
