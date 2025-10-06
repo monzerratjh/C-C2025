@@ -1,10 +1,21 @@
 <?php 
-include('../encabezado.php');
+
+/* 
+// Obtener el nombre del usuario de la sesión para personalizar el mensaje
+$nombre_secretario = $_SESSION['nombre_usuario'] ?? 'Secretario/a';
+?>
+    <h1>Bienvenido, <?php echo htmlspecialchars($nombre_secretario); ?></h1>
+
+*/
+
+include('../../encabezado.php');
 ?>
 <!DOCTYPE html>
+<html lang="es">
 <head>
-    <title>Bienvenida secretario</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bienvenida secretario</title>
 </head>
 
 <body>
@@ -24,16 +35,19 @@ include('../encabezado.php');
     <div class="offcanvas-header">
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
-    <div class="offcanvas-body d-flex flex-column">
-      <div>
-      <a href="log-out.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
-      <i class="bi bi-translate traductor-menu"></i>
-      </div>
+      <div class="offcanvas-body d-flex flex-column">
+        <div>
+        <a href="/utils/log-out.php" class="mb-3">
+          <i class="bi bi-arrow-left-circle-fill me-2"></i>
+          <span data-i18n="sessionClose">Cerrar Sesión</span>
+        </a>
+        <i class="bi bi-translate traductor-menu"></i>
+      </div>  
         <a href="" class="nav-opciones">Usuarios</a>
         <a href="secretario-horario.php" class="nav-opciones">Horarios</a>
         <a href="secretario-grupo.php" class="nav-opciones">Grupos</a>
       </div>
-  </div>
+    </div>
 
   <!-- Contenedor general -->
   <div class="container-fluid">
