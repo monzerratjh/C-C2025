@@ -52,10 +52,10 @@ include('../../../encabezado.php');
             <i class="bi bi-translate traductor-menu"></i>
         </div>
 
-       <a href="../espacio/adscripto-espacio.php" class="nav-opciones mb-2">Espacio</a>
-      <a href="../reserva-adscripto.php" class="nav-opciones mb-2">Reserva</a>
-      <a href="../falta-docente.php" class="nav-opciones mb-2">Falta docente</a>
-      <a href="carga-materias.php" class="fw-semibold seleccionado mb-2">Cargar materias</a>
+      <a href="espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
+      <a href="./reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
+      <a href="./falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
+      <a href="materia/carga-materias.php" class="fw-semibold seleccionado mb-2" data-i18n="addSubjects">Cargar materias</a>
     </div>
 
 
@@ -134,6 +134,12 @@ include('../../../encabezado.php');
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="redireccionar-grupo.js"></script>
+<script src="../js/redireccionar-grupo.js"></script>
+
+<!-- i18next desde CDN -->
+  <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+  
+  <script src="/utils/translate.js"></script>
+
 </body>
 </html>
