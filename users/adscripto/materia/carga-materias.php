@@ -15,9 +15,9 @@ include('../../../encabezado.php');
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="../../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="/img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="../../img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="/img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -55,13 +55,13 @@ include('../../../encabezado.php');
        <a href="../espacio/adscripto-espacio.php" class="nav-opciones mb-2">Espacio</a>
       <a href="../reserva-adscripto.php" class="nav-opciones mb-2">Reserva</a>
       <a href="../falta-docente.php" class="nav-opciones mb-2">Falta docente</a>
-      <a href="carga-materias.php" class="fw-semibold seleccionado mb-2">Materias</a>
+      <a href="carga-materias.php" class="fw-semibold seleccionado mb-2"> Cargar materias</a>
     </div>
 
 
 <!-- Contenido principal -->
       <div class="col-md-9 col-12 principal">
-        <img src="../../img/logo.png" alt="Logo" class="logo"> 
+        <img src="/img/logo.png" alt="Logo" class="logo"> 
         <h2>Cargar materias</h2>
         <p>Ingrese el grupo en el cual va a agregar la materia.</p>
 

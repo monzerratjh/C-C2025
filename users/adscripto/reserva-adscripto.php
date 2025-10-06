@@ -63,10 +63,10 @@ include('../../encabezado.php');
     </div>
 
 
-  <main class="contenedor-reservas">
+  <main class="contenedor-reservas principal">
     <img src="/img/logo.png" alt="Logo" class="logo"> 
 
-    <h1 data-i18n="reservationRequests">Solicitudes de Reserva</h1>
+    <h2 data-i18n="reservationRequests">Solicitudes de Reserva</h2>
 
     <table class="tabla-reserva">
       <thead>

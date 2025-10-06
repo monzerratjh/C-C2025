@@ -15,9 +15,9 @@ include('../../../encabezado.php');
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="../../../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="/img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="../../../img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="/img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -35,7 +35,7 @@ include('../../../encabezado.php');
        <a href="adscripto-espacio.php" class="fw-semibold seleccionado mb-2">Espacio</a>
       <a href="../reserva-adscripto.php" class="nav-opciones mb-2">Reserva</a>
       <a href="../falta-docente.php" class="nav-opciones mb-2">Falta docente</a>
-      <a href="../carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
+      <a href="../materia/carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
      </div>
   </div>
 
@@ -56,17 +56,17 @@ include('../../../encabezado.php');
        <a href="adscripto-espacio.php" class="fw-semibold seleccionado mb-2">Espacio</a>
       <a href="../reserva-adscripto.php" class="nav-opciones mb-2">Reserva</a>
       <a href="../falta-docente.php" class="nav-opciones mb-2">Falta docente</a>
-      <a href="../carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
+      <a href="../materia/carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
     </div>
 
 <!-- Contenido principal -->
 <main class="col-md-9 principal" >
 
-    <img src="../../../img/logo.png" alt="Logo" class="logo"> 
+    <img src="/img/logo.png" alt="Logo" class="logo"> 
 
     <div class="container my-4 espacio-contenedor">
   
-    <h3>Salones</h3>
+    <h2>Salones</h2>
 
 
   <div class="row justify-content-center mt-4">
