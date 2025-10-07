@@ -7,7 +7,9 @@ $con = conectar_bd();
 // Obtener todos los horarios registrados
 $resultadoHorarios = $con->query("SELECT id_horario_clase, dia, hora_inicio, hora_fin, turno FROM horario_clase");
 
+$con->close(); // cierro conexión cuando ya tengo todos los datos
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -37,7 +39,7 @@ $resultadoHorarios = $con->query("SELECT id_horario_clase, dia, hora_inicio, hor
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
   </div>
   <div class="offcanvas-body d-flex flex-column">
-    <a href="../../../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
+    <a href="../../../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
     <a href="" class="nav-opciones">Usuarios</a>
     <a href="../horario/horario-secretario.php" class="fw-semibold seleccionado mb-2">Horarios</a>
     <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
@@ -65,9 +67,11 @@ $resultadoHorarios = $con->query("SELECT id_horario_clase, dia, hora_inicio, hor
     <main class="col-md-9 principal">
       <img src="/img/logo.png" alt="Logo" class="logo"> 
 
-      <div class="bloque-agregar d-flex justify-content-between align-items-center mb-3">
+      <div class="bloque-agregar">
         <button class="etiqueta">Horarios</button>
-        <button class="agregar btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalHorario" onclick="document.getElementById('accionHorario').value='insertar';">+</button>
+        <button class="agregar" data-bs-toggle="modal" data-bs-target="#modalHorario" onclick="document.getElementById('accionHorario').value='insertar';">
+          +
+        </button>
       </div>
 
       <table class="tabla-reserva">
@@ -89,18 +93,32 @@ $resultadoHorarios = $con->query("SELECT id_horario_clase, dia, hora_inicio, hor
             <td><?= htmlspecialchars($filaHorario['hora_fin'], ENT_QUOTES) ?></td>
             <td><?= htmlspecialchars($filaHorario['turno'], ENT_QUOTES) ?></td>
             <td>
+
+          <!-- Botones Editar / Eliminar -->
+            <div class="mt-2">  
               <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modalHorario"
                 onclick="cargarEditarHorario(
-                  '<?= $filaHorario['id_horario_clase'] ?>',
+                  '<?php echo $filaHorario['id_horario_clase'] ?>',
                   '<?= $filaHorario['dia'] ?>',
                   '<?= $filaHorario['hora_inicio'] ?>',
                   '<?= $filaHorario['hora_fin'] ?>',
                   '<?= $filaHorario['turno'] ?>'
                 )"><i class="bi bi-pencil"></i></button>
-            </td>
+            </td> </div>
+
+            <div class="mt-2">
             <td>
-              <button class="btn btn-danger btn-sm eliminar-horario-btn" data-id="<?= $filaHorario['id_horario_clase'] ?>"><i class="bi bi-trash"></i></button>
-            </td>
+              <form id="formEliminar<?php echo $filaHorario['id_horario_clase'];?>" method="POST" style="display:inline;" >
+                  <input type="hidden" name="accionHorario" value="eliminar">
+
+                  <input type="hidden" name="id_horario_clase" value="<?php echo $filaHorario['id_horario_clase']; ?>">
+
+                  <button type="button" 
+                        class="btn btn-sm btn-danger eliminar-horario-btn" 
+                        data-id="<?php echo $filaHorario['id_horario_clase'] ?>"><i class="bi bi-trash"></i>
+                  </button>
+              </form>
+            </td></div>
           </tr>
           <?php endwhile; ?>
         </tbody>
@@ -113,13 +131,16 @@ $resultadoHorarios = $con->query("SELECT id_horario_clase, dia, hora_inicio, hor
 <div class="modal fade" id="modalHorario" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form method="POST" id="formularioHorario">
+
+      <form method="POST" id="formHorario">
         <div class="modal-header">
+
           <h5 class="modal-title">Gestión de Horario</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
+
         <div class="modal-body">
-          <input type="hidden" name="accion" id="accionHorario">
+          <input type="hidden" name="accionHorario" id="accionHorario">
           <input type="hidden" name="id_horario_clase" id="id_horario_clase">
 
           <div class="mb-3">
@@ -163,16 +184,23 @@ $resultadoHorarios = $con->query("SELECT id_horario_clase, dia, hora_inicio, hor
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
           <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
-      </form>
+      </div>
     </div>
   </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="../js/editar.js"></script>
-<script src="../js/validation.js"></script>
+   <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+  <script src="../js/editar.js"></script>
+  <script src="../js/validation.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
