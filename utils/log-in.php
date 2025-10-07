@@ -1,5 +1,5 @@
 <?php 
-require("conexion.php");
+require("../conexion.php");
 $con = conectar_bd();
 
 // Verificamos que los datos vienen por POST

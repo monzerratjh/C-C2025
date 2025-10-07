@@ -11,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- CSS propio -->
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
    
 </head>
 
@@ -21,9 +21,9 @@
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="../../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="/img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="../../img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="/img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -67,15 +67,15 @@
 <!-- Contenido principal -->
 <main class="col-md-9 principal" >
 
-    <img src="../../img/logo.png" alt="Logo" class="logo"> 
+    <img src="/img/logo.png" alt="Logo" class="logo"> 
     
     <section class="seccion-form secretaria">
 
       <div class="icono-usuario-login">
         <i class="bi bi-person-circle"></i>
       </div>
-
-      <form id="form-login" class="formulario" action="/utils/log-in.php" method="POST">
+                                              <!--  action="/utils/log-in.php" method="POST" -->
+      <form id="form-login" class="formulario">
         
         <div class="input-group mb-3">
           <span class="input-group-text"><i class="bi bi-person"></i></span>
@@ -91,15 +91,14 @@
 
         <!-- Indicamos el rol -->
         <input type="hidden" name="rol" value="Secretario">
-        <a href="secretario-bienvenida.php">Alternativo por ahora</a>
 
-        <button type="submit" id="boton" name="btn-log-in" value="1">Iniciar Sesión</button>
+        <button type="submit" id="boton" name="btn-log-in" value="1"><a href="secretario-bienvenida.php">Iniciar Sesión</a></button>
       </form>
 
     </section>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/utils/form-log-in.js"></script>
+<!-- <script src="/utils/form-log-in.js"></script> 
 </body>
 </html>

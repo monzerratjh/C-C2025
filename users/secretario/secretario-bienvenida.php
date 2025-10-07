@@ -21,7 +21,7 @@ $nombre_secretario = $_SESSION['nombre_usuario'] ?? 'Secretario/a';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- CSS propio -->
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -49,7 +49,7 @@ $nombre_secretario = $_SESSION['nombre_usuario'] ?? 'Secretario/a';
         </a>
         <i class="bi bi-translate traductor-menu"></i>
       </div>  
-        <a href="" class="nav-opciones">Usuarios</a>
+        <a href="/users/secretario/usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
         <a href="/users/secretario/horario/horario-secretario.php" class="nav-opciones">Horarios</a>
         <a href="/users/secretario/grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
       </div>
@@ -69,7 +69,7 @@ $nombre_secretario = $_SESSION['nombre_usuario'] ?? 'Secretario/a';
            <i class="bi bi-translate traductor-menu"></i>
         </div>
 
-        <a href="" class="nav-opciones">Usuarios</a>
+        <a href="/users/secretario/usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
         <a href="/users/secretario/horario/horario-secretario.php" class="nav-opciones">Horarios</a>
         <a href="/users/secretario/grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
        </div>
@@ -78,7 +78,7 @@ $nombre_secretario = $_SESSION['nombre_usuario'] ?? 'Secretario/a';
 <!-- Contenido principal -->
 <main class="col-md-9 principal" >
 
-    <img src="../../img/logo.png" alt="Logo" class="logo"> 
+    <img src="/img/logo.png" alt="Logo" class="logo"> 
     
     <h1 class="bienvenida">Bienvenid@</h1>
     <h1 class="bienvenida">Secretari@ @username</h1>
