@@ -1,5 +1,5 @@
 <?php
-include('..\..\..\conexion.php');
+include('../../../conexion.php');
 $conn = conectar_bd();
 $sql = "SELECT * FROM usuario";
 $query = mysqli_query($conn, $sql); //mysqli_query FUNCIÓN de php para EJECUTAR SQL
@@ -56,9 +56,9 @@ if ($id_usuario) {
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="../../../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="/img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="../../../img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="/img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -71,14 +71,14 @@ if ($id_usuario) {
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <a href="../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
+      <a href="../../../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
 
 
 
 
-         <a href="secretario-usuario.php" class="fw-semibold seleccionado mb-2">Usuarios</a>
-        <a href="secretario-horario.php" class="nav-opciones">Horarios</a>
-        <a href="secretario-grupo.php" class="nav-opciones">Grupos</a>
+        <a href="secretario-usuario.php" class="fw-semibold seleccionado mb-2">Usuarios</a>
+        <a href="../horario/horario-secretario.php" class="nav-opciones">Horarios</a>
+        <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
       </div>
   </div>
 
@@ -96,17 +96,17 @@ if ($id_usuario) {
        <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="../index.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="../index.php">Cerrar Sesión</a>
+            <a href="../../../index.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="../../../index.php">Volver</a>
           </div>
         </div>
 
 
 
 
-     <a href="secretario-usuario.php" class="fw-semibold seleccionado mb-2">Usuarios</a>
-        <a href="secretario-horario.php" class="nav-opciones">Horarios</a>
-        <a href="secretario-grupo.php" class="nav-opciones">Grupos</a>
+        <a href="secretario-usuario.php" class="fw-semibold seleccionado mb-2">Usuarios</a>
+        <a href="../horario/horario-secretario.php" class="nav-opciones">Horarios</a>
+        <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
        </div>
 
 
@@ -126,7 +126,7 @@ if ($id_usuario) {
 
 
 
-    <img src="../../../img/logo.png" alt="Logo" class="logo">
+    <img src="/img/logo.png" alt="Logo" class="logo">
 
 
 

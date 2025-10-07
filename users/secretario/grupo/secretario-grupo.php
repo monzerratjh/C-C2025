@@ -97,7 +97,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
     <div class="offcanvas-body d-flex flex-column">
       <a href="v" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
  
-       <a href="" class="nav-opciones">Usuarios</a>
+        <a href="../usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
         <a href="../horario/horario-secretario" class="nav-opciones">Horarios</a>
         <a href="../grupo/secretario-grupo.php" class="fw-semibold seleccionado mb-2">Grupos</a>
         </div>
@@ -115,7 +115,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
         </div>
         </div>
 
-        <a href="" class="nav-opciones">Usuarios</a>
+        <a href="../usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
         <a href="../horario/horario-secretario.php" class="nav-opciones">Horarios</a>
         <a href="../grupo/secretario-grupo.php" class="fw-semibold seleccionado mb-2">Grupos</a>
        </div>

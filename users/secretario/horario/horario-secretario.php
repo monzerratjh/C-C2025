@@ -40,7 +40,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
   </div>
   <div class="offcanvas-body d-flex flex-column">
     <a href="../../../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
-    <a href="" class="nav-opciones">Usuarios</a>
+    <a href="../usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
     <a href="../horario/horario-secretario.php" class="fw-semibold seleccionado mb-2">Horarios</a>
     <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
   </div>
@@ -58,7 +58,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
           <a href="../../../index.php">Volver</a>
         </div>
       </div>
-      <a href="" class="nav-opciones">Usuarios</a>
+      <a href="../usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
       <a href="../horario/horario-secretario.php" class="fw-semibold seleccionado mb-2">Horarios</a>
       <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
     </div>
