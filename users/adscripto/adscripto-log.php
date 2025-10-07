@@ -42,11 +42,8 @@
       </div>
 
       <a href="/users/estudiante/estudiante.php" class="nav-opciones mb-2" data-i18n="student">Estudiante</a>
-
       <a href="/users/adscripto/adscripto-log.php" class="fw-semibold seleccionado mb-2" data-i18n="adscripto">Adscripto</a>
-
       <a href="/users/docente/docente-log.php" class="nav-opciones mb-2" data-i18n="teacher">Docente</a>
-
       <a href="/users/secretario/secretario-log.php" class="nav-opciones mb-2" data-i18n="secretary">Secretario</a>
     </div>
   </div>
@@ -66,11 +63,8 @@
         </div>
 
         <a href="/users/estudiante/estudiante.php" class="nav-opciones" data-i18n="student">Estudiante</a>
-
         <a href="/users/adscripto/adscripto-log.php" class="fw-semibold seleccionado" data-i18n="adscripto">Adscripto</a>
-
         <a href="/users/docente/docente-log.php" class="nav-opciones" data-i18n="teacher">Docente</a>
-
         <a href="/users/secretario/secretario-log.php" class="nav-opciones" data-i18n="secretary" >Secretario</a>
       </div>
 
@@ -84,9 +78,8 @@
       <div class="icono-usuario-login">
         <i class="bi bi-person-circle"></i>
       </div>
-
-      <form id="form-login" class="formulario" action="/utils/log-in.php" method="POST">
-        
+                                              <!--  action="/utils/log-in.php" method="POST" -->
+      <form id="form-login" class="formulario"                > 
         <div class="input-group mb-3">
             <span class="input-group-text"><i class="bi bi-person"></i></span>
             <input type="text" class="form-control" placeholder="Cédula de Identidad"
@@ -102,7 +95,7 @@
         </div>
 
         <input type="hidden" name="rol" value="adscripto">
-        <button data-i18n="logIn" type="submit" id="boton" name="btn-log-in" >Iniciar Sesión</button>
+        <button  type="submit" id="boton" name="btn-log-in"><a href="adscripto-bienvenida.php"data-i18n="logIn">Iniciar Sesión</a></button>
     </form>
 
   </section>
@@ -110,7 +103,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/utils/form-log-in.js"></script>
+<!-- <script src="/utils/form-log-in.js"></script>  -->
 
 <!-- i18next desde CDN -->
   <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
