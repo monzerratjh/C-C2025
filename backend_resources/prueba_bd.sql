@@ -94,7 +94,7 @@ INSERT INTO docente_pide_recurso (id_docente, id_recurso) VALUES
 (3,3);
 
 -- 15. ASIGNATURA-DOCENTE SOLICITA ESPACIO
-INSERT INTO asignatura_docente_solicita_espacio (id_asignatura, id_docente, hora_clase, id_espacio, estado_reserva) VALUES
-(1,1,'08:30:00',1,'aceptada'),
-(2,2,'10:30:00',3,'pendiente'),
-(3,3,'19:00:00',2,'aceptada');
+INSERT INTO asignatura_docente_solicita_espacio (id_asignatura, id_docente, id_horario_clase, id_espacio, estado_reserva) VALUES
+(1,1,1,1,'aceptada'),
+(2,2,2,3,'pendiente'),
+(3,3,3,2,'aceptada');
