@@ -56,9 +56,9 @@ if ($id_usuario) {
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="/img/menu.png" alt="menu">
+        <img class="menuResponsive" src="../../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="/img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="../../../img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -126,7 +126,7 @@ if ($id_usuario) {
 
 
 
-    <img src="../img/logo.png" alt="Logo" class="logo">
+    <img src="../../../img/logo.png" alt="Logo" class="logo">
 
 
 
@@ -204,7 +204,7 @@ if ($id_usuario) {
 
 
         <!-- Campos ocultos para saber si es inserción o edición -->
-        <input name="id_usuario" value="<?= $row['id_usuario'] ?>">
+        <input type="hidden" name="id_usuario" value="<?= $row['id_usuario'] ?>">
 
 
 
