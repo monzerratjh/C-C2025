@@ -17,12 +17,6 @@ $sqlConsultaEspacios = "
 ";
 $resultadoEspacios = $con->query($sqlConsultaEspacios);
 
-// Obtener valores del ENUM 'disponibilidad_espacio' para el select
-$enumConsulta = $con->query("SHOW COLUMNS FROM espacio LIKE 'disponibilidad_espacio'");
-$filaEnum = $enumConsulta->fetch_assoc();
-preg_match_all("/'([^']+)'/", $filaEnum['Type'], $coincidenciasEnum);
-$valoresDisponibilidad = $coincidenciasEnum[1];
-
 $con->close();
 ?>
 <!DOCTYPE html>
@@ -96,12 +90,7 @@ $con->close();
     
     <div class="acordion">
 
-    <div class="d-flex justify-content-between align-items-center mb-3">
           <h2>Gestión de espacios</h2>
-          <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalEspacio" onclick="prepararNuevoEspacio()">
-            + Nuevo espacio
-          </button>
-    </div>
 
     <!-- Opcion 1 -->
       <div>
