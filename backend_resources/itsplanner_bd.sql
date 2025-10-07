@@ -80,10 +80,8 @@ CREATE TABLE espacio (
 
 CREATE TABLE horario_clase (
     id_horario_clase int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    dia ENUM('Lunes','Martes','Miércoles','Jueves','Viernes') NOT NULL,
     hora_inicio time NOT NULL,
     hora_fin time NOT NULL,
-    turno ENUM('Matutino','Vespertino','Nocturno') NOT NULL,
     id_secretario int NOT NULL
 );
 
@@ -91,7 +89,8 @@ CREATE TABLE horario_clase (
 CREATE TABLE adscripto_organiza_horario_clase (
 	id_adscripto int NOT NULL,
     id_horario_clase int NOT NULL,
-    id_asignatura int
+    id_asignatura int,
+    dia ENUM('Lunes','Martes','Miércoles','Jueves','Viernes') NOT NULL
 );
 
 CREATE TABLE asignatura_docente_solicita_espacio (

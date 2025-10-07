@@ -5,8 +5,9 @@ session_start();
 $con = conectar_bd();
 
 // Obtener todos los horarios registrados
-$resultadoHorarios = $con->query("SELECT id_horario_clase, dia, hora_inicio, hora_fin, turno FROM horario_clase");
+$resultadoHorarios = $con->query("SELECT id_horario_clase, hora_inicio, hora_fin FROM horario_clase");
 
+$con->close(); // cierro conexión cuando ya tengo todos los datos
 ?>
 
 <!DOCTYPE html>
@@ -76,10 +77,8 @@ $resultadoHorarios = $con->query("SELECT id_horario_clase, dia, hora_inicio, hor
       <table class="tabla-reserva">
         <thead>
           <tr>
-            <th>Día</th>
-            <th>Hora de inicio</th>
-            <th>Hora de fin</th>
-            <th>Turno</th>
+            <th>Horario de inicio</th>
+            <th>Horario de finalización</th>
             <th>Editar</th>
             <th>Eliminar</th>
           </tr>
@@ -87,10 +86,8 @@ $resultadoHorarios = $con->query("SELECT id_horario_clase, dia, hora_inicio, hor
         <tbody>
           <?php while($filaHorario = $resultadoHorarios->fetch_assoc()): ?>
           <tr>
-            <td><?= htmlspecialchars($filaHorario['dia'], ENT_QUOTES) ?></td>
             <td><?= htmlspecialchars($filaHorario['hora_inicio'], ENT_QUOTES) ?></td>
             <td><?= htmlspecialchars($filaHorario['hora_fin'], ENT_QUOTES) ?></td>
-            <td><?= htmlspecialchars($filaHorario['turno'], ENT_QUOTES) ?></td>
             <td>
 
           <!-- Botones Editar / Eliminar -->
@@ -98,10 +95,8 @@ $resultadoHorarios = $con->query("SELECT id_horario_clase, dia, hora_inicio, hor
               <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modalHorario"
                 onclick="cargarEditarHorario(
                   '<?php echo $filaHorario['id_horario_clase'] ?>',
-                  '<?= $filaHorario['dia'] ?>',
                   '<?= $filaHorario['hora_inicio'] ?>',
                   '<?= $filaHorario['hora_fin'] ?>',
-                  '<?= $filaHorario['turno'] ?>'
                 )"><i class="bi bi-pencil"></i></button>
             </td> </div>
 
@@ -142,7 +137,9 @@ $resultadoHorarios = $con->query("SELECT id_horario_clase, dia, hora_inicio, hor
           <input type="hidden" name="accionHorario" id="accionHorario">
           <input type="hidden" name="id_horario_clase" id="id_horario_clase">
 
-          <div class="mb-3">
+         <!-- ADSCRIPTO:
+          
+         <div class="mb-3">
             <label>Día</label>
             <select class="form-control" name="dia" id="dia" required>
               <option value="">Seleccione...</option>
@@ -152,7 +149,7 @@ $resultadoHorarios = $con->query("SELECT id_horario_clase, dia, hora_inicio, hor
               <option value="Jueves">Jueves</option>
               <option value="Viernes">Viernes</option>
             </select>
-          </div>
+          </div>                                                        -->
 
           <div class="mb-3">
             <label>Hora de Inicio</label>
@@ -162,16 +159,6 @@ $resultadoHorarios = $con->query("SELECT id_horario_clase, dia, hora_inicio, hor
           <div class="mb-3">
             <label>Hora de Fin</label>
             <input type="time" class="form-control" name="hora_fin" id="hora_fin" required>
-          </div>
-
-          <div class="mb-3">
-            <label>Turno</label>
-            <select class="form-control" name="turno" id="turno" required>
-              <option value="">Seleccione...</option>
-              <option value="Matutino">Matutino</option>
-              <option value="Vespertino">Vespertino</option>
-              <option value="Nocturno">Nocturno</option>
-            </select>
           </div>
 
           <div class="mb-3"> <!-- id del secretario asociado con el grupo creado para que se gusrade en la bd -->
