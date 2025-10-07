@@ -79,10 +79,10 @@ function logear($con, $cedula, $contrasenia, $rolFormulario) {
     // Redirección según rol
     $url = '';
     if ($rolReal === 'adscripto') {
-        $url = 'adscripto-bienvenida.php'; 
+        $url = '/users/adscripto/adscripto-bienvenida.php'; 
     } elseif ($rolReal === 'docente') {
-        $url = 'docente/docente-bienvenida.php'; 
-    } elseif ($rolReal === 'secretario')$url = 'secretario/secretario-bienvenida.php';
+        $url = '/users/docente/docente-bienvenida.php'; 
+    } elseif ($rolReal === 'secretario')$url = '/users/secretario/secretario-bienvenida.php';
 
     return ['success' => true, 'redirect' => $url];
 }

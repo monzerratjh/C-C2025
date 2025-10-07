@@ -77,8 +77,8 @@ include('../../conexion.php');
       <div class="icono-usuario-login">
         <i class="bi bi-person-circle"></i>
       </div>
-                                              <!--  action="/utils/log-in.php" method="POST" -->
-      <form id="form-login" class="formulario"                > 
+                                          
+      <form id="form-login" class="formulario" action="/utils/log-in.php" method="POST"> 
         <div class="input-group mb-3">
           <span class="input-group-text"><i class="bi bi-person"></i></span>
           <input type="text" class="form-control" placeholder="Cédula de Identidad"
@@ -91,15 +91,15 @@ include('../../conexion.php');
           name="password" id="password" required>
         </div>
 
-        <!-- Indicamos el rol -->
+ <!-- Indicamos el rol -->
         <input type="hidden" name="rol" value="docente">
-        <button type="submit" id="boton" name="btn-log-in" value="1"><a href="docente-bienvenida.php">Iniciar Sesión</a></button>
+        <button type="submit" id="boton" name="btn-log-in" value="1">Iniciar Sesión</button>      
       </form>
 
     </section>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<!-- <script src="/utils/form-log-in.js"></script>  -->
+<script src="/utils/form-log-in.js"></script>
 </body>
 </html>
