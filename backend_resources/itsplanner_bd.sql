@@ -129,7 +129,34 @@ UPDATE espacio SET tipo = 'Salón' WHERE nombre_espacio LIKE 'Salón%';
 UPDATE espacio SET tipo = 'Aula' WHERE nombre_espacio LIKE 'Aula%';
 UPDATE espacio SET tipo = 'Laboratorio' WHERE nombre_espacio LIKE 'Lab%';
 
--- CLAVES FORANEAS
+
+
+-- Agregar clave primaria
+ALTER TABLE asignatura_docente_solicita_espacio
+ADD COLUMN id_reserva INT PRIMARY KEY AUTO_INCREMENT FIRST;
+
+--  Reemplazar hora_clase por id_horario_clase
+ALTER TABLE asignatura_docente_solicita_espacio
+DROP COLUMN hora_clase,
+ADD COLUMN id_horario_clase INT NOT NULL AFTER id_docente;
+
+
+-- Ajustar estado_reserva (por si querés agregar estados)
+ALTER TABLE asignatura_docente_solicita_espacio
+MODIFY COLUMN estado_reserva ENUM('pendiente','aceptada','rechazada','cancelada','finalizada') 
+DEFAULT 'pendiente';
+
+
+
+	-- CLAVES FORANEAS
+
+--  Crear las claves foráneas (asegurando integridad)
+ALTER TABLE asignatura_docente_solicita_espacio
+ADD CONSTRAINT fk_horario_clase
+FOREIGN KEY (id_horario_clase) REFERENCES horario_clase(id_horario_clase)
+ON DELETE CASCADE ON UPDATE CASCADE;
+
+
 
 -- Tabla grupo
 ALTER TABLE grupo
