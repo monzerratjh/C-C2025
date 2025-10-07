@@ -78,7 +78,7 @@ include('../../../encabezado.php');
 
         <div class="busqueda">
           <i class="bi bi-search icono-busqueda"></i>
-          <input type="text" class="diseno-busqueda" placeholder="Ingrese el grupo" list="lista-grupos" id="grupoInput" />
+          <input type="text" class="diseno-busqueda diseno-busqueda2" placeholder="Ingrese el grupo" list="lista-grupos" id="grupoInput" />
           <datalist id="lista-grupos">
             <option value="1° MD">
             <option value="2° MD">

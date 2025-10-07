@@ -145,7 +145,7 @@ if ($id_usuario) {
 
 
 
-    <table class="tabla-reserva">
+    <table  class="tabla-horarios-secretario">
       <thead>
         <tr>
           <th>Nombre</th>

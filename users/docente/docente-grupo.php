@@ -35,7 +35,7 @@ include('../../conexion.php');
       <a href="docente-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
       <i class="bi bi-translate traductor-menu"></i>
 
-      <a href="docente-grupo.php">Grupos a Cargo</a>
+      <a href="docente-grupo.php" class="fw-semibold seleccionado mb-2">Grupos a Cargo</a>
       <a href="docente-reservar.php" class="nav-opciones mb-2">Reservar Espacio</a>
       <a href="docente-falta.php" class="nav-opciones mb-2">Avisar Falta</a>
     </div>

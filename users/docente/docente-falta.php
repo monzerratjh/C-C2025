@@ -70,8 +70,8 @@ include('../../conexion.php');
       <main class="col-md-9 principal">
         <img src="../../img/logo.png" alt="Logo" class="logo">
         
-        <div>
-          <button data-bs-toggle="modal" data-bs-target="#modalFalta">Avisar Falta</button>
+        <div class="bloque-agregar">
+          <button class="etiqueta2" data-bs-toggle="modal" data-bs-target="#modalFalta">Avisar Falta</button>
         </div>
 
         <!-- Modal para enviar aviso de falta -->

@@ -323,6 +323,9 @@ a{
       width: 100%;
       font-size: 1rem;
     }
+    .diseno-busqueda2{
+      border: 6px solid var(--color-adscripto)
+    }
 
     .icono-busqueda {
       position: absolute;
@@ -643,15 +646,9 @@ a{
   width: 100%;
   max-width: 800px;
   border-collapse: collapse;
-  background-color: #f3d9f1;
+  background-color: #d9f3f0;
   border-radius: 8px;
   overflow: hidden;
-}
-
-
-.tabla-reserva thead {
-  background-color: #55c4b3;
-  color: #000;
 }
 
 .tabla-reserva th,
@@ -659,9 +656,12 @@ a{
   padding: 12px;
   text-align: center;
 }
+.tabla-reserva th{
+background-color: var(--color-adscripto);
+}
 
 .tabla-reserva tbody tr:nth-child(even) { /*Las celdas pares cambian d color*/
-  background-color: #f9eaf8;
+  background-color: #eaf8f9;
 }
 
 .confirmada {
@@ -672,6 +672,21 @@ a{
 .pendiente {
   font-weight: bold;
   color: #0a4f79;
+}
+
+.tabla-horarios-secretario{
+  width: 100%;
+  max-width: 800px;
+  border-collapse: collapse;
+  background-color: #f3d9ef;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.tabla-horarios-secretario th{
+background-color: var(--color-secretaria);
+}
+.tabla-horarios-secretario tbody tr:nth-child(even) { /*Las celdas pares cambian d color*/
+  background-color: #f9eaf8;
 }
 
 /* Responsive */
@@ -701,7 +716,7 @@ table th, table td {
 }
 
 table th {
-  background: var(--color-secretaria); /* rosado pastel */
+  background: var(--color-estudiante); /* rosado pastel */
   color: #333;
   font-weight: bold;
 }

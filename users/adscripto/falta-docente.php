@@ -87,7 +87,7 @@
     </div>
 
           <div class="dia">
-              <button class="boton-opciones miercoles">Nombre Docente</button>
+              <button class="boton-opciones adscripto">Nombre Docente</button>
             <div class="contenido-dia">
               <table class="tabla-horario">
 <!-- <td><span data-i18n="teacherName">Nombre:</span> <?= htmlspecialchars($docente['nombre']); ?></td>
@@ -102,7 +102,7 @@
           </div>
 
           <div class="dia">
-              <button class="boton-opciones miercoles">Nombre Docente</button>
+              <button class="boton-opciones adscripto">Nombre Docente</button>
             <div class="contenido-dia">
               <table class="tabla-horario">
 <!-- <td><span data-i18n="teacherName">Nombre:</span> <?= htmlspecialchars($docente['nombre']); ?></td>
@@ -117,7 +117,7 @@
           </div>
 
           <div class="dia">
-              <button class="boton-opciones miercoles">Nombre Docente</button>
+              <button class="boton-opciones adscripto">Nombre Docente</button>
             <div class="contenido-dia">
               <table class="tabla-horario">
 <!-- <td><span data-i18n="teacherName">Nombre:</span> <?= htmlspecialchars($docente['nombre']); ?></td>

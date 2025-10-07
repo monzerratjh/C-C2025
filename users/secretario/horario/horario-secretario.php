@@ -74,7 +74,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
         </button>
       </div>
 
-      <table class="tabla-reserva">
+      <table class="tabla-horarios-secretario">
         <thead>
           <tr>
             <th>Horario de inicio</th>
