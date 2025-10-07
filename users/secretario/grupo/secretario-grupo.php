@@ -111,7 +111,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
       <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="../../../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión</a>
+            <a href="../../../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
         </div>
         </div>
 
