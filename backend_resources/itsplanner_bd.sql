@@ -80,14 +80,18 @@ CREATE TABLE espacio (
 
 CREATE TABLE horario_clase (
     id_horario_clase int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	hora_reloj_horario_clase time NOT NULL,
-	id_asignatura int NOT NULL
+    dia ENUM('Lunes','Martes','Miércoles','Jueves','Viernes') NOT NULL,
+    hora_inicio time NOT NULL,
+    hora_fin time NOT NULL,
+    turno ENUM('Matutino','Vespertino','Nocturno') NOT NULL,
+    id_secretario int NOT NULL
 );
 
 
 CREATE TABLE adscripto_organiza_horario_clase (
-	id_adscripto int,
-	id_horario_clase int
+	id_adscripto int NOT NULL,
+    id_horario_clase int NOT NULL,
+    id_asignatura int
 );
 
 CREATE TABLE asignatura_docente_solicita_espacio (
@@ -185,11 +189,16 @@ ALTER TABLE adscripto_organiza_horario_clase
     ADD CONSTRAINT fk_adscripto_organiza_horario_clase
     FOREIGN KEY (id_horario_clase) REFERENCES horario_clase(id_horario_clase) ON DELETE CASCADE;
 
+ALTER TABLE adscripto_organiza_horario_clase
+    ADD CONSTRAINT fk_asignatura
+    FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE SET NULL;
+-- ON DELETE SET NULL en id_asignatura deja el campo vacío si se elimina la asignatura.
+
 
 -- Tabla horario_clase
 ALTER TABLE horario_clase
-    ADD CONSTRAINT fk_horario_clase_asignatura
-    FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE CASCADE;
+    ADD CONSTRAINT fk_horario_clase_secretario
+    FOREIGN KEY (id_secretario) REFERENCES usuario(id_usuario) ON DELETE CASCADE;
 
 
 -- Tabla asignatura_docente_solicita_espacio
