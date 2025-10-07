@@ -7,7 +7,6 @@ $con = conectar_bd();
 // Obtener todos los horarios registrados
 $resultadoHorarios = $con->query("SELECT id_horario_clase, dia, hora_inicio, hora_fin, turno FROM horario_clase");
 
-$con->close(); // cierro conexión cuando ya tengo todos los datos
 ?>
 
 <!DOCTYPE html>
@@ -199,8 +198,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
    <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  <script src="../js/editar.js"></script>
-  <script src="../js/validation.js"></script>
+  <script src="../js/horario.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
