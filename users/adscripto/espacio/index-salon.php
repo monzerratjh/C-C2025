@@ -1,5 +1,12 @@
 <?php 
 //include('../../../encabezado.php');
+include('../../../conexion.php');
+$con = conectar_bd();
+
+// Obtener solo los espacios de tipo 'Salón'
+$resultadoEspacios = $con->query("SELECT * FROM espacio WHERE tipo = 'Salón' ORDER BY nombre_espacio");
+
+$con->close();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -78,65 +85,32 @@
 
   <div class="row justify-content-center mt-4">
     
-    <!-- Salón 1 -->
-    <div class="col-6 mb-4">
-      <div class="espacio-card">
-        <div class="espacio-cuerpo"></div>
-        <div class="espacio-footer d-flex justify-content-between align-items-center">
-          <button class="btn btn-sm btn-light">
-            <a href="editar-propiedad-espacio.php"><i class="bi bi-pencil-square"></i></a>
-          </button>
-          <span>Salón 1</span>
-          <button class="btn btn-sm btn-light">
-            <i class="bi bi-trash"></i>
-          </button>
+            <?php while($espacio = $resultadoEspacios->fetch_assoc()): ?>
+            <div class="col-6 mb-4">
+                <div class="espacio-card">
+                    <div class="espacio-cuerpo"></div>
+                    <div class="espacio-footer d-flex justify-content-between align-items-center">
+                        <button class="btn btn-sm btn-light">
+                            <a href="editar-propiedad-espacio.php?id=<?=$espacio['id_espacio']?>"><i class="bi bi-pencil-square"></i></a>
+                        </button>
+                        <span><?=htmlspecialchars($espacio['nombre_espacio'])?></span>
+                        <button class="btn btn-sm btn-light">
+                            <a href="eliminar-espacio.php?id=<?=$espacio['id_espacio']?>" class="text-danger"><i class="bi bi-trash"></i></a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <?php endwhile; ?>
+
+            <!-- Agregar nuevo -->
+            <div class="col-6 mb-4">
+                <div class="espacio-card espacio-agregar d-flex justify-content-center align-items-center">
+                    <a href="agregar-espacio.php"><span class="espacio-plus">+</span></a>
+                </div>
+            </div>
+
         </div>
-      </div>
     </div>
-
-    <!-- Salón 2 -->
-    <div class="col-6 mb-4">
-      <div class="espacio-card">
-        <div class="espacio-cuerpo"></div>
-        <div class="espacio-footer d-flex justify-content-between align-items-center">
-          <button class="btn btn-sm btn-light">
-            <a href="editar-propiedad-espacio.php"><i class="bi bi-pencil-square"></i></a>
-          </button>
-          <span>Salón 2</span>
-          <button class="btn btn-sm btn-light">
-            <i class="bi bi-trash"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Salón 3 -->
-    <div class="col-6 mb-4">
-      <div class="espacio-card">
-        <div class="espacio-cuerpo"></div>
-        <div class="espacio-footer d-flex justify-content-between align-items-center">
-          <button class="btn btn-sm btn-light">
-            <a href="editar-propiedad-espacio.php"><i class="bi bi-pencil-square"></i></a>
-          </button>
-          <span>Salón 3</span>
-          <button class="btn btn-sm btn-light">
-            <i class="bi bi-trash"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Agregar -->
-    <div class="col-6 mb-4">
-      <div class="espacio-card espacio-agregar d-flex justify-content-center align-items-center">
-      <a href="agregar-espacio.php"><span class="espacio-plus">+</span></a>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

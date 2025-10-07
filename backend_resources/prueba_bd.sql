@@ -1,5 +1,5 @@
 -- ============================================
--- DATOS DE PRUEBA COMPLETOS Y CONSISTENTES
+-- DATOS DE PRUEBA ACTUALIZADOS
 -- ============================================
 
 -- 1. USUARIOS
@@ -10,8 +10,8 @@ INSERT INTO usuario (nombre_usuario, apellido_usuario, gmail_usuario, telefono_u
 ('Andrés', 'Fernández','andres.fernandez@itu.edu','094567890', 'Adscripto', 78912345,'hashpass4'),
 ('María', 'Rodríguez','maria.rodriguez@itu.edu','095678901', 'Docente', 89123456,'hashpass5'),
 ('Jorge', 'Silva','jorge.silva@itu.edu','096789012', 'Docente', 91234567, 'hashpass6'),
-('Ana', 'López','ana.lopez@itu.edu','097890123', 'Docente', 12345678, 'hashpass7'),
-('Diego', 'Castro','diego.castro@itu.edu','098901234', 'Docente', 23456789, 'hashpass8');
+('Ana', 'López','ana.lopez@itu.edu','097890123', 'Docente', 12345678,'hashpass7'),
+('Diego', 'Castro','diego.castro@itu.edu','098901234', 'Docente', 23456789,'hashpass8');
 
 -- 2. SECRETARIOS
 INSERT INTO secretario (id_usuario) VALUES
@@ -31,10 +31,11 @@ INSERT INTO docente (id_usuario) VALUES
 (8);
 
 -- 5. ESPACIOS
-INSERT INTO espacio (nombre_espacio, capacidad_espacio, historial_espacio, disponibilidad_espacio) VALUES
-('Laboratorio Informática 1', 30, 'Renovado en 2024', 'libre'),
-('Aula 204', 25, NULL, 'libre'),
-('Laboratorio Redes', 20, 'Cambio de routers en 2023', 'mantenimiento');
+INSERT INTO espacio (nombre_espacio, capacidad_espacio, historial_espacio, disponibilidad_espacio, tipo) VALUES
+('Laboratorio Informática 1', 30, 'Renovado en 2024', 'libre','Laboratorio'),
+('Aula 204', 25, NULL, 'libre','Aula'),
+('Laboratorio Redes', 20, 'Cambio de routers en 2023', 'mantenimiento','Laboratorio'),
+('Salón Principal', 50, NULL, 'libre','Salón');
 
 -- 6. RECURSOS
 INSERT INTO recurso (disponibilidad_recurso, nombre_recurso, historial_recurso, tipo_recurso, estado_recurso, id_espacio) VALUES

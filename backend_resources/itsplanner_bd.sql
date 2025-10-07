@@ -122,6 +122,12 @@ CREATE TABLE docente_dicta_asignatura (
 	id_asignatura int NOT NULL
 );
 
+ALTER TABLE espacio
+ADD COLUMN tipo ENUM('Salón','Aula','Laboratorio') NOT NULL DEFAULT 'Salón';
+
+UPDATE espacio SET tipo = 'Salón' WHERE nombre_espacio LIKE 'Salón%';
+UPDATE espacio SET tipo = 'Aula' WHERE nombre_espacio LIKE 'Aula%';
+UPDATE espacio SET tipo = 'Laboratorio' WHERE nombre_espacio LIKE 'Lab%';
 
 -- CLAVES FORANEAS
 
