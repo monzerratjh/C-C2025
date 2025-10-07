@@ -1,5 +1,5 @@
 <?php
-include(dirname(__FILE__).'/../../../conexion.php');
+include('..\..\..\conexion.php');
 $conn = conectar_bd();
 $sql = "SELECT * FROM usuario";
 $query = mysqli_query($conn, $sql); //mysqli_query FUNCIÓN de php para EJECUTAR SQL
@@ -184,13 +184,9 @@ if ($id_usuario) {
                 '<?php echo $row['id_usuario']; ?>'
                 );"><i class="bi bi-pencil"></i>
           </a></td>
-          <td><a href="/users/secretario/usuario/delete_user_secretario.php=<?= $row['id_usuario']  ?>"><i class="bi bi-trash"></a></i></td>
+          <td><a href="delete_user_secretario.php?id_usuario=<?= $row['id_usuario']  ?>"><i class="bi bi-trash"></a></i></td>
         </tr>
                 <!-- LRPM EDICIÓN DE MIERDA-->
-
-
-
-
     <div class="modal fade" id="update_modal<?= $row['id_usuario'] ?>" tabindex="-1">  
       <div class="modal-dialog">
         <div class="modal-content">
@@ -201,7 +197,7 @@ if ($id_usuario) {
 
 
 
-        <form method="POST" action="/users/secretario/usuario/editar-usuario.php" id="editarUsuario">
+        <form method="POST" action="./editar-usuario.php" id="editarUsuario">
         <div class="modal-body">
 
 
@@ -303,7 +299,7 @@ if ($id_usuario) {
 
 
 
-        <form method="POST" action="/users/secretario/usuario/agregar-usuario.php" id="formUsuario">
+        <form method="POST" action="./agregar-usuario.php" id="formUsuario">
         <div class="modal-body">
 
 

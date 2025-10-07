@@ -1,6 +1,6 @@
 <?php
-include(dirname(__FILE__).'../../../encabezado.php');
-include(dirname(__FILE__).'/../../../conexion.php');
+include(dirname(__FILE__).'./encabezado.php');
+include('..\..\..\conexion.php');
 $conn = conectar_bd();
 
 // Supongamos que los valores vienen de un formulario POST
