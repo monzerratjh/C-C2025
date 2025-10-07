@@ -188,127 +188,99 @@ document.addEventListener('click', function(e) {
     }
 });
 
+    // HORARIO
 // ----------------------------
-// VALIDACIÓN DEL FORMULARIO
+// VALIDAR FORMULARIO
 // ----------------------------
 function validarHorario() {
-    const id_grupo = document.getElementById('id_grupo').value;
     const dia = document.getElementById('dia').value;
     const hora_inicio = document.getElementById('hora_inicio').value;
     const hora_fin = document.getElementById('hora_fin').value;
     const turno = document.getElementById('turno').value;
 
-    if (!id_grupo) {
-        Swal.fire({ icon: 'error', title: 'Error', text: 'Seleccione un grupo' });
-        return false;
-    }
-
-    if (!dia) {
-        Swal.fire({ icon: 'error', title: 'Error', text: 'Seleccione un día' });
-        return false;
-    }
-
-    if (!hora_inicio) {
-        Swal.fire({ icon: 'error', title: 'Error', text: 'Ingrese la hora de inicio' });
-        return false;
-    }
-
-    if (!hora_fin) {
-        Swal.fire({ icon: 'error', title: 'Error', text: 'Ingrese la hora de fin' });
-        return false;
-    }
-
-    if (hora_inicio >= hora_fin) {
-        Swal.fire({ icon: 'error', title: 'Error', text: 'La hora de inicio debe ser menor que la hora de fin' });
-        return false;
-    }
-
-    if (!turno) {
-        Swal.fire({ icon: 'error', title: 'Error', text: 'Seleccione un turno' });
-        return false;
-    }
+    if (!dia) { Swal.fire('Error','Seleccione un día','error'); return false; }
+    if (!hora_inicio) { Swal.fire('Error','Ingrese hora de inicio','error'); return false; }
+    if (!hora_fin) { Swal.fire('Error','Ingrese hora de fin','error'); return false; }
+    if (hora_inicio >= hora_fin) { Swal.fire('Error','Hora inicio debe ser menor que fin','error'); return false; }
+    if (!turno) { Swal.fire('Error','Seleccione un turno','error'); return false; }
 
     return true;
 }
 
 // ----------------------------
-// OBTENER DATOS DEL FORMULARIO
+// ENVIAR FORMULARIO
 // ----------------------------
-function obtenerDatosHorario() {
-    const formulario = document.getElementById('formularioGestionHorario');
-    const formData = new FormData(formulario);
+document.getElementById('formularioHorario').addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!validarHorario()) return;
 
-    formData.set('id_grupo', document.getElementById('id_grupo').value);
-    formData.set('dia', document.getElementById('dia').value);
-    formData.set('hora_inicio', document.getElementById('hora_inicio').value);
-    formData.set('hora_fin', document.getElementById('hora_fin').value);
-    formData.set('turno', document.getElementById('turno').value);
+    const formData = new FormData(this);
 
-    return formData;
-}
-
-// ----------------------------
-// ENVIAR DATOS AL PHP
-// ----------------------------
-function enviarHorario(formData) {
     fetch('horario-accion.php', {
         method: 'POST',
         body: formData
     })
-    .then(respuesta => respuesta.json())
-    .then(datos => {
+    .then(res => res.json())
+    .then(data => {
         Swal.fire({
-            icon: datos.type,
-            title: datos.type === 'error' ? 'Error' : 'Éxito',
-            text: datos.message
+            icon: data.type,
+            title: data.type === 'success' ? 'Éxito' : 'Error',
+            text: data.message
         }).then(() => {
-            if (datos.type === 'success') {
+            if(data.type === 'success'){
+                // Recargar la página para ver cambios
                 location.reload();
             }
         });
     })
-    .catch(error => {
-        Swal.fire({ icon: 'error', title: 'Error', text: 'No se pudo procesar la solicitud' });
-        console.error(error);
+    .catch(err => {
+        console.error(err);
+        Swal.fire('Error','Ocurrió un error al procesar la solicitud','error');
     });
-}
-
-// ----------------------------
-// EVENTO SUBMIT FORMULARIO
-// ----------------------------
-document.getElementById('formularioGestionHorario').addEventListener('submit', function(e) {
-    e.preventDefault();
-    if (validarHorario()) {
-        const datosFormulario = obtenerDatosHorario();
-        enviarHorario(datosFormulario);
-    }
 });
 
 // ----------------------------
 // ELIMINAR HORARIO
 // ----------------------------
-document.addEventListener('click', function(e) {
-    if (e.target.matches('.eliminar-horario-btn')) {
-        const id_horario = e.target.dataset.id;
-        Swal.fire({
-            title: '¿Desea eliminar este horario?',
-            text: 'Esta acción no se puede deshacer',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Sí, eliminar',
-            cancelButtonText: 'Cancelar'
-        }).then((resultado) => {
-            if (resultado.isConfirmed) {
-                const formData = new FormData();
-                formData.append('accion', 'eliminar');
-                formData.append('id_horario', id_horario);
-                enviarHorario(formData);
-            }
-        });
-    }
+document.addEventListener('click', function(e){
+    const btn = e.target.closest('.eliminar-horario-btn');
+    if(!btn) return;
+
+    const id = btn.dataset.id;
+    Swal.fire({
+        title: '¿Desea eliminar este horario?',
+        text: 'No se puede deshacer',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar'
+    }).then(res => {
+        if(res.isConfirmed){
+            const fd = new FormData();
+            fd.append('accion', 'eliminar');
+            fd.append('id_horario_clase', id);
+
+            fetch('horario-accion.php', {method:'POST', body: fd})
+                .then(res => res.json())
+                .then(data => {
+                    Swal.fire({
+                        icon: data.type,
+                        title: data.type === 'success' ? 'Éxito' : 'Error',
+                        text: data.message
+                    }).then(() => {
+                        if(data.type === 'success') location.reload();
+                    });
+                })
+                .catch(err => {
+                    console.error(err);
+                    Swal.fire('Error','No se pudo eliminar','error');
+                });
+        }
+    });
 });
 
-// limpiar los parámetros para que al recargar no vuelva a aparecer (Evitar reenvío)
+// ----------------------------
+// Evitar reenvío al recargar
+// ----------------------------
 if (window.history.replaceState) {
-  window.history.replaceState(null, null, window.location.pathname);
+    window.history.replaceState(null, null, window.location.pathname);
 }
