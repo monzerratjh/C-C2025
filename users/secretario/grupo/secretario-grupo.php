@@ -19,6 +19,7 @@ $result = $con->query("
         ON grupo.id_adscripto = adscripto.id_adscripto
     JOIN usuario
         ON adscripto.id_usuario = usuario.id_usuario
+    ORDER BY grupo.nombre_grupo ASC
 ");
 
 // Obtener nombre y apellido adscripto mediante id (usuario)
