@@ -119,7 +119,7 @@ if ($id_usuario) {
 
 
 <!-- Contenido principal -->
-<main class="col-md-9 principal-estudiantes" >
+<main class="col-md-9 principal" >
 
 
 

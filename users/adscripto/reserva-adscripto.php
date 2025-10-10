@@ -69,7 +69,7 @@
     </div>
 
 
-  <main class="contenedor-reservas principal">
+  <main class="col-md-9 principal">
     <img src="../../img/logo.png" alt="Logo" class="logo"> 
 
     <h2 data-i18n="reservationRequests">Solicitudes de Reserva</h2>

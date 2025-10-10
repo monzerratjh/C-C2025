@@ -125,7 +125,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
        </div>
 
     <!-- Contenido principal-->
-    <div class="col-md-9 horarios-estudiante"> <!-- Boostrap contendio al lado del menu -->
+    <div class="col-md-9 principal"> <!-- Boostrap contendio al lado del menu -->
       <img src="/img/logo.png" alt="Logo" class="logo">
 
       <div class="acordion-total">

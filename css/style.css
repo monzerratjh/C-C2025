@@ -40,11 +40,11 @@ a{
   text-decoration: none;
 }
 
-
 /*ESTRUCTURA MENU*/
     .barra-lateral {
       background-color: var(--color-barra-lateral);
-      height: 710px;
+      position: fixed; 
+      height: 100vh;
       border-top-right-radius: 20px;
       border-bottom-right-radius: 20px;
       padding: 30px 25px;
@@ -113,7 +113,7 @@ a{
 }
 
     .logo {
-      position: absolute;
+      position: fixed;
       top: 30px;
       right: 30px;
       width: 100px;
@@ -299,6 +299,7 @@ a{
       position: relative;
       text-align: center;
       justify-content: center;
+      margin-left: 55vh;
     }
 
     .principal h2 {
@@ -351,6 +352,7 @@ a{
   min-height: 100vh; 
   padding: 20px;
   position: relative;
+  margin-left: 55vh;
 }
 
 .acordion-total {
@@ -621,26 +623,6 @@ a{
 
 
 /*SOLICITUD DE RESERVA*/
-/* Contenedor principal */
-.contenedor-reservas {
-  max-width: 900px;
-  margin: 50px auto;
-  padding: 20px;
-}
-
-
-/* Contenedor principal centrado */
-.contenedor-reservas {
-  max-width: 900px;
-  margin: 0 auto;          /* centra horizontal */
-  padding: 40px 20px;
-  display: flex;
-  flex-direction: column;  /* coloca título y tabla en columna */
-  align-items: center;     /* centra horizontalmente */
-  justify-content: center; /* centra vertical si hay espacio */
-  min-height: 100vh;       /* ocupa alto completo */
-}
-
 /* La tabla centrada */
 .tabla-reserva {
   width: 100%;
