@@ -112,3 +112,5 @@ document.querySelectorAll(".bi-translate").forEach((btn) => {
     });
   });
 });
+
+console.log("Idioma actual: jpña"); 

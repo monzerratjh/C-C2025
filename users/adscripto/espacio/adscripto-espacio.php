@@ -85,7 +85,7 @@ $con->close();
 <!-- Contenido principal -->
 <main class="col-md-9 principal" >
 
-    <img src="../../../img/logo.png" alt="Logo" class="logo"> 
+    <img src="/img/logo.png" alt="Logo" class="logo"> 
     
     
     <div class="acordion">

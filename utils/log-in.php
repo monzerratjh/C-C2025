@@ -32,6 +32,12 @@ function traer_datos_usuario($con, $cedula) {
         función de PHP/MySQLi que “vincula” (bind) las variables PHP a los parámetros de una sentencia preparada ($stmt).
 
         "s" -> string: cadena de tipos que indica el tipo de dato de cada parámetro que vas a pasar. al ser un solo parámetro (ci_usuario), que es texto: "s". 
+                En MySQLi (PHP), los tipos posibles son:
+
+                    * "i": integer (entero)
+                    * "d": double (decimal)
+                    * "s": string (cadena de texto)
+                    * "b": blob (datos binarios)
 */  
     mysqli_stmt_bind_param($stmt, "s", $cedula); // vincula el valor de $cedula
     
@@ -80,7 +86,7 @@ function logear($con, $cedula, $contrasenia, $rolFormulario) {
     if ($rolReal === 'secretario') {
         $sql = "SELECT id_secretario FROM secretario WHERE id_usuario = ?";
         $stmt = $con->prepare($sql);
-        $stmt->bind_param("i", $datos_usr['id_usuario']);
+        $stmt->bind_param("i", $datos_usr['id_usuario']); //integer (entero)
         $stmt->execute();
         $res = $stmt->get_result()->fetch_assoc();
         $_SESSION['id_secretario'] = $res['id_secretario'] ?? null;

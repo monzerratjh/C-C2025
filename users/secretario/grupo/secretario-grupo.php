@@ -79,7 +79,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
 
 <!DOCTYPE html>
 <head>
-  <title> Grupos </title>
+  <title> Grupos - Secretario </title>
     <!-- Bootstrap CSS + Iconos + letras-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
@@ -280,7 +280,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script src="../js/grupo.js"></script>
-  <script src="../js/desplegarCaracteristicas.js"></script>
+  <script src="/utils/desplegar.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 

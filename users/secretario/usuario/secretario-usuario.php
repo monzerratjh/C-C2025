@@ -1,19 +1,24 @@
 <?php
 include('../../../conexion.php');
 $conn = conectar_bd();
+
+
+// Inicia la sesión para poder acceder a las variables globales $_SESSION
+session_start(); 
+
+// Obtiene el ID del secretario guardado en la sesión (cuando el usuario inició sesión)
+// Si no existe (por ejemplo, si el usuario no es secretario o la sesión expiró),
+// se asigna el valor null para evitar errores.
+$id_secretario = $_SESSION['id_secretario'] ?? null;
+
+
 $sql = "SELECT * FROM usuario";
 $query = mysqli_query($conn, $sql); //mysqli_query FUNCIÓN de php para EJECUTAR SQL
 /*Esta variable llamada query lo que hace es contener info. de la conección (si está conectada o no a la BD) y a la CONSULTA que se necesita hacerl.*/
 $message = "";
 
-
-
-
 $id_usuario = $_GET['id_usuario'] ?? null; // Si existe id_usuario, estamos editando
 $usuario = null;
-
-
-
 
 if ($id_usuario) {
     $sql = "SELECT * FROM usuario WHERE id_usuario = ?";
@@ -23,34 +28,20 @@ if ($id_usuario) {
     $resultado = mysqli_stmt_get_result($stmt);
     $usuario = mysqli_fetch_assoc($resultado);
 }
-
-
-
-
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenida secretario</title>
+    <title>Usuarios - Secretario</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
-
-
-
 <body>
-
-
-
 
   <!-- Menú hamburguesa para móviles -->
   <nav class="d-md-none">
@@ -62,9 +53,6 @@ if ($id_usuario) {
     </div>
   </nav>
 
-
-
-
   <!-- Menú lateral (para celulares/tablets) -->
    <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
     <div class="offcanvas-header">
@@ -74,24 +62,15 @@ if ($id_usuario) {
       <a href="../secretario-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
       <i class="bi bi-translate traductor-menu"></i>
 
-
-
-
         <a href="secretario-usuario.php" class="fw-semibold seleccionado mb-2">Usuarios</a>
         <a href="../horario/horario-secretario.php" class="nav-opciones">Horarios</a>
         <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
       </div>
   </div>
 
-
-
-
   <!-- Contenedor general -->
   <div class="container-fluid">
     <div class="row">
-
-
-
 
       <!-- Banner pantallas grandes -->
        <div class="col-md-3 barra-lateral d-none d-md-flex">
@@ -103,48 +82,25 @@ if ($id_usuario) {
           <i class="bi bi-translate traductor-menu"></i>
         </div>
 
-
-
-
         <a href="secretario-usuario.php" class="fw-semibold seleccionado mb-2">Usuarios</a>
         <a href="../horario/horario-secretario.php" class="nav-opciones">Horarios</a>
         <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
        </div>
 
-
-
-
-
-
-
-
 <!-- Contenido principal -->
 <main class="col-md-9 principal" >
 
-
-
-
-
-
-
-
     <img src="/img/logo.png" alt="Logo" class="logo">
-
-
-
 
    
     <div class="bloque-agregar">
     <button class="etiqueta">Usuarios</button>
-    <!--<a href="./secretario_CRUD.php">-->
       <button class="agregar"
               data-bs-toggle="modal"
               data-bs-target="#modalUsuario"
               onclick="document.getElementById('accion').value='insertar';"> +
       </button>
   </div>
-
-
 
 
     <table  class="tabla-horarios-secretario">
@@ -188,7 +144,7 @@ if ($id_usuario) {
           </a></td>
           <td><a href="delete_user_secretario.php?id_usuario=<?= $row['id_usuario']  ?>"><i class="bi bi-trash"></a></i></td>
         </tr>
-                <!-- LRPM EDICIÓN DE MIERDA-->
+                
     <div class="modal fade" id="update_modal<?= $row['id_usuario'] ?>" tabindex="-1">  
       <div class="modal-dialog">
         <div class="modal-content">
@@ -197,18 +153,12 @@ if ($id_usuario) {
           </div>
 
 
-
-
         <form method="POST" action="./editar-usuario.php" id="editarUsuario">
         <div class="modal-body">
 
 
-
-
         <!-- Campos ocultos para saber si es inserción o edición -->
         <input type="hidden" name="id_usuario" value="<?= $row['id_usuario'] ?>">
-
-
 
 
         <!-- Cédula -->
@@ -218,15 +168,11 @@ if ($id_usuario) {
         </div>
 
 
-
-
         <!-- Nombre -->
         <div class="mb-3">
           <label>Nombre</label>
           <input type="text" name="nombre_usuario" placeholder="Nombres" id="nombre_usuario" value="<?= $row['nombre_usuario']  ?>">
         </div>
-
-
 
 
         <!-- Apellido -->
@@ -236,8 +182,6 @@ if ($id_usuario) {
         </div>
 
 
-
-
         <!-- Gmail -->
         <div class="mb-3">
           <label>Gmail</label>
@@ -245,15 +189,11 @@ if ($id_usuario) {
         </div>
 
 
-
-
         <!-- Telefono -->
         <div class="mb-3">
           <label>Teléfono</label>
           <input type="number" name="telefono_usuario" placeholder="Telefono" id="telefono_usuario" value="<?= $row['telefono_usuario']  ?>">
         </div>
-
-
 
 
         <!-- Cargo -->
@@ -288,8 +228,6 @@ if ($id_usuario) {
     </table>
 
 
-
-
     <div class="modal fade" id="modalUsuario" tabindex="-1">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -299,19 +237,13 @@ if ($id_usuario) {
           </div>
 
 
-
-
         <form method="POST" action="./agregar-usuario.php" id="formUsuario">
         <div class="modal-body">
-
-
 
 
         <!-- Campos ocultos para saber si es inserción o edición -->
         <input type="hidden" id="accion" name="accion">
         <input type="hidden" id="id_usuario" >
-
-
 
 
         <!-- Cédula -->
@@ -321,15 +253,11 @@ if ($id_usuario) {
         </div>
 
 
-
-
         <!-- Nombre -->
         <div class="mb-3">
           <label>Nombre</label>
           <input type="text" name="nombre_usuario" placeholder="Nombres" id="nombre_usuario" required>
         </div>
-
-
 
 
         <!-- Apellido -->
@@ -339,8 +267,6 @@ if ($id_usuario) {
         </div>
 
 
-
-
         <!-- Gmail -->
         <div class="mb-3">
           <label>Gmail</label>
@@ -348,15 +274,11 @@ if ($id_usuario) {
         </div>
 
 
-
-
         <!-- Telefono -->
         <div class="mb-3">
           <label>Teléfono</label>
           <input type="number" name="telefono_usuario" placeholder="Telefono" id="telefono_usuario" required>
         </div>
-
-
 
 
         <!-- Cargo -->
