@@ -71,10 +71,38 @@ function logear($con, $cedula, $contrasenia, $rolFormulario) {
 
     // Inicio de sesión
     session_start();
+    $_SESSION['id_usuario']     = $datos_usr['id_usuario'];
     $_SESSION['ci_usuario']     = $datos_usr['ci_usuario'];
     $_SESSION['nombre_usuario'] = $datos_usr['nombre_usuario'];
     $_SESSION['rol']            = $rolReal;
 
+    // guardar el ID específico según el rol 
+    if ($rolReal === 'secretario') {
+        $sql = "SELECT id_secretario FROM secretario WHERE id_usuario = ?";
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("i", $datos_usr['id_usuario']);
+        $stmt->execute();
+        $res = $stmt->get_result()->fetch_assoc();
+        $_SESSION['id_secretario'] = $res['id_secretario'] ?? null;
+    }
+
+    if ($rolReal === 'docente') {
+        $sql = "SELECT id_docente FROM docente WHERE id_usuario = ?";
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("i", $datos_usr['id_usuario']);
+        $stmt->execute();
+        $res = $stmt->get_result()->fetch_assoc();
+        $_SESSION['id_docente'] = $res['id_docente'] ?? null;
+    }
+
+    if ($rolReal === 'adscripto') {
+        $sql = "SELECT id_adscripto FROM adscripto WHERE id_usuario = ?";
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("i", $datos_usr['id_usuario']);
+        $stmt->execute();
+        $res = $stmt->get_result()->fetch_assoc();
+        $_SESSION['id_adscripto'] = $res['id_adscripto'] ?? null;
+    }
     
     // Redirección según rol
     $url = '';

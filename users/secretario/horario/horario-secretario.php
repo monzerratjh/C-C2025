@@ -1,12 +1,22 @@
 <?php
 //include('../encabezado.php');
 include('../../../conexion.php');
-session_start();
+
+
+// Inicia la sesión para poder acceder a las variables globales $_SESSION
+session_start(); 
+
+// Obtiene el ID del secretario guardado en la sesión (cuando el usuario inició sesión)
+// Si no existe (por ejemplo, si el usuario no es secretario o la sesión expiró),
+// se asigna el valor null para evitar errores.
+$id_secretario = $_SESSION['id_secretario'] ?? null;
+
+
 $con = conectar_bd();
 
 // Obtener todos los horarios registrados
 $resultadoHorarios = $con->query("
-                                  SELECT id_horario_clase, hora_inicio, hora_fin
+                                  SELECT id_horario_clase, hora_inicio, hora_fin, id_secretario
                                   FROM horario_clase
                                   ORDER BY hora_inicio ASC");
 
@@ -168,9 +178,8 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
           </div>
 
           <div class="mb-3"> <!-- id del secretario asociado con el grupo creado para que se gusrade en la bd -->
-                        <input type="hidden" name="id_secretario" value="1"> <!-- SESSION <input type="hidden" name="id_secretario" value="<?php echo $_SESSION['id_secretario']; ?>">
- -->
-                      </div>
+            <input type="hidden" name="id_secretario" value="<?php echo htmlspecialchars($id_secretario); ?>">
+          </div>
 
         </div>
         <div class="modal-footer">
