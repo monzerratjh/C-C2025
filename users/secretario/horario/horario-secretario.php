@@ -5,7 +5,10 @@ session_start();
 $con = conectar_bd();
 
 // Obtener todos los horarios registrados
-$resultadoHorarios = $con->query("SELECT id_horario_clase, hora_inicio, hora_fin FROM horario_clase");
+$resultadoHorarios = $con->query("
+                                  SELECT id_horario_clase, hora_inicio, hora_fin
+                                  FROM horario_clase
+                                  ORDER BY hora_inicio ASC");
 
 $con->close(); // cierro conexión cuando ya tengo todos los datos
 ?>
