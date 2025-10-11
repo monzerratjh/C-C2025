@@ -1,7 +1,12 @@
 <?php
 include('../../../conexion.php');
 $con = conectar_bd();
-session_start();
+
+session_start(); // Inicia o continúa la sesión
+
+// Recuperamos el id_secretario de la sesión del usuario logueado.
+// Si no está definido, lo dejamos como null para evitar errores.
+$id_secretario = $_SESSION['id_secretario'] ?? null;
 
 header("Content-Type: application/json"); // Todas las respuestas serán JSON
 
@@ -25,7 +30,6 @@ $orientacion  = $_POST['orientacion'] ?? '';
 $turno        = $_POST['turno'] ?? '';
 $cantidad     = $_POST['cantidad'] ?? '';
 $id_adscripto = $_POST['id_adscripto'] ?? '';
-$id_secretario = $_SESSION['id_secretario'] ?? 1; // fallback a 1 si no hay sesión
 
 // Obtener orientaciones válidas
 $orientacionesValidas = obtenerOrientacionesValidas($con);
@@ -45,10 +49,10 @@ try {
         }
 
         // Validar formato del nombre
-        if (!preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9° \-_]+$/u', $nombre)) {
+        if (!preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 \-_]+$/u', $nombre)) {
             echo json_encode([
                 "type" => "error",
-                "message" => "El nombre del grupo solo puede contener letras, números y los símbolos '°', '-', '_'."
+                "message" => "El nombre del grupo solo puede contener letras, números y los símbolos '-', '_'."
             ]);
             exit;
         }
@@ -84,10 +88,10 @@ try {
     elseif($accion === 'editar') { // WHERE id_grupo=? -> Indica qué grupo se actualizará según su ID.
         
         // Validar formato del nombre
-        if (!preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9° \-_]+$/u', $nombre)) {
+        if (!preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 \-_]+$/u', $nombre)) {
             echo json_encode([
                 "type" => "error",
-                "message" => "El nombre del grupo solo puede contener letras, números y los símbolos '°', '-', '_'."
+                "message" => "El nombre del grupo solo puede contener letras, números y los símbolos '-', '_'."
             ]);
             exit;
         }
