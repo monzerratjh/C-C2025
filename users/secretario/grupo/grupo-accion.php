@@ -1,5 +1,5 @@
 <?php
-include('../../../conexion.php');
+include('./../../../conexion.php');
 $con = conectar_bd();
 
 session_start(); // Inicia o continúa la sesión
