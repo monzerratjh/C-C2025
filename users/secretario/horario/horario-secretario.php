@@ -1,6 +1,6 @@
 <?php
 //include('../encabezado.php');
-include('../../../conexion.php');
+include('./conexion.php');
 
 
 // Inicia la sesión para poder acceder a las variables globales $_SESSION
