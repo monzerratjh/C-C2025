@@ -6,9 +6,12 @@ $nombre_secretario = $_SESSION['nombre_usuario'] ?? 'Secretario/a';
 ?>
     <h1>Bienvenido, <?php echo htmlspecialchars($nombre_secretario); ?></h1>
 
-*/
-include('./../../conexion.php');
+
+    include('./conexion.php');
 //include('../../encabezado.php');
+
+*/
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
