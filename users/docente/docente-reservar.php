@@ -1,6 +1,5 @@
 <?php
-//include('../../encabezado.php');
-include('../../conexion.php');
+include('./../../conexion.php');
 session_start();
 $con = conectar_bd();
 
