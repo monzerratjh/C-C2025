@@ -660,10 +660,13 @@ table tr:hover {
 
 /* Pantallas ≤ 768px */
 @media (max-width: 768px) {
+
+  /* Barra lateral desaparece */
   .barra-lateral {
     display: none;
   }
 
+  /* Ajustes de títulos y botones */
   .titulo-horario {
     font-size: 20px;
   }
@@ -678,68 +681,87 @@ table tr:hover {
     font-size: 0.9rem;
     padding: 8px;
   }
-   
-  .contenedor{
+
+  /* Contenedor principal flexible y auto-ajustable */
+  .contenedor {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 
-  .principal{
-  display: flex;
-  position: sticky;
-  height: 55vh;
-  flex-wrap: wrap;
+  .principal {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start; /* contenido empieza desde arriba */
+    height: auto; /* se ajusta al contenido */
+    padding-top: 120px; /* espacio para que el logo no lo cubra */
+    width: 100%;
+    box-sizing: border-box;
   }
+
+  /* Logo responsive: oculto si no necesario */
+  .logo {
+    display: none;
+  }
+
+  /* Menú responsive */
   .menuResponsive {
-     width: 30px;
-     margin-top: 30px;
-     margin-left: 8px;
-   }
+    width: 30px;
+    margin-top: 30px;
+    margin-left: 8px;
+  }
 
-    .traductor-menu::before {
-     margin-bottom: 2.5rem;
-     cursor: pointer;
-   }
+  .traductor-menu::before {
+    margin-bottom: 2.5rem;
+    cursor: pointer;
+  }
 
-   .logoResponsive {
-     width: 100px;
-     padding-top: 25px;
-   }
+  .logoResponsive {
+    width: 100px;
+    padding-top: 25px;
+  }
 
-   nav > .container-fluid {
-     display: flex;
-     justify-content: space-between;
-   }
+  nav > .container-fluid {
+    display: flex;
+    justify-content: space-between;
+  }
 
-   .barra-lateral {
-     display: none;
-   }
+  /* Acordeón: ancho completo y vertical */
+  .acordion {
+    display: flex;
+    flex-direction: column;
+    width: 90%; /* ocupa casi todo el ancho */
+    max-width: 600px;
+  }
 
-    .acordion {
-      display: flex;
-      flex-direction: column;
-      width: 50vh;
-    }
+  .acordion-total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 0;
+  }
 
-   .offcanvas {
-     background-color: var(--color-barra-lateral);
-   }
+  .offcanvas {
+    background-color: var(--color-barra-lateral);
+  }
 
-   .mb-3 {
-     color: black;
-     font-size: 18px;
-     margin: 40px;
-   }
+  .mb-3 {
+    color: black;
+    font-size: 18px;
+    margin: 40px;
+  }
 
-   .logo {
-     display: none;
-   }
-
-   .seccion-form {
-     margin-left: 1rem;
-     margin-right: 1rem;
-   }
+  .seccion-form {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
 }
+
 
 
 
