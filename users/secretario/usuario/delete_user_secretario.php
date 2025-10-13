@@ -2,6 +2,8 @@
 include('..\..\..\conexion.php');
 $conn = conectar_bd();
 
+session_start(); 
+
 $id_usuario = $_GET['id_usuario'] ?? null; // Si no viene nada, queda null
 if (!$id_usuario) {
     echo "No se proporcionó un ID de usuario.";

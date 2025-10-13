@@ -1,6 +1,11 @@
 <?php
 include('../../../conexion.php');
-session_start();
+session_start(); // Inicia o continúa la sesión
+
+// Recuperamos el id_secretario de la sesión del usuario logueado.
+// Si no está definido, lo dejamos como null para evitar errores.
+$id_secretario = $_SESSION['id_secretario'] ?? null;
+
 $con = conectar_bd();
 header("Content-Type: application/json");
 
@@ -9,7 +14,6 @@ $accionHorario = $_POST['accionHorario'] ?? '';
 $id_horario = $_POST['id_horario_clase'] ?? null;
 $hora_inicio = $_POST['hora_inicio'] ?? '';
 $hora_fin = $_POST['hora_fin'] ?? '';
-$id_secretario = $_POST['id_secretario'] ?? 1;
 
 try {
     if($accionHorario === 'insertar') {

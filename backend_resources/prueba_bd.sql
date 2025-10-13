@@ -1,11 +1,12 @@
 --  USUARIOS
 INSERT INTO usuario (nombre_usuario, apellido_usuario, gmail_usuario, telefono_usuario, cargo_usuario, ci_usuario, contrasenia_usuario)
 VALUES
-('Laura', 'Silva', 'laura.silva@instituto.edu.uy', '091234567', 'Secretario', 45678901, '1234'),
-('María', 'Pérez', 'maria.perez@instituto.edu.uy', '098765432', 'Adscripto', 56789012, '1234'),
-('Carlos', 'Sosa', 'carlos.sosa@instituto.edu.uy', '097654321', 'Adscripto', 67890123, '1234'),
-('Ana', 'Rodríguez', 'ana.rodriguez@instituto.edu.uy', '092345678', 'Docente', 78901234, '1234'),
-('Luis', 'García', 'luis.garcia@instituto.edu.uy', '093456789', 'Docente', 89012345, '1234');
+('Sabrina', 'Maristan', 'sabri.mar@gmail.com', '092350749', 'Secretario', 56545365, 'Sabrina123'),
+('Tatiana', 'de Freitas', 'tati.dfreitas@gmail.com', '098765432', 'Adscripto', 57070406, 'Tatiana123'),
+('Ana Ines', 'Gonzalez', 'ana.gonzales@gmail.com', '097654321', 'Adscripto', 67890123, 'Ana123'),
+('Monzerrat', 'Arébalo', 'monze.arebalo@gmail.com', '092345678', 'Docente', 57038531, 'Monzerrat123'),
+('Federico', 'Fagundez', 'fede.fagundez@gmail.com', '093456789', 'Docente', 49012345, 'Federico123'),
+('Facundo', 'Rubil', 'facundo.rubil@gmail.com', '097856789', 'Docente', 346128563, 'Facundo123');
 
 --  SECRETARIO
 INSERT INTO secretario (id_usuario) VALUES (1);
@@ -20,13 +21,13 @@ INSERT INTO docente (id_usuario) VALUES (4), (5);
 INSERT INTO recurso (nombre_recurso, tipo_recurso, disponibilidad_recurso, historial_recurso, estado_recurso)
 VALUES
 ('Proyector Epson', 'Otro', 'Disponible', 'Nuevo ingreso', 'Activo'),
-('Notebook Lenovo', 'Otro', 'Prestado', 'Entregado al docente Ana', 'Activo');
+('Notebook Lenovo', 'Otro', 'Prestado', 'Entregado al docente Monzerrat', 'Activo');
 
 --  ESPACIOS
 INSERT INTO espacio (nombre_espacio, capacidad_espacio, historial_espacio, disponibilidad_espacio, tipo_espacio)
 VALUES
-('Laboratorio de Informática', 25, 'Creado por Laura Silva', 'Libre', 'Laboratorio'),
-('Salón 201', 30, 'Creado por Laura Silva', 'Libre', 'Aula');
+('Laboratorio de Informática', 25, 'Creado por Sabrina Maristan', 'Libre', 'Laboratorio'),
+('Salón 2', 30, 'Creado por Sabrina Maristan', 'Libre', 'Aula');
 
 --  ATRIBUTOS DE ESPACIOS
 INSERT INTO espacio_atributo (id_espacio, nombre_atributo, cantidad_atributo)
@@ -48,14 +49,14 @@ VALUES
 --  GRUPOS
 INSERT INTO grupo (orientacion_grupo, turno_grupo, nombre_grupo, cantidad_alumno_grupo, id_adscripto, id_secretario)
 VALUES
-('Tecnologías de la Información', 'Matutino', '3° TI A', 28, 1, 1),
-('Tecnólogo en Ciberseguridad', 'Vespertino', '2° TC B', 24, 2, 1);
+('Tecnologías de la Información', 'Matutino', '3° TI', 28, 1, 1),
+('Tecnólogo en Ciberseguridad', 'Vespertino', '2° TC', 24, 2, 1);
 
 --  DOCENTE DICTA ASIGNATURA
 INSERT INTO docente_dicta_asignatura (id_docente, id_asignatura)
 VALUES
-(1, 1),  -- Ana Rodríguez dicta Programación
-(2, 2);  -- Luis García dicta Base de Datos
+(1, 1),  
+(2, 2);  
 
 --  DOCENTE TIENE GRUPO
 INSERT INTO docente_tiene_grupo (id_grupo, id_docente, id_asignatura)
