@@ -33,7 +33,7 @@ $stmt = $conn->prepare("UPDATE usuario
         cargo_usuario = ?,
         contrasenia_usuario = ?
     WHERE id_usuario = ?");
-$stmt->bind_param("isssissi", $ci_usuario, $nombre_usuario, $apellido_usuario, $gmail_usuario, $telefono_usuario, $cargo_usuario, $contrasenia_usuario, $id_usuario);
+$stmt->bind_param("issssssi", $ci_usuario, $nombre_usuario, $apellido_usuario, $gmail_usuario, $telefono_usuario, $cargo_usuario, $contrasenia_usuario, $id_usuario);
 $stmt->execute();
 $stmt->close();
 
