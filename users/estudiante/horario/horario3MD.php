@@ -54,15 +54,7 @@ include ('./../../../conexion.php');
           <a href="../estudiante.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
           <a href="../estudiante.php">Volver</a>
         </div>
-<<<<<<< Updated upstream
-
-        <a href="./../../../estudiante/estudiante.php" class="fw-semibold seleccionado">Estudiante</a>
-        <a href="./../../../adscripto/adscripto-log.php" class="nav-opciones">Adscripto</a>
-        <a href="./../../../docente/docente-log.php" class="nav-opciones">Docente</a>
-        <a href="./../../../secretario/secretario-log.php" class="nav-opciones">Secretario</a>
-=======
         <i class="bi bi-translate traductor-menu"></i>
->>>>>>> Stashed changes
       </div>
 
       <a href="./../../estudiante/estudiante.php" class="fw-semibold seleccionado">Estudiante</a>
