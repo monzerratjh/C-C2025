@@ -656,7 +656,6 @@ table tr:hover {
   main {
     max-width: 490px;
     margin: 0 auto;
-    gap: 30px;
   }
 
   .barra-lateral {
@@ -692,7 +691,6 @@ table tr:hover {
     flex-wrap: wrap; 
     max-width: 490px;
     margin-bottom: 1rem;
-    gap: 30px;
   }
   
 
@@ -737,12 +735,22 @@ table tr:hover {
   .contenedor{
     display: flex;
     justify-content: center;
+    
   }
 
+  .principal{
+    display: block;
+    margin-top: 20%;
+  }
   .menuResponsive {
      width: 30px;
      margin-top: 30px;
      margin-left: 8px;
+   }
+
+    .traductor-menu::before {
+     margin-bottom: 2.5rem;
+     cursor: pointer;
    }
 
    .logoResponsive {
@@ -767,12 +775,6 @@ table tr:hover {
      color: black;
      font-size: 18px;
      margin: 40px;
-   }
-
-   .traductor-menu::before {
-     margin-left: 110px;
-     margin-bottom: 70px;
-     cursor: pointer;
    }
 
    .logo {
