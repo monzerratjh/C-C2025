@@ -13,7 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- CSS propio -->
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="./../../css/style.css">
 </head>
 
 <body>
@@ -22,9 +22,9 @@
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="/img/menu.png" alt="menu">
+        <img class="menuResponsive" src="./../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="/img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="./../../img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -77,7 +77,7 @@
 
     <!-- Contenido principal-->
     <div class="col-md-9 principal"> <!-- Boostrap contendio al lado del menu -->
-      <img src="../../img/logo.png" alt="Logo" class="logo">
+      <img src="./../../img/logo.png" alt="Logo" class="logo">
 
       <div class="acordion-total">
   <div class="acordion">

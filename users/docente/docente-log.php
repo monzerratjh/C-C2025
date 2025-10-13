@@ -1,5 +1,4 @@
 <?php 
-include('../../conexion.php');
 //include('../../encabezado.php');
 ?>
 <!DOCTYPE html>
@@ -13,7 +12,7 @@ include('../../conexion.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- CSS propio -->
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="./../../css/style.css">
 </head>
 
 <body>
@@ -23,9 +22,9 @@ include('../../conexion.php');
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="/img/menu.png" alt="menu">
+        <img class="menuResponsive" src="./../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="/img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="./../../img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -39,10 +38,10 @@ include('../../conexion.php');
       <a href="../../index.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
       <i class="bi bi-translate traductor-menu"></i>
       </div>
-      <a href="../estudiante/estudiante.php" class="nav-opciones mb-2">Estudiante</a>
-      <a href="../adscripto/adscripto-log.php" class="nav-opciones mb-2">Adscripto</a>
-      <a href="../docente/docente-log.php" class="fw-semibold seleccionado mb-2">Docente</a>
-      <a href="../secretario/secretario-log.php" class="nav-opciones mb-2">Secretario</a>
+      <a href="./../estudiante/estudiante.php" class="nav-opciones mb-2">Estudiante</a>
+      <a href="./../adscripto/adscripto-log.php" class="nav-opciones mb-2">Adscripto</a>
+      <a href="./../docente/docente-log.php" class="fw-semibold seleccionado mb-2">Docente</a>
+      <a href="./../secretario/secretario-log.php" class="nav-opciones mb-2">Secretario</a>
     </div>
   </div>
 
@@ -60,17 +59,17 @@ include('../../conexion.php');
           <i class="bi bi-translate traductor-menu"></i>
         </div>
 
-        <a href="../estudiante/estudiante.php" class="nav-opciones">Estudiante</a>
-        <a href="../adscripto/adscripto-log.php" class="nav-opciones">Adscripto</a>
-        <a href="../docente/docente-log.php" class="fw-semibold seleccionado">Docente</a>
-        <a href="../secretario/secretario-log.php" class="nav-opciones">Secretario</a>
+        <a href="./../estudiante/estudiante.php" class="nav-opciones">Estudiante</a>
+        <a href="./../adscripto/adscripto-log.php" class="nav-opciones">Adscripto</a>
+        <a href="./../docente/docente-log.php" class="fw-semibold seleccionado">Docente</a>
+        <a href="./../secretario/secretario-log.php" class="nav-opciones">Secretario</a>
       </div>
 
 
 <!-- Contenido principal -->
 <main class="col-md-9 principal" >
 
-    <img src="/img/logo.png" alt="Logo" class="logo"> 
+    <img src="./../../img/logo.png" alt="Logo" class="logo"> 
     
     <section class="seccion-form docente">
 

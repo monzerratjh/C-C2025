@@ -6,9 +6,12 @@ $nombre_secretario = $_SESSION['nombre_usuario'] ?? 'Secretario/a';
 ?>
     <h1>Bienvenido, <?php echo htmlspecialchars($nombre_secretario); ?></h1>
 
-*/
 
+    include('./conexion.php');
 //include('../../encabezado.php');
+
+*/
+include('./../../conexion.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -21,7 +24,7 @@ $nombre_secretario = $_SESSION['nombre_usuario'] ?? 'Secretario/a';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- CSS propio -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="./../../css/style.css">
 </head>
 
 <body>
@@ -30,9 +33,9 @@ $nombre_secretario = $_SESSION['nombre_usuario'] ?? 'Secretario/a';
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="../../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="./../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="../../img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="./../../img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 

@@ -42,10 +42,10 @@
         <i class="bi bi-translate traductor-menu"></i>
       </div>
 
-      <a href="../estudiante/estudiante.php" class="fw-semibold seleccionado mb-2">Estudiante</a>
-      <a href="../adscripto/adscripto-log.php" class="nav-opciones mb-2">Adscripto</a>
-      <a href="../docente/docente-log.php" class="nav-opciones mb-2">Docente</a>
-      <a href="../secretario/secretario-log.php" class="nav-opciones mb-2">Secretario</a>
+      <a href="./../estudiante/estudiante.php" class="fw-semibold seleccionado mb-2">Estudiante</a>
+      <a href="./../adscripto/adscripto-log.php" class="nav-opciones mb-2">Adscripto</a>
+      <a href="./../docente/docente-log.php" class="nav-opciones mb-2">Docente</a>
+      <a href="./../secretario/secretario-log.php" class="nav-opciones mb-2">Secretario</a>
     </div>
   </div>
 
