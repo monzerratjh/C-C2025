@@ -51,7 +51,7 @@ a{
   background-color: var(--color-barra-lateral);
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
-  padding: 30px 25px;
+      padding: 30px 66px 30px 25px;
   color: black;
   display: flex;
   flex-direction: column;
@@ -357,28 +357,32 @@ a{
 
         /*PAGINA ADSCRIPTOS LOGIN*/
 
-    .seccion-form {
-      display: flex;
-      padding: 4rem 3rem;
-      border-radius: 1rem;
-    }
+.seccion-form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 3rem 3rem; /* espacio superior mayor para el icono */
+    border-radius: 1rem;
+    margin-top: 3rem;
+}
 
-    .icono-usuario-login {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    width: 70px;
-    height: 70px;
+.icono-usuario-login {
+    position: absolute;  /* posicionamiento relativo al section */
+    top: -35px;          /* mitad de la altura para que quede “flotando” */
+    left: 50%;           /* centrado horizontal */
+    transform: translateX(-50%); /* ajusta para centrar exactamente */
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 70px;
+    height: 70px;
     font-size: 5rem;
-    left: 50%;
     z-index: 2;
     color: rgb(53, 83, 78);
     background-color: white;
-    border-radius: 40%; /*Sirve para que el backround  no sea cuadrado*/
-    top: 10rem;
-    }
+    border-radius: 45%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
       
     .formulario{
       display: flex;
@@ -645,7 +649,7 @@ table tr:hover {
   
 
   /* Tablets: entre 769px y 1024px */
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
 
   .barra-lateral {
     display: flex;
@@ -658,8 +662,8 @@ table tr:hover {
 }
 
 
-/* Pantallas ≤ 768px */
-@media (max-width: 768px) {
+/* Pantallas ≤ 767px */
+@media (max-width: 767px) {
 
   /* Barra lateral desaparece */
   .barra-lateral {
@@ -682,7 +686,6 @@ table tr:hover {
     padding: 8px;
   }
 
-  /* Contenedor principal flexible y auto-ajustable */
   .contenedor {
     display: flex;
     justify-content: flex-start;
@@ -695,14 +698,13 @@ table tr:hover {
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: flex-start; /* contenido empieza desde arriba */
-    height: auto; /* se ajusta al contenido */
+    justify-content: flex-start;
+    height: auto;
     padding-top: 120px; /* espacio para que el logo no lo cubra */
     width: 100%;
     box-sizing: border-box;
   }
 
-  /* Logo responsive: oculto si no necesario */
   .logo {
     display: none;
   }
@@ -729,11 +731,10 @@ table tr:hover {
     justify-content: space-between;
   }
 
-  /* Acordeón: ancho completo y vertical */
   .acordion {
     display: flex;
     flex-direction: column;
-    width: 90%; /* ocupa casi todo el ancho */
+    width: 90%;
     max-width: 600px;
   }
 
@@ -746,6 +747,18 @@ table tr:hover {
     margin-top: 0;
   }
 
+.seccion-form{
+  padding: 10% 0;
+}
+
+  .formulario {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 1rem 1rem;
+  }
+
+
   .offcanvas {
     background-color: var(--color-barra-lateral);
   }
@@ -756,10 +769,6 @@ table tr:hover {
     margin: 40px;
   }
 
-  .seccion-form {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
 }
 
 
