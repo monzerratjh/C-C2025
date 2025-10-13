@@ -762,9 +762,10 @@ table tr:hover {
         width: 100%;
     }
 
-    .formulario input {
-        
+    .mb-3{
+      color: black;
     }
+
 
   .offcanvas {
     background-color: var(--color-barra-lateral);

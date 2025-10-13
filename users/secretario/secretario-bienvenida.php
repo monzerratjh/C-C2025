@@ -75,8 +75,8 @@ $nombre_secretario = $_SESSION['nombre_usuario'] ?? 'Secretario/a';
     <!-- Contenido principal -->
     <main class="principal">
       <img src="./../../img/logo.png" alt="Logo" class="logo">
-      <h2 class="bienvenida">¡Bienvenid@!</h2>
-      <h3 class="bienvenida">Secretari@ <?php echo htmlspecialchars($nombre_secretario); ?></h3>
+      <h1 class="bienvenida">Bienvenid@</h1>
+      <h1 class="bienvenida">Secretari@ <?php echo htmlspecialchars($nombre_secretario); ?></h1>
     </main>
   </div>
 

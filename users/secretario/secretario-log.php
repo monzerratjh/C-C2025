@@ -72,9 +72,7 @@ include('./../../conexion.php');
 
     <!-- Contenido principal -->
     <main class="principal">
-      <img src="./../../img/logo.png" alt="Logo" class="logo"> 
-      <h2>SECRETARÍA</h2>
-      <p>Inicia sesión para continuar</p>
+      <img src="./../../img/logo.png" alt="Logo" class="logo">
 
       <section class="seccion-form secretaria">
         <div class="icono-usuario-login">
