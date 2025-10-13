@@ -1,10 +1,9 @@
 <?php
+include(dirname(__FILE__).'./encabezado.php');
 include('..\..\..\conexion.php');
 $conn = conectar_bd();
 
-session_start(); 
-
-// los valores vienen de un formulario POST
+// Supongamos que los valores vienen de un formulario POST
 $id_usuario = $_POST['id_usuario'];
 $ci_usuario = $_POST['ci_usuario'];
 $nombre_usuario = $_POST['nombre_usuario'];
@@ -14,7 +13,7 @@ $telefono_usuario = $_POST['telefono_usuario'];
 $cargo_usuario = $_POST['cargo_usuario'];
 $contrasenia_usuario = $_POST['contrasenia_usuario'];
 
-// Traemos el cargo anterior antes de actualizar
+// 1️⃣ Traemos el cargo anterior antes de actualizar
 $sql_prev = "SELECT cargo_usuario FROM usuario WHERE id_usuario = ?";
 $stmt_prev = $conn->prepare($sql_prev);
 $stmt_prev->bind_param("i", $id_usuario);
@@ -24,7 +23,7 @@ $prev = $result_prev->fetch_assoc();
 $cargo_anterior = $prev['cargo_usuario'] ?? null;
 $stmt_prev->close();
 
-// Actualizamos la tabla usuario
+// 2️⃣ Actualizamos la tabla usuario
 $stmt = $conn->prepare("UPDATE usuario
     SET ci_usuario = ?,
         nombre_usuario = ?,
@@ -38,7 +37,7 @@ $stmt->bind_param("isssissi", $ci_usuario, $nombre_usuario, $apellido_usuario, $
 $stmt->execute();
 $stmt->close();
 
-//  Si cambió de cargo, eliminamos de la tabla anterior e insertamos en la nueva
+// 3️⃣ Si cambió de cargo, eliminamos de la tabla anterior e insertamos en la nueva
 if ($cargo_anterior !== $cargo_usuario) {
     // Eliminamos de la tabla anterior
     switch ($cargo_anterior) {
@@ -67,7 +66,7 @@ if ($cargo_anterior !== $cargo_usuario) {
     }
 }
 
-// Redirigir
+// 4️⃣ Redirigir
 header("Location: ./secretario-usuario.php");
 exit;
 ?>

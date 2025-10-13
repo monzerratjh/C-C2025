@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- CSS propio -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
     
 </head>
 
@@ -22,9 +22,9 @@
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="/img/menu.png" alt="menu">
+        <img class="menuResponsive" src="../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="/img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="../../img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -57,8 +57,8 @@
        <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="/utils/log-out.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="/utils/log-out.php" data-i18n="sessionClose" >Cerrar Sesión</a>
+            <a href="../../utils/log-out.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="../../utils/log-out.php" data-i18n="sessionClose" >Cerrar Sesión</a>
           </div>
            <i class="bi bi-translate traductor-menu"></i>
         </div>

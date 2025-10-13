@@ -2,8 +2,6 @@
 include('..\..\..\conexion.php');
 $conn = conectar_bd();
 
-session_start(); 
-
 $id_usuario = $_POST['id_usuario'] ?? null;
 $ci_usuario = $_POST['ci_usuario'];
 $nombre_usuario = $_POST['nombre_usuario'];
