@@ -11,7 +11,7 @@ $nombre_secretario = $_SESSION['nombre_usuario'] ?? 'Secretario/a';
 //include('../../encabezado.php');
 
 */
-include('./../../conexion.php');
+include ('./../../conexion.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -81,7 +81,7 @@ include('./../../conexion.php');
 <!-- Contenido principal -->
 <main class="col-md-9 principal" >
 
-    <img src="/img/logo.png" alt="Logo" class="logo"> 
+    <img src="./../../img/logo.png" alt="Logo" class="logo"> 
     
     <h1 class="bienvenida">Bienvenid@</h1>
     <h1 class="bienvenida">Secretari@ @username</h1>
