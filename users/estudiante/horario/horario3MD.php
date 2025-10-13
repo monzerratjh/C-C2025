@@ -7,12 +7,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Horario 3MD</title>
-    <!-- Bootstrap CSS + Iconos + letras-->
+    <!-- Bootstrap CSS + Iconos + letras -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- CSS propio -->
-     <link rel="stylesheet" href="./../../../css/style.css">
+    <link rel="stylesheet" href="./../../../css/style.css">
 </head>
 
 <body>
@@ -23,19 +23,19 @@
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
         <img class="menuResponsive" src="./../../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="./../../img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="/img/logo.png" alt="logoResponsive">
     </div>
   </nav>
 
-  <!-- Menú lateral (para celulares/tablets) -->
+  <!-- Menú lateral (offcanvas para móviles) -->
   <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
-    <div class="offcanvas-header ">
+    <div class="offcanvas-header">
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
       <div>
-      <a href="../estudiante.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
-      <i class="bi bi-translate traductor-menu"></i>
+        <a href="../estudiante.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
+        <i class="bi bi-translate traductor-menu"></i>
       </div>
       <a href="./../../estudiante/estudiante.php" class="fw-semibold seleccionado mb-2">Estudiantes</a>
       <a href="./../../adscripto/adscripto-log.php" class="nav-opciones mb-2">Adscriptos</a>
@@ -44,35 +44,42 @@
     </div>
   </div>
 
-  <!-- Contenedor general -->
-  <div class="container-fluid">
-    <div class="row">
+  <!-- Contenedor principal usando Grid -->
+  <div class="contenedor">
 
-      <!-- Banner pantallas grandes -->
-      <div class="col-md-3 barra-lateral d-none d-md-flex">
-        <div class="volverGeneral">
-         <div class="volver">
-            <a href="../estudiante.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="../estudiante.php">Volver</a>
-          </div>
-           <i class="bi bi-translate traductor-menu"></i>
+    <!-- Barra lateral fija -->
+    <aside class="barra-lateral">
+      <div class="volverGeneral">
+        <div class="volver">
+          <a href="../estudiante.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+          <a href="../estudiante.php">Volver</a>
         </div>
+<<<<<<< Updated upstream
 
         <a href="./../../../estudiante/estudiante.php" class="fw-semibold seleccionado">Estudiante</a>
         <a href="./../../../adscripto/adscripto-log.php" class="nav-opciones">Adscripto</a>
         <a href="./../../../docente/docente-log.php" class="nav-opciones">Docente</a>
         <a href="./../../../secretario/secretario-log.php" class="nav-opciones">Secretario</a>
+=======
+        <i class="bi bi-translate traductor-menu"></i>
+>>>>>>> Stashed changes
       </div>
 
-    <!-- Contenido horarios-estudiante-->
-    <div class="col-md-9 horarios-estudiante">
+      <a href="./../../estudiante/estudiante.php" class="fw-semibold seleccionado">Estudiante</a>
+      <a href="./../../adscripto/adscripto-log.php" class="nav-opciones">Adscripto</a>
+      <a href="./../../docente/docente-log.php" class="nav-opciones">Docente</a>
+      <a href="./../../secretario/secretario-log.php" class="nav-opciones">Secretario</a>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="principal">
       <img src="./../../../img/logo.png" alt="Logo" class="logo">
 
       <div class="acordion-total">
         <div class="acordion">
           <h2 class="titulo-horario">3°MD</h2>
 
-          <!-- LUNES -->
+          <!-- DÍAS DE LA SEMANA -->
           <div class="dia">
             <button class="boton-opciones lunes">Lunes</button>
             <div class="contenido-dia">
@@ -92,11 +99,10 @@
             </div>
           </div>
 
-          <!-- MARTES -->
           <div class="dia">
             <button class="boton-opciones martes">Martes</button>
             <div class="contenido-dia">
-               <table class="tabla-horario">
+              <table class="tabla-horario">
                 <tr><th>Hora</th><th>Materia</th><th>Espacio</th></tr>
                 <tr><td>08:40</td><td>Ingles Tecnico</td><td>Salón 4</td></tr>
                 <tr><td>09:30</td><td>Ingles Tenico</td><td>Salón 4</td></tr>
@@ -110,11 +116,10 @@
             </div>
           </div>
 
-          <!-- MIÉRCOLES -->
           <div class="dia">
             <button class="boton-opciones miercoles">Miércoles</button>
             <div class="contenido-dia">
-               <table class="tabla-horario">
+              <table class="tabla-horario">
                 <tr><th>Hora</th><th>Materia</th><th>Espacio</th></tr>
                 <tr><td>07:50</td><td>Ciberseguridad</td><td>Salón 4</td></tr>
                 <tr><td>08:40</td><td>Ciberseguridad</td><td>Salón 4</td></tr>
@@ -130,7 +135,6 @@
             </div>
           </div>
 
-          <!-- JUEVES -->
           <div class="dia">
             <button class="boton-opciones jueves">Jueves</button>
             <div class="contenido-dia">
@@ -143,38 +147,51 @@
                 <tr><td>11:10</td><td>Programación</td><td>Salón 4</td></tr>
                 <tr><td>12:00</td><td>Programación</td><td>Salón 4</td></tr>
                 <tr><td>12:50</td><td>Programación</td><td>Salón 4</td></tr>
+                <tr><td>13:40</td><td>Gestion de proyecto en ingles</td><td>Salón 4</td></tr>
                 <tr><td>14:30</td><td>Gestion de proyecto en ingles</td><td>Salón 4</td></tr>
-                <tr><td>15:20</td><td>Gestion de proyecto en ingles</td><td>Salón 4</td></tr>
-                <tr><td>13:40</td><td>Ingenieria</td><td>Salón 4</td></tr>
               </table>
             </div>
           </div>
 
-
-          <!-- VIERNES -->
           <div class="dia">
             <button class="boton-opciones viernes">Viernes</button>
             <div class="contenido-dia">
-             <table class="tabla-horario">
+              <table class="tabla-horario">
                 <tr><th>Hora</th><th>Materia</th><th>Espacio</th></tr>
-                <tr><td>08:40</td><td>Matemática</td><td>Salón 4</td></tr>
-                <tr><td>09:30</td><td>Matemática</td><td>Salón 4</td></tr>
-                <tr><td>10:20</td><td>Calculo</td><td>Salón 4</td></tr>
-                <tr><td>11:10</td><td>Calculo</td><td>Salón 4</td></tr>
-                <tr><td>12:00</td><td>Ingenieria</td><td>Salón 4</td></tr>
-                <tr><td>12:50</td><td>Ingenieria</td><td>Salón 4</td></tr>
-                <tr><td>13:40</td><td>Sociologia</td><td>Salón 4</td></tr>
-                </table>
+                <tr><td>07:50</td><td>Ciberseguridad</td><td>Salón 4</td></tr>
+                <tr><td>08:40</td><td>Ciberseguridad</td><td>Salón 4</td></tr>
+                <tr><td>09:30</td><td>Emprendurismo</td><td>Salón 4</td></tr>
+                <tr><td>10:20</td><td>Emprendurismo</td><td>Salón 4</td></tr>
+                <tr><td>11:10</td><td>Matemática</td><td>Salón 4</td></tr>
+                <tr><td>12:00</td><td>Programación</td><td>Salón 4</td></tr>
+                <tr><td>12:50</td><td>Programación</td><td>Salón 4</td></tr>
+                <tr><td>13:40</td><td>Fisica</td><td>Salón 4</td></tr>
+                <tr><td>14:30</td><td>Gestion de proyecto en ingles</td><td>Salón 4</td></tr>
+                <tr><td>15:20</td><td>Gestion de proyecto en ingles</td><td>Salón 4</td></tr>
+              </table>
             </div>
           </div>
 
         </div>
       </div>
-    </div>
+    </main>
+
   </div>
 
   <!-- JS acordeón -->
-  <script src="../js/desplegar-horario.js"></script>
+  <script>
+    const dias = document.querySelectorAll('.boton-opciones');
+    dias.forEach(dia => {
+      dia.addEventListener('click', () => {
+        const contenido = dia.nextElementSibling;
+        const abierto = contenido.style.display === 'block';
+        // Cierra todos los contenidos
+        document.querySelectorAll('.contenido-dia').forEach(c => c.style.display = 'none');
+        // Abre el seleccionado
+        if (!abierto) contenido.style.display = 'block';
+      });
+    });
+  </script>
 
   <!-- Bootstrap Bundle JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
