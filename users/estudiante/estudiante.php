@@ -62,7 +62,7 @@
       </div>
 
          <!-- Contenido principal -->
-      <div class="col-md-9 col-12 principal-estudiantes">
+      <div class="col-md-9 col-12 principal-estudiante">
         <img src="./../../img/logo.png" alt="Logo" class="logo"> 
         <img src="./../../img/logo.png" alt="Logo" class="logo"> 
         <h2>ESTUDIANTE</h2>
