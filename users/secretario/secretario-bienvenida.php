@@ -11,7 +11,7 @@ $nombre_secretario = $_SESSION['nombre_usuario'] ?? 'Secretario/a';
 //include('../../encabezado.php');
 
 */
-include('./../../backend-resources/conexion.php');
+include('./../../conexion.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
