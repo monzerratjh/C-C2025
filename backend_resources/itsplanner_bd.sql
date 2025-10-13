@@ -1,46 +1,10 @@
-CREATE TABLE grupo (
-	id_grupo int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	orientacion_grupo ENUM(
-		'Tecnologías de la Información',
-		'Tecnologías de la Información Bilingüe',
-		'Finest IT y Redes',
-		'Redes y Comunicaciones Ópticas',
-		'Diseño Gráfico en Comunicación Visual',
-		'Secretariado Bilingüe - Inglés',
-		'Tecnólogo en Ciberseguridad'
-		) NOT NULL,
-	turno_grupo varchar(50) NOT NULL,
-	nombre_grupo varchar(50) NOT NULL,
-	cantidad_alumno_grupo int NOT NULL,
-	id_adscripto int NOT NULL,
-	id_secretario int NOT NULL -- porq la secretaria crea el grupo
-); 
-
-
-CREATE TABLE secretario_administra_recurso (
-	id_secretario int NOT NULL,
-	id_recurso int NOT NULL
-);
-
-
-CREATE TABLE recurso (
-	id_recurso int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	disponibilidad_recurso varchar(30) NOT NULL,
-	nombre_recurso varchar(100) NOT NULL,
-	historial_recurso varchar(300),
-	tipo_recurso varchar(100) NOT NULL,
-	estado_recurso ENUM('operativo','en_reparacion','baja') NOT NULL DEFAULT 'operativo',
-	id_espacio int NOT NULL
-);
-
-
 CREATE TABLE usuario (
 	id_usuario int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	nombre_usuario varchar(120) NOT NULL,
 	apellido_usuario varchar(120) NOT NULL,
 	gmail_usuario varchar(200) NOT NULL,
 	telefono_usuario varchar(9) NOT NULL,
-	cargo_usuario VARCHAR(100) NOT NULL,
+	cargo_usuario ENUM('Secretario', 'Docente', 'Adscripto') NOT NULL,
 	ci_usuario int(8) NOT NULL,
 	contrasenia_usuario VARCHAR(255) NOT NULL
 );
@@ -58,9 +22,47 @@ CREATE TABLE docente (
 );
 
 
+CREATE TABLE grupo (
+	id_grupo int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	orientacion_grupo ENUM(
+		'Tecnologías de la Información',
+		'Tecnologías de la Información Bilingüe',
+		'Finest IT y Redes',
+		'Redes y Comunicaciones Ópticas',
+		'Diseño Gráfico en Comunicación Visual',
+		'Secretariado Bilingüe - Inglés',
+		'Tecnólogo en Ciberseguridad'
+		) NOT NULL,
+	turno_grupo ENUM('Matutino', 'Vespertino', 'Nocturno') NOT NULL,
+	nombre_grupo varchar(50) NOT NULL,
+	cantidad_alumno_grupo int NOT NULL,
+	id_adscripto int NOT NULL,
+	id_secretario int NOT NULL -- porq la secretaria crea el grupo
+); 
+
+
+CREATE TABLE secretario_administra_recurso (
+	id_secretario int NOT NULL,
+    id_recurso int NOT NULL,
+    PRIMARY KEY (id_secretario, id_recurso)
+);
+
+
+CREATE TABLE recurso (
+	id_recurso int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	nombre_recurso varchar(100) NOT NULL,
+	tipo_recurso ENUM('Otro') NOT NULL DEFAULT 'Otro',
+	disponibilidad_recurso ENUM('Disponible', 'Prestado') DEFAULT 'Disponible',
+	historial_recurso text,
+	estado_recurso ENUM('Activo', 'Mantenimiento', 'Inactivo') NOT NULL DEFAULT 'Activo'
+);
+
+
 CREATE TABLE docente_pide_recurso (
 	id_docente int NOT NULL,
-	id_recurso int NOT NULL
+    id_recurso int NOT NULL,
+    PRIMARY KEY (id_docente, id_recurso) 
+	-- tablas puente sin AUTO_INCREMENT
 );
 
 
@@ -71,12 +73,25 @@ CREATE TABLE adscripto (
 
 
 CREATE TABLE espacio (
-	id_espacio int PRIMARY KEY NOT NULL AUTO_INCREMENT, 
-	nombre_espacio varchar (120) NOT NULL,
-	capacidad_espacio int NOT NULL,
-	historial_espacio varchar(300),
-    disponibilidad_espacio ENUM('libre','reservado','en_uso','mantenimiento') NOT NULL DEFAULT 'libre'
+    id_espacio INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nombre_espacio VARCHAR(120) NOT NULL,
+    capacidad_espacio INT NOT NULL,
+    historial_espacio TEXT,
+    fecha_espacio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    disponibilidad_espacio ENUM('Libre','Reservado','Ocupado','Mantenimiento') NOT NULL DEFAULT 'Libre',
+    tipo_espacio ENUM('Salón','Aula','Laboratorio') NOT NULL DEFAULT 'Salón'
 );
+
+
+-- Atributos fijos de cada espacio (mesas, sillas, proyector, etc.)
+CREATE TABLE espacio_atributo (
+    id_espacio INT NOT NULL,
+    nombre_atributo ENUM('Mesas','Sillas','Proyector','Televisor','Aire Acondicionado') NOT NULL,
+    cantidad_atributo INT NOT NULL DEFAULT 0,
+    PRIMARY KEY (id_espacio, nombre_atributo),
+    FOREIGN KEY (id_espacio) REFERENCES espacio(id_espacio) ON DELETE CASCADE
+);
+
 
 CREATE TABLE horario_clase (
     id_horario_clase int PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -90,16 +105,19 @@ CREATE TABLE adscripto_organiza_horario_clase (
 	id_adscripto int NOT NULL,
     id_horario_clase int NOT NULL,
     id_asignatura int,
-    dia ENUM('Lunes','Martes','Miércoles','Jueves','Viernes') NOT NULL
+    dia ENUM('Lunes','Martes','Miércoles','Jueves','Viernes') NOT NULL,
+	PRIMARY KEY (id_adscripto, id_horario_clase, dia)
 );
 
+
 CREATE TABLE asignatura_docente_solicita_espacio (
-	id_asignatura int NOT NULL,
-	id_docente int NOT NULL,
-	hora_clase time NOT NULL,
-	id_espacio int NOT NULL,
-	estado_reserva ENUM('pendiente','aceptada','rechazada','cancelada') NOT NULL DEFAULT 'pendiente',
-	fecha_hora_reserva TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP -- auto se guarda fecha y hora
+    id_asignatura int NOT NULL,
+    id_docente int NOT NULL,
+    id_horario_clase int NOT NULL,
+    id_espacio int NOT NULL,
+    estado_reserva ENUM('Pendiente','Aceptada','Rechazada','Cancelada','Finalizada') NOT NULL DEFAULT 'Pendiente',
+    fecha_hora_reserva TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- auto se guarda fecha y hora
+    PRIMARY KEY (id_asignatura, id_docente, id_horario_clase, id_espacio)
 );
 
 
@@ -112,36 +130,34 @@ CREATE TABLE asignatura (
 
 CREATE TABLE docente_tiene_grupo (
 	id_grupo int NOT NULL,
-	id_docente int NOT NULL, 
-	id_asignatura int NOT NULL
+    id_docente int NOT NULL,
+    id_asignatura int NOT NULL,
+    PRIMARY KEY (id_grupo, id_docente, id_asignatura)
 );
 
 
 CREATE TABLE docente_dicta_asignatura (
 	id_docente int NOT NULL,
-	id_asignatura int NOT NULL
+	id_asignatura int NOT NULL,
+	PRIMARY KEY (id_docente, id_asignatura)
 );
 
-ALTER TABLE espacio
-ADD COLUMN tipo ENUM('Salón','Aula','Laboratorio') NOT NULL DEFAULT 'Salón';
 
-UPDATE espacio SET tipo = 'Salón' WHERE nombre_espacio LIKE 'Salón%';
-UPDATE espacio SET tipo = 'Aula' WHERE nombre_espacio LIKE 'Aula%';
-UPDATE espacio SET tipo = 'Laboratorio' WHERE nombre_espacio LIKE 'Lab%';
 
--- CLAVES FORANEAS
+
+	-- CLAVES FORANEAS
 
 -- Tabla grupo
 ALTER TABLE grupo
     ADD CONSTRAINT fk_grupo_adscripto
-    FOREIGN KEY (id_adscripto) REFERENCES adscripto(id_adscripto) ON DELETE CASCADE;
+    FOREIGN KEY (id_adscripto) REFERENCES adscripto(id_adscripto) ON DELETE RESTRICT;
 
 ALTER TABLE grupo
     ADD CONSTRAINT fk_grupo_secretario
     FOREIGN KEY (id_secretario) REFERENCES secretario(id_secretario) ON DELETE CASCADE;
 
 
--- Tabla secretario_administra_recurso
+-- Tabla: secretario_administra_recurso (PK compuesta)
 ALTER TABLE secretario_administra_recurso
     ADD CONSTRAINT fk_secretario_administra_recurso_secretario
     FOREIGN KEY (id_secretario) REFERENCES secretario(id_secretario) ON DELETE CASCADE;
@@ -149,12 +165,6 @@ ALTER TABLE secretario_administra_recurso
 ALTER TABLE secretario_administra_recurso
     ADD CONSTRAINT fk_secretario_administra_recurso_recurso
     FOREIGN KEY (id_recurso) REFERENCES recurso(id_recurso) ON DELETE CASCADE;
-
-
--- Tabla recurso
-ALTER TABLE recurso
-    ADD CONSTRAINT fk_recurso_espacio
-    FOREIGN KEY (id_espacio) REFERENCES espacio(id_espacio) ON DELETE CASCADE;
 
 
 -- Tabla secretario
@@ -169,7 +179,7 @@ ALTER TABLE docente
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE;
 
 
--- Tabla docente_pide_recurso
+-- Tabla: docente_pide_recurso (PK compuesta)
 ALTER TABLE docente_pide_recurso
     ADD CONSTRAINT fk_docente_pide_recurso_docente
     FOREIGN KEY (id_docente) REFERENCES docente(id_docente) ON DELETE CASCADE;
@@ -185,7 +195,7 @@ ALTER TABLE adscripto
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE;
 
 
--- Tabla adscripto_organiza_horario_clase
+-- Tabla: adscripto_organiza_horario_clase (PK compuesta)
 ALTER TABLE adscripto_organiza_horario_clase
     ADD CONSTRAINT fk_adscripto_organiza_horario_adscripto
     FOREIGN KEY (id_adscripto) REFERENCES adscripto(id_adscripto) ON DELETE CASCADE;
@@ -195,15 +205,15 @@ ALTER TABLE adscripto_organiza_horario_clase
     FOREIGN KEY (id_horario_clase) REFERENCES horario_clase(id_horario_clase) ON DELETE CASCADE;
 
 ALTER TABLE adscripto_organiza_horario_clase
-    ADD CONSTRAINT fk_asignatura
-    FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE SET NULL;
+	ADD CONSTRAINT fk_adscripto_organiza_horario_asignatura
+	FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE SET NULL;
 -- ON DELETE SET NULL en id_asignatura deja el campo vacío si se elimina la asignatura.
 
 
 -- Tabla horario_clase
 ALTER TABLE horario_clase
     ADD CONSTRAINT fk_horario_clase_secretario
-    FOREIGN KEY (id_secretario) REFERENCES usuario(id_usuario) ON DELETE CASCADE;
+    FOREIGN KEY (id_secretario) REFERENCES secretario(id_secretario) ON DELETE CASCADE;
 
 
 -- Tabla asignatura_docente_solicita_espacio
@@ -219,8 +229,12 @@ ALTER TABLE asignatura_docente_solicita_espacio
     ADD CONSTRAINT fk_asignatura_docente_solicita_espacio_espacio
     FOREIGN KEY (id_espacio) REFERENCES espacio(id_espacio) ON DELETE CASCADE;
 
+ALTER TABLE asignatura_docente_solicita_espacio
+    ADD CONSTRAINT fk_asignatura_docente_solicita_espacio_horario_clase
+    FOREIGN KEY (id_horario_clase) REFERENCES horario_clase(id_horario_clase) ON DELETE CASCADE ON UPDATE CASCADE;
 
--- Tabla docente_tiene_grupo
+
+-- Tabla: docente_tiene_grupo (PK compuesta)
 ALTER TABLE docente_tiene_grupo
     ADD CONSTRAINT fk_docente_tiene_grupo_grupo
     FOREIGN KEY (id_grupo) REFERENCES grupo(id_grupo) ON DELETE CASCADE;
@@ -234,7 +248,7 @@ ALTER TABLE docente_tiene_grupo
     FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE CASCADE;
 
 
--- Tabla docente_dicta_asignatura
+-- Tabla: docente_dicta_asignatura (PK compuesta)
 ALTER TABLE docente_dicta_asignatura
     ADD CONSTRAINT fk_docente_dicta_asignatura_docente
     FOREIGN KEY (id_docente) REFERENCES docente(id_docente) ON DELETE CASCADE;
@@ -242,6 +256,3 @@ ALTER TABLE docente_dicta_asignatura
 ALTER TABLE docente_dicta_asignatura
     ADD CONSTRAINT fk_docente_dicta_asignatura_asignatura
     FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE CASCADE;
-
--- AGREGAR CARGO_USUARIO A LA TABLA DE USUARIO
--- ALTER TABLE `usuario` ADD `cargo_usuario` VARCHAR(100) NOT NULL AFTER `telefono_usuario`;

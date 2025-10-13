@@ -1,6 +1,15 @@
 <?php
 include('../../../conexion.php');
 //include('../../../encabezado.php');
+
+// Inicia la sesión para poder acceder a las variables globales $_SESSION
+session_start(); 
+
+// Obtiene el ID del secretario guardado en la sesión (cuando el usuario inició sesión)
+// Si no existe (por ejemplo, si el usuario no es secretario o la sesión expiró),
+// se asigna el valor null para evitar errores.
+$id_secretario = $_SESSION['id_secretario'] ?? null;
+
 $con = conectar_bd();
 
 // Consulta SQL para obtener todos los grupos junto con el adscripto asociado y el nombre del usuario adscripto
@@ -19,6 +28,7 @@ $result = $con->query("
         ON grupo.id_adscripto = adscripto.id_adscripto
     JOIN usuario
         ON adscripto.id_usuario = usuario.id_usuario
+    ORDER BY grupo.nombre_grupo ASC
 ");
 
 // Obtener nombre y apellido adscripto mediante id (usuario)
@@ -69,7 +79,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
 
 <!DOCTYPE html>
 <head>
-  <title> Grupos </title>
+  <title> Grupos - Secretario </title>
     <!-- Bootstrap CSS + Iconos + letras-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
@@ -124,7 +134,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
        </div>
 
     <!-- Contenido principal-->
-    <div class="col-md-9 horarios-estudiante"> <!-- Boostrap contendio al lado del menu -->
+    <div class="col-md-9 principal"> <!-- Boostrap contendio al lado del menu -->
       <img src="/img/logo.png" alt="Logo" class="logo">
 
       <div class="acordion-total">
@@ -244,8 +254,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
                       </div>
 
                       <div class="mb-3"> <!-- id del secretario asociado con el grupo creado para que se gusrade en la bd -->
-                        <input type="hidden" name="id_secretario" value="1"> <!-- SESSION <input type="hidden" name="id_secretario" value="<?php echo $_SESSION['id_secretario']; ?>">
- -->
+                        <input type="hidden" name="id_secretario" value="<?php echo htmlspecialchars($id_secretario); ?>">
                       </div>
 
                     </div>
@@ -270,9 +279,8 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
    <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  <script src="../js/editar.js"></script>
-  <script src="../js/validation.js"></script>
-  <script src="../js/desplegarCaracteristicas.js"></script>
+  <script src="../js/grupo.js"></script>
+  <script src="/utils/desplegar.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 

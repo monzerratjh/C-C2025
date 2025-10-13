@@ -68,7 +68,7 @@
 <!-- Contenido principal -->
 <main class="col-md-9 principal" >
 
- <img src="../../../img/logo.png" alt="Logo" class="logo"> 
+ <img src="/img/logo.png" alt="Logo" class="logo"> 
 
 <div class="container my-4 espacio-contenedor">
 
