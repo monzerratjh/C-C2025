@@ -735,12 +735,13 @@ table tr:hover {
   .contenedor{
     display: flex;
     justify-content: center;
-    
+    padding: 0;
   }
 
   .principal{
-    display: block;
-    margin-top: 50%;
+  display: flex;
+  position: sticky;
+  height: 55vh;
   }
   .menuResponsive {
      width: 30px;
