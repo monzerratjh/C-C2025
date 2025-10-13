@@ -87,24 +87,29 @@ $con->close();
       <img src="./../../../img/logo.png" alt="Logo" class="logo">
 
       <div class="bloque-agregar">
-        <button class="etiqueta">Horarios</button>
-        <button class="agregar" data-bs-toggle="modal" data-bs-target="#modalHorario" onclick="document.getElementById('accionHorario').value='insertar';">+</button>
-      </div>
+        <h1>Horarios</h1>
+       </div>
 
       <table class="tabla-horarios-secretario">
         <thead>
           <tr>
-            <th>Horario de inicio (por hora)</th>
-            <th>Horario de finalización (por hora)</th>
+            <th>Hora de inicio (por hora)</th>
+            <th>Hora de finalización (por hora)</th>
+            <th></th>
+            <th></th>
+            <th></th>
             <th></th>
             <th></th>
           </tr>
+          
         </thead>
         <tbody>
           <?php while($filaHorario = $resultadoHorarios->fetch_assoc()): ?>
           <tr>
             <td><?= htmlspecialchars($filaHorario['hora_inicio']) ?></td>
             <td><?= htmlspecialchars($filaHorario['hora_fin']) ?></td>
+            <td></td>
+            <td></td>
             <td>
               <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modalHorario"
                 onclick="cargarEditarHorario(
@@ -125,6 +130,16 @@ $con->close();
               </form>
             </td>
           </tr>
+
+           <tr>
+            <th></th>
+            <th><h2>+</h2></th>
+            <th></th>
+            <th></th>
+             <th></th>
+            <th></th>
+            <th></th>
+          </tr>
           <?php endwhile; ?>
         </tbody>
       </table>
@@ -136,10 +151,6 @@ $con->close();
     <div class="modal-dialog">
       <div class="modal-content">
         <form method="POST" id="formHorario">
-          <div class="modal-header">
-            <h5 class="modal-title">Gestión de Horario</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
 
           <div class="modal-body">
             <input type="hidden" name="accionHorario" id="accionHorario">
