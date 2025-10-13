@@ -1,5 +1,5 @@
 <?php 
-require_once __DIR__ . '/../../conexion.php';
+include ('./conexion.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,9 +23,9 @@ require_once __DIR__ . '/../../conexion.php';
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="/img/menu.png" alt="menu">
+        <img class="menuResponsive" src="./../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="/img/logo.png" alt="logoResponsive">
+      <img class="logoResponsive" src="./../../img/logo.png" alt="logoResponsive">
     </div>
   </nav>
 
@@ -72,7 +72,7 @@ require_once __DIR__ . '/../../conexion.php';
 
     <!-- Contenido principal -->
     <main class="principal">
-      <img src="/img/logo.png" alt="Logo" class="logo"> 
+      <img src="./../../img/logo.png" alt="Logo" class="logo"> 
       <h2>ESTUDIANTE</h2>
       <p>Ingresa tu grupo correspondiente</p>
 

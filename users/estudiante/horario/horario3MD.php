@@ -40,7 +40,7 @@
       <a href="./../../estudiante/estudiante.php" class="fw-semibold seleccionado mb-2">Estudiantes</a>
       <a href="./../../adscripto/adscripto-log.php" class="nav-opciones mb-2">Adscriptos</a>
       <a href="./../../docente/docente-log.php" class="nav-opciones mb-2">Docente</a>
-      <a href="./../../secretario/secretario-log.php" class="nav-opciones mb-2">Secretaría</a>
+      <a href="./../../../secretario/secretario-log.php" class="nav-opciones mb-2">Secretaría</a>
     </div>
   </div>
 
@@ -58,10 +58,10 @@
            <i class="bi bi-translate traductor-menu"></i>
         </div>
 
-        <a href="./../../estudiante/estudiante.php" class="fw-semibold seleccionado">Estudiante</a>
-        <a href="./../../adscripto/adscripto-log.php" class="nav-opciones">Adscripto</a>
-        <a href="./../../docente/docente-log.php" class="nav-opciones">Docente</a>
-        <a href="./../../secretario/secretario-log.php" class="nav-opciones">Secretario</a>
+        <a href="./../../../estudiante/estudiante.php" class="fw-semibold seleccionado">Estudiante</a>
+        <a href="./../../../adscripto/adscripto-log.php" class="nav-opciones">Adscripto</a>
+        <a href="./../../../docente/docente-log.php" class="nav-opciones">Docente</a>
+        <a href="./../../../secretario/secretario-log.php" class="nav-opciones">Secretario</a>
       </div>
 
     <!-- Contenido horarios-estudiante-->
