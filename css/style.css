@@ -755,19 +755,22 @@ table tr:hover {
     display: flex;
     align-items: center;
     gap: 0;
-    padding: 1rem 1rem;
+    padding: 2rem 1rem;
   }
 
+     .formulario button {
+        width: 100%;
+    }
+
+    .formulario input {
+        
+    }
 
   .offcanvas {
     background-color: var(--color-barra-lateral);
   }
 
-  .mb-3 {
-    color: black;
-    font-size: 18px;
-    margin: 40px;
-  }
+
 
 }
 
