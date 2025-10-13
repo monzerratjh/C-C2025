@@ -1,5 +1,5 @@
 <?php 
-//include('../../../encabezado.php');
+include ('./../../../conexion.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
