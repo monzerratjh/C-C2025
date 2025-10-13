@@ -758,16 +758,19 @@ table tr:hover {
     padding: 1rem 1rem;
   }
 
+     .formulario button {
+        width: 100%;
+    }
+
+    .formulario input {
+        
+    }
 
   .offcanvas {
     background-color: var(--color-barra-lateral);
   }
 
-  .mb-3 {
-    color: black;
-    font-size: 18px;
-    margin: 40px;
-  }
+
 
 }
 
