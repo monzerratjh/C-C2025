@@ -755,7 +755,7 @@ table tr:hover {
     display: flex;
     align-items: center;
     gap: 0;
-    padding: 1rem 1rem;
+    padding: 2rem 1rem;
   }
 
      .formulario button {
