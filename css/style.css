@@ -11,6 +11,8 @@
   --color-docente: #F4B97D;
   --color-secretaria: #DEA5C4;
 
+  --color-letras-general: #333;
+
 }
 
 .estudiante {
@@ -51,7 +53,7 @@ a{
   background-color: var(--color-barra-lateral);
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
-      padding: 30px 66px 30px 25px;
+  padding: 30px 66px 30px 25px;
   color: black;
   display: flex;
   flex-direction: column;
@@ -153,11 +155,11 @@ a{
 }
 
 .traductor-menu{
- margin: 5px;
-    font-size: 30px;
-    cursor: pointer;
-    padding-left: 5rem;
-    padding-top: 1rem;
+  margin: 5px;
+  font-size: 30px;
+  cursor: pointer;
+  padding-left: 5rem;
+  padding-top: 1rem;
 }
 
 .encabezado-index img {
@@ -176,7 +178,7 @@ a{
 
 .bienvenida-index p {
   font-size: 1.2rem;
-  color: #333;
+  color: var(color-letras-general);
   margin-bottom: 4%;
 }
 
@@ -228,11 +230,8 @@ a{
 
     /*PAGINA ESTUDIANTES*/
 
-  
-
     .principal h2 {
       font-weight: 700;
-  
     }
 
     .principal p{
@@ -311,8 +310,30 @@ a{
   margin-bottom: 10px;
 }
 
+.boton-opciones2{
+  display: flex;               
+  justify-content: center;                
+  margin: 0;
+  border: none;                 
+  cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  color: white;
+  background-color: #f3d9ef; 
+  font-size: 18px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
 .boton-opciones::after {
   content: "▼";
+  position: absolute;
+  right: 15px;
+  transition: transform 0.3s ease;
+}
+
+.boton-opciones2::after {
   position: absolute;
   right: 15px;
   transition: transform 0.3s ease;
@@ -323,11 +344,10 @@ a{
   content: none; /* "content: none" elimina lo que agregaba el ::after */
 }
 
-
 .contenido-dia {
   display: none;
   background-color: white;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #cccccc;
   border-radius: 0 0 12px 12px;
 }
 
@@ -348,7 +368,7 @@ a{
 .martes { background-color: #f2c086; }
 .miercoles { background-color: #e3a4cc; }
 .jueves { background-color: #56c8c3; }
-.viernes { background-color: rgb(62, 69, 123); }
+.viernes { background-color: #3e457b; }
 
 /*ADCSRIPTO*/
 
@@ -379,7 +399,7 @@ a{
     height: 70px;
     font-size: 5rem;
     z-index: 2;
-    color: rgb(53, 83, 78);
+    color: #35534e;
     background-color: white;
     border-radius: 45%;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -417,9 +437,10 @@ a{
 
 .bienvenida{
   font-size: 60px;
-}/* Contenedor principal */
+}
+  /* Contenedor principal */
 .espacio-contenedor {
-     max-width: 700px;
+  max-width: 700px;
   width: 100%;
 }
 
@@ -566,7 +587,7 @@ table {
   width: 80%;
   margin: 20px auto;
   background: #fffafc; 
-  color: #444;
+  color: var(--color-letras-general);
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   font-size: 15px;
@@ -580,7 +601,7 @@ table th, table td {
 
 table th {
   background: var(--color-estudiante); /* rosado pastel */
-  color: #333;
+  color: var(--color-letras-general);
   font-weight: bold;
 }
 
@@ -588,9 +609,7 @@ table tr:nth-child(even) {
   background: #e2e8e6; /* celeste pastel */
 }
 
-table tr:hover {
-  background: #c8d3cf; /* lila pastel suave */
-}
+
 /*BLOQUE PARA AGREGAR COSAS*/
 
   /* Bloque Agregar */
@@ -647,6 +666,19 @@ table tr:hover {
     color: #fff;
   }
   
+  /* Tablets: entre 769px y 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  .barra-lateral {
+    display: flex;
+  }
+}
+@media (max-width: 879px) {
+  .opciones {
+    flex-wrap: wrap;
+  }
+}
+
 
 @media (max-width: 1186px) {
   
@@ -672,9 +704,9 @@ table tr:hover {
 }
 
 
+
 /* Pantallas ≤ 767px */
 @media (max-width: 767px) {
-
 
   /* Barra lateral desaparece */
   .barra-lateral {
@@ -781,7 +813,6 @@ table tr:hover {
   .offcanvas {
     background-color: var(--color-barra-lateral);
   }
-
 }
 
 /* Pantallas ≤ 480px */
@@ -806,4 +837,35 @@ table tr:hover {
     width: 200px;
     height: 250px;
   }
+}
+
+
+.btn {
+  color: black;
+  background-color: transparent; 
+  border: none; 
+}
+
+.bi.bi-pencil-square::before{
+   color: black;
+  background-color: transparent; 
+  border: none; 
+}
+
+.bi.bi-trash::before{
+  color: black;
+}
+
+.btn-warning, .btn-danger {
+     --bs-btn-hover-color: #000; 
+    --bs-btn-hover-bg: transparent;
+}
+
+h4{
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.btn{
+  cursor: pointer;
 }
