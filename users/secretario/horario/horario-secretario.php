@@ -96,7 +96,10 @@ $con->close();
             <th>Hora de inicio (por hora)</th>
             <th>Hora de finalización (por hora)</th>
             <th></th>
-            <th></th> 
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
           
         </thead>
@@ -105,6 +108,8 @@ $con->close();
           <tr>
             <td><?= htmlspecialchars($filaHorario['hora_inicio']) ?></td>
             <td><?= htmlspecialchars($filaHorario['hora_fin']) ?></td>
+            <td></td>
+            <td></td>
             <td>
               <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modalHorario"
                 onclick="cargarEditarHorario(
@@ -112,7 +117,7 @@ $con->close();
                   '<?= $filaHorario['hora_inicio'] ?>',
                   '<?= $filaHorario['hora_fin'] ?>'
                 )">
-                <i class="bi bi-pencil-square"></i>
+                <i class="bi bi-pencil"></i>
               </button>
             </td>
             <td>
@@ -125,18 +130,17 @@ $con->close();
               </form>
             </td>
           </tr>
-          <?php endwhile; ?>
 
-        <tr>
- <td colspan="7" class="text-center"> <!-- Une todas las columnas en una sola celda y centra el "+" -->
-     <h4 class="agregar"
-        data-bs-toggle="modal"
-        data-bs-target="#modalHorario"
-        onclick="document.getElementById('accionHorario').value='insertar';">
-      +
-      </h4>
-  </td>
-</tr>
+           <tr>
+            <th></th>
+            <th><h2>+</h2></th>
+            <th></th>
+            <th></th>
+             <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+          <?php endwhile; ?>
         </tbody>
       </table>
     </main>

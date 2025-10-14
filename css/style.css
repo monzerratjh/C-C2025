@@ -807,26 +807,3 @@ table tr:hover {
     height: 250px;
   }
 }
-
-
-.btn {
-  color: black;
-  background-color: transparent; 
-  border: none; 
-}
-
-.bi.bi-pencil-square::before{
-   color: black;
-  background-color: transparent; 
-  border: none; 
-}
-
-.btn-warning, .btn-danger {
-     --bs-btn-hover-color: #000; 
-    --bs-btn-hover-bg: transparent;
-}
-
-h4{
-  cursor: pointer;
-  font-size: 35px;
-}
