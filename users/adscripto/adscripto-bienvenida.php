@@ -1,5 +1,10 @@
-<?php 
-// include('./encabezado.php');
+<?php
+include('./../../conexion.php');
+session_start();
+
+// Obtener el nombre del usuario de la sesión para personalizar el mensaje
+$nombre_adscripto = $_SESSION['nombre_usuario'] ?? 'usuario/a';
+$apellido_adscripto = $_SESSION['apellido_usuario'] ?? 'usuario/a';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -49,7 +54,7 @@
     </div>
   </div>
 
-  <!-- 🟩 Contenedor general con Grid -->
+  <!-- Contenedor general con Grid -->
   <div class="contenedor">
 
     <!-- Barra lateral -->
@@ -71,8 +76,7 @@
     <!-- Contenido principal -->
     <main class="principal">
       <img src="./../../img/logo.png" alt="Logo" class="logo"> 
-      <h1 class="bienvenida" data-i18n="welcom3">Bienvenid@</h1>
-      <h1 class="bienvenida">Adscript@ @username</h1>
+      <h1 class="bienvenida">Bienvenid@  <br> <?php echo htmlspecialchars($nombre_adscripto). ' ' . htmlspecialchars($apellido_adscripto). '!'; ?></h1>
     </main>
 
   </div>

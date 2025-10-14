@@ -3,7 +3,9 @@ include('./../../conexion.php');
 session_start();
 
 // Obtener el nombre del usuario de la sesión para personalizar el mensaje
-$nombre_secretario = $_SESSION['nombre_usuario'] ?? 'Secretario/a';
+$nombre_secretario = $_SESSION['nombre_usuario'] ?? 'usuario/a';
+$apellido_secretario = $_SESSION['apellido_usuario'] ?? 'usuario/a';
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -75,8 +77,7 @@ $nombre_secretario = $_SESSION['nombre_usuario'] ?? 'Secretario/a';
     <!-- Contenido principal -->
     <main class="principal">
       <img src="./../../img/logo.png" alt="Logo" class="logo">
-      <h1 class="bienvenida">Bienvenid@</h1>
-      <h1 class="bienvenida">Secretari@ <?php echo htmlspecialchars($nombre_secretario); ?></h1>
+      <h1 class="bienvenida">Bienvenid@  <br> <?php echo htmlspecialchars($nombre_secretario). ' ' . htmlspecialchars($apellido_secretario). '!'; ?></h1>
     </main>
   </div>
 
