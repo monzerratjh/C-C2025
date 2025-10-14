@@ -232,6 +232,7 @@ a{
 
     .principal h2 {
       font-weight: 700;
+  
     }
 
     .principal p{
@@ -435,16 +436,10 @@ a{
   justify-content: space-between;
 }
 
-/* Parte superior (el bloque verde grande) */
-.espacio-cuerpo {
-  flex: 1;
-}
-
-/* Footer (blanco con botones y nombre) */
 .espacio-footer {
   background: #fff;
   padding: 8px 12px;
-  font-size: 1rem;  /* un poco más grande */
+  font-size: 1rem; 
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -466,9 +461,14 @@ a{
 }
 
 .espacio-plus {
-  font-size: 2.2rem;
+  font-size: 3rem;
   font-weight: bold;
   color: #000;
+}
+
+#button-plus{
+  background: #cdeeee;
+  border: none;
 }
 
 .espacio-btn {
@@ -648,6 +648,16 @@ table tr:hover {
   }
   
 
+@media (max-width: 1186px) {
+  
+    .mt-4 {
+    margin-top: 1.5rem !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+}
+
   /* Tablets: entre 769px y 1024px */
 @media (min-width: 768px) and (max-width: 1024px) {
 
@@ -664,6 +674,7 @@ table tr:hover {
 
 /* Pantallas ≤ 767px */
 @media (max-width: 767px) {
+
 
   /* Barra lateral desaparece */
   .barra-lateral {

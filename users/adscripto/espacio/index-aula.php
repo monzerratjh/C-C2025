@@ -65,123 +65,123 @@ $con->close();
   </div>
 
   <!-- Contenedor general -->
-  <div class="container-fluid">
-    <div class="row">
+ <!-- Contenedor general con GRID -->
+<div class="contenedor">
 
-      <!-- Banner pantallas grandes -->
-      <div class="col-md-3 barra-lateral d-none d-md-flex">
-        <div class="volverGeneral">
-          <div class="volver">
-            <a href="adscripto-espacio.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="adscripto-espacio.php">Volver</a>
-          </div>
-          <i class="bi bi-translate traductor-menu"></i>
-        </div>
-
-       <a href="adscripto-espacio.php" class="fw-semibold seleccionado mb-2">Espacio</a>
-      <a href="../reserva-adscripto.php" class="nav-opciones mb-2">Reserva</a>
-      <a href="../falta-docente.php" class="nav-opciones mb-2">Falta docentes</a>
-      <a href="../materia/carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
+  <!-- Banner pantallas grandes -->
+  <div class="barra-lateral d-none d-md-flex">
+    <div class="volverGeneral">
+      <div class="volver">
+        <a href="adscripto-espacio.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+        <a href="adscripto-espacio.php">Volver</a>
+      </div>
+      <i class="bi bi-translate traductor-menu"></i>
     </div>
 
-<!-- Contenido principal -->
-<main class="col-md-9 principal" >
+    <a href="adscripto-espacio.php" class="fw-semibold seleccionado mb-2">Espacio</a>
+    <a href="../reserva-adscripto.php" class="nav-opciones mb-2">Reserva</a>
+    <a href="../falta-docente.php" class="nav-opciones mb-2">Falta docentes</a>
+    <a href="../materia/carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
+  </div>
+
+  <!-- Contenido principal -->
+  <main class="principal">
 
     <img src="./../../../img/logo.png" alt="Logo" class="logo"> 
 
     <div class="container my-4 espacio-contenedor">
- 
-    <h2>Aulas</h2>
- 
-  <div class="row justify-content-center mt-4">
-    
-   <?php while($espacio = $resultadoEspacios->fetch_assoc()): ?>
-          <div class="col-6 mb-4">
-            <div class="espacio-card">
-              <div class="espacio-cuerpo"></div>
-              <div class="espacio-footer d-flex justify-content-between align-items-center">
-                <button class="btn btn-sm btn-light"
-                  data-bs-toggle="modal" data-bs-target="#modalEspacio"
-                  onclick='cargarEditarEspacio(<?=json_encode($espacio)?>)'>
-                  <i class="bi bi-pencil-square"></i>
-                </button>
+      <h2>Aulas</h2>
+<div class="row justify-content-center mt-4">
 
-                <span><?=htmlspecialchars($espacio['nombre_espacio'])?></span>
-
-                <button type="button" class="btn btn-sm btn-light btn-danger eliminar-espacio-boton" data-id="<?= $espacio['id_espacio'] ?>">
-                  <i class="bi bi-trash"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <?php endwhile; ?>
-
-          <!-- Agregar nuevo -->
-          <div class="col-6 mb-4">
-            <div class="espacio-card espacio-agregar d-flex justify-content-center align-items-center">
-              <button data-bs-toggle="modal" data-bs-target="#modalEspacio" onclick="prepararNuevoEspacio()">
-                <span class="espacio-plus">+</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="modalEspacio" tabindex="-1">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Gestión de espacio</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-              </div>
-
-              <form id="formularioEspacio" method="POST">
-                <div class="modal-body">
-                  <input type="hidden" id="accion" name="accion">
-                  <input type="hidden" id="id_espacio" name="id_espacio">
-                  <input type="hidden" id="tipo_espacio" name="tipo_espacio" value="<?= $tipoDetectado ?>">
-
-                  <div class="mb-3">
-                    <label for="nombre_espacio">Nombre del espacio</label>
-                    <input type="text" id="nombre_espacio" name="nombre_espacio" class="form-control" required>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="capacidad_espacio">Capacidad</label>
-                    <input type="number" id="capacidad_espacio" name="capacidad_espacio" class="form-control" required min="1" max="50">
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="disponibilidad_espacio">Disponibilidad</label>
-                    <select id="disponibilidad_espacio" name="disponibilidad_espacio" class="form-control" required>
-                      <option value="">Seleccione...</option>
-                      <?php foreach($valoresDisponibilidad as $valor): ?>
-                        <option value="<?= htmlspecialchars($valor, ENT_QUOTES) ?>"><?= htmlspecialchars($valor) ?></option>
-                      <?php endforeach; ?>
-                    </select>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="historial_espacio">Historial / Observaciones</label>
-                    <textarea id="historial_espacio" name="historial_espacio" class="form-control" rows="3"></textarea>
-                  </div>
-
-                  
-
-                </div>
-
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                  <button type="submit" class="btn btn-primary">Guardar</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-
+    <!-- Agregar nuevo primero -->
+    <div class="col-6 mb-4">
+      <div class="espacio-card espacio-agregar d-flex justify-content-center align-items-center">
+        <button id="button-plus" data-bs-toggle="modal" data-bs-target="#modalEspacio" onclick="prepararNuevoEspacio()">
+          <span class="espacio-plus">+</span>
+        </button>
       </div>
-    </main>
-  </div>
+    </div>
+
+    <!-- Luego los espacios existentes -->
+    <?php while($espacio = $resultadoEspacios->fetch_assoc()): ?>
+      <div class="col-6 mb-4">
+        <div class="espacio-card">
+          <div class="espacio-cuerpo"></div>
+          <div class="espacio-footer d-flex justify-content-between align-items-center">
+            <button class="btn btn-sm btn-light"
+              data-bs-toggle="modal" data-bs-target="#modalEspacio"
+              onclick='cargarEditarEspacio(<?=json_encode($espacio)?>)'>
+              <i class="bi bi-pencil-square"></i>
+            </button>
+
+            <span><?=htmlspecialchars($espacio['nombre_espacio'])?></span>
+
+            <button type="button" class="btn btn-sm btn-light btn-danger eliminar-espacio-boton" data-id="<?= $espacio['id_espacio'] ?>">
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    <?php endwhile; ?>
+
+</div>
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="modalEspacio" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Gestión de espacio</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <form id="formularioEspacio" method="POST">
+              <div class="modal-body">
+                <input type="hidden" id="accion" name="accion">
+                <input type="hidden" id="id_espacio" name="id_espacio">
+                <input type="hidden" id="tipo_espacio" name="tipo_espacio" value="<?= $tipoDetectado ?>">
+
+                <div class="mb-3">
+                  <label for="nombre_espacio">Nombre del espacio</label>
+                  <input type="text" id="nombre_espacio" name="nombre_espacio" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="capacidad_espacio">Capacidad</label>
+                  <input type="number" id="capacidad_espacio" name="capacidad_espacio" class="form-control" required min="1" max="50">
+                </div>
+
+                <div class="mb-3">
+                  <label for="disponibilidad_espacio">Disponibilidad</label>
+                  <select id="disponibilidad_espacio" name="disponibilidad_espacio" class="form-control" required>
+                    <option value="">Seleccione...</option>
+                    <?php foreach($valoresDisponibilidad as $valor): ?>
+                      <option value="<?= htmlspecialchars($valor, ENT_QUOTES) ?>"><?= htmlspecialchars($valor) ?></option>
+                    <?php endforeach; ?>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="historial_espacio">Historial / Observaciones</label>
+                  <textarea id="historial_espacio" name="historial_espacio" class="form-control" rows="3"></textarea>
+                </div>
+
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
