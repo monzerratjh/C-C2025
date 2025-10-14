@@ -319,4 +319,3 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
 
 </body>
 </html>
-

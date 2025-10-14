@@ -326,6 +326,10 @@ a{
   margin-top: 20px;
 }
 
+.letranegra {
+  color: #333;
+}
+
 .boton-opciones::after {
   content: "▼";
   position: absolute;
