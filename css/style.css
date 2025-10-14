@@ -819,8 +819,3 @@ table tr:hover {
      --bs-btn-hover-color: #000; 
     --bs-btn-hover-bg: transparent;
 }
-
-h4{
-  cursor: pointer;
-  font-size: 35px;
-}
