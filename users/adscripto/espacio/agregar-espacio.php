@@ -131,3 +131,28 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+<!--
+
+<?php
+// include('../../../encabezado.php');
+include('../../../conexion.php');
+$con = conectar_bd();
+session_start();
+
+// Obtener todos los espacios 
+$sqlConsultaEspacios = "
+    SELECT espacio.id_espacio,
+           espacio.nombre_espacio,
+           espacio.capacidad_espacio,
+           espacio.historial_espacio,
+           espacio.disponibilidad_espacio
+    FROM espacio
+    ORDER BY espacio.nombre_espacio ASC
+";
+$resultadoEspacios = $con->query($sqlConsultaEspacios);
+
+$con->close();
+?>
+
+-->

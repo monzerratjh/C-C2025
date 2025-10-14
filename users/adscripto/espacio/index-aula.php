@@ -10,7 +10,7 @@ preg_match_all("/'([^']+)'/", $filaEnum['Type'], $coincidenciasEnum);
 $valoresDisponibilidad = $coincidenciasEnum[1];
 
 // Obtener solo los espacios de tipo 'Aula'
-$resultadoEspacios = $con->query("SELECT * FROM espacio WHERE tipo = 'Aula' ORDER BY nombre_espacio");
+$resultadoEspacios = $con->query("SELECT * FROM espacio WHERE tipo_espacio = 'Aula' ORDER BY nombre_espacio");
 
 $con->close();
 ?>
@@ -99,7 +99,7 @@ $con->close();
                                           onclick="cargarEditarEspacio(
                                             '<?php echo $espacio['id_espacio']; ?>',
                                             '<?php echo htmlspecialchars($espacio['nombre_espacio'], ENT_QUOTES); ?>',
-                                            '<?php echo htmlspecialchars($espacio['tipo'], ENT_QUOTES); ?>',
+                                            '<?php echo htmlspecialchars($espacio['tipo_espacio'], ENT_QUOTES); ?>',
                                             '<?php echo (int)$espacio['capacidad_espacio']; ?>',
                                             '<?php echo htmlspecialchars($espacio['disponibilidad_espacio'], ENT_QUOTES); ?>',
                                             '<?php echo htmlspecialchars($espacio['historial_espacio'], ENT_QUOTES); ?>'
