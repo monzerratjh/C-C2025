@@ -297,7 +297,7 @@ a{
   overflow: hidden;
 }
 
-.boton-opciones{
+.boton-opciones {
   width: 100%;
   padding: 15px;
   border: none;
@@ -310,34 +310,8 @@ a{
   margin-bottom: 10px;
 }
 
-.boton-opciones2{
-  display: flex;               
-  justify-content: center;                
-  margin: 0;
-  border: none;                 
-  cursor: pointer;
-  width: 100%;
-  padding: 10px;
-  color: #333;
-  background-color: #f3d9ef;
-  font-size: 18px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  margin-top: 20px;
-}
-
-.letranegra {
-  color: #333;
-}
-
 .boton-opciones::after {
   content: "▼";
-  position: absolute;
-  right: 15px;
-  transition: transform 0.3s ease;
-}
-
-.boton-opciones2::after {
   position: absolute;
   right: 15px;
   transition: transform 0.3s ease;
@@ -376,11 +350,13 @@ a{
 .viernes { background-color: rgb(62, 69, 123); }
 
 /*ADCSRIPTO*/
+
 .usuario{
       border-right: none;
 }
 
         /*PAGINA ADSCRIPTOS LOGIN*/
+
 .seccion-form {
     position: relative;
     display: flex;
@@ -612,6 +588,9 @@ table tr:nth-child(even) {
   background: #e2e8e6; /* celeste pastel */
 }
 
+table tr:hover {
+  background: #c8d3cf; /* lila pastel suave */
+}
 /*BLOQUE PARA AGREGAR COSAS*/
 
   /* Bloque Agregar */
@@ -791,10 +770,7 @@ table tr:nth-child(even) {
   .offcanvas {
     background-color: var(--color-barra-lateral);
   }
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 }
 
 /* Pantallas ≤ 480px */
@@ -834,10 +810,6 @@ table tr:nth-child(even) {
   border: none; 
 }
 
-.bi.bi-trash::before{
-  color: black;
-}
-
 .btn-warning, .btn-danger {
      --bs-btn-hover-color: #000; 
     --bs-btn-hover-bg: transparent;
@@ -845,9 +817,5 @@ table tr:nth-child(even) {
 
 h4{
   cursor: pointer;
-  font-size: 30px;
-}
-
-.btn{
-  cursor: pointer;
+  font-size: 35px;
 }

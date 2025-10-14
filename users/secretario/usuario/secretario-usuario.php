@@ -84,7 +84,15 @@ if ($id_usuario) {
     <main class="principal">
 
       <img src="/img/logo.png" alt="Logo" class="logo">
-      <h1>Gestión de Usuarios</h1>
+      <h2 class="titulo-seccion">Gestión de Usuarios</h2>
+
+      <div class="bloque-agregar">
+        <button class="agregar"
+                data-bs-toggle="modal"
+                data-bs-target="#modalUsuario"
+                onclick="document.getElementById('accion').value='insertar';">+
+        </button>
+      </div>
 
       <table class="tabla-horarios-secretario">
         <thead>
@@ -109,12 +117,12 @@ if ($id_usuario) {
             <td><?= $row['ci_usuario'] ?></td>
             <td><?= $row['cargo_usuario'] ?></td>
             <td>
-                <a class="editar btn" data-bs-toggle="modal" data-bs-target="#update_modal<?= $row['id_usuario'] ?>">
+                <a class="editar" data-bs-toggle="modal" data-bs-target="#update_modal<?= $row['id_usuario'] ?>">
                  <i class="bi bi-pencil-square"></i>
               </a>
             </td>
             <td>
-              <a href="delete_user_secretario.php?id_usuario=<?= $row['id_usuario'] ?>" class="eliminar btn">
+              <a href="delete_user_secretario.php?id_usuario=<?= $row['id_usuario'] ?>" class="eliminar">
                  <i class="bi bi-trash"></i>
               </a>
             </td>
@@ -181,15 +189,6 @@ if ($id_usuario) {
             </div>
           </div>
           <?php endwhile; ?>
-
-           <tr><td colspan="7" class="text-center"> <!-- Une todas las columnas en una sola celda y centra el "+" -->
-     <h4 class="agregar"
-                data-bs-toggle="modal"
-                data-bs-target="#modalUsuario"
-                onclick="document.getElementById('accion').value='insertar';">+
-      </h4>
-      <td></td>
-  </td></tr>
         </tbody>
       </table>
 

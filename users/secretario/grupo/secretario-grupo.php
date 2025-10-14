@@ -164,19 +164,23 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
 
       <div class="acordion-total">
   <div class="acordion">
-  
-              <h1>Grupos</h1>
 
-              
-    <button class="boton-opciones2 agregar"
+
+  <div class="bloque-agregar">
+              <h1 class="etiqueta">Gestión de Grupos</h1>
+              <button class="agregar"
                       data-bs-toggle="modal"
                       data-bs-target="#modalGrupo"
                       onclick="document.getElementById('accion').value='insertar';">
-                 <h2>+</h2></button>
+                  +
+              </button>
+  </div>
 
+
+ 
 <?php while($row = $result->fetch_assoc()): ?>
 <div class="dia">
-    <button class="boton-opciones miercoles letranegra"><?php echo htmlspecialchars($row['nombre_grupo'], ENT_SUBSTITUTE); ?></button>
+    <button class="boton-opciones miercoles"><?php echo htmlspecialchars($row['nombre_grupo'], ENT_SUBSTITUTE); ?></button>
     <div class="contenido-dia">
         <table class="tabla-horario">
             <!--- htmlspecialchars = encodes html special characters such as <, ", /, etc to prevent XSS (Cross Site Scripting)-->
@@ -220,6 +224,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
     </div>
 </div>
 <?php endwhile; ?>
+
 
             <!-- Modal para insertar o editar grupo -->
             <div class="modal fade" id="modalGrupo" tabindex="-1">
@@ -307,7 +312,11 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
       </main>
   </div> <!-- 🔹 Cierre del nuevo div.contenedor agregado -->
 
+
+
+
   <!-- Scripts -->
+
 
    <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -316,7 +325,11 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
   <script src="../js/grupo.js"></script>
   <script src="../js/desplegarCaracteristicas.js"></script>
 
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
 
 </body>
 </html>
