@@ -298,6 +298,7 @@ a{
 }
 
 .boton-opciones{
+.boton-opciones{
   width: 100%;
   padding: 15px;
   border: none;
@@ -330,8 +331,34 @@ a{
   color: #333;
 }
 
+.boton-opciones2{
+  display: flex;               
+  justify-content: center;                
+  margin: 0;
+  border: none;                 
+  cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  color: #333;
+  background-color: #f3d9ef;
+  font-size: 18px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.letranegra {
+  color: #333;
+}
+
 .boton-opciones::after {
   content: "▼";
+  position: absolute;
+  right: 15px;
+  transition: transform 0.3s ease;
+}
+
+.boton-opciones2::after {
   position: absolute;
   right: 15px;
   transition: transform 0.3s ease;
@@ -791,10 +818,6 @@ table tr:nth-child(even) {
   .offcanvas {
     background-color: var(--color-barra-lateral);
   }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 }
 
 /* Pantallas ≤ 480px */
@@ -838,6 +861,10 @@ table tr:nth-child(even) {
   color: black;
 }
 
+.bi.bi-trash::before{
+  color: black;
+}
+
 .btn-warning, .btn-danger {
      --bs-btn-hover-color: #000; 
     --bs-btn-hover-bg: transparent;
@@ -850,4 +877,10 @@ h4{
 
 .btn{
   cursor: pointer;
+  font-size: 30px;
+}
+
+.btn{
+  cursor: pointer;
+}
 }
