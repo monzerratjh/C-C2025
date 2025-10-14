@@ -282,6 +282,7 @@ a{
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
+  margin-top: 2rem;
 }
 
 .titulo-horario {
@@ -683,6 +684,12 @@ table tr:nth-child(even) {
   }
 }
 
+
+  @media (max-width: 1115px) {
+    .acordion{
+      padding: 4rem 5rem 0rem 5rem;
+    }
+  }
 
 @media (max-width: 1186px) {
   
