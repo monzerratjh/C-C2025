@@ -99,7 +99,7 @@ $con->close();
             <th></th>
             <th></th>
             <th></th>
-            <th></th> 
+            <th></th>
           </tr>
           
         </thead>
@@ -117,7 +117,7 @@ $con->close();
                   '<?= $filaHorario['hora_inicio'] ?>',
                   '<?= $filaHorario['hora_fin'] ?>'
                 )">
-                <i class="bi bi-pencil-square"></i>
+                <i class="bi bi-pencil"></i>
               </button>
             </td>
             <td>
@@ -130,17 +130,17 @@ $con->close();
               </form>
             </td>
           </tr>
-          <?php endwhile; ?>
 
-          <tr>
+           <tr>
             <th></th>
-        <th><h2 class="agregar" data-bs-toggle="modal" data-bs-target="#modalHorario" onclick="document.getElementById('accionHorario').value='insertar';">+</h2></th>
+            <th><h2>+</h2></th>
             <th></th>
             <th></th>
              <th></th>
             <th></th>
             <th></th>
           </tr>
+          <?php endwhile; ?>
         </tbody>
       </table>
     </main>
