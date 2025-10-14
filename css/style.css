@@ -771,12 +771,7 @@ table tr:hover {
     background-color: var(--color-barra-lateral);
   }
 
-
-
 }
-
-
-
 
 /* Pantallas ≤ 480px */
 @media (max-width: 480px) {
