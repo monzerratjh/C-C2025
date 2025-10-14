@@ -1,5 +1,10 @@
-<?php 
-// include('./encabezado.php');
+<?php
+include('./../../conexion.php');
+session_start();
+
+// Obtener el nombre del usuario de la sesión para personalizar el mensaje
+$nombre_docente = $_SESSION['nombre_usuario'] ?? 'usuario/a';
+$apellido_docente = $_SESSION['apellido_usuario'] ?? 'usuario/a';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -69,9 +74,7 @@
     <!-- Contenido principal -->
     <main class="principal">
       <img src="./../../img/logo.png" alt="Logo" class="logo"> 
-      
-      <h1 class="bienvenida">Bienvenid@</h1>
-      <h1 class="bienvenida">Docente @username</h1>
+      <h1 class="bienvenida">Bienvenid@  <br> <?php echo htmlspecialchars($nombre_docente). ' ' . htmlspecialchars($apellido_docente). '!'; ?></h1>
     </main>
 
   </div>

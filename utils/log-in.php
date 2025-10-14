@@ -74,6 +74,7 @@ function logear($con, $cedula, $contrasenia, $rolFormulario) {
     $_SESSION['id_usuario']     = $datos_usr['id_usuario'];
     $_SESSION['ci_usuario']     = $datos_usr['ci_usuario'];
     $_SESSION['nombre_usuario'] = $datos_usr['nombre_usuario'];
+    $_SESSION['apellido_usuario'] = $datos_usr['apellido_usuario'];
     $_SESSION['rol']            = $rolReal;
 
     // guardar el ID específico según el rol 
@@ -110,7 +111,9 @@ function logear($con, $cedula, $contrasenia, $rolFormulario) {
         $url = '/users/adscripto/adscripto-bienvenida.php'; 
     } elseif ($rolReal === 'docente') {
         $url = '/users/docente/docente-bienvenida.php'; 
-    } elseif ($rolReal === 'secretario')$url = '/users/secretario/secretario-bienvenida.php';
+    } elseif ($rolReal === 'secretario') {
+        $url = '/users/secretario/secretario-bienvenida.php';
+    }
 
     return ['success' => true, 'redirect' => $url];
 }
