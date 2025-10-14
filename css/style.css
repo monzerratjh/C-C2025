@@ -770,11 +770,6 @@ table tr:nth-child(even) {
     margin-left: 8px;
   }
 
-  .traductor-menu::before {
-    margin-bottom: 2.5rem;
-    cursor: pointer;
-  }
-
   .logoResponsive {
     width: 100px;
     padding-top: 25px;
@@ -818,6 +813,14 @@ table tr:nth-child(even) {
 
     .mb-3{
       color: black;
+      margin-left: 1rem;
+    }
+   
+    .banner-parte-superior {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
     }
 
 

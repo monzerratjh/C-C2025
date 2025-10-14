@@ -39,7 +39,7 @@ $nombre_secretario = $_SESSION['nombre_usuario'] ?? 'Secretario/a';
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <div>
+      <div class="banner-parte-superior">
         <a href="/utils/log-out.php" class="mb-3">
           <i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar sesión
         </a>

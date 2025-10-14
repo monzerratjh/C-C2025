@@ -32,9 +32,10 @@ include('../../conexion.php');
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
+      <div class="banner-parte-superior"></div>
       <a href="docente-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
       <i class="bi bi-translate traductor-menu"></i>
-
+</div>
       <a href="docente-grupo.php" class="fw-semibold seleccionado mb-2">Grupos a Cargo</a>
       <a href="docente-reservar.php" class="nav-opciones mb-2">Reservar Espacio</a>
       <a href="docente-falta.php" class="nav-opciones mb-2">Avisar Falta</a>

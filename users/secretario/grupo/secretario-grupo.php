@@ -126,9 +126,10 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
+      <div class="banner-parte-superior">
       <a href="../secretario-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
       <i class="bi bi-translate traductor-menu"></i>
- 
+  </div>
         <a href="../usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
         <a href="../horario/horario-secretario" class="nav-opciones">Horarios</a>
         <a href="../grupo/secretario-grupo.php" class="fw-semibold seleccionado mb-2">Grupos</a>

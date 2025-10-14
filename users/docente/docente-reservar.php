@@ -60,9 +60,10 @@ $horarios = $con->query("SELECT id_horario_clase, hora_inicio, hora_fin FROM hor
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
+      <div class="banner-parte-superior">
       <a href="docente-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
       <i class="bi bi-translate traductor-menu"></i>
-
+      </div>
       <a href="docente-grupo.php" class="nav-opciones mb-2">Grupos a Cargo</a>
       <a href="docente-reservar.php" class="fw-semibold seleccionado">Reservar Espacio</a>
       <a href="docente-falta.php" class="nav-opciones mb-2">Avisar Falta</a>
