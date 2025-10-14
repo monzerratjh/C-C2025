@@ -83,7 +83,8 @@ $con->close();
       <div class="container my-4 espacio-contenedor">
         <h2>Salones</h2>
         <div class="row justify-content-center mt-4">
-          <?php while($espacio = $resultadoEspacios->fetch_assoc()): ?>
+          
+        <?php while($espacio = $resultadoEspacios->fetch_assoc()): ?>
           <div class="col-6 mb-4">
             <div class="espacio-card">
               <div class="espacio-cuerpo"></div>

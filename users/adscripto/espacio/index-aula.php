@@ -1,5 +1,4 @@
 <?php 
-//include('../../../encabezado.php');
 include('../../../conexion.php');
 $con = conectar_bd();
 
@@ -9,8 +8,15 @@ $filaEnum = $enumConsulta->fetch_assoc();
 preg_match_all("/'([^']+)'/", $filaEnum['Type'], $coincidenciasEnum);
 $valoresDisponibilidad = $coincidenciasEnum[1];
 
-// Obtener solo los espacios de tipo 'Aula'
-$resultadoEspacios = $con->query("SELECT * FROM espacio WHERE tipo_espacio = 'Aula' ORDER BY nombre_espacio");
+// Detectar tipo según archivo
+$nombreArchivo = basename($_SERVER['PHP_SELF']);
+$tipoDetectado = '';
+if (strpos($nombreArchivo, 'laboratorio') !== false) $tipoDetectado = 'Laboratorio';
+elseif (strpos($nombreArchivo, 'aula') !== false) $tipoDetectado = 'Aula';
+elseif (strpos($nombreArchivo, 'salon') !== false) $tipoDetectado = 'Salón';
+
+// Traer espacios de ese tipo
+$resultadoEspacios = $con->query("SELECT * FROM espacio WHERE tipo_espacio = '$tipoDetectado' ORDER BY nombre_espacio");
 
 $con->close();
 ?>
@@ -89,47 +95,38 @@ $con->close();
  
   <div class="row justify-content-center mt-4">
     
-            <?php while($espacio = $resultadoEspacios->fetch_assoc()): ?>
-            <div class="col-6 mb-4">
-                <div class="espacio-card">
-                    <div class="espacio-cuerpo"></div>
-                    <div class="espacio-footer d-flex justify-content-between align-items-center">
-                        <button class="btn btn-sm btn-light"
-                                data-bs-toggle="modal" data-bs-target="#modalEspacio"
-                                          onclick="cargarEditarEspacio(
-                                            '<?php echo $espacio['id_espacio']; ?>',
-                                            '<?php echo htmlspecialchars($espacio['nombre_espacio'], ENT_QUOTES); ?>',
-                                            '<?php echo htmlspecialchars($espacio['tipo_espacio'], ENT_QUOTES); ?>',
-                                            '<?php echo (int)$espacio['capacidad_espacio']; ?>',
-                                            '<?php echo htmlspecialchars($espacio['disponibilidad_espacio'], ENT_QUOTES); ?>',
-                                            '<?php echo htmlspecialchars($espacio['historial_espacio'], ENT_QUOTES); ?>'
-                                        )">
-                                    <i class="bi bi-pencil-square"></i>
-                            <!--<a href="editar-propiedad-espacio.php?id=<?=$espacio['id_espacio']?>"><i class="bi bi-pencil-square"></i></a>-->
-                        </button>
+   <?php while($espacio = $resultadoEspacios->fetch_assoc()): ?>
+          <div class="col-6 mb-4">
+            <div class="espacio-card">
+              <div class="espacio-cuerpo"></div>
+              <div class="espacio-footer d-flex justify-content-between align-items-center">
+                <button class="btn btn-sm btn-light"
+                  data-bs-toggle="modal" data-bs-target="#modalEspacio"
+                  onclick='cargarEditarEspacio(<?=json_encode($espacio)?>)'>
+                  <i class="bi bi-pencil-square"></i>
+                </button>
 
+                <span><?=htmlspecialchars($espacio['nombre_espacio'])?></span>
 
-                        <span><?=htmlspecialchars($espacio['nombre_espacio'])?></span>
-                        
-
-                        <button type="button" class="btn btn-sm btn-light btn-danger eliminar-espacio-boton" data-id="<?= $espacio['id_espacio'] ?>">
-                          <i class="bi bi-trash"></i>
-                        </button>
-
-
-                    </div>
-                </div>
-            </div>
-            <?php endwhile; ?>
-
-            <!-- Agregar nuevo -->
-            <div class="col-6 mb-4">
-                <div class="espacio-card espacio-agregar d-flex justify-content-center align-items-center">
-                  <button data-bs-toggle="modal" data-bs-target="#modalEspacio" onclick="prepararNuevoEspacio()"><span class="espacio-plus">+</span></button>
+                <button type="button" class="btn btn-sm btn-light btn-danger eliminar-espacio-boton" data-id="<?= $espacio['id_espacio'] ?>">
+                  <i class="bi bi-trash"></i>
+                </button>
               </div>
             </div>
+          </div>
+          <?php endwhile; ?>
 
-        <!-- Modal Insertar / Editar Espacio -->
+          <!-- Agregar nuevo -->
+          <div class="col-6 mb-4">
+            <div class="espacio-card espacio-agregar d-flex justify-content-center align-items-center">
+              <button data-bs-toggle="modal" data-bs-target="#modalEspacio" onclick="prepararNuevoEspacio()">
+                <span class="espacio-plus">+</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal -->
         <div class="modal fade" id="modalEspacio" tabindex="-1">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -142,41 +139,34 @@ $con->close();
                 <div class="modal-body">
                   <input type="hidden" id="accion" name="accion">
                   <input type="hidden" id="id_espacio" name="id_espacio">
+                  <input type="hidden" id="tipo_espacio" name="tipo_espacio" value="<?= $tipoDetectado ?>">
 
                   <div class="mb-3">
-                    <label>Nombre del espacio</label>
+                    <label for="nombre_espacio">Nombre del espacio</label>
                     <input type="text" id="nombre_espacio" name="nombre_espacio" class="form-control" required>
                   </div>
 
                   <div class="mb-3">
-                    <label>Tipo de espacio</label>
-                    <select id="tipo_espacio" name="tipo_espacio" class="form-control" required>
-                      <option value="">Seleccione...</option>
-                      <option value="Salón">Salón</option>
-                      <option value="Aula">Aula</option>
-                      <option value="Laboratorio">Laboratorio</option>
-                    </select>
+                    <label for="capacidad_espacio">Capacidad</label>
+                    <input type="number" id="capacidad_espacio" name="capacidad_espacio" class="form-control" required min="1" max="50">
                   </div>
 
                   <div class="mb-3">
-                    <label>Capacidad</label>
-                    <input type="number" id="capacidad_espacio" name="capacidad_espacio" class="form-control" required min="1" max="500">
-                  </div>
-
-                  <div class="mb-3">
-                    <label>Disponibilidad</label>
+                    <label for="disponibilidad_espacio">Disponibilidad</label>
                     <select id="disponibilidad_espacio" name="disponibilidad_espacio" class="form-control" required>
                       <option value="">Seleccione...</option>
-                      <?php foreach($valoresDisponibilidad as $valorDisponibilidad): ?>
-                        <option value="<?php echo htmlspecialchars($valorDisponibilidad, ENT_QUOTES); ?>"><?php echo htmlspecialchars($valorDisponibilidad, ENT_SUBSTITUTE); ?></option>
+                      <?php foreach($valoresDisponibilidad as $valor): ?>
+                        <option value="<?= htmlspecialchars($valor, ENT_QUOTES) ?>"><?= htmlspecialchars($valor) ?></option>
                       <?php endforeach; ?>
                     </select>
                   </div>
 
                   <div class="mb-3">
-                    <label>Historial / Observaciones</label>
+                    <label for="historial_espacio">Historial / Observaciones</label>
                     <textarea id="historial_espacio" name="historial_espacio" class="form-control" rows="3"></textarea>
                   </div>
+
+                  
 
                 </div>
 
@@ -187,13 +177,16 @@ $con->close();
               </form>
             </div>
           </div>
-
-
         </div>
-    </div>
-</main>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="../js/espacio.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/espacio.js"></script>
+
 </body>
 </html>
