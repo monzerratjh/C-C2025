@@ -3,7 +3,7 @@ include('../../conexion.php');
 //include('../../encabezado.php');
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +22,7 @@ include('../../conexion.php');
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
         <img class="menuResponsive" src="./../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="./../../img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="./../../img/logo.png" alt="logoResponsive">
     </div>
   </nav>
 
@@ -41,60 +41,67 @@ include('../../conexion.php');
     </div>
   </div>
 
-  <!-- Contenedor general -->
+  <!-- Contenedor general con GRID -->
+  <div class="contenedor">
 
-  <div class="container-fluid">
-    <div class="row">
-
-      <!-- Banner pantallas grandes -->
-      <div class="col-md-3 barra-lateral d-none d-md-flex">
-        <div class="volverGeneral">
-          <div class="volver">
-            <a href="docente-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="docente-bienvenida.php">Volver</a>
-          </div>
-          <i class="bi bi-translate traductor-menu"></i>
+    <!-- Barra lateral -->
+    <aside class="barra-lateral">
+      <div class="volverGeneral">
+        <div class="volver">
+          <a href="docente-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+          <a href="docente-bienvenida.php">Volver</a>
         </div>
+        <i class="bi bi-translate traductor-menu"></i>
+      </div>
 
       <a href="docente-grupo.php" class="fw-semibold seleccionado">Grupos a Cargo</a>
       <a href="docente-reservar.php" class="nav-opciones mb-2">Reservar Espacio</a>
       <a href="docente-falta.php" class="nav-opciones mb-2">Avisar Falta</a>
-   </div>
+    </aside>
 
-    <!-- Contenido principal-->
-   <main class="col-md-9 principal" >
-     <img src="./../../img/logo.png" alt="Logo" class="logo"> 
-    <div>
-      <h2>Grupos a Cargo</h2>
-    </div>
-    
-<div class="acordion">
-  <div>
-      <button class="boton-opciones sin-flecha docente">3MD</button>
-      <div class="dia">
+    <!-- Contenido principal -->
+    <main class="principal">
+      <img src="./../../img/logo.png" alt="Logo" class="logo"> 
 
       <div>
-      <button class="boton-opciones sin-flecha docente">3MD</button>
-      <div class="dia">
+        <h2>Grupos a Cargo</h2>
+      </div>
+      
+      <div class="acordion">
+        <div>
+          <button class="boton-opciones sin-flecha docente">3MD</button>
+          <div class="dia"></div>
+        </div>
 
-      <div>
-      <button class="boton-opciones sin-flecha docente">3MD</button>
-      <div class="dia">
+        <div>
+          <button class="boton-opciones sin-flecha docente">3MD</button>
+          <div class="dia"></div>
+        </div>
 
-            <button class="boton-opciones sin-flecha docente">3MD</button>
-      <div class="dia">
+        <div>
+          <button class="boton-opciones sin-flecha docente">3MD</button>
+          <div class="dia"></div>
+        </div>
 
-      <div>
-      <button class="boton-opciones sin-flecha docente">3MD</button>
-      <div class="dia">
+        <div>
+          <button class="boton-opciones sin-flecha docente">3MD</button>
+          <div class="dia"></div>
+        </div>
 
-      <div>
-      <button class="boton-opciones sin-flecha docente">3MD</button>
-      <div class="dia"></div>
+        <div>
+          <button class="boton-opciones sin-flecha docente">3MD</button>
+          <div class="dia"></div>
+        </div>
 
+        <div>
+          <button class="boton-opciones sin-flecha docente">3MD</button>
+          <div class="dia"></div>
+        </div>
+      </div>
+
+    </main>
   </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
