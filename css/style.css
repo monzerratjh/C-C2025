@@ -11,6 +11,8 @@
   --color-docente: #F4B97D;
   --color-secretaria: #DEA5C4;
 
+  --color-letras-general: #333;
+
 }
 
 .estudiante {
@@ -51,7 +53,7 @@ a{
   background-color: var(--color-barra-lateral);
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
-      padding: 30px 66px 30px 25px;
+  padding: 30px 66px 30px 25px;
   color: black;
   display: flex;
   flex-direction: column;
@@ -153,11 +155,11 @@ a{
 }
 
 .traductor-menu{
- margin: 5px;
-    font-size: 30px;
-    cursor: pointer;
-    padding-left: 5rem;
-    padding-top: 1rem;
+  margin: 5px;
+  font-size: 30px;
+  cursor: pointer;
+  padding-left: 5rem;
+  padding-top: 1rem;
 }
 
 .encabezado-index img {
@@ -176,7 +178,7 @@ a{
 
 .bienvenida-index p {
   font-size: 1.2rem;
-  color: #333;
+  color: var(color-letras-general);
   margin-bottom: 4%;
 }
 
@@ -227,8 +229,6 @@ a{
 /*TERMINA INDEX*/
 
     /*PAGINA ESTUDIANTES*/
-
-  
 
     .principal h2 {
       font-weight: 700;
@@ -282,6 +282,7 @@ a{
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
+  margin-top: 2rem;
 }
 
 .titulo-horario {
@@ -310,8 +311,34 @@ a{
   margin-bottom: 10px;
 }
 
+.boton-opciones2{
+  display: flex;               
+  justify-content: center;                
+  margin: 0;
+  border: none;                 
+  cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  color: white;
+  background-color: #f3d9ef; 
+  font-size: 18px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.letranegra {
+  color: #333;
+}
+
 .boton-opciones::after {
   content: "▼";
+  position: absolute;
+  right: 15px;
+  transition: transform 0.3s ease;
+}
+
+.boton-opciones2::after {
   position: absolute;
   right: 15px;
   transition: transform 0.3s ease;
@@ -322,11 +349,10 @@ a{
   content: none; /* "content: none" elimina lo que agregaba el ::after */
 }
 
-
 .contenido-dia {
   display: none;
   background-color: white;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #cccccc;
   border-radius: 0 0 12px 12px;
 }
 
@@ -347,7 +373,7 @@ a{
 .martes { background-color: #f2c086; }
 .miercoles { background-color: #e3a4cc; }
 .jueves { background-color: #56c8c3; }
-.viernes { background-color: rgb(62, 69, 123); }
+.viernes { background-color: #3e457b; }
 
 /*ADCSRIPTO*/
 
@@ -378,7 +404,7 @@ a{
     height: 70px;
     font-size: 5rem;
     z-index: 2;
-    color: rgb(53, 83, 78);
+    color: #35534e;
     background-color: white;
     border-radius: 45%;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -416,9 +442,10 @@ a{
 
 .bienvenida{
   font-size: 60px;
-}/* Contenedor principal */
+}
+  /* Contenedor principal */
 .espacio-contenedor {
-     max-width: 700px;
+  max-width: 700px;
   width: 100%;
 }
 
@@ -435,16 +462,10 @@ a{
   justify-content: space-between;
 }
 
-/* Parte superior (el bloque verde grande) */
-.espacio-cuerpo {
-  flex: 1;
-}
-
-/* Footer (blanco con botones y nombre) */
 .espacio-footer {
   background: #fff;
   padding: 8px 12px;
-  font-size: 1rem;  /* un poco más grande */
+  font-size: 1rem; 
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -466,9 +487,14 @@ a{
 }
 
 .espacio-plus {
-  font-size: 2.2rem;
+  font-size: 3rem;
   font-weight: bold;
   color: #000;
+}
+
+#button-plus{
+  background: #cdeeee;
+  border: none;
 }
 
 .espacio-btn {
@@ -566,7 +592,7 @@ table {
   width: 80%;
   margin: 20px auto;
   background: #fffafc; 
-  color: #444;
+  color: var(--color-letras-general);
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   font-size: 15px;
@@ -580,7 +606,7 @@ table th, table td {
 
 table th {
   background: var(--color-estudiante); /* rosado pastel */
-  color: #333;
+  color: var(--color-letras-general);
   font-weight: bold;
 }
 
@@ -588,9 +614,7 @@ table tr:nth-child(even) {
   background: #e2e8e6; /* celeste pastel */
 }
 
-table tr:hover {
-  background: #c8d3cf; /* lila pastel suave */
-}
+
 /*BLOQUE PARA AGREGAR COSAS*/
 
   /* Bloque Agregar */
@@ -647,6 +671,35 @@ table tr:hover {
     color: #fff;
   }
   
+  /* Tablets: entre 769px y 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  .barra-lateral {
+    display: flex;
+  }
+}
+@media (max-width: 879px) {
+  .opciones {
+    flex-wrap: wrap;
+  }
+}
+
+
+  @media (max-width: 1115px) {
+    .acordion{
+      padding: 4rem 5rem 0rem 5rem;
+    }
+  }
+
+@media (max-width: 1186px) {
+  
+    .mt-4 {
+    margin-top: 1.5rem !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+}
 
   /* Tablets: entre 769px y 1024px */
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -660,6 +713,7 @@ table tr:hover {
     flex-wrap: wrap;
   }
 }
+
 
 
 /* Pantallas ≤ 767px */
@@ -770,13 +824,7 @@ table tr:hover {
   .offcanvas {
     background-color: var(--color-barra-lateral);
   }
-
-
-
 }
-
-
-
 
 /* Pantallas ≤ 480px */
 @media (max-width: 480px) {
@@ -800,4 +848,35 @@ table tr:hover {
     width: 200px;
     height: 250px;
   }
+}
+
+
+.btn {
+  color: black;
+  background-color: transparent; 
+  border: none; 
+}
+
+.bi.bi-pencil-square::before{
+   color: black;
+  background-color: transparent; 
+  border: none; 
+}
+
+.bi.bi-trash::before{
+  color: black;
+}
+
+.btn-warning, .btn-danger {
+     --bs-btn-hover-color: #000; 
+    --bs-btn-hover-bg: transparent;
+}
+
+h4{
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.btn{
+  cursor: pointer;
 }

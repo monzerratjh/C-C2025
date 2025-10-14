@@ -23,7 +23,7 @@
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
         <img class="menuResponsive" src="./../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="./../../img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="./../../img/logo.png" alt="logoResponsive">
     </div>
   </nav>
 
@@ -48,87 +48,67 @@
     </div>
   </div>
 
-  <!-- Contenedor general -->
-  <div class="container-fluid">
-    <div class="row">
+  <!-- Contenedor general con GRID -->
+  <div class="contenedor">
 
-      <!-- Banner pantallas grandes -->
-      <div class="col-md-3 barra-lateral d-none d-md-flex">
-        <div class="volverGeneral">
-          <div class="volver">
-            <a href="./adscripto-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="./adscripto-bienvenida.php" data-i18n="goBack">Volver</a>
-          </div>
-            <i class="bi bi-translate traductor-menu"></i>
+    <!-- Barra lateral -->
+    <aside class="barra-lateral">
+      <div class="volverGeneral">
+        <div class="volver">
+          <a href="./adscripto-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+          <a href="./adscripto-bienvenida.php" data-i18n="goBack">Volver</a>
         </div>
+        <i class="bi bi-translate traductor-menu"></i>
+      </div>
 
       <a href="espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./reserva-adscripto.php" class="fw-semibold seleccionado mb-2" data-i18n="reservation">Reserva</a>
       <a href="./falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
       <a href="materia/carga-materias.php" class="nav-opciones mb-2" data-i18n="addSubjects">Cargar materias</a>
-    </div>
+    </aside>
 
+    <!-- Contenido principal -->
+    <main class="principal">
+      <img src="./../../img/logo.png" alt="Logo" class="logo"> 
 
-  <main class="col-md-9 principal">
-    <img src="./../../img/logo.png" alt="Logo" class="logo"> 
+      <h2 data-i18n="reservationRequests">Solicitudes de Reserva</h2>
 
-    <h2 data-i18n="reservationRequests">Solicitudes de Reserva</h2>
+      <table class="tabla-reserva">
+        <thead>
+          <tr>
+            <th data-i18n="thTeacher">Docente</th>
+            <th data-i18n="thFacilityRequested">Espacio solicitado</th>
+            <th data-i18n="thRequestedDate">Fecha Solicitada</th>
+            <th data-i18n="thReservationStatus">Estado reserva</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Facundo Rubil</td>
+            <td>Aula 1</td>
+            <td>09/08/2025</td>
+            <td class="confirmada">CONFIRMADA</td>
+          </tr>
+          <tr>
+            <td>Ines Lopez</td>
+            <td>Aula 4</td>
+            <td>09/08/2025</td>
+            <td class="pendiente">A CONFIRMAR</td>
+          </tr>
+          <tr>
+            <td>Facundo Rubil</td>
+            <td>Aula 1</td>
+            <td>09/08/2025</td>
+            <td class="confirmada">CONFIRMADA</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
 
-    <table class="tabla-reserva">
-      <thead>
-        <tr>
-          <th data-i18n="thTeacher">Docente</th>
-          <th data-i18n="thFacilityRequested">Espacio solicitado</th>
-          <th data-i18n="thRequestedDate">Fecha Solicitada</th>
-          <th data-i18n="thReservationStatus">Estado reserva</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Facundo Rubil</td>
-          <td>Aula 1</td>
-          <td>09/08/2025</td>
-          <td class="confirmada">CONFIRMADA</td>
-        </tr>
-        <tr>
-          <td>Ines Lopez</td>
-          <td>Aula 4</td>
-          <td>09/08/2025</td>
-          <td class="pendiente">A CONFIRMAR</td>
-        </tr>
-        <tr>
-          <td>Facundo Rubil</td>
-          <td>Aula 1</td>
-          <td>09/08/2025</td>
-          <td class="confirmada">CONFIRMADA</td>
-        </tr>
-        <tr>
-          <td>Ines Lopez</td>
-          <td>Aula 4</td>
-          <td>09/08/2025</td>
-          <td class="pendiente">A CONFIRMAR</td>
-        </tr>
-        <tr>
-          <td>Facundo Rubil</td>
-          <td>Aula 1</td>
-          <td>09/08/2025</td>
-          <td class="confirmada">CONFIRMADA</td>
-        </tr>
-        <tr>
-          <td>Ines Lopez</td>
-          <td>Aula 4</td>
-          <td>09/08/2025</td>
-          <td class="pendiente">A CONFIRMAR</td>
-        </tr>
-      </tbody>
-    </table>
-  </main>
+  </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- i18next desde CDN -->
-  <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
-
-  <script src="/utils/translate.js"></script>
+<script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+<script src="/utils/translate.js"></script>
 </body>
 </html>
