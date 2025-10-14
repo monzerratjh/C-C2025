@@ -87,7 +87,6 @@ if ($id_usuario) {
       <h2 class="titulo-seccion">Gestión de Usuarios</h2>
 
       <div class="bloque-agregar">
-        <p class="etiqueta">Usuarios</p>
         <button class="agregar"
                 data-bs-toggle="modal"
                 data-bs-target="#modalUsuario"
@@ -119,12 +118,12 @@ if ($id_usuario) {
             <td><?= $row['cargo_usuario'] ?></td>
             <td>
                 <a class="editar" data-bs-toggle="modal" data-bs-target="#update_modal<?= $row['id_usuario'] ?>">
-                <i class="bi bi-pencil"></i>
+                 <i class="bi bi-pencil-square"></i>
               </a>
             </td>
             <td>
               <a href="delete_user_secretario.php?id_usuario=<?= $row['id_usuario'] ?>" class="eliminar">
-                <i class="bi bi-trash"></i>
+                 <i class="bi bi-trash"></i>
               </a>
             </td>
           </tr>
