@@ -12,17 +12,19 @@ include('../../conexion.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- CSS propio -->
-    <link rel="stylesheet" href="./../../css/style.css">
+   <!-- CSS propio -->
+    <link rel="stylesheet" href="../../../css/style.css">
 </head>
+
 <body>
 
+  <!-- Menú hamburguesa para móviles -->
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="./../../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="../../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="./../../img/logo.png" alt="logoResponsive">
+      <img class="logoResponsive" src="../../../img/logo.png" alt="logoResponsive">
     </div>
   </nav>
 
@@ -32,10 +34,13 @@ include('../../conexion.php');
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <div class="banner-parte-superior"></div>
-      <a href="docente-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
-      <i class="bi bi-translate traductor-menu"></i>
-</div>
+      <div class="banner-parte-superior">
+        <a href="../adscripto-bienvenida.php" class="mb-3">
+          <i class="bi bi-arrow-left-circle-fill me-2"></i>
+          <span data-i18n="goBack">Volver</span>
+        </a>
+        <i class="bi bi-translate traductor-menu"></i>
+      </div>
       <a href="docente-grupo.php" class="fw-semibold seleccionado mb-2">Grupos a Cargo</a>
       <a href="docente-reservar.php" class="nav-opciones mb-2">Reservar Espacio</a>
       <a href="docente-falta.php" class="nav-opciones mb-2">Avisar Falta</a>
@@ -65,41 +70,41 @@ include('../../conexion.php');
       <img src="./../../img/logo.png" alt="Logo" class="logo"> 
 
       <div>
-        <h2>Grupos a Cargo</h2>
+        <h2 id="tituloGruposCargo">Grupos a Cargo</h2>
       </div>
-      
-      <div class="acordion">
-        <div>
-          <button class="boton-opciones sin-flecha docente">3MD</button>
-          <div class="dia"></div>
-        </div>
+      <div class="caja-grupos-cargo">
+        <div class="acordion">
+          <div>
+            <button class="boton-opciones sin-flecha docente">3MD</button>
+            <div class="dia"></div>
+          </div>
 
-        <div>
-          <button class="boton-opciones sin-flecha docente">3MD</button>
-          <div class="dia"></div>
-        </div>
+          <div>
+            <button class="boton-opciones sin-flecha docente">3MD</button>
+            <div class="dia"></div>
+          </div>
 
-        <div>
-          <button class="boton-opciones sin-flecha docente">3MD</button>
-          <div class="dia"></div>
-        </div>
+          <div>
+            <button class="boton-opciones sin-flecha docente">3MD</button>
+            <div class="dia"></div>
+          </div>
 
-        <div>
-          <button class="boton-opciones sin-flecha docente">3MD</button>
-          <div class="dia"></div>
-        </div>
+          <div>
+            <button class="boton-opciones sin-flecha docente">3MD</button>
+            <div class="dia"></div>
+          </div>
 
-        <div>
-          <button class="boton-opciones sin-flecha docente">3MD</button>
-          <div class="dia"></div>
-        </div>
+          <div>
+            <button class="boton-opciones sin-flecha docente">3MD</button>
+            <div class="dia"></div>
+          </div>
 
-        <div>
-          <button class="boton-opciones sin-flecha docente">3MD</button>
-          <div class="dia"></div>
+          <div>
+            <button class="boton-opciones sin-flecha docente">3MD</button>
+            <div class="dia"></div>
+          </div>
         </div>
-      </div>
-
+  </div>
     </main>
   </div>
 
