@@ -612,10 +612,30 @@ table tr:nth-child(even) {
   background: #e2e8e6; /* celeste pastel */
 }
 
+ /* ---------- Animación pagina recursos ---------- */
+    .loader {
+      width: 60px;
+      height: 60px;
+      border: 4px solid #d0cdcdff;
+      border-top-color: #3d4445ff;
+      border-radius: 50%;
+      animation: girar 1.2s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes girar {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
 
 /*BLOQUE PARA AGREGAR COSAS*/
 
-  /* Bloque Agregar */
+    /* Bloque Agregar */
   .bloque-aviso {
     display: flex;
     align-items: center;
@@ -623,6 +643,7 @@ table tr:nth-child(even) {
     margin: 20px 0;
     justify-content: center;
   }
+
 
   .bloque-aviso .etiqueta {
     background: #f2c086;
@@ -849,23 +870,3 @@ h4{
 .btn{
   cursor: pointer;
 }
-
- /* ---------- Animación pagina recursos ---------- */
-    .loader {
-      width: 60px;
-      height: 60px;
-      border: 4px solid #d0cdcdff;
-      border-top-color: #3d4445ff;
-      border-radius: 50%;
-      animation: girar 1.2s linear infinite;
-      margin-bottom: 20px;
-    }
-
-    @keyframes girar {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
-    }
