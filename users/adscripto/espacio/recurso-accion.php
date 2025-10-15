@@ -1,4 +1,4 @@
-<?php
+<?php /*
 // recurso-accion.php
 // Controlador para CRUD de recursos (vinculados a un espacio).
 include('../../../conexion.php');
@@ -95,3 +95,4 @@ try {
     echo json_encode(["type" => "error", "message" => $excepcion->getMessage()]);
     exit;
 }
+*/

@@ -231,12 +231,22 @@ a{
     /*PAGINA ESTUDIANTES*/
 
     .principal h2 {
-      font-weight: 700;
+    font-weight: 700;
+    position: relative;
+    top: 1rem;
+    }
+    #tituloGruposCargo{
+    font-weight: 700;
+    position: relative;
+    top: 4rem;
     }
 
     .principal p{
-      font-size: 1.2rem;
-      font-weight: 550;
+      display: flex;
+      justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 550;
+    margin-top: 2rem;
     }
 
     .busqueda {
@@ -298,6 +308,12 @@ a{
   overflow: hidden;
 }
 
+.caja-grupos-cargo{
+  display: flex;
+  width: 100%;
+  margin-top: 3rem;
+}
+
 .boton-opciones {
   width: 100%;
   padding: 15px;
@@ -309,6 +325,7 @@ a{
   position: relative;
   border-radius: 12px;
   margin-bottom: 10px;
+ 
 }
 
 .boton-opciones2{
@@ -662,25 +679,18 @@ table tr:nth-child(even) {
     transition: all 0.3s;
   }
   
-  /* Tablets: entre 769px y 1024px */
-@media (min-width: 768px) and (max-width: 1024px) {
-
-  .barra-lateral {
-    display: flex;
+@media (max-width: 1115px) {
+    .boton-opciones {
+      width: 80%;
+    }
   }
-}
+
+
 @media (max-width: 879px) {
   .opciones {
     flex-wrap: wrap;
   }
 }
-
-
-  @media (max-width: 1115px) {
-    .acordion{
-      padding: 4rem 5rem 0rem 5rem;
-    }
-  }
 
 @media (max-width: 1186px) {
   
@@ -695,9 +705,18 @@ table tr:nth-child(even) {
   /* Tablets: entre 769px y 1024px */
 @media (min-width: 768px) and (max-width: 1024px) {
 
+  .principal p{
+    display: flex;
+    justify-content: center;
+    margin: 2.5rem 4rem 1rem 4rem;
+  }
+
   .barra-lateral {
     display: flex;
   }
+   .boton-opciones {
+      width: 60%;
+    }
 }
 @media (max-width: 879px) {
   .opciones {
@@ -713,6 +732,10 @@ table tr:nth-child(even) {
   /* Barra lateral desaparece */
   .barra-lateral {
     display: none;
+  }
+
+  .boton-opciones2{
+    margin: 0.5rem;
   }
 
   /* Ajustes de títulos y botones */
@@ -792,8 +815,8 @@ table tr:nth-child(even) {
 }
 
   .formulario {
-    display: flex;
-    align-items: center;
+   display: flex;
+    align-items: flex-end;
     gap: 0;
     padding: 2rem 1rem;
   }

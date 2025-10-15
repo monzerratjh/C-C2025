@@ -48,7 +48,7 @@ $con->close();
   <link rel="stylesheet" href="./../../../css/style.css"/>
 </head>
 <body>
-
+<!--
   <div class="container my-4">
     <h2>Recursos — <?php echo htmlspecialchars($filaEspacio['nombre_espacio'], ENT_SUBSTITUTE); ?></h2>
     <div class="mb-3">
@@ -85,7 +85,7 @@ $con->close();
     </div>
   </div>
 
-  <!-- Modal Recurso -->
+  <!-- Modal Recurso 
   <div class="modal fade" id="modalRecurso" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -140,7 +140,8 @@ $con->close();
 
       </div>
     </div>
-  </div>
+  </div> 
+-->
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../js/recurso.js"></script>

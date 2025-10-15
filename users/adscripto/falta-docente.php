@@ -81,7 +81,7 @@
           </div>
 
           <div class="dia">
-            <button class="boton-opciones adscripto">Nombre Docente</button>
+            <button class="boton-opciones falta-docente adscripto">Nombre Docente</button>
             <div class="contenido-dia">
               <table class="tabla-horario">
                 <tr><td><span data-i18n="teacherName">Nombre:</span> Facundo Rubil</td></tr>

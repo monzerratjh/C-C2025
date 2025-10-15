@@ -49,7 +49,6 @@
     </div>
   </div>
 
-  <!-- 🟩 Contenedor general (usa Grid) -->
   <div class="contenedor">
 
     <!-- Barra lateral -->
