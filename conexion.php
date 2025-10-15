@@ -3,9 +3,9 @@
 function conectar_bd(){
 
 $servidor = "localhost";
-$bd = "itsplanner";
-$usuario = "root";
-$pass = "";
+$bd = "db_CoffeeAndCode";
+$usuario = "CoffeeAndCode";
+$pass = "coffeandcode2025";
 
 //definir la conexion usando las variables.
 $conn = mysqli_connect($servidor, $usuario, $pass, $bd); 

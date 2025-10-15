@@ -8,12 +8,12 @@ include('../../conexion.php');
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aviso de Falta</title>
-    <!-- Bootstrap CSS + Iconos + letras-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- CSS propio -->
-    <link rel="stylesheet" href="../../css/style.css">
+  <!-- Bootstrap CSS + Iconos + letras-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- CSS propio -->
+  <link rel="stylesheet" href="./../../css/style.css">
 </head>
 <body>
 
@@ -21,9 +21,9 @@ include('../../conexion.php');
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="../../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="./../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="../../img/logo.png" alt="logoResponsive">
+      <img class="logoResponsive" src="./../../img/logo.png" alt="logoResponsive">
     </div>
   </nav>
 
@@ -33,7 +33,7 @@ include('../../conexion.php');
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <div>
+      <div class="banner-parte-superior">
         <a href="docente-bienvenida.php" class="mb-3">
           <i class="bi bi-arrow-left-circle-fill me-2"></i>Volver
         </a>
@@ -45,43 +45,71 @@ include('../../conexion.php');
     </div>
   </div>
 
-  <!-- Contenido principal -->
-  <div class="container-fluid">
-    <div class="row">
+  <!-- Contenedor general con GRID -->
+  <div class="contenedor">
 
-      <!-- Barra lateral (vista escritorio) -->
-      <div class="col-md-3 barra-lateral d-none d-md-flex">
-        <div class="volverGeneral">
-          <div class="volver">
-            <a href="docente-bienvenida.php">
-              <i class="bi bi-arrow-left-circle-fill icono-volver"></i>
-            </a>
-            <a href="docente-bienvenida.php">Volver</a>
-          </div>
-          <i class="bi bi-translate traductor-menu"></i>
+    <!-- Barra lateral -->
+    <aside class="barra-lateral">
+      <div class="volverGeneral">
+        <div class="volver">
+          <a href="docente-bienvenida.php">
+            <i class="bi bi-arrow-left-circle-fill icono-volver"></i>
+          </a>
+          <a href="docente-bienvenida.php">Volver</a>
         </div>
-
-        <a href="docente-grupo.php" class="nav-opciones mb-2">Grupos a Cargo</a>
-        <a href="docente-reservar.php" class="nav-opciones mb-2">Reservar Espacio</a>
-        <a href="docente-falta.php" class="fw-semibold seleccionado">Avisar Falta</a>
+        <i class="bi bi-translate traductor-menu"></i>
       </div>
 
-      <!-- Sección principal -->
-      <main class="col-md-9 principal">
-        <img src="../../img/logo.png" alt="Logo" class="logo">
-        
-        <div class="bloque-agregar">
-          <button class="etiqueta2" data-bs-toggle="modal" data-bs-target="#modalFalta">Avisar Falta</button>
-        </div>
+      <a href="docente-grupo.php" class="nav-opciones mb-2">Grupos a Cargo</a>
+      <a href="docente-reservar.php" class="nav-opciones mb-2">Reservar Espacio</a>
+      <a href="docente-falta.php" class="fw-semibold seleccionado">Avisar Falta</a>
+    </aside>
 
-        <!-- Modal para enviar aviso de falta -->
-        <div class="modal fade" id="modalFalta" tabindex="-1">
-          <div class="modal-dialog">
-            <div class="modal-content">
+    <!-- Contenido principal -->
+    <main class="principal">
+      <img src="./../../img/logo.png" alt="Logo" class="logo">
+      
+      <div class="bloque-agregar">
+        <button class="etiqueta2" data-bs-toggle="modal" data-bs-target="#modalFalta">Avisar Falta</button>
+      </div>
 
-              <div class="modal-header">
-                <h5 class="modal-title">Avisar Falta</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      <!-- Modal para enviar aviso de falta -->
+      <div class="modal fade" id="modalFalta" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h5 class="modal-title">Avisar Falta</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- Formulario -->
+            <form method="POST" id="formFalta">
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="materia">Materia</label>
+                  <input type="text" class="form-control" id="materia" name="materia" required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="grupo">Grupo al que falta</label>
+                  <input type="text" class="form-control" id="grupo" name="grupo" required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="fecha">Fecha</label>
+                  <input type="date" class="form-control" id="fecha" name="fecha" required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="horas">Cantidad de horas</label>
+                  <input type="number" class="form-control" id="horas" name="horas" required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="motivo">Motivo</label>
+                  <textarea class="form-control" id="motivo" name="motivo" required></textarea>
+                </div>
               </div>
 
               <!-- Formulario -->
@@ -120,13 +148,12 @@ include('../../conexion.php');
             </div>
           </div>
         </div>
-      </main>
+      </div>
+    </main>
 
-    </div> 
-  </div> 
+  </div> <!-- termina contenedor -->
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>

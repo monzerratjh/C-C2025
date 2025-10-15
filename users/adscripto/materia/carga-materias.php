@@ -18,7 +18,7 @@ $query = mysqli_query($conn, $sql); //mysqli_query FUNCIÓN de php para EJECUTAR
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- CSS propio -->
-    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="./../../css/style.css">
 </head>
 
 <body>
@@ -27,9 +27,9 @@ $query = mysqli_query($conn, $sql); //mysqli_query FUNCIÓN de php para EJECUTAR
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="../../../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="./../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="../../../img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="./../../img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -39,7 +39,7 @@ $query = mysqli_query($conn, $sql); //mysqli_query FUNCIÓN de php para EJECUTAR
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <div>
+      <div class="banner-parte-superior">
         <a href="../adscripto-bienvenida.php" class="mb-3">
           <i class="bi bi-arrow-left-circle-fill me-2"></i>
           <span data-i18n="goBack">Volver</span>
@@ -77,7 +77,7 @@ $query = mysqli_query($conn, $sql); //mysqli_query FUNCIÓN de php para EJECUTAR
 
 <!-- Contenido principal -->
       <div class="col-md-9 col-12 principal">
-        <img src="../../../img/logo.png" alt="Logo" class="logo"> 
+        <img src="./../../img/logo.png" alt="Logo" class="logo"> 
         <h2>Cargar materias</h2>
         <p>Ingrese el grupo en el cual va a agregar la materia.</p>
 

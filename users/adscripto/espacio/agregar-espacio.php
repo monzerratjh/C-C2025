@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- CSS propio -->
-    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="./../../../css/style.css">
 </head>
 
 <body>
@@ -21,9 +21,9 @@
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="/img/menu.png" alt="menu">
+        <img class="menuResponsive" src="./../../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="/img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="./../../../img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -33,7 +33,7 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <div>
+      <div class="banner-parte-superior">
       <a href="adscripto-espacio.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
       <i class="bi bi-translate traductor-menu"></i>    
       </div>
@@ -68,7 +68,7 @@
 
 <!-- Contenido principal -->
 <main class="col-md-9 principal" >
-<img src="../../../img/logo.png" alt="Logo" class="logo"> 
+<img src="./../../../img/logo.png" alt="Logo" class="logo"> 
 <div class="container my-4 espacio-contenedor">
 
 <!-- Título con input -->
@@ -131,3 +131,28 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+<!--
+
+<?php
+// include('../../../encabezado.php');
+include('../../../conexion.php');
+$con = conectar_bd();
+session_start();
+
+// Obtener todos los espacios 
+$sqlConsultaEspacios = "
+    SELECT espacio.id_espacio,
+           espacio.nombre_espacio,
+           espacio.capacidad_espacio,
+           espacio.historial_espacio,
+           espacio.disponibilidad_espacio
+    FROM espacio
+    ORDER BY espacio.nombre_espacio ASC
+";
+$resultadoEspacios = $con->query($sqlConsultaEspacios);
+
+$con->close();
+?>
+
+-->

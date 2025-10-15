@@ -1,13 +1,12 @@
 <?php
-//include('../../encabezado.php');
-include('../../conexion.php');
+include('./../../conexion.php');
 session_start();
 $con = conectar_bd();
 
 // Obtener datos base
-$reservas = $con->query("
-    SELECT 
-        asignatura_docente_solicita_espacio.id_reserva,
+$reservas = $con->query(
+    "SELECT 
+        asignatura_docente_solicita_espacio.id_espacio,
         asignatura.nombre_asignatura,
         espacio.nombre_espacio,
         horario_clase.hora_inicio,
@@ -24,7 +23,7 @@ $reservas = $con->query("
 ");
 
 // Listas desplegables
-$espacios = $con->query("SELECT id_espacio, nombre_espacio FROM espacio WHERE disponibilidad_espacio = 'disponible'");
+$espacios = $con->query("SELECT id_espacio, nombre_espacio FROM espacio WHERE disponibilidad_espacio = 'Libre'");
 $asignaturas = $con->query("SELECT id_asignatura, nombre_asignatura FROM asignatura");
 $horarios = $con->query("SELECT id_horario_clase, hora_inicio, hora_fin FROM horario_clase");
 ?>
@@ -40,7 +39,7 @@ $horarios = $con->query("SELECT id_horario_clase, hora_inicio, hora_fin FROM hor
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- CSS propio -->
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="./../../css/style.css">
 </head>
 
 <body>
@@ -49,9 +48,9 @@ $horarios = $con->query("SELECT id_horario_clase, hora_inicio, hora_fin FROM hor
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="../../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="./../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="../../img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="./../../img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -61,9 +60,10 @@ $horarios = $con->query("SELECT id_horario_clase, hora_inicio, hora_fin FROM hor
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
+      <div class="banner-parte-superior">
       <a href="docente-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
       <i class="bi bi-translate traductor-menu"></i>
-
+      </div>
       <a href="docente-grupo.php" class="nav-opciones mb-2">Grupos a Cargo</a>
       <a href="docente-reservar.php" class="fw-semibold seleccionado">Reservar Espacio</a>
       <a href="docente-falta.php" class="nav-opciones mb-2">Avisar Falta</a>
@@ -91,7 +91,7 @@ $horarios = $con->query("SELECT id_horario_clase, hora_inicio, hora_fin FROM hor
 
     <!-- Contenido principal-->
     <div class="col-md-9 horarios-estudiante"> <!-- Boostrap contendio al lado del menu -->
-     <img src="../../img/logo.png" alt="Logo" class="logo"> 
+     <img src="./../../img/logo.png" alt="Logo" class="logo"> 
 
   <div class="acordion">
 
@@ -151,7 +151,7 @@ $horarios = $con->query("SELECT id_horario_clase, hora_inicio, hora_fin FROM hor
         </div>
         <div class="modal-body">
           <form id="formReserva">
-            <div class="mb-3">
+        <!--    <div class="mb-3">
               <label for="asignatura" class="form-label">Asignatura</label>
               <select class="form-select" id="asignatura" name="id_asignatura" required>
                 <option value="">Seleccione...</option>
@@ -159,7 +159,7 @@ $horarios = $con->query("SELECT id_horario_clase, hora_inicio, hora_fin FROM hor
                   <option value="<?php echo $fila['id_asignatura']; ?>"><?php echo $fila['nombre_asignatura']; ?></option>
                 <?php } ?>
               </select>
-            </div>
+            </div> -->
 
             <div class="mb-3">
               <label for="espacio" class="form-label">Espacio</label>

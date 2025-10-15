@@ -13,7 +13,7 @@ include('../../../encabezado.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- CSS propio -->
-    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="./../../../css/style.css">
 </head>
 
 <body>
@@ -22,9 +22,9 @@ include('../../../encabezado.php');
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="../../../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="./../../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="../../../img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="./../../../img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -34,7 +34,7 @@ include('../../../encabezado.php');
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-        <div>
+        <div class="banner-parte-superior">
       <a href="../adscripto-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
       <i class="bi bi-translate traductor-menu"></i>
       </div>
@@ -70,7 +70,7 @@ include('../../../encabezado.php');
 <main class="col-md-9 principal" >
 
 
-    <img src="../../../img/logo.png" alt="Logo" class="logo"> 
+    <img src="./../../../img/logo.png" alt="Logo" class="logo"> 
 
     
     <h2>Cargar horarios 2MD</h2>

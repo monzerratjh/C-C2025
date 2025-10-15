@@ -1,12 +1,12 @@
 <?php
-include('../../../conexion.php');
+include('./../../conexion.php');
 session_start();
 $con = conectar_bd();
 
 header('Content-Type: application/json; charset=utf-8');
 
 $accion = $_POST['accion'] ?? '';
-$idReserva = intval($_POST['id_reserva'] ?? 0);
+//$idReserva = intval($_POST['id_reserva'] ?? 0);
 $idAsignatura = intval($_POST['id_asignatura'] ?? 0);
 $idEspacio = intval($_POST['id_espacio'] ?? 0);
 $idHorario = intval($_POST['id_horario_clase'] ?? 0);
