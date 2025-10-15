@@ -4,9 +4,9 @@ session_start();
 $con = conectar_bd();
 
 // Obtener datos base
-$reservas = $con->query("
-    SELECT 
-        asignatura_docente_solicita_espacio.id_reserva,
+$reservas = $con->query(
+    "SELECT 
+        asignatura_docente_solicita_espacio.id_espacio,
         asignatura.nombre_asignatura,
         espacio.nombre_espacio,
         horario_clase.hora_inicio,
@@ -23,7 +23,7 @@ $reservas = $con->query("
 ");
 
 // Listas desplegables
-$espacios = $con->query("SELECT id_espacio, nombre_espacio FROM espacio WHERE disponibilidad_espacio = 'disponible'");
+$espacios = $con->query("SELECT id_espacio, nombre_espacio FROM espacio WHERE disponibilidad_espacio = 'Libre'");
 $asignaturas = $con->query("SELECT id_asignatura, nombre_asignatura FROM asignatura");
 $horarios = $con->query("SELECT id_horario_clase, hora_inicio, hora_fin FROM horario_clase");
 ?>
@@ -151,7 +151,7 @@ $horarios = $con->query("SELECT id_horario_clase, hora_inicio, hora_fin FROM hor
         </div>
         <div class="modal-body">
           <form id="formReserva">
-            <div class="mb-3">
+        <!--    <div class="mb-3">
               <label for="asignatura" class="form-label">Asignatura</label>
               <select class="form-select" id="asignatura" name="id_asignatura" required>
                 <option value="">Seleccione...</option>
@@ -159,7 +159,7 @@ $horarios = $con->query("SELECT id_horario_clase, hora_inicio, hora_fin FROM hor
                   <option value="<?php echo $fila['id_asignatura']; ?>"><?php echo $fila['nombre_asignatura']; ?></option>
                 <?php } ?>
               </select>
-            </div>
+            </div> -->
 
             <div class="mb-3">
               <label for="espacio" class="form-label">Espacio</label>
