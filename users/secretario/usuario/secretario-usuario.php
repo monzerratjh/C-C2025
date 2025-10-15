@@ -65,6 +65,8 @@ $message = "";
         <a href="secretario-usuario.php" class="fw-semibold seleccionado mb-2">Usuarios</a>
         <a href="../horario/horario-secretario.php" class="nav-opciones">Horarios</a>
         <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
+        <a href="/users/secretario/recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
+   
       </div>
     </div>
 
@@ -84,6 +86,8 @@ $message = "";
         <a href="secretario-usuario.php" class="fw-semibold seleccionado mb-2">Usuarios</a>
         <a href="../horario/horario-secretario.php" class="nav-opciones">Horarios</a>
         <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
+        <a href="/users/secretario/recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
+   
       </aside>
 
       <!-- Contenido principal -->

@@ -133,6 +133,8 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
         <a href="../usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
         <a href="../horario/horario-secretario" class="nav-opciones">Horarios</a>
         <a href="../grupo/secretario-grupo.php" class="fw-semibold seleccionado mb-2">Grupos</a>
+        <a href="/users/secretario/recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
+   
         </div>
   </div>
 
@@ -154,6 +156,8 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
       <a href="../usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
       <a href="../horario/horario-secretario.php" class="nav-opciones">Horarios</a>
       <a href="../grupo/secretario-grupo.php" class="fw-semibold seleccionado mb-2">Grupos</a>
+      <a href="/users/secretario/recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
+   
     </aside>
 
 
@@ -165,31 +169,31 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
       <div class="acordion-total">
   <div class="acordion">
   
-              <h1>Grupos</h1>
+              <h1>Grupos</h1> 
 
-              
-    <button class="boton-opciones2 agregar"
+              <button class="boton-opciones2 agregar letranegra"
                       data-bs-toggle="modal"
                       data-bs-target="#modalGrupo"
                       onclick="document.getElementById('accion').value='insertar';">
                  <h2>+</h2></button>
 
-<?php while($row = $result->fetch_assoc()): ?>
+<?php while($row = $result->fetch_assoc()):?>
 <div class="dia">
-    <button class="boton-opciones miercoles letranegra"><?php echo htmlspecialchars($row['nombre_grupo'], ENT_SUBSTITUTE); ?></button>
+    <button class="boton-opciones miercoles letranegra">
+       <?php echo htmlspecialchars($row['nombre_grupo'], ENT_SUBSTITUTE); ?>
+    </button>
     <div class="contenido-dia">
-        <table class="tabla-horario">
-            <!--- htmlspecialchars = encodes html special characters such as <, ", /, etc to prevent XSS (Cross Site Scripting)-->
-            <tr><td>Orientación: <?php echo htmlspecialchars($row['orientacion_grupo'], ENT_SUBSTITUTE); //se usa para eliminar etiquetas HTML y PHP de un string. ?></td></tr>
-            <tr><td>Turno: <?php echo $row['turno_grupo']; ?></td></tr>
-            <tr><td>Cantidad de alumnos: <?php echo $row['cantidad_alumno_grupo']; ?></td></tr>
-            <tr><td>Adscripto: <?php echo htmlspecialchars($row['nombre_usuario'], ENT_SUBSTITUTE).' '. htmlspecialchars($row['apellido_usuario'], ENT_SUBSTITUTE); ?></td></tr>
-        </table>
 
+    
 
-        <!-- Botones provisionales Editar / Eliminar -->
-        <div class="mt-2">
-            <button class="btn btn-sm btn-warning"
+<table class="tabla-horarios-secretario">
+        <thead>
+          <tr>
+            <th>Orientación</th>
+            <th>Turno</th>
+            <th>Cantidad de alumnos</th>
+            <th>Adscripto</th>
+            <th> <i class="btn btn-sm btn-warning bi bi-pencil-square"
                     data-bs-toggle="modal"
                     data-bs-target="#modalGrupo"
                     onclick="cargarEditar(
@@ -200,26 +204,43 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
                         '<?php echo $row['cantidad_alumno_grupo']; ?>',
                         '<?php echo $row['id_adscripto']; ?>' // muestra los datos que estan guardados (y ahora seran editados)
                     )">
-                Editar
-            </button>
-
-
-            <form id="formEliminar<?php echo $row['id_grupo'];?>"
+            </i></th>
+            <th><form id="formEliminar<?php echo $row['id_grupo'];?>"
                         method="POST"
                         style="display:inline;">
                       <input type="hidden" name="accion" value="eliminar">
                       <input type="hidden" name="id_grupo" value="<?php echo $row['id_grupo']; ?>">
                      
-                      <button type="button"
-                              class="btn btn-sm btn-danger eliminar-grupo-btn"
+                      <i
+                              class="btn btn-sm btn-danger eliminar-grupo-btn bi bi-trash "
                               data-id="<?php echo $row['id_grupo']; ?>">
-                          Eliminar
-                      </button>
+                    </i>
             </form>
-        </div>
+            </th>
+          </tr>
+          
+        </thead>
+        <tbody>
+            <tr>
+           
+            <td>
+             <?php echo htmlspecialchars($row['orientacion_grupo'], ENT_SUBSTITUTE); //se usa para eliminar etiquetas HTML y PHP de un string. ?>
+            </td>
+            <td>
+              <?php echo $row['turno_grupo']; ?>
+            </td>
+            <td><?php echo $row['cantidad_alumno_grupo']; ?></td>
+            <td><?php echo htmlspecialchars($row['nombre_usuario'], ENT_SUBSTITUTE).' '. htmlspecialchars($row['apellido_usuario'], ENT_SUBSTITUTE); ?></td>
+          </tr>
+          
+        </tbody>
+      </table>
+
     </div>
 </div>
-<?php endwhile; ?>
+
+<?php endwhile;?>
+
 
             <!-- Modal para insertar o editar grupo -->
             <div class="modal fade" id="modalGrupo" tabindex="-1">

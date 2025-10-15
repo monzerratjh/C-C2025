@@ -51,6 +51,8 @@ $apellido_secretario = $_SESSION['apellido_usuario'] ?? 'usuario/a';
       <a href="/users/secretario/usuario/secretario-usuario.php" class="nav-opciones mb-2">Usuarios</a>
       <a href="/users/secretario/horario/horario-secretario.php" class="nav-opciones mb-2">Horarios</a>
       <a href="/users/secretario/grupo/secretario-grupo.php" class="nav-opciones mb-2">Grupos</a>
+      <a href="/users/secretario/recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
+   
     </div>
   </div>
 
@@ -72,6 +74,8 @@ $apellido_secretario = $_SESSION['apellido_usuario'] ?? 'usuario/a';
       <a href="/users/secretario/usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
       <a href="/users/secretario/horario/horario-secretario.php" class="nav-opciones">Horarios</a>
       <a href="/users/secretario/grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
+      <a href="/users/secretario/recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
+   
     </aside>
 
     <!-- Contenido principal -->
