@@ -625,7 +625,11 @@ table tr:nth-child(even) {
     justify-content: center;
   }
 
+<<<<<<< HEAD
   .bloque-aviso .etiqueta {
+=======
+  .bloque-agregar .etiqueta {
+>>>>>>> parent of 2f84ef3 (css)
     background: #f2c086;
     color: #000;
     border: none;
@@ -849,6 +853,7 @@ h4{
 
 .btn{
   cursor: pointer;
+<<<<<<< HEAD
 }
 
  /* ---------- Animación pagina recursos ---------- */
@@ -870,3 +875,6 @@ h4{
         transform: rotate(360deg);
       }
     }
+=======
+}
+>>>>>>> parent of 2f84ef3 (css)
