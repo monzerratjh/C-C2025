@@ -262,7 +262,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
 
                       <div class="mb-3">
                         <label>Nombre del grupo</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ej: María Caseres" required>
                       </div>
 
 
@@ -291,7 +291,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
 
                       <div class="mb-3">
                         <label>Cantidad de alumnos</label>
-                        <input type="number" class="form-control" id="cantidad" name="cantidad" required>
+                        <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Ej: 34"required>
                       </div>
 
 

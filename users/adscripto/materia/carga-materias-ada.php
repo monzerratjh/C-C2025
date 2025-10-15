@@ -14,6 +14,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['insertar-materia'])) 
         die("Error en prepare: " . mysqli_error($conn));
     } else {
 
+         if (nombreMateriaExiste($con, $nombre_materia)) {
+            echo json_encode([
+                "type" => "error",
+                "message" => "El nombre de grupo '$nombre' ya existe."
+            ]);
+            exit;
+        }
+
+        // Validar formato del nombre
+        if (!preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 \-_]+$/u', $nombre)) {
+            echo json_encode([
+                "type" => "error",
+                "message" => "El nombre del grupo solo puede contener letras, números y los símbolos '-', '_'."
+            ]);
+            exit;
+        }
+
+        // Validar orientación (independientemente a mayúsculas/tildes)
+        $orientacionValida = validarOrientacion($orientacion, $orientacionesValidas);
+        if (!$orientacionValida) {
+            echo json_encode([
+                "type" => "error",
+                "message" => "La orientación '$orientacion' no es válida. Debe coincidir con una de las opciones del sistema."
+            ]);
+            exit;
+        }
+
     mysqli_stmt_bind_param($stmt, "s", $nombre_materia);
     $success = mysqli_stmt_execute($stmt);
 
