@@ -94,7 +94,8 @@ $message = "";
       <main class="principal">
 
         <img src="/img/logo.png" alt="Logo" class="logo">
-        <h1 > Usuarios</h1>
+        <h2> Usuarios</h2>
+        <p>Gestiona los usuarios: agregá nuevos o modificá los existentes.</p>
 
 
         <table class="tabla-secretario">

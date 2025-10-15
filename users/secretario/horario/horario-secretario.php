@@ -59,6 +59,8 @@ $con->close();
       <a href="../usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
       <a href="../horario/horario-secretario.php" class="fw-semibold seleccionado mb-2">Horarios</a>
       <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
+       <a href="/users/secretario/recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
+    
     </div>
   </div>
 
@@ -80,19 +82,22 @@ $con->close();
       <a href="../usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
       <a href="../horario/horario-secretario.php" class="fw-semibold seleccionado">Horarios</a>
       <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
+       <a href="/users/secretario/recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
+   
     </aside>
 
     <!-- Contenido principal -->
     <main class="principal">
       <img src="./../../../img/logo.png" alt="Logo" class="logo">
 
-        <h1>Horarios</h1>
+        <h2>Horarios</h2>
+        <p>Registrá los horarios indicando la hora de inicio y finalización por hora</p>
 
       <table class="tabla-secretario">
         <thead>
           <tr>
-            <th>Hora de inicio (por hora)</th>
-            <th>Hora de finalización (por hora)</th>
+            <th>Hora de inicio</th>
+            <th>Hora de finalización</th>
             <th></th>
             <th></th>
           </tr>

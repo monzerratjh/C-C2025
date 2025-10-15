@@ -169,7 +169,8 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
       <div class="acordion-total">
   <div class="acordion">
   
-              <h1>Grupos</h1> 
+              <h2>Grupos</h2>
+              <p>Gestioná los grupos: agregá, modificá o eliminá según sea necesario.</p> 
 
               <button class="boton-opciones2 agregar letranegra"
                       data-bs-toggle="modal"
@@ -186,7 +187,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
 
     
 
-<table class="tabla-horarios-secretario">
+<table class="tabla-secretario">
         <thead>
           <tr>
             <th>Orientación</th>

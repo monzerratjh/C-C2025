@@ -305,7 +305,7 @@ a{
   color: white;
   font-size: 18px;
   cursor: pointer;
-  text-align: left;
+  text-align: center;
   position: relative;
   border-radius: 12px;
   margin-bottom: 10px;
@@ -850,3 +850,23 @@ h4{
 .btn{
   cursor: pointer;
 }
+
+ /* ---------- Animación pagina recursos ---------- */
+    .loader {
+      width: 60px;
+      height: 60px;
+      border: 4px solid #d0cdcdff;
+      border-top-color: #3d4445ff;
+      border-radius: 50%;
+      animation: girar 1.2s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes girar {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
