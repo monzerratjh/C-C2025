@@ -142,6 +142,20 @@ CREATE TABLE docente_dicta_asignatura (
 	PRIMARY KEY (id_docente, id_asignatura)
 );
 
+CREATE TABLE asign_docente_aula (
+    id_ada int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_asignatura int NOT NULL,
+    id_docente int NOT NULL,
+    id_espacio int NOT NULL
+);
+
+CREATE TABLE horario_asignado (
+    id_horario_asignado	int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id_horario_clase int NOT NULL,
+    id_ada int NOT NULL,
+    dia ENUM('Lunes','Martes','Miércoles','Jueves','Viernes') NOT NULL
+);
+
 
 
 
@@ -256,3 +270,25 @@ ALTER TABLE docente_dicta_asignatura
 ALTER TABLE docente_dicta_asignatura
     ADD CONSTRAINT fk_docente_dicta_asignatura_asignatura
     FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE CASCADE;
+
+-- Tabla: asign_docente_aula
+ALTER TABLE asign_docente_aula
+    ADD CONSTRAINT fk_asign_docente_aula_asignatura_asignatura
+    FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE asign_docente_aula
+    ADD CONSTRAINT fk_asign_docente_aula_asignatura_docente
+    FOREIGN KEY (id_docente) REFERENCES docente(id_docente) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE asign_docente_aula
+    ADD CONSTRAINT fk_asign_docente_aula_asignatura_espacio
+    FOREIGN KEY (id_espacio) REFERENCES espacio(id_espacio) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- Tabla: horario_asignado
+ALTER TABLE horario_asignado
+    ADD CONSTRAINT fk_horario_asignado_horario_clase
+    FOREIGN KEY (id_horario_clase) REFERENCES horario_clase(id_horario_clase) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE horario_asignado
+    ADD CONSTRAINT fk_horario_asignado_ada
+    FOREIGN KEY (id_ada) REFERENCES asign_docente_aula(id_ada) ON DELETE CASCADE ON UPDATE CASCADE;
