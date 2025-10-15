@@ -172,7 +172,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
               <h2>Grupos</h2>
               <p>Gestioná los grupos: agregá, modificá o eliminá según sea necesario.</p> 
 
-              <button class="boton-opciones2 agregar letranegra"
+              <button class="boton-opciones2 agregar colorfondorosa"
                       data-bs-toggle="modal"
                       data-bs-target="#modalGrupo"
                       onclick="document.getElementById('accion').value='insertar';">
@@ -180,7 +180,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
 
 <?php while($row = $result->fetch_assoc()):?>
 <div class="dia">
-    <button class="boton-opciones miercoles letranegra">
+    <button class="boton-opciones miercoles">
        <?php echo htmlspecialchars($row['nombre_grupo'], ENT_SUBSTITUTE); ?>
     </button>
     <div class="contenido-dia">
