@@ -22,6 +22,63 @@ CREATE TABLE docente (
 );
 
 
+CREATE TABLE adscripto (
+	id_adscripto int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    id_usuario int NOT NULL
+);
+
+
+CREATE TABLE recurso (
+	id_recurso int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	nombre_recurso varchar(100) NOT NULL,
+	tipo_recurso ENUM('Otro') NOT NULL DEFAULT 'Otro',
+	disponibilidad_recurso ENUM('Disponible', 'Prestado') DEFAULT 'Disponible',
+	historial_recurso text,
+	estado_recurso ENUM('Activo', 'Mantenimiento', 'Inactivo') NOT NULL DEFAULT 'Activo'
+);
+
+
+CREATE TABLE secretario_administra_recurso (
+	id_secretario int NOT NULL,
+    id_recurso int NOT NULL,
+    PRIMARY KEY (id_secretario, id_recurso)
+);
+
+
+CREATE TABLE docente_pide_recurso (
+	id_docente int NOT NULL,
+    id_recurso int NOT NULL,
+    PRIMARY KEY (id_docente, id_recurso)
+);
+
+
+CREATE TABLE asignatura (
+	id_asignatura int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	cantidad_horas_asignatura int NOT NULL,
+	nombre_asignatura varchar(30) NOT NULL
+);
+
+
+CREATE TABLE espacio (
+    id_espacio INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nombre_espacio VARCHAR(120) NOT NULL,
+    capacidad_espacio INT NOT NULL,
+    historial_espacio TEXT,
+    fecha_espacio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    disponibilidad_espacio ENUM('Libre','Reservado','Ocupado','Mantenimiento') NOT NULL DEFAULT 'Libre',
+    tipo_espacio ENUM('Salón','Aula','Laboratorio') NOT NULL DEFAULT 'Salón'
+);
+
+
+CREATE TABLE espacio_atributo (
+    id_espacio INT NOT NULL,
+    nombre_atributo ENUM('Mesas','Sillas','Proyector','Televisor','Aire Acondicionado') NOT NULL,
+    cantidad_atributo INT NOT NULL DEFAULT 0,
+    PRIMARY KEY (id_espacio, nombre_atributo),
+    FOREIGN KEY (id_espacio) REFERENCES espacio(id_espacio) ON DELETE CASCADE
+);
+
+
 CREATE TABLE grupo (
 	id_grupo int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	orientacion_grupo ENUM(
@@ -37,59 +94,7 @@ CREATE TABLE grupo (
 	nombre_grupo varchar(50) NOT NULL,
 	cantidad_alumno_grupo int NOT NULL,
 	id_adscripto int NOT NULL,
-	id_secretario int NOT NULL -- porq la secretaria crea el grupo
-); 
-
-
-CREATE TABLE secretario_administra_recurso (
-	id_secretario int NOT NULL,
-    id_recurso int NOT NULL,
-    PRIMARY KEY (id_secretario, id_recurso)
-);
-
-
-CREATE TABLE recurso (
-	id_recurso int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	nombre_recurso varchar(100) NOT NULL,
-	tipo_recurso ENUM('Otro') NOT NULL DEFAULT 'Otro',
-	disponibilidad_recurso ENUM('Disponible', 'Prestado') DEFAULT 'Disponible',
-	historial_recurso text,
-	estado_recurso ENUM('Activo', 'Mantenimiento', 'Inactivo') NOT NULL DEFAULT 'Activo'
-);
-
-
-CREATE TABLE docente_pide_recurso (
-	id_docente int NOT NULL,
-    id_recurso int NOT NULL,
-    PRIMARY KEY (id_docente, id_recurso) 
-	-- tablas puente sin AUTO_INCREMENT
-);
-
-
-CREATE TABLE adscripto (
-	id_adscripto int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    id_usuario int NOT NULL
-);
-
-
-CREATE TABLE espacio (
-    id_espacio INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    nombre_espacio VARCHAR(120) NOT NULL,
-    capacidad_espacio INT NOT NULL,
-    historial_espacio TEXT,
-    fecha_espacio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    disponibilidad_espacio ENUM('Libre','Reservado','Ocupado','Mantenimiento') NOT NULL DEFAULT 'Libre',
-    tipo_espacio ENUM('Salón','Aula','Laboratorio') NOT NULL DEFAULT 'Salón'
-);
-
-
--- Atributos fijos de cada espacio (mesas, sillas, proyector, etc.)
-CREATE TABLE espacio_atributo (
-    id_espacio INT NOT NULL,
-    nombre_atributo ENUM('Mesas','Sillas','Proyector','Televisor','Aire Acondicionado') NOT NULL,
-    cantidad_atributo INT NOT NULL DEFAULT 0,
-    PRIMARY KEY (id_espacio, nombre_atributo),
-    FOREIGN KEY (id_espacio) REFERENCES espacio(id_espacio) ON DELETE CASCADE
+	id_secretario int NOT NULL
 );
 
 
@@ -116,16 +121,9 @@ CREATE TABLE asignatura_docente_solicita_espacio (
     id_horario_clase int NOT NULL,
     id_espacio int NOT NULL,
     estado_reserva ENUM('Pendiente','Aceptada','Rechazada','Cancelada','Finalizada') NOT NULL DEFAULT 'Pendiente',
-    fecha_hora_reserva TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- auto se guarda fecha y hora
+    fecha_hora_reserva TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id_asignatura, id_docente, id_horario_clase, id_espacio)
 );
-
-
-CREATE TABLE asignatura (
-	id_asignatura int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	cantidad_horas_asignatura int NOT NULL,
-	nombre_asignatura varchar(30) NOT NULL
- );
 
 
 CREATE TABLE docente_tiene_grupo (
@@ -142,12 +140,14 @@ CREATE TABLE docente_dicta_asignatura (
 	PRIMARY KEY (id_docente, id_asignatura)
 );
 
+
 CREATE TABLE asign_docente_aula (
     id_ada int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     id_asignatura int NOT NULL,
     id_docente int NOT NULL,
     id_espacio int NOT NULL
 );
+
 
 CREATE TABLE horario_asignado (
     id_horario_asignado	int NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -157,29 +157,7 @@ CREATE TABLE horario_asignado (
 );
 
 
-
-
-	-- CLAVES FORANEAS
-
--- Tabla grupo
-ALTER TABLE grupo
-    ADD CONSTRAINT fk_grupo_adscripto
-    FOREIGN KEY (id_adscripto) REFERENCES adscripto(id_adscripto) ON DELETE RESTRICT;
-
-ALTER TABLE grupo
-    ADD CONSTRAINT fk_grupo_secretario
-    FOREIGN KEY (id_secretario) REFERENCES secretario(id_secretario) ON DELETE CASCADE;
-
-
--- Tabla: secretario_administra_recurso (PK compuesta)
-ALTER TABLE secretario_administra_recurso
-    ADD CONSTRAINT fk_secretario_administra_recurso_secretario
-    FOREIGN KEY (id_secretario) REFERENCES secretario(id_secretario) ON DELETE CASCADE;
-
-ALTER TABLE secretario_administra_recurso
-    ADD CONSTRAINT fk_secretario_administra_recurso_recurso
-    FOREIGN KEY (id_recurso) REFERENCES recurso(id_recurso) ON DELETE CASCADE;
-
+-- CLAVES FORÁNEAS
 
 -- Tabla secretario
 ALTER TABLE secretario
@@ -187,108 +165,53 @@ ALTER TABLE secretario
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE;
 
 
--- Tabla docente
 ALTER TABLE docente
-    ADD CONSTRAINT fk_docente_usuario
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE;
+    ADD CONSTRAINT fk_docente_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE;
 
 
--- Tabla: docente_pide_recurso (PK compuesta)
-ALTER TABLE docente_pide_recurso
-    ADD CONSTRAINT fk_docente_pide_recurso_docente
-    FOREIGN KEY (id_docente) REFERENCES docente(id_docente) ON DELETE CASCADE;
-
-ALTER TABLE docente_pide_recurso
-    ADD CONSTRAINT fk_docente_pide_recurso_recurso
-    FOREIGN KEY (id_recurso) REFERENCES recurso(id_recurso) ON DELETE CASCADE;
-
-
--- Tabla adscripto
 ALTER TABLE adscripto
-    ADD CONSTRAINT fk_adscripto_usuario
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE;
+    ADD CONSTRAINT fk_adscripto_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE;
 
+ALTER TABLE grupo
+    ADD CONSTRAINT fk_grupo_adscripto FOREIGN KEY (id_adscripto) REFERENCES adscripto(id_adscripto) ON DELETE RESTRICT,
+    ADD CONSTRAINT fk_grupo_secretario FOREIGN KEY (id_secretario) REFERENCES secretario(id_secretario) ON DELETE CASCADE;
 
--- Tabla: adscripto_organiza_horario_clase (PK compuesta)
-ALTER TABLE adscripto_organiza_horario_clase
-    ADD CONSTRAINT fk_adscripto_organiza_horario_adscripto
-    FOREIGN KEY (id_adscripto) REFERENCES adscripto(id_adscripto) ON DELETE CASCADE;
+ALTER TABLE secretario_administra_recurso
+    ADD CONSTRAINT fk_secretario_administra_recurso_secretario FOREIGN KEY (id_secretario) REFERENCES secretario(id_secretario) ON DELETE CASCADE,
+    ADD CONSTRAINT fk_secretario_administra_recurso_recurso FOREIGN KEY (id_recurso) REFERENCES recurso(id_recurso) ON DELETE CASCADE;
 
-ALTER TABLE adscripto_organiza_horario_clase
-    ADD CONSTRAINT fk_adscripto_organiza_horario_clase
-    FOREIGN KEY (id_horario_clase) REFERENCES horario_clase(id_horario_clase) ON DELETE CASCADE;
+ALTER TABLE docente_pide_recurso
+    ADD CONSTRAINT fk_docente_pide_recurso_docente FOREIGN KEY (id_docente) REFERENCES docente(id_docente) ON DELETE CASCADE,
+    ADD CONSTRAINT fk_docente_pide_recurso_recurso FOREIGN KEY (id_recurso) REFERENCES recurso(id_recurso) ON DELETE CASCADE;
 
-ALTER TABLE adscripto_organiza_horario_clase
-	ADD CONSTRAINT fk_adscripto_organiza_horario_asignatura
-	FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE SET NULL;
--- ON DELETE SET NULL en id_asignatura deja el campo vacío si se elimina la asignatura.
-
-
--- Tabla horario_clase
 ALTER TABLE horario_clase
-    ADD CONSTRAINT fk_horario_clase_secretario
-    FOREIGN KEY (id_secretario) REFERENCES secretario(id_secretario) ON DELETE CASCADE;
+    ADD CONSTRAINT fk_horario_clase_secretario FOREIGN KEY (id_secretario) REFERENCES secretario(id_secretario) ON DELETE CASCADE;
 
-
--- Tabla asignatura_docente_solicita_espacio
-ALTER TABLE asignatura_docente_solicita_espacio
-    ADD CONSTRAINT fk_asignatura_docente_solicita_espacio_asignatura
-    FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE CASCADE;
+ALTER TABLE adscripto_organiza_horario_clase
+    ADD CONSTRAINT fk_adscripto_organiza_horario_adscripto FOREIGN KEY (id_adscripto) REFERENCES adscripto(id_adscripto) ON DELETE CASCADE,
+    ADD CONSTRAINT fk_adscripto_organiza_horario_clase FOREIGN KEY (id_horario_clase) REFERENCES horario_clase(id_horario_clase) ON DELETE CASCADE,
+	ADD CONSTRAINT fk_adscripto_organiza_horario_asignatura FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE SET NULL;
 
 ALTER TABLE asignatura_docente_solicita_espacio
-    ADD CONSTRAINT fk_asignatura_docente_solicita_espacio_docente
-    FOREIGN KEY (id_docente) REFERENCES docente(id_docente) ON DELETE CASCADE;
-
-ALTER TABLE asignatura_docente_solicita_espacio
-    ADD CONSTRAINT fk_asignatura_docente_solicita_espacio_espacio
-    FOREIGN KEY (id_espacio) REFERENCES espacio(id_espacio) ON DELETE CASCADE;
-
-ALTER TABLE asignatura_docente_solicita_espacio
-    ADD CONSTRAINT fk_asignatura_docente_solicita_espacio_horario_clase
-    FOREIGN KEY (id_horario_clase) REFERENCES horario_clase(id_horario_clase) ON DELETE CASCADE ON UPDATE CASCADE;
-
-
--- Tabla: docente_tiene_grupo (PK compuesta)
-ALTER TABLE docente_tiene_grupo
-    ADD CONSTRAINT fk_docente_tiene_grupo_grupo
-    FOREIGN KEY (id_grupo) REFERENCES grupo(id_grupo) ON DELETE CASCADE;
+    ADD CONSTRAINT fk_asignatura_docente_solicita_espacio_asignatura FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE CASCADE,
+    ADD CONSTRAINT fk_asignatura_docente_solicita_espacio_docente FOREIGN KEY (id_docente) REFERENCES docente(id_docente) ON DELETE CASCADE,
+    ADD CONSTRAINT fk_asignatura_docente_solicita_espacio_espacio FOREIGN KEY (id_espacio) REFERENCES espacio(id_espacio) ON DELETE CASCADE,
+    ADD CONSTRAINT fk_asignatura_docente_solicita_espacio_horario_clase FOREIGN KEY (id_horario_clase) REFERENCES horario_clase(id_horario_clase) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE docente_tiene_grupo
-    ADD CONSTRAINT fk_docente_tiene_grupo_docente
-    FOREIGN KEY (id_docente) REFERENCES docente(id_docente) ON DELETE CASCADE;
-
-ALTER TABLE docente_tiene_grupo
-    ADD CONSTRAINT fk_docente_tiene_grupo_asignatura
-    FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE CASCADE;
-
-
--- Tabla: docente_dicta_asignatura (PK compuesta)
-ALTER TABLE docente_dicta_asignatura
-    ADD CONSTRAINT fk_docente_dicta_asignatura_docente
-    FOREIGN KEY (id_docente) REFERENCES docente(id_docente) ON DELETE CASCADE;
+    ADD CONSTRAINT fk_docente_tiene_grupo_grupo FOREIGN KEY (id_grupo) REFERENCES grupo(id_grupo) ON DELETE CASCADE,
+    ADD CONSTRAINT fk_docente_tiene_grupo_docente FOREIGN KEY (id_docente) REFERENCES docente(id_docente) ON DELETE CASCADE,
+    ADD CONSTRAINT fk_docente_tiene_grupo_asignatura FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE CASCADE;
 
 ALTER TABLE docente_dicta_asignatura
-    ADD CONSTRAINT fk_docente_dicta_asignatura_asignatura
-    FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE CASCADE;
-
--- Tabla: asign_docente_aula
-ALTER TABLE asign_docente_aula
-    ADD CONSTRAINT fk_asign_docente_aula_asignatura_asignatura
-    FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE CASCADE ON UPDATE CASCADE;
+    ADD CONSTRAINT fk_docente_dicta_asignatura_docente FOREIGN KEY (id_docente) REFERENCES docente(id_docente) ON DELETE CASCADE,
+    ADD CONSTRAINT fk_docente_dicta_asignatura_asignatura FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE CASCADE;
 
 ALTER TABLE asign_docente_aula
-    ADD CONSTRAINT fk_asign_docente_aula_asignatura_docente
-    FOREIGN KEY (id_docente) REFERENCES docente(id_docente) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE asign_docente_aula
-    ADD CONSTRAINT fk_asign_docente_aula_asignatura_espacio
-    FOREIGN KEY (id_espacio) REFERENCES espacio(id_espacio) ON DELETE CASCADE ON UPDATE CASCADE;
-
--- Tabla: horario_asignado
-ALTER TABLE horario_asignado
-    ADD CONSTRAINT fk_horario_asignado_horario_clase
-    FOREIGN KEY (id_horario_clase) REFERENCES horario_clase(id_horario_clase) ON DELETE CASCADE ON UPDATE CASCADE;
+    ADD CONSTRAINT fk_asign_docente_aula_asignatura_asignatura FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE CASCADE ON UPDATE CASCADE,
+    ADD CONSTRAINT fk_asign_docente_aula_asignatura_docente FOREIGN KEY (id_docente) REFERENCES docente(id_docente) ON DELETE CASCADE ON UPDATE CASCADE,
+    ADD CONSTRAINT fk_asign_docente_aula_asignatura_espacio FOREIGN KEY (id_espacio) REFERENCES espacio(id_espacio) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE horario_asignado
-    ADD CONSTRAINT fk_horario_asignado_ada
-    FOREIGN KEY (id_ada) REFERENCES asign_docente_aula(id_ada) ON DELETE CASCADE ON UPDATE CASCADE;
+    ADD CONSTRAINT fk_horario_asignado_horario_clase FOREIGN KEY (id_horario_clase) REFERENCES horario_clase(id_horario_clase) ON DELETE CASCADE ON UPDATE CASCADE,
+    ADD CONSTRAINT fk_horario_asignado_ada FOREIGN KEY (id_ada) REFERENCES asign_docente_aula(id_ada) ON DELETE CASCADE ON UPDATE CASCADE;
