@@ -2,6 +2,6 @@ Flujo de roles en DB
 
 Secretario: crea usuarios, administra recursos y horarios.
 
-Adscripto: organiza horarios y asocia docentes a horarios y grupos.
+Adscripto: organiza horarios y asocia docentes a horarios, grupos y materias.
 
 Docente: solicita recursos y hace reservas.

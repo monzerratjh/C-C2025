@@ -79,21 +79,70 @@ $query = mysqli_query($conn, $sql); //mysqli_query FUNCIÓN de php para EJECUTAR
       <div class="col-md-9 col-12 principal">
         <img src="../../../img/logo.png" alt="Logo" class="logo"> 
         <h2>Cargar materias</h2>
-        <p>Ingrese el grupo en el cual va a agregar la materia.</p>
+        <p>Ingrese la materia.</p>
 
         <div class="busqueda">
-          <i class="bi bi-search icono-busqueda"></i>
-          <input type="text" class="diseno-busqueda diseno-busqueda2" placeholder="Ingrese el grupo" list="lista-grupos" id="grupoInput" />
-          <datalist id="lista-grupos">
-            <option value="1° MD">
-            <option value="2° MD">
-            <option value="3° MD">
-          </datalist> 
+          <form action="./cargar-materias-ada.php" method="POST">
+            <div class="form-group">
+                <input type="text" class="form-control" id="insertar-materia" name="insertar-materia" aria-describedby="" placeholder="Ej: Programación Full-Stack" required>
+                <small id="emailHelp" class="form-text text-muted">Asegúrese de que quede bien escrito.</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Cargar</button>
+            </form>
+            <br>
         </div>
-      </div>
 
-    </div>
-  </div>
+        <table class="table">
+            <br>
+           <h2>Materias cargadas</h2>
+            <thead>
+                <tr>
+                    <th scope="col">#ID</th>
+                    <th scope="col">Nombre Materia</th>
+                    <!--<th scope="col">Profesor</th>
+                    <th scope="col">Aula</th>-->
+                    <th>
+                </tr>
+            </thead>
+            <tbody>
+                 <?php
+                    while($row = mysqli_fetch_array($query)):
+                ?>
+                <tr>
+                    <th scope="row"><?= $row['id_asignatura']  ?></th>
+                    <td><?= $row['nombre_asignatura']  ?></td>
+                    <td><a data-bs-toggle="modal"
+                            data-bs-target="#update_modal<?= $row['id_asignatura'] ?>"><i class="bi bi-pencil"></i></a></td>
+                    <td><a href="delete_materia.php?id_asignatura=<?= $row['id_asignatura']  ?>"><i class="bi bi-trash"></a></i></td>
+                </tr>
+                <!-- Modal para actualizar-->
+                 
+                    <div class="modal fade" id="update_modal<?= $row['id_asignatura'] ?>" tabindex="-1">  
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalTitulo">Edición de Usuarios</h5>
+                                </div>
+                                <form method="POST" action="./editar_materia.php" id="editarMateria">
+                                    <div class="modal-body" id="update-modal<?= $row['id_asignatura'] ?>">
+                                        <!-- Campos ocultos -->
+                                        <input type="hidden" name="id_asignatura" value="<?= $row['id_asignatura'] ?>">
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="editar-materia" name="editar-materia" aria-describedby="" placeholder="Ej: Programación Full-Stack" value="<?= htmlspecialchars($row['nombre_asignatura']) ?>">
+                                            <small id="emailHelp" class="form-text text-muted">Asegúrese de que quede bien escrito.</small>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Cargar cambios</button> 
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                <?php endwhile; ?>
+            </tbody>
+        </table>
+      </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/redireccionar-grupo.js"></script>

@@ -1,10 +1,17 @@
 <?php 
 include('../../../conexion.php');
 $conn = conectar_bd();
-$sql = "SELECT * FROM asignatura";
-$query = mysqli_query($conn, $sql); //mysqli_query FUNCIÓN de php para EJECUTAR SQL
+$sql_asig = "SELECT * FROM asignatura";
+$query_asig = mysqli_query($conn, $sql_asig); //mysqli_query FUNCIÓN de php para EJECUTAR SQL
 /*Esta variable llamada query lo que hace es contener info. de la conexión (si está conectada o no a la BD) y a la CONSULTA que se necesita hacerl.*/
 
+$sql_doc = "SELECT * FROM docente";
+$query_doc = mysqli_query($conn, $sql_doc);
+
+$sql_espacio = "SELECT * FROM espacio";
+$query_espacio = mysqli_query($conn, $sql_espacio);
+$sql_user = "SELECT * FROM usuario";
+$query_user = mysqli_query($conn, $sql_user);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -78,18 +85,89 @@ $query = mysqli_query($conn, $sql); //mysqli_query FUNCIÓN de php para EJECUTAR
 <!-- Contenido principal -->
       <div class="col-md-9 col-12 principal">
         <img src="../../../img/logo.png" alt="Logo" class="logo"> 
-        <h2>Cargar materias</h2>
-        <p>Ingrese el grupo en el cual va a agregar la materia.</p>
+        <h2>Asignar aula y docente a materia.</h2>
+        <p>Ingrese los datos.</p>
 
         <div class="busqueda">
-          <i class="bi bi-search icono-busqueda"></i>
-          <input type="text" class="diseno-busqueda diseno-busqueda2" placeholder="Ingrese el grupo" list="lista-grupos" id="grupoInput" />
-          <datalist id="lista-grupos">
-            <option value="1° MD">
-            <option value="2° MD">
-            <option value="3° MD">
-          </datalist> 
+            
+            <form action="./cargar-materias-ada.php" method="POST">
+            <div class="form-group">
+                <?php
+                        while ($row = mysqli_fetch_array($query)) 
+                    ?>
+                <select class="form-control" id="cargar-materia" name="cargar-materia" aria-describedby="" required>
+                    <option value="">Seleccionar materia</option>
+                
+                     <?php
+                        $asig = mysqli_query($conn, "SELECT * FROM asignatura");
+                        while ($a = mysqli_fetch_assoc($asig)) {
+                         echo "<option value='{$a['id_asignatura']}'>{$a['nombre_asignatura']}</option>";
+                        }
+                    ?>
+
+                </select>
+                <br>
+                <select class="form-control" id="asociar-docente-materia" name="asociar-docente-materia" required>
+                    <option value="">Seleccionar docente</option>
+                    <?php
+                        $doc = mysqli_query($conn, "
+                        SELECT d.id_docente, u.nombre_usuario, u.apellido_usuario
+                        FROM docente d
+                        INNER JOIN usuario u ON d.id_usuario = u.id_usuario
+                        ");
+                        while ($d = mysqli_fetch_assoc($doc)) {
+                            echo "<option value='{$d['id_docente']}'>{$d['nombre_usuario']} {$d['apellido_usuario']}</option>";
+                        }
+                    ?>
+                </select>
+                <br>
+                <select class="form-control" id="asociar-espacio-materia" name="asociar-espacio-materia" aria-describedby="" required>
+                    <option value="">Seleccionar espacio</option>
+                    <?php
+                        $esp = mysqli_query($conn, "SELECT * FROM espacio");
+                        while ($e = mysqli_fetch_assoc($esp)) {
+                            echo "<option value='{$e['id_espacio']}'>{$e['nombre_espacio']}</option>";
+                        }
+                    ?>
+                </select>
+                <small id="smallLetters" class="form-text text-muted">Asegúrese de que quede bien escrito.</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Cargar</button>
+            </form>
         </div>
+
+        <table class="table">
+            <br> <br>
+           <h2>Materias cargadas</h2>
+            <thead>
+                <tr>
+                    <th scope="col">#ID</th>
+                    <th scope="col">Nombre Materia</th>
+                    <th scope="col">Profesor</th>
+                    <th scope="col">Aula</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+            </tbody>
+        </table>
       </div>
 
     </div>

@@ -86,38 +86,37 @@ include('../../conexion.php');
 
               <!-- Formulario -->
               <form method="POST" id="formFalta">
-                <div class="modal-body">
+                   <div class="modal-body">
                   <div class="mb-3">
                     <label for="materia">Materia</label>
-                    <input type="text" class="form-control" id="materia" name="materia" required>
+                      <input type="text" class="form-control" id="materia-falta" name="materia-falta" required>
                   </div>
 
                   <div class="mb-3">
                     <label for="grupo">Grupo al que falta</label>
-                    <input type="text" class="form-control" id="grupo" name="grupo" required>
+                      <input type="text" class="form-control" id="grupo-a-faltar" name="grupo-a-faltar" required>
                   </div>
 
                   <div class="mb-3">
                     <label for="fecha">Fecha</label>
-                    <input type="date" class="form-control" id="fecha" name="fecha" required>
+                      <input type="date" class="form-control" id="fecha-a-faltar" name="fecha-a-faltar" required>
                   </div>
 
                   <div class="mb-3">
                     <label for="horas">Cantidad de horas</label>
-                    <input type="number" class="form-control" id="horas" name="horas" required>
+                     <input type="number" class="form-control" id="horas-faltadas" name="horas-faltadas" required>
                   </div>
 
                   <div class="mb-3">
                     <label for="motivo">Motivo</label>
-                    <textarea class="form-control" id="motivo" name="motivo" required></textarea>
+                      <textarea class="form-control" id="motivo-falta" name="motivo-falta" required></textarea>
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Avisar</button>
                   </div>
                 </div>
-
-                <div class="modal-footer">
-                  <button type="submit" class="btn btn-primary">Avisar</button>
-                </div>
               </form>
-
             </div>
           </div>
         </div>
