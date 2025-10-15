@@ -32,10 +32,10 @@ try {
         }
 
         // Validar formato del nombre (solo letras, números, espacios y símbolos permitidos)
-        if (!preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9° \-_]+$/u', $nombre)) {
+        if (!preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 \-_]+$/u', $nombre)) {
             echo json_encode([
                 "type" => "error",
-                "message" => "El nombre del espacio solo puede contener letras, números y los símbolos '°', '-', '_'."
+                "message" => "El nombre del espacio solo puede contener letras, números y los símbolos '-', '_'."
             ]);
             exit;
         }
@@ -70,10 +70,10 @@ try {
     elseif ($accion === 'editar') {
 
         // Validar formato del nombre
-        if (!preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9° \-_]+$/u', $nombre)) {
+        if (!preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 \-_]+$/u', $nombre)) {
             echo json_encode([
                 "type" => "error",
-                "message" => "El nombre del espacio solo puede contener letras, números y los símbolos '°', '-', '_'."
+                "message" => "El nombre del espacio solo puede contener letras, números y los símbolos '-', '_'."
             ]);
             exit;
         }
