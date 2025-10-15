@@ -76,19 +76,19 @@
 
         <div>
           <a href="index-salon.php">
-            <button class="boton-opciones adscripto">Salones</button>
+            <button class="boton-opciones2 adscripto">Salones</button>
           </a>
         </div>
 
         <div>
           <a href="index-aula.php">
-            <button class="boton-opciones adscripto">Aulas</button>
+            <button class="boton-opciones2 adscripto">Aulas</button>
           </a>
         </div>
 
         <div>
           <a href="index-laboratorio.php">
-            <button class="boton-opciones adscripto">Laboratorios</button>
+            <button class="boton-opciones2 adscripto">Laboratorios</button>
           </a>
         </div>
       </div>

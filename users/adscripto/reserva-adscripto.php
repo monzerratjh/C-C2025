@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solicitud de reservas</title>
+    <title>Reservas</title>
     <!-- Bootstrap CSS + Iconos + letras-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
@@ -72,6 +72,7 @@
       <img src="./../../img/logo.png" alt="Logo" class="logo"> 
 
       <h2 data-i18n="reservationRequests">Solicitudes de Reserva</h2>
+      <p>Consulta las reservas realizadas por cada docente y los espacios solicitados.</p>
 
       <table class="tabla-reserva">
         <thead>

@@ -90,6 +90,7 @@ $con->close();
 
     <div class="container my-4 espacio-contenedor">
       <h2>Laboratorios</h2>
+      <p>Agrega, edita o elimina laboratorios de forma rápida y sencilla.</p>
      <div class="row justify-content-center mt-4">
 
     <!-- Agregar nuevo primero -->

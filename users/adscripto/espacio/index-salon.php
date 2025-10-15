@@ -83,6 +83,7 @@ $con->close();
     <img src="./../../../img/logo.png" alt="Logo" class="logo"> 
     <div class="container my-4 espacio-contenedor">
       <h2>Salones</h2>
+      <p>Agrega, edita o elimina salones de forma rápida y sencilla.</p>
       <div class="row justify-content-center mt-4">
 
   <!-- Agregar nuevo primero -->

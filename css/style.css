@@ -302,7 +302,7 @@ a{
   width: 100%;
   padding: 15px;
   border: none;
-  color: white;
+  color: #333;
   font-size: 18px;
   cursor: pointer;
   text-align: center;
@@ -319,16 +319,15 @@ a{
   cursor: pointer;
   width: 100%;
   padding: 10px;
-  color: white;
-  background-color: #f3d9ef; 
+  color: #333;
   font-size: 18px;
   border-radius: 12px;
   margin-bottom: 20px;
   margin-top: 20px;
 }
 
-.letranegra {
-  color: #333;
+.colorfondo {
+  background-color: #f3d9ef; 
 }
 
 .boton-opciones::after {

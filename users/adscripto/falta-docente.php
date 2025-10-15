@@ -77,6 +77,7 @@
 
           <div class="bloque-agregar">
             <h2 data-i18n="teacherAbsence">Falta docentes</h2>
+            <p>Visualiza las inasistencias de los docentes.</p>
           </div>
 
           <div class="dia">

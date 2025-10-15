@@ -91,6 +91,7 @@ $con->close();
 
     <div class="container my-4 espacio-contenedor">
       <h2>Aulas</h2>
+      <p>Agrega, edita o elimina aulas de forma rápida y sencilla.</p>
 <div class="row justify-content-center mt-4">
 
     <!-- Agregar nuevo primero -->
