@@ -1,39 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const domForm = document.getElementById('form-login');
 
+//Validaciones de login (solo si existe el formulario)
+  const domForm = document.getElementById('form-login');
+  if (domForm) {
     domForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const cedula = document.getElementById('cedula').value.trim();
-        const password = document.getElementById('password').value.trim();
+      event.preventDefault();
+      const cedula = document.getElementById('cedula').value.trim();
+      const password = document.getElementById('password').value.trim();
 
-         // Validación de campos vacíos
-        if (!cedula || !password) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Todos los campos son obligatorios'
-            });
-            return;
-        }
+      if (!cedula || !password) {
+        Swal.fire({ icon: 'error', title: 'Error', text: 'Todos los campos son obligatorios' });
+        return;
+      }
 
-        if (isNaN(cedula)){
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'La cédula deben ser solo números'
-        });
-            return;
-        }
+      if (isNaN(cedula)){
+        Swal.fire({ icon: 'error', title: 'Error', text: 'La cédula deben ser solo números' });
+        return;
+      }
 
-         if (cedula.length !== 8){
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'La cédula debe tener 8 números válidos'
-        });
-            return;
-        }
-//contraseña usuario = Base de Datos? (Sabri va a entender)
+      if (cedula.length !== 8){
+        Swal.fire({ icon: 'error', title: 'Error', text: 'La cédula debe tener 8 números válidos' });
+        return;
+      }
+
+      //contraseña usuario = Base de Datos? (Sabri va a entender)
 
         /*    // Validación de contraseña 
         if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>_]).{6,}$/.test(password)) {
@@ -73,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     window.location.href = data.redirect;
                 });
             } else {
-                // Mostrar mensaje de error con SweetAlert
+                
                 Swal.fire({
                     icon: 'error',
                     title: 'Error',
@@ -95,4 +85,26 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+  }
+
+  const cerrarSesionBtns = document.querySelectorAll('.btn-cerrar-sesion');
+  cerrarSesionBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      Swal.fire({
+        title: '¿Seguro que deseas cerrar sesión?',
+        text: "Se cerrará tu sesión actual",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, cerrar sesión',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = '/utils/log-out.php';
+        }
+      });
+    });
+  });
 });

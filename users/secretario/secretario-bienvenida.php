@@ -5,7 +5,6 @@ session_start();
 // Obtener el nombre del usuario de la sesión para personalizar el mensaje
 $nombre_secretario = $_SESSION['nombre_usuario'] ?? 'usuario/a';
 $apellido_secretario = $_SESSION['apellido_usuario'] ?? 'usuario/a';
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -42,7 +41,8 @@ $apellido_secretario = $_SESSION['apellido_usuario'] ?? 'usuario/a';
     </div>
     <div class="offcanvas-body d-flex flex-column">
       <div class="banner-parte-superior">
-        <a href="/utils/log-out.php" class="mb-3">
+        
+        <a href="#" class="btn-cerrar-sesion mb-3">
           <i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar sesión
         </a>
         <i class="bi bi-translate traductor-menu"></i>
@@ -52,7 +52,6 @@ $apellido_secretario = $_SESSION['apellido_usuario'] ?? 'usuario/a';
       <a href="/users/secretario/horario/horario-secretario.php" class="nav-opciones mb-2">Horarios</a>
       <a href="/users/secretario/grupo/secretario-grupo.php" class="nav-opciones mb-2">Grupos</a>
       <a href="/users/secretario/recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
-   
     </div>
   </div>
 
@@ -63,10 +62,10 @@ $apellido_secretario = $_SESSION['apellido_usuario'] ?? 'usuario/a';
     <aside class="barra-lateral">
       <div class="volverGeneral">
         <div class="volver">
-          <a href="../../utils/log-out.php">
+          <a href="#" class="btn-cerrar-sesion">
             <i class="bi bi-arrow-left-circle-fill icono-volver"></i>
           </a>
-          <a href="../../utils/log-out.php">Cerrar sesión</a>
+          <a href="#" class="btn-cerrar-sesion">Cerrar sesión</a>
         </div>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
@@ -75,7 +74,6 @@ $apellido_secretario = $_SESSION['apellido_usuario'] ?? 'usuario/a';
       <a href="/users/secretario/horario/horario-secretario.php" class="nav-opciones">Horarios</a>
       <a href="/users/secretario/grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
       <a href="/users/secretario/recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
-   
     </aside>
 
     <!-- Contenido principal -->
@@ -87,5 +85,8 @@ $apellido_secretario = $_SESSION['apellido_usuario'] ?? 'usuario/a';
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="/utils/form-log-in.js"></script> 
+  <script src="/utils/translate.js"></script>
 </body>
 </html>
