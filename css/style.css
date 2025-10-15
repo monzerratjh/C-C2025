@@ -305,7 +305,7 @@ a{
   color: white;
   font-size: 18px;
   cursor: pointer;
-  text-align: left;
+  text-align: center;
   position: relative;
   border-radius: 12px;
   margin-bottom: 10px;
@@ -352,7 +352,6 @@ a{
 .contenido-dia {
   display: none;
   background-color: white;
-  border-top: 1px solid #cccccc;
   border-radius: 0 0 12px 12px;
 }
 
@@ -618,7 +617,7 @@ table tr:nth-child(even) {
 /*BLOQUE PARA AGREGAR COSAS*/
 
   /* Bloque Agregar */
-  .bloque-agregar {
+  .bloque-aviso {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -626,7 +625,7 @@ table tr:nth-child(even) {
     justify-content: center;
   }
 
-  .bloque-agregar .etiqueta {
+  .bloque-aviso .etiqueta {
     background: #f2c086;
     color: #000;
     border: none;
@@ -851,3 +850,23 @@ h4{
 .btn{
   cursor: pointer;
 }
+
+ /* ---------- Animación pagina recursos ---------- */
+    .loader {
+      width: 60px;
+      height: 60px;
+      border: 4px solid #d0cdcdff;
+      border-top-color: #3d4445ff;
+      border-radius: 50%;
+      animation: girar 1.2s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes girar {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
