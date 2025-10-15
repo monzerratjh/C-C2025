@@ -73,10 +73,10 @@ include ('./../../../conexion.php');
 
           <!-- DÍAS DE LA SEMANA -->
           <div class="dia">
-            <button class="boton-opciones lunes colorletrablanco">Lunes</button>
+           <button class="boton-opciones  colorletrablanco lunes" data-i18n="monday">Lunes</button>
             <div class="contenido-dia">
               <table class="tabla-horario">
-                <tr><th>Hora</th><th>Materia</th><th>Espacio</th></tr>
+                <tr><th data-i18n="hour">Hora</th><th data-i18n="subject">Materia</th><th data-i18n="room">Espacio</th></tr>
                 <tr><td>07:00</td><td>Ingenieria</td><td>Salón 4</td></tr>
                 <tr><td>07:50</td><td>Sistemas Operativos</td><td>Aula 3</td></tr>
                 <tr><td>08:40</td><td>Ingles Tecnico</td><td>Salón 4</td></tr>
@@ -92,10 +92,10 @@ include ('./../../../conexion.php');
           </div>
 
           <div class="dia">
-            <button class="boton-opciones martes colorletrablanco">Martes</button>
+            <button class="boton-opciones colorletrablanco martes" data-i18n="tuesday">Martes</button>
             <div class="contenido-dia">
               <table class="tabla-horario">
-                <tr><th>Hora</th><th>Materia</th><th>Espacio</th></tr>
+               <tr><th data-i18n="hour">Hora</th><th data-i18n="subject">Materia</th><th data-i18n="room">Espacio</th></tr>
                 <tr><td>08:40</td><td>Ingles Tecnico</td><td>Salón 4</td></tr>
                 <tr><td>09:30</td><td>Ingles Tenico</td><td>Salón 4</td></tr>
                 <tr><td>10:20</td><td>Profundicación</td><td>Salón 4</td></tr>
@@ -109,10 +109,10 @@ include ('./../../../conexion.php');
           </div>
 
           <div class="dia">
-            <button class="boton-opciones miercoles colorletrablanco">Miércoles</button>
+            <button class="boton-opciones colorletrablanco miercoles" data-i18n="wednesday">Miércoles</button>
             <div class="contenido-dia">
               <table class="tabla-horario">
-                <tr><th>Hora</th><th>Materia</th><th>Espacio</th></tr>
+                <tr><th data-i18n="hour">Hora</th><th data-i18n="subject">Materia</th><th data-i18n="room">Espacio</th></tr>
                 <tr><td>07:50</td><td>Ciberseguridad</td><td>Salón 4</td></tr>
                 <tr><td>08:40</td><td>Ciberseguridad</td><td>Salón 4</td></tr>
                 <tr><td>09:30</td><td>Emprendurismo</td><td>Salón 4</td></tr>
@@ -128,10 +128,10 @@ include ('./../../../conexion.php');
           </div>
 
           <div class="dia">
-            <button class="boton-opciones jueves colorletrablanco">Jueves</button>
+            <button class="boton-opciones colorletrablanco jueves" data-i18n="thursday">Jueves</button>
             <div class="contenido-dia">
               <table class="tabla-horario">
-                <tr><th>Hora</th><th>Materia</th><th>Espacio</th></tr>
+               <tr><th data-i18n="hour">Hora</th><th data-i18n="subject">Materia</th><th data-i18n="room">Espacio</th></tr>
                 <tr><td>07:50</td><td>Sistemas operativos</td><td>Aula 3</td></tr>
                 <tr><td>08:40</td><td>Sistemas operativos</td><td>Aula 3</td></tr>
                 <tr><td>09:30</td><td>Fisica</td><td>Salón 4</td></tr>
@@ -146,10 +146,10 @@ include ('./../../../conexion.php');
           </div>
 
           <div class="dia">
-            <button class="boton-opciones viernes colorletrablanco">Viernes</button>
+            <button class="boton-opciones colorletrablanco viernes" data-i18n="friday">Viernes</button>
             <div class="contenido-dia">
               <table class="tabla-horario">
-                <tr><th>Hora</th><th>Materia</th><th>Espacio</th></tr>
+                <tr><th data-i18n="hour">Hora</th><th data-i18n="subject">Materia</th><th data-i18n="room">Espacio</th></tr>
                 <tr><td>07:50</td><td>Ciberseguridad</td><td>Salón 4</td></tr>
                 <tr><td>08:40</td><td>Ciberseguridad</td><td>Salón 4</td></tr>
                 <tr><td>09:30</td><td>Emprendurismo</td><td>Salón 4</td></tr>
@@ -188,5 +188,8 @@ include ('./../../../conexion.php');
   <!-- Bootstrap Bundle JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
+  <!-- i18next desde CDN -->
+  <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+  <script src="/utils/translate.js"></script>
 </body>
 </html>

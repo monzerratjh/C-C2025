@@ -37,49 +37,49 @@ include ('./../../conexion.php');
     <div class="offcanvas-body d-flex flex-column">
       <div class="banner-parte-superior">
         <a href="../../index.php" class="mb-3">
-          <i class="bi bi-arrow-left-circle-fill me-2"></i>Volver
+          <i class="bi bi-arrow-left-circle-fill me-2"></i><span data-i18n="goBack">Volver</span>
         </a>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
 
-      <a href="./../estudiante/estudiante.php" class="fw-semibold seleccionado mb-2">Estudiante</a>
-      <a href="./../adscripto/adscripto-log.php" class="nav-opciones mb-2">Adscripto</a>
-      <a href="./../docente/docente-log.php" class="nav-opciones mb-2">Docente</a>
-      <a href="./../secretario/secretario-log.php" class="nav-opciones mb-2">Secretario</a>
+      <a href="./../estudiante/estudiante.php" class="fw-semibold seleccionado mb-2" data-i18n="student">Estudiante</a>
+      <a href="./../adscripto/adscripto-log.php" class="nav-opciones mb-2" data-i18n="adscripto">Adscripto</a>
+      <a href="./../docente/docente-log.php" class="nav-opciones mb-2" data-i18n="teacher">Docente</a>
+      <a href="./../secretario/secretario-log.php" class="nav-opciones mb-2" data-i18n="secretary">Secretario</a>
     </div>
   </div>
 
   <!--Contenedor principal con GRID -->
   <div class="contenedor">
 
-    <!-- Barra lateral -->
+   <!-- Barra lateral -->
     <aside class="barra-lateral">
       <div class="volverGeneral">
         <div class="volver">
           <a href="../../index.php">
             <i class="bi bi-arrow-left-circle-fill icono-volver"></i>
           </a>
-          <a href="../../index.php">Volver</a>
+          <a href="../../index.php" data-i18n="goBack">Volver</a>
         </div>
-        <i class="bi bi-translate traductor-menu"></i>
+        <i class="bi bi-translate traductor-menu" title="Traducir"></i>
       </div>
 
-      <a href="../estudiante/estudiante.php" class="fw-semibold seleccionado">Estudiante</a>
-      <a href="../adscripto/adscripto-log.php" class="nav-opciones">Adscripto</a>
-      <a href="../docente/docente-log.php" class="nav-opciones">Docente</a>
-      <a href="../secretario/secretario-log.php" class="nav-opciones">Secretario</a>
+      <a href="../estudiante/estudiante.php" class="fw-semibold seleccionado" data-i18n="student">Estudiante</a>
+      <a href="../adscripto/adscripto-log.php" class="nav-opciones" data-i18n="adscripto">Adscripto</a>
+      <a href="../docente/docente-log.php" class="nav-opciones" data-i18n="teacher">Docente</a>
+      <a href="../secretario/secretario-log.php" class="nav-opciones" data-i18n="secretary">Secretario</a>
     </aside>
 
     <!-- Contenido principal -->
     <main class="principal">
       <img src="./../../img/logo.png" alt="Logo" class="logo"> 
-      <h2>ESTUDIANTE</h2>
-      <p>Ingresa tu grupo correspondiente</p>
+     <h2 data-i18n="student">ESTUDIANTE</h2>
+      <p data-i18n="enterGroup">Ingresa tu grupo correspondiente</p>
 
       <div class="busqueda">
         <i class="bi bi-search icono-busqueda"></i>
-        <input type="text" class="diseno-busqueda" placeholder="Ingrese su grupo" list="lista-grupos" id="grupoInput" />
-        <datalist id="lista-grupos">
+        <input type="text" class="diseno-busqueda" data-i18n-placeholder="enterGroupPlaceholder" placeholder="Ingrese su grupo" list="lista-grupos" id="grupoInput" />
+          <datalist id="lista-grupos">
           <option value="1° MD">
           <option value="2° MD">
           <option value="3° MD">
@@ -94,6 +94,9 @@ include ('./../../conexion.php');
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/redireccionar-grupo.js"></script>
+  <!-- i18next desde CDN -->
+  <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+  <script src="/utils/translate.js"></script>
 
 </body>
 </html>

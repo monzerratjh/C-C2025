@@ -1,4 +1,4 @@
-
+/*
 function cargarEditarRecurso(idRecurso, nombreRecurso, tipoRecurso, disponibilidadRecurso, estadoRecurso, historialRecurso) {
     document.getElementById('accion_recurso').value = 'editar';
     document.getElementById('id_recurso').value = idRecurso;
@@ -101,3 +101,4 @@ document.addEventListener('click', function(evento) {
 if (window.history.replaceState) {
     window.history.replaceState(null, null, window.location.pathname);
 }
+*/

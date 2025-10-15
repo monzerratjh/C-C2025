@@ -38,6 +38,24 @@ i18next.init({
         day: "Día:",
         hoursMissing: "Cantidad de horas que falta:",
         //
+        studentPanelTitle: "Panel Estudiante",
+        goBack: "Volver",
+        student: "Estudiante",
+        adscripto: "Adscripto",
+        teacher: "Docente",
+        secretary: "Secretario",
+        enterGroup: "Ingresa tu grupo correspondiente",
+        enterGroupPlaceholder: "Ingrese su grupo",
+        //
+        hour: "Hora",
+        subject: "Materia",
+        room: "Espacio",
+        // 
+        monday: "Lunes",
+        tuesday: "Martes",
+        wednesday: "Miércoles",
+        thursday: "Jueves",
+        friday: "Viernes"
       }
     },
     en: {
@@ -75,6 +93,24 @@ i18next.init({
         groupMissing: "Group Missed:",
         day: "Date:",
         hoursMissing: "Hours Absent:",
+        studentPanelTitle: "Student Panel",
+        goBack: "Go Back",
+        student: "Student",
+        adscripto: "Advisor",
+        teacher: "Teacher",
+        secretary: "Secretary",
+        enterGroup: "Enter your assigned group",
+        enterGroupPlaceholder: "Enter your group",
+        //
+         hour: "Hour",
+        subject: "Subject",
+        room: "Room",
+        // 
+        monday: "Monday",
+        tuesday: "Tuesday",
+        wednesday: "Wednesday",
+        thursday: "Thursday",
+        friday: "Friday"
       }
     }
   }
