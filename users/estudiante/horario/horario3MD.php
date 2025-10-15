@@ -34,14 +34,16 @@ include ('./../../../conexion.php');
     </div>
     <div class="offcanvas-body d-flex flex-column">
       <div class="banner-parte-superior">
-        <a href="../estudiante.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
-        <i class="bi bi-translate traductor-menu"></i>
+        <a href="../estudiante.php" class="mb-3">
+          <i class="bi bi-arrow-left-circle-fill me-2"></i>
+          <span data-i18n="goBack">Volver</span>
+        </a><i class="bi bi-translate traductor-menu"></i>
       </div>
-      <a href="./../../estudiante/estudiante.php" class="fw-semibold seleccionado mb-2">Estudiantes</a>
-      <a href="./../../adscripto/adscripto-log.php" class="nav-opciones mb-2">Adscriptos</a>
-      <a href="./../../docente/docente-log.php" class="nav-opciones mb-2">Docente</a>
-      <a href="./../../../secretario/secretario-log.php" class="nav-opciones mb-2">Secretaría</a>
-    </div>
+      <a href="./../../estudiante/estudiante.php" class="fw-semibold seleccionado mb-2" data-i18n="student">Estudiantes</a>
+      <a href="./../../adscripto/adscripto-log.php" class="nav-opciones mb-2" data-i18n="adscripto">Adscriptos</a>
+      <a href="./../../docente/docente-log.php" class="nav-opciones mb-2" data-i18n="teacher">Docente</a>
+      <a href="./../../../secretario/secretario-log.php" class="nav-opciones mb-2" data-i18n="secretary">Secretaría</a>
+   </div>
   </div>
 
   <!-- Contenedor principal usando Grid -->
@@ -52,15 +54,15 @@ include ('./../../../conexion.php');
       <div class="volverGeneral">
         <div class="volver">
           <a href="../estudiante.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-          <a href="../estudiante.php">Volver</a>
+          <a href="../estudiante.php" data-i18n="goBack">Volver</a>
         </div>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
 
-      <a href="./../../estudiante/estudiante.php" class="fw-semibold seleccionado">Estudiante</a>
-      <a href="./../../adscripto/adscripto-log.php" class="nav-opciones">Adscripto</a>
-      <a href="./../../docente/docente-log.php" class="nav-opciones">Docente</a>
-      <a href="./../../secretario/secretario-log.php" class="nav-opciones">Secretario</a>
+      <a href="./../../estudiante/estudiante.php" class="fw-semibold seleccionado" data-i18n="student">Estudiante</a>
+      <a href="./../../adscripto/adscripto-log.php" class="nav-opciones" data-i18n="adscripto">Adscripto</a>
+      <a href="./../../docente/docente-log.php" class="nav-opciones" data-i18n="teacher">Docente</a>
+      <a href="./../../secretario/secretario-log.php" class="nav-opciones" data-i18n="secretary">Secretario</a>
     </aside>
 
     <!-- Contenido principal -->
