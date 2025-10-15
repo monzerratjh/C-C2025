@@ -73,7 +73,7 @@ include ('./../../../conexion.php');
 
           <!-- DÍAS DE LA SEMANA -->
           <div class="dia">
-            <button class="boton-opciones lunes">Lunes</button>
+            <button class="boton-opciones lunes colorletrablanco">Lunes</button>
             <div class="contenido-dia">
               <table class="tabla-horario">
                 <tr><th>Hora</th><th>Materia</th><th>Espacio</th></tr>
@@ -92,7 +92,7 @@ include ('./../../../conexion.php');
           </div>
 
           <div class="dia">
-            <button class="boton-opciones martes">Martes</button>
+            <button class="boton-opciones martes colorletrablanco">Martes</button>
             <div class="contenido-dia">
               <table class="tabla-horario">
                 <tr><th>Hora</th><th>Materia</th><th>Espacio</th></tr>
@@ -109,7 +109,7 @@ include ('./../../../conexion.php');
           </div>
 
           <div class="dia">
-            <button class="boton-opciones miercoles">Miércoles</button>
+            <button class="boton-opciones miercoles colorletrablanco">Miércoles</button>
             <div class="contenido-dia">
               <table class="tabla-horario">
                 <tr><th>Hora</th><th>Materia</th><th>Espacio</th></tr>
@@ -128,7 +128,7 @@ include ('./../../../conexion.php');
           </div>
 
           <div class="dia">
-            <button class="boton-opciones jueves">Jueves</button>
+            <button class="boton-opciones jueves colorletrablanco">Jueves</button>
             <div class="contenido-dia">
               <table class="tabla-horario">
                 <tr><th>Hora</th><th>Materia</th><th>Espacio</th></tr>
@@ -146,7 +146,7 @@ include ('./../../../conexion.php');
           </div>
 
           <div class="dia">
-            <button class="boton-opciones viernes">Viernes</button>
+            <button class="boton-opciones viernes colorletrablanco">Viernes</button>
             <div class="contenido-dia">
               <table class="tabla-horario">
                 <tr><th>Hora</th><th>Materia</th><th>Espacio</th></tr>

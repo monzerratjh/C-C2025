@@ -330,6 +330,10 @@ a{
   background-color: #f3d9ef; 
 }
 
+.colorletrablanco{
+  color: white;
+}
+
 .boton-opciones::after {
   content: "▼";
   position: absolute;
