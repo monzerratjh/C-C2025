@@ -69,8 +69,8 @@ include('../../conexion.php');
     <main class="principal">
       <img src="./../../img/logo.png" alt="Logo" class="logo">
       
-      <div class="bloque-agregar">
-        <button class="etiqueta2" data-bs-toggle="modal" data-bs-target="#modalFalta">Avisar Falta</button>
+      <div class="bloque-aviso">
+        <button class="etiqueta" data-bs-toggle="modal" data-bs-target="#modalFalta">Avisar Falta</button>
       </div>
 
       <!-- Modal para enviar aviso de falta -->

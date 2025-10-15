@@ -97,7 +97,7 @@ $message = "";
         <h1 > Usuarios</h1>
 
 
-        <table class="tabla-horarios-secretario">
+        <table class="tabla-secretario">
           <thead>
             <tr>
               <th>Nombre</th>

@@ -352,7 +352,6 @@ a{
 .contenido-dia {
   display: none;
   background-color: white;
-  border-top: 1px solid #cccccc;
   border-radius: 0 0 12px 12px;
 }
 
@@ -571,7 +570,7 @@ background-color: var(--color-adscripto);
   color: #0a4f79;
 }
 
-.tabla-horarios-secretario{
+.tabla-secretario{
   width: 100%;
   max-width: 800px;
   border-collapse: collapse;
@@ -579,10 +578,10 @@ background-color: var(--color-adscripto);
   border-radius: 8px;
   overflow: hidden;
 }
-.tabla-horarios-secretario th{
+.tabla-secretario th{
 background-color: var(--color-secretaria);
 }
-.tabla-horarios-secretario tbody tr:nth-child(even) { /*Las celdas pares cambian d color*/
+.tabla-secretario tbody tr:nth-child(even) { /*Las celdas pares cambian d color*/
   background-color: #f9eaf8;
 }
 
@@ -618,7 +617,7 @@ table tr:nth-child(even) {
 /*BLOQUE PARA AGREGAR COSAS*/
 
   /* Bloque Agregar */
-  .bloque-agregar {
+  .bloque-aviso {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -626,7 +625,7 @@ table tr:nth-child(even) {
     justify-content: center;
   }
 
-  .bloque-agregar .etiqueta2 {
+  .bloque-aviso .etiqueta {
     background: #f2c086;
     color: #000;
     border: none;
@@ -637,38 +636,6 @@ table tr:nth-child(even) {
     font-family: 'Poppins', sans-serif;
     box-shadow: 0 3px 6px rgba(0,0,0,0.1);
     transition: all 0.3s;
-  }
-
-  .bloque-agregar .etiqueta {
-    background: #e69ac6;
-    color: #000;
-    border: none;
-    padding: 12px 40px;
-    border-radius: 50px;
-    font-size: 18px;
-    font-weight: 600;
-    font-family: 'Poppins', sans-serif;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-    transition: all 0.3s;
-  }
-
-  .bloque-agregar .agregar {
-    width: 44px;
-    height: 44px;
-    border: 2px solid #e69ac6;
-    color: #e69ac6;
-    font-size: 22px;
-    font-weight: bold;
-    border-radius: 10px;
-    background: transparent;
-    cursor: pointer;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.05);
-    transition: all 0.3s;
-  }
-
-  .bloque-agregar .agregar:hover {
-    background: #e69ac6;
-    color: #fff;
   }
   
   /* Tablets: entre 769px y 1024px */
