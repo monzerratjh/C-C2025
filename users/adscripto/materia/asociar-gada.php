@@ -8,6 +8,20 @@ $query_doc = mysqli_query($conn, "SELECT docente.id_docente, usuario.nombre_usua
                                   INNER JOIN usuario ON docente.id_usuario = usuario.id_usuario");
 $query_esp = mysqli_query($conn, "SELECT * FROM espacio");
 $query_grupo = mysqli_query($conn, "SELECT * FROM grupo");
+
+$query_gada = mysqli_query($conn, '                      
+SELECT
+	gada.*,
+    asignatura.nombre_asignatura,
+    grupo.nombre_grupo,
+    CONCAT(usuario.nombre_usuario, " ", usuario.apellido_usuario) as nombre_completo_docente,
+    espacio.nombre_espacio
+FROM grupo_asignatura_docente_aula as gada, asignatura, grupo, docente, usuario, espacio
+WHERE gada.id_asignatura = asignatura.id_asignatura
+AND gada.id_grupo = grupo.id_grupo
+AND gada.id_docente = docente.id_docente
+AND gada.id_espacio = espacio.id_espacio
+AND docente.id_usuario = usuario.id_usuario');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -145,28 +159,36 @@ $query_grupo = mysqli_query($conn, "SELECT * FROM grupo");
 
         <table class="table">
             <br> <br>
-           <h2>Materias cargadas</h2>
+           <h2>Asignaciones</h2> <br>
             <thead>
                 <tr>
-                    <th scope="col">#ID</th>
                     <th scope="col">Nombre Materia</th>
                     <th scope="col">Profesor</th>
-                    <th scope="col">Aula</th>
+                    <th scope="col">Espacio</th>
+                    <th scope="col">Grupo</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Snoopy</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+                <?php while($row = mysqli_fetch_array($query_gada)): ?>
+                  <tr>
+                      <td><?= $row['nombre_asignatura'] ?></td>
+                      
+                      <td><?= $row['nombre_completo_docente'] ?></td>
+
+                      <td><?= $row['nombre_espacio'] ?></td>
+                      
+                      <td><?= $row['nombre_grupo'] ?></td>
+
+                      <td>
+                        <a data-bs-toggle="modal" data-bs-target="#update_modal<?= $row['id_asignatura'] ?>"><i class="bi bi-pencil"></i></a>
+                      </td>
+                      <td>
+                        <a href="./delete_materia.php?id_asignatura=<?= $row['id_asignatura'] ?>"><i class="bi bi-trash"></i></a>
+                      </td>
+                  </tr>
+                  <?php endwhile; ?>
             </tbody>
         </table>
       </div>

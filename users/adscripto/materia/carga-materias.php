@@ -92,8 +92,7 @@ $query = mysqli_query($conn, $sql);
       <table class="table">
         <thead>
             <tr>
-                <th scope="col">#ID</th>
-                <th scope="col">Nombre Materia</th>
+                <th scope="col">Nombre Materia Cargadas</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -101,7 +100,6 @@ $query = mysqli_query($conn, $sql);
         <tbody>
              <?php while($row = mysqli_fetch_array($query)): ?>
             <tr>
-                <th scope="row"><?= $row['id_asignatura'] ?></th>
                 <td><?= $row['nombre_asignatura'] ?></td>
                 <td>
                   <a data-bs-toggle="modal" data-bs-target="#update_modal<?= $row['id_asignatura'] ?>"><i class="bi bi-pencil"></i></a>
