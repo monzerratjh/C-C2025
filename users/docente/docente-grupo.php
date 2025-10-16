@@ -22,9 +22,9 @@ include('../../conexion.php');
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="../../../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="./../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="../../../img/logo.png" alt="logoResponsive">
+      <img class="logoResponsive" src="./../../img/logo.png" alt="logoResponsive">
     </div>
   </nav>
 
@@ -35,7 +35,7 @@ include('../../conexion.php');
     </div>
     <div class="offcanvas-body d-flex flex-column">
       <div class="banner-parte-superior">
-        <a href="../adscripto-bienvenida.php" class="mb-3">
+        <a href="./docente-bienvenida.php" class="mb-3">
           <i class="bi bi-arrow-left-circle-fill me-2"></i>
           <span data-i18n="goBack">Volver</span>
         </a>
@@ -54,8 +54,8 @@ include('../../conexion.php');
     <aside class="barra-lateral">
       <div class="volverGeneral">
         <div class="volver">
-          <a href="docente-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-          <a href="docente-bienvenida.php">Volver</a>
+          <a href="./docente-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+          <a href="./docente-bienvenida.php">Volver</a>
         </div>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
