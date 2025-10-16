@@ -1,17 +1,13 @@
 <?php 
 include('../../../conexion.php');
 $conn = conectar_bd();
-$sql_asig = "SELECT * FROM asignatura";
-$query_asig = mysqli_query($conn, $sql_asig); //mysqli_query FUNCIÓN de php para EJECUTAR SQL
-/*Esta variable llamada query lo que hace es contener info. de la conexión (si está conectada o no a la BD) y a la CONSULTA que se necesita hacerl.*/
-
-$sql_doc = "SELECT * FROM docente";
-$query_doc = mysqli_query($conn, $sql_doc);
-
-$sql_espacio = "SELECT * FROM espacio";
-$query_espacio = mysqli_query($conn, $sql_espacio);
-$sql_user = "SELECT * FROM usuario";
-$query_user = mysqli_query($conn, $sql_user);
+// Consultas para llenar selects
+$query_asig = mysqli_query($conn, "SELECT * FROM asignatura");
+$query_doc = mysqli_query($conn, "SELECT d.id_docente, u.nombre_usuario, u.apellido_usuario
+                                  FROM docente d
+                                  INNER JOIN usuario u ON d.id_usuario = u.id_usuario");
+$query_esp = mysqli_query($conn, "SELECT * FROM espacio");
+$query_grupo = mysqli_query($conn, "SELECT * FROM grupo");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -85,16 +81,13 @@ $query_user = mysqli_query($conn, $sql_user);
 <!-- Contenido principal -->
       <div class="col-md-9 col-12 principal">
         <img src="../../../img/logo.png" alt="Logo" class="logo"> 
-        <h2>Asignar aula y docente a materia.</h2>
+        <h2>Asignar aula, docente y materia a grupo.</h2>
         <p>Ingrese los datos.</p>
 
         <div class="busqueda">
             
-            <form action="./cargar-materias-ada.php" method="POST">
+          <form action="./carga-materias-gada.php" method="POST">
             <div class="form-group">
-                <?php
-                        while ($row = mysqli_fetch_array($query)) 
-                    ?>
                 <select class="form-control" id="cargar-materia" name="cargar-materia" aria-describedby="" required>
                     <option value="">Seleccionar materia</option>
                 
@@ -107,32 +100,46 @@ $query_user = mysqli_query($conn, $sql_user);
 
                 </select>
                 <br>
-                <select class="form-control" id="asociar-docente-materia" name="asociar-docente-materia" required>
+                <!-- Selección de docente -->
+                <select class="form-control" name="id_docente" required>
                     <option value="">Seleccionar docente</option>
                     <?php
-                        $doc = mysqli_query($conn, "
+                      $doc = mysqli_query($conn, "
                         SELECT d.id_docente, u.nombre_usuario, u.apellido_usuario
                         FROM docente d
                         INNER JOIN usuario u ON d.id_usuario = u.id_usuario
-                        ");
+                      ");
                         while ($d = mysqli_fetch_assoc($doc)) {
-                            echo "<option value='{$d['id_docente']}'>{$d['nombre_usuario']} {$d['apellido_usuario']}</option>";
+                          echo "<option value='{$d['id_docente']}'>{$d['nombre_usuario']} {$d['apellido_usuario']}</option>";
                         }
+                      ?>
+                </select>
+                <br>
+
+                <!-- Selección de espacio -->
+                <select class="form-control" name="id_espacio" required>
+                    <option value="">Seleccionar espacio</option>
+                    <?php
+                    $esp = mysqli_query($conn, "SELECT * FROM espacio");
+                    while ($e = mysqli_fetch_assoc($esp)) {
+                        echo "<option value='{$e['id_espacio']}'>{$e['nombre_espacio']}</option>";
+                    }
                     ?>
                 </select>
                 <br>
-                <select class="form-control" id="asociar-espacio-materia" name="asociar-espacio-materia" aria-describedby="" required>
-                    <option value="">Seleccionar espacio</option>
+                <!-- Selección de grupo -->
+                <select class="form-control" name="id_grupo" required>
+                  <option value="">Seleccionar grupo</option>
                     <?php
-                        $esp = mysqli_query($conn, "SELECT * FROM espacio");
-                        while ($e = mysqli_fetch_assoc($esp)) {
-                            echo "<option value='{$e['id_espacio']}'>{$e['nombre_espacio']}</option>";
-                        }
+                      $grupos = mysqli_query($conn, "SELECT * FROM grupo");
+                      while ($g = mysqli_fetch_assoc($grupos)) {
+                      echo "<option value='{$g['id_grupo']}'>{$g['nombre_grupo']}</option>";
+                      }
                     ?>
                 </select>
-                <small id="smallLetters" class="form-text text-muted">Asegúrese de que quede bien escrito.</small>
-            </div>
-            <button type="submit" class="btn btn-primary">Cargar</button>
+                <br>
+
+                <button type="submit" class="btn btn-primary">Asignar</button>
             </form>
         </div>
 

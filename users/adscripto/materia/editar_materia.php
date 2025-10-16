@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_asignatura'], $_PO
 
     if ($stmt->execute()) {
         // Redirigimos al listado de materias
-        header("Location: ./cargar-materias.php");
+        header("Location: ./carga-materias.php");
         exit;
     } else {
         echo "Error al actualizar la asignatura: " . $stmt->error;

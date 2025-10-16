@@ -78,7 +78,7 @@ $query = mysqli_query($conn, $sql);
       <h2>Cargar materias</h2>
       <p>Ingrese la materia.</p>
       <div class="busqueda">
-        <form action="./cargar-materias-ada.php" method="POST">
+        <form action="./cargar-materias-accion.php" method="POST">
           <div class="form-group">
               <input type="text" class="form-control" id="insertar-materia" name="insertar-materia" placeholder="Ej: Programación Full-Stack" required>
               <small class="form-text text-muted">Asegúrese de que quede bien escrito.</small>
@@ -107,7 +107,7 @@ $query = mysqli_query($conn, $sql);
                   <a data-bs-toggle="modal" data-bs-target="#update_modal<?= $row['id_asignatura'] ?>"><i class="bi bi-pencil"></i></a>
                 </td>
                 <td>
-                  <a href="delete_materia.php?id_asignatura=<?= $row['id_asignatura'] ?>"><i class="bi bi-trash"></i></a>
+                  <a href="./delete_materia.php?id_asignatura=<?= $row['id_asignatura'] ?>"><i class="bi bi-trash"></i></a>
                 </td>
             </tr>
 
