@@ -126,18 +126,15 @@ $query = mysqli_query($conn, $sql);
                         <button type="submit" class="btn btn-primary">Cargar cambios</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     </div>
+                  </form>
                 <?php endwhile; ?>
-            </tbody>
+                </div>
+             </div>  
+            </div>
+          </tbody>
         </table>
       </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-        </tbody>
-      </table>
     </main>
-
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

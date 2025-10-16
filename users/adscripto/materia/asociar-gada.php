@@ -188,8 +188,41 @@ AND docente.id_usuario = usuario.id_usuario');
                         <a href="./delete_materia.php?id_asignatura=<?= $row['id_asignatura'] ?>"><i class="bi bi-trash"></i></a>
                       </td>
                   </tr>
+                   <!-- Modal para actualizar -->
+            <div class="modal fade" id="update_modal<?= $row['id_asignatura'] ?>" tabindex="-1">  
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title">Edición de Materia</h5>
+                  </div>
+                  <form method="POST" action="./editar_materia.php" id="editarMateria">
+                    <div class="modal-body">
+                        <input type="hidden" name="id_asignatura" value="<?= $row['id_asignatura'] ?>">
+                        <div class="form-group">
+                            <select class="form-control" name="id_docente" required>
+                    <option value="">Seleccionar docente</option>
+                    <?php
+                      $doc = mysqli_query($conn, "
+                        SELECT docente.id_docente, usuario.nombre_usuario, usuario.apellido_usuario
+                        FROM docente 
+                        INNER JOIN usuario ON docente.id_usuario = usuario.id_usuario
+                      ");
+                        while ($d = mysqli_fetch_assoc($doc)) {
+                          echo "<option value='{$d['id_docente']}'>{$d['nombre_usuario']} {$d['apellido_usuario']}</option>";
+                        }
+                      ?>
+                </select>
+                <br>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Cargar cambios</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                  </form>
                   <?php endwhile; ?>
-            </tbody>
+                </div>
+             </div>  
+            </div>
+          </tbody>
         </table>
       </div>
 
