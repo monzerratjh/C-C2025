@@ -325,22 +325,21 @@ a{
   position: relative;
   border-radius: 12px;
   margin-bottom: 10px;
- 
+  transition: all 0.3s ease;
 }
 
-.boton-opciones2{
-  display: flex;               
-  justify-content: center;                
-  margin: 0;
-  border: none;                 
-  cursor: pointer;
+.boton-opciones2 {
   width: 100%;
-  padding: 10px;
+  padding: 15px;
+  border: none;
   color: #333;
   font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
   border-radius: 12px;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
 }
 
 .colorfondorosa {
@@ -683,6 +682,10 @@ table tr:nth-child(even) {
     .boton-opciones {
       width: 80%;
     }
+
+    .boton-opciones2 {
+    width: 80%;
+  }
   }
 
 
@@ -717,6 +720,10 @@ table tr:nth-child(even) {
    .boton-opciones {
       width: 60%;
     }
+
+  .boton-opciones2 {
+    width: 60%;
+  }
 }
 @media (max-width: 879px) {
   .opciones {
@@ -734,18 +741,9 @@ table tr:nth-child(even) {
     display: none;
   }
 
-  .boton-opciones2{
-    margin: 0.5rem;
-  }
-
   /* Ajustes de títulos y botones */
   .titulo-horario {
     font-size: 20px;
-  }
-
-  .boton-opciones {
-    font-size: 16px;
-    padding: 12px;
   }
 
   .tabla-reserva th,
@@ -794,21 +792,26 @@ table tr:nth-child(even) {
     justify-content: space-between;
   }
 
-  .acordion {
+.acordion-total {
     display: flex;
-    flex-direction: column;
-    width: 90%;
-    max-width: 600px;
-  }
-
-  .acordion-total {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    justify-content: center; /* centra el acordeón horizontalmente */
     width: 100%;
-    margin-top: 0;
-  }
+    margin-top: 5rem;
+}
+
+.acordion {
+    display: flex;
+    flex-direction: column;
+    width: 90%;    
+    max-width: 600px; 
+}
+
+.boton-opciones,
+.boton-opciones2 {
+    width: 100%;       /* ocupa todo el ancho del acordeón */
+    text-align: center; /* mantiene el texto centrado */
+    border-radius: 12px;
+}
 
 .seccion-form{
   padding: 10% 0;
@@ -849,6 +852,10 @@ table tr:nth-child(even) {
     font-size: 18px;
   }
   .boton-opciones {
+    font-size: 14px;
+    padding: 10px;
+  }
+    .boton-opciones2 {
     font-size: 14px;
     padding: 10px;
   }

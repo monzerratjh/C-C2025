@@ -155,8 +155,8 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
 
       <a href="../usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
       <a href="../horario/horario-secretario.php" class="nav-opciones">Horarios</a>
-      <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
-      <a href="./../recurso/secretario-recurso.php" class="fw-semibold seleccionado mb-2">Recursos</a>
+      <a href="../grupo/secretario-grupo.php" class="fw-semibold seleccionado mb-2">Grupos</a>
+      <a href="./../recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
    
     </aside>
 
@@ -176,7 +176,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
                       data-bs-toggle="modal"
                       data-bs-target="#modalGrupo"
                       onclick="document.getElementById('accion').value='insertar';">
-                 <h2>+</h2></button>
+                 <h4>+</h4></button>
 
 <?php while($row = $result->fetch_assoc()):?>
 <div class="dia">
@@ -187,7 +187,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
 
     
 
-<table class="tabla-secretario">
+<table class="tabla-secretario tabla-grupos-responsive">
         <thead>
           <tr>
             <th>Orientación</th>
