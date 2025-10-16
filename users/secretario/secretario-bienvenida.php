@@ -48,10 +48,10 @@ $apellido_secretario = $_SESSION['apellido_usuario'] ?? 'usuario/a';
         <i class="bi bi-translate traductor-menu"></i>
       </div>
 
-      <a href="/users/secretario/usuario/secretario-usuario.php" class="nav-opciones mb-2">Usuarios</a>
-      <a href="/users/secretario/horario/horario-secretario.php" class="nav-opciones mb-2">Horarios</a>
-      <a href="/users/secretario/grupo/secretario-grupo.php" class="nav-opciones mb-2">Grupos</a>
-      <a href="/users/secretario/recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
+      <a href="./usuario/secretario-usuario.php" class="nav-opciones mb-2">Usuarios</a>
+      <a href="./horario/horario-secretario.php" class="nav-opciones mb-2">Horarios</a>
+      <a href="./grupo/secretario-grupo.php" class="nav-opciones mb-2">Grupos</a>
+      <a href="./recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
     </div>
   </div>
 
@@ -70,10 +70,10 @@ $apellido_secretario = $_SESSION['apellido_usuario'] ?? 'usuario/a';
         <i class="bi bi-translate traductor-menu"></i>
       </div>
 
-      <a href="/users/secretario/usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
-      <a href="/users/secretario/horario/horario-secretario.php" class="nav-opciones">Horarios</a>
-      <a href="/users/secretario/grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
-      <a href="/users/secretario/recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
+      <a href="./usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
+      <a href="./horario/horario-secretario.php" class="nav-opciones">Horarios</a>
+      <a href="./grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
+      <a href="./recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
     </aside>
 
     <!-- Contenido principal -->
@@ -86,7 +86,7 @@ $apellido_secretario = $_SESSION['apellido_usuario'] ?? 'usuario/a';
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="/utils/form-log-in.js"></script> 
-  <script src="/utils/translate.js"></script>
+  <script src="./../../utils/form-log-in.js"></script> 
+  <script src="./../../utils/translate.js"></script>
 </body>
 </html>
