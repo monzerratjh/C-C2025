@@ -1,9 +1,11 @@
 <?php
 include('../../../conexion.php');
 $conn = conectar_bd();
+session_start();
 
 $sql_materia = "SELECT * FROM asignatura";
 $query = mysqli_query($conn, $sql_materia);
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['insertar-materia'])) {
     $nombre_materia = $_POST['insertar-materia'];
@@ -48,27 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
     }
 
     mysqli_stmt_close($stmt);
-}
-
-// Insertar en gada
-if ($_SERVER['REQUEST_METHOD'] === 'POST' 
-    && isset($_POST['id_asignatura'], $_POST['id_docente'], $_POST['id_espacio'], $_POST['id_grupo'])) {
-
-    $id_asignatura = $_POST['id_asignatura'];
-    $id_docente = $_POST['id_docente'];
-    $id_espacio = $_POST['id_espacio'];
-    $id_grupo = $_POST['id_grupo'];
-
-    $stmt = $conn->prepare("INSERT INTO grupo_asignatura_docente_aula (id_grupo, id_asignatura, id_docente, id_espacio) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("iiii", $id_grupo, $id_asignatura, $id_docente, $id_espacio);
-
-    if ($stmt->execute()) {
-        echo "<div class='alert alert-success'>Asignación creada correctamente.</div>";
-    } else {
-        echo "<div class='alert alert-danger'>Error: " . $stmt->error . "</div>";
-    }
-
-    $stmt->close();
 }
 
 ?>

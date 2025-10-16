@@ -3,9 +3,9 @@ include('../../../conexion.php');
 $conn = conectar_bd();
 // Consultas para llenar selects
 $query_asig = mysqli_query($conn, "SELECT * FROM asignatura");
-$query_doc = mysqli_query($conn, "SELECT d.id_docente, u.nombre_usuario, u.apellido_usuario
-                                  FROM docente d
-                                  INNER JOIN usuario u ON d.id_usuario = u.id_usuario");
+$query_doc = mysqli_query($conn, "SELECT docente.id_docente, usuario.nombre_usuario, usuario.apellido_usuario
+                                  FROM docente
+                                  INNER JOIN usuario ON docente.id_usuario = usuario.id_usuario");
 $query_esp = mysqli_query($conn, "SELECT * FROM espacio");
 $query_grupo = mysqli_query($conn, "SELECT * FROM grupo");
 ?>
@@ -86,9 +86,9 @@ $query_grupo = mysqli_query($conn, "SELECT * FROM grupo");
 
         <div class="busqueda">
             
-          <form action="./carga-materias-gada.php" method="POST">
+          <form action="./asociar-gada-accion.php" method="POST">
             <div class="form-group">
-                <select class="form-control" id="cargar-materia" name="cargar-materia" aria-describedby="" required>
+                <select class="form-control" id="cargar-materia" name="id_asignatura" aria-describedby="" required>
                     <option value="">Seleccionar materia</option>
                 
                      <?php
@@ -105,9 +105,9 @@ $query_grupo = mysqli_query($conn, "SELECT * FROM grupo");
                     <option value="">Seleccionar docente</option>
                     <?php
                       $doc = mysqli_query($conn, "
-                        SELECT d.id_docente, u.nombre_usuario, u.apellido_usuario
-                        FROM docente d
-                        INNER JOIN usuario u ON d.id_usuario = u.id_usuario
+                        SELECT docente.id_docente, usuario.nombre_usuario, usuario.apellido_usuario
+                        FROM docente 
+                        INNER JOIN usuario ON docente.id_usuario = usuario.id_usuario
                       ");
                         while ($d = mysqli_fetch_assoc($doc)) {
                           echo "<option value='{$d['id_docente']}'>{$d['nombre_usuario']} {$d['apellido_usuario']}</option>";
@@ -157,15 +157,9 @@ $query_grupo = mysqli_query($conn, "SELECT * FROM grupo");
             <tbody>
                 <tr>
                     <th scope="row">1</th>
-                    <td>Mark</td>
+                    <td>Snoopy</td>
                     <td>Otto</td>
                     <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
                 </tr>
                 <tr>
                     <th scope="row">3</th>
