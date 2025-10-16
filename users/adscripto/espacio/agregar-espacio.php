@@ -1,5 +1,26 @@
 <?php 
-//include('../../../encabezado.php');
+include('./../../../conexion.php');
+$con = conectar_bd();
+
+$id_espacio = $_GET['id_espacio'] ?? null;
+
+if (!$id_espacio) {
+  echo "<script>alert('Error: Espacio no especificado.'); window.history.back();</script>";
+  exit;
+}
+
+// Obtener los atributos existentes del espacio
+$stmt = $con->prepare("SELECT nombre_atributo, cantidad_atributo FROM espacio_atributo WHERE id_espacio = ?");
+$stmt->bind_param("i", $id_espacio);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$atributosExistentes = [];
+while ($row = $result->fetch_assoc()) {
+  $atributosExistentes[$row['nombre_atributo']] = $row['cantidad_atributo'];
+}
+
+$stmt->close();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -76,83 +97,63 @@
   <input type="text" class="espacio-input" placeholder="Nombre del salón">
 </div>
 
-  <!-- Formulario -->
-  <form class="text-center">
+<!-- Formulario -->
+          <form method="POST" action="atributo-accion.php?id_espacio=<?php echo $id_espacio; ?>" class="text-center">
+            <div class="row fw-bold mb-2">
+              <div class="col-4"></div>
+              <div class="col-4">Cuenta con:</div>
+              <div class="col-4">Cantidad:</div>
+            </div>
 
-    <div class="row fw-bold mb-2">
-      <div class="col-4"></div>
-      <div class="col-4">Cuenta con:</div>
-      <div class="col-4">Cantidad:</div>
+            <?php
+            $atributos = [
+              'Mesas',
+              'Sillas',
+              'Proyector',
+              'Televisor',
+              'Aire Acondicionado'
+            ];
+
+            foreach ($atributos as $nombre) {
+              $idInput = strtolower(str_replace(' ', '_', $nombre));
+              $cantidad = $atributosExistentes[$nombre] ?? '';
+              $checked = $cantidad ? 'checked' : '';
+              $disabled = $cantidad ? '' : 'disabled';
+
+              echo "
+              <div class='row align-items-center mb-2'>
+                <div class='col-4 text-end'>$nombre</div>
+                <div class='col-4'>
+                  <input type='checkbox' class='form-check-input toggleCantidad' data-target='cantidad_$idInput' $checked>
+                </div>
+                <div class='col-4'>
+                  <input type='number' name='$idInput' id='cantidad_$idInput' value='$cantidad' class='form-control form-control-sm bg-light border-0' $disabled>
+                </div>
+              </div>
+              ";
+            }
+            ?>
+
+            <div class="text-center mt-4">
+              <button type="submit" class="btn centrar espacio-btn">Guardar atributos</button>
+            </div>
+          </form>
+        </div>
+      </main>
     </div>
+  </div>
 
-    <!-- Fila Mesas -->
-    <div class="row align-items-center mb-2">
-      <div class="col-4 text-end">Mesas</div>
-      <div class="col-4"><input type="checkbox" class="form-check-input"></div>
-      <div class="col-4"><input type="number" class="form-control form-control-sm bg-light border-0"></div>
-    </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Fila Sillas -->
-    <div class="row align-items-center mb-2">
-      <div class="col-4 text-end">Sillas</div>
-      <div class="col-4"><input type="checkbox" class="form-check-input"></div>
-      <div class="col-4"><input type="number" class="form-control form-control-sm bg-light border-0"></div>
-    </div>
-
-    <!-- Fila Proyector -->
-    <div class="row align-items-center mb-2">
-      <div class="col-4 text-end">Proyector</div>
-      <div class="col-4"><input type="checkbox" class="form-check-input"></div>
-      <div class="col-4"><input type="number" class="form-control form-control-sm bg-light border-0"></div>
-    </div>
-
-    <!-- Fila Tele -->
-    <div class="row align-items-center mb-2">
-      <div class="col-4 text-end">Tele</div>
-      <div class="col-4"><input type="checkbox" class="form-check-input"></div>
-      <div class="col-4"><input type="number" class="form-control form-control-sm bg-light border-0"></div>
-    </div>
-
-    <!-- Fila Aire -->
-    <div class="row align-items-center mb-4">
-      <div class="col-4 text-end">Aire</div>
-      <div class="col-4"><input type="checkbox" class="form-check-input"></div>
-      <div class="col-4"><input type="number" class="form-control form-control-sm bg-light border-0"></div>
-    </div>
-
-    <!-- Botón -->
-    <div class="text-center">
-      <button type="submit" class="btn centrar espacio-btn">Agregar Salón</button>
-    </div>
-  </form>
-</div>
-
-</main>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Script: habilitar/deshabilitar inputs -->
+  <script>
+  document.querySelectorAll('.toggleCantidad').forEach(chk => {
+    chk.addEventListener('change', function() {
+      const target = document.getElementById(this.dataset.target);
+      target.disabled = !this.checked;
+      if (!this.checked) target.value = '';
+    });
+  });
+  </script>
 </body>
 </html>
-
-<!--
-
-<?php
-// include('../../../encabezado.php');
-include('../../../conexion.php');
-$con = conectar_bd();
-session_start();
-
-// Obtener todos los espacios 
-$sqlConsultaEspacios = "
-    SELECT espacio.id_espacio,
-           espacio.nombre_espacio,
-           espacio.capacidad_espacio,
-           espacio.historial_espacio,
-           espacio.disponibilidad_espacio
-    FROM espacio
-    ORDER BY espacio.nombre_espacio ASC
-";
-$resultadoEspacios = $con->query($sqlConsultaEspacios);
-
-$con->close();
-?>
-
--->

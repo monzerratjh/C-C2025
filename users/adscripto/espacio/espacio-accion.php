@@ -61,7 +61,11 @@ try {
         $stmt->bind_param("sisss", $nombre, $capacidad, $historial, $tipoValido, $disponibilidad);
         if (!$stmt->execute()) throw new Exception($stmt->error);
 
-        echo json_encode(["type" => "success", "message" => "Espacio agregado correctamente."]);
+        echo json_encode([
+                "type" => "success", 
+                "message" => "Espacio agregado correctamente.",
+                "id_espacio" => $stmt->insert_id // 👈 enviamos el id
+        ]);
     }
 
     // --------------------------------------------------------

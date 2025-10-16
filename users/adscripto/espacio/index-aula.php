@@ -172,7 +172,7 @@ $con->close();
 
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="submit" class="btn btn-primary" id="btnSiguiente">Siguiente</button>
               </div>
             </form>
           </div>
@@ -188,6 +188,31 @@ $con->close();
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/espacio.js"></script>
+<script>
+document.getElementById('formularioEspacio').addEventListener('submit', function(e) {
+  e.preventDefault(); // Evita que se recargue la página
+  
+  const formData = new FormData(this);
+
+  fetch('espacio-accion.php', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.type === 'success') {
+      // Redirige al formulario de atributos, pasando el id del espacio creado
+      window.location.href = `agregar-espacio.php?id_espacio=${data.id_espacio}`;
+    } else {
+      alert(data.message || 'Error al guardar el espacio');
+    }
+  })
+  .catch(err => {
+    console.error(err);
+    alert('Error en la solicitud');
+  });
+});
+</script>
 
 </body>
 </html>
