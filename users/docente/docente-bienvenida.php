@@ -62,12 +62,12 @@ $apellido_docente = $_SESSION['apellido_usuario'] ?? 'usuario/a';
           <a href="#" class="btn-cerrar-sesion">
             <i class="bi bi-arrow-left-circle-fill icono-volver"></i>
           </a>
-          <a href="#" class="btn-cerrar-sesion">Cerrar Sesión</a>
+          <a href="#" class="btn-cerrar-sesion"data-i18n="logout">Cerrar Sesión</a>
         </div>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
 
-      <a href="docente-grupo.php" class="nav-opciones">Grupos a Cargo</a>
+      <a href="docente-grupo.php" class="nav-opciones" >Grupos a Cargo</a>
       <a href="docente-reservar.php" class="nav-opciones">Reservar Espacio</a>
       <a href="docente-falta.php" class="nav-opciones">Avisar Falta</a>
     </aside>
@@ -75,7 +75,8 @@ $apellido_docente = $_SESSION['apellido_usuario'] ?? 'usuario/a';
     <!-- Contenido principal -->
     <main class="principal">
       <img src="./../../img/logo.png" alt="Logo" class="logo"> 
-      <h1 class="bienvenida">Bienvenid@  <br> <?php echo htmlspecialchars($nombre_docente). ' ' . htmlspecialchars($apellido_docente). '!'; ?></h1>
+      <h1 class="bienvenida" data-i18n="welcome">Bienvenid@  <br></h1>
+      <h1> <?php echo htmlspecialchars($nombre_docente). ' ' . htmlspecialchars($apellido_docente). '!'; ?></h1>
     </main>
 
   </div>
@@ -84,6 +85,9 @@ $apellido_docente = $_SESSION['apellido_usuario'] ?? 'usuario/a';
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="/utils/form-log-in.js"></script> 
+
+    <!-- i18next desde CDN -->
+  <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
   <script src="/utils/translate.js"></script>
 </body>
 </html>

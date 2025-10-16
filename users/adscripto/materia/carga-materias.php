@@ -77,14 +77,6 @@ $query = mysqli_query($conn, $sql);
       <img src="../../../img/logo.png" alt="Logo" class="logo"> 
       <h2>Cargar materias</h2>
       <p>Ingrese la materia.</p>
-
-<<<<<<< Updated upstream
-<!-- Contenido principal -->
-      <div class="col-md-9 col-12 principal">
-        <img src="../../../img/logo.png" alt="Logo" class="logo"> 
-        <h2>Cargar materias</h2>
-        <p>Ingrese la materia.</p>
-=======
       <div class="busqueda">
         <form action="./cargar-materias-ada.php" method="POST">
           <div class="form-group">
@@ -94,8 +86,7 @@ $query = mysqli_query($conn, $sql);
           <button type="submit" class="btn btn-primary">Cargar</button>
         </form>
         <br>
-      </div>
->>>>>>> Stashed changes
+</div>
 
       <h2>Materias cargadas</h2>
       <table class="table">
@@ -137,19 +128,14 @@ $query = mysqli_query($conn, $sql);
                         <button type="submit" class="btn btn-primary">Cargar cambios</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     </div>
-<<<<<<< Updated upstream
                 <?php endwhile; ?>
             </tbody>
         </table>
       </div>
-=======
                   </form>
                 </div>
               </div>
             </div>
->>>>>>> Stashed changes
-
-            <?php endwhile; ?>
         </tbody>
       </table>
     </main>

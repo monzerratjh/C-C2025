@@ -55,7 +55,14 @@ i18next.init({
         tuesday: "Martes",
         wednesday: "Miércoles",
         thursday: "Jueves",
-        friday: "Viernes"
+        friday: "Viernes",
+        //
+        logout: "Cerrar Sesión",
+        teacherSpace: "Espacio", 
+        teacherReserve: "Reserva",
+        teacherAbsence: "Falta docente",
+        teacherSubjects: "Cargar materias"
+
       }
     },
     en: {
@@ -110,7 +117,9 @@ i18next.init({
         tuesday: "Tuesday",
         wednesday: "Wednesday",
         thursday: "Thursday",
-        friday: "Friday"
+        friday: "Friday",
+        //
+    logout: "Log out",
       }
     }
   }
