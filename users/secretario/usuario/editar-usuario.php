@@ -11,7 +11,7 @@ $apellido_usuario = $_POST['apellido_usuario'];
 $gmail_usuario = $_POST['gmail_usuario'];
 $telefono_usuario = $_POST['telefono_usuario'];
 $cargo_usuario = $_POST['cargo_usuario'];
-$contrasenia_usuario = $_POST['contrasenia_usuario'];
+$contrasenia_usuario = $_POST['contrasenia_usuario']; //if '' ? null : hash
 
 $hashed_password = password_hash($contrasenia_usuario, PASSWORD_BCRYPT);
 
