@@ -42,10 +42,10 @@
         <i class="bi bi-translate traductor-menu"></i>
       </div>
 
-      <a href="/users/estudiante/estudiante.php" class="nav-opciones mb-2" data-i18n="student">Estudiante</a>
-      <a href="/users/adscripto/adscripto-log.php" class="fw-semibold seleccionado mb-2" data-i18n="adscripto">Adscripto</a>
-      <a href="/users/docente/docente-log.php" class="nav-opciones mb-2" data-i18n="teacher">Docente</a>
-      <a href="/users/secretario/secretario-log.php" class="nav-opciones mb-2" data-i18n="secretary">Secretario</a>
+      <a href="./../../users/estudiante/estudiante.php" class="nav-opciones mb-2" data-i18n="student">Estudiante</a>
+      <a href="./../../users/adscripto/adscripto-log.php" class="fw-semibold seleccionado mb-2" data-i18n="adscripto">Adscripto</a>
+      <a href="./../../users/docente/docente-log.php" class="nav-opciones mb-2" data-i18n="teacher">Docente</a>
+      <a href="./../../users/secretario/secretario-log.php" class="nav-opciones mb-2" data-i18n="secretary">Secretario</a>
     </div>
   </div>
 
@@ -61,10 +61,10 @@
         <i class="bi bi-translate traductor-menu"></i>
       </div>
 
-      <a href="/users/estudiante/estudiante.php" class="nav-opciones" data-i18n="student">Estudiante</a>
-      <a href="/users/adscripto/adscripto-log.php" class="fw-semibold seleccionado" data-i18n="adscripto">Adscripto</a>
-      <a href="/users/docente/docente-log.php" class="nav-opciones" data-i18n="teacher">Docente</a>
-      <a href="/users/secretario/secretario-log.php" class="nav-opciones" data-i18n="secretary">Secretario</a>
+      <a href="./../../users/estudiante/estudiante.php" class="nav-opciones" data-i18n="student">Estudiante</a>
+      <a href="./../../users/adscripto/adscripto-log.php" class="fw-semibold seleccionado" data-i18n="adscripto">Adscripto</a>
+      <a href="./../../users/docente/docente-log.php" class="nav-opciones" data-i18n="teacher">Docente</a>
+      <a href="./../../users/secretario/secretario-log.php" class="nav-opciones" data-i18n="secretary">Secretario</a>
     </aside>
 
     <!-- Contenido principal -->
