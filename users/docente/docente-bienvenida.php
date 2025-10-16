@@ -42,7 +42,7 @@ $apellido_docente = $_SESSION['apellido_usuario'] ?? 'usuario/a';
       <div class="banner-parte-superior">
 
         <a href="#" class="btn-cerrar-sesion mb-3">
-          <i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar Sesión
+          <i class="bi bi-arrow-left-circle-fill me-2"></i><span data-i18n="logOut">Cerrar Sesión</span>
         </a>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
