@@ -104,7 +104,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- CSS propio -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="./../../../css/style.css">
 </head>
 <body>
 
@@ -113,9 +113,9 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="/img/menu.png" alt="menu">
+        <img class="menuResponsive" src="./../../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="/img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="./../../../img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -133,7 +133,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
         <a href="../usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
         <a href="../horario/horario-secretario" class="nav-opciones">Horarios</a>
         <a href="../grupo/secretario-grupo.php" class="fw-semibold seleccionado mb-2">Grupos</a>
-        <a href="/users/secretario/recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
+        <a href="./../recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
    
         </div>
   </div>
@@ -156,14 +156,14 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
       <a href="../usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
       <a href="../horario/horario-secretario.php" class="nav-opciones">Horarios</a>
       <a href="../grupo/secretario-grupo.php" class="fw-semibold seleccionado mb-2">Grupos</a>
-      <a href="/users/secretario/recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
+      <a href="./../recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
    
     </aside>
 
 
     <!-- Contenido principal-->
     <main class="principal"> 
-      <img src="/img/logo.png" alt="Logo" class="logo">
+      <img src="./../../../img/logo.png" alt="Logo" class="logo">
 
 
       <div class="acordion-total">

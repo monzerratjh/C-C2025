@@ -59,7 +59,7 @@ $con->close();
       <a href="../usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
       <a href="../horario/horario-secretario.php" class="fw-semibold seleccionado mb-2">Horarios</a>
       <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
-       <a href="/users/secretario/recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
+       <a href="./../recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
     
     </div>
   </div>
@@ -82,7 +82,7 @@ $con->close();
       <a href="../usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
       <a href="../horario/horario-secretario.php" class="fw-semibold seleccionado">Horarios</a>
       <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
-       <a href="/users/secretario/recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
+       <a href="./../recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
    
     </aside>
 
