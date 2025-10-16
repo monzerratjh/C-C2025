@@ -42,7 +42,7 @@ include ('./../../../conexion.php');
       <a href="./../../estudiante/estudiante.php" class="fw-semibold seleccionado mb-2" data-i18n="student">Estudiantes</a>
       <a href="./../../adscripto/adscripto-log.php" class="nav-opciones mb-2" data-i18n="adscripto">Adscriptos</a>
       <a href="./../../docente/docente-log.php" class="nav-opciones mb-2" data-i18n="teacher">Docente</a>
-      <a href="./../../../secretario/secretario-log.php" class="nav-opciones mb-2" data-i18n="secretary">Secretaría</a>
+      <a href="./../../secretario/secretario-log.php" class="nav-opciones mb-2" data-i18n="secretary">Secretaría</a>
    </div>
   </div>
 

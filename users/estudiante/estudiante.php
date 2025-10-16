@@ -96,7 +96,7 @@ include ('./../../conexion.php');
   <script src="js/redireccionar-grupo.js"></script>
   <!-- i18next desde CDN -->
   <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
-  <script src="/utils/translate.js"></script>
+  <script src="./../../utils/translate.js"></script>
 
 </body>
 </html>
