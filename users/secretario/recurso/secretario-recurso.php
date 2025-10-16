@@ -38,7 +38,7 @@
         <a href="../usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
         <a href="../horario/horario-secretario" class="nav-opciones">Horarios</a>
         <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
-        <a href="/users/secretario/recurso/secretario-recurso.php" class="fw-semibold seleccionado mb-2">Recursos</a>
+        <a href="./../recurso/secretario-recurso.php" class="fw-semibold seleccionado mb-2">Recursos</a>
    
         </div>
   </div>
@@ -61,7 +61,7 @@
       <a href="../usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
       <a href="../horario/horario-secretario.php" class="nav-opciones">Horarios</a>
       <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
-      <a href="/users/secretario/recurso/secretario-recurso.php" class="fw-semibold seleccionado mb-2">Recursos</a>
+      <a href="./../recurso/secretario-recurso.php" class="fw-semibold seleccionado mb-2">Recursos</a>
    
     </aside>
 

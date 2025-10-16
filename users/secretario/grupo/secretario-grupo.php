@@ -109,7 +109,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
 <body>
 
 
-  <!-- Menú hamburguesa para móviles -->
+   <!-- Menú hamburguesa para móviles -->
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
@@ -155,8 +155,8 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
 
       <a href="../usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
       <a href="../horario/horario-secretario.php" class="nav-opciones">Horarios</a>
-      <a href="../grupo/secretario-grupo.php" class="fw-semibold seleccionado mb-2">Grupos</a>
-      <a href="./../recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
+      <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
+      <a href="./../recurso/secretario-recurso.php" class="fw-semibold seleccionado mb-2">Recursos</a>
    
     </aside>
 
