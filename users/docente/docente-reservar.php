@@ -74,7 +74,7 @@ $horarios = $con->query("SELECT id_horario_clase, hora_inicio, hora_fin FROM hor
     </div>
   </div>
 
-  <!-- 🧱 Contenedor general con GRID -->
+  <!-- Contenedor general con GRID -->
   <div class="contenedor">
 
     <!-- Barra lateral -->
