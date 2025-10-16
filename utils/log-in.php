@@ -108,11 +108,11 @@ function logear($con, $cedula, $contrasenia, $rolFormulario) {
     // Redirección según rol
     $url = '';
     if ($rolReal === 'adscripto') {
-        $url = '/users/adscripto/adscripto-bienvenida.php'; 
+        $url = './../adscripto/adscripto-bienvenida.php'; 
     } elseif ($rolReal === 'docente') {
-        $url = '/users/docente/docente-bienvenida.php'; 
+        $url = './../docente/docente-bienvenida.php'; 
     } elseif ($rolReal === 'secretario') {
-        $url = './../users/secretario/secretario-bienvenida.php';
+        $url = './../secretario/secretario-bienvenida.php';
     }
 
     return ['success' => true, 'redirect' => $url];
