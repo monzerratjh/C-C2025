@@ -46,9 +46,9 @@ $message = "";
     <nav class="d-md-none">
       <div class="container-fluid">
         <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-          <img class="menuResponsive" src="/img/menu.png" alt="menu">
+          <img class="menuResponsive" src="./../../../img/menu.png" alt="menu">
         </button>
-        <img class="logoResponsive" src="/img/logo.png" alt="logoResponsive">
+        <img class="logoResponsive" src="./../../../img/logo.png" alt="logoResponsive">
       </div>
     </nav>
 
@@ -65,7 +65,7 @@ $message = "";
         <a href="secretario-usuario.php" class="fw-semibold seleccionado mb-2">Usuarios</a>
         <a href="../horario/horario-secretario.php" class="nav-opciones">Horarios</a>
         <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
-        <a href="/users/secretario/recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
+        <a href="./../recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
    
       </div>
     </div>
@@ -86,14 +86,14 @@ $message = "";
         <a href="secretario-usuario.php" class="fw-semibold seleccionado mb-2">Usuarios</a>
         <a href="../horario/horario-secretario.php" class="nav-opciones">Horarios</a>
         <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
-        <a href="/users/secretario/recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
+        <a href="./../recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
    
       </aside>
 
       <!-- Contenido principal -->
       <main class="principal">
 
-        <img src="/img/logo.png" alt="Logo" class="logo">
+        <img src="./../../../img/logo.png" alt="Logo" class="logo">
         <h2> Usuarios</h2>
         <p>Gestiona los usuarios: agregá nuevos o modificá los existentes.</p>
 
