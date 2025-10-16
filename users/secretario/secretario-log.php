@@ -79,7 +79,7 @@ include('./../../conexion.php');
           <i class="bi bi-person-circle"></i>
         </div>
           
-        <form id="form-login" class="formulario" action="/utils/log-in.php" method="POST"> 
+        <form id="form-login" class="formulario" action="./../../utils/log-in.php" method="POST"> 
           <div class="input-group mb-3">
             <span class="input-group-text"><i class="bi bi-person"></i></span>
             <input type="text" class="form-control" placeholder="Cédula de Identidad"
