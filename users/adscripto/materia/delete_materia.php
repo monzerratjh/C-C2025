@@ -13,7 +13,7 @@ $query = mysqli_query($conn, $sql);
 
 if($query){
     // Redirige de nuevo al listado
-    header("Location: cargar-materias.php");
+    header("Location: carga-materias.php");
     exit;
 } else {
     echo "Error en el SQL " . mysqli_error($conn);

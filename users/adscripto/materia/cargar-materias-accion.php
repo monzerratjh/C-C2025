@@ -14,39 +14,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['insertar-materia'])) 
         die("Error en prepare: " . mysqli_error($conn));
     } else {
 
-         if (nombreMateriaExiste($con, $nombre_materia)) {
-            echo json_encode([
-                "type" => "error",
-                "message" => "El nombre de grupo '$nombre' ya existe."
-            ]);
-            exit;
-        }
-
-        // Validar formato del nombre
-        if (!preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 \-_]+$/u', $nombre)) {
-            echo json_encode([
-                "type" => "error",
-                "message" => "El nombre del grupo solo puede contener letras, números y los símbolos '-', '_'."
-            ]);
-            exit;
-        }
-
-        // Validar orientación (independientemente a mayúsculas/tildes)
-        $orientacionValida = validarOrientacion($orientacion, $orientacionesValidas);
-        if (!$orientacionValida) {
-            echo json_encode([
-                "type" => "error",
-                "message" => "La orientación '$orientacion' no es válida. Debe coincidir con una de las opciones del sistema."
-            ]);
-            exit;
-        }
-
     mysqli_stmt_bind_param($stmt, "s", $nombre_materia);
     $success = mysqli_stmt_execute($stmt);
 
     if ($success) {
         // Redirige de nuevo al listado
-        header("Location: ./cargar-materias.php");
+        header("Location: ./carga-materias.php");
         exit;
     } else {
         echo "Error en la inserción: " . mysqli_error($conn);
@@ -75,6 +48,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
     }
 
     mysqli_stmt_close($stmt);
+}
+
+// Insertar en gada
+if ($_SERVER['REQUEST_METHOD'] === 'POST' 
+    && isset($_POST['id_asignatura'], $_POST['id_docente'], $_POST['id_espacio'], $_POST['id_grupo'])) {
+
+    $id_asignatura = $_POST['id_asignatura'];
+    $id_docente = $_POST['id_docente'];
+    $id_espacio = $_POST['id_espacio'];
+    $id_grupo = $_POST['id_grupo'];
+
+    $stmt = $conn->prepare("INSERT INTO grupo_asignatura_docente_aula (id_grupo, id_asignatura, id_docente, id_espacio) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("iiii", $id_grupo, $id_asignatura, $id_docente, $id_espacio);
+
+    if ($stmt->execute()) {
+        echo "<div class='alert alert-success'>Asignación creada correctamente.</div>";
+    } else {
+        echo "<div class='alert alert-danger'>Error: " . $stmt->error . "</div>";
+    }
+
+    $stmt->close();
 }
 
 ?>
