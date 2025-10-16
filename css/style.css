@@ -766,9 +766,10 @@ table tr:nth-child(even) {
     align-items: center;
     justify-content: flex-start;
     height: auto;
-    padding-top: 120px; /* espacio para que el logo no lo cubra */
+    padding-top: 120px;
     width: 100%;
     box-sizing: border-box;
+    align-content: center;
   }
 
   .logo {
