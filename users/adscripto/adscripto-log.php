@@ -93,7 +93,7 @@ include('../../conexion.php');
           </div>
 
           <input type="hidden" name="rol" value="adscripto">
-          <button type="submit" id="boton" name="btn-log-in">Iniciar Sesión</button>
+          <button type="submit" id="boton" name="btn-log-in" data-i18n="logIn">Iniciar Sesión</button>
         </form>
       </section>
     </main>
@@ -107,5 +107,6 @@ include('../../conexion.php');
   <!-- i18next desde CDN -->
   <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
   <script src="./../../utils/form-log-in.js"></script>
+    <script src="./../../utils/translate.js"></script>
 </body>
 </html>
