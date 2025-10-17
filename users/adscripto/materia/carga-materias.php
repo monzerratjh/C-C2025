@@ -71,14 +71,14 @@ $query = mysqli_query($conn, $sql);
       <a href="../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="../reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="../falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./carga-materias.php" class="fw-semibold seleccionado mb-2" data-i18n="addSubjects">Cargar Materias</a>
+      <a href="./carga-materias.php" class="fw-semibold seleccionado mb-2" data-i18n="addSubjects">Cargar Asignatura</a>
     </aside>
 
     <!-- Contenido principal -->
     <main class="principal">
       <img src="../../../img/logo.png" alt="Logo" class="logo"> 
-      <h2>Cargar materias</h2>
-      <p>Ingrese la materia.</p>
+      <h2>Cargar Asignatura</h2>
+      <p>Ingrese la asignatura.</p>
       <div class="busqueda">
         <form action="./cargar-materias-accion.php" method="POST">
           <div class="form-group">
@@ -90,11 +90,11 @@ $query = mysqli_query($conn, $sql);
         <br>
 </div>
 
-      <h2>Materias cargadas</h2>
-      <table class="table">
+      <h2>Asignaturas cargadas</h2>
+      <table class="tabla-reserva">
         <thead>
             <tr>
-                <th scope="col">Nombre Materia Cargadas</th>
+                <th scope="col">Nombre Asignaturas Cargadas</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -104,7 +104,7 @@ $query = mysqli_query($conn, $sql);
             <tr>
                 <td><?= $row['nombre_asignatura'] ?></td>
                 <td>
-                  <a data-bs-toggle="modal" data-bs-target="#update_modal<?= $row['id_asignatura'] ?>"><i class="bi bi-pencil"></i></a>
+                  <a data-bs-toggle="modal" data-bs-target="#update_modal<?= $row['id_asignatura'] ?>"><i class="bi bi-pencil-square"></i></a>
                 </td>
                 <td>
                   <a href="./delete_materia.php?id_asignatura=<?= $row['id_asignatura'] ?>"><i class="bi bi-trash"></i></a>
@@ -116,7 +116,7 @@ $query = mysqli_query($conn, $sql);
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                      <h5 class="modal-title">Edición de Materia</h5>
+                      <h5 class="modal-title">Edición de Asignatura</h5>
                   </div>
                   <form method="POST" action="./editar_materia.php" id="editarMateria">
                     <div class="modal-body">

@@ -553,7 +553,9 @@ a{
 .centrar{
     margin-left: 100px;
 }
-
+.bi-pencil-square{
+cursor: pointer;
+}
 
 /*SOLICITUD DE RESERVA*/
 /* La tabla centrada */
