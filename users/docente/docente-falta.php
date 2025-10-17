@@ -34,14 +34,15 @@ include('../../conexion.php');
     </div>
     <div class="offcanvas-body d-flex flex-column">
       <div class="banner-parte-superior">
-        <a href="docente-bienvenida.php" class="mb-3">
-          <i class="bi bi-arrow-left-circle-fill me-2"></i>Volver
+         <a href="./docente-bienvenida.php" class="mb-3">
+          <i class="bi bi-arrow-left-circle-fill me-2"></i>
+          <span data-i18n="goBack">Volver</span>
         </a>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
-      <a href="docente-grupo.php" class="nav-opciones mb-2">Grupos a Cargo</a>
-      <a href="docente-reservar.php" class="nav-opciones mb-2">Reservar Espacio</a>
-      <a href="docente-falta.php" class="fw-semibold seleccionado mb-2">Avisar Falta</a>
+      <a href="docente-grupo.php" class="nav-opciones mb-2" data-i18n="assignedGroups">Grupos a Cargo</a>
+      <a href="docente-reservar.php" class="nav-opciones mb-2"  data-i18n="reserveFacility" >Reservar Espacio</a>
+      <a href="docente-falta.php" class="fw-semibold seleccionado mb-2" data-i18n="reportAbsence">Avisar Falta</a>
     </div>
   </div>
 
@@ -51,18 +52,16 @@ include('../../conexion.php');
     <!-- Barra lateral -->
     <aside class="barra-lateral">
       <div class="volverGeneral">
-        <div class="volver">
-          <a href="docente-bienvenida.php">
-            <i class="bi bi-arrow-left-circle-fill icono-volver"></i>
-          </a>
-          <a href="docente-bienvenida.php">Volver</a>
+       <div class="volver">
+          <a href="./docente-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+          <a href="./docente-bienvenida.php" data-i18n="goBack">Volver</a>
         </div>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
 
-      <a href="docente-grupo.php" class="nav-opciones mb-2">Grupos a Cargo</a>
-      <a href="docente-reservar.php" class="nav-opciones mb-2">Reservar Espacio</a>
-      <a href="docente-falta.php" class="fw-semibold seleccionado">Avisar Falta</a>
+      <a href="docente-grupo.php" class="nav-opciones mb-2" data-i18n="assignedGroups">Grupos a Cargo</a>
+      <a href="docente-reservar.php" class="nav-opciones mb-2" data-i18n="reserveFacility" >Reservar Espacio</a>
+      <a href="docente-falta.php" class="fw-semibold seleccionado" data-i18n="reportAbsence">Avisar Falta</a>
     </aside>
     
     <!-- Contenido principal -->
@@ -70,8 +69,8 @@ include('../../conexion.php');
       <img src="./../../../img/logo.png" alt="Logo" class="logo">
 
   <div class="loader"></div>
-  <h1>Estamos en mantenimiento</h1>
-  <p>Volveremos pronto con algo mejor ✨</p>
+  <h1 data-i18n="underMaintenance" >Estamos en mantenimiento</h1>
+  <p data-i18n="backSoon" >Volveremos pronto con algo mejor ✨</p>
 
       </main>
 
@@ -80,5 +79,10 @@ include('../../conexion.php');
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+  <script src="./../../utils/translate.js"></script>
+
 </body>
 </html>

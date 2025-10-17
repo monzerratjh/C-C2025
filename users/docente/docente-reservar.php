@@ -63,14 +63,15 @@ $horarios = $con->query("SELECT id_horario_clase, hora_inicio, hora_fin FROM hor
     </div>
     <div class="offcanvas-body d-flex flex-column">
       <div class="banner-parte-superior">
-        <a href="docente-bienvenida.php" class="mb-3">
-          <i class="bi bi-arrow-left-circle-fill me-2"></i>Volver
+        <a href="./docente-bienvenida.php" class="mb-3">
+          <i class="bi bi-arrow-left-circle-fill me-2"></i>
+          <span data-i18n="goBack">Volver</span>
         </a>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
-      <a href="docente-grupo.php" class="nav-opciones mb-2">Grupos a Cargo</a>
-      <a href="docente-reservar.php" class="fw-semibold seleccionado">Reservar Espacio</a>
-      <a href="docente-falta.php" class="nav-opciones mb-2">Avisar Falta</a>
+      <a href="docente-grupo.php" class="nav-opciones mb-2" data-i18n="assignedGroups">Grupos a Cargo</a>
+      <a href="docente-reservar.php" class="fw-semibold seleccionado" data-i18n="reserveFacility">Reservar Espacio</a>
+      <a href="docente-falta.php" class="nav-opciones mb-2" data-i18n="reportAbsence">Avisar Falta</a>
     </div>
   </div>
 
@@ -81,17 +82,15 @@ $horarios = $con->query("SELECT id_horario_clase, hora_inicio, hora_fin FROM hor
     <aside class="barra-lateral">
       <div class="volverGeneral">
         <div class="volver">
-          <a href="docente-bienvenida.php">
-            <i class="bi bi-arrow-left-circle-fill icono-volver"></i>
-          </a>
-          <a href="docente-bienvenida.php">Volver</a>
+          <a href="./docente-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+          <a href="./docente-bienvenida.php" data-i18n="goBack">Volver</a>
         </div>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
 
-      <a href="docente-grupo.php" class="nav-opciones mb-2">Grupos a Cargo</a>
-      <a href="docente-reservar.php" class="fw-semibold seleccionado">Reservar Espacio</a>
-      <a href="docente-falta.php" class="nav-opciones mb-2">Avisar Falta</a>
+      <a href="docente-grupo.php" class="nav-opciones mb-2" data-i18n="assignedGroups">Grupos a Cargo</a>
+      <a href="docente-reservar.php" class="fw-semibold seleccionado" data-i18n="reserveFacility" >Reservar Espacio</a>
+      <a href="docente-falta.php" class="nav-opciones mb-2" data-i18n="reportAbsence">Avisar Falta</a>
     </aside>
 
     <!-- Contenido principal -->
@@ -101,7 +100,7 @@ $horarios = $con->query("SELECT id_horario_clase, hora_inicio, hora_fin FROM hor
       <div class="acordion">
         <!-- Opción 1 -->
         <div>
-          <button class="boton-opciones docente" id="verReservasBtn">Ver reservas</button>
+          <button class="boton-opciones docente" id="verReservasBtn" data-i18n="viewReservations">Ver reservas</button>
 
           <div class="dia" id="listaReservas" style="display:none;">
             <?php if ($reservas->num_rows > 0) { ?>
@@ -143,22 +142,22 @@ $horarios = $con->query("SELECT id_horario_clase, hora_inicio, hora_fin FROM hor
 
         <!-- Opción 2 -->
         <div>
-          <button class="boton-opciones docente" id="hacerReservaBtn">Hacer reservas</button>
+          <button class="boton-opciones docente" id="hacerReservaBtn" data-i18n="makeReservations">Hacer reservas</button>
 
           <!-- Modal para hacer reserva -->
           <div class="modal fade" id="modalReserva" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Nueva Reserva</h5>
+                  <h5 class="modal-title" data-i18n="newReservation">Nueva Reserva</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                   <form id="formReserva">
                     <div class="mb-3">
-                      <label for="espacio" class="form-label">Espacio</label>
+                      <label for="espacio" class="form-label" data-i18n="facility">Espacio</label>
                       <select class="form-select" id="espacio" name="id_espacio" required>
-                        <option value="">Seleccione...</option>
+                        <option value="" data-i18n="select">Seleccione...</option>
                         <?php while($fila = $espacios->fetch_assoc()) { ?>
                           <option value="<?php echo $fila['id_espacio']; ?>"><?php echo $fila['nombre_espacio']; ?></option>
                         <?php } ?>
@@ -166,9 +165,9 @@ $horarios = $con->query("SELECT id_horario_clase, hora_inicio, hora_fin FROM hor
                     </div>
 
                     <div class="mb-3">
-                      <label for="horario" class="form-label">Horario</label>
+                      <label for="horario" class="form-label" data-i18n="schedule">Horario</label>
                       <select class="form-select" id="horario" name="id_horario_clase" required>
-                        <option value="">Seleccione...</option>
+                        <option value="" data-i18n="select">Seleccione...</option>
                         <?php while($fila = $horarios->fetch_assoc()) { ?>
                           <option value="<?php echo $fila['id_horario_clase']; ?>">
                             <?php echo $fila['hora_inicio'] . " - " . $fila['hora_fin']; ?>
@@ -180,8 +179,8 @@ $horarios = $con->query("SELECT id_horario_clase, hora_inicio, hora_fin FROM hor
                     <input type="hidden" name="accion" value="insertar">
 
                     <div class="text-end">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                      <button type="submit" class="btn btn-primary">Reservar</button>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="cancel">Cancelar</button>
+                      <button type="submit" class="btn btn-primary" data-i18n="reserve">Reservar</button>
                     </div>
                   </form>
                 </div>
@@ -198,5 +197,11 @@ $horarios = $con->query("SELECT id_horario_clase, hora_inicio, hora_fin FROM hor
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./js/desplegar-reserva.js"></script>
   <script src="./js/reserva.js"></script>
+
+  <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+  <script src="./../../utils/translate.js"></script>
+
+
+
 </body>
 </html>
