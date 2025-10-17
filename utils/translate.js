@@ -57,12 +57,6 @@ i18next.init({
         thursday: "Jueves",
         friday: "Viernes",
         //
-        logout: "Cerrar Sesión",
-        teacherSpace: "Espacio", 
-        teacherReserve: "Reserva",
-        teacherAbsence: "Falta docente",
-        teacherSubjects: "Cargar materias"
-
       }
     },
     en: {
@@ -94,22 +88,16 @@ i18next.init({
         thRequestedDate: "Requested date",
         thReservationStatus: "Reservation status",
         //
-        teacherAbsence: "Teacher Absence",
         teacherName: "Teacher's Name:",
         subject: "Subject:",
         groupMissing: "Group Missed:",
         day: "Date:",
         hoursMissing: "Hours Absent:",
         studentPanelTitle: "Student Panel",
-        goBack: "Go Back",
-        student: "Student",
-        adscripto: "Advisor",
-        teacher: "Teacher",
-        secretary: "Secretary",
         enterGroup: "Enter your assigned group",
         enterGroupPlaceholder: "Enter your group",
         //
-         hour: "Hour",
+        hour: "Hour",
         subject: "Subject",
         room: "Room",
         // 
@@ -119,7 +107,6 @@ i18next.init({
         thursday: "Thursday",
         friday: "Friday",
         //
-    logout: "Log out",
       }
     }
   }

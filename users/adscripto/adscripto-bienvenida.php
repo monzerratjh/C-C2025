@@ -41,7 +41,7 @@ $apellido_adscripto = $_SESSION['apellido_usuario'] ?? 'usuario/a';
     <div class="offcanvas-body d-flex flex-column">
       <div class="banner-parte-superior">
         <a href="#" class="btn-cerrar-sesion mb-3">
-          <i class="bi bi-arrow-left-circle-fill me-2" data-i18n="logOut" ></i>Cerrar Sesión
+          <i class="bi bi-arrow-left-circle-fill me-2" data-i18n="sessionClose" ></i>Cerrar Sesión
         </a>
         <i class="bi bi-translate traductor-menu"></i>
       </div>   
@@ -63,7 +63,7 @@ $apellido_adscripto = $_SESSION['apellido_usuario'] ?? 'usuario/a';
           <a href="#" class="btn-cerrar-sesion">
             <i class="bi bi-arrow-left-circle-fill icono-volver"></i>
           </a>
-          <a href="#" class="btn-cerrar-sesion" data-i18n="logOut">Cerrar Sesión</a>
+          <a href="#" class="btn-cerrar-sesion" data-i18n="sessionClose">Cerrar Sesión</a>
         </div>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
@@ -77,7 +77,8 @@ $apellido_adscripto = $_SESSION['apellido_usuario'] ?? 'usuario/a';
     <!-- Contenido principal -->
     <main class="principal">
       <img src="./../../img/logo.png" alt="Logo" class="logo"> 
-      <h1 class="bienvenida">Bienvenid@  <br> <?php echo htmlspecialchars($nombre_adscripto). ' ' . htmlspecialchars($apellido_adscripto). '!'; ?></h1>
+      <h1 class="bienvenida"> <span data-i18n="welcom3">Bienvenid@</span>   
+      <br> <?php echo htmlspecialchars($nombre_adscripto). ' ' . htmlspecialchars($apellido_adscripto). '!'; ?></h1>
     </main>
 
   </div>

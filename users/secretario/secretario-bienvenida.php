@@ -79,7 +79,7 @@ $apellido_secretario = $_SESSION['apellido_usuario'] ?? 'usuario/a';
     <!-- Contenido principal -->
     <main class="principal">
       <img src="./../../img/logo.png" alt="Logo" class="logo">
-      <h1 class="bienvenida">Bienvenid@  <br> <?php echo htmlspecialchars($nombre_secretario). ' ' . htmlspecialchars($apellido_secretario). '!'; ?></h1>
+      <h1 class="bienvenida"> <span data-i18n="welcom3">Bienvenid@</span> <br> <?php echo htmlspecialchars($nombre_secretario). ' ' . htmlspecialchars($apellido_secretario). '!'; ?></h1>
     </main>
   </div>
 
