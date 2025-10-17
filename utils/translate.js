@@ -57,6 +57,7 @@ i18next.init({
         thursday: "Jueves",
         friday: "Viernes",
         //
+        reserveFacilities
       }
     },
     en: {

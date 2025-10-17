@@ -69,15 +69,35 @@
     </aside>
 
     <!-- Contenido principal -->
-    <main class="principal"> 
-      <img src="./../../../img/logo.png" alt="Logo" class="logo">
+    <main class="principal">
+      <img src="./../../img/logo.png" alt="Logo" class="logo">
 
-  <div class="loader"></div>
-  <h1>Estamos en mantenimiento</h1>
-  <p>Volveremos pronto con algo mejor ✨</p>
+      <div class="acordion-total">
+        <div class="acordion">
 
-      </main>
+          <div class="bloque-agregar">
+            <h2 data-i18n="teacherAbsence">Falta docentes</h2>
+            <p>Visualiza las inasistencias de los docentes.</p>
+          </div>
 
+          <div class="dia">
+            <button class="boton-opciones falta-docente adscripto">Nombre Docente</button>
+            <div class="contenido-dia">
+              <table class="tabla-horario">
+                <tr><td><span data-i18n="teacherName">Nombre:</span> Facundo Rubil</td></tr>
+                <tr><td><span data-i18n="subject">Materia:</span> Programación</td></tr>
+                <tr><td><span data-i18n="groupMissing">Grupo a la que falta:</span> 3MD</td></tr>
+                <tr><td><span data-i18n="day">Día:</span> 20/10/2025</td></tr>
+                <tr><td><span data-i18n="hoursMissing">Cuántas horas falta:</span> 3</td></tr>
+              </table>
+            </div>
+          </div>
+
+          <!-- Repetir bloques según sea necesario -->
+        </div>
+      </div>
+    </main>
+  </div>
 
   <!-- Scripts -->
   <script src="js/desplegarFaltas.js"></script>

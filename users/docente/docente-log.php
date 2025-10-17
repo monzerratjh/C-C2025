@@ -37,7 +37,7 @@ include('./../../conexion.php');
     <div class="offcanvas-body d-flex flex-column">
       <div class="banner-parte-superior">
         <a href="../../index.php" class="mb-3">
-          <i class="bi bi-arrow-left-circle-fill me-2"></i><span data-i18n="goBack">Volver</span>
+          <i class="bi bi-arrow-left-circle-fill me-2" data-i18n="goBack"></i>Volver
         </a>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
@@ -45,7 +45,7 @@ include('./../../conexion.php');
       <a href="./../estudiante/estudiante.php" class="nav-opciones mb-2" data-i18n="student">Estudiante</a>
       <a href="./../adscripto/adscripto-log.php" class="nav-opciones mb-2" data-i18n="adscripto">Adscripto</a>
       <a href="./../docente/docente-log.php" class="fw-semibold seleccionado mb-2" data-i18n="teacher">Docente</a>
-      <a href="./../secretario/secretario-log.php" class="nav-opciones mb-2" data-i18n="secretary">Secretario</a>
+      <a href="./../secretario/secretario-log.php" class="nav-opciones mb-2" data-i18n="student">Secretario</a>
     </div>
   </div>
 
@@ -60,7 +60,7 @@ include('./../../conexion.php');
             <i class="bi bi-arrow-left-circle-fill icono-volver"></i>
           </a>
           <a href="../../index.php" data-i18n="goBack">Volver</a>
-        </div>
+       </div>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
 
@@ -79,17 +79,17 @@ include('./../../conexion.php');
           <i class="bi bi-person-circle"></i>
         </div>
 
-        <form id="form-login" class="formulario" action="./../../utils/log-in.php" method="POST"> 
+        <form id="form-login" class="formulario" action="/utils/log-in.php" method="POST"> 
           <div class="input-group mb-3">
             <span class="input-group-text"><i class="bi bi-person"></i></span>
-            <input type="text" class="form-control" data-i18n-placeholder="idCard" placeholder="Cédula de Identidad" 
+            <input data-i18n-placeholder="idCard" type="text" class="form-control" placeholder="Cédula de Identidad"
             name="cedula" id="cedula" required>
           </div>
 
           <div class="input-group mb-3">
             <span class="input-group-text"><i class="bi bi-lock"></i></span>
-            <input type="password" class="form-control" placeholder="Contraseña"
-            name="password" data-i18n-placeholder="password" id="password" required>
+            <input data-i18n-placeholder="password" type="password" class="form-control" placeholder="Contraseña"
+            name="password" id="password" required>
           </div>
 
           <!-- Indicamos el rol -->
@@ -104,7 +104,7 @@ include('./../../conexion.php');
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="./../../utils/form-log-in.js"></script> 
+  <script src="./../../utils/form-log-in.js"></script>
 
     <!-- i18next desde CDN -->
   <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
