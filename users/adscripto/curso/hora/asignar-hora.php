@@ -1,5 +1,5 @@
 <?php 
-include('../../../conexion.php');
+include('../../../../conexion.php');
 $conn = conectar_bd();
 $sql = "SELECT * FROM asignatura";
 $query = mysqli_query($conn, $sql);
@@ -17,7 +17,7 @@ $query = mysqli_query($conn, $sql);
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   
   <!-- CSS propio -->
-  <link rel="stylesheet" href="./../../../css/style.css">
+  <link rel="stylesheet" href="./../../../../css/style.css">
 </head>
 
 <body>
@@ -26,9 +26,9 @@ $query = mysqli_query($conn, $sql);
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="./../../../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="./../../../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="./../../../img/logo.png" alt="logoResponsive">
+      <img class="logoResponsive" src="./../../../../img/logo.png" alt="logoResponsive">
     </div>
   </nav>
 
@@ -39,7 +39,7 @@ $query = mysqli_query($conn, $sql);
     </div>
     <div class="offcanvas-body d-flex flex-column">
       <div class="banner-parte-superior">
-        <a href="./../adscripto-bienvenida.php" class="mb-3">
+        <a href="../adscripto-curso.php" class="mb-3">
           <i class="bi bi-arrow-left-circle-fill me-2"></i>
           <span data-i18n="goBack">Volver</span>
         </a>
@@ -49,21 +49,18 @@ $query = mysqli_query($conn, $sql);
       <a href="./../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../materia/cargar-materias.php" class="nav-opciones mb-2" data-i18n="addSubjects">Cargar Asignatura</a>
-      <a href="./../hora/carga-materias.php" class="fw-semibold seleccionado mb-2" data-i18n="addSubjects">Asignar Hora</a>
+      <a href="./../curso/adscripto-curso.php" class="fw-semibold seleccionado mb-2">Gestión de cursos</a>
     </div>
   </div>
 
   <div class="contenedor">
 
     <!-- Barra lateral -->
-    <aside class="barra-lateral">
+    <aside class="barra-lateral d-none d-md-flex">
       <div class="volverGeneral">
         <div class="volver">
-          <a href="./../adscripto-bienvenida.php">
-            <i class="bi bi-arrow-left-circle-fill icono-volver"></i>
-          </a>
-          <a href="./../adscripto-bienvenida.php" data-i18n="goBack">Volver</a>
+          <a href="../adscripto-curso.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+          <a href="../adscripto-curso.php" data-i18n="goBack">Volver</a>
         </div>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
@@ -71,13 +68,12 @@ $query = mysqli_query($conn, $sql);
       <a href="./../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../materia/cargar-materias.php" class="nav-opciones mb-2" data-i18n="addSubjects">Cargar Asignatura</a>
-      <a href="./../hora/carga-materias.php" class="fw-semibold seleccionado mb-2" data-i18n="addSubjects">Asignar Hora</a>
+      <a href="./../adscripto-curso.php" class="fw-semibold seleccionado mb-2">Gestión de cursos</a>
     </aside>
 
     <!-- Contenido principal -->
     <main class="principal">
-      <img src="./../../../../img/logo.png" alt="Logo" class="logo"> 
+      <img src="./../../../../../img/logo.png" alt="Logo" class="logo"> 
       <h2>Cargar Asignatura</h2>
       <p>Ingrese el grupo en el cual va a agregar la asignatura.</p>
 
@@ -101,7 +97,7 @@ $query = mysqli_query($conn, $sql);
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../js/redireccionar-grupo.js"></script>
+  <script src="../../js/redireccionar-grupo.js"></script>
   <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
   <script src="/utils/translate.js"></script>
 </body>

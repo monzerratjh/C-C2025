@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   
   <!-- CSS propio -->
-  <link rel="stylesheet" href="./../../css/style.css">
+  <link rel="stylesheet" href="./../../../css/style.css">
 </head>
 
 <body>
@@ -23,9 +23,9 @@
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="./../../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="./../../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="./../../img/logo.png" alt="logoResponsive">
+      <img class="logoResponsive" src="./../../../img/logo.png" alt="logoResponsive">
     </div>
   </nav>
 
@@ -36,7 +36,7 @@
     </div>
     <div class="offcanvas-body d-flex flex-column">
       <div class="banner-parte-superior">
-        <a href="./adscripto-bienvenida.php" class="mb-3">
+        <a href="./../adscripto-bienvenida.php" class="mb-3">
           <i class="bi bi-arrow-left-circle-fill me-2"></i>
           <span data-i18n="goBack">Volver</span>
         </a>
@@ -45,7 +45,7 @@
       <a href="espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="falta-docente.php" class="fw-semibold seleccionado mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="materia/carga-materias.php" class="nav-opciones mb-2" data-i18n="addSubjects">Cargar materias</a>
+      <a href="./curso/adscripto-curso.php" class="nav-opciones mb-2"  >Gestión de cursos</a>
     </div>
   </div>
 
@@ -56,8 +56,8 @@
     <aside class="barra-lateral">
       <div class="volverGeneral">
         <div class="volver">
-          <a href="./adscripto-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-          <a href="./adscripto-bienvenida.php" data-i18n="goBack">Volver</a>
+          <a href="./../adscripto-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+          <a href="./../adscripto-bienvenida.php" data-i18n="goBack">Volver</a>
         </div>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
@@ -65,12 +65,12 @@
       <a href="espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="falta-docente.php" class="fw-semibold seleccionado mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="materia/carga-materias.php" class="nav-opciones mb-2" data-i18n="addSubjects">Cargar materias</a>
+      <a href="./curso/adscripto-curso.php" class="nav-opciones mb-2"  >Gestión de cursos</a>
     </aside>
 
     <!-- Contenido principal -->
     <main class="principal"> 
-      <img src="./../../../img/logo.png" alt="Logo" class="logo">
+      <img src="./../../../../img/logo.png" alt="Logo" class="logo">
 
   <div class="loader"></div>
   <h1>Estamos en mantenimiento</h1>

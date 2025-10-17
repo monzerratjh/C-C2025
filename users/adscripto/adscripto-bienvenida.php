@@ -49,8 +49,7 @@ $apellido_adscripto = $_SESSION['apellido_usuario'] ?? 'usuario/a';
       <a href="./espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./materia/cargar-materias.php" class="nav-opciones mb-2" data-i18n="addSubjects">Cargar Asignatura</a>
-      <a href="./hora/carga-materias.php" class="nav-opciones mb-2" data-i18n="addSubjects">Asignar Hora</a>
+      <a href="./curso/adscripto-curso.php" class="nav-opciones mb-2"  >Gestión de cursos</a>
 
     </div>
   </div>
@@ -73,8 +72,7 @@ $apellido_adscripto = $_SESSION['apellido_usuario'] ?? 'usuario/a';
       <a href="./espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./materia/carga-materias.php" class="nav-opciones mb-2" data-i18n="addSubjects">Cargar Asignatura</a>
-      <a href="./hora/asignar-hora.php" class="nav-opciones mb-2" data-i18n="addSubjects">Asignar Hora</a>
+      <a href="./curso/adscripto-curso.php" class="nav-opciones mb-2"  >Gestión de cursos</a>
     </aside>
 
     <!-- Contenido principal -->

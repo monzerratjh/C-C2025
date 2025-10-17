@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   
   <!-- CSS propio -->
-  <link rel="stylesheet" href="./../../css/style.css">
+  <link rel="stylesheet" href="./../../../css/style.css">
 </head>
 
 <body>
@@ -23,9 +23,9 @@
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="./../../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="./../../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="./../../img/logo.png" alt="logoResponsive">
+      <img class="logoResponsive" src="./../../../img/logo.png" alt="logoResponsive">
     </div>
   </nav>
 
@@ -65,12 +65,12 @@
       <a href="espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="falta-docente.php" class="fw-semibold seleccionado mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="materia/carga-materias.php" class="nav-opciones mb-2" data-i18n="addSubjects">Cargar materias</a>
+      <a href="/curso/adscripto-curso.php class="nav-opciones mb-2" data-i18n="addSubjects">Cargar materias</a>
     </aside>
 
     <!-- Contenido principal -->
     <main class="principal">
-      <img src="./../../img/logo.png" alt="Logo" class="logo">
+      <img src="./../../../img/logo.png" alt="Logo" class="logo">
 
       <div class="acordion-total">
         <div class="acordion">
@@ -100,7 +100,7 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/desplegarFaltas.js"></script>
+  <script src="../js/desplegarFaltas.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
   <script src="/utils/translate.js"></script>

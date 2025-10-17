@@ -57,7 +57,7 @@ AND docente.id_usuario = usuario.id_usuario');
     </div>
     <div class="offcanvas-body d-flex flex-column">
       <div>
-        <a href="../adscripto-bienvenida.php" class="mb-3">
+        <a href="../adscripto-curso.php" class="mb-3">
           <i class="bi bi-arrow-left-circle-fill me-2"></i>
           <span data-i18n="goBack">Volver</span>
         </a>
@@ -65,10 +65,9 @@ AND docente.id_usuario = usuario.id_usuario');
       </div>
 
       <a href="./../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
-      <a href="./../reserva/reserva-adscripto.php" class="fw-semibold seleccionado mb-2" data-i18n="reservation">Reserva</a>
+      <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../materia/carga-materias.php" class="" data-i18n="addSubjects">Cargar Asignatura</a>
-      <a href="./../hora/asignar-hora.php" class="nav-opciones mb-2">Asignar Hora</a>
+      <a href="./../curso/adscripto-curso.php" class="fw-semibold seleccionado mb-2">Gestión de cursos</a>
      </div>
   </div>
 
@@ -80,17 +79,16 @@ AND docente.id_usuario = usuario.id_usuario');
       <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="../adscripto-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="../adscripto-bienvenida.php" data-i18n="goBack">Volver</a>
+            <a href="../adscripto-curso.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="../adscripto-curso.php" data-i18n="goBack">Volver</a>
           </div>
             <i class="bi bi-translate traductor-menu"></i>
         </div>
 
-      <a href="./../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
-      <a href="./../reserva/reserva-adscripto.php" class="fw-semibold seleccionado mb-2" data-i18n="reservation">Reserva</a>
-      <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../materia/carga-materias.php" class="fw-semibold seleccionado mb-2" data-i18n="addSubjects">Cargar Asignatura</a>
-      <a href="./../hora/asignar-hora.php" class="nav-opciones mb-2">Asignar Hora</a>
+      <a href="./../../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
+      <a href="./../../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
+      <a href="./../../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
+      <a href="./../../curso/adscripto-curso.php" class="fw-semibold seleccionado mb-2">Gestión de cursos</a>
     </div>
 
 

@@ -38,10 +38,10 @@
         </a>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
-      <a href="adscripto-espacio.php" class="fw-semibold seleccionado mb-2">Espacio</a>
+      <a href="adscripto-espacio.php" class="nav-opciones mb-2">Espacio</a>
       <a href="../reserva-adscripto.php" class="nav-opciones mb-2">Reserva</a>
       <a href="../falta-docente.php" class="nav-opciones mb-2">Falta docentes</a>
-      <a href="../materia/carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
+      <a href="../curso/adscripto-curso.php" class="fw-semibold seleccionado mb-2">Gestión de cursos</a>
     </div>
   </div>
 
@@ -59,11 +59,10 @@
         </div>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
-
-      <a href="adscripto-espacio.php" class="fw-semibold seleccionado mb-2">Espacio</a>
+      <a href="adscripto-espacio.php" class="nav-opciones mb-2">Espacio</a>
       <a href="../reserva-adscripto.php" class="nav-opciones mb-2">Reserva</a>
       <a href="../falta-docente.php" class="nav-opciones mb-2">Falta docentes</a>
-      <a href="../materia/carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
+      <a href="../curso/adscripto-curso.php" class="fw-semibold seleccionado mb-2">Cargar materias</a>
     </aside>
 
     <!-- Contenido principal -->
@@ -72,23 +71,23 @@
       
       <div class="acordion">
         <h2>Gestión de cursos y asignaturas</h2>
-        <p>j</p>        
+        <p>Gestione los cursos, asignaturas, docentes y espacios del centro educativo de forma sencilla y organizada.</p>
 
         <div>
           <a href="./materia/carga-materias.php">
-            <button class="boton-opciones2 adscripto">Cargar las Asignaturas</button>
+            <button class="boton-opciones2 adscripto">Cargar asignaturas</button>
           </a>
         </div>
 
         <div>
-          <a href="index-aula.php">
-            <button class="boton-opciones2 adscripto">Aulas</button>
+          <a href="./materia/asociar-gada.php">
+            <button class="boton-opciones2 adscripto">Asignar espacios, docentes y asignaturas </button>
           </a>
         </div>
 
         <div>
-          <a href="index-laboratorio.php">
-            <button class="boton-opciones2 adscripto">Laboratorios</button>
+          <a href="./hora/asignar-hora.php">
+            <button class="boton-opciones2 adscripto">Asignar hora</button>
           </a>
         </div>
       </div>

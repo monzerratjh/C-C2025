@@ -1,5 +1,5 @@
 <?php 
-include('../../../encabezado.php');
+//include('../../../encabezado.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +13,7 @@ include('../../../encabezado.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- CSS propio -->
-    <link rel="stylesheet" href="./../../../css/style.css">
+    <link rel="stylesheet" href="./../../../../css/style.css">
 </head>
 
 <body>
@@ -22,9 +22,9 @@ include('../../../encabezado.php');
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="./../../../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="./../../../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="./../../../img/logo.png" alt="logoRespnsive">
+      <img class="logoResponsive" src="./../../../../img/logo.png" alt="logoRespnsive">
     </div>
   </nav>
 
@@ -35,13 +35,13 @@ include('../../../encabezado.php');
     </div>
     <div class="offcanvas-body d-flex flex-column">
         <div class="banner-parte-superior">
-      <a href="../adscripto-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
-      <i class="bi bi-translate traductor-menu"></i>
-      </div>
-      <a href="../espacio/adscripto-espacio.php" class="nav-opciones mb-2">Espacio</a>
-      <a href="../reserva-adscripto.php" class="nav-opciones mb-2">Reserva</a>
-      <a href="../falta-docente.php" class="nav-opciones mb-2">Falta docente</a>
-      <a href="carga-materias.php" class="fw-semibold seleccionado mb-2">Carga materias</a>
+          <a href="../adscripto-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
+          <i class="bi bi-translate traductor-menu"></i>
+        </div>
+      <a href="./../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
+      <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
+      <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
+      <a href="./../adscripto-curso.php" class="fw-semibold seleccionado mb-2">Gestión de cursos</a>
      </div>
   </div>
 
@@ -59,10 +59,10 @@ include('../../../encabezado.php');
             <i class="bi bi-translate traductor-menu"></i>
         </div>
 
-       <a href="../espacio/adscripto-espacio.php" class="nav-opciones mb-2">Espacio</a>
-      <a href="../reserva-adscripto.php" class="nav-opciones mb-2">Reserva</a>
-      <a href="../falta-docente.php" class="nav-opciones mb-2">Falta docente</a>
-      <a href="carga-materias.php" class="fw-semibold seleccionado mb-2">Carga materias</a>
+      <a href="./../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
+      <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
+      <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
+      <a href="./../adscripto-curso.php" class="fw-semibold seleccionado mb-2">Gestión de cursos</a>
     </div>
 
 
@@ -70,7 +70,7 @@ include('../../../encabezado.php');
 <main class="col-md-9 principal" >
 
 
-    <img src="./../../../img/logo.png" alt="Logo" class="logo"> 
+    <img src="./../../../../img/logo.png" alt="Logo" class="logo"> 
 
     
     <h2>Cargar horarios 3MD</h2>
