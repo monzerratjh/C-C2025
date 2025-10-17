@@ -46,10 +46,12 @@ $query = mysqli_query($conn, $sql);
         <i class="bi bi-translate traductor-menu"></i>
       </div>
 
-      <a href="../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
-      <a href="../reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
-      <a href="../falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./carga-materias.php" class="fw-semibold seleccionado mb-2" data-i18n="addSubjects">Cargar Horario</a>
+
+      <a href="./../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
+      <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
+      <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
+      <a href="./../materia/cargar-materias.php" class="fw-semibold seleccionado mb-2" data-i18n="addSubjects">Cargar Asignatura</a>
+      <a href="./../hora/carga-materias.php" class="nav-opciones mb-2" data-i18n="addSubjects">Asignar Hora</a>
     </div>
   </div>
 
