@@ -40,10 +40,10 @@ $apellido_secretario = $_SESSION['apellido_usuario'] ?? 'usuario/a';
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <div class="banner-parte-superior">
-        
+       <div class="banner-parte-superior">
+
         <a href="#" class="btn-cerrar-sesion mb-3">
-          <i class="bi bi-arrow-left-circle-fill me-2"></i>Cerrar sesión
+          <i class="bi bi-arrow-left-circle-fill me-2"></i><span data-i18n="sessionClose">Cerrar Sesión</span>
         </a>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
@@ -65,7 +65,7 @@ $apellido_secretario = $_SESSION['apellido_usuario'] ?? 'usuario/a';
           <a href="#" class="btn-cerrar-sesion">
             <i class="bi bi-arrow-left-circle-fill icono-volver"></i>
           </a>
-          <a href="#" class="btn-cerrar-sesion">Cerrar sesión</a>
+          <a href="#" class="btn-cerrar-sesion"data-i18n="sessionClose">Cerrar Sesión</a>
         </div>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
@@ -86,10 +86,9 @@ $apellido_secretario = $_SESSION['apellido_usuario'] ?? 'usuario/a';
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="./../../utils/form-log-in.js"></script> 
-  
-  <!-- i18next desde CDN -->
-  <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+
   <script src="./../../utils/translate.js"></script>
+  <script src="./../../utils/form-log-in.js"></script> 
+
 </body>
 </html>

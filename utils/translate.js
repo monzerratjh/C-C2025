@@ -78,7 +78,16 @@ i18next.init({
         hoursAbsent:"Cantidad de horas",
         reason:"Motivo",
         report:"Avisar",
-        //
+        // ALERTAS
+        allFieldsRequired: "Todos los campos son obligatorios",
+        idMustBeNumbers: "La cédula debe ser solo números",
+        idMustHave8Digits: "La cédula debe tener 8 números válidos",
+        successfulLogin: "Inicio de sesión exitoso",
+        serverError: "Error al conectar con el servidor.",
+        logoutConfirmTitle: "¿Seguro que deseas cerrar sesión?",
+        logoutConfirmText: "Se cerrará tu sesión actual",
+        logoutConfirmButton: "Sí, cerrar sesión",
+    //
       }
     },
     en: {
@@ -149,8 +158,17 @@ i18next.init({
         date:"Date",
         hoursAbsent:"Hours Absent",
         reason:"Reason",
-        report:"Report"
-        //
+        report:"Report",
+        // ALERTAS
+        allFieldsRequired: "All fields are required",
+        idMustBeNumbers: "ID card must be numbers only",
+        idMustHave8Digits: "ID card must have 8 valid numbers",
+        successfulLogin: "Successful login",
+        serverError: "Error connecting to the server.",
+        logoutConfirmTitle: "Are you sure you want to log out?",
+        logoutConfirmText: "Your current session will be closed",
+        logoutConfirmButton: "Yes, log out",
+    //
       }
     }
   }

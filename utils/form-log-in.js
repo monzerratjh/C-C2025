@@ -8,18 +8,21 @@ document.addEventListener('DOMContentLoaded', () => {
       const cedula = document.getElementById('cedula').value.trim();
       const password = document.getElementById('password').value.trim();
 
+       // Campos obligatorios
       if (!cedula || !password) {
-        Swal.fire({ icon: 'error', title: 'Error', text: 'Todos los campos son obligatorios' });
+        Swal.fire({ icon: 'error', title: 'Error', text: i18next.t('allFieldsRequired') });
         return;
       }
 
+      // Cédula solo números
       if (isNaN(cedula)){
-        Swal.fire({ icon: 'error', title: 'Error', text: 'La cédula deben ser solo números' });
+        Swal.fire({ icon: 'error', title: 'Error', text: i18next.t('idMustBeNumbers') });
         return;
       }
 
+      // Cédula 8 dígitos
       if (cedula.length !== 8){
-        Swal.fire({ icon: 'error', title: 'Error', text: 'La cédula debe tener 8 números válidos' });
+        Swal.fire({ icon: 'error', title: 'Error', text: i18next.t('idMustHave8Digits') });
         return;
       }
 
@@ -53,14 +56,14 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(data);
             if (data.success) {
                 // Mensaje de éxito antes de redirigir
-                Swal.fire({
-                    icon: 'success',
-                    title: '¡Bienvenido!',
-                    text: 'Inicio de sesión exitoso',
-                    timer: 2000, //se cierra despues de 2 segundos
-                    showConfirmButton: false //oculta el boton por defecto
+               Swal.fire({
+                icon: 'success',
+                title: i18next.t('welcome'),
+                text: i18next.t('successfulLogin'),
+                timer: 2000, // se cierra despues de dos segundos
+                showConfirmButton: false //oculta el boton por defecto
                 }).then(() => {
-                    window.location.href = data.redirect;
+                  window.location.href = data.redirect;
                 });
             } else {
                 
@@ -76,14 +79,14 @@ document.addEventListener('DOMContentLoaded', () => {
 // En este caso, captura errores que puedan ocurrir al enviar el formulario con fetch,
 // como problemas de conexión, servidor caído o URL incorrecta.
 
-        .catch(err => {
-            console.error(err);
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Error al conectar con el servidor.'
-            });
-        });
+      .catch(err => {
+    console.error(err);
+    Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: i18next.t('serverError') // <--- aquí usamos i18next.t
+    });
+});
     });
   }
 
@@ -92,14 +95,14 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       Swal.fire({
-        title: '¿Seguro que deseas cerrar sesión?',
-        text: "Se cerrará tu sesión actual",
+        title: i18next.t('logoutConfirmTitle'),
+        text: i18next.t('logoutConfirmText'),
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Sí, cerrar sesión',
-        cancelButtonText: 'Cancelar'
+        confirmButtonText: i18next.t('logoutConfirmButton'),
+        cancelButtonText: i18next.t('cancel')
       }).then((result) => {
         if (result.isConfirmed) {
           window.location.href = './../../index.php';
@@ -108,3 +111,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
