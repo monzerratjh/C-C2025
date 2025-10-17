@@ -41,9 +41,9 @@ include('../../conexion.php');
         </a>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
-      <a href="docente-grupo.php" class="fw-semibold seleccionado mb-2">Grupos a Cargo</a>
-      <a href="docente-reservar.php" class="nav-opciones mb-2">Reservar Espacio</a>
-      <a href="docente-falta.php" class="nav-opciones mb-2">Avisar Falta</a>
+      <a href="docente-grupo.php" class="fw-semibold seleccionado mb-2" data-i18n="assignedGroups">Grupos a Cargo</a>
+      <a href="docente-reservar.php" class="nav-opciones mb-2" data-i18n="reserveFacility">Reservar Espacio</a>
+      <a href="docente-falta.php" class="nav-opciones mb-2" data-i18n="reportAbsence">Avisar Falta</a>
     </div>
   </div>
 
@@ -55,14 +55,14 @@ include('../../conexion.php');
       <div class="volverGeneral">
         <div class="volver">
           <a href="./docente-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-          <a href="./docente-bienvenida.php">Volver</a>
+          <a href="./docente-bienvenida.php" data-i18n="goBack">Volver</a>
         </div>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
 
-      <a href="docente-grupo.php" class="fw-semibold seleccionado">Grupos a Cargo</a>
-      <a href="docente-reservar.php" class="nav-opciones mb-2">Reservar Espacio</a>
-      <a href="docente-falta.php" class="nav-opciones mb-2">Avisar Falta</a>
+      <a href="docente-grupo.php" class="fw-semibold seleccionado" data-i18n="assignedGroups">Grupos a Cargo</a>
+      <a href="docente-reservar.php" class="nav-opciones mb-2" data-i18n="reserveFacility">Reservar Espacio</a>
+      <a href="docente-falta.php" class="nav-opciones mb-2" data-i18n="reportAbsence">Avisar Falta</a>
     </aside>
 
     <!-- Contenido principal -->
@@ -70,7 +70,7 @@ include('../../conexion.php');
       <img src="./../../img/logo.png" alt="Logo" class="logo"> 
 
       <div>
-        <h2 id="tituloGruposCargo">Grupos a Cargo</h2>
+        <h2 id="tituloGruposCargo" data-i18n="assignedGroups">Grupos a Cargo</h2>
       </div>
       <div class="caja-grupos-cargo">
         <div class="acordion">
@@ -109,5 +109,9 @@ include('../../conexion.php');
   </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+ <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+  <script src="./../../utils/translate.js"></script>
+
 </body>
 </html>

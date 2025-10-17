@@ -57,7 +57,22 @@ i18next.init({
         thursday: "Jueves",
         friday: "Viernes",
         //
-        reserveFacilities
+        assignedGroups: "Grupos a cargo",
+        reserveFacility: "Reservar espacio",
+        reportAbsence:"Reportar falta",
+        //
+        viewReservations:"Ver reservas",
+        makeReservations:"Hacer reservas",
+        //
+        underMaintenance:"Estamos en mantenimiento",
+        backSoon:"Volveremos pronto con algo mejor ✨",
+        //
+        schedule:"Horario",
+        select:"Seleccionar",
+        newReservation:"Nueva reserva",
+        cancel:"Cancelar",
+        reserve:"Reservar",
+        //
       }
     },
     en: {
@@ -107,6 +122,22 @@ i18next.init({
         wednesday: "Wednesday",
         thursday: "Thursday",
         friday: "Friday",
+        //
+        assignedGroups: "Assigned Groups",
+        reserveFacility: "Reserve Facility",
+        reportAbsence:"Report Absence",
+      //
+      viewReservations:"View Reservations",
+      makeReservations:"Make Reservations",
+      //
+       underMaintenance:"We’re Currently Under Maintenance",
+        backSoon:"We’ll Be Back Soon with Something Even Better ✨",
+       //
+       schedule:"Schedule",
+        select:"Select",
+        newReservation:"New reservation",
+         cancel:"Cancel",
+        reserve:"Reserve",
         //
       }
     }
