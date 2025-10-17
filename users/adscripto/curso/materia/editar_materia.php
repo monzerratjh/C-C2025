@@ -1,5 +1,5 @@
 <?php
-include('../../../conexion.php');
+include('../../../../conexion.php');
 $conn = conectar_bd();
 
 $id_asignatura = $_POST['id_asignatura'] ?? null;
