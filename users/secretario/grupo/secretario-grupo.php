@@ -128,12 +128,14 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <div class="banner-parte-superior">
-      <a href="../secretario-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
-      <i class="bi bi-translate traductor-menu"></i>
-  </div>
+     <div class="banner-parte-superior">
+        <a href="./../secretario-bienvenida.php" class="mb-3">
+          <i class="bi bi-arrow-left-circle-fill me-2"></i><span data-i18n="goBack">Volver</span>
+        </a>
+        <i class="bi bi-translate traductor-menu"></i>
+      </div>
         <a href="../usuario/secretario-usuario.php" class="nav-opciones" data-i18n="users">Usuarios</a>
-        <a href="../horario/horario-secretario" class="nav-opciones" data-i18n="schedule" >Horarios</a>
+        <a href="./../horario/horario-secretario.php" class="nav-opciones" data-i18n="schedule" >Horarios</a>
         <a href="../grupo/secretario-grupo.php" class="fw-semibold seleccionado mb-2" data-i18n="groups">Grupos</a>
         <a href="./../recurso/secretario-recurso.php" class="nav-opciones" data-i18n="resources">Recursos</a>
    
@@ -149,14 +151,14 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
       <div class="volverGeneral">
         <div class="volver">
         <a href="../secretario-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-        <a href="../secretario-bienvenida.php">Volver</a>
+        <a href="../secretario-bienvenida.php" data-i18n="goBack">Volver</a>
       </div>
       <i class="bi bi-translate traductor-menu"></i>
       </div>
 
 
       <a href="../usuario/secretario-usuario.php" class="nav-opciones" data-i18n="users">Usuarios</a>
-        <a href="../horario/horario-secretario" class="nav-opciones" data-i18n="schedule" >Horarios</a>
+        <a href="./../horario/horario-secretario.php" class="nav-opciones" data-i18n="schedule" >Horarios</a>
         <a href="../grupo/secretario-grupo.php" class="fw-semibold seleccionado mb-2" data-i18n="groups">Grupos</a>
         <a href="./../recurso/secretario-recurso.php" class="nav-opciones" data-i18n="resources">Recursos</a>
    
@@ -171,8 +173,8 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
       <div class="acordion-total">
   <div class="acordion">
   
-              <h2>Grupos</h2>
-              <p>Gestioná los grupos: agregá, modificá o eliminá según sea necesario.</p> 
+              <h2 data-i18n="groups">Grupos</h2>
+              <p data-i18n="manageGroups">Gestioná los grupos: agregá, modificá o eliminá según sea necesario.</p> 
 
               <button class="boton-opciones2 agregar colorfondorosa"
                       data-bs-toggle="modal"
@@ -250,7 +252,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title">Gestión de Grupos</h5>
+                    <h5 class="modal-title" data-i18n="groupManagement">Gestión de Grupos</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                   </div>
 
@@ -264,15 +266,15 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
 
 
                       <div class="mb-3">
-                        <label>Nombre del grupo</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ej: María Caseres" required>
+                        <label data-i18n="groupName">Nombre del grupo</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ej: María Caseres"  data-i18n-placeholder="egMC">
                       </div>
 
 
                       <div class="mb-3">
-                        <label for="orientacion">Orientación</label>
+                        <label for="orientacion" data-i18n="orientation">Orientación</label>
                         <input type="text" name="orientacion" class="form-control"
-                              placeholder="Ingrese la orientación" list="orientaciones" id="orientacionInput" required />
+                          data-i18n-placeholder="enterOrientation"  placeholder="Ingrese la orientación" list="orientaciones" id="orientacionInput" required />
                         <datalist id="orientaciones">
                           <?php foreach($orientaciones as $o): ?>
                             <option value="<?php echo htmlspecialchars($o, ENT_QUOTES, 'UTF-8'); ?>"></option>
@@ -282,24 +284,24 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
 
 
                       <div class="mb-3">
-                        <label>Turno</label>
+                        <label data-i18n="shift" >Turno</label>
                         <select class="form-control" id="turno" name="turno" required>
-                            <option value="">Seleccione...</option>
-                            <option value="Matutino">Matutino</option>
-                            <option value="Vespertino">Vespertino</option>
-                            <option value="Nocturno">Nocturno</option>
+                            <option value="" data-i18n="select">Seleccione...</option>
+                            <option value="Matutino" data-i18n="morning">Matutino</option>
+                            <option value="Vespertino" data-i18n="afternoon">Vespertino</option>
+                            <option value="Nocturno" data-i18n="evening">Nocturno</option>
                         </select>
                       </div>
 
 
                       <div class="mb-3">
-                        <label>Cantidad de alumnos</label>
-                        <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Ej: 34"required>
+                        <label data-i18n="numberStudents">Cantidad de alumnos</label>
+                        <input type="number" data-i18n-placeholder="eg34" class="form-control" id="cantidad" name="cantidad" placeholder="Ej: 34"required>
                       </div>
 
 
                       <div class="mb-3">
-                        <label>Adscripto</label>
+                        <label data-i18n="adscripto">Adscripto</label>
                         <select class="form-control" name="id_adscripto" required>
                         <?php
                         while($adscriptoRow = $adscriptoResult->fetch_assoc()){
@@ -317,8 +319,8 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
 
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                      <button type="submit" class="btn btn-primary">Guardar</button>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="">Cerrar</button>
+                      <button type="submit" class="btn btn-primary" data-i18n="save">Guardar</button>
                     </div>
                   </form>
                 </div>

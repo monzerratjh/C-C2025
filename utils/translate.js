@@ -97,7 +97,18 @@ i18next.init({
         endTime:"Hora de finalización",
         //
         manageGroups:"Gestioná los grupos: agregá, modificá o eliminá según sea necesario.",
-
+        groupManagement:"Gestion de grupos",
+        groupName:"Nombre del grupo",
+        orientation:"Orientación",
+        egMC:"Ej: María Caceres",
+        enterOrientation:"Ingrese la orientación",
+        shift:"Turno",
+        numberStudents:"Número de estudiantes",
+        eg34:"Ej:34",
+        morning:"Matutino",
+        afternoon:"Vespertino",
+        evening:"Nocturno",
+        save:"Guardar",
       }
     },
     en: {
@@ -188,6 +199,18 @@ i18next.init({
         endTime:"End time",
         //
         manageGroups:"Manage the Groups: Add, Modify, or Delete as Needed",
+        groupManagement:"Group Management",
+        groupName:"Group Name",
+        orientation:"Orientation",
+        egMC:"E.g.: Maria Caceres",
+        enterOrientation:"Enter the orientation",
+        shift:"Shift",
+        numberStudents:"Number of Students",
+        eg34:"E.g.:34",
+        morning:"Morning",
+        afternoon:"Afternoon",
+        evening:"Evening",
+        save:"Save",
       }
     }
   }

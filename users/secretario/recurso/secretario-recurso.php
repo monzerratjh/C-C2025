@@ -32,13 +32,14 @@
     </div>
     <div class="offcanvas-body d-flex flex-column">
       <div class="banner-parte-superior">
-      <a href="../secretario-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
-      <i class="bi bi-translate traductor-menu"></i>
-  </div>
-        <a href="../usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
-        <a href="../horario/horario-secretario" class="nav-opciones">Horarios</a>
-        <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
-        <a href="./../recurso/secretario-recurso.php" class="fw-semibold seleccionado mb-2">Recursos</a>
+       <a href="./../secretario-bienvenida.php" class="mb-3">
+          <i class="bi bi-arrow-left-circle-fill me-2"></i><span data-i18n="goBack">Volver</span>
+        </a> 
+      </div>
+        <a href="../usuario/secretario-usuario.php" class="nav-opciones" data-i18n="users">Usuarios</a>
+        <a href="../horario/horario-secretario" class="nav-opciones" data-i18n="schedule">Horarios</a>
+        <a href="../grupo/secretario-grupo.php" class="nav-opciones" data-i18n="groups">Grupos</a>
+        <a href="./../recurso/secretario-recurso.php" class="fw-semibold seleccionado mb-2" data-i18n="resources">Recursos</a>
    
         </div>
   </div>
@@ -52,16 +53,16 @@
       <div class="volverGeneral">
         <div class="volver">
         <a href="../secretario-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-        <a href="../secretario-bienvenida.php">Volver</a>
+        <a href="../secretario-bienvenida.php" data-i18n="goBack">Volver</a>
       </div>
       <i class="bi bi-translate traductor-menu"></i>
       </div>
 
 
-      <a href="../usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
-      <a href="../horario/horario-secretario.php" class="nav-opciones">Horarios</a>
-      <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
-      <a href="./../recurso/secretario-recurso.php" class="fw-semibold seleccionado mb-2">Recursos</a>
+      <a href="../usuario/secretario-usuario.php" class="nav-opciones" data-i18n="users">Usuarios</a>
+      <a href="../horario/horario-secretario.php" class="nav-opciones" data-i18n="schedule">Horarios</a>
+      <a href="../grupo/secretario-grupo.php" class="nav-opciones" data-i18n="groups">Grupos</a>
+      <a href="./../recurso/secretario-recurso.php" class="fw-semibold seleccionado mb-2" data-i18n="resources">Recursos</a>
    
     </aside>
 
@@ -70,12 +71,19 @@
       <img src="./../../../img/logo.png" alt="Logo" class="logo">
 
   <div class="loader"></div>
-  <h1>Estamos en mantenimiento</h1>
-  <p>Volveremos pronto con algo mejor ✨</p>
+  <h1 data-i18n="underMaintenance">Estamos en mantenimiento</h1>
+  <p data-i18n="backSoon">Volveremos pronto con algo mejor ✨</p>
 
       </main>
       <!-- Bootstrap JS + Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+    <!-- i18next desde CDN -->
+  <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+  <script src="./../../../utils/translate.js"></script>
+
 
 </body>
 </html>
