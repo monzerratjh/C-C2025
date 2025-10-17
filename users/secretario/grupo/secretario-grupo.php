@@ -97,7 +97,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
 
 
 <!DOCTYPE html>
-<html lang="es"></html>
+<html lang="es">
 <head>
    <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
