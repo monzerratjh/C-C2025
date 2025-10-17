@@ -35,9 +35,13 @@
     </div>
     <div class="offcanvas-body d-flex flex-column">
         <div class="banner-parte-superior">
-          <a href="../adscripto-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
-          <i class="bi bi-translate traductor-menu"></i>
-        </div>
+        <a href="../hora/asignar-hora.php" class="mb-3">
+          <i class="bi bi-arrow-left-circle-fill me-2"></i>
+          <span data-i18n="goBack">Volver</span>
+        </a>
+        <i class="bi bi-translate traductor-menu"></i>
+      </div>
+
       <a href="./../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
@@ -53,8 +57,8 @@
       <div class="col-md-3 barra-lateral d-none d-md-flex">
         <div class="volverGeneral">
           <div class="volver">
-            <a href="../adscripto-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="../adscripto-bienvenida.php">Volver</a>
+            <a href="../hora/asignar-hora.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+            <a href="../hora/asignar-hora.php">Volver</a>
           </div>
             <i class="bi bi-translate traductor-menu"></i>
         </div>
