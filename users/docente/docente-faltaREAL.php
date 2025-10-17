@@ -34,15 +34,16 @@ include('../../conexion.php');
     </div>
     <div class="offcanvas-body d-flex flex-column">
       <div class="banner-parte-superior">
-        <a href="docente-bienvenida.php" class="mb-3">
-          <i class="bi bi-arrow-left-circle-fill me-2"></i>Volver
+       <a href="./docente-bienvenida.php" class="mb-3">
+          <i class="bi bi-arrow-left-circle-fill me-2"></i>
+          <span data-i18n="goBack">Volver</span>
         </a>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
-      <a href="docente-grupo.php" class="nav-opciones mb-2">Grupos a Cargo</a>
-      <a href="docente-reservar.php" class="nav-opciones mb-2">Reservar Espacio</a>
-      <a href="docente-falta.php" class="fw-semibold seleccionado mb-2">Avisar Falta</a>
-    </div>
+      <a href="docente-grupo.php" class="nav-opciones mb-2" data-i18n="assignedGroups">Grupos a Cargo</a>
+      <a href="docente-reservar.php" class="nav-opciones mb-2"  data-i18n="reserveFacility" >Reservar Espacio</a>
+      <a href="docente-falta.php" class="fw-semibold seleccionado mb-2" data-i18n="reportAbsence">Avisar Falta</a>
+     </div>
   </div>
 
   <!-- Contenedor general con GRID -->
@@ -51,18 +52,16 @@ include('../../conexion.php');
     <!-- Barra lateral -->
     <aside class="barra-lateral">
       <div class="volverGeneral">
-        <div class="volver">
-          <a href="docente-bienvenida.php">
-            <i class="bi bi-arrow-left-circle-fill icono-volver"></i>
-          </a>
-          <a href="docente-bienvenida.php">Volver</a>
+       <div class="volver">
+          <a href="./docente-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+          <a href="./docente-bienvenida.php" data-i18n="goBack">Volver</a>
         </div>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
 
-      <a href="docente-grupo.php" class="nav-opciones mb-2">Grupos a Cargo</a>
-      <a href="docente-reservar.php" class="nav-opciones mb-2">Reservar Espacio</a>
-      <a href="docente-falta.php" class="fw-semibold seleccionado">Avisar Falta</a>
+      <a href="docente-grupo.php" class="nav-opciones mb-2" data-i18n="assignedGroups">Grupos a Cargo</a>
+      <a href="docente-reservar.php" class="nav-opciones mb-2" data-i18n="reserveFacility" >Reservar Espacio</a>
+      <a href="docente-falta.php" class="fw-semibold seleccionado" data-i18n="reportAbsence">Avisar Falta</a>
     </aside>
 
     <!-- Contenido principal -->
@@ -70,7 +69,7 @@ include('../../conexion.php');
       <img src="./../../img/logo.png" alt="Logo" class="logo">
       
       <div class="bloque-aviso">
-        <button class="etiqueta" data-bs-toggle="modal" data-bs-target="#modalFalta">Avisar Falta</button>
+        <button class="etiqueta" data-bs-toggle="modal" data-bs-target="#modalFalta" data-i18n="reportAbsence">Reportar Falta</button>
       </div>
 
       <!-- Modal para enviar aviso de falta -->
@@ -79,7 +78,7 @@ include('../../conexion.php');
           <div class="modal-content">
 
             <div class="modal-header">
-              <h5 class="modal-title">Avisar Falta</h5>
+              <h5 class="modal-title" data-i18n="reportAbsence">Reportar Falta</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
@@ -87,27 +86,27 @@ include('../../conexion.php');
             <form method="POST" id="formFalta">
               <div class="modal-body">
                 <div class="mb-3">
-                  <label for="materia">Materia</label>
+                  <label for="materia" data-i18n="subject">Asignatura</label>
                   <input type="text" class="form-control" id="materia" name="materia" required>
                 </div>
 
                 <div class="mb-3">
-                  <label for="grupo">Grupo al que falta</label>
+                  <label for="grupo" data-i18n="groupAbsent">Grupo al que falta</label>
                   <input type="text" class="form-control" id="grupo" name="grupo" required>
                 </div>
 
                 <div class="mb-3">
-                  <label for="fecha">Fecha</label>
+                  <label for="fecha" data-i18n="date">Fecha</label>
                   <input type="date" class="form-control" id="fecha" name="fecha" required>
                 </div>
 
                 <div class="mb-3">
-                  <label for="horas">Cantidad de horas</label>
+                  <label for="horas" data-i18n="hoursAbsent">Cantidad de horas</label>
                   <input type="number" class="form-control" id="horas" name="horas" required>
                 </div>
 
                 <div class="mb-3">
-                  <label for="motivo">Motivo</label>
+                  <label for="motivo" data-i18n="reason">Motivo</label>
                   <textarea class="form-control" id="motivo" name="motivo" required></textarea>
                 </div>
               </div>
@@ -127,7 +126,7 @@ include('../../conexion.php');
 
                   <div class="mb-3">
                     <label for="fecha">Fecha</label>
-                      <input type="date" class="form-control" id="fecha-a-faltar" name="fecha-a-faltar" required>
+                      <input type="date" class="form-control" id="fecha-a-faltar" name="fecha-a-faltar"  required>
                   </div>
 
                   <div class="mb-3">
@@ -141,7 +140,7 @@ include('../../conexion.php');
                   </div>
 
                   <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Avisar</button>
+                    <button type="submit" class="btn btn-primary" data-i18n="report">Avisar</button>
                   </div>
                 </div>
               </form>

@@ -73,6 +73,12 @@ i18next.init({
         cancel:"Cancelar",
         reserve:"Reservar",
         //
+        groupAbsent:"Grupo al que falta",
+        date:"Fecha",
+        hoursAbsent:"Cantidad de horas",
+        reason:"Motivo",
+        report:"Avisar",
+        //
       }
     },
     en: {
@@ -138,6 +144,12 @@ i18next.init({
         newReservation:"New reservation",
          cancel:"Cancel",
         reserve:"Reserve",
+        //
+        groupAbsent:"Group Absent From",
+        date:"Date",
+        hoursAbsent:"Hours Absent",
+        reason:"Reason",
+        report:"Report"
         //
       }
     }
