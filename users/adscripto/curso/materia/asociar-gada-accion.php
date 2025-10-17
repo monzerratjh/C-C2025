@@ -1,5 +1,5 @@
 <?php
-include('../../../conexion.php');
+include('../../../../conexion.php');
 $conn = conectar_bd();
 session_start();
 //$id_adscripto = $_SESSION['id_adscripto'] ?? null;

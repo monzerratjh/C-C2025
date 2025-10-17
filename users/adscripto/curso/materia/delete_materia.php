@@ -1,5 +1,5 @@
 <?php 
-include('..\..\..\conexion.php');
+include('../../../../conexion.php');
 $conn = conectar_bd();
 
 $id_asignatura = $_GET['id_asignatura'] ?? null; // Si no viene nada, queda null
