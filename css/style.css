@@ -591,6 +591,12 @@ background-color: var(--color-adscripto);
   color: #0a4f79;
 }
 
+/*TABLA SECRETARIO USUARIO*/
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
 .tabla-secretario{
   width: 100%;
   max-width: 800px;
@@ -604,6 +610,62 @@ background-color: var(--color-secretaria);
 }
 .tabla-secretario tbody tr:nth-child(even) { /*Las celdas pares cambian d color*/
   background-color: #f9eaf8;
+}
+
+/* MEDIA QUERIE SECRETARIO USUARIO */
+/* MEDIA QUERIE SECRETARIO USUARIO */
+@media (max-width: 1257px) {
+  .tabla-secretario thead {
+    display: none; /* Ocultar encabezados */
+  }
+
+  .tabla-secretario tbody {
+        background-color: transparent; /* Quita cualquier fondo de escritorio */
+
+  }
+
+  .tabla-secretario, 
+  .tabla-secretario tbody, 
+  .tabla-secretario tr, 
+  .tabla-secretario td {
+    display: block;
+    width: 100%;
+  }
+
+  .tabla-secretario tr {
+    margin-bottom: 1rem;
+    border: 1px solid var(--color-secretaria); /* Borde de color */
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .tabla-secretario td {
+    text-align: left;
+    padding: 8px 10px;
+    position: relative;
+  }
+
+  /* Mostrar la etiqueta del encabezado antes de cada campo */
+  .tabla-secretario td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  /* Alineación de botones de editar y eliminar */
+  .tabla-secretario td:last-child,
+  .tabla-secretario td:nth-last-child(2) {
+    text-align: right; /* Ponemos las acciones a la derecha */
+    display: inline-block;
+    margin-left: 5px;
+  }
+
+  .tabla-secretario td:last-child a,
+  .tabla-secretario td:nth-last-child(2) a {
+    display: inline-block;
+    margin-left: 5px;
+  }
 }
 
 

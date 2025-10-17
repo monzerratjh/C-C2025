@@ -37,70 +37,7 @@ $message = "";
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
     <!-- CSS propio -->
-<style>
-  /* Estilo normal de tabla (pantallas grandes) */
-.table-responsive {
-  width: 100%;
-  overflow-x: auto;
-}
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.table th, .table td {
-  padding: 12px;
-  text-align: left;
-  vertical-align: middle;
-}
-
-/* ======== VISTA CELULAR ======== */
-@media (max-width: 768px) {
-  .table thead {
-    display: none; /* Ocultar encabezados */
-  }
-
-  .table, 
-  .table tbody, 
-  .table tr, 
-  .table td {
-    display: block;
-    width: 100%;
-  }
-
-  .table tr {
-    margin-bottom: 1rem;
-    border: 1px solid #f3d6f9;
-    border-radius: 10px;
-    background-color: #ffe6ff;
-    padding: 10px;
-  }
-
-  .table td {
-    text-align: left;
-    padding: 8px 10px;
-    position: relative;
-  }
-
-  /* Mostrar la etiqueta del encabezado antes de cada campo */
-  .table td::before {
-    content: attr(data-label);
-    font-weight: bold;
-    display: block;
-    margin-bottom: 3px;
-    color: #7a2a8a;
-  }
-
-  /* Centrar iconos de editar y eliminar */
-  .table td:last-child {
-    text-align: center;
-  }
-}
-
-</style>
+     <link rel="stylesheet" href="./../../../css/style.css">
   </head>
 
   <body>
@@ -160,8 +97,8 @@ $message = "";
         <h2> Usuarios</h2>
         <p>Gestiona los usuarios: agregá nuevos o modificá los existentes.</p>
 
-
-        <table class=" table tabla-secretario">
+<div class="table-responsive">
+        <table class="tabla-secretario">
           <thead>
             <tr>
               <th>Nombre</th>
@@ -183,7 +120,7 @@ $message = "";
               <td data-label="Teléfono"><?= $row['telefono_usuario'] ?></td>
               <td  data-label="Cédula"><?= $row['ci_usuario'] ?></td>
               <td data-label="Cargo"><?= $row['cargo_usuario'] ?></td>
-              <td data-label="Acciones">
+              <td>
                   <a class="editar btn" data-bs-toggle="modal" data-bs-target="#update_modal<?= $row['id_usuario'] ?>">
                   <i class="bi bi-pencil-square"></i>
                 </a>
@@ -268,6 +205,7 @@ $message = "";
 
           </tbody>
         </table>
+</div>
 
         <!-- Modal creación -->
         <div class="modal fade" id="modalUsuario" tabindex="-1">
