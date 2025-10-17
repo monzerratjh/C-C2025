@@ -132,10 +132,10 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
       <a href="../secretario-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
       <i class="bi bi-translate traductor-menu"></i>
   </div>
-        <a href="../usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
-        <a href="../horario/horario-secretario" class="nav-opciones">Horarios</a>
-        <a href="../grupo/secretario-grupo.php" class="fw-semibold seleccionado mb-2">Grupos</a>
-        <a href="./../recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
+        <a href="../usuario/secretario-usuario.php" class="nav-opciones" data-i18n="users">Usuarios</a>
+        <a href="../horario/horario-secretario" class="nav-opciones" data-i18n="schedule" >Horarios</a>
+        <a href="../grupo/secretario-grupo.php" class="fw-semibold seleccionado mb-2" data-i18n="groups">Grupos</a>
+        <a href="./../recurso/secretario-recurso.php" class="nav-opciones" data-i18n="resources">Recursos</a>
    
         </div>
   </div>
@@ -155,10 +155,10 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
       </div>
 
 
-      <a href="../usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
-      <a href="../horario/horario-secretario.php" class="nav-opciones">Horarios</a>
-      <a href="../grupo/secretario-grupo.php" class="fw-semibold seleccionado mb-2">Grupos</a>
-      <a href="./../recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
+      <a href="../usuario/secretario-usuario.php" class="nav-opciones" data-i18n="users">Usuarios</a>
+        <a href="../horario/horario-secretario" class="nav-opciones" data-i18n="schedule" >Horarios</a>
+        <a href="../grupo/secretario-grupo.php" class="fw-semibold seleccionado mb-2" data-i18n="groups">Grupos</a>
+        <a href="./../recurso/secretario-recurso.php" class="nav-opciones" data-i18n="resources">Recursos</a>
    
     </aside>
 
@@ -341,6 +341,12 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
   <script src="../js/desplegarCaracteristicas.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+    <!-- i18next desde CDN -->
+  <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+  <script src="./../../../utils/translate.js"></script>
 
 </body>
 </html>

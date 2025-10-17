@@ -88,6 +88,16 @@ i18next.init({
         logoutConfirmText: "Se cerrará tu sesión actual",
         logoutConfirmButton: "Sí, cerrar sesión",
     //
+        users:"Usuarios",
+        groups:"Grupos",
+        resources:"Recursos",
+        schedules:"Horarios",
+        recordSchedules:"Registrá los horarios indicando la hora de inicio y finalización por hora",
+        startTime:"Hora de inicio",
+        endTime:"Hora de finalización",
+        //
+        manageGroups:"Gestioná los grupos: agregá, modificá o eliminá según sea necesario.",
+
       }
     },
     en: {
@@ -168,7 +178,16 @@ i18next.init({
         logoutConfirmTitle: "Are you sure you want to log out?",
         logoutConfirmText: "Your current session will be closed",
         logoutConfirmButton: "Yes, log out",
-    //
+        //
+        users:"Users",
+        groups:"Groups",
+        resources:"Resources",
+        schedules:"Schedules",
+        recordSchedules:"Record the schedules by specifying the start and end time for each hour",
+        startTime:"Start time",
+        endTime:"End time",
+        //
+        manageGroups:"Manage the Groups: Add, Modify, or Delete as Needed",
       }
     }
   }

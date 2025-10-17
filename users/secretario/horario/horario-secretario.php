@@ -51,16 +51,16 @@ $con->close();
     <div class="offcanvas-body d-flex flex-column">
       <div class="banner-parte-superior">
         <a href="./../secretario-bienvenida.php" class="mb-3">
-          <i class="bi bi-arrow-left-circle-fill me-2"></i>Volver
+          <i class="bi bi-arrow-left-circle-fill me-2"></i><span data-i18n="goBack">Volver</span>
         </a>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
 
-      <a href="../usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
-      <a href="../horario/horario-secretario.php" class="fw-semibold seleccionado mb-2">Horarios</a>
-      <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
-       <a href="./../recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
-    
+      <a href="./../usuario/secretario-usuario.php" class="nav-opciones" data-i18n="users">Usuarios</a>
+      <a href="./../horario/horario-secretario.php" class="fw-semibold seleccionado" data-i18n="schedule" >Horarios</a>
+      <a href="./../grupo/secretario-grupo.php" class="nav-opciones" data-i18n="groups">Grupos</a>
+      <a href="./../recurso/secretario-recurso.php" class="nav-opciones" data-i18n="resources">Recursos</a>
+   
     </div>
   </div>
 
@@ -74,15 +74,15 @@ $con->close();
           <a href="./../secretario-bienvenida.php">
             <i class="bi bi-arrow-left-circle-fill icono-volver"></i>
           </a>
-          <a href="./../secretario-bienvenida.php">Volver</a>
+         <a href="./../secretario-bienvenida.php" data-i18n="goBack">Volver</a>
         </div>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
 
-      <a href="../usuario/secretario-usuario.php" class="nav-opciones">Usuarios</a>
-      <a href="../horario/horario-secretario.php" class="fw-semibold seleccionado">Horarios</a>
-      <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
-       <a href="./../recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
+      <a href="./../usuario/secretario-usuario.php" class="nav-opciones" data-i18n="users">Usuarios</a>
+      <a href="./../horario/horario-secretario.php" class="fw-semibold seleccionado" data-i18n="schedule" >Horarios</a>
+      <a href="./../grupo/secretario-grupo.php" class="nav-opciones" data-i18n="groups">Grupos</a>
+      <a href="./../recurso/secretario-recurso.php" class="nav-opciones" data-i18n="resources">Recursos</a>
    
     </aside>
 
@@ -90,14 +90,14 @@ $con->close();
     <main class="principal">
       <img src="./../../../img/logo.png" alt="Logo" class="logo">
 
-        <h2>Horarios</h2>
-        <p>Registrá los horarios indicando la hora de inicio y finalización por hora</p>
+        <h2 data-i18n="schedules">Horarios</h2>
+        <p data-i18n="recordSchedules">Registrá los horarios indicando la hora de inicio y finalización por hora</p>
 
       <table class="tabla-secretario">
         <thead>
           <tr>
-            <th>Hora de inicio</th>
-            <th>Hora de finalización</th>
+            <th data-i18n="startTime">Hora de inicio</th>
+            <th data-i18n="endTime">Hora de finalización</th>
             <th></th>
             <th></th>
           </tr>
@@ -184,5 +184,11 @@ $con->close();
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../js/horario.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- i18next desde CDN -->
+  <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+  <script src="./../../../utils/translate.js"></script>
+
 </body>
 </html>
