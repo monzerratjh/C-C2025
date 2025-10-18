@@ -32,10 +32,11 @@ $message = "";
     <title>Usuarios - Secretario</title>
 
     <!-- Bootstrap + Iconos + Google Fonts -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
+     <!-- Bootstrap CSS + Iconos + letras -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
     <!-- CSS propio -->
      <link rel="stylesheet" href="./../../../css/style.css">
   </head>
@@ -59,13 +60,13 @@ $message = "";
       </div>
       <div class="offcanvas-body d-flex flex-column">
         <div class="banner-parte-superior">
-        <a href="../secretario-bienvenida.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
-        <i class="bi bi-translate traductor-menu"></i>
-        </div>
-        <a href="secretario-usuario.php" class="fw-semibold seleccionado mb-2">Usuarios</a>
-        <a href="../horario/horario-secretario.php" class="nav-opciones">Horarios</a>
-        <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
-        <a href="./../recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
+         <a href="./../secretario-bienvenida.php" class="mb-3">
+          <i class="bi bi-arrow-left-circle-fill me-2"></i><span data-i18n="goBack">Volver</span>
+        </a> </div>
+        <a href="secretario-usuario.php" class="fw-semibold seleccionado mb-2" data-i18n="users" >Usuarios</a>
+        <a href="../horario/horario-secretario.php" class="nav-opciones" data-i18n="schedule" >Horarios</a>
+        <a href="../grupo/secretario-grupo.php" class="nav-opciones" data-i18n="groups">Grupos</a>
+        <a href="./../recurso/secretario-recurso.php" class="nav-opciones" data-i18n="resources">Recursos</a>
    
       </div>
     </div>
@@ -75,18 +76,18 @@ $message = "";
 
       <!-- Barra lateral (pantallas grandes) -->
       <aside class="barra-lateral d-none d-md-flex flex-column">
-        <div class="volverGeneral">
-          <div class="volver">
-            <a href="../secretario-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="../secretario-bienvenida.php">Volver</a>
-          </div>
-          <i class="bi bi-translate traductor-menu"></i>
-        </div>
+           <div class="volverGeneral">
+        <div class="volver">
+        <a href="../secretario-bienvenida.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+        <a href="../secretario-bienvenida.php" data-i18n="goBack">Volver</a>
+      </div>
+      <i class="bi bi-translate traductor-menu"></i>
+      </div>
 
-        <a href="secretario-usuario.php" class="fw-semibold seleccionado mb-2">Usuarios</a>
-        <a href="../horario/horario-secretario.php" class="nav-opciones">Horarios</a>
-        <a href="../grupo/secretario-grupo.php" class="nav-opciones">Grupos</a>
-        <a href="./../recurso/secretario-recurso.php" class="nav-opciones">Recursos</a>
+        <a href="secretario-usuario.php" class="fw-semibold seleccionado mb-2" data-i18n="users">Usuarios</a>
+        <a href="../horario/horario-secretario.php" class="nav-opciones" data-i18n="schedule">Horarios</a>
+        <a href="../grupo/secretario-grupo.php" class="nav-opciones" data-i18n="groups">Grupos</a>
+        <a href="./../recurso/secretario-recurso.php" class="nav-opciones" data-i18n="resources">Recursos</a>
    
       </aside>
 
@@ -94,19 +95,19 @@ $message = "";
       <main class="principal">
 
         <img src="./../../../img/logo.png" alt="Logo" class="logo">
-        <h2> Usuarios</h2>
-        <p>Gestiona los usuarios: agregá nuevos o modificá los existentes.</p>
+        <h2 data-i18n="users" > Usuarios</h2>
+        <p data-i18n="manageUsers">Gestiona los usuarios: agregá nuevos o modificá los existentes.</p>
 
 <div class="table-responsive">
         <table class="tabla-secretario">
           <thead>
             <tr>
-              <th>Nombre</th>
-              <th>Apellido</th>
-              <th>Email</th>
-              <th>Teléfono</th>
-              <th>Cédula</th>
-              <th>Cargo</th>
+              <th data-i18n="name">Nombre</th>
+              <th data-i18n="lastName">Apellido</th>
+              <th >Email</th>
+              <th data-i18n="phone" >Teléfono</th>
+              <th data-i18n="idCard2">Cédula</th>
+              <th data-i18n="position">Cargo</th>
               <th></th>
               <th></th>
             </tr>
@@ -137,7 +138,7 @@ $message = "";
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title">Editar Usuario</h5>
+                    <h5 class="modal-title" data-i18n="editUser">Editar Usuario</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                   </div>
                   <form method="POST" action="./editar-usuario.php">
@@ -145,48 +146,48 @@ $message = "";
                       <input type="hidden" name="id_usuario" value="<?= $row['id_usuario'] ?>">
 
                       <div class="mb-3">
-                        <label>C.I</label>
+                        <label data-i18n="idCard">Cedula de identidad</label>
                         <input type="number" name="ci_usuario" class="form-control" value="<?= $row['ci_usuario'] ?>">
                       </div>
 
                       <div class="mb-3">
-                        <label>Nombre</label>
+                        <label data-i18n="name">Nombre</label>
                         <input type="text" name="nombre_usuario" class="form-control" value="<?= $row['nombre_usuario'] ?>">
                       </div>
 
                       <div class="mb-3">
-                        <label>Apellido</label>
+                        <label data-i18n="lastName">Apellido</label>
                         <input type="text" name="apellido_usuario" class="form-control" value="<?= $row['apellido_usuario'] ?>">
                       </div>
 
                       <div class="mb-3">
-                        <label>Gmail</label>
+                        <label>Email</label>
                         <input type="email" name="gmail_usuario" class="form-control" value="<?= $row['gmail_usuario'] ?>">
                       </div>
 
                       <div class="mb-3">
-                        <label>Teléfono</label>
+                        <label data-i18n="phone">Teléfono</label>
                         <input type="number" name="telefono_usuario" class="form-control" value="<?= $row['telefono_usuario'] ?>">
                       </div>
 
                       <div class="mb-3">
-                        <label>Cargo</label>
+                        <label data-i18n="position">Cargo</label>
                         <select name="cargo_usuario" class="form-select">
-                          <option value="">Seleccionar</option>
-                          <option value="Docente" <?= ($row['cargo_usuario'] == 'Docente') ? 'selected' : '' ?>>Docente</option>
-                          <option value="Adscripto" <?= ($row['cargo_usuario'] == 'Adscripto') ? 'selected' : '' ?>>Adscripto</option>
-                          <option value="Secretario" <?= ($row['cargo_usuario'] == 'Secretario') ? 'selected' : '' ?>>Secretario</option>
+                          <option value="" data-i18n="select">Seleccionar</option>
+                          <option value="Docente" <?= ($row['cargo_usuario'] == 'Docente') ? 'selected' : '' ?>data-i18n="teacher">Docente</option>
+                          <option value="Adscripto" <?= ($row['cargo_usuario'] == 'Adscripto') ? 'selected' : '' ?> data-i18n="adscripto">Adscripto</option>
+                          <option value="Secretario" <?= ($row['cargo_usuario'] == 'Secretario') ? 'selected' : '' ?> data-i18n="secretary">Secretario</option>
                         </select>
                       </div>
 
                       <div class="mb-3">
-                        <label>Contraseña</label>
+                        <label data-i18n="password">Contraseña</label>
                         <input type="password" name="contrasenia_usuario" class="form-control" value="<?= $row['contrasenia_usuario'] ?>">
                       </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                      <button type="submit" class="btn btn-primary">Guardar</button>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="cancel">Cerrar</button>
+                      <button type="submit" class="btn btn-primary" data-i18n="save">Guardar</button>
                     </div>
                   </form>
                 </div>
@@ -212,7 +213,7 @@ $message = "";
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">Agregar Usuario</h5>
+                <h5 class="modal-title" data-i18n="addUser">Agregar Usuario</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
               </div>
               <form method="POST" action="./agregar-usuario.php">
@@ -220,49 +221,49 @@ $message = "";
                   <input type="hidden" id="accion" name="accion">
 
                   <div class="mb-3">
-                    <label>C.I</label>
+                    <label data-i18n="idCard">Cedula de identidad</label>
                     <input type="number" name="ci_usuario" class="form-control" required>
                   </div>
 
                   <div class="mb-3">
-                    <label>Nombre</label>
+                    <label data-i18n="name">Nombre</label>
                     <input type="text" name="nombre_usuario" class="form-control" required>
                   </div>
 
                   <div class="mb-3">
-                    <label>Apellido</label>
+                    <label data-i18n="lastName">Apellido</label>
                     <input type="text" name="apellido_usuario" class="form-control" required>
                   </div>
 
                   <div class="mb-3">
-                    <label>Gmail</label>
+                    <label>Email</label>
                     <input type="email" name="gmail_usuario" class="form-control" required>
                   </div>
 
                   <div class="mb-3">
-                    <label>Teléfono</label>
+                    <label data-i18n="phone">Teléfono</label>
                     <input type="number" name="telefono_usuario" class="form-control" required>
                   </div>
 
                   <div class="mb-3">
-                    <label>Cargo</label>
+                    <label data-i18n="position">Cargo</label>
                     <select name="cargo_usuario" class="form-select" required>
-                      <option value="">Seleccionar</option>
-                      <option value="Docente">Docente</option>
-                      <option value="Adscripto">Adscripto</option>
-                      <option value="Secretario">Secretario</option>
+                      <option value="" data-i18n="select">Seleccionar</option>
+                      <option value="Docente" data-i18n="teacher">Docente</option>
+                      <option value="Adscripto" data-i18n="adscripto">Adscripto</option>
+                      <option value="Secretario" data-i18n="secretary">Secretario</option>
                     </select>
                   </div>
 
                   <div class="mb-3">
-                    <label>Contraseña</label>
+                    <label data-i18n="password">Contraseña</label>
                     <input type="password" name="contrasenia_usuario" class="form-control" required>
                   </div>
                 </div>
 
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                  <button type="submit" class="btn btn-primary">Guardar</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="cancel">Cerrar</button>
+                  <button type="submit" data-i18n="save" class="btn btn-primary">Guardar</button>
                 </div>
               </form>
             </div>
@@ -275,5 +276,12 @@ $message = "";
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/validation.js"></script>
+
+    
+
+     <!-- i18next desde CDN -->
+  <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+  <script src="./../../../utils/translate.js"></script>
+
   </body>
   </html>

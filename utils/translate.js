@@ -109,6 +109,15 @@ i18next.init({
         afternoon:"Vespertino",
         evening:"Nocturno",
         save:"Guardar",
+        //
+        manageUsers:"Gestiona los usuarios: agregá nuevos o modificá los existentes.",
+        name:"Nombre",
+        lastName:"Apellido",
+        phone:"Telefono",
+        idCard2:"Cédula",
+        position:"Cargo",
+        addUser:"Agregar usuario",
+        editUser:"Editar usuario",
       }
     },
     en: {
@@ -211,6 +220,15 @@ i18next.init({
         afternoon:"Afternoon",
         evening:"Evening",
         save:"Save",
+        //
+        manageUsers:"Manage the users: add new ones or modify existing ones",
+        name:"Name",
+        lastName:"Last name",
+        phone:"Phone",
+        idCard2:"ID",
+        position:"Position",
+        addUser:"Add user",
+        editUser:"Edit user",
       }
     }
   }
