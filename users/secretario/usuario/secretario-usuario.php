@@ -22,7 +22,13 @@ $message = "";
       $resultado = mysqli_stmt_get_result($stmt);
       $usuario = mysqli_fetch_assoc($resultado);
   }
-  ?>
+
+// Obtener todos los usuarios para mostrar en la tabla
+$usuarios = [];
+while($row = mysqli_fetch_array($query)) {
+    $usuarios[] = $row;
+}
+?>
 
   <!DOCTYPE html>
   <html lang="es">
@@ -41,7 +47,7 @@ $message = "";
      <link rel="stylesheet" href="./../../../css/style.css">
   </head>
 
-  <body>
+  <body class="grupo-user-page">
 
     <!-- Menú hamburguesa móvil -->
     <nav class="d-md-none">
@@ -98,6 +104,51 @@ $message = "";
         <h2 data-i18n="users" > Usuarios</h2>
         <p data-i18n="manageUsers">Gestiona los usuarios: agregá nuevos o modificá los existentes.</p>
 
+
+      <!-- Tabla para pantallas pequeñas -->
+      <div class="tabla-grupos-usuarios-responsive usuarios">
+
+      <button class="boton-opciones2 agregar colorfondorosa"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modalGrupo"
+                            onclick="document.getElementById('accion').value='insertar';">
+                      <h4>+</h4></button>
+
+        <?php foreach($usuarios as $row): ?>
+          <div class="dia">
+
+          <button class="boton-opciones miercoles">
+              <?php echo htmlspecialchars($row['nombre_usuario'].' '.$row['apellido_usuario'], ENT_SUBSTITUTE) ?>
+          </button>
+
+          <div class="contenido-dia grupos-usuarios-responsive">
+
+              <table class="tabla-grupos-usuarios-responsive ">
+                  <tr><td><b>Cargo:</b> <?= htmlspecialchars($row['cargo_usuario']) ?></td></tr>
+                  <tr><td><b>Cédula:</b> <?= htmlspecialchars($row['ci_usuario']) ?></td></tr>
+                  <tr><td><b>Teléfono:</b> <?= htmlspecialchars($row['telefono_usuario']) ?></td></tr>
+                  <tr><td><b>Email:</b> <?= htmlspecialchars($row['gmail_usuario']) ?></td></tr>
+                  <tr class="editar">
+                      <th class="grupos-usuarios-responsive">
+                          <a class="editar btn" data-bs-toggle="modal" data-bs-target="#update_modal<?= $row['id_usuario'] ?>">
+                        <i class="bi bi-pencil-square"></i>
+                      </th>
+                  </tr>
+                  <tr>
+                      <th class="grupos-usuarios-responsive">
+                          <a href="delete_user_secretario.php?id_usuario=<?= $row['id_usuario'] ?>" class="eliminar btn">
+                        <i class="bi bi-trash"></i>  </a>
+                      </th>
+                  </tr>
+                
+              </table>
+          </div></div>
+        <?php endforeach; ?>
+      </div>
+
+    
+
+<!-- Tabla para pantallas grandes -->
 <div class="table-responsive">
         <table class="tabla-secretario">
           <thead>
@@ -113,14 +164,14 @@ $message = "";
             </tr>
           </thead>
           <tbody>
-            <?php while($row = mysqli_fetch_array($query)): ?>
+           <?php foreach($usuarios as $row): ?>
             <tr>
-              <td data-label="Nombre"><?= $row['nombre_usuario'] ?></td>
-              <td data-label="Apellido"><?= $row['apellido_usuario'] ?></td>
-              <td data-label="Email"><?= $row['gmail_usuario'] ?></td>
-              <td data-label="Teléfono"><?= $row['telefono_usuario'] ?></td>
-              <td  data-label="Cédula"><?= $row['ci_usuario'] ?></td>
-              <td data-label="Cargo"><?= $row['cargo_usuario'] ?></td>
+              <td><?= $row['nombre_usuario'] ?></td>
+              <td><?= $row['apellido_usuario'] ?></td>
+              <td><?= $row['gmail_usuario'] ?></td>
+              <td><?= $row['telefono_usuario'] ?></td>
+              <td><?= $row['ci_usuario'] ?></td>
+              <td><?= $row['cargo_usuario'] ?></td>
               <td>
                   <a class="editar btn" data-bs-toggle="modal" data-bs-target="#update_modal<?= $row['id_usuario'] ?>">
                   <i class="bi bi-pencil-square"></i>
@@ -193,15 +244,15 @@ $message = "";
                 </div>
               </div>
             </div>
-            <?php endwhile; ?>
+            <?php endforeach; ?>
 
-            <tr><td colspan="7" class="text-center"> <!-- Une todas las columnas en una sola celda y centra el "+" -->
+            <tr><td colspan="8" class="text-center"> <!-- Une todas las columnas en una sola celda y centra el "+" -->
               <h4 class="agregar"
                           data-bs-toggle="modal"
                           data-bs-target="#modalUsuario"
                           onclick="document.getElementById('accion').value='insertar';">+
                 </h4>
-                <td></td>
+                
             </td></tr>
 
           </tbody>
@@ -277,7 +328,7 @@ $message = "";
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/validation.js"></script>
 
-    
+      <script src="../js/desplegarCaracteristicas.js"></script>
 
      <!-- i18next desde CDN -->
   <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>

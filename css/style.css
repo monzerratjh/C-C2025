@@ -612,64 +612,92 @@ background-color: var(--color-secretaria);
   background-color: #f9eaf8;
 }
 
-/* MEDIA QUERIE SECRETARIO USUARIO */
-/* MEDIA QUERIE SECRETARIO USUARIO */
-@media (max-width: 1257px) {
-  .tabla-secretario thead {
-    display: none; /* Ocultar encabezados */
-  }
 
-  .tabla-secretario tbody {
-        background-color: transparent; /* Quita cualquier fondo de escritorio */
+/* Ocultar por defecto (pantallas grandes) */
+.tabla-grupos-usuarios-responsive {
+  display: none;
+}
 
-  }
-
-  .tabla-secretario, 
-  .tabla-secretario tbody, 
-  .tabla-secretario tr, 
-  .tabla-secretario td {
+/* Mostrar solo en pantallas pequeñas (≤ 1253px) para tabla de grupos */
+@media (max-width: 1253px) {
+  /* Mostrar tabla tipo card solo en grupo.php */
+  .grupo-user-page .tabla-grupos-usuarios-responsive {
     display: block;
+    box-sizing: border-box;
+  }
+
+  /* Ocultar tabla original solo en grupo.php */
+  .grupo-user-page .tabla-secretario {
+    display: none;
+  }
+
+  /* Estilos tipo card para la tabla de grupos */
+  .grupo-user-page .tabla-grupos-usuarios-responsive {
+    background-color: #f9eaf8;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 15px;
+    margin-bottom: 1rem;
+    margin-top: -12px;
+    font-size: 0.95rem; 
+      display: flex;
+      justify-content: center;
+  }
+
+  .grupo-user-page .usuarios {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
     width: 100%;
   }
 
-  .tabla-secretario tr {
-    margin-bottom: 1rem;
-    border: 1px solid var(--color-secretaria); /* Borde de color */
-    border-radius: 10px;
-    padding: 10px;
-  }
-
-  .tabla-secretario td {
-    text-align: left;
-    padding: 8px 10px;
+  .grupo-user-page .boton-opciones2 {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    color: #333;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
     position: relative;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    transition: all 0.3s 
+ease;
   }
 
-  /* Mostrar la etiqueta del encabezado antes de cada campo */
-  .tabla-secretario td::before {
-    content: attr(data-label);
-    font-weight: bold;
-    display: block;
-    margin-bottom: 3px;
+  .grupo-user-page .tabla-grupos-usuarios-responsive p {
+    margin: 6px 0;
+    color: #333;
   }
 
-  /* Alineación de botones de editar y eliminar */
-  .tabla-secretario td:last-child,
-  .tabla-secretario td:nth-last-child(2) {
-    text-align: right; /* Ponemos las acciones a la derecha */
-    display: inline-block;
-    margin-left: 5px;
+  .grupo-user-page .grupos-usuarios-responsive {
+    background-color: transparent; /* Sin fondo */ 
   }
 
-  .tabla-secretario td:last-child a,
-  .tabla-secretario td:nth-last-child(2) a {
-    display: inline-block;
-    margin-left: 5px;
+  .grupo-user-page .tabla-grupos-usuarios-responsive td {
+    display: block;          /* Cada th ocupa toda la fila */
+    width: 100%;             /* Ocupa todo el ancho */
+    text-align: left;        /* Alineación del texto */
+    margin-bottom: 5px;      /* Espacio entre filas */
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .grupo-user-page .tabla-grupos-usuarios-responsive tr { 
+    background-color: #f9eaf8;
+  }
+
+  .grupo-user-page .tabla-grupos-usuarios-responsive th:last-child { 
+    border: #00000000;
   }
 }
 
 
-/*Tablas para estudiante*/
+/*Tablas GENERAL + para estudiante*/
 table {
   width: 80%;
   margin: 20px auto;
@@ -687,7 +715,7 @@ table th, table td {
 }
 
 table th {
-  background: var(--color-estudiante); /* rosado pastel */
+  background: var(--color-estudiante); 
   color: var(--color-letras-general);
   font-weight: bold;
 }

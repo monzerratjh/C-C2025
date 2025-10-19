@@ -108,7 +108,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./../../../css/style.css">
 </head>
-<body>
+<body class="grupo-user-page">
 
 
    <!-- Menú hamburguesa para móviles -->
@@ -187,18 +187,54 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
     <button class="boton-opciones miercoles">
        <?php echo htmlspecialchars($row['nombre_grupo'], ENT_SUBSTITUTE); ?>
     </button>
-    <div class="contenido-dia">
+    <div class="contenido-dia grupos-usuarios-responsive">
+<!-- Tabla para pantallas pequeñas -->
+    <table class="tabla-grupos-usuarios-responsive ">
+        <tr><td><b>Orientación:</b> <?php echo htmlspecialchars($row['orientacion_grupo']); ?></td></tr>
+        <tr><td><b>Turno:</b> <?php echo htmlspecialchars($row['turno_grupo']); ?></td></tr>
+        <tr><td><b>Cantidad de alumnos:</b> <?php echo $row['cantidad_alumno_grupo']; ?></td></tr>
+        <tr><td><b>Adscripto:</b> <?php echo htmlspecialchars($row['nombre_usuario'].' '.$row['apellido_usuario']); ?></td></tr>
+        <tr class="editar">
+          <th class="grupos-usuarios-responsive"> <i class="btn btn-sm bi bi-pencil-square"
+                              data-bs-toggle="modal"
+                              data-bs-target="#modalGrupo"
+                              onclick="cargarEditar(
+                                  '<?php echo $row['id_grupo']; ?>',
+                                  '<?php echo $row['orientacion_grupo']; ?>',
+                                  '<?php echo $row['turno_grupo']; ?>',
+                                  '<?php echo $row['nombre_grupo']; ?>',
+                                  '<?php echo $row['cantidad_alumno_grupo']; ?>',
+                                  '<?php echo $row['id_adscripto']; ?>' // muestra los datos que estan guardados (y ahora seran editados)
+                              )">
+                      </i>
+            </th>
+        </tr>
+        <tr>
+            <th class="grupos-usuarios-responsive"><form id="formEliminar<?php echo $row['id_grupo'];?>"
+                                    method="POST"
+                                    style="display:inline;">
+                                  <input type="hidden" name="accion" value="eliminar">
+                                  <input type="hidden" name="id_grupo" value="<?php echo $row['id_grupo']; ?>">
+                                
+                                  <i
+                                          class="btn btn-sm eliminar-grupo-btn bi bi-trash "
+                                          data-id="<?php echo $row['id_grupo']; ?>">
+                                </i>
+                        </form>
+            </th>            
+        </tr>
+      </div>
+    </table>
 
-    
-
-<table class="tabla-secretario tabla-grupos-responsive">
+    <!-- Tabla para pantallas grandes -->
+<table class="tabla-secretario">
         <thead>
           <tr>
             <th>Orientación</th>
             <th>Turno</th>
             <th>Cantidad de alumnos</th>
             <th>Adscripto</th>
-            <th> <i class="btn btn-sm btn-warning bi bi-pencil-square"
+            <th> <i class="btn btn-sm bi bi-pencil-square"
                     data-bs-toggle="modal"
                     data-bs-target="#modalGrupo"
                     onclick="cargarEditar(
@@ -217,7 +253,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
                       <input type="hidden" name="id_grupo" value="<?php echo $row['id_grupo']; ?>">
                      
                       <i
-                              class="btn btn-sm btn-danger eliminar-grupo-btn bi bi-trash "
+                              class="btn btn-sm eliminar-grupo-btn bi bi-trash "
                               data-id="<?php echo $row['id_grupo']; ?>">
                     </i>
             </form>

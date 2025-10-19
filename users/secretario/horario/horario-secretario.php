@@ -31,7 +31,7 @@ $con->close();
   <link rel="stylesheet" href="./../../../css/style.css">
 </head>
 
-<body>
+<body class="horarios-page">
 
   <!-- Menú hamburguesa (móviles) -->
   <nav class="d-md-none">
@@ -93,7 +93,7 @@ $con->close();
         <h2 data-i18n="schedules">Horarios</h2>
         <p data-i18n="recordSchedules">Registrá los horarios indicando la hora de inicio y finalización por hora</p>
 
-      <table class="tabla-secretario">
+      <table class="tabla-secretario horarios">
         <thead>
           <tr>
             <th data-i18n="startTime">Hora de inicio</th>
