@@ -74,19 +74,22 @@ $query = mysqli_query($conn, $sql);
 
     <!-- Contenido principal -->
     <main class="principal">
+
       <img src="./../../../../../img/logo.png" alt="Logo" class="logo"> 
       <h2>Cargar Asignatura</h2>
-      <p>Ingrese la asignatura.</p>
+      <p>Ingrese la asignatura</p>
+
       <div class="busqueda">
         <form action="./cargar-materias-accion.php" method="POST">
-          <div class="form-group">
-              <input type="text" class="form-control" id="insertar-materia" name="insertar-materia" placeholder="Ej: Programación Full-Stack" required>
-              <small class="form-text text-muted">Asegúrese de que quede bien escrito.</small>
+           <div class="form-group">
+           <input type="text" class="form-control diseno-busqueda" id="insertar-materia" name="insertar-materia" placeholder="Ej: Programación Full-Stack" required>
           </div>
-          <button type="submit" class="btn btn-primary">Cargar</button>
-        </form>
-        <br>
-</div>
+          <br>
+        <button type="submit" class="btn btn-primary">Cargar</button>
+         </form>
+      </div>
+
+      
 
       <h2>Asignaturas cargadas</h2>
       <table class="tabla-reserva">
@@ -108,6 +111,9 @@ $query = mysqli_query($conn, $sql);
                   <a href="./delete_materia.php?id_asignatura=<?= $row['id_asignatura'] ?>"><i class="bi bi-trash"></i></a>
                 </td>
             </tr>
+
+
+             </main>
 
             <!-- Modal para actualizar -->
             <div class="modal fade" id="update_modal<?= $row['id_asignatura'] ?>" tabindex="-1">  
@@ -134,7 +140,6 @@ $query = mysqli_query($conn, $sql);
           </tbody>
         </table>
       </div>
-    </main>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
