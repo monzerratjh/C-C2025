@@ -159,12 +159,12 @@ $con->close();
             <input type="hidden" name="id_horario_clase" id="id_horario_clase">
 
             <div class="mb-3">
-              <label>Hora de Inicio</label>
+              <label data-i18n="startTime">Hora de Inicio</label>
               <input type="time" class="form-control" name="hora_inicio" id="hora_inicio" required>
             </div>
 
             <div class="mb-3">
-              <label>Hora de Fin</label>
+              <label data-i18n="endTime">Hora de Fin</label>
               <input type="time" class="form-control" name="hora_fin" id="hora_fin" required>
             </div>
 
@@ -172,8 +172,8 @@ $con->close();
           </div>
 
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="close">Cerrar</button>
+            <button type="submit" class="btn btn-primary" data-i18n="save">Guardar</button>
           </div>
         </form>
       </div>

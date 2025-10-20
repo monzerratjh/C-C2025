@@ -118,6 +118,32 @@ i18next.init({
         position:"Cargo",
         addUser:"Agregar usuario",
         editUser:"Editar usuario",
+        //
+        close:"Cerrar",
+        //
+        courseManagement:"Gestión de cursos",
+        facilityManagement:"Gestión de espacios",
+        selectTypeFacility:"Seleccione el tipo de espacio que desea gestionar:",
+        classrooms:"Salones",
+        computerLabs:"Aulas",
+        scienceLabs:"Laboratorios",
+        viewReservations:"Consulta las reservas realizadas por cada docente y los espacios solicitados.",
+        //
+        courseSubjectManagement:"Gestión de cursos y asignaturas",
+        pCourseSubjectManagement:"Gestione los cursos, asignaturas, docentes y espacios del centro educativo de forma sencilla y organizada.",
+        addSubject:"Cargar asignaturas",
+        assignFTS:"Asignar espacios, docentes y asignaturas",
+        assignSchedule:"Asignar hora",
+        //
+        manageClassrooms:"Agrega, edita o elimina salones de forma rápida y sencilla.",
+        manageComputersLabs:"Agrega, edita o elimina aulas de forma rápida y sencilla.",
+        manageScienceLabs:"Agrega, edita o elimina laboratorios de forma rápida y sencilla.",
+        spaceManagement:"Gestión de espacio",
+        spaceName:"Nombre del espacio",
+        capacity:"Capacidad",
+        availability:"Disponibilidad",
+        historyNotes:"Historial / Observaciones",
+        next:"Siguiente",
       }
     },
     en: {
@@ -229,6 +255,31 @@ i18next.init({
         position:"Position",
         addUser:"Add user",
         editUser:"Edit user",
+        //
+        close:"Close",
+        courseManagement:"Course Management",
+        facilityManagement:"Facility Management",
+        selectTypeFacility:"Select the type of facility you wish to manage:",
+        classrooms:"Classrooms",
+        computerLabs:"Computer Labs",
+        scienceLabs:"Science Labs",
+        //
+        viewReservations:"View the reservations made by each teacher and the facilities requested.",
+        pCourseSubjectManagement:"Easily manage the courses, subjects, teachers, and facilities of your educational institution in an organized way.",
+        courseSubjectManagement:"Course and Subject Management",
+       addSubject:"Add Subjects",
+       assignFTS:"Assign Facilities, Teachers, and Subjects",
+        assignSchedule:"Assign Schedule",
+        //
+        manageClassrooms:"Manage classrooms: add, modify, or remove them as needed.",
+        manageComputersLabs:"Manage computer labs: add, modify, or remove them as needed.",
+        manageScienceLabs:"Manage science labs: add, modify, or remove them as needed.",
+        spaceManagement:"Space Management",
+        spaceName:"Space Name",
+        capacity:"Capacity",
+        availability:"Availability",
+        historyNotes:"History / Notes",
+        next:"Next"
       }
     }
   }

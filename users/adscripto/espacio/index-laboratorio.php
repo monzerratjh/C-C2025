@@ -53,14 +53,14 @@ $con->close();
     </div>
     <div class="offcanvas-body d-flex flex-column">
       <div class="banner-parte-superior">
-      <a href="adscripto-espacio.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
+      <a href="adscripto-espacio.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i><span data-i18n="goBack">Volver</span></a>
       <i class="bi bi-translate traductor-menu"></i>
       </div>
 
-      <a href="adscripto-espacio.php" class="fw-semibold seleccionado mb-2">Espacio</a>
+      <a href="adscripto-espacio.php" class="fw-semibold seleccionado mb-2" data-i18n="facility">Espacio</a>
       <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2">Gestión de cursos</a>
+      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2" data-i18n="courseManagement">Gestión de cursos</a>
      </div>
   </div>
 
@@ -73,15 +73,15 @@ $con->close();
     <div class="volverGeneral">
       <div class="volver">
         <a href="adscripto-espacio.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-        <a href="adscripto-espacio.php">Volver</a>
+        <a href="adscripto-espacio.php" data-i18n="goBack">Volver</a>
       </div>
       <i class="bi bi-translate traductor-menu"></i>
     </div>
 
-    <a href="adscripto-espacio.php" class="fw-semibold seleccionado mb-2">Espacio</a>
+    <a href="adscripto-espacio.php" class="fw-semibold seleccionado mb-2" data-i18n="facility">Espacio</a>
     <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
     <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-    <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2">Gestión de cursos</a>
+    <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2" data-i18n="courseManagement">Gestión de cursos</a>
   </div>
 
   <!-- Contenido principal -->
@@ -89,8 +89,8 @@ $con->close();
     <img src="./../../../img/logo.png" alt="Logo" class="logo"> 
 
     <div class="container my-4 espacio-contenedor">
-      <h2>Laboratorios</h2>
-      <p>Agrega, edita o elimina laboratorios de forma rápida y sencilla.</p>
+      <h2 data-i18n="scienceLabs">Laboratorios</h2>
+      <p data-i18n="manageScienceLabs">Agrega, edita o elimina laboratorios de forma rápida y sencilla.</p>
      <div class="row justify-content-center mt-4">
 
     <!-- Agregar nuevo primero -->
@@ -131,7 +131,7 @@ $con->close();
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Gestión de espacio</h5>
+              <h5 class="modal-title" data-i18n="spaceManagement">Gestión de espacio</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
@@ -142,19 +142,19 @@ $con->close();
                 <input type="hidden" id="tipo_espacio" name="tipo_espacio" value="<?= $tipoDetectado ?>">
 
                 <div class="mb-3">
-                  <label for="nombre_espacio">Nombre del espacio</label>
+                  <label for="nombre_espacio" data-i18n="spaceName">Nombre del espacio</label>
                   <input type="text" id="nombre_espacio" name="nombre_espacio" class="form-control" required>
                 </div>
 
                 <div class="mb-3">
-                  <label for="capacidad_espacio">Capacidad</label>
+                  <label for="capacidad_espacio" data-i18n="capacity">Capacidad</label>
                   <input type="number" id="capacidad_espacio" name="capacidad_espacio" class="form-control" required min="1" max="50">
                 </div>
 
                 <div class="mb-3">
-                  <label for="disponibilidad_espacio">Disponibilidad</label>
+                  <label for="disponibilidad_espacio" data-i18n="availability">Disponibilidad</label>
                   <select id="disponibilidad_espacio" name="disponibilidad_espacio" class="form-control" required>
-                    <option value="">Seleccione...</option>
+                    <option value="" data-i18n="select">Seleccione...</option>
                     <?php foreach($valoresDisponibilidad as $valor): ?>
                       <option value="<?= htmlspecialchars($valor, ENT_QUOTES) ?>"><?= htmlspecialchars($valor) ?></option>
                     <?php endforeach; ?>
@@ -162,14 +162,14 @@ $con->close();
                 </div>
 
                 <div class="mb-3">
-                  <label for="historial_espacio">Historial / Observaciones</label>
+                  <label for="historial_espacio" data-i18n="historyNotes">Historial / Observaciones</label>
                   <textarea id="historial_espacio" name="historial_espacio" class="form-control" rows="3"></textarea>
                 </div>
               </div>
 
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="close">Cerrar</button>
+                <button type="submit" class="btn btn-primary" data-i18n="save">Guardar</button>
               </div>
             </form>
           </div>
@@ -185,6 +185,11 @@ $con->close();
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/espacio.js"></script>
+
+
+
+  <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+  <script src="./../../../utils/translate.js"></script>
 
 </body>
 </html>

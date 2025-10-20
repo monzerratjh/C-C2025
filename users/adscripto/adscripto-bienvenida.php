@@ -41,7 +41,7 @@ $apellido_adscripto = $_SESSION['apellido_usuario'] ?? 'usuario/a';
     <div class="offcanvas-body d-flex flex-column">
       <div class="banner-parte-superior">
         <a href="#" class="btn-cerrar-sesion mb-3">
-          <i class="bi bi-arrow-left-circle-fill me-2" data-i18n="sessionClose" ></i>Cerrar Sesión
+          <i class="bi bi-arrow-left-circle-fill me-2"></i><span data-i18n="sessionClose">Cerrar Sesión</span>
         </a>
         <i class="bi bi-translate traductor-menu"></i>
       </div>   
@@ -49,7 +49,7 @@ $apellido_adscripto = $_SESSION['apellido_usuario'] ?? 'usuario/a';
       <a href="./espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./curso/adscripto-curso.php" class="nav-opciones mb-2"  >Gestión de cursos</a>
+      <a href="./curso/adscripto-curso.php" class="nav-opciones mb-2" data-i18n="courseManagement"  >Gestión de cursos</a>
 
     </div>
   </div>
@@ -72,7 +72,7 @@ $apellido_adscripto = $_SESSION['apellido_usuario'] ?? 'usuario/a';
       <a href="./espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./curso/adscripto-curso.php" class="nav-opciones mb-2"  >Gestión de cursos</a>
+      <a href="./curso/adscripto-curso.php" class="nav-opciones mb-2" data-i18n="courseManagement" >Gestión de cursos</a>
     </aside>
 
     <!-- Contenido principal -->

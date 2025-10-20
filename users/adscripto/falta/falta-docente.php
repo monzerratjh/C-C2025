@@ -46,7 +46,7 @@
       <a href="./../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../falta/falta-docente.php" class="fw-semibold seleccionado mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2"  >Gestión de cursos</a>
+      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2" data-i18n="courseManagement" >Gestión de cursos</a>
     </div>
   </div>
 
@@ -66,7 +66,7 @@
       <a href="./../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../falta/falta-docente.php" class="fw-semibold seleccionado mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2"  >Gestión de cursos</a>
+      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2" data-i18n="courseManagement" >Gestión de cursos</a>
     </aside>
 
     <!-- Contenido principal -->
@@ -74,8 +74,8 @@
       <img src="./../../../../img/logo.png" alt="Logo" class="logo">
 
   <div class="loader"></div>
-  <h1>Estamos en mantenimiento</h1>
-  <p>Volveremos pronto con algo mejor ✨</p>
+  <h1 data-i18n="underMaintenance">Estamos en mantenimiento</h1>
+  <p data-i18n="backSoon">Volveremos pronto con algo mejor ✨</p>
 
       </main>
 

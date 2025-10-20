@@ -33,15 +33,15 @@
     </div>
     <div class="offcanvas-body d-flex flex-column">
       <div class="banner-parte-superior">
-        <a href="../adscripto-bienvenida.php" class="mb-3">
-          <i class="bi bi-arrow-left-circle-fill me-2"></i>Volver
+        <a href="./../adscripto-bienvenida.php" class="mb-3">
+          <i class="bi bi-arrow-left-circle-fill me-2"></i><span data-i18n="goBack">Volver</span>
         </a>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
       <a href="./../espacio/adscripto-espacio.php" class="fw-semibold seleccionado mb-2" data-i18n="facility">Espacio</a> 
       <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2">Gestión de cursos</a>
+      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2" data-i18n="courseManagement">Gestión de cursos</a>
     </div>
   </div>
 
@@ -55,7 +55,7 @@
           <a href="../adscripto-bienvenida.php">
             <i class="bi bi-arrow-left-circle-fill icono-volver"></i>
           </a>
-          <a href="../adscripto-bienvenida.php">Volver</a>
+          <a href="../adscripto-bienvenida.php" data-i18n="goBack">Volver</a>
         </div>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
@@ -63,7 +63,7 @@
       <a href="./../espacio/adscripto-espacio.php" class="fw-semibold seleccionado mb-2" data-i18n="facility">Espacio</a> 
       <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2">Gestión de cursos</a>
+      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2" data-i18n="courseManagement">Gestión de cursos</a>
     </aside>
 
     <!-- Contenido principal -->
@@ -71,24 +71,24 @@
       <img src="./../../../img/logo.png" alt="Logo" class="logo"> 
       
       <div class="acordion">
-        <h2>Gestión de espacios</h2>
-        <p>Seleccione el tipo de espacio que desea gestionar:</p>
+        <h2 data-i18n="facilityManagement">Gestión de espacios</h2>
+        <p data-i18n="selectTypeFacility" data-bs-dismiss="">Seleccione el tipo de espacio que desea gestionar:</p>
 
         <div>
           <a href="index-salon.php">
-            <button class="boton-opciones2 adscripto">Salones</button>
+            <button class="boton-opciones2 adscripto" data-i18n="classrooms" >Salones</button>
           </a>
         </div>
 
         <div>
           <a href="index-aula.php">
-            <button class="boton-opciones2 adscripto">Aulas</button>
+            <button class="boton-opciones2 adscripto" data-i18n="computerLabs"  >Aulas</button>
           </a>
         </div>
 
         <div>
           <a href="index-laboratorio.php">
-            <button class="boton-opciones2 adscripto">Laboratorios</button>
+            <button class="boton-opciones2 adscripto" data-i18n="scienceLabs">Laboratorios</button>
           </a>
         </div>
       </div>

@@ -44,7 +44,7 @@
       <a href="./../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./../reserva/reserva-adscripto.php" class="fw-semibold seleccionado mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2"  >Gestión de cursos</a>
+      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2" data-i18n="courseManagement" >Gestión de cursos</a>
 
     </div>
   </div>
@@ -65,7 +65,7 @@
       <a href="./../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./../reserva/reserva-adscripto.php" class="fw-semibold seleccionado mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2"  >Gestión de cursos</a>
+      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2" data-i18n="courseManagement"  >Gestión de cursos</a>
     </aside>
 
     <!-- Contenido principal -->
@@ -73,7 +73,7 @@
       <img src="./../../../img/logo.png" alt="Logo" class="logo"> 
 
       <h2 data-i18n="reservationRequests">Solicitudes de Reserva</h2>
-      <p>Consulta las reservas realizadas por cada docente y los espacios solicitados.</p>
+      <p data-i18n="viewReservations">Consulta las reservas realizadas por cada docente y los espacios solicitados.</p>
 
       <table class="tabla-reserva">
         <thead>

@@ -33,15 +33,15 @@
     </div>
     <div class="offcanvas-body d-flex flex-column">
       <div class="banner-parte-superior">
-        <a href="../adscripto-bienvenida.php" class="mb-3">
-          <i class="bi bi-arrow-left-circle-fill me-2"></i>Volver
-        </a>
-        <i class="bi bi-translate traductor-menu"></i>
+         <a href="./../adscripto-bienvenida.php" class="mb-3">
+          <i class="bi bi-arrow-left-circle-fill me-2"></i>
+          <span data-i18n="goBack">Volver</span>
+        </a><i class="bi bi-translate traductor-menu"></i>
       </div>
       <a href="./../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../curso/adscripto-curso.php" class="fw-semibold seleccionado mb-2">Gestión de cursos</a>
+      <a href="./../curso/adscripto-curso.php" class="fw-semibold seleccionado mb-2" data-i18n="courseManagement">Gestión de cursos</a>
     </div>
   </div>
 
@@ -55,14 +55,14 @@
           <a href="../adscripto-bienvenida.php">
             <i class="bi bi-arrow-left-circle-fill icono-volver"></i>
           </a>
-          <a href="../adscripto-bienvenida.php">Volver</a>
+          <a href="../adscripto-bienvenida.php" data-i18n="goBack">Volver</a>
         </div>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
         <a href="./../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
         <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
         <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-        <a href="./../curso/adscripto-curso.php" class="fw-semibold seleccionado mb-2">Gestión de cursos</a>
+        <a href="./../curso/adscripto-curso.php" class="fw-semibold seleccionado mb-2" data-i18n="courseManagement">Gestión de cursos</a>
     </aside>
 
     <!-- Contenido principal -->
@@ -70,24 +70,24 @@
       <img src="./../../../img/logo.png" alt="Logo" class="logo"> 
       
       <div class="acordion">
-        <h2>Gestión de cursos y asignaturas</h2>
-        <p>Gestione los cursos, asignaturas, docentes y espacios del centro educativo de forma sencilla y organizada.</p>
+        <h2 data-i18n="courseSubjectManagement">Gestión de cursos y asignaturas</h2>
+        <p data-i18n="pCourseSubjectManagement">Gestione los cursos, asignaturas, docentes y espacios del centro educativo de forma sencilla y organizada.</p>
 
         <div>
           <a href="./materia/carga-materias.php">
-            <button class="boton-opciones2 adscripto">Cargar asignaturas</button>
+            <button class="boton-opciones2 adscripto" data-i18n="addSubject">Cargar asignaturas</button>
           </a>
         </div>
 
         <div>
           <a href="./materia/asociar-gada.php">
-            <button class="boton-opciones2 adscripto">Asignar espacios, docentes y asignaturas </button>
+            <button class="boton-opciones2 adscripto" data-i18n="assignFTS">Asignar espacios, docentes y asignaturas </button>
           </a>
         </div>
 
         <div>
           <a href="./hora/asignar-hora.php">
-            <button class="boton-opciones2 adscripto">Asignar hora</button>
+            <button class="boton-opciones2 adscripto" data-i18n="assignSchedule">Asignar hora</button>
           </a>
         </div>
       </div>
@@ -97,5 +97,9 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  
+  <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+  <script src="./../../../utils/translate.js"></script>
 </body>
 </html>
