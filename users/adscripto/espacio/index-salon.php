@@ -52,10 +52,10 @@ $con->close();
     <a href="adscripto-espacio.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
     <i class="bi bi-translate traductor-menu"></i>
     </div>  
-    <a href="adscripto-espacio.php" class="fw-semibold seleccionado mb-2">Espacio</a>
-    <a href="../reserva-adscripto.php" class="nav-opciones mb-2">Reserva</a>
-    <a href="../falta-docente.php" class="nav-opciones mb-2">Falta docentes</a>
-    <a href="../materia/carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
+      <a href="adscripto-espacio.php" class="fw-semibold seleccionado mb-2">Espacio</a>
+      <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
+      <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
+      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2">Gestión de cursos</a>
   </div>
 </div>
 
@@ -72,10 +72,10 @@ $con->close();
       <i class="bi bi-translate traductor-menu"></i>
     </div>
 
-    <a href="adscripto-espacio.php" class="fw-semibold seleccionado mb-2">Espacio</a>
-    <a href="../reserva-adscripto.php" class="nav-opciones mb-2">Reserva</a>
-    <a href="../falta-docente.php" class="nav-opciones mb-2">Falta docentes</a>
-    <a href="../materia/carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
+      <a href="adscripto-espacio.php" class="fw-semibold seleccionado mb-2">Espacio</a>
+      <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
+      <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
+      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2">Gestión de cursos</a>
   </aside>
 
   <!-- Contenido principal -->

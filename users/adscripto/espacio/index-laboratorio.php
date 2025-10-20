@@ -57,10 +57,10 @@ $con->close();
       <i class="bi bi-translate traductor-menu"></i>
       </div>
 
-       <a href="adscripto-espacio.php" class="fw-semibold seleccionado mb-2">Espacio</a>
-      <a href="../reserva-adscripto.php" class="nav-opciones mb-2">Reserva</a>
-      <a href="../falta-docente.php" class="nav-opciones mb-2">Falta docentes</a>
-      <a href="../materia/carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
+      <a href="adscripto-espacio.php" class="fw-semibold seleccionado mb-2">Espacio</a>
+      <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
+      <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
+      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2">Gestión de cursos</a>
      </div>
   </div>
 
@@ -79,9 +79,9 @@ $con->close();
     </div>
 
     <a href="adscripto-espacio.php" class="fw-semibold seleccionado mb-2">Espacio</a>
-    <a href="../reserva-adscripto.php" class="nav-opciones mb-2">Reserva</a>
-    <a href="../falta-docente.php" class="nav-opciones mb-2">Falta docentes</a>
-    <a href="../materia/carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
+    <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
+    <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
+    <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2">Gestión de cursos</a>
   </div>
 
   <!-- Contenido principal -->
@@ -108,6 +108,7 @@ $con->close();
         <div class="espacio-card">
           <div class="espacio-cuerpo"></div>
           <div class="espacio-footer d-flex justify-content-between align-items-center">
+            
             <button class="btn btn-sm btn-light"
               data-bs-toggle="modal" data-bs-target="#modalEspacio"
               onclick='cargarEditarEspacio(<?=json_encode($espacio)?>)'>

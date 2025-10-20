@@ -41,7 +41,7 @@
       <a href="./../espacio/adscripto-espacio.php" class="fw-semibold seleccionado mb-2" data-i18n="facility">Espacio</a> 
       <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../curso/materia/carga-materias.php" class="nav-opciones mb-2">Gestión de cursos</a>
+      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2">Gestión de cursos</a>
     </div>
   </div>
 
@@ -63,7 +63,7 @@
       <a href="./../espacio/adscripto-espacio.php" class="fw-semibold seleccionado mb-2" data-i18n="facility">Espacio</a> 
       <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../materia/carga-materias.php" class="nav-opciones mb-2">Gestión de cursos</a>
+      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2">Gestión de cursos</a>
     </aside>
 
     <!-- Contenido principal -->
