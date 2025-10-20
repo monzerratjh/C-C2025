@@ -64,10 +64,10 @@ AND docente.id_usuario = usuario.id_usuario');
         <i class="bi bi-translate traductor-menu"></i>
       </div>
 
-      <a href="./../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
-      <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
-      <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../curso/adscripto-curso.php" class="fw-semibold seleccionado mb-2">Gestión de cursos</a>
+      <a href="./../../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
+      <a href="./../../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
+      <a href="./../../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
+      <a href="./../../curso/adscripto-curso.php" class="fw-semibold seleccionado mb-2">Gestión de cursos</a>
      </div>
   </div>
 
@@ -95,15 +95,15 @@ AND docente.id_usuario = usuario.id_usuario');
 <!-- Contenido principal -->
       <div class="col-md-9 col-12 principal">
         <img src="../../../../img/logo.png" alt="Logo" class="logo"> 
-        <h2>Asignar aula, docente y materia a grupo.</h2>
-        <p>Ingrese los datos.</p>
+        <h2>Asignar un espacio, un docente y una asignatura a grupo.</h2>
+        <p>Ingrese los datos solicitados.</p>
 
         <div class="busqueda">
             
           <form action="./asociar-gada-accion.php" method="POST">
             <div class="form-group">
                 <select class="form-control" id="cargar-materia" name="id_asignatura" aria-describedby="" required>
-                    <option value="">Seleccionar materia</option>
+                    <option value="">Seleccionar asignatura</option>
                 
                      <?php
                         $asig = mysqli_query($conn, "SELECT * FROM asignatura");
@@ -162,7 +162,7 @@ AND docente.id_usuario = usuario.id_usuario');
            <h2>Asignaciones</h2> <br>
             <thead>
                 <tr>
-                    <th scope="col">Nombre Materia</th>
+                    <th scope="col">Nombre Asignatura</th>
                     <th scope="col">Profesor</th>
                     <th scope="col">Espacio</th>
                     <th scope="col">Grupo</th>
