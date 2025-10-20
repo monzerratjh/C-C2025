@@ -67,7 +67,7 @@ i18next.init({
         underMaintenance:"Estamos en mantenimiento",
         backSoon:"Volveremos pronto con algo mejor ✨",
         //
-        schedule:"Horario",
+        schedule:"Horarios",
         select:"Seleccionar",
         newReservation:"Nueva reserva",
         cancel:"Cancelar",
