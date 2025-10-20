@@ -21,9 +21,9 @@
   <nav class="d-md-none">
     <div class="container-fluid">
       <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="./../../img/menu.png" alt="menu">
+        <img class="menuResponsive" src="./../../../img/menu.png" alt="menu">
       </button>
-      <img class="logoResponsive" src="./../../img/logo.png" alt="logoResponsive">
+      <img class="logoResponsive" src="./../../../img/logo.png" alt="logoResponsive">
     </div>
   </nav>
 
@@ -44,7 +44,7 @@
       <a href="./../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./../reserva/reserva-adscripto.php" class="fw-semibold seleccionado mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./curso/adscripto-curso.php" class="nav-opciones mb-2"  >Gestión de cursos</a>
+      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2"  >Gestión de cursos</a>
 
     </div>
   </div>
@@ -70,7 +70,7 @@
 
     <!-- Contenido principal -->
     <main class="principal">
-      <img src="./../../img/logo.png" alt="Logo" class="logo"> 
+      <img src="./../../../img/logo.png" alt="Logo" class="logo"> 
 
       <h2 data-i18n="reservationRequests">Solicitudes de Reserva</h2>
       <p>Consulta las reservas realizadas por cada docente y los espacios solicitados.</p>
@@ -111,6 +111,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
-<script src="/utils/translate.js"></script>
+<script src="./../../../utils/translate.js"></script>
 </body>
 </html>
