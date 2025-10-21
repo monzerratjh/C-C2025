@@ -172,23 +172,12 @@ include ('./../../../conexion.php');
 
   </div>
 
-  <!-- JS acordeón -->
-  <script>
-    const dias = document.querySelectorAll('.boton-opciones');
-    dias.forEach(dia => {
-      dia.addEventListener('click', () => {
-        const contenido = dia.nextElementSibling;
-        const abierto = contenido.style.display === 'block';
-        // Cierra todos los contenidos
-        document.querySelectorAll('.contenido-dia').forEach(c => c.style.display = 'none');
-        // Abre el seleccionado
-        if (!abierto) contenido.style.display = 'block';
-      });
-    });
-  </script>
+
 
   <!-- Bootstrap Bundle JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="./../../../utils/desplegar-acordeon.js"></script>
 
   <!-- i18next desde CDN -->
   <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>

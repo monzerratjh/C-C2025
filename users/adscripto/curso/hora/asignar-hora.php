@@ -3,6 +3,15 @@ include('../../../../conexion.php');
 $conn = conectar_bd();
 $sql = "SELECT * FROM asignatura";
 $query = mysqli_query($conn, $sql);
+
+// Obtener todos los grupos con su id y nombre
+$sqlGrupos = "SELECT id_grupo, nombre_grupo FROM grupo";
+$resultGrupos = mysqli_query($conn, $sqlGrupos);
+$grupos = [];
+
+while ($row = mysqli_fetch_assoc($resultGrupos)) {
+    $grupos[] = $row; // cada $row tiene ['id_grupo', 'nombre_grupo']
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -75,7 +84,7 @@ $query = mysqli_query($conn, $sql);
     <main class="principal">
       <img src="./../../../../../img/logo.png" alt="Logo" class="logo"> 
       <h2>Cargar Hora</h2>
-      <p>Ingrese el grupo en el cual va a agregar la asignatura.</p>
+      <p>Ingrese el grupo en el cual va a agregar las horas dictadas.</p>
 
       <div class="busqueda">
         <i class="bi bi-search icono-busqueda"></i>
@@ -87,9 +96,11 @@ $query = mysqli_query($conn, $sql);
           id="grupoInput"
         />
         <datalist id="lista-grupos">
-          <option value="1° MD">
-          <option value="2° MD">
-          <option value="3° MD">
+          <?php foreach ($grupos as $g): ?>
+            <option value="<?php echo htmlspecialchars($g['nombre_grupo'], ENT_QUOTES, 'UTF-8'); ?>" 
+                    data-id="<?php echo $g['id_grupo']; ?>">
+            </option>
+          <?php endforeach; ?>
         </datalist> 
       </div>
     </main>
@@ -100,6 +111,6 @@ $query = mysqli_query($conn, $sql);
   <script src="../../js/redireccionar-grupo.js"></script>
 
   <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
-  <script src="/utils/translate.js"></script>
+  <script src="./../../../../utils/translate.js"></script>
 </body>
 </html>

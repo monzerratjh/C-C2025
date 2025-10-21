@@ -326,9 +326,9 @@ while($row = mysqli_fetch_array($query)) {
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script src="../js/validation.js"></script>
-
-      <script src="../js/desplegarCaracteristicas.js"></script>
+    <script src="./../../../utils/desplegar-acordeon.js"></script>
 
      <!-- i18next desde CDN -->
   <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>

@@ -376,7 +376,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
 
 
   <script src="../js/grupo.js"></script>
-  <script src="../js/desplegarCaracteristicas.js"></script>
+  <script src="./../../../utils/desplegar-acordeon.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
