@@ -1,5 +1,44 @@
-<?php 
-//include('../../../encabezado.php');
+<?php
+include('../../../../conexion.php');
+$con = conectar_bd();
+
+// Obtener id_grupo desde la URL (se pasa desde asignar-hora.php)
+$id_grupo = $_GET['id_grupo'] ?? null;
+
+// TEMPORAL
+if (!$id_grupo) {
+  echo "<div style='margin: 2rem; color: red;'> No se especificó ningún grupo. 
+        <a href='../adscripto-curso.php'>Volver</a></div>";
+  exit;
+}
+
+// Obtener datos del grupo seleccionado
+$grupoInfo = mysqli_query($con, "SELECT nombre_grupo FROM grupo WHERE id_grupo = $id_grupo");
+$grupo = mysqli_fetch_assoc($grupoInfo);
+
+// Obtener horarios disponibles
+$horarios = mysqli_query($con, "
+  SELECT id_horario_clase, hora_inicio, hora_fin 
+  FROM horario_clase 
+  ORDER BY hora_inicio
+");
+
+// Obtener asignaturas y docentes asociados (desde GADA) para este grupo
+$gada = mysqli_query($con, "
+  SELECT 
+    gada.id_gada,
+    a.nombre_asignatura, 
+    CONCAT(u.nombre_usuario, ' ', u.apellido_usuario) AS docente
+  FROM grupo_asignatura_docente_aula gada
+  JOIN asignatura a ON a.id_asignatura = gada.id_asignatura
+  JOIN docente d ON d.id_docente = gada.id_docente
+  JOIN usuario u ON u.id_usuario = d.id_usuario
+  WHERE gada.id_grupo = $id_grupo
+  ORDER BY a.nombre_asignatura
+");
+
+// a.nombre_asignatura = asignatura.nomnbre_asignatura
+//  JOIN usuario u ON u.id_usuario = d.id_usuario -> une las tablas docente y usuario para obtener el nombre completo del docente
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -74,7 +113,8 @@
     <!-- Contenido principal -->
     <main class="principal">
       <img src="./../../../../img/logo.png" alt="Logo" class="logo"> 
-      <h2>Cargar horarios 3MD</h2>
+    
+      <h2>Cargar horarios <?= htmlspecialchars($grupo['nombre_grupo']) ?></h2>
 
       <table class="tabla-reserva">
         <thead>
