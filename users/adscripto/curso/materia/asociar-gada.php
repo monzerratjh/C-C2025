@@ -96,6 +96,8 @@ AND docente.id_usuario = usuario.id_usuario');
     <!-- Contenido principal -->
     <main class="principal">
       <img src="../../../../img/logo.png" alt="Logo" class="logo"> 
+
+      <div class="gada-container">
       <h2>Asignar un espacio, un docente y una asignatura a grupo.</h2>
       <p>Ingrese los datos solicitados.</p>
 
@@ -154,7 +156,7 @@ AND docente.id_usuario = usuario.id_usuario');
           </div>
         </form>
       </div>
-
+</div>
       <br><br>
       <h2>Asignaciones</h2>
       <table class="table">

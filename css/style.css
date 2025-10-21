@@ -129,12 +129,15 @@ a{
     white-space: nowrap;  /* evita que el texto se corte en varias líneas */
 }
 
-    .logo {
-      position: fixed;
-      top: 30px;
-      right: 30px;
-      width: 100px;
-    }
+.logo {
+  position: absolute;  
+  top: 20px;          
+  right: 20px;          
+  width: 100px;         
+  display: block;
+}
+
+
 
  
     /*TERMINA LA ESTRUCTURA DEL MENU*/
@@ -231,7 +234,7 @@ a{
     /*PAGINA ESTUDIANTES*/
 
     .principal h2 {
-    font-weight: 700;
+    font-weight: 600;
     position: relative;
     top: 1rem;
     }
@@ -279,6 +282,9 @@ a{
 
 /* --- CONTENIDO PRINCIPAL --- */
 
+.gada-container{
+  display: flex;
+}
 
 .acordion-total {
   display: flex;
@@ -792,7 +798,6 @@ table tr:nth-child(even) {
     .mt-4 {
     margin-top: 1.5rem !important;
     display: flex;
-    flex-direction: column;
     align-items: center;
 }
 }
