@@ -82,7 +82,7 @@ $query = mysqli_query($conn, $sql);
       <div class="busqueda">
         <form action="./cargar-materias-accion.php" method="POST">
            <div class="form-group">
-           <input type="text" class="form-control diseno-busqueda" id="insertar-materia" name="insertar-materia" placeholder="Ej: Programación Full-Stack" required>
+           <input type="text" class="diseno-busqueda diseno-busqueda2" id="insertar-materia" name="insertar-materia" placeholder="Ej: Programación Full-Stack" required>
           </div>
           <br>
         <button type="submit" class="btn btn-primary">Cargar</button>
