@@ -76,33 +76,6 @@ if ($enum_query) {
   preg_match("/^enum\((.*)\)$/", $row['Type'], $matches);
   $enum_dias = array_map(fn($v) => trim($v, "'"), explode(',', $matches[1]));
 }
-
-// CRUD en el mismo archivo
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $accion = $_POST['accion'] ?? '';
-
-  if ($accion === 'insertar') {
-    $id_gada = $_POST['id_gada'];
-    $id_horario_clase = $_POST['id_horario_clase'];
-    $dia = $_POST['dia'];
-    mysqli_query($con, "INSERT INTO horario_asignado (id_horario_clase, id_gada, dia)
-                         VALUES ('$id_horario_clase', '$id_gada', '$dia')");
-  } elseif ($accion === 'editar') {
-    $id = $_POST['id_horario_asignado'];
-    $id_gada = $_POST['id_gada'];
-    $id_horario_clase = $_POST['id_horario_clase'];
-    $dia = $_POST['dia'];
-    mysqli_query($con, "UPDATE horario_asignado
-                         SET id_horario_clase='$id_horario_clase', id_gada='$id_gada', dia='$dia'
-                         WHERE id_horario_asignado='$id'");
-  } elseif ($accion === 'eliminar') {
-    $id = $_POST['id_horario_asignado'];
-    mysqli_query($con, "DELETE FROM horario_asignado WHERE id_horario_asignado='$id'");
-  }
-
-  header("Location: cargar-hora.php?id_grupo=$id_grupo");
-  exit;
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -223,20 +196,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <td><?= htmlspecialchars($fila['nombre_asignatura']) ?> (<?= htmlspecialchars($fila['docente']) ?>)</td>
                     <td><?= htmlspecialchars($fila['espacio'] ?? '-') ?></td>
                     <td>
-                      <button class="btn btn-sm editar-btn"
+                      <!-- BOTÓN EDITAR -->
+                      <button type="button" class="btn btn-sm editar-btn"
                               data-id="<?= $fila['id_horario_asignado'] ?>"
                               data-dia="<?= htmlspecialchars($fila['dia']) ?>"
                               data-horario="<?= htmlspecialchars($fila['id_horario_clase']) ?>"
-                              data-gada="<?= htmlspecialchars($fila['id_gada']) ?>">
+                              data-gada="<?= htmlspecialchars($fila['id_gada']) ?>"
+                              data-bs-toggle="modal" data-bs-target="#modalHorario">
                         <i class="bi bi-pencil-square"></i>
                       </button>
 
-                      <form method="POST" style="display:inline;">
+                      <!-- BOTÓN ELIMINAR -->
+                      <form action="cargar-hora-accion.php" method="POST" style="display:inline;">
                         <input type="hidden" name="accion" value="eliminar">
+                        <input type="hidden" name="id_grupo" value="<?= $id_grupo ?>">
                         <input type="hidden" name="id_horario_asignado" value="<?= $fila['id_horario_asignado'] ?>">
-                        <button type="submit" class="btn btn-sm" onclick="return confirm('¿Eliminar este horario?')">
+                        <button type="button" class="btn btn-sm btn-danger eliminar-btn"
+                                data-id="<?= $fila['id_horario_asignado'] ?>"
+                                data-grupo="<?= $id_grupo ?>">
                           <i class="bi bi-trash"></i>
                         </button>
+
                       </form>
                     </td>
                   </tr>
@@ -255,7 +235,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="modal fade" id="modalHorario" tabindex="-1">
       <div class="modal-dialog">
         <div class="modal-content">
-          <form method="POST">
+          <form method="POST" action="cargar-hora-accion.php">
+
+          <input type="hidden" name="id_grupo" value="<?= $id_grupo ?>">
+
             <div class="modal-header bg-success text-white">
               <h5 class="modal-title">Agregar / Editar horario</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -321,35 +304,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   
-  <script src="redireccionar-grupo.js"></script>
-  <script src="./../../../utils/desplegar-acordeon.js"></script>
-
-  <script>
-    // Toggle acordeón
-document.querySelectorAll('.toggle-dia').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const cont = btn.nextElementSibling;
-    cont.style.display = cont.style.display === 'block' ? 'none' : 'block';
-  });
-});
-
-// Inicializar modal de Bootstrap. EDITAR HORARIO MODAL
-const modal = new bootstrap.Modal(document.getElementById('modalHorario'));
-document.querySelectorAll('.editar-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.getElementById('accionForm').value = 'editar';
-    document.getElementById('idHorarioAsignado').value = btn.dataset.id;
-    document.getElementById('dia').value = btn.dataset.dia;
-    document.getElementById('id_horario_clase').value = btn.dataset.horario;
-    document.getElementById('id_gada').value = btn.dataset.gada;
-
-    modal.show();
-  });
-});
-
-
-  </script>
-  
+  <script src="./../../js/hora.js"></script>
+  <script src="./../../../utils/desplegar-acordeon.js"></script>  
 </body>
 </html>
