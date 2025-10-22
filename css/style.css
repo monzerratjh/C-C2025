@@ -492,13 +492,17 @@ a{
 }
 
 .p-bienvenida{
-  font-size: 1.2rem;
+      display: flex;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 550;
   margin: 0.7rem 10rem;
-  text-align: center;
-  transition: all 0.3s 
 }
 
 #p-login{
+display: flex;
+justify-content: center;
+  font-weight: 550;
   margin: 6rem 25% 1rem 25%;
 }
 
