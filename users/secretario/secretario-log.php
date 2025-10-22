@@ -74,6 +74,8 @@ include('./../../conexion.php');
     <main class="principal">
       <img src="./../../img/logo.png" alt="Logo" class="logo">
 
+              <p id="p-login">Inicia sesión con tu cédula y contraseña para acceder a tu cuenta y comenzar a usar el sistema.</p>
+
       <section class="seccion-form secretaria">
         <div class="icono-usuario-login">
           <i class="bi bi-person-circle"></i>

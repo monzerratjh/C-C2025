@@ -491,11 +491,19 @@ a{
   display: none;
 }
 
-#p-bienvenida{
-  font-size: 1.2rem;
+.p-bienvenida{
+      display: flex;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 550;
   margin: 0.7rem 10rem;
-  text-align: center;
-  transition: all 0.3s 
+}
+
+#p-login{
+display: flex;
+justify-content: center;
+  font-weight: 550;
+  margin: 6rem 25% 1rem 25%;
 }
 
 /*BIENVENIDA*/
@@ -799,6 +807,13 @@ table tr:nth-child(even) {
     justify-content: center;
   }
 
+  #asignatura-carga{
+    margin-top: 15%;
+  }
+
+  #asignatura-carga2{
+    margin-top: 9.5%;
+  }
 
   .bloque-aviso .etiqueta {
     background: #f2c086;
@@ -822,7 +837,7 @@ table tr:nth-child(even) {
     width: 80%;
   }
 
-  #p-bienvenida{
+  .p-bienvenida{
     margin: 0.5rem auto;
   }
 }
@@ -869,6 +884,10 @@ table tr:nth-child(even) {
   .barra-lateral {
     display: none;
   }
+
+#p-login{
+  margin: 1rem 15%;
+}
 
     .mt-4 {
     margin-top: 1.5rem !important;
