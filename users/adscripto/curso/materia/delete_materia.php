@@ -7,7 +7,7 @@ if (!$id_asignatura) {
     echo "No se proporcionó un ID de asignatura.";
     exit;
 }
-
+//habria que usar consultas preparadas para evitar inyeccion sql
 $sql = "DELETE FROM asignatura WHERE id_asignatura='$id_asignatura'";
 $query = mysqli_query($conn, $sql);
 

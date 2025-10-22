@@ -59,7 +59,7 @@ i18next.init({
         //
         assignedGroups: "Grupos a cargo",
         reserveFacility: "Reservar espacio",
-        reportAbsence:"Reportar falta",
+        reportAbsence:"Avisar falta",
         //
         viewReservations:"Ver reservas",
         makeReservations:"Hacer reservas",

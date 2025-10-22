@@ -491,11 +491,18 @@ a{
   display: none;
 }
 
+#p-bienvenida{
+  font-size: 1.2rem;
+  margin: 0.7rem 10rem;
+  text-align: center;
+  transition: all 0.3s 
+}
 
 /*BIENVENIDA*/
 
 .bienvenida{
   font-size: 60px;
+  margin: 0.7rem 0 ;
 }
   /* Contenedor principal */
 .espacio-contenedor {
@@ -814,7 +821,11 @@ table tr:nth-child(even) {
     .boton-opciones2 {
     width: 80%;
   }
+
+  #p-bienvenida{
+    margin: 0.5rem auto;
   }
+}
 
 
 @media (max-width: 879px) {
