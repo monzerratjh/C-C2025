@@ -3,10 +3,10 @@ include('../../../../conexion.php');
 $conn = conectar_bd();
 session_start();
 
-
-$sql_gada = "SELECT * FROM grupo_asignatura_docente_aula";
-$query = mysqli_query($conn, $sql_gada);
-
+$stmt_gada = mysqli_prepare($conn, "SELECT * FROM grupo_asignatura_docente_aula");
+mysqli_stmt_execute($stmt_gada);
+$resultado_stmt_gada = mysqli_stmt_get_result($stmt_gada);
+mysqli_stmt_close($stmt_gada);
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_gada = $_POST['id_gada'];

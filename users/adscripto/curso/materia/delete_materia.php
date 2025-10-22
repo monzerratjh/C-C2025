@@ -7,11 +7,25 @@ if (!$id_asignatura) {
     echo "No se proporcionó un ID de asignatura.";
     exit;
 }
-//habria que usar consultas preparadas para evitar inyeccion sql
-$sql = "DELETE FROM asignatura WHERE id_asignatura='$id_asignatura'";
-$query = mysqli_query($conn, $sql);
 
-if($query){
+$sql = "DELETE FROM asignatura WHERE id_asignatura=?";
+$stmt = mysqli_prepare($conn, $sql);
+ if ($stmt === false) {
+        die("Error en prepare: " . mysqli_error($conn));
+    } else {
+        mysqli_stmt_bind_param($stmt, "i", $id_asignatura);
+        $success = mysqli_stmt_execute($stmt);
+
+        if ($success) {
+            echo "Asignatura eliminada correctamente.";
+        } else {
+            echo "Error al eliminar la asignatura: " . mysqli_stmt_error($stmt);
+        }
+
+        mysqli_stmt_close($stmt);
+    }
+
+if($success){
     // Redirige de nuevo al listado
     header("Location: carga-materias.php");
     exit;

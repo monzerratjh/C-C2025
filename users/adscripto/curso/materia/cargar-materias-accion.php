@@ -3,8 +3,10 @@ include('../../../../conexion.php');
 $conn = conectar_bd();
 session_start();
 
-$sql_materia = "SELECT * FROM asignatura";
-$query = mysqli_query($conn, $sql_materia);
+$stmt_materia = mysqli_prepare($conn, "SELECT * FROM asignatura");
+mysqli_stmt_execute($stmt_materia);
+$resultado_stmt_materia = mysqli_stmt_get_result($stmt_materia);
+mysqli_stmt_close($stmt_materia);
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['insertar-materia'])) {

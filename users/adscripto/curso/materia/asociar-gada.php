@@ -185,23 +185,84 @@ AND docente.id_usuario = usuario.id_usuario');
             </td>
           </tr>
 
-          <!-- Modal editar -->
-          <div class="modal fade" id="update_modal<?= $row['id_gada'] ?>" tabindex="-1">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Edición de asignación</h5>
-                </div>
-                <form method="POST" action="./editar-gada-accion.php">
-                  <div class="modal-body">
-                    <input type="hidden" name="id_gada" value="<?= $row['id_gada'] ?>">
-                    <!-- campos del modal -->
+    <!-- Modal para actualizar -->
+            <div class="modal fade" id="update_modal<?= $row['id_gada'] ?>" tabindex="-1">  
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Edición de asignación</h5>
                   </div>
-                </form>
-              </div>
-            </div>
-          </div>
+                  <form method="POST" action="./editar-gada-accion.php" id="editarGada">
+                    <div class="modal-body">
+                      <input type="hidden" name="id_gada" value="<?= $row['id_gada'] ?>">
+                      <div class="form-group">
+                         <label>Asignatura</label>
+                          <select class="form-control" name="id_asignatura" required>
+                            <option value="">Seleccionar asignatura</option>
+                              <?php
+                                $materia_query = mysqli_query($conn, "SELECT * FROM asignatura");
+                               while ($m = mysqli_fetch_assoc($materia_query)) {
+                                  $selected = ($m['id_asignatura'] == $row['id_asignatura']) ? 'selected' : '';
+                                  echo "<option value='{$m['id_asignatura']}' $selected>{$m['nombre_asignatura']}</option>";
+                                }
+                              ?>
+                          </select>
+                          <br>
+
+
+                          <label>Docente</label>
+                          <select class="form-control" name="id_docente" required>
+                            <option value="">Seleccionar docente</option>
+                              <?php
+                                $doc = mysqli_query($conn, "
+                                SELECT docente.id_docente, usuario.nombre_usuario, usuario.apellido_usuario
+                                  FROM docente
+                                  INNER JOIN usuario ON docente.id_usuario = usuario.id_usuario
+                               ");
+                                while ($d = mysqli_fetch_assoc($doc)) {
+                                  $selected = ($d['id_docente'] == $row['id_docente']) ? 'selected' : '';
+                                  echo "<option value='{$d['id_docente']}' $selected>{$d['nombre_usuario']} {$d['apellido_usuario']}</option>";
+                                }
+                              ?>
+                          </select>
+                          <br>
+
+
+                          <label>Espacio</label>
+                          <select class="form-control" name="id_espacio" required>
+                            <option value="">Seleccionar espacio</option>
+                              <?php
+                                $esp_query = mysqli_query($conn, "SELECT * FROM espacio");
+                               while ($e = mysqli_fetch_assoc($esp_query)) {
+                                  $selected = ($e['id_espacio'] == $row['id_espacio']) ? 'selected' : '';
+                                  echo "<option value='{$e['id_espacio']}' $selected>{$e['nombre_espacio']}</option>";
+                                }
+                              ?>
+                          </select>
+                          <br>
+                         
+                          <label>Grupo</label>
+                          <select class="form-control" name="id_grupo" required>
+                            <option value="">Seleccionar grupo</option>
+                              <?php
+                                $grupo_query = mysqli_query($conn, "SELECT * FROM grupo");
+                               while ($g = mysqli_fetch_assoc($grupo_query)) {
+                                  $selected = ($g['id_grupo'] == $row['id_grupo']) ? 'selected' : '';
+                                  echo "<option value='{$g['id_grupo']}' $selected>{$g['nombre_grupo']}</option>";
+                                }
+                              ?>
+                          </select>
+                          <br>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Cargar cambios</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                      </form>
           <?php endwhile; ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
         </tbody>
       </table>
     </main>
