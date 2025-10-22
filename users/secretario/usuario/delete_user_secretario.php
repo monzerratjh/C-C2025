@@ -8,14 +8,26 @@ if (!$id_usuario) {
     exit;
 }
 
-$sql = "DELETE FROM usuario WHERE id_usuario='$id_usuario'";
-$query = mysqli_query($conn, $sql);
+$sql = "DELETE FROM usuario WHERE id_usuario= ?";
+$stmt = mysqli_prepare($conn, $sql);
 
-if($query){
-    // Redirige de nuevo al listado
-    header("Location: secretario-usuario.php");
-    exit;
-} else {
-    echo "Error en el SQL " . mysqli_error($conn);
-}
+if ($stmt) {
+        mysqli_stmt_bind_param($stmt, "i", $id_usuario);
+        $execute = mysqli_stmt_execute($stmt);
+
+        if ($execute) {
+            // Eliminación exitosa, redirigir con mensaje
+            header("Location: ./secretario-usuario.php?msg=EliminacionExitosa");
+            exit();
+        } else {
+            echo "Error al eliminar el usuario: " . mysqli_error($conn);
+        }
+
+        mysqli_stmt_close($stmt);
+    } else {
+        echo "Error al preparar la consulta: " . mysqli_error($conn);
+    }
+
+mysqli_close($conn);
+
 ?>
