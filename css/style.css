@@ -503,7 +503,7 @@ a{
 display: flex;
 justify-content: center;
   font-weight: 550;
-  margin: 6rem 25% 1rem 25%;
+  margin: 4rem 33% 1rem 32%;
 }
 
 /*BIENVENIDA*/
@@ -840,12 +840,19 @@ table tr:nth-child(even) {
   .p-bienvenida{
     margin: 0.5rem auto;
   }
+
+  #p-login{
+    margin: 0.5rem 28%;
+  }
 }
 
 
 @media (max-width: 879px) {
   .opciones {
     flex-wrap: wrap;
+  }
+    #p-login{
+    margin: 0.5rem 20%;
   }
 }
 
@@ -869,11 +876,6 @@ table tr:nth-child(even) {
     width: 60%;
   }
 }
-@media (max-width: 879px) {
-  .opciones {
-    flex-wrap: wrap;
-  }
-}
 
 
 
@@ -886,7 +888,7 @@ table tr:nth-child(even) {
   }
 
 #p-login{
-  margin: 1rem 15%;
+  margin: 1rem 29%;
 }
 
     .mt-4 {
@@ -1015,7 +1017,15 @@ table tr:nth-child(even) {
     font-size: 14px;
     padding: 10px;
   }
+
 }
+
+
+@media (max-width: 625px) {
+  #p-login{
+    margin: 0.5rem 24%;
+  }
+  }
 
 /* Index específico tablets: 501px a 1034px */
 @media (max-width: 1034px) and (min-width: 501px) {
@@ -1030,7 +1040,17 @@ table tr:nth-child(even) {
   }
 }
 
+@media(max-width: 526px){
+  #p-login{
+    margin: 0.5rem 20%;
+  }
+}
 
+@media(max-width: 394px){
+  #p-login{
+    margin: 0.5rem auto;
+  }
+}
 .btn {
   color: black;
   background-color: transparent; 
