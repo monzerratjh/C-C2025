@@ -76,7 +76,7 @@ $query = mysqli_query($conn, $sql);
     <main class="principal">
 
       <img src="./../../../../../img/logo.png" alt="Logo" class="logo"> 
-      <h2>Cargar Asignatura</h2>
+      <h2 id="asignatura-carga">Cargar Asignatura</h2>
       <p>Ingrese la asignatura</p>
 
       <div class="busqueda">
@@ -91,7 +91,7 @@ $query = mysqli_query($conn, $sql);
 
       
 
-      <h2>Asignaturas cargadas</h2>
+      <h2 id="asignatura-carga2">Asignaturas cargadas</h2>
       <table class="tabla-reserva">
         <thead>
             <tr>
