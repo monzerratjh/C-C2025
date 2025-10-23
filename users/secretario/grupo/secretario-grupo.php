@@ -42,6 +42,16 @@ $adscriptoResult = $con->query("SELECT adscripto.id_adscripto, usuario.nombre_us
                                                          JOIN usuario ON adscripto.id_usuario=usuario.id_usuario");
 
 
+
+$ENUMturno = $con->query("SHOW COLUMNS FROM grupo LIKE 'turno_grupo'");
+$rowTurno = $ENUMturno->fetch_assoc();
+
+// Extraer los valores del ENUM de turnos
+preg_match_all("/'([^']+)'/", $rowTurno['Type'], $turnoCoincidencias);
+$turnos = $turnoCoincidencias[1];
+
+
+
 // Obtener las opciones del ENUM "orientacion_grupo" directamente desde la BD
 $ENUMresult = $con->query("SHOW COLUMNS FROM grupo LIKE 'orientacion_grupo'");
 $rowENUM = $ENUMresult->fetch_assoc();
@@ -303,7 +313,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
 
                       <div class="mb-3">
                         <label data-i18n="groupName">Nombre del grupo</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ej: María Caseres"  data-i18n-placeholder="egMC">
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ej: 3ro MD"  data-i18n-placeholder="egMC">
                       </div>
 
 
@@ -322,17 +332,19 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
                       <div class="mb-3">
                         <label data-i18n="shift" >Turno</label>
                         <select class="form-control" id="turno" name="turno" required>
-                            <option value="" data-i18n="select">Seleccione...</option>
-                            <option value="Matutino" data-i18n="morning">Matutino</option>
-                            <option value="Vespertino" data-i18n="afternoon">Vespertino</option>
-                            <option value="Nocturno" data-i18n="evening">Nocturno</option>
+                          <option value="" data-i18n="select">Seleccione...</option>
+                          <?php foreach($turnos as $t): ?>
+                              <option value="<?php echo htmlspecialchars($t, ENT_QUOTES, 'UTF-8'); ?>">
+                                  <?php echo htmlspecialchars($t, ENT_SUBSTITUTE, 'UTF-8'); ?>
+                              </option>
+                          <?php endforeach; ?>
                         </select>
                       </div>
 
 
                       <div class="mb-3">
                         <label data-i18n="numberStudents">Cantidad de alumnos</label>
-                        <input type="number" data-i18n-placeholder="eg34" class="form-control" id="cantidad" name="cantidad" placeholder="Ej: 34"required>
+                        <input type="number" data-i18n-placeholder="eg34" class="form-control" id="cantidad" name="cantidad" placeholder="Ej: 30"required>
                       </div>
 
 
@@ -355,7 +367,7 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
 
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="">Cerrar</button>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="cancel">Cancelar</button>
                       <button type="submit" class="btn btn-primary" data-i18n="save">Guardar</button>
                     </div>
                   </form>

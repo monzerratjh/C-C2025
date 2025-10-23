@@ -15,6 +15,10 @@
 
 }
 
+.capacidad-modal {
+  font-size: smaller;
+}
+
 .estudiante {
   background-color: var(--color-estudiante);
 }

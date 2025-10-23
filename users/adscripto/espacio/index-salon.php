@@ -141,7 +141,7 @@ $con->close();
                 </div>
 
                 <div class="mb-3">
-                  <label for="capacidad_espacio" data-i18n="capacity">Capacidad</label>
+                  <label for="capacidad_espacio"> <span data-i18n="capacity">Capacidad</span> <span class="capacidad-modal">(Máx. de alumnos)</span></label>
                   <input type="number" id="capacidad_espacio" name="capacidad_espacio" class="form-control" required min="1" max="50">
                 </div>
 
@@ -162,7 +162,7 @@ $con->close();
 
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="close">Cerrar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="cancel">Cancelar</button>
                 <button type="submit" class="btn btn-primary" data-i18n="save">Guardar</button>
               </div>
             </form>

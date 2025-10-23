@@ -117,7 +117,7 @@ $con->close();
 
             <span><?=htmlspecialchars($espacio['nombre_espacio'])?></span>
 
-            <button type="button" class="btn btn-sm btn-light btn-danger eliminar-espacio-boton" data-id="<?= $espacio['id_espacio'] ?>">
+            <button type="button" class="btn btn-sm btn-light eliminar-espacio-boton" data-id="<?= $espacio['id_espacio'] ?>">
               <i class="bi bi-trash"></i>
             </button>
           </div>
@@ -149,7 +149,7 @@ $con->close();
                 </div>
 
                 <div class="mb-3">
-                  <label for="capacidad_espacio" data-i18n="capacity">Capacidad</label>
+                  <label for="capacidad_espacio"> <span data-i18n="capacity">Capacidad</span> <span class="capacidad-modal">(Máx. de alumnos)</span></label>
                   <input type="number" id="capacidad_espacio" name="capacidad_espacio" class="form-control" required min="1" max="50">
                 </div>
 
@@ -173,6 +173,9 @@ $con->close();
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="close">Cerrar</button>
                 <button type="submit" class="btn btn-primary" id="btnSiguiente" data-i18n="next">Siguiente</button>
+
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="cancel">Cancelar</button>
+                <button type="submit" class="btn btn-primary" data-i18n="save">Guardar</button>
               </div>
             </form>
           </div>
