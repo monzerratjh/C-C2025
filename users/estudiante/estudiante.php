@@ -1,12 +1,22 @@
 <?php 
-include ('./../../conexion.php');
+include('./../../conexion.php');
+$conn = conectar_bd();
+
+// Obtener todos los grupos con su id y nombre
+$sqlGrupos = "SELECT id_grupo, nombre_grupo FROM grupo";
+$resultGrupos = mysqli_query($conn, $sqlGrupos);
+$grupos = [];
+
+while ($row = mysqli_fetch_assoc($resultGrupos)) {
+    $grupos[] = $row; // cada $row tiene ['id_grupo', 'nombre_grupo']
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel Estudiante</title>
+  <title>Buscar grupo</title>
 
   <!-- Bootstrap CSS + Iconos + letras -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
@@ -80,11 +90,11 @@ include ('./../../conexion.php');
         <i class="bi bi-search icono-busqueda"></i>
         <input type="text" class="diseno-busqueda" data-i18n-placeholder="enterGroupPlaceholder" placeholder="Ingrese su grupo" list="lista-grupos" id="grupoInput" />
           <datalist id="lista-grupos">
-          <option value="1° MD">
-          <option value="2° MD">
-          <option value="3° MD">
-          <option value="3° MB">
-          <option value="2° MB">
+          <?php foreach ($grupos as $g): ?>
+            <option value="<?php echo htmlspecialchars($g['nombre_grupo'], ENT_QUOTES, 'UTF-8'); ?>" 
+                    data-id="<?php echo $g['id_grupo']; ?>">
+            </option>
+          <?php endforeach; ?>
         </datalist> 
       </div>
     </main>

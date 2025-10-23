@@ -1,8 +1,6 @@
 <?php 
 include('../../../../conexion.php');
 $conn = conectar_bd();
-$sql = "SELECT * FROM asignatura";
-$query = mysqli_query($conn, $sql);
 
 // Obtener todos los grupos con su id y nombre
 $sqlGrupos = "SELECT id_grupo, nombre_grupo FROM grupo";
