@@ -127,7 +127,7 @@ i18next.init({
         classrooms:"Salones",
         computerLabs:"Aulas",
         scienceLabs:"Laboratorios",
-        viewReservations:"Consulta las reservas realizadas por cada docente y los espacios solicitados.",
+        viewReservations:"Consulta tus reservas realizadas",
         //
         courseSubjectManagement:"Gestión de cursos y asignaturas",
         pCourseSubjectManagement:"Gestione los cursos, asignaturas, docentes y espacios del centro educativo de forma sencilla y organizada.",
@@ -264,7 +264,7 @@ i18next.init({
         computerLabs:"Computer Labs",
         scienceLabs:"Science Labs",
         //
-        viewReservations:"View the reservations made by each teacher and the facilities requested.",
+        viewReservations:"View your reservations made",
         pCourseSubjectManagement:"Easily manage the courses, subjects, teachers, and facilities of your educational institution in an organized way.",
         courseSubjectManagement:"Course and Subject Management",
        addSubject:"Add Subjects",
