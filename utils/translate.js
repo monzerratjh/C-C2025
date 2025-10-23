@@ -199,7 +199,7 @@ i18next.init({
         reportAbsence:"Report Absence",
       //
       viewReservations:"View Reservations",
-      makeReservations:"Make Reservations",
+      makeReservations:"Make reservations",
       //
        underMaintenance:"We’re Currently Under Maintenance",
         backSoon:"We’ll Be Back Soon with Something Even Better ✨",
