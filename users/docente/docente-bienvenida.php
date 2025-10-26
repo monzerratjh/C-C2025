@@ -47,7 +47,7 @@ $apellido_docente = $_SESSION['apellido_usuario'] ?? 'usuario/a';
         <i class="bi bi-translate traductor-menu"></i>
       </div>
       <a href="docente-grupo.php" class="nav-opciones" data-i18n="assignedGroups">Grupos a Cargo</a>
-      <a href="docente-reservar.php" class="nav-opciones" data-i18n="reserveFacility">Reservar Espacio</a>
+      <a href="./reserva/docente-reservar.php" class="nav-opciones" data-i18n="reserveFacility">Reservar Espacio</a>
       <a href="docente-falta.php" class="nav-opciones" data-i18n="reportAbsence" >Avisar Falta</a>
     </div>
   </div>
@@ -68,7 +68,7 @@ $apellido_docente = $_SESSION['apellido_usuario'] ?? 'usuario/a';
       </div>
 
       <a href="docente-grupo.php" class="nav-opciones" data-i18n="assignedGroups" >Grupos a Cargo</a>
-      <a href="docente-reservar.php" class="nav-opciones" data-i18n="reserveFacility">Reservar Espacio</a>
+      <a href="./reserva/docente-reservar.php" class="nav-opciones" data-i18n="reserveFacility">Reservar Espacio</a>
       <a href="docente-falta.php" class="nav-opciones" data-i18n="reportAbsence">Avisar Falta</a>
     </aside>
 
