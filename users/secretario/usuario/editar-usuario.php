@@ -15,6 +15,20 @@ $contrasenia_usuario = $_POST['contrasenia_usuario']; //if '' ? null : hash
 
 $hashed_password = password_hash($contrasenia_usuario, PASSWORD_BCRYPT);
 
+if(empty($contrasenia_usuario)) {
+    // Si está vacía, mantener la contraseña actual
+    $sql_actual = "SELECT contrasenia_usuario FROM usuario WHERE id_usuario = ?";
+    $stmt_actual = $conn->prepare($sql_actual);
+    $stmt_actual->bind_param("i", $id_usuario);
+    $stmt_actual->execute();
+    $resultado = $stmt_actual->get_result();
+    $usuario_actual = $resultado->fetch_assoc();
+    $hashed_password = $usuario_actual['contrasenia_usuario'];
+} else {
+    // Si NO está vacía, hashear la nueva contraseña
+    $hashed_password = password_hash($contrasenia_usuario, PASSWORD_BCRYPT);
+}
+
 // Traemos el cargo anterior antes de actualizar
 $sql_prev = "SELECT cargo_usuario FROM usuario WHERE id_usuario = ?";
 $stmt_prev = $conn->prepare($sql_prev);
