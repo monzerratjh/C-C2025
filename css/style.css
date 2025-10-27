@@ -1128,3 +1128,18 @@ h4{
     background-color: #b2bec3;
     border: none;
   }
+
+
+  .btn-cerrar-sesion-bajo {
+  margin-top: auto;               /* empuja hacia el fondo */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  color: black;
+  text-decoration: none;
+  background: transparent;
+  padding: 10px 20px;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}

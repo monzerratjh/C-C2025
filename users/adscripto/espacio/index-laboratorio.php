@@ -61,7 +61,14 @@ $con->close();
       <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
       <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2" data-i18n="courseManagement">Gestión de cursos</a>
-     </div>
+     
+     <!-- BOTÓN CERRAR SESIÓN -->
+   <a href="#" class="btn-cerrar-sesion-bajo btn-cerrar-sesion mb-3">
+    <i class="bi bi-box-arrow-right me-2"></i>
+    <span data-i18n="sessionClose">Cerrar sesión</span>
+  </a>
+    
+    </div>
   </div>
 
   <!-- Contenedor general -->
@@ -82,6 +89,13 @@ $con->close();
     <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
     <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
     <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2" data-i18n="courseManagement">Gestión de cursos</a>
+  
+   <!-- BOTÓN CERRAR SESIÓN -->
+   <a href="#" class="btn-cerrar-sesion-bajo btn-cerrar-sesion mb-3">
+    <i class="bi bi-box-arrow-right me-2"></i>
+    <span data-i18n="sessionClose">Cerrar sesión</span>
+  </a>
+  
   </div>
 
   <!-- Contenido principal -->
@@ -185,6 +199,8 @@ $con->close();
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/espacio.js"></script>
 
+
+  <script src="./../../../../utils/form-log-in.js"></script> 
 
 
   <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
