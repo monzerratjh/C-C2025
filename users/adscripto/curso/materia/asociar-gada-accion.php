@@ -31,9 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
 
         if ($success) {
             // Redirige de nuevo al listado
-            header("Location: ./asociar-gada.php");
+            header("Location: ./asociar-gada.php?msg=InsercionExitosa");
         } else {
             echo "Error al insertar GADA: " . mysqli_error($conn);
+            header("Location: ./asociar-gada.php?error=FalloInsercion");
             exit;
         }
 
@@ -44,8 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
 
 
 function validaciones($id_grupo, $id_asignatura, $id_docente, $id_espacio) {
-        // validaciones de si está duplicado o si no existe  en la BD
-        $query_val = "
+    // validaciones de si está duplicado o si no existe  en la BD
+    $query_val = "
         SELECT * FROM grupo_asignatura_docente_aula 
         WHERE id_grupo = ? AND id_asignatura = ? 
         AND id_docente = ? AND id_espacio = ?
@@ -63,6 +64,6 @@ function validaciones($id_grupo, $id_asignatura, $id_docente, $id_espacio) {
     }
 
     return true;
-    }
+}
 
 ?>
