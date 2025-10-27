@@ -74,6 +74,7 @@ function validaciones($ci_usuario, $nombre_usuario, $apellido_usuario,
        empty($gmail_usuario) || empty($telefono_usuario) || empty($cargo_usuario) ||
        empty($contrasenia_usuario)) {
         echo"Todos los campos son obligatorios.";
+        exit;
     } else if((!preg_match("/^[0-9]{8}$/", $ci_usuario))) {
         echo "La cédula debe contener solo números (6 a 8 dígitos).";
     } else if (!preg_match("/^\+?[0-9]{9}$/", $telefono_usuario)) {

@@ -35,7 +35,7 @@ while($row = mysqli_fetch_array($query)) {
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuarios - Secretario</title>
+    <title>Panel Secretario</title>
 
     <!-- Bootstrap + Iconos + Google Fonts -->
      <!-- Bootstrap CSS + Iconos + letras -->
@@ -192,40 +192,40 @@ while($row = mysqli_fetch_array($query)) {
                     <h5 class="modal-title" data-i18n="editUser">Editar Usuario</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                   </div>
-                  <form method="POST" action="./editar-usuario.php">
+                  <form method="POST" action="./editar-usuario.php" id="editarUsuarioForm<?= $row['id_usuario'] ?>">
                     <div class="modal-body">
                       <input type="hidden" name="id_usuario" value="<?= $row['id_usuario'] ?>">
 
                       <div class="mb-3">
                         <label data-i18n="idCard">Cedula de identidad</label>
-                        <input type="number" name="ci_usuario" class="form-control" value="<?= $row['ci_usuario'] ?>">
+                        <input type="number" id="ci_usuario_edit<?= $row['id_usuario'] ?>" name="ci_usuario" class="form-control" value="<?= $row['ci_usuario'] ?>">
                       </div>
 
                       <div class="mb-3">
                         <label data-i18n="name">Nombre</label>
-                        <input type="text" name="nombre_usuario" class="form-control" value="<?= $row['nombre_usuario'] ?>">
+                        <input type="text" id="nombre_usuario_edit<?= $row['id_usuario'] ?>" name="nombre_usuario" class="form-control" value="<?= $row['nombre_usuario'] ?>">
                       </div>
 
                       <div class="mb-3">
                         <label data-i18n="lastName">Apellido</label>
-                        <input type="text" name="apellido_usuario" class="form-control" value="<?= $row['apellido_usuario'] ?>">
+                        <input type="text" id="apellido_usuario_edit<?= $row['id_usuario'] ?>" name="apellido_usuario" class="form-control" value="<?= $row['apellido_usuario'] ?>">
                       </div>
 
                       <div class="mb-3">
                         <label>Email</label>
-                        <input type="email" name="gmail_usuario" class="form-control" value="<?= $row['gmail_usuario'] ?>">
+                        <input type="email" id="gmail_usuario_edit<?= $row['id_usuario'] ?>" name="gmail_usuario" class="form-control" value="<?= $row['gmail_usuario'] ?>">
                       </div>
 
                       <div class="mb-3">
                         <label data-i18n="phone">Teléfono</label>
-                        <input type="number" name="telefono_usuario" class="form-control" value="<?= $row['telefono_usuario'] ?>">
+                        <input type="number" id="telefono_usuario_edit<?= $row['id_usuario'] ?>" name="telefono_usuario" class="form-control" value="<?= $row['telefono_usuario'] ?>">
                       </div>
 
                       <div class="mb-3">
                         <label data-i18n="position">Cargo</label>
-                        <select name="cargo_usuario" class="form-select">
+                        <select id="cargo_usuario_edit<?= $row['id_usuario']?>" name="cargo_usuario" class="form-select">
                           <option value="" data-i18n="select">Seleccionar</option>
-                          <option value="Docente" <?= ($row['cargo_usuario'] == 'Docente') ? 'selected' : '' ?>data-i18n="teacher">Docente</option>
+                          <option value="Docente" <?= ($row['cargo_usuario'] == 'Docente') ? 'selected' : '' ?> data-i18n="teacher">Docente</option>
                           <option value="Adscripto" <?= ($row['cargo_usuario'] == 'Adscripto') ? 'selected' : '' ?> data-i18n="adscripto">Adscripto</option>
                           <option value="Secretario" <?= ($row['cargo_usuario'] == 'Secretario') ? 'selected' : '' ?> data-i18n="secretary">Secretario</option>
                         </select>
@@ -233,7 +233,8 @@ while($row = mysqli_fetch_array($query)) {
 
                       <div class="mb-3">
                         <label data-i18n="password">Contraseña</label>
-                        <input type="password" name="contrasenia_usuario" class="form-control" value="<?= $row['contrasenia_usuario'] ?>">
+                        <input type="password" id="contrasenia_usuario_edit<?= $row['id_usuario'] ?>" name="contrasenia_usuario" class="form-control" value="">
+                        <small class="text-muted">Dejar en blanco si no se quiere cambiar la contraseña.</small>
                       </div>
                     </div>
                     <div class="modal-footer">
@@ -298,7 +299,7 @@ while($row = mysqli_fetch_array($query)) {
 
                   <div class="mb-3">
                     <label data-i18n="position">Cargo</label>
-                    <select name="cargo_usuario" class="form-select" required>
+                    <select id="cargo_usuario"name="cargo_usuario" class="form-select" required>
                       <option value="" data-i18n="select">Seleccionar</option>
                       <option value="Docente" data-i18n="teacher">Docente</option>
                       <option value="Adscripto" data-i18n="adscripto">Adscripto</option>
@@ -308,7 +309,7 @@ while($row = mysqli_fetch_array($query)) {
 
                   <div class="mb-3">
                     <label data-i18n="password">Contraseña</label>
-                    <input type="password" name="contrasenia_usuario" class="form-control" required>
+                    <input type="password" name="contrasenia_usuario" class="form-control"required>
                   </div>
                 </div>
 
@@ -325,14 +326,22 @@ while($row = mysqli_fetch_array($query)) {
     </div>
 
     <!-- Scripts -->
+    <script src="../js/validation.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
-    <script src="../js/validation.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="./../../../utils/desplegar-acordeon.js"></script>
 
      <!-- i18next desde CDN -->
-  <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
-  <script src="./../../../utils/translate.js"></script>
+    <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+    <script src="./../../../utils/translate.js"></script>
+
+    <script>
+      console.log("✅ Scripts cargados correctamente");
+    </script>
 
   </body>
   </html>
