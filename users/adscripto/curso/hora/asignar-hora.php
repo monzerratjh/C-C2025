@@ -56,7 +56,7 @@ while ($row = mysqli_fetch_assoc($resultGrupos)) {
       <a href="../../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="../../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="../../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="../../curso/adscripto-curso.php" class="fw-semibold seleccionado mb-2">Gestión de cursos</a>
+      <a href="../../curso/adscripto-curso.php" class="fw-semibold seleccionado mb-2" data-i18n="courseManagement">Gestión de cursos</a>
     </div>
   </div>
 
@@ -75,20 +75,21 @@ while ($row = mysqli_fetch_assoc($resultGrupos)) {
       <a href="./../../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./../../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../../curso/adscripto-curso.php" class="fw-semibold seleccionado mb-2">Gestión de cursos</a>
+      <a href="./../../curso/adscripto-curso.php" class="fw-semibold seleccionado mb-2" data-i18n="courseManagement">Gestión de cursos</a>
     </aside>
 
     <!-- Contenido principal -->
     <main class="principal">
       <img src="./../../../../../img/logo.png" alt="Logo" class="logo"> 
-      <h2>Cargar Hora</h2>
-      <p>Ingrese el grupo en el cual va a agregar las horas dictadas.</p>
+      <h2 data-i18n="loadHour">Cargar Hora</h2>
+      <p data-i18n="enterGroupHours">Ingrese el grupo en el cual va a agregar las horas dictadas.</p>
 
       <div class="busqueda">
         <i class="bi bi-search icono-busqueda"></i>
         <input 
           type="text" 
-          class="diseno-busqueda diseno-busqueda2" 
+          class="diseno-busqueda diseno-busqueda2"  
+          data-i18n-placeholder="enterGroup"
           placeholder="Ingrese el grupo" 
           list="lista-grupos" 
           id="grupoInput"

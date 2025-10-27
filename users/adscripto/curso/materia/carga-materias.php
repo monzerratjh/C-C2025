@@ -49,7 +49,7 @@ $query = mysqli_query($conn, $sql);
       <a href="./../../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./../../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../../curso/adscripto-curso.php" class="fw-semibold seleccionado mb-2">Gestión de cursos</a>
+      <a href="./../../curso/adscripto-curso.php" class="fw-semibold seleccionado mb-2" data-i18n="courseManagement">Gestión de cursos</a>
     </div>
   </div>
 
@@ -69,33 +69,33 @@ $query = mysqli_query($conn, $sql);
       <a href="./../../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./../../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../../curso/adscripto-curso.php" class="fw-semibold seleccionado mb-2">Gestión de cursos</a>
+      <a href="./../../curso/adscripto-curso.php" class="fw-semibold seleccionado mb-2" data-i18n="courseManagement">Gestión de cursos</a>
     </aside>
 
     <!-- Contenido principal -->
     <main class="principal">
 
       <img src="./../../../../../img/logo.png" alt="Logo" class="logo"> 
-      <h2 id="asignatura-carga">Cargar Asignatura</h2>
-      <p>Ingrese la asignatura</p>
+      <h2 id="asignatura-carga" data-i18n="loadSubject">Cargar Asignatura</h2>
+      <p data-i18n="enterSubject">Ingrese la asignatura</p>
 
       <div class="busqueda">
         <form action="./cargar-materias-accion.php" method="POST">
            <div class="form-group">
-           <input type="text" class="diseno-busqueda diseno-busqueda2" id="insertar-materia" name="insertar-materia" placeholder="Ej: Programación Full-Stack" required>
+           <input type="text" class="diseno-busqueda diseno-busqueda2" id="insertar-materia" name="insertar-materia" data-i18n-placeholder="exampleFullStack" placeholder="Ej: Programación Full-Stack" required>
           </div>
           <br>
-        <button type="submit" class="btn btn-primary">Cargar</button>
+        <button type="submit" class="btn btn-primary" data-i18n="load" data-i18n="load">Cargar</button>
          </form>
       </div>
 
       
 
-      <h2 id="asignatura-carga2">Asignaturas cargadas</h2>
+      <h2 id="asignatura-carga2" data-i18n="loadedSubjects">Asignaturas cargadas</h2>
       <table class="tabla-reserva">
         <thead>
             <tr>
-                <th scope="col">Nombre Asignaturas Cargadas</th>
+                <th scope="col" data-i18n="nameLoadedSubjects">Nombre Asignaturas Cargadas</th>
                 <th></th>
                 <th></th>
             </tr>

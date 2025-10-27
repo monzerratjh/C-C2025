@@ -77,7 +77,7 @@ $apellido_docente = $_SESSION['apellido_usuario'] ?? 'usuario/a';
       <img src="./../../img/logo.png" alt="Logo" class="logo"> 
       <h1 class="bienvenida"> <span data-i18n="welcom3">Bienvenid@</span> <br>
       <?php echo htmlspecialchars($nombre_docente). ' ' . htmlspecialchars($apellido_docente). '!'; ?></h1>
-      <p class="p-bienvenida"> Para comenzar, utiliza la barra lateral ubicada a la izquierda de la pantalla. Desde allí podrás acceder fácilmente a las distintas secciones y funciones del sistema.</p>
+      <p class="p-bienvenida" data-i18n="welcomeDescription"> Para comenzar, utiliza la barra lateral ubicada a la izquierda de la pantalla. Desde allí podrás acceder fácilmente a las distintas secciones y funciones del sistema.</p>
     </main>
 
   </div>

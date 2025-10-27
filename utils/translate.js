@@ -144,6 +144,32 @@ i18next.init({
         availability:"Disponibilidad",
         historyNotes:"Historial / Observaciones",
         next:"Siguiente",
+        //
+        logInDescription: "Inicia sesión con tu cédula y contraseña para acceder a tu cuenta y comenzar a usar el sistema.",
+        welcomeDescription:"Para comenzar, utiliza la barra lateral ubicada a la izquierda de la pantalla. Desde allí podrás acceder fácilmente a las distintas secciones y funciones del sistema.",
+        maxStudents:"(Máx. de alumnos)",
+        //
+        loadSubject:"Cargar Asignatura",
+        enterSubject:"Ingrese la asignatura",
+        exampleFullStack:"Ej: Programación Full-Stack",
+        load:"Cargar",
+        loadedSubjects:"Asignaturas cargadas",
+        nameLoadedSubjects:"Nombre Asignaturas Cargadas",
+        //
+        loadHour:"Cargar Hora",
+        enterGroupHours:"Ingrese el grupo en el cual va a agregar las horas dictadas.",
+        enterGroup:"Ingrese el grupo",
+        //
+         assignRTSG:"Asignar un espacio, un docente y una asignatura a grupo.",
+        enterInformation:"Ingrese los datos solicitados.",
+        selectSubject:"Seleccionar asignatura",
+        selectTeacher:"Seleccionar docente",
+        selectRoom:"Seleccionar espacio",
+        selectGroup:"Seleccionar grupo",
+        assign:"Asignar",
+        assignments:"Asignaciones",
+        subjectName:"Nombre asignatura",
+        group:"Grupo",
       }
     },
     en: {
@@ -279,8 +305,35 @@ i18next.init({
         capacity:"Capacity",
         availability:"Availability",
         historyNotes:"History / Notes",
-        next:"Next"
-      }
+        next:"Next",
+        //
+        logInDescription: "Log in with your ID number and password to access your account and start using the system.",
+        welcomeDescription:"To get started, use the sidebar located on the left side of the screen. From there, you can easily access the different sections and features of the system.",
+        maxStudents:"(Max. number of students)",
+        //
+        loadSubject:"Load Subject",
+        enterSubject:"Enter the subject",
+        exampleFullStack:"Example: Full-Stack Programming",
+        load:"Load",
+        loadedSubjects:"Loaded Subjects",
+        nameLoadedSubjects:"Name of Loaded Subjects",
+        //
+        loadHour:"Load Hour",
+        enterGroupHours:"Enter the group in which you want to add the hours taught.",
+        enterGroup:"Enter the group",
+        //
+        assignRTSG:"Assign a Room, Teacher, and Subject to a Group",
+        enterInformation:"Enter the required information.",
+        selectSubject:"Select Subject",
+        selectTeacher:"Select Teacher",
+        selectRoom:"Select classroom",
+        selectGroup:"Select Group",
+        assign:"Assign",
+        assignments:"Assignments",
+        subjectName:"Subject Name",
+        group:"Group",
+        //
+     }
     }
   }
 },

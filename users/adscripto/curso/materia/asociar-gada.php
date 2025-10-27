@@ -68,7 +68,7 @@ AND docente.id_usuario = usuario.id_usuario');
       <a href="./../../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./../../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../../curso/adscripto-curso.php" class="fw-semibold seleccionado mb-2">Gestión de cursos</a>
+      <a href="./../../curso/adscripto-curso.php" class="fw-semibold seleccionado mb-2" data-i18n="courseManagement">Gestión de cursos</a>
     </div>
   </div>
 
@@ -90,7 +90,7 @@ AND docente.id_usuario = usuario.id_usuario');
       <a href="./../../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./../../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../../curso/adscripto-curso.php" class="fw-semibold seleccionado mb-2">Gestión de cursos</a>
+      <a href="./../../curso/adscripto-curso.php" class="fw-semibold seleccionado mb-2" data-i18n="courseManagement">Gestión de cursos</a>
     </aside>
 
     <!-- Contenido principal -->
@@ -98,14 +98,14 @@ AND docente.id_usuario = usuario.id_usuario');
       <img src="../../../../img/logo.png" alt="Logo" class="logo"> 
 
       <div class="gada-container">
-      <h2>Asignar un espacio, un docente y una asignatura a grupo.</h2>
-      <p>Ingrese los datos solicitados.</p>
+      <h2 data-i18n="assignRTSG">Asignar un espacio, un docente y una asignatura a grupo.</h2>
+      <p data-i18n="enterInformation">Ingrese los datos solicitados.</p>
 
       <div class="busqueda">
         <form action="./asociar-gada-accion.php" method="POST">
           <div class="form-group">
             <select class="form-control" name="id_asignatura" required>
-              <option value="">Seleccionar asignatura</option>
+              <option value="" data-i18n="selectSubject">Seleccionar asignatura</option>
               <?php
                 $asig = mysqli_query($conn, "SELECT * FROM asignatura");
                 while ($a = mysqli_fetch_assoc($asig)) {
@@ -116,7 +116,7 @@ AND docente.id_usuario = usuario.id_usuario');
             <br>
 
             <select class="form-control" name="id_docente" required>
-              <option value="">Seleccionar docente</option>
+              <option value="" data-i18n="selectTeacher">Seleccionar docente</option>
               <?php
                 $doc = mysqli_query($conn, "
                   SELECT docente.id_docente, usuario.nombre_usuario, usuario.apellido_usuario
@@ -131,7 +131,7 @@ AND docente.id_usuario = usuario.id_usuario');
             <br>
 
             <select class="form-control" name="id_espacio" required>
-              <option value="">Seleccionar espacio</option>
+              <option value="" data-i18n="selectRoom">Seleccionar espacio</option>
               <?php
                 $esp = mysqli_query($conn, "SELECT * FROM espacio");
                 while ($e = mysqli_fetch_assoc($esp)) {
@@ -142,7 +142,7 @@ AND docente.id_usuario = usuario.id_usuario');
             <br>
 
             <select class="form-control" name="id_grupo" required>
-              <option value="">Seleccionar grupo</option>
+              <option value="" data-i18n="selectGroup">Seleccionar grupo</option>
               <?php
                 $grupos = mysqli_query($conn, "SELECT * FROM grupo");
                 while ($g = mysqli_fetch_assoc($grupos)) {
@@ -152,20 +152,20 @@ AND docente.id_usuario = usuario.id_usuario');
             </select>
             <br>
 
-            <button type="submit" class="btn btn-primary">Asignar</button>
+            <button type="submit" class="btn btn-primary" data-i18n="assign">Asignar</button>
           </div>
         </form>
       </div>
 </div>
       <br><br>
-      <h2>Asignaciones</h2>
+      <h2 data-i18n="assignments">Asignaciones</h2>
       <table class="tabla-reserva">
         <thead>
           <tr>
-            <th>Nombre Asignatura</th>
-            <th>Profesor</th>
-            <th>Espacio</th>
-            <th>Grupo</th>
+            <th data-i18n="subjectName">Nombre Asignatura</th>
+            <th data-i18n="teacher">Profesor</th>
+            <th data-i18n="facility">Espacio</th>
+            <th data-i18n="group">Grupo</th>
             <th></th>
             <th></th>
           </tr>
@@ -270,6 +270,9 @@ AND docente.id_usuario = usuario.id_usuario');
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/utils/translate.js"></script>
+  
+  <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
   <script src="/utils/translate.js"></script>
 </body>
 </html>
