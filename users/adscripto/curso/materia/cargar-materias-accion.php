@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['insertar-materia'])) 
 
         if ($success) {
             // Redirige de nuevo al listado
-            header("Location: ./carga-materias.php");
+            header("Location: ./carga-materias.php?msg=InsercionExitosa");
             exit;
         } else {
             echo "Error en la inserción: " . mysqli_error($conn);

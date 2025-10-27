@@ -17,19 +17,12 @@ $stmt = mysqli_prepare($conn, $sql);
         $success = mysqli_stmt_execute($stmt);
 
         if ($success) {
-            echo "Asignatura eliminada correctamente.";
+           header("Location: carga-materias.php?msg=EliminacionExitosa");
+           exit;
         } else {
             echo "Error al eliminar la asignatura: " . mysqli_stmt_error($stmt);
         }
 
         mysqli_stmt_close($stmt);
     }
-
-if($success){
-    // Redirige de nuevo al listado
-    header("Location: carga-materias.php");
-    exit;
-} else {
-    echo "Error en el SQL " . mysqli_error($conn);
-}
 ?>

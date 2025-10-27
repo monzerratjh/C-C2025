@@ -219,6 +219,31 @@ $query = mysqli_query($conn, $sql);
             confirmButtonColor: '#d33'
         });
     </script>
+  <?php } } else if(isset($_GET['msg'])) {
+    if($_GET['msg'] == 'EdicionExitosa') { ?>
+    <script>
+       Swal.fire({
+            icon: 'success',
+            title: '¡Edición Exitosa!',
+            confirmButtonColor: 'rgba(95, 102, 207, 1)'
+        });
+    </script>
+  <?php } else if($_GET['msg'] == 'InsercionExitosa') { ?>
+    <script>
+       Swal.fire({
+            icon: 'success',
+            title: '¡Inserción Exitosa!',
+            confirmButtonColor: 'rgba(95, 102, 207, 1)'
+        });
+    </script>
+  <?php } else if($_GET['msg'] == 'EliminacionExitosa') { ?>
+    <script>
+       Swal.fire({
+            icon: 'success',
+            title: '¡Eliminación Exitosa!',
+            confirmButtonColor: 'rgba(95, 102, 207, 1)'
+        });
+    </script>
   <?php } } ?>
 </body>
 </html>
