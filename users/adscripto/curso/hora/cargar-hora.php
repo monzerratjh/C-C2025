@@ -82,7 +82,7 @@ if ($enum_query) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestión de horas</title>
+  <title>Panel adscripto</title>
   
   <!-- Bootstrap CSS + Iconos + letras -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
