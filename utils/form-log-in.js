@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cancelButtonText: i18next.t('cancel')
       }).then((result) => {
         if (result.isConfirmed) {
-          window.location.href = './../../index.php';
+            window.location.href = './../../../utils/log-out.php';
         }
       });
     });

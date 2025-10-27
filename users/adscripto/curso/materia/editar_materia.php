@@ -5,6 +5,7 @@ $conn = conectar_bd();
 $id_asignatura = $_POST['id_asignatura'] ?? null;
 $nombre_asignatura = $_POST['editar-materia'];
 
+$validacion_rslt = validacion($nombre_asignatura);
 // Verificamos que llegue el POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_asignatura'], $_POST['editar-materia'])) {
 
@@ -14,14 +15,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_asignatura'], $_PO
 
     if ($stmt->execute()) {
         // Redirigimos al listado de materias
-        header("Location: ./carga-materias.php");
+        header("Location: ./carga-materias.php?msg=EdicionExitosa");
         exit;
     } else {
         echo "Error al actualizar la asignatura: " . $stmt->error;
+        header("Location: ./carga-materias.php?error=ActualizacionFallida");
+        exit;
     }
 
     $stmt->close();
 } else {
-    echo "Faltan datos para editar la asignatura.".$nombre_asignatura.$id_asignatura;
+   
 }
+
+function validacion($nombre_asignatura) {
+    if(empty($nombre_asignatura)) {
+        header("Location: ./carga-materias.php?error=CampoVacio");
+    } else if(!preg_match("/^[a-zA-ZÀ-ÿ\s]{1,50}$/", $nombre_asignatura)) {
+        header("Location: ./carga-materias.php?error=NombreInvalido");
+        exit;
+    } else {
+        // Verificar si la asignatura ya existe
+        $conn = conectar_bd();
+        $query_val = "SELECT * FROM asignatura WHERE nombre_asignatura = ?";
+        $stmt = mysqli_prepare($conn, $query_val);
+        mysqli_stmt_bind_param($stmt, "s", $nombre_asignatura);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        mysqli_stmt_close($stmt);
+
+        if (mysqli_num_rows($result) > 0) {
+            header("Location: ./carga-materias.php?error=MateriaDuplicada");
+            exit;
+        } else {
+            return true;
+        }
+    }
+} 
+
 ?>
