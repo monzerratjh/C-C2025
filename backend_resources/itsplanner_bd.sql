@@ -68,7 +68,6 @@ CREATE TABLE docente_pide_recurso (
 -- ============================================================
 CREATE TABLE asignatura (
 	id_asignatura INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	cantidad_horas_asignatura INT NOT NULL,
 	nombre_asignatura VARCHAR(30) NOT NULL
 );
 
