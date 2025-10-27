@@ -285,10 +285,23 @@ AND docente.id_usuario = usuario.id_usuario');
   <script src="/utils/translate.js"></script>
 
   
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="./../../../../utils/form-log-in.js"></script> 
-  
+
   <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
   <script src="/utils/translate.js"></script>
+  
+  <?php if(isset($_GET['error']) && $_GET['error'] == 'AsignacionDuplicada'): ?>
+    <script>
+      //alert('La asignación ya existe en la base de datos.');
+       Swal.fire({
+            icon: 'error',
+            title: 'La asignación ya existe en la base de datos',
+            text: 'Por favor ingrese una nueva',
+            confirmButtonColor: '#d33'
+        });
+    </script>
+  <?php endif; ?>
+
 </body>
 </html>
