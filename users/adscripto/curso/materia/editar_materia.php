@@ -6,14 +6,23 @@ $id_asignatura = $_POST['id_asignatura'] ?? null;
 $nombre_asignatura = $_POST['editar-materia'];
 
 $validacion_rslt = validacion($nombre_asignatura);
-// Verificamos que llegue el POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_asignatura'], $_POST['editar-materia'])) {
 
     // Preparamos el UPDATE
     $stmt = $conn->prepare("UPDATE asignatura SET nombre_asignatura = ? WHERE id_asignatura = ?");
     $stmt->bind_param("si", $nombre_asignatura, $id_asignatura);
+    
+    if($validacion_rslt === true) {
+        // Redirigimos al listado de materias
+        $stmt->execute();
+        header("Location: ./carga-materias.php?msg=EdicionExitosa");
+        exit;
 
-    if ($stmt->execute()) {
+    } else {
+        header("Location: ./carga-materias.php?error=ActualizacionFallida");
+        exit;
+    }
+    /*if ($stmt->execute()) {
         // Redirigimos al listado de materias
         header("Location: ./carga-materias.php?msg=EdicionExitosa");
         exit;
@@ -21,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_asignatura'], $_PO
         echo "Error al actualizar la asignatura: " . $stmt->error;
         header("Location: ./carga-materias.php?error=ActualizacionFallida");
         exit;
-    }
+    }*/
 
     $stmt->close();
 } else {

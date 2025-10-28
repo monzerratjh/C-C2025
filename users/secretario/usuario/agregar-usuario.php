@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cargo_usuario = $_POST['cargo_usuario'];
     $contrasenia_usuario = trim($_POST['contrasenia_usuario']);
 
-    $validacion_result = validaciones($ci_usuario, $nombre_usuario, $apellido_usuario, $gmail_usuario,
+    $validacion_result = validaciones($conn, $ci_usuario, $nombre_usuario, $apellido_usuario, $gmail_usuario,
                                         $telefono_usuario, $contrasenia_usuario, $cargo_usuario);
 
     if (($validacion_result === true)) {
@@ -57,7 +57,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($success) {
         // Redirige de nuevo al listado
-        header("Location: ./secretario-usuario.php");
+        header("Location: ./secretario-usuario.php?msg=InsercionExitosa");
         exit;
     } else {
         echo "Error en la inserción: " . mysqli_error($conn);
@@ -67,22 +67,39 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
    mysqli_close($conn);
 
-function validaciones($ci_usuario, $nombre_usuario, $apellido_usuario,
+function validaciones($conn, $ci_usuario, $nombre_usuario, $apellido_usuario,
                      $gmail_usuario, $telefono_usuario, $contrasenia_usuario,
                      $cargo_usuario) {
     if(empty($ci_usuario) || empty($nombre_usuario)|| empty($apellido_usuario) || 
        empty($gmail_usuario) || empty($telefono_usuario) || empty($cargo_usuario) ||
        empty($contrasenia_usuario)) {
-        echo"Todos los campos son obligatorios.";
+        header("Location: ./secretario-usuario.php?error=CamposVacios");
         exit;
     } else if((!preg_match("/^[0-9]{8}$/", $ci_usuario))) {
-        echo "La cédula debe contener solo números (6 a 8 dígitos).";
+        header("Location: ./secretario-usuario.php?error=CiInvalida");
+        exit;
     } else if (!preg_match("/^\+?[0-9]{9}$/", $telefono_usuario)) {
-        echo "El teléfono debe contener solo números y un máximo de 9 dígitos";
+        header("Location: ./secretario-usuario.php?error=TelefonoInvalido");
+        exit;
     } else if (!preg_match("/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[A-Za-z\d@$!%*?&]{8,20}$/", $contrasenia_usuario)) {
-        echo "La contraseña debe tener entre 8 y 20 caracteres, con al menos una mayúscula, una minúscula y un número.";
-    } else {
-        return true;
+        header("Location: ./secretario-usuario.php?error=ContraseniaInvalida");
+        exit;
+    } else if (!consultarBD($conn, $ci_usuario, $gmail_usuario)) {
+        header("Location: ./secretario-usuario.php?error=UsuarioYaExistente");
+        exit;
     }
+        
 }
+
+function consultarBD($conn, $ci_usuario) {
+    $query_val = "SELECT * FROM usuario WHERE ci_usuario = ? ";
+    $stmt = mysqli_prepare($conn, $query_val);
+    mysqli_stmt_bind_param($stmt, "s", $ci_usuario);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    mysqli_stmt_close($stmt);
+
+    return mysqli_num_rows($result) === 0;
+}
+
 ?>
