@@ -122,8 +122,14 @@ if ($enum_query) {
       <a href="./../../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./../../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../../adscripto-curso.php" class="fw-semibold seleccionado mb-2">Gestión de cursos</a>
+      <a href="./../../adscripto-curso.php" class="fw-semibold seleccionado mb-2" data-i18n="courseManagement">Gestión de cursos</a>
     </div>
+
+     <!-- BOTÓN CERRAR SESIÓN -->
+   <a href="#" class="btn-cerrar-sesion-bajo btn-cerrar-sesion mb-3">
+    <i class="bi bi-box-arrow-right me-2"></i>
+    <span data-i18n="sessionClose">Cerrar sesión</span>
+  </a>
   </div>
 
   <!-- Contenedor principal con GRID -->
@@ -136,7 +142,7 @@ if ($enum_query) {
           <a href="../hora/asignar-hora.php">
             <i class="bi bi-arrow-left-circle-fill icono-volver"></i>
           </a>
-          <a href="../hora/asignar-hora.php">Volver</a>
+          <a href="../hora/asignar-hora.php" data-i18n="goBack">Volver</a>
         </div>
         <i class="bi bi-translate traductor-menu"></i>
       </div>
@@ -144,24 +150,32 @@ if ($enum_query) {
       <a href="./../../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./../../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../adscripto-curso.php" class="fw-semibold seleccionado mb-2">Gestión de cursos</a>
+      <a href="./../adscripto-curso.php" class="fw-semibold seleccionado mb-2" data-i18n="courseManagement">Gestión de cursos</a>
+    
+       <!-- BOTÓN CERRAR SESIÓN -->
+   <a href="#" class="btn-cerrar-sesion-bajo btn-cerrar-sesion mb-3">
+    <i class="bi bi-box-arrow-right me-2"></i>
+    <span data-i18n="sessionClose">Cerrar sesión</span>
+  </a>
+    
     </aside>
 
     <!-- Contenido principal -->
     <main class="principal">
       <img src="./../../../../img/logo.png" alt="Logo" class="logo"> 
-    
-      <h2>Cargar horarios <?= htmlspecialchars($grupo['nombre_grupo']) ?></h2>
-
-      <!-- Botón para agregar horario -->
-      <div class="text-center mb-3">
-        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalHorario">
-          <h2>+</h2>
-        </button>
-      </div>
-
+  
       <div class="acordion-total">
         <div class="acordion">
+
+        
+      <h2 data-i18n="uploadSchedules">Cargar horarios</h2><h2><?= htmlspecialchars($grupo['nombre_grupo']) ?> </h2>
+
+      <br><br>
+
+        <button class="boton-opciones2 agregar colorfondoverde" data-bs-toggle="modal" data-bs-target="#modalHorario">
+          <h4>+</h4>
+        </button>
+
 
         <?php
           // Agrupar los horarios por día
@@ -181,10 +195,10 @@ if ($enum_query) {
               <?php if ($lista): ?>
                 <table class="tabla-reserva">
                   <tr>
-                    <th>Horario entrada</th>
-                    <th>Horario salida</th>
-                    <th>Asignatura (Docente)</th>
-                    <th>Espacio</th>
+                    <th data-i18n="startTime">Horario entrada</th>
+                    <th data-i18n="endTime">Horario salida</th>
+                    <th data-i18n="subjectTeacher">Asignatura (Docente)</th>
+                    <th data-i18n="facility">Espacio</th>
                     <th></th>
                 </tr>
               
@@ -224,7 +238,7 @@ if ($enum_query) {
                 </tbody>
               </table>
             <?php else: ?>
-              <p>Sin clases cargadas</p>
+              <p data-i18n="noClasses">Sin clases cargadas</p>
             <?php endif; ?>
           </div>
         </div>
@@ -239,8 +253,8 @@ if ($enum_query) {
 
           <input type="hidden" name="id_grupo" value="<?= $id_grupo ?>">
 
-            <div class="modal-header bg-success text-white">
-              <h5 class="modal-title">Agregar / Editar horario</h5>
+            <div class="modal-header">
+              <h5 class="modal-title" data-i18n="addEditSchedule">Agregar / Editar horario</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
@@ -249,9 +263,9 @@ if ($enum_query) {
               <input type="hidden" name="id_horario_asignado" id="idHorarioAsignado">
 
               <div class="mb-3">
-                <label class="form-label">Día</label>
+                <label class="form-label" data-i18n="day">Día</label>
                 <select name="dia" id="dia" class="form-select" required>
-                  <option value="">Seleccione...</option>
+                  <option value="" data-i18n="select">Seleccione...</option>
                   <?php foreach ($enum_dias as $d): ?>
                     <option value="<?= $d ?>"><?= $d ?></option>
                   <?php endforeach; ?>
@@ -259,9 +273,9 @@ if ($enum_query) {
               </div>
 
               <div class="mb-3">
-                <label class="form-label">Horario</label>
+                <label class="form-label" data-i18n="schedule">Horario</label>
                 <select name="id_horario_clase" id="id_horario_clase" class="form-select" required>
-                  <option value="">Seleccione...</option>
+                  <option value="" data-i18n="select">Seleccione...</option>
                   <?php
                   mysqli_data_seek($horarios, 0);
                   while ($h = mysqli_fetch_assoc($horarios)): ?>
@@ -273,9 +287,9 @@ if ($enum_query) {
               </div>
 
               <div class="mb-3">
-                <label class="form-label">Asignatura y docente</label>
+                <label class="form-label" data-i18n="subjectAndTeacher">Asignatura y docente</label>
                 <select name="id_gada" id="id_gada" class="form-select" required>
-                  <option value="">Seleccione...</option>
+                  <option value="" data-i18n="select">Seleccione...</option>
                   <?php
                   mysqli_data_seek($gada, 0);
                   while ($g = mysqli_fetch_assoc($gada)): ?>
@@ -288,8 +302,8 @@ if ($enum_query) {
             </div>
 
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-              <button type="submit" class="btn btn-success">Guardar</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="cancel">Cancelar</button>
+              <button type="submit" class="btn btn-success" data-i18n="save">Guardar</button>
             </div>
           </form>
         </div>
@@ -303,9 +317,14 @@ if ($enum_query) {
   </div>
 
   <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>  
+  
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="./../../../../utils/form-log-in.js"></script> 
+
+                    
+  <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+  <script src="/utils/translate.js"></script>
   
   <script src="./../../js/hora.js"></script>
   <script src="./../../../utils/desplegar-acordeon.js"></script>  

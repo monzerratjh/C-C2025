@@ -170,6 +170,17 @@ i18next.init({
         assignments:"Asignaciones",
         subjectName:"Nombre asignatura",
         group:"Grupo",
+        //
+        subjectTeacher:"Asigantura (docente)",
+        noClasses:"Sin clases cargadas",
+        uploadSchedules:"Cargar horarios",
+        subjectAndTeacher:"Asignatura y docente",
+        addEditSchedule:"Agregar / Editar horario",
+        //
+        editSubject:"Edicion de asignatura",
+        ensureWrittenCorrectly:"Asegúrese de que quede bien escrito.",
+        //
+        assignmentEditing:"Edicion de asignación",
       }
     },
     en: {
@@ -333,6 +344,15 @@ i18next.init({
         subjectName:"Subject Name",
         group:"Group",
         //
+        subjectTeacher:"Subject (Teacher)",
+        noClasses:"No classes available",
+        uploadSchedules:"Upload Schedules",
+        subjectAndTeacher:"Subject and teacher",
+        addEditSchedule:"Add / Edit Schedule",
+        //
+        ensureWrittenCorrectly:"Ensure it is written correctly.",
+        editSubject: "Edit subject",
+        assignmentEditing:"Assignment Editing",
      }
     }
   }

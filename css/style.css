@@ -143,6 +143,7 @@ a{
 
 
 
+
  
     /*TERMINA LA ESTRUCTURA DEL MENU*/
 
@@ -890,6 +891,11 @@ table tr:nth-child(even) {
     display: none;
   }
 
+  .seleccionado{
+    
+        border-width: 15px 0px 15px 15px;
+  }
+
 #p-login{
   margin: 1rem 29%;
 }
@@ -1142,4 +1148,8 @@ h4{
   padding: 10px 20px;
   border-radius: 12px;
   transition: background-color 0.3s ease;
+}
+
+.colorfondoverde{
+  background-color: #98dbd0;
 }

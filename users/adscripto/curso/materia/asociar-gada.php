@@ -190,7 +190,7 @@ AND docente.id_usuario = usuario.id_usuario');
             <td><?= $row['nombre_espacio'] ?></td>
             <td><?= $row['nombre_grupo'] ?></td>
             <td>
-              <a data-bs-toggle="modal" data-bs-target="#update_modal<?= $row['id_gada'] ?>"><i class="bi bi-pencil"></i></a>
+              <a data-bs-toggle="modal" data-bs-target="#update_modal<?= $row['id_gada'] ?>"><i class="bi bi-pencil-square"></i></a>
             </td>
             <td>
               <a href="./eliminar-gada.php?id_gada=<?= $row['id_gada'] ?>"><i class="bi bi-trash"></i></a>
@@ -202,15 +202,15 @@ AND docente.id_usuario = usuario.id_usuario');
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title">Edición de asignación</h5>
+                    <h5 class="modal-title" data-i18n="assignmentEditing">Edición de asignación</h5>
                   </div>
                   <form method="POST" action="./editar-gada-accion.php" id="editarGada">
                     <div class="modal-body">
                       <input type="hidden" name="id_gada" value="<?= $row['id_gada'] ?>">
                       <div class="form-group">
-                         <label>Asignatura</label>
+                         <label data-i18n="subject">Asignatura</label>
                           <select class="form-control" name="id_asignatura" required>
-                            <option value="">Seleccionar asignatura</option>
+                            <option value="" data-i18n="select">Seleccionar</option>
                               <?php
                                 $materia_query = mysqli_query($conn, "SELECT * FROM asignatura");
                                while ($m = mysqli_fetch_assoc($materia_query)) {
@@ -222,9 +222,9 @@ AND docente.id_usuario = usuario.id_usuario');
                           <br>
 
 
-                          <label>Docente</label>
+                          <label data-i18n="teacher">Docente</label>
                           <select class="form-control" name="id_docente" required>
-                            <option value="">Seleccionar docente</option>
+                            <option value="" data-i18n="select">Seleccionar</option>
                               <?php
                                 $doc = mysqli_query($conn, "
                                 SELECT docente.id_docente, usuario.nombre_usuario, usuario.apellido_usuario
@@ -240,9 +240,9 @@ AND docente.id_usuario = usuario.id_usuario');
                           <br>
 
 
-                          <label>Espacio</label>
+                          <label data-i18n="facility">Espacio</label>
                           <select class="form-control" name="id_espacio" required>
-                            <option value="">Seleccionar espacio</option>
+                            <option value="" data-i18n="select">Seleccionar</option>
                               <?php
                                 $esp_query = mysqli_query($conn, "SELECT * FROM espacio");
                                while ($e = mysqli_fetch_assoc($esp_query)) {
@@ -253,9 +253,9 @@ AND docente.id_usuario = usuario.id_usuario');
                           </select>
                           <br>
                          
-                          <label>Grupo</label>
+                          <label data-i18n="group">Grupo</label>
                           <select class="form-control" name="id_grupo" required>
-                            <option value="">Seleccionar grupo</option>
+                            <option value="" data-i18n="select">Seleccionar</option>
                               <?php
                                 $grupo_query = mysqli_query($conn, "SELECT * FROM grupo");
                                while ($g = mysqli_fetch_assoc($grupo_query)) {
@@ -266,8 +266,8 @@ AND docente.id_usuario = usuario.id_usuario');
                           </select>
                           <br>
                         </div>
-                        <button type="submit" class="btn btn-primary">Cargar cambios</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary" data-i18n="save">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="cancel">Cancelar</button>
                         </div>
                       </form>
           <?php endwhile; ?>
