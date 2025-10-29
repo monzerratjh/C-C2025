@@ -150,6 +150,13 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
         <a href="./../recurso/secretario-recurso.php" class="nav-opciones" data-i18n="resources">Recursos</a>
    
         </div>
+
+        <!-- BOTÓN CERRAR SESIÓN -->
+   <a href="#" class="btn-cerrar-sesion-bajo btn-cerrar-sesion mb-3">
+    <i class="bi bi-box-arrow-right me-2"></i>
+    <span data-i18n="sessionClose">Cerrar sesión</span>
+  </a>
+      
   </div>
 
 
@@ -172,6 +179,12 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
         <a href="../grupo/secretario-grupo.php" class="fw-semibold seleccionado mb-2" data-i18n="groups">Grupos</a>
         <a href="./../recurso/secretario-recurso.php" class="nav-opciones" data-i18n="resources">Recursos</a>
    
+      <!-- BOTÓN CERRAR SESIÓN -->
+   <a href="#" class="btn-cerrar-sesion-bajo btn-cerrar-sesion mb-3">
+    <i class="bi bi-box-arrow-right me-2"></i>
+    <span data-i18n="sessionClose">Cerrar sesión</span>
+  </a>
+      
     </aside>
 
 
@@ -392,6 +405,8 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
+
+  <script src="../../../utils/form-log-in.js"></script> 
 
 
     <!-- i18next desde CDN -->

@@ -41,6 +41,13 @@
         <a href="../grupo/secretario-grupo.php" class="nav-opciones" data-i18n="groups">Grupos</a>
         <a href="./../recurso/secretario-recurso.php" class="fw-semibold seleccionado mb-2" data-i18n="resources">Recursos</a>
    
+
+        <!-- BOTÓN CERRAR SESIÓN -->
+   <a href="#" class="btn-cerrar-sesion-bajo btn-cerrar-sesion mb-3">
+    <i class="bi bi-box-arrow-right me-2"></i>
+    <span data-i18n="sessionClose">Cerrar sesión</span>
+  </a>
+      
         </div>
   </div>
 
@@ -64,6 +71,13 @@
       <a href="../grupo/secretario-grupo.php" class="nav-opciones" data-i18n="groups">Grupos</a>
       <a href="./../recurso/secretario-recurso.php" class="fw-semibold seleccionado mb-2" data-i18n="resources">Recursos</a>
    
+
+      <!-- BOTÓN CERRAR SESIÓN -->
+   <a href="#" class="btn-cerrar-sesion-bajo btn-cerrar-sesion mb-3">
+    <i class="bi bi-box-arrow-right me-2"></i>
+    <span data-i18n="sessionClose">Cerrar sesión</span>
+  </a>
+      
     </aside>
 
     <!-- Contenido principal-->
@@ -83,6 +97,10 @@
     <!-- i18next desde CDN -->
   <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
   <script src="./../../../utils/translate.js"></script>
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="./../../../utils/form-log-in.js"></script> 
 
 
 </body>

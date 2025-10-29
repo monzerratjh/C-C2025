@@ -74,6 +74,11 @@ while($row = mysqli_fetch_array($query)) {
         <a href="../grupo/secretario-grupo.php" class="nav-opciones" data-i18n="groups">Grupos</a>
         <a href="./../recurso/secretario-recurso.php" class="nav-opciones" data-i18n="resources">Recursos</a>
    
+        <!-- BOTÓN CERRAR SESIÓN -->
+  <a href="#" class="btn-cerrar-sesion-bajo btn-cerrar-sesion mb-3">
+    <i class="bi bi-box-arrow-right me-2"></i>
+    <span data-i18n="sessionClose">Cerrar sesión</span>
+  </a>
       </div>
     </div>
 
@@ -95,6 +100,13 @@ while($row = mysqli_fetch_array($query)) {
         <a href="../grupo/secretario-grupo.php" class="nav-opciones" data-i18n="groups">Grupos</a>
         <a href="./../recurso/secretario-recurso.php" class="nav-opciones" data-i18n="resources">Recursos</a>
    
+
+<!-- BOTÓN CERRAR SESIÓN -->
+  <a href="#" class="btn-cerrar-sesion-bajo btn-cerrar-sesion mb-3">
+    <i class="bi bi-box-arrow-right me-2"></i>
+    <span data-i18n="sessionClose">Cerrar sesión</span>
+  </a>
+
       </aside>
 
       <!-- Contenido principal -->
@@ -333,6 +345,8 @@ while($row = mysqli_fetch_array($query)) {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="./../../../utils/desplegar-acordeon.js"></script>
+    
+  <script src="./../../../utils/form-log-in.js"></script> 
 
      <!-- i18next desde CDN -->
     <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
@@ -342,7 +356,7 @@ while($row = mysqli_fetch_array($query)) {
     <script src="../js/validation.js"></script>
 
     <script>
-      console.log("✅ Scripts cargados correctamente");
+      console.log("Scripts cargados correctamente");
     </script>
      <?php if(isset($_GET['error'])) {
     if($_GET['error'] == 'CamposVacios') { ?>
