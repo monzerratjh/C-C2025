@@ -85,39 +85,29 @@
     <main class="principal">
       <img src="./../../../img/logo.png" alt="Logo" class="logo"> 
 
+      <br><br><br>
+
       <h2 data-i18n="reservationRequests">Solicitudes de Reserva</h2>
       <p data-i18n="viewReservations">Consulta las reservas realizadas por cada docente y los espacios solicitados.</p>
 
-      <table class="tabla-reserva">
-        <thead>
-          <tr>
-            <th data-i18n="thTeacher">Docente</th>
-            <th data-i18n="thFacilityRequested">Espacio solicitado</th>
-            <th data-i18n="thRequestedDate">Fecha Solicitada</th>
-            <th data-i18n="thReservationStatus">Estado reserva</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Facundo Rubil</td>
-            <td>Aula 1</td>
-            <td>09/08/2025</td>
-            <td class="confirmada">CONFIRMADA</td>
-          </tr>
-          <tr>
-            <td>Ines Lopez</td>
-            <td>Aula 4</td>
-            <td>09/08/2025</td>
-            <td class="pendiente">A CONFIRMAR</td>
-          </tr>
-          <tr>
-            <td>Facundo Rubil</td>
-            <td>Aula 1</td>
-            <td>09/08/2025</td>
-            <td class="confirmada">CONFIRMADA</td>
-          </tr>
-        </tbody>
-      </table>
+      <table class="tabla-reserva" id="tablaReservas">
+            <thead class="table-light">
+              <tr>
+                <th>Docente</th>
+                <th>Grupo</th>
+                <th>Asignatura</th>
+                <th>Espacio</th>
+                <th>Fecha</th>
+                <th>Hora inicio</th>
+                <th>Hora fin</th>
+                <th>Estado</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        <div id="sinReservas" class="text-muted">Cargando reservas...</div>
+      </div>
     </main>
 
   </div>
@@ -129,5 +119,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="./../../../utils/form-log-in.js"></script> 
 <script src="./../../../utils/translate.js"></script>
+
+  <script src="./../js/adscripto-reservas.js"></script>
 </body>
 </html>

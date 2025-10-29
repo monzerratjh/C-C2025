@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
       modalTitulo.textContent = 'Editar espacio';
       btnSiguiente.classList.remove('d-none');
       btnGuardarAtributos.classList.add('d-none');
-      btnSiguiente.textContent = 'Guardar cambios';
+      btnSiguiente.textContent = 'Guardar';
 
       document.getElementById('accion').value = 'editar';
       document.getElementById('id_espacio').value = espacio.id_espacio;
