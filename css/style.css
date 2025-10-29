@@ -851,7 +851,7 @@ table tr:nth-child(even) {
 }
 
 
-@media (max-width: 879px) {
+@media (max-width: 880px) {
   .opciones {
     flex-wrap: wrap;
   }
@@ -861,7 +861,7 @@ table tr:nth-child(even) {
 }
 
   /* Tablets: entre 769px y 1024px */
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
 
   .principal p{
     display: flex;
@@ -883,8 +883,8 @@ table tr:nth-child(even) {
 
 
 
-/* Pantallas ≤ 767px */
-@media (max-width: 767px) {
+/* Pantallas ≤ 770px */
+@media (max-width: 770px) {
 
   /* Barra lateral desaparece */
   .barra-lateral {

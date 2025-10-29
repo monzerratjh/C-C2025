@@ -175,10 +175,10 @@ if ($enum_query) {
               <?php if ($lista): ?>
                 <table class="tabla-horario">
                   <tr>
-                    <th>Hora entrada</th>
-                    <th>Hora salida</th>
-                    <th> Asignatura </th>
-                    <th> Espacio </th>
+                    <th data-i18n="startTime">Hora entrada</th>
+                    <th data-i18n="endTime">Hora salida</th>
+                    <th data-i18n="subject"> Asignatura </th>
+                    <th data-i18n="facility"> Espacio </th>
                 </tr>
               
                 <tbody>
@@ -193,7 +193,7 @@ if ($enum_query) {
                   </tbody>
                 </table>
               <?php else: ?>
-                <p>Sin clases cargadas</p>
+                <p data-i18n="noClasses">Sin clases cargadas</p>
               <?php endif; ?>
             </div>
           </div>

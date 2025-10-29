@@ -2,22 +2,15 @@
 include('../../../conexion.php');
 $con = conectar_bd();
 
-// Obtener valores del ENUM 'disponibilidad_espacio' para el select
-$enumConsulta = $con->query("SHOW COLUMNS FROM espacio LIKE 'disponibilidad_espacio'");
-$filaEnum = $enumConsulta->fetch_assoc();
-preg_match_all("/'([^']+)'/", $filaEnum['Type'], $coincidenciasEnum);
-$valoresDisponibilidad = $coincidenciasEnum[1];
-
-// Detectar tipo según archivo
-$nombreArchivo = basename($_SERVER['PHP_SELF']);
+// Detectar tipo por nombre de archivo
+$file = basename($_SERVER['PHP_SELF']);
 $tipoDetectado = '';
-if (strpos($nombreArchivo, 'laboratorio') !== false) $tipoDetectado = 'Laboratorio';
-elseif (strpos($nombreArchivo, 'aula') !== false) $tipoDetectado = 'Aula';
-elseif (strpos($nombreArchivo, 'salon') !== false) $tipoDetectado = 'Salón';
+if (strpos($file, 'laboratorio') !== false) $tipoDetectado = 'Laboratorio';
+elseif (strpos($file, 'aula') !== false) $tipoDetectado = 'Aula';
+elseif (strpos($file, 'salon') !== false) $tipoDetectado = 'Salón';
 
 // Traer espacios de ese tipo
-$resultadoEspacios = $con->query("SELECT * FROM espacio WHERE tipo_espacio = '$tipoDetectado' ORDER BY nombre_espacio");
-
+$espacios = $con->query("SELECT * FROM espacio WHERE tipo_espacio = '$tipoDetectado' ORDER BY nombre_espacio");
 $con->close();
 ?>
 <!DOCTYPE html>
@@ -110,9 +103,10 @@ $con->close();
     <div class="container my-4 espacio-contenedor">
       <h2 data-i18n="computerLabs">Aulas</h2>
       <p data-i18n="manageComputersLabs">Agrega, edita o elimina aulas de forma rápida y sencilla.</p>
-<div class="row justify-content-center mt-4">
 
-    <!-- Agregar nuevo primero -->
+
+  <div class="row justify-content-center mt-4">
+    <!-- Agregar -->
     <div class="col-6 mb-4">
       <div class="espacio-card espacio-agregar d-flex justify-content-center align-items-center">
         <button id="button-plus" data-bs-toggle="modal" data-bs-target="#modalEspacio" onclick="prepararNuevoEspacio()">
@@ -121,123 +115,113 @@ $con->close();
       </div>
     </div>
 
-    <!-- Luego los espacios existentes -->
-    <?php while($espacio = $resultadoEspacios->fetch_assoc()): ?>
-      <div class="col-6 mb-4">
-        <div class="espacio-card">
-          <div class="espacio-cuerpo"></div>
-          <div class="espacio-footer d-flex justify-content-between align-items-center">
-            <button class="btn btn-sm btn-light"
-              data-bs-toggle="modal" data-bs-target="#modalEspacio"
-              onclick='cargarEditarEspacio(<?=json_encode($espacio)?>)'>
-              <i class="bi bi-pencil-square"></i>
-            </button>
+    <!-- Listado -->
+<style>
+  .cursor-pointer {
+  cursor: pointer;
+}
 
-            <span><?=htmlspecialchars($espacio['nombre_espacio'])?></span>
+</style>
+    <?php while($esp = $espacios->fetch_assoc()): ?>
+    <div class="col-6 mb-4">
+      
+          <!-- Cuerpo clickeable -->
+    <div class="espacio-card cursor-pointer" data-id="<?= (int)$esp['id_espacio'] ?>">
+        
+      <div class="espacio-cuerpo"> </div>
 
-            <button type="button" class="btn btn-sm btn-light eliminar-espacio-boton" data-id="<?= $espacio['id_espacio'] ?>">
-              <i class="bi bi-trash"></i>
-            </button>
-          </div>
+        <div class="espacio-footer d-flex justify-content-between align-items-center">
+          <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#modalEspacio"
+                  onclick='cargarEditarEspacio(<?= json_encode($esp) ?>)'>
+            <i class="bi bi-pencil-square"></i>
+          </button>
+
+          <span><?= htmlspecialchars($esp['nombre_espacio']) ?></span>
+
+          <button class="btn btn-sm btn-light eliminar-espacio-boton" data-id="<?= (int)$esp['id_espacio'] ?>">
+            <i class="bi bi-trash"></i>
+          </button>
         </div>
       </div>
+    </div>
     <?php endwhile; ?>
-
+    
+  </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="modalEspacio" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
 
-      <!-- Modal -->
-      <div class="modal fade" id="modalEspacio" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" data-i18n="spaceManagement">Gestión de espacio</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
+      <div class="modal-header">
+        <h5 id="modalTitulo" class="modal-title">Agregar espacio</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
 
-            <form id="formularioEspacio" method="POST">
-              <div class="modal-body">
-                <input type="hidden" id="accion" name="accion">
-                <input type="hidden" id="id_espacio" name="id_espacio">
-                <input type="hidden" id="tipo_espacio" name="tipo_espacio" value="<?= $tipoDetectado ?>">
+      <div class="modal-body">
+        <!-- PASO 1 -->
+        <form id="formPaso1" autocomplete="off" novalidate>
+          <input type="hidden" id="accion" name="accion" value="crear">
+          <input type="hidden" id="id_espacio" name="id_espacio">
+          <input type="hidden" id="tipo_espacio" name="tipo_espacio" value="<?= htmlspecialchars($tipoDetectado) ?>">
 
-                <div class="mb-3">
-                  <label for="nombre_espacio" data-i18n="spaceName">Nombre del espacio</label>
-                  <input type="text" id="nombre_espacio" name="nombre_espacio" class="form-control" required>
-                </div>
-
-                <div class="mb-3">
-                  <label for="capacidad_espacio"> <span data-i18n="capacity">Capacidad</span> <span class="capacidad-modal" data-i18n="maxStudents">(Máx. de alumnos)</span></label>
-                  <input type="number" id="capacidad_espacio" name="capacidad_espacio" class="form-control" required min="1" max="50">
-                </div>
-
-                <div class="mb-3">
-                  <label for="disponibilidad_espacio" data-i18n="availability">Disponibilidad</label>
-                  <select id="disponibilidad_espacio" name="disponibilidad_espacio" class="form-control" required>
-                    <option value="" data-i18n="select">Seleccione...</option>
-                    <?php foreach($valoresDisponibilidad as $valor): ?>
-                      <option value="<?= htmlspecialchars($valor, ENT_QUOTES) ?>"><?= htmlspecialchars($valor) ?></option>
-                    <?php endforeach; ?>
-                  </select>
-                </div>
-
-                <div class="mb-3">
-                  <label for="historial_espacio" data-i18n="historyNotes">Historial / Observaciones</label>
-                  <textarea id="historial_espacio" name="historial_espacio" class="form-control" rows="3"></textarea>
-                </div>
-
-              </div>
-
-              <div class="modal-footer">
-                
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="cancel">Cancelar</button>
-                <button type="submit" class="btn btn-primary" data-i18n="save">Guardar</button>
-              </div>
-            </form>
+          <div class="mb-3">
+            <label for="nombre_espacio" class="form-label">Nombre del espacio</label>
+            <input type="text" id="nombre_espacio" name="nombre_espacio" class="form-control" required>
           </div>
-        </div>
+
+          <div class="mb-3">
+            <label for="capacidad_espacio"> <span data-i18n="capacity">Capacidad</span> <span class="capacidad-modal">(Máx. de alumnos)</span></label>
+            <input type="number" id="capacidad_espacio" name="capacidad_espacio" class="form-control" min="1" max="100" required>
+          </div>
+
+         
+
+          <div class="mb-3">
+            <label for="historial_espacio" class="form-label">Historial / Observaciones</label>
+            <textarea id="historial_espacio" name="historial_espacio" class="form-control" rows="3"></textarea>
+          </div>
+        </form>
+
+        <!-- PASO 2 -->
+        <form id="formPaso2" class="d-none">
+          <h6 class="text-center mb-3">Atributos del espacio</h6>
+          <input type="hidden" id="id_espacio_attr" name="id_espacio">
+
+          <?php foreach (['Mesas','Sillas','Proyector','Televisor','Aire_Acondicionado','Computadora_de_escritorio','Enchufes','Ventilador'] as $attr): ?>
+            <div class="row align-items-center mb-2">
+              <div class="col-4 text-end"><?= str_replace('_',' ',$attr) ?></div>
+              <div class="col-4"><input type="checkbox" class="form-check-input toggleCantidad" data-target="cant_<?= $attr ?>"></div>
+              <div class="col-4"><input type="number" name="<?= strtolower($attr) ?>" id="cant_<?= $attr ?>" class="form-control form-control-sm bg-light border-0" disabled></div>
+            </div>
+          <?php endforeach; ?>
+
+          <!-- Campo "Otro" -->
+          <div class="row align-items-center mb-2">
+            <div class="col-4 text-end">Otro (especificar)</div>
+            <div class="col-4"><input type="checkbox" class="form-check-input toggleCantidad" data-target="otro_personalizado"></div>
+            <div class="col-4">
+              <input type="text" name="otro_descripcion" id="otro_descripcion" class="form-control form-control-sm mb-1" placeholder="Nombre del atributo" disabled>
+              <input type="number" name="otro_cantidad" id="otro_personalizado" class="form-control form-control-sm bg-light border-0" placeholder="Cantidad" disabled>
+            </div>
+          </div>
+        </form>
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn btn-primary" id="btnSiguiente">Siguiente</button>
+        <button class="btn btn-success d-none" id="btnGuardarAtributos">Guardar</button>
       </div>
 
     </div>
-  </main>
+  </div>
 </div>
 
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../js/espacio.js"></script>
-
-  <script src="./../../../../utils/form-log-in.js"></script> 
-
-
-  <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
-  <script src="./../../../utils/translate.js"></script>
-<script>
-document.getElementById('formularioEspacio').addEventListener('submit', function(e) {
-  e.preventDefault(); // Evita que se recargue la página
-  
-  const formData = new FormData(this);
-
-  fetch('espacio-accion.php', {
-    method: 'POST',
-    body: formData
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.type === 'success') {
-      // Redirige al formulario de atributos, pasando el id del espacio creado
-      window.location.href = `agregar-espacio.php?id_espacio=${data.id_espacio}`;
-    } else {
-      alert(data.message || 'Error al guardar el espacio');
-    }
-  })
-  .catch(err => {
-    console.error(err);
-    alert('Error en la solicitud');
-  });
-});
-</script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./../js/espacio.js"></script>
 </body>
 </html>

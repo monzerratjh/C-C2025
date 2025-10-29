@@ -1,149 +1,224 @@
-// ----------------------------
-// ESPACIOS - CRUD COMPLETO
-// ----------------------------
 document.addEventListener('DOMContentLoaded', () => {
 
-    const formulario = document.getElementById('formularioEspacio');
+  // === Detectar página actual ===
+  const esIndex = document.querySelector('#formPaso1');
+  const esEditar = document.querySelector('#formAtributos');
 
-    // ----------------------------
-    // TIPO YA DETECTADO POR PHP
-    // ----------------------------
-    const tipoDetectado = document.getElementById('tipo_espacio').value;
+  // ======================================================================
+  // =========================== PÁGINA INDEX =============================
+  // ======================================================================
+  if (esIndex) {
 
-    // ----------------------------
-    // VALIDACIÓN DEL FORMULARIO
-    // ----------------------------
-    function validarEspacio() {
-        const nombre = document.getElementById('nombre_espacio').value.trim();
-        const capacidad = parseInt(document.getElementById('capacidad_espacio').value);
-        const disponibilidad = document.getElementById('disponibilidad_espacio').value.trim();
-
-        if (nombre === '') {
-            Swal.fire({ icon: 'error', title: 'Error', text: 'Ingrese el nombre del espacio.' });
-            return false;
-        }
-
-        if (isNaN(capacidad) || capacidad < 1 || capacidad > 100) {
-            Swal.fire({ icon: 'error', title: 'Error', text: 'Capacidad inválida. Debe ser entre 1 y 100.' });
-            return false;
-        }
-
-        if (disponibilidad === '') {
-            Swal.fire({ icon: 'error', title: 'Error', text: 'Seleccione el estado de disponibilidad.' });
-            return false;
-        }
-
-        return true; // Todo correcto
-    }
-
-    // ----------------------------
-    // OBTENER DATOS DEL FORMULARIO
-    // ----------------------------
-    function obtenerDatosEspacio() {
-        const formData = new FormData(formulario);
-
-        // Asegurar consistencia con validación
-        formData.set("nombre_espacio", document.getElementById('nombre_espacio').value.trim());
-        formData.set("tipo_espacio", tipoDetectado); // usar el valor de PHP
-        formData.set("capacidad_espacio", document.getElementById('capacidad_espacio').value);
-        formData.set("disponibilidad_espacio", document.getElementById('disponibilidad_espacio').value.trim());
-        formData.set("historial_espacio", document.getElementById('historial_espacio').value.trim());
-
-        return formData;
-    }
-
-    // ----------------------------
-    // ENVÍO AL PHP
-    // ----------------------------
-    function enviarEspacio(formData) {
-        fetch('espacio-accion.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(res => res.json())
-        .then(data => {
-            Swal.fire({
-                icon: data.type,
-                title: data.type === "error" ? "Error" : "Éxito",
-                text: data.message
-            }).then(() => {
-                if (data.type === 'success') location.reload();
-            });
-        })
-        .catch(err => {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'No se pudo procesar la solicitud.'
-            });
-            console.error('Error al enviar espacio:', err);
-        });
-    }
-
-    // ----------------------------
-    // EVENTO SUBMIT
-    // ----------------------------
-    formulario.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        if (validarEspacio()) {
-            const formData = obtenerDatosEspacio();
-            enviarEspacio(formData);
-        }
+    // --- Click sobre tarjetas ---
+    document.addEventListener('click', e => {
+      const card = e.target.closest('.espacio-card');
+      const isButton = e.target.closest('button');
+      if (isButton) return;
+      if (card) {
+        const id = card.dataset.id;
+        window.location.href = `editar-propiedad-espacio.php?id_espacio=${id}`;
+      }
     });
 
-    // ----------------------------
-    // NUEVO ESPACIO
-    // ----------------------------
+    // --- Variables principales ---
+    const paso1 = document.getElementById('formPaso1');
+    const paso2 = document.getElementById('formPaso2');
+    const btnSiguiente = document.getElementById('btnSiguiente');
+    const btnGuardarAtributos = document.getElementById('btnGuardarAtributos');
+    const modalTitulo = document.getElementById('modalTitulo');
+    const tipoDetectado = document.getElementById('tipo_espacio')?.value || '';
+
+    let idEspacioCreado = null;
+    let currentMode = 'create';
+    let editingId = null;
+
+    // --- Habilitar/deshabilitar inputs de cantidad ---
+    document.querySelectorAll('.toggleCantidad').forEach(chk => {
+      chk.addEventListener('change', () => {
+        const target = document.getElementById(chk.dataset.target);
+        target.disabled = !chk.checked;
+        if (!chk.checked) target.value = '';
+      });
+    });
+
+    // --- Validar formulario ---
+    const validar = () => {
+      const nombre = document.getElementById('nombre_espacio').value.trim();
+      const cap = parseInt(document.getElementById('capacidad_espacio').value, 10);
+      if (!nombre) return Swal.fire('Error', 'Ingrese nombre.', 'error'), false;
+      if (isNaN(cap) || cap < 1 || cap > 100)
+        return Swal.fire('Error', 'Capacidad debe ser entre 1 y 100.', 'error'), false;
+      return true;
+    };
+
+    // --- Preparar nuevo espacio ---
     window.prepararNuevoEspacio = () => {
-        formulario.reset();
-        document.getElementById('accion').value = 'insertar';
-        document.getElementById('id_espacio').value = '';
+      currentMode = 'create';
+      editingId = null;
+      idEspacioCreado = null;
+      paso1.reset();
+      document.getElementById('accion').value = 'crear';
+      document.getElementById('id_espacio').value = '';
+      modalTitulo.textContent = 'Agregar espacio';
+      paso1.classList.remove('d-none');
+      paso2.classList.add('d-none');
+      btnSiguiente.classList.remove('d-none');
+      btnGuardarAtributos.classList.add('d-none');
+      btnSiguiente.textContent = 'Siguiente';
     };
 
-    // ----------------------------
-    // EDITAR ESPACIO
-    // ----------------------------
+    // --- Cargar espacio existente (editar) ---
     window.cargarEditarEspacio = (espacio) => {
-        document.getElementById('id_espacio').value = espacio.id_espacio;
-        document.getElementById('nombre_espacio').value = espacio.nombre_espacio;
-        document.getElementById('capacidad_espacio').value = espacio.capacidad_espacio;
-        document.getElementById('disponibilidad_espacio').value = espacio.disponibilidad_espacio;
-        document.getElementById('historial_espacio').value = espacio.historial_espacio;
-        document.getElementById('accion').value = 'editar';
+      currentMode = 'edit';
+      editingId = espacio.id_espacio;
+      paso1.classList.remove('d-none');
+      paso2.classList.add('d-none');
+      modalTitulo.textContent = 'Editar espacio';
+      btnSiguiente.classList.remove('d-none');
+      btnGuardarAtributos.classList.add('d-none');
+      btnSiguiente.textContent = 'Guardar cambios';
+
+      document.getElementById('accion').value = 'editar';
+      document.getElementById('id_espacio').value = espacio.id_espacio;
+      document.getElementById('nombre_espacio').value = espacio.nombre_espacio;
+      document.getElementById('capacidad_espacio').value = espacio.capacidad_espacio;
+      document.getElementById('historial_espacio').value = espacio.historial_espacio;
     };
 
-    // ----------------------------
-    // ELIMINAR ESPACIO
-    // ----------------------------
-    document.addEventListener('click', function (e) {
-        if (e.target.closest('.eliminar-espacio-boton')) {
-            const boton = e.target.closest('.eliminar-espacio-boton');
-            const id = boton.dataset.id;
+    // --- Guardar o crear espacio ---
+    const handleBtnPrincipal = () => {
+      if (!validar()) return;
+      const fd = new FormData(paso1);
 
-            Swal.fire({
-                title: '¿Eliminar espacio?',
-                text: 'Esta acción no se puede deshacer.',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Sí, eliminar',
-                cancelButtonText: 'Cancelar'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    const form = new FormData();
-                    form.append("accion", "eliminar");
-                    form.append("id_espacio", id);
-                    enviarEspacio(form);
-                }
-            });
-        }
+      // CREAR
+      if (currentMode === 'create') {
+        fd.set('accion', 'crear');
+        fd.set('tipo_espacio', tipoDetectado);
+
+        fetch('./../espacio/espacio-accion.php', { method: 'POST', body: fd })
+          .then(r => r.json())
+          .then(d => {
+            if (d.type === 'success') {
+              idEspacioCreado = d.id_espacio;
+              document.getElementById('id_espacio_attr').value = idEspacioCreado;
+              paso1.classList.add('d-none');
+              paso2.classList.remove('d-none');
+              btnSiguiente.classList.add('d-none');
+              btnGuardarAtributos.classList.remove('d-none');
+              modalTitulo.textContent = 'Agregar atributos al espacio';
+            } else Swal.fire('Error', d.message, 'error');
+          })
+          .catch(() => Swal.fire('Error', 'Hubo un problema con la conexión', 'error'));
+      }
+      // EDITAR
+      else {
+        fd.set('accion', 'editar');
+        fd.set('id_espacio', editingId);
+
+        fetch('./../espacio/espacio-accion.php', { method: 'POST', body: fd })
+          .then(r => r.json())
+          .then(d => {
+            Swal.fire(d.type === 'success' ? 'Actualizado' : 'Error', d.message, d.type)
+              .then(() => { if (d.type === 'success') location.reload(); });
+          })
+          .catch(() => Swal.fire('Error', 'No se pudo actualizar el espacio', 'error'));
+      }
+    };
+
+    btnSiguiente.addEventListener('click', handleBtnPrincipal);
+
+    // --- Guardar atributos ---
+    btnGuardarAtributos.addEventListener('click', () => {
+      const fd = new FormData(paso2);
+      fd.append('accion', 'atributos');
+      fd.append('id_espacio', idEspacioCreado);
+
+      fetch('./../espacio/espacio-accion.php', { method: 'POST', body: fd })
+        .then(r => r.json())
+        .then(d => {
+          Swal.fire(d.type === 'success' ? 'Éxito' : 'Error', d.message, d.type)
+            .then(() => { if (d.type === 'success') location.reload(); });
+        })
+        .catch(() => Swal.fire('Error', 'No se pudieron guardar los atributos', 'error'));
     });
 
-    // ----------------------------
-    // EVITAR REENVÍO AL RECARGAR
-    // ----------------------------
-    if (window.history.replaceState) {
-        window.history.replaceState(null, null, window.location.pathname);
-    }
+    // --- Eliminar ---
+    document.addEventListener('click', e => {
+      const btn = e.target.closest('.eliminar-espacio-boton');
+      if (!btn) return;
+      e.stopPropagation();
+      const id = btn.dataset.id;
 
+      Swal.fire({
+        title: '¿Eliminar espacio?',
+        text: 'Esta acción no se puede deshacer.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+      }).then(res => {
+        if (!res.isConfirmed) return;
+        const fd = new FormData();
+        fd.append('accion', 'eliminar');
+        fd.append('id_espacio', id);
+        fetch('../espacio-accion.php', { method: 'POST', body: fd })
+          .then(r => r.json())
+          .then(d => {
+            Swal.fire(d.type === 'success' ? 'Eliminado' : 'Error', d.message, d.type)
+              .then(() => { if (d.type === 'success') location.reload(); });
+          })
+          .catch(() => Swal.fire('Error', 'No se pudo eliminar el espacio', 'error'));
+      });
+    });
+  }
+
+  // ======================================================================
+  // ====================== PÁGINA EDITAR-PROPIEDAD =======================
+  // ======================================================================
+  if (esEditar) {
+    document.querySelectorAll('.toggleCantidad').forEach(chk => {
+      chk.addEventListener('change', () => {
+        const t = document.getElementById(chk.dataset.target);
+        t.disabled = !chk.checked;
+        if (!chk.checked) t.value = '';
+      });
+    });
+
+    const modalEditar = new bootstrap.Modal(document.getElementById('modalEditarAtributos'));
+    document.getElementById('btnEditar')?.addEventListener('click', () => modalEditar.show());
+
+    document.getElementById('guardarAtributosBtn')?.addEventListener('click', () => {
+      const fd = new FormData(document.getElementById('formAtributos'));
+      fetch('./../espacio/espacio-accion.php', { method: 'POST', body: fd })
+        .then(r => r.json())
+        .then(d => {
+          Swal.fire(d.type === 'success' ? 'Guardado' : 'Error', d.message, d.type)
+            .then(() => { if (d.type === 'success') location.reload(); });
+        })
+        .catch(() => Swal.fire('Error', 'No se pudo guardar los atributos', 'error'));
+    });
+
+    document.getElementById('btnEliminar')?.addEventListener('click', () => {
+      Swal.fire({
+        title: '¿Eliminar espacio?',
+        text: 'Esta acción no se puede deshacer.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+      }).then(res => {
+        if (!res.isConfirmed) return;
+        const fd = new FormData();
+        fd.append('accion', 'eliminar');
+        fd.append('id_espacio', document.querySelector('[name="id_espacio"]').value);
+        fetch('./../espacio/espacio-accion.php', { method: 'POST', body: fd })
+          .then(r => r.json())
+          .then(d => {
+            Swal.fire(d.type === 'success' ? 'Eliminado' : 'Error', d.message, d.type)
+              .then(() => { if (d.type === 'success') window.location.href = 'adscripto-espacio.php'; });
+          })
+          .catch(() => Swal.fire('Error', 'No se pudo eliminar el espacio', 'error'));
+      });
+    });
+  }
 });

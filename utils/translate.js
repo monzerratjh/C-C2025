@@ -44,7 +44,6 @@ i18next.init({
         adscripto: "Adscripto",
         teacher: "Docente",
         secretary: "Secretario",
-        enterGroup: "Ingresa tu grupo correspondiente",
         enterGroupPlaceholder: "Ingrese su grupo",
         //
         hour: "Hora",
@@ -158,7 +157,7 @@ i18next.init({
         //
         loadHour:"Cargar Hora",
         enterGroupHours:"Ingrese el grupo en el cual va a agregar las horas dictadas.",
-        enterGroup:"Ingrese el grupo",
+        enterGroup:"Ingresa el grupo correspondiente",
         //
          assignRTSG:"Asignar un espacio, un docente y una asignatura a grupo.",
         enterInformation:"Ingrese los datos solicitados.",
@@ -331,7 +330,6 @@ i18next.init({
         //
         loadHour:"Load Hour",
         enterGroupHours:"Enter the group in which you want to add the hours taught.",
-        enterGroup:"Enter the group",
         //
         assignRTSG:"Assign a Room, Teacher, and Subject to a Group",
         enterInformation:"Enter the required information.",

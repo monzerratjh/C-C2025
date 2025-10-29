@@ -89,8 +89,17 @@ CREATE TABLE espacio (
 -- ============================================================
 CREATE TABLE espacio_atributo (
 	id_espacio INT NOT NULL,
-	nombre_atributo ENUM('Mesas','Sillas','Proyector','Televisor','Aire Acondicionado') NOT NULL,
+	nombre_atributo ENUM('Mesas',
+					     'Sillas',
+						 'Proyector',
+						 'Televisor',
+						 'Aire Acondicionado',
+						 'Computadora de escritorio',
+						 'Enchufes',
+						 'Ventilador',
+						 'Otro') NOT NULL,
 	cantidad_atributo INT NOT NULL DEFAULT 0,
+	descripcion_otro VARCHAR(100) NULL, -- texto libre para "Otro"
 	PRIMARY KEY (id_espacio, nombre_atributo),
 	FOREIGN KEY (id_espacio) REFERENCES espacio(id_espacio) ON DELETE CASCADE
 );
@@ -135,8 +144,11 @@ CREATE TABLE asignatura_docente_solicita_espacio (
 	id_docente INT NOT NULL,
 	id_horario_clase INT NOT NULL,
 	id_espacio INT NOT NULL,
+	id_grupo INT NOT NULL,
 	estado_reserva ENUM('Pendiente','Aceptada','Rechazada','Cancelada','Finalizada') NOT NULL DEFAULT 'Pendiente',
-	fecha_hora_reserva TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+	fecha_hora_reserva TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	fecha_reserva DATE NOT NULL,
+	dia ENUM('Lunes','Martes','Miércoles','Jueves','Viernes') NOT NULL
 );
 
 -- ============================================================
@@ -200,7 +212,8 @@ ALTER TABLE asignatura_docente_solicita_espacio
 	ADD CONSTRAINT fk_asignatura_docente_solicita_espacio_asignatura FOREIGN KEY (id_asignatura) REFERENCES asignatura(id_asignatura) ON DELETE CASCADE,
 	ADD CONSTRAINT fk_asignatura_docente_solicita_espacio_docente FOREIGN KEY (id_docente) REFERENCES docente(id_docente) ON DELETE CASCADE,
 	ADD CONSTRAINT fk_asignatura_docente_solicita_espacio_espacio FOREIGN KEY (id_espacio) REFERENCES espacio(id_espacio) ON DELETE CASCADE,
-	ADD CONSTRAINT fk_asignatura_docente_solicita_espacio_horario_clase FOREIGN KEY (id_horario_clase) REFERENCES horario_clase(id_horario_clase) ON DELETE CASCADE ON UPDATE CASCADE;
+	ADD CONSTRAINT fk_asignatura_docente_solicita_espacio_horario_clase FOREIGN KEY (id_horario_clase) REFERENCES horario_clase(id_horario_clase) ON DELETE CASCADE ON UPDATE CASCADE,
+	ADD CONSTRAINT fk_asignatura_docente_solicita_espacio_grupo FOREIGN KEY (id_grupo) REFERENCES grupo(id_grupo) ON DELETE CASCADE;
 
 -- GRUPO + ASIGNATURA + DOCENTE + AULA
 ALTER TABLE grupo_asignatura_docente_aula
@@ -213,34 +226,3 @@ ALTER TABLE grupo_asignatura_docente_aula
 ALTER TABLE horario_asignado
 	ADD CONSTRAINT fk_horario_asignado_horario_clase FOREIGN KEY (id_horario_clase) REFERENCES horario_clase(id_horario_clase) ON DELETE CASCADE ON UPDATE CASCADE,
 	ADD CONSTRAINT fk_horario_asignado_gada FOREIGN KEY (id_gada) REFERENCES grupo_asignatura_docente_aula(id_gada) ON DELETE CASCADE ON UPDATE CASCADE;
-
-
-
--- NUEVO (sabri) MODIFICACIONES A TABLA ASIGNATURA_DOCENTE_SOLICITA_ESPACIO (reservas)
-
--- solo alfo, tati y monze:
-
--- #1 eliminar clave primaria compuesa
-ALTER TABLE asignatura_docente_solicita_espacio
-DROP PRIMARY KEY;
-
--- #2 agregar columna id_reserva como PK auto incremental (al inicio -> opcional)
-ALTER TABLE asignatura_docente_solicita_espacio
-ADD COLUMN id_reserva INT NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;
-
-
-ALTER TABLE asignatura_docente_solicita_espacio
-ADD COLUMN id_grupo INT NOT NULL AFTER id_docente;
-
-ALTER TABLE asignatura_docente_solicita_espacio
-ADD COLUMN dia ENUM('Lunes','Martes','Miércoles','Jueves','Viernes') NOT NULL
-AFTER id_espacio;
-
-
--- #1 agregar columna de la fecha en la q sewra llevada a cabo la reserva
-ALTER TABLE asignatura_docente_solicita_espacio
-ADD COLUMN fecha_reserva DATE NULL DEFAULT NULL AFTER dia;
-
--- #2 
-ALTER TABLE asignatura_docente_solicita_espacio
-MODIFY COLUMN fecha_reserva DATE NOT NULL;

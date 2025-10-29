@@ -1,134 +1,154 @@
-<?php 
-//include('../../../encabezado.php');
+
+
+<?php
+include('./../../../conexion.php');
+$con = conectar_bd();
+
+$id_espacio = $_GET['id_espacio'] ?? null;
+if (!$id_espacio) {
+  echo "<script>alert('Error: Espacio no especificado.'); window.location.href='adscripto-espacio.php';</script>";
+  exit;
+}
+
+$stmt = $con->prepare("SELECT * FROM espacio WHERE id_espacio = ?");
+$stmt->bind_param("i", $id_espacio);
+$stmt->execute();
+$espacio = $stmt->get_result()->fetch_assoc();
+if (!$espacio) {
+  echo "<script>alert('No se encontró el espacio.'); window.location.href='adscripto-espacio.php';</script>";
+  exit;
+}
+
+$atributos = [];
+$q = $con->prepare("SELECT nombre_atributo, cantidad_atributo, descripcion_otro FROM espacio_atributo WHERE id_espacio = ?");
+$q->bind_param("i", $id_espacio);
+$q->execute();
+$res = $q->get_result();
+while ($r = $res->fetch_assoc()) {
+  $atributos[$r['nombre_atributo']] = [
+    'cantidad' => $r['cantidad_atributo'],
+    'descripcion' => $r['descripcion_otro']
+  ];
+}
+$con->close();
+
+$attrs = ['Mesas','Sillas','Proyector','Televisor','Aire Acondicionado','Computadora de escritorio','Enchufes','Ventilador'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel adscripto</title>
-    <!-- Bootstrap CSS + Iconos + letras-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- CSS propio -->
-    <link rel="stylesheet" href="./../../../css/style.css">
+  <meta charset="UTF-8">
+  <title>Espacio - <?= htmlspecialchars($espacio['nombre_espacio']) ?></title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="./../../../css/style.css">
+  <style>
+    .no-edit input, .no-edit textarea { background-color:#d9d9d9 !important; pointer-events:none; }
+  </style>
 </head>
-
 <body>
 
-  <!-- Menú hamburguesa para móviles -->
-  <nav class="d-md-none">
-    <div class="container-fluid">
-      <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-        <img class="menuResponsive" src="./../../../img/menu.png" alt="menu">
-      </button>
-      <img class="logoResponsive" src="./../../../img/logo.png" alt="logoRespnsive">
-    </div>
-  </nav>
-
-  <!-- Menú lateral (para celulares/tablets) -->
- <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
-    <div class="offcanvas-header">
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-    </div>
-    <div class="offcanvas-body d-flex flex-column">
-      <div class="banner-parte-superior">
-    <a href="index-salon.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
-       <i class="bi bi-translate traductor-menu"></i>
-       </div>
-
-       <a href="adscripto-espacio.php" class="fw-semibold seleccionado mb-2">Espacio</a>
-      <a href="../reserva-adscripto.php" class="nav-opciones mb-2">Reserva</a>
-      <a href="../falta-docente.php" class="nav-opciones mb-2">Falta docentes</a>
-      <a href="../materia/carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
-   </div>
-  </div>
-
-  <!-- Contenedor general -->
-  <div class="container-fluid">
-    <div class="row">
-
-      <!-- Banner pantallas grandes -->
-      <div class="col-md-3 barra-lateral d-none d-md-flex">
-        <div class="volverGeneral">
-          <div class="volver">
-            <a href="index-salon.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-            <a href="index-salon.php">Volver</a>
+<div class="container-fluid">
+  <div class="row">
+    <main class="col-md-9 mx-auto principal">
+      <img src="./../../../img/logo.png" class="logo" alt="Logo">
+      <div class="container my-4 espacio-contenedor">
+        <div class="espacio-titulo text-center mb-4">
+          <div class="espacio-cuerpo rounded-pill text-white fw-semibold py-2 px-4" 
+               style="background-color:#4ec1b2;display:inline-block;">
+            <?= htmlspecialchars($espacio['nombre_espacio']) ?>
           </div>
-           <i class="bi bi-translate traductor-menu"></i>
         </div>
 
-       <a href="adscripto-espacio.php" class="fw-semibold seleccionado mb-2">Espacio</a>
-      <a href="../reserva-adscripto.php" class="nav-opciones mb-2">Reserva</a>
-      <a href="../falta-docente.php" class="nav-opciones mb-2">Falta docentes</a>
-      <a href="../materia/carga-materias.php" class="nav-opciones mb-2">Cargar materias</a>
-    </div>
+        <form class="no-edit text-center">
+          <div class="row justify-content-center mb-3">
+            <div class="col-6 col-md-4 text-end fw-semibold">Capacidad:</div>
+            <div class="col-6 col-md-4">
+              <input type="number" value="<?= htmlspecialchars($espacio['capacidad_espacio']) ?>" class="form-control">
+            </div>
+          </div>
 
-<!-- Contenido principal -->
-<main class="col-md-9 principal" >
+          <div class="row justify-content-center mb-4">
+            <div class="col-12 col-md-8">
+              <textarea class="form-control" rows="3"><?= htmlspecialchars($espacio['historial_espacio']) ?></textarea>
+            </div>
+          </div>
 
- <img src="./../../../img/logo.png" alt="Logo" class="logo"> 
+          <hr><h5 class="mb-3">Atributos del espacio</h5>
+          <?php foreach ($attrs as $attr):
+            $cantidad = $atributos[$attr]['cantidad'] ?? '';
+          ?>
+            <div class="row align-items-center mb-2">
+              <div class="col-4 text-end"><?= $attr ?></div>
+              <div class="col-4"><input type="checkbox" class="form-check-input" <?= $cantidad ? 'checked' : '' ?> disabled></div>
+              <div class="col-4"><input type="number" class="form-control form-control-sm bg-light border-0" value="<?= $cantidad ?>" disabled></div>
+            </div>
+          <?php endforeach; ?>
 
-<div class="container my-4 espacio-contenedor">
+          <!-- Campo "Otro" -->
+          <?php if(isset($atributos['Otro'])): ?>
+            <div class="row align-items-center mb-2">
+              <div class="col-4 text-end">Otro (<?= htmlspecialchars($atributos['Otro']['descripcion']) ?>)</div>
+              <div class="col-4"><input type="checkbox" class="form-check-input" checked disabled></div>
+              <div class="col-4"><input type="number" class="form-control form-control-sm bg-light border-0" value="<?= $atributos['Otro']['cantidad'] ?>" disabled></div>
+            </div>
+          <?php endif; ?>
 
-<!-- Título con input -->
-<div class="espacio-titulo centrar text-center mb-4">
-  <input type="text" class="espacio-input" placeholder="Editar nombre">
+          <div class="text-center mt-4">
+            <button type="button" id="btnEditar" class="btn btn-success px-4">Editar</button>
+            <button type="button" id="btnEliminar" class="btn btn-danger ms-3 px-4">Eliminar</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
 </div>
 
-  <!-- Formulario -->
-  <form class="text-center">
-
-    <div class="row fw-bold mb-2">
-      <div class="col-4"></div>
-      <div class="col-4">Cuenta con:</div>
-      <div class="col-4">Cantidad:</div>
+<!-- Modal edición atributos -->
+<div class="modal fade" id="modalEditarAtributos" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header"><h5>Editar atributos</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <form id="formAtributos">
+          <input type="hidden" name="id_espacio" value="<?= $id_espacio ?>">
+          <input type="hidden" name="accion" value="atributos">
+          <?php foreach ($attrs as $attr):
+            $cantidad = $atributos[$attr]['cantidad'] ?? '';
+            $checked = $cantidad ? 'checked' : '';
+            $disabled = $cantidad ? '' : 'disabled';
+            $id = strtolower(str_replace([' ','á','é','í','ó','ú'],['_','a','e','i','o','u'],$attr));
+          ?>
+            <div class="row align-items-center mb-2">
+              <div class="col-4 text-end"><?= $attr ?></div>
+              <div class="col-4"><input type="checkbox" class="form-check-input toggleCantidad" data-target="<?= $id ?>" <?= $checked ?>></div>
+              <div class="col-4"><input type="number" name="<?= $id ?>" id="<?= $id ?>" value="<?= $cantidad ?>" class="form-control form-control-sm bg-light border-0" <?= $disabled ?>></div>
+            </div>
+          <?php endforeach; ?>
+          <!-- Campo "Otro" -->
+          <div class="row align-items-center mb-2">
+            <div class="col-4 text-end">Otro (especificar)</div>
+            <div class="col-4">
+              <input type="checkbox" class="form-check-input toggleCantidad" data-target="otro_personalizado">
+            </div>
+            <div class="col-4">
+              <input type="text" name="otro_descripcion" id="otro_descripcion" class="form-control form-control-sm mb-1" placeholder="Nombre del atributo" disabled>
+              <input type="number" name="otro_cantidad" id="otro_personalizado" class="form-control form-control-sm bg-light border-0" placeholder="Cantidad" disabled>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn btn-success" id="guardarAtributosBtn">Guardar</button>
+      </div>
     </div>
-
-    <!-- Fila Mesas -->
-    <div class="row align-items-center mb-2">
-      <div class="col-4 text-end">Mesas</div>
-      <div class="col-4"><input type="checkbox" class="form-check-input"></div>
-      <div class="col-4"><input type="number" class="form-control form-control-sm bg-light border-0"></div>
-    </div>
-
-    <!-- Fila Sillas -->
-    <div class="row align-items-center mb-2">
-      <div class="col-4 text-end">Sillas</div>
-      <div class="col-4"><input type="checkbox" class="form-check-input"></div>
-      <div class="col-4"><input type="number" class="form-control form-control-sm bg-light border-0"></div>
-    </div>
-
-    <!-- Fila Proyector -->
-    <div class="row align-items-center mb-2">
-      <div class="col-4 text-end">Proyector</div>
-      <div class="col-4"><input type="checkbox" class="form-check-input"></div>
-      <div class="col-4"><input type="number" class="form-control form-control-sm bg-light border-0"></div>
-    </div>
-
-    <!-- Fila Tele -->
-    <div class="row align-items-center mb-2">
-      <div class="col-4 text-end">Tele</div>
-      <div class="col-4"><input type="checkbox" class="form-check-input"></div>
-      <div class="col-4"><input type="number" class="form-control form-control-sm bg-light border-0"></div>
-    </div>
-
-    <!-- Fila Aire -->
-    <div class="row align-items-center mb-4">
-      <div class="col-4 text-end">Aire</div>
-      <div class="col-4"><input type="checkbox" class="form-check-input"></div>
-      <div class="col-4"><input type="number" class="form-control form-control-sm bg-light border-0"></div>
-    </div>
-
-    <!-- Botón -->
-    <div class="text-center">
-      <button type="submit" class="btn centrar espacio-btn">Guardar cambios</button>
-    </div>
-  </form>
+  </div>
 </div>
 
-</main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./../js/espacio.js"></script>
 </body>
 </html>
