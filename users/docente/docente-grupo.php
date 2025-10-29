@@ -1,6 +1,41 @@
 <?php 
 include('../../conexion.php');
-//include('../../encabezado.php');
+session_start();
+
+// Verificamos sesión
+if (!isset($_SESSION['id_usuario'])) {
+  header("Location: ../../login.php");
+  exit;
+}
+
+$con = conectar_bd();
+
+// Obtener el id_docente correspondiente al usuario logueado
+$id_usuario = $_SESSION['id_usuario'];
+$sqlDocente = "SELECT id_docente FROM docente WHERE id_usuario = ?";
+$stmt = $con->prepare($sqlDocente);
+$stmt->bind_param("i", $id_usuario);
+$stmt->execute();
+$result = $stmt->get_result();
+$docente = $result->fetch_assoc();
+
+if (!$docente) {
+  die("<p>No se encontró un docente asociado a este usuario.</p>");
+}
+$id_docente = $docente['id_docente'];
+
+// Obtener los grupos asignados al docente (sin duplicados)
+$sqlGrupos = "
+  SELECT DISTINCT g.id_grupo, g.nombre_grupo, g.orientacion_grupo, g.turno_grupo
+  FROM grupo_asignatura_docente_aula gada
+  JOIN grupo g ON g.id_grupo = gada.id_grupo
+  WHERE gada.id_docente = ?
+  ORDER BY g.turno_grupo, g.nombre_grupo
+";
+$stmt2 = $con->prepare($sqlGrupos);
+$stmt2->bind_param("i", $id_docente);
+$stmt2->execute();
+$grupos = $stmt2->get_result();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -87,37 +122,24 @@ include('../../conexion.php');
       </div>
       <div class="caja-grupos-cargo">
         <div class="acordion">
-          <div>
-            <button class="boton-opciones sin-flecha docente">3MD</button>
-            <div class="dia"></div>
-          </div>
-
-          <div>
-            <button class="boton-opciones sin-flecha docente">3MD</button>
-            <div class="dia"></div>
-          </div>
-
-          <div>
-            <button class="boton-opciones sin-flecha docente">3MD</button>
-            <div class="dia"></div>
-          </div>
-
-          <div>
-            <button class="boton-opciones sin-flecha docente">3MD</button>
-            <div class="dia"></div>
-          </div>
-
-          <div>
-            <button class="boton-opciones sin-flecha docente">3MD</button>
-            <div class="dia"></div>
-          </div>
-
-          <div>
-            <button class="boton-opciones sin-flecha docente">3MD</button>
-            <div class="dia"></div>
-          </div>
+          <?php if ($grupos->num_rows > 0): ?>
+            <?php while ($g = $grupos->fetch_assoc()): ?>
+              <div class="mb-2">
+                <button class="boton-opciones docente">
+                  <?= htmlspecialchars($g['nombre_grupo']) ?> 
+                  <span class="text-muted small">(
+                    <?= htmlspecialchars($g['orientacion_grupo']) ?> - 
+                    <?= htmlspecialchars($g['turno_grupo']) ?>)
+                  </span>
+                </button>
+                <div class="dia"></div>
+              </div>
+            <?php endwhile; ?>
+          <?php else: ?>
+            <p class="text-muted">No tenés grupos asignados actualmente.</p>
+          <?php endif; ?>
         </div>
-  </div>
+      </div>
     </main>
   </div>
 
