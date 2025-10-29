@@ -5,7 +5,7 @@ $con = conectar_bd();
 
 $id_usuario = $_SESSION['id_usuario'] ?? null;
 if (!$id_usuario) {
-  header('Location: ./../../../docente/docente-log.php');
+  header('Location: ./../../../users/docente/docente-log.php');
   exit;
 }
 ?>
@@ -112,6 +112,14 @@ if (!$id_usuario) {
       <a href="./../docente-reservar.php" class="fw-semibold seleccionado" data-i18n="reserveFacility">Reservar Espacio</a>
       <a href="./../docente-falta.php" class="nav-opciones mb-2" data-i18n="reportAbsence">Avisar Falta</a>
     </div>
+
+    
+      <!-- BOTÓN CERRAR SESIÓN -->
+   <a href="#" class="btn-cerrar-sesion-bajo btn-cerrar-sesion mb-3">
+    <i class="bi bi-box-arrow-right me-2"></i>
+    <span data-i18n="sessionClose">Cerrar sesión</span>
+  </a>
+
   </div>
 
   <!-- Contenedor general -->
@@ -128,6 +136,14 @@ if (!$id_usuario) {
       <a href="./../docente-grupo.php" class="nav-opciones mb-2" data-i18n="assignedGroups">Grupos a Cargo</a>
       <a href="./../docente-reservar.php" class="fw-semibold seleccionado" data-i18n="reserveFacility">Reservar Espacio</a>
       <a href="./../docente-falta.php" class="nav-opciones mb-2" data-i18n="reportAbsence">Avisar Falta</a>
+   
+      
+      <!-- BOTÓN CERRAR SESIÓN -->
+   <a href="#" class="btn-cerrar-sesion-bajo btn-cerrar-sesion mb-3">
+    <i class="bi bi-box-arrow-right me-2"></i>
+    <span data-i18n="sessionClose">Cerrar sesión</span>
+  </a>
+   
     </aside>
 
     <!-- Contenido principal -->
@@ -162,7 +178,7 @@ if (!$id_usuario) {
 
         <!-- Botón Hacer reservas -->
         <div class="mt-4">
-          <button class="boton-opciones docente" id="hacerReservaBtn" data-bs-toggle="modal" data-bs-target="#modalReserva">
+          <button class="boton-opciones docente sin-flecha" id="hacerReservaBtn" data-bs-toggle="modal" data-bs-target="#modalReserva">
             Hacer reserva
           </button>
         </div>
@@ -231,7 +247,10 @@ if (!$id_usuario) {
   <script src="./../js/desplegar-reserva.js"></script>
   <script src="./../js/reserva.js"></script>
 
-  <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+
+  <script src="./../../../utils/form-log-in.js"></script> 
+
+ <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
   <script src="./../../utils/translate.js"></script>
 </body>
 </html>
