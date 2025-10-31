@@ -1,4 +1,5 @@
-    ------------ Flujo de roles en DB ------------
+
+    ------------------ Flujo de roles en DB ------------------
 
 Secretario: crea usuarios y grupos, administra recursos y carga horarios.
 
@@ -7,16 +8,17 @@ Adscripto: organiza horarios y asocia docentes a horarios, grupos y materias; ge
 Docente: solicita recursos y hace reservas de esapcios.
 
 
+
     ------------ Datos de Prueba para el Servidor ------------
 
 Superusuario:
-    * Super
-    * Usuario
-    * gmail
-    * tel intitucion
-    * Secretario
-    * 91731088
-    * itsp571SUPERUSUARI@
+    * Super                         NOMBRE
+    * Usuario                       APELLIDO
+    * itsp@utu.edu.uy               GMAIL DE LA INSTITUCIÓN
+    * 091731085                     CELULAR DE LA INSTITUCIÓN
+    * Secretario                    CARGO DEL USUARIO
+    * 91731088                      CÉDULA (similar al celular, válida)
+    * itsp571SUPERUSUARI@           CONTRASEÑA 
 
 Nombre usuario 1:
     * María
