@@ -53,7 +53,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
              $stmt_sec = mysqli_prepare($conn, $sql_secretario);
             mysqli_stmt_bind_param($stmt_sec, "i", $idUsuario);
             mysqli_stmt_execute($stmt_sec);
-    }
+        }
 
     if ($success) {
         // Redirige de nuevo al listado
@@ -87,6 +87,8 @@ function validaciones($conn, $ci_usuario, $nombre_usuario, $apellido_usuario,
     } else if (!consultarBD($conn, $ci_usuario, $gmail_usuario)) {
         header("Location: ./secretario-usuario.php?error=UsuarioYaExistente");
         exit;
+    } else {
+        return true;
     }
         
 }
