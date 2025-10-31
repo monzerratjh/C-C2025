@@ -1,0 +1,28 @@
+    ------------ Flujo de roles en DB ------------
+
+Secretario: crea usuarios y grupos, administra recursos y carga horarios.
+
+Adscripto: organiza horarios y asocia docentes a horarios, grupos y materias; gestiona esapcios y aprueba reservas.
+
+Docente: solicita recursos y hace reservas de esapcios.
+
+
+    ------------ Datos de Prueba para el Servidor ------------
+
+Superusuario:
+    * Super
+    * Usuario
+    * gmail
+    * tel intitucion
+    * Secretario
+    * 91731088
+    * itsp571SUPERUSUARI@
+
+Nombre usuario 1:
+    * María
+    * Gomez
+    * mariagomez@gmail.com
+    * 096456890
+    * Secretario
+    * 56931132
+    * María56931132
