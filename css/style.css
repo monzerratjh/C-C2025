@@ -1153,3 +1153,9 @@ h4{
 .colorfondoverde{
   background-color: #98dbd0;
 }
+
+.no-edit{
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+}
