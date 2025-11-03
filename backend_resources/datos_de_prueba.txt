@@ -30,13 +30,13 @@ Usuario 1:
     * Maria56931132
 
 Usuario 2:
-    * 5654565
+    * 56545365
     * Marianela
     * Gonzalez
     * marianelagonzalez@gmail.com
     * 094523123
     * Secretario
-    * Marianela5654565
+    * Marianela56545365
 
 Usuario 3: 
     * 57070406
