@@ -65,7 +65,7 @@ $attrs = ['Mesas','Sillas','Proyector','Televisor','Aire Acondicionado','Computa
   <div class="offcanvas-body d-flex flex-column">
 
     <div class="banner-parte-superior">
-      <a href="adscripto-espacio.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
+      <a href="index-aula.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i>Volver</a>
       <i class="bi bi-translate traductor-menu"></i>
     </div>
 
@@ -86,8 +86,8 @@ $attrs = ['Mesas','Sillas','Proyector','Televisor','Aire Acondicionado','Computa
   <aside class="barra-lateral d-none d-md-flex">
     <div class="volverGeneral">
       <div class="volver">
-        <a href="adscripto-espacio.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-        <a href="adscripto-espacio.php">Volver</a>
+        <a href="index-aula.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+        <a href="index-aula.php">Volver</a>
       </div>
       <i class="bi bi-translate traductor-menu"></i>
     </div>
