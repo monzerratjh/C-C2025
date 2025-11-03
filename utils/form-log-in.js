@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cancelButtonText: i18next.t('cancel')
       }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = '/CoffeeAndCode/C-C2025/utils/log-out.php'; //asi anda en el servidor
+            window.location.href = './../../../utils/log-out.php';
         }
       });
     });
