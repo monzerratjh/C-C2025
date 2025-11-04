@@ -77,7 +77,7 @@ $grupos = $stmt2->get_result();
         <i class="bi bi-translate traductor-menu"></i>
       </div>
       <a href="docente-grupo.php" class="fw-semibold seleccionado mb-2" data-i18n="assignedGroups">Grupos a Cargo</a>
-      <a href="docente-reservar.php" class="nav-opciones mb-2" data-i18n="reserveFacility">Reservar Espacio</a>
+      <a href="./reserva/docente-reservar.php" class="nav-opciones mb-2" data-i18n="reserveFacility">Reservar Espacio</a>
       <a href="docente-falta.php" class="nav-opciones mb-2" data-i18n="reportAbsence">Avisar Falta</a>
     
        <!-- BOTÓN CERRAR SESIÓN -->
@@ -102,7 +102,7 @@ $grupos = $stmt2->get_result();
       </div>
 
       <a href="docente-grupo.php" class="fw-semibold seleccionado" data-i18n="assignedGroups">Grupos a Cargo</a>
-      <a href="docente-reservar.php" class="nav-opciones mb-2" data-i18n="reserveFacility">Reservar Espacio</a>
+      <a href="./reserva/docente-reservar.php" class="nav-opciones mb-2" data-i18n="reserveFacility">Reservar Espacio</a>
       <a href="docente-falta.php" class="nav-opciones mb-2" data-i18n="reportAbsence">Avisar Falta</a>
     
        <!-- BOTÓN CERRAR SESIÓN -->

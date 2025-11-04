@@ -97,6 +97,7 @@
                 <th>Grupo</th>
                 <th>Asignatura</th>
                 <th>Espacio</th>
+                <th>Día</th>
                 <th>Fecha</th>
                 <th>Hora inicio</th>
                 <th>Hora fin</th>
