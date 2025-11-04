@@ -24,63 +24,7 @@ if (!$id_usuario) {
   <!-- CSS propio -->
   <link rel="stylesheet" href="./../../../css/style.css">
 
-  <style>
-    
-    .modal-content {
-      border-radius: 1rem;
-      border: none;
-      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
-    }
 
-    .modal-header {
-      background-color: var(--color-docente, #F4B97D);
-      color: white;
-      border-bottom: none;
-    }
-
-    .modal-title {
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-
-    .btn-primary {
-      background-color: var(--color-docente, #F4B97D);
-      border: none;
-      font-weight: 600;
-    }
-    .btn-primary:hover {
-      background-color: #f1a85c;
-    }
-
-    .form-label {
-      font-weight: 600;
-    }
-
-    /* Ajuste del contenedor principal */
-    .principal {
-      padding: 2rem;
-    }
-
-    .boton-opciones.docente {
-      background-color: var(--color-docente, #F4B97D);
-      color: white;
-      border: none;
-      font-weight: 600;
-    }
-    .boton-opciones.docente:hover {
-      background-color: #f1a85c;
-    }
-
-    .table thead th {
-      background-color: var(--color-docente, #F4B97D);
-      color: white;
-    }
-
-    #sinReservas {
-      text-align: center;
-      margin-top: 1rem;
-    }
-  </style>
 </head>
 
 <body>
@@ -190,7 +134,7 @@ if (!$id_usuario) {
   <div class="modal fade" id="modalReserva" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header docente">
           <h5 class="modal-title" data-i18n="newReservation">Nueva Reserva</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
@@ -232,7 +176,7 @@ if (!$id_usuario) {
 
             <div class="text-end">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="cancel">Cancelar</button>
-              <button type="submit" class="btn btn-primary">Enviar</button>
+              <button type="submit" class="btn btn-primary docente">Enviar</button>
             </div>
           </form>
         </div>
