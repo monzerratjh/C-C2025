@@ -1,4 +1,5 @@
-    ------------ Flujo de roles en DB ------------
+
+    ------------------ Flujo de roles en DB ------------------
 
 Secretario: crea usuarios y grupos, administra recursos y carga horarios.
 
@@ -7,22 +8,93 @@ Adscripto: organiza horarios y asocia docentes a horarios, grupos y materias; ge
 Docente: solicita recursos y hace reservas de esapcios.
 
 
+
     ------------ Datos de Prueba para el Servidor ------------
 
 Superusuario:
-    * Super
-    * Usuario
-    * gmail
-    * tel intitucion
-    * Secretario
-    * 91731088
-    * itsp571SUPERUSUARI@
+    * 91731088                      CÉDULA (similar al celular, válida)
+    * Super                         NOMBRE
+    * Usuario                       APELLIDO
+    * itsp@utu.edu.uy               GMAIL DE LA INSTITUCIÓN
+    * 091731085                     CELULAR DE LA INSTITUCIÓN
+    * Secretario                    CARGO DEL USUARIO 
+    * itsp571SUPERUSUARI@           CONTRASEÑA (sin tildes)
 
-Nombre usuario 1:
+Usuario 1:
+    * 56931132
     * María
     * Gomez
     * mariagomez@gmail.com
     * 096456890
     * Secretario
-    * 56931132
-    * María56931132
+    * Maria56931132
+
+Usuario 2:
+    * 56545365
+    * Marianela
+    * Gonzalez
+    * marianelagonzalez@gmail.com
+    * 094523123
+    * Secretario
+    * Marianela56545365
+
+Usuario 3: 
+    * 57070406
+    * Ana Ines
+    * Gonzalez
+    * anainesgonzales@gmail.com
+    * 098347651
+    * Adscripto
+    * Ana57070406
+
+Usuario 4:
+    * 45059387
+    * Yanela
+    * Lopez
+    * yanelalopez@gmail.com
+    * 099549878
+    * Adscripto
+    * Yanela45059387
+
+Usuario 5:
+    * 28870885
+    * Lucia
+    * Eseisa
+    * luciaese@hotmail.com
+    * 095173829
+    * Docente
+    * Lucia28870885
+
+Usuario 6:
+    * 30714314
+    * Federico
+    * Fagundez
+    * federicofagundez@gmail.com
+    * 098928728
+    * Docente
+    * Federico30714314
+
+Usuario 7:
+    * 23499981
+    * Facundo
+    * Rubil
+    * facumr92@gmail.com
+    * 096424582
+    * Docente
+    * Facundo23499981
+
+Usuario 8:
+    * 21423241
+    * Gastón
+    * Gomez
+    * gastongomez@gmail.com
+    * 095162718
+    * Docente
+    * Gaston21423241
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+https://picandocodigo.github.io/ci_js/
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
