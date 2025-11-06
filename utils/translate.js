@@ -1,4 +1,5 @@
 // Inicialización de i18next con recursos embebidos
+//Objeto de javascript, no es un JSON
 i18next.init({
   lng: localStorage.getItem('language') || "es", // Recuperar el idioma desde localStorage, si no existe, usar "es" por defecto
   debug: true,
@@ -180,6 +181,25 @@ i18next.init({
         ensureWrittenCorrectly:"Asegúrese de que quede bien escrito.",
         //
         assignmentEditing:"Edicion de asignación",
+        //
+        areYouSure:"Estas seguro?",
+        yesSave:"Si, guardar",
+        enterGroupName:"Ingrese el nombre del grupo",
+        groupNameMustBe:"El nombre del grupo debe ser menor a 6 caracteres",
+        enterTheGroup:"Ingrese el nombre del grupo",
+        orientationsCorrespond:"La orientación debe coincidir con una de las opciones del sistema.",
+        seletAShift:"Seleccionar un turno.",
+        invalidNumber:"Cantidad de alumnos inválida. Debe ser entre 1 y 50",
+        requestNoProcessed:"No se pudo procesar la solicitud",
+        yesDelete:"Si, eliminar",
+        deleteGroup:"Eliminar grupo?",
+        actionNotBeUndone:"Esta acción no se puede deshacer",
+        
+
+
+
+
+
       }
     },
     en: {
@@ -351,6 +371,21 @@ i18next.init({
         ensureWrittenCorrectly:"Ensure it is written correctly.",
         editSubject: "Edit subject",
         assignmentEditing:"Assignment Editing",
+        //
+        areYouSure:"Are you sure?",
+        yesSave:"Yes, save.",
+        enterGroupName:"Enter the group name.",
+        groupNameMustBe:"The group name must be less than 6 characters long.",
+        enterTheGroup:"Enter the group name.",
+        orientationsCorrespond:"The orientation must correspond to one of the options available in the system.",
+        seletAShift:"Select a shift.",
+        invalidNumber:"Invalid number of students. It must be between 1 and 50.",
+        requestNoProcessed:"The request could not be processed.",
+        deleteGroup:"Delete group?",
+        yesDelete:"Yes, delete",
+        actionNotBeUndone:"This action cannot be undone.",
+
+
      }
     }
   }

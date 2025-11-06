@@ -13,14 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (window.Swal) {
       Swal.fire({
-        title: '¿Estás seguro?',
+        title: i18next.t('areYouSure'),
         text: '¿Deseas guardar los cambios?',
         icon: 'question',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Sí, guardar',
-        cancelButtonText: 'Cancelar'
+        cancelButtonText:  i18next.t('cancel')
       }).then((r) => { if (r.isConfirmed) form.submit(); });
     } else {
       if (confirm('¿Deseas guardar los cambios?')) form.submit();
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
           confirmButtonText: 'Sí, crear',
-          cancelButtonText: 'Cancelar'
+          cancelButtonText:  i18next.t('cancel') 
         }).then((r) => { if (r.isConfirmed) formCreacion.submit(); });
       } else {
         if (confirm('¿Crear usuario?')) formCreacion.submit();

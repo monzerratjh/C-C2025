@@ -14,13 +14,13 @@ function validarGrupo() {
         Swal.fire({ 
             icon: 'error', 
             title: 'Error', 
-            text: 'Ingrese el nombre del grupo' });
+            text: i18next.t('enterTheGroup') });
         return false;
     } else if (nombre.length > 6) {
         Swal.fire({ 
             icon: 'error', 
             title: 'Error', 
-            text: 'El nombre del grupo debe ser menor a 6 caracteres' });
+            text: i18next.t('groupNameMustBe')});
         return false;
     }
 
@@ -28,7 +28,7 @@ function validarGrupo() {
         Swal.fire({ 
             icon: 'error', 
             title: 'Error', 
-            text: 'La orientación debe coincidir con una de las opciones del sistema.' });
+            text: i18next.t('orientationsCorrespond')  });
         return false;
     }
 
@@ -36,7 +36,7 @@ function validarGrupo() {
         Swal.fire({ 
             icon: 'error', 
             title: 'Error', 
-            text: 'Seleccione un turno' });
+            text: i18next.t('selectAShift') });
         return false;
     }
 
@@ -44,7 +44,7 @@ function validarGrupo() {
         Swal.fire({ 
             icon: 'error', 
             title: 'Error', 
-            text: 'Cantidad de alumnos inválida. Debe ser entre 1 y 50' });
+            text: i18next.t('invalidNumber')  });
         return false;
     }
 
@@ -91,7 +91,7 @@ function enviarGrupo(formData) {
         Swal.fire({ 
             icon: 'error', 
             title: 'Error', 
-            text: 'No se pudo procesar la solicitud' });
+            text: i18next.t('requestNoProcessed') });
         console.error(err);
     });
 }
@@ -115,12 +115,12 @@ document.addEventListener('click', function(e) {
     if (e.target.matches('.eliminar-grupo-btn')) {
         const id = e.target.dataset.id;
         Swal.fire({
-            title: '¿Eliminar grupo?',
-            text: "Esta acción no se puede deshacer.",
+            title: i18next.t('deleteGroup'),
+            text: i18next.t('actionNotBeUndone'),
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Sí, eliminar',
-            cancelButtonText: 'Cancelar'
+            confirmButtonText: i18next.t('yesDelete'),
+            cancelButtonText: i18next.t('cancel')
         }).then((result) => {
             if (result.isConfirmed) {
                 const form = new FormData();
