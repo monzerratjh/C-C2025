@@ -62,6 +62,7 @@ function validaciones($conn, $ci_usuario, $nombre_usuario, $apellido_usuario,
                      $gmail_usuario, $telefono_usuario, $contrasenia_usuario,
                      $cargo_usuario) {
 
+    // ------------------------- CAMPOS VACÍOS -------------------------
     if (empty($ci_usuario) || empty($nombre_usuario) || empty($apellido_usuario) ||
         empty($gmail_usuario) || empty($telefono_usuario) || empty($cargo_usuario) ||
         empty($contrasenia_usuario)) {
@@ -69,21 +70,50 @@ function validaciones($conn, $ci_usuario, $nombre_usuario, $apellido_usuario,
         exit;
     }
 
+    // ------------------------- CÉDULA -------------------------
     if (!preg_match("/^[0-9]{8}$/", $ci_usuario)) {
         header("Location: ./secretario-usuario.php?error=CiInvalida&abrirModal=true");
         exit;
     }
 
+    // ------------------------- NOMBRE -------------------------
+    if (!preg_match("/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{3,30}$/", $nombre_usuario)) {
+        header("Location: ./secretario-usuario.php?error=NombreInvalido&abrirModal=true");
+        exit;
+    }
+
+    // ------------------------- APELLIDO -------------------------
+    if (!preg_match("/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{3,30}$/", $apellido_usuario)) {
+        header("Location: ./secretario-usuario.php?error=ApellidoInvalido&abrirModal=true");
+        exit;
+    }
+
+    // ------------------------- EMAIL -------------------------
+    if (!filter_var($gmail_usuario, FILTER_VALIDATE_EMAIL)) {
+        header("Location: ./secretario-usuario.php?error=EmailInvalido&abrirModal=true");
+        exit;
+    }
+
+    // ------------------------- TELÉFONO -------------------------
     if (!preg_match("/^[0-9]{9}$/", $telefono_usuario)) {
         header("Location: ./secretario-usuario.php?error=TelefonoInvalido&abrirModal=true");
         exit;
     }
 
+    // ------------------------- CARGO -------------------------
+    $cargos_validos = ['Secretario', 'Docente', 'Adscripto'];
+    if (!in_array($cargo_usuario, $cargos_validos)) {
+        header("Location: ./secretario-usuario.php?error=CargoInvalido&abrirModal=true");
+        exit;
+    }
+
+    // ------------------------- CONTRASEÑA -------------------------
     if (!preg_match("/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,20}$/", $contrasenia_usuario)) {
         header("Location: ./secretario-usuario.php?error=ContraseniaInvalida&abrirModal=true");
         exit;
     }
 
+    // ------------------------- DUPLICADOS -------------------------
     $campoDuplicado = consultarDuplicados($conn, $ci_usuario, $gmail_usuario, $telefono_usuario);
     if ($campoDuplicado !== null) {
         header("Location: ./secretario-usuario.php?error=Duplicado&campo={$campoDuplicado}&abrirModal=true");
@@ -93,6 +123,9 @@ function validaciones($conn, $ci_usuario, $nombre_usuario, $apellido_usuario,
     return true;
 }
 
+// -----------------------------------------------------------------------------
+// Verificación de duplicados
+// -----------------------------------------------------------------------------
 function consultarDuplicados($conn, $ci_usuario, $gmail_usuario, $telefono_usuario) {
     $sql = "SELECT ci_usuario, gmail_usuario, telefono_usuario
             FROM usuario

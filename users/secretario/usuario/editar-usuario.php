@@ -37,16 +37,44 @@ if (empty($ci_usuario) || empty($nombre_usuario) || empty($apellido_usuario) ||
     exit;
 }
 
+// Cédula: exactamente 8 dígitos
 if (!preg_match("/^[0-9]{8}$/", $ci_usuario)) {
     header("Location: ./secretario-usuario.php?error=CiInvalida&abrirModal=true&id_usuario=$id_usuario");
     exit;
 }
 
+// Nombre: solo letras, tildes o espacios, entre 3 y 30 caracteres
+if (!preg_match("/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{3,30}$/", $nombre_usuario)) {
+    header("Location: ./secretario-usuario.php?error=NombreInvalido&abrirModal=true&id_usuario=$id_usuario");
+    exit;
+}
+
+// Apellido: solo letras, tildes o espacios, entre 3 y 30 caracteres
+if (!preg_match("/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{3,30}$/", $apellido_usuario)) {
+    header("Location: ./secretario-usuario.php?error=ApellidoInvalido&abrirModal=true&id_usuario=$id_usuario");
+    exit;
+}
+
+// Email válido
+if (!filter_var($gmail_usuario, FILTER_VALIDATE_EMAIL)) {
+    header("Location: ./secretario-usuario.php?error=EmailInvalido&abrirModal=true&id_usuario=$id_usuario");
+    exit;
+}
+
+// Teléfono: exactamente 9 dígitos
 if (!preg_match("/^[0-9]{9}$/", $telefono_usuario)) {
     header("Location: ./secretario-usuario.php?error=TelefonoInvalido&abrirModal=true&id_usuario=$id_usuario");
     exit;
 }
 
+// Cargo válido
+$cargosValidos = ['Docente', 'Adscripto', 'Secretario'];
+if (!in_array($cargo_usuario, $cargosValidos)) {
+    header("Location: ./secretario-usuario.php?error=CargoInvalido&abrirModal=true&id_usuario=$id_usuario");
+    exit;
+}
+
+// Contraseña: solo si fue modificada
 if (!empty($contrasenia_usuario) &&
     !preg_match("/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,20}$/", $contrasenia_usuario)) {
     header("Location: ./secretario-usuario.php?error=ContraseniaInvalida&abrirModal=true&id_usuario=$id_usuario");
