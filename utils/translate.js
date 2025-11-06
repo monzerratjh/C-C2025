@@ -127,7 +127,7 @@ i18next.init({
         classrooms:"Salones",
         computerLabs:"Aulas",
         scienceLabs:"Laboratorios",
-        viewReservations:"Consulta tus reservas realizadas",
+        viewReservations:"Visualiza las reservas realizadas.",
         //
         courseSubjectManagement:"Gestión de cursos y asignaturas",
         pCourseSubjectManagement:"Gestione los cursos, asignaturas, docentes y espacios del centro educativo de forma sencilla y organizada.",
@@ -194,12 +194,8 @@ i18next.init({
         yesDelete:"Si, eliminar",
         deleteGroup:"Eliminar grupo?",
         actionNotBeUndone:"Esta acción no se puede deshacer",
-        
-
-
-
-
-
+        //
+        leaveBlank:"Dejar en blanco si no se quiere cambiar la contraseña.",
       }
     },
     en: {
@@ -320,7 +316,7 @@ i18next.init({
         computerLabs:"Computer Labs",
         scienceLabs:"Science Labs",
         //
-        viewReservations:"View your reservations made",
+        viewReservations:"View the reservations made.",
         pCourseSubjectManagement:"Easily manage the courses, subjects, teachers, and facilities of your educational institution in an organized way.",
         courseSubjectManagement:"Course and Subject Management",
        addSubject:"Add Subjects",
@@ -384,7 +380,21 @@ i18next.init({
         deleteGroup:"Delete group?",
         yesDelete:"Yes, delete",
         actionNotBeUndone:"This action cannot be undone.",
-
+        //
+        leaveBlank:"Dejar en blanco si no se quiere cambiar la contraseña.",
+        userCreatedSuccessfully:"Creación de Usuario Exitosa",
+        successfulInsertion:"Successful Insertion!",
+        deletionSuccesfull:"Deletion Successful!",
+        editSuccessfull:"Edit Successful!",
+        userExists:"The user already exists.",
+        tryAgain:"Please try again.",
+        invalidpassword:"Invalid password",
+        passwordCharacters:"It must be between 8 and 20 characters long and include at least one uppercase letter, one lowercase letter, and one number.",
+        invalidNumber:"Invalid phone number.",
+        digitsNumber:"The phone number must contain 9 digits.",
+        invalidID:"Invalid ID number.",
+        digits:"It must contain 8 digits.",
+        notBeEmpty:"Fields cannot be empty."
 
      }
     }
