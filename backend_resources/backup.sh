@@ -24,6 +24,6 @@ SIZE=$(du -h "$BACKUP_DIR/backup_$DATE.tar.gz" | cut -f1)
 
 
 # ======== MENSAJE FINAL ========
-echo "📁 Tamaño del backup: $SIZE"
-echo "🧮 Tablas exportadas: $TABLES_EXPORTED"
-echo "✅ Backup completado: $BACKUP_DIR/backup_$DATE.tar.gz"
+echo "Tamaño del backup: $SIZE"
+echo "Tablas exportadas: $TABLES_EXPORTED"
+echo "Backup completado: $BACKUP_DIR/backup_$DATE.tar.gz"

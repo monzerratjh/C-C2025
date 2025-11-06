@@ -8,6 +8,7 @@ $id_grupo = $_GET['id_grupo'] ?? null;
 // Obtener datos del grupo seleccionado
 $grupoInfo = mysqli_query($con, "SELECT nombre_grupo FROM grupo WHERE id_grupo = $id_grupo");
 $grupo = mysqli_fetch_assoc($grupoInfo);
+//mysqli_fetch_assoc - guarda dentro de un array asociativo
 
 // Obtener horarios disponibles
 $horarios = mysqli_query($con, "
@@ -61,13 +62,19 @@ $horarios_asignados = mysqli_query($con, "
   ORDER BY FIELD(ha.dia, 'Lunes','Martes','Miércoles','Jueves','Viernes'), hc.hora_inicio
 ");
 
+// LEFT JOIN -> trae todos los horarios asignados (de la tabla gada), y si alguno de ellos tiene un espacio asignado,
+// muestra el nombre del espacio; si no, lo deja en blanco (NULL).
+
 // Obtener ENUM de días
 $enum_dias = [];
 $enum_query = mysqli_query($con, "SHOW COLUMNS FROM horario_asignado LIKE 'dia'");
 if ($enum_query) {
   $row = mysqli_fetch_assoc($enum_query);
-  preg_match("/^enum\((.*)\)$/", $row['Type'], $matches);
-  $enum_dias = array_map(fn($v) => trim($v, "'"), explode(',', $matches[1]));
+  preg_match("/^enum\((.*)\)$/", $row['Type'], $matches); //extraer lo que hay dentro de los paréntesis del ENUM.
+  // del enum('Lunes','Martes'...) extrae y guarda en $matches 'Lunes','Martes',...
+  $enum_dias = array_map(fn($v) => trim($v, "'"), explode(',', $matches[1])); 
+  // explode(',', $matches[1]) -> separa la cadena en un array, dividiéndola por las comas: ["'Lunes'", "'Martes'", ...]
+
 }
 ?>
 <!DOCTYPE html>
