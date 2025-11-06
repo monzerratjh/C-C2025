@@ -88,7 +88,7 @@
       <br><br><br>
 
       <h2 data-i18n="reservationRequests">Solicitudes de Reserva</h2>
-      <p data-i18n="viewReservations">Consulta las reservas realizadas por cada docente y los espacios solicitados.</p>
+      <p data-i18n="viewReservations">Visualiza las reservas realizadas.</p>
 
       <table class="tabla-reserva" id="tablaReservas">
             <thead class="table-light">
@@ -97,6 +97,7 @@
                 <th>Grupo</th>
                 <th>Asignatura</th>
                 <th>Espacio</th>
+                <th>Día</th>
                 <th>Fecha</th>
                 <th>Hora inicio</th>
                 <th>Hora fin</th>

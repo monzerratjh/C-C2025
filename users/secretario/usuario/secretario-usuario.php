@@ -148,15 +148,10 @@ while($row = mysqli_fetch_array($query)) {
                   </tr>
                   <tr>
                       <th class="grupos-usuarios-responsive">
-                          <a href="#" 
-                            class="eliminar btn btn-eliminar" 
-                            onclick="confirmDelete(<?= $row['id_usuario'] ?>)">
-                            <i class="bi bi-trash"></i>
-                          </a>
+                          <a href="delete_user_secretario.php?id_usuario=<?= $row['id_usuario'] ?>" class="eliminar btn">
+                        <i class="bi bi-trash"></i>  </a>
                       </th>
                   </tr>
-
-
                 
               </table>
           </div></div>
@@ -194,13 +189,11 @@ while($row = mysqli_fetch_array($query)) {
                   <i class="bi bi-pencil-square"></i>
                 </a>
               </td>
-                <td>
-                  <a href="#" 
-                    class="eliminar btn btn-eliminar" 
-                    onclick="confirmDelete(<?= $row['id_usuario'] ?>)">
-                    <i class="bi bi-trash"></i>
-                  </a>
-                </td>
+              <td>
+                  <a href="delete_user_secretario.php?id_usuario=<?= $row['id_usuario'] ?>" class="eliminar btn">
+                  <i class="bi bi-trash"></i>
+                </a>
+              </td>
             </tr>
             <?php endforeach; ?>
 
@@ -350,9 +343,6 @@ while($row = mysqli_fetch_array($query)) {
     
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../js/validation.js"></script>
-    <script src="../js/validation-alert.js"></script>
-
 
     <script src="./../../../utils/desplegar-acordeon.js"></script>
     
@@ -362,9 +352,91 @@ while($row = mysqli_fetch_array($query)) {
     <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
     <script src="./../../../utils/translate.js"></script>
 
+    <!-- Scripts -->
+    <script src="../js/validation.js"></script>
+
     <script>
       console.log("Scripts cargados correctamente");
     </script>
-
+     <?php if(isset($_GET['error'])) {
+    if($_GET['error'] == 'CamposVacios') { ?>
+    <script>
+       Swal.fire({
+          icon: 'error',
+          title: 'Los campos no puede estar vacíos.',
+          text: 'Por favor intente de nuevo',
+          confirmButtonColor: '#d33'
+        });
+    </script>
+  <?php } else if($_GET['error'] == 'CiInvalida') {?>
+      <script>
+       Swal.fire({
+            icon: 'error',
+            title: 'La cédula es inválida',
+            text: 'Debe tener 8 caracteres.',
+            confirmButtonColor: '#d33'
+        });
+    </script>
+  <?php } else if($_GET['error'] == 'TelefonoInvalido'){ ?>
+    <script>
+       Swal.fire({
+            icon: 'error',
+            title: 'El telefono es inválido',
+            text: 'El teléfono ingresado debe tener 9 caracteres.',
+            confirmButtonColor: '#d33'
+        });
+    </script>
+  <?php } else if($_GET['error'] == 'ContraseniaInvalida'){ ?>
+    <script>
+       Swal.fire({
+            icon: 'error',
+            title: 'Contraseña inválida.',
+            text: 'Debe tener entre 8 a 20 caracteres, al menos unna mayúscula, una minúscula y un número.',
+            confirmButtonColor: '#d33'
+        });
+    </script>
+  <?php } else if($_GET['error'] == 'UsuarioYaExistente') { ?>
+    <script>
+       Swal.fire({
+            icon: 'error',
+            title: 'El usuario ya existe.',
+            text: 'Intente nuevamente.',
+            confirmButtonColor: '#d33'
+        });
+    </script>
+  <?php } else if($_GET['msg'] == 'InsercionExitosa') { ?>
+    <script>
+       Swal.fire({
+            icon: 'success',
+            title: 'Creación de Usuario Exitosa',
+            confirmButtonColor: 'rgba(50, 81, 185, 1)'
+        });
+    </script>
+  <?php } } else if(isset($_GET['msg'])) {
+    if($_GET['msg'] == 'EdicionExitosa') { ?>
+    <script>
+       Swal.fire({
+            icon: 'success',
+            title: '¡Edición Exitosa!',
+            confirmButtonColor: 'rgba(95, 102, 207, 1)'
+        });
+    </script>
+  <?php } else if($_GET['msg'] == 'InsercionExitosa') { ?>
+    <script>
+       Swal.fire({
+            icon: 'success',
+            title: '¡Inserción Exitosa!',
+            confirmButtonColor: 'rgba(95, 102, 207, 1)'
+        });
+    </script>
+  <?php } else if($_GET['msg'] == 'EliminacionExitosa') { ?>
+    <script>
+       Swal.fire({
+            icon: 'success',
+            title: '¡Eliminación Exitosa!',
+            confirmButtonColor: 'rgba(95, 102, 207, 1)'
+        });
+    </script>
+  <?php } } ?>
   </body>
   </html>

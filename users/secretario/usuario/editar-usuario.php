@@ -39,22 +39,6 @@ $prev = $result_prev->fetch_assoc();
 $cargo_anterior = $prev['cargo_usuario'] ?? null;
 $stmt_prev->close();
 
-// Verificar que el teléfono no se repita en otro usuario
-$sql_tel = "SELECT id_usuario FROM usuario WHERE telefono_usuario = ? AND id_usuario <> ?";
-$stmt_tel = $conn->prepare($sql_tel);
-$stmt_tel->bind_param("si", $telefono_usuario, $id_usuario);
-$stmt_tel->execute();
-$result_tel = $stmt_tel->get_result();
-
-if ($result_tel->num_rows > 0) {
-    // Teléfono ya lo tiene otro usuario
-    header("Location: ./secretario-usuario.php?error=TelefonoYaExistente");
-    exit;
-}
-
-$stmt_tel->close();
-
-
 //Actualizamos la tabla usuario
 $stmt = $conn->prepare("UPDATE usuario
     SET ci_usuario = ?,
@@ -101,43 +85,4 @@ if ($cargo_anterior !== $cargo_usuario) {
 // Redirigir
 header("Location: ./secretario-usuario.php");
 exit;
-// Función de validación (similar a la de agregar-usuario.php)
-function validarEdicion($ci, $nombre, $apellido, $correo, $tel, $cargo, $pass, $conn) {
-
-    if(empty($ci) || empty($nombre) || empty($apellido) || empty($correo) || empty($tel) || empty($cargo)) {
-        header("Location: ./secretario-usuario.php?error=CamposVacios");
-        exit;
-    }
-
-    if (!preg_match("/^[A-Za-zÁÉÍÓÚáéíóúñÑ ]{3,15}$/", $nombre)) {
-        header("Location: ./secretario-usuario.php?error=NombreInvalido");
-        exit;
-    }
-
-    if (!preg_match("/^[A-Za-zÁÉÍÓÚáéíóúñÑ ]{3,15}$/", $apellido)) {
-        header("Location: ./secretario-usuario.php?error=ApellidoInvalido");
-        exit;
-    }
-
-    if (!preg_match("/^[0-9]{8}$/", $ci)) {
-        header("Location: ./secretario-usuario.php?error=CiInvalida");
-        exit;
-    }
-
-    if (!preg_match("/^[0-9]{9}$/", $tel)) {
-        header("Location: ./secretario-usuario.php?error=TelefonoInvalido");
-        exit;
-    }
-
-    if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-        header("Location: ./secretario-usuario.php?error=EmailInvalido");
-        exit;
-    }
-
-    if ($pass !== "" && !preg_match("/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,20}$/", $pass)) {
-        header("Location: ./secretario-usuario.php?error=ContraseniaInvalida");
-        exit;
-    }
-}
-?>
 ?>

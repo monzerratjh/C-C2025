@@ -53,7 +53,7 @@ if (!$id_usuario) {
         <i class="bi bi-translate traductor-menu"></i>
       </div>
       <a href="./../docente-grupo.php" class="nav-opciones mb-2" data-i18n="assignedGroups">Grupos a Cargo</a>
-      <a href="./../docente-reservar.php" class="fw-semibold seleccionado" data-i18n="reserveFacility">Reservar Espacio</a>
+      <a href="docente-reservar.php" class="fw-semibold seleccionado" data-i18n="reserveFacility">Reservar Espacio</a>
       <a href="./../docente-falta.php" class="nav-opciones mb-2" data-i18n="reportAbsence">Avisar Falta</a>
     </div>
 
@@ -78,7 +78,7 @@ if (!$id_usuario) {
       </div>
 
       <a href="./../docente-grupo.php" class="nav-opciones mb-2" data-i18n="assignedGroups">Grupos a Cargo</a>
-      <a href="./../docente-reservar.php" class="fw-semibold seleccionado" data-i18n="reserveFacility">Reservar Espacio</a>
+      <a href="docente-reservar.php" class="fw-semibold seleccionado" data-i18n="reserveFacility">Reservar Espacio</a>
       <a href="./../docente-falta.php" class="nav-opciones mb-2" data-i18n="reportAbsence">Avisar Falta</a>
    
       
@@ -189,12 +189,10 @@ if (!$id_usuario) {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
   <script src="./../js/desplegar-reserva.js"></script>
-  <script src="./../js/reserva.js"></script>
-
-
+  <script src="./../js/reserva.js"></script> 
   <script src="./../../../utils/form-log-in.js"></script> 
 
  <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
-  <script src="./../../utils/translate.js"></script>
+  <script src="./../../../utils/translate.js"></script>
 </body>
 </html>

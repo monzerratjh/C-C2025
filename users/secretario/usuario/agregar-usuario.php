@@ -1,5 +1,3 @@
-<!--VALIDACIONES DEL LADO DEL SERVIDOR-->
-
 <?php
 include('./../../../conexion.php');
 $conn = conectar_bd();
@@ -77,17 +75,6 @@ function validaciones($conn, $ci_usuario, $nombre_usuario, $apellido_usuario,
        empty($contrasenia_usuario)) {
         header("Location: ./secretario-usuario.php?error=CamposVacios");
         exit;
-
-        // Nombre entre 3 y 10 letras, letras y espacios 
-    } else if (!preg_match("/^[A-Za-zÁÉÍÓÚáéíóúñÑ ]{3,15}$/", $nombre_usuario)) {
-        header("Location: ./secretario-usuario.php?error=NombreInvalido");
-        exit;
-
-    // Apellido entre 3 y 10 letras
-    } else if (!preg_match("/^[A-Za-zÁÉÍÓÚáéíóúñÑ ]{3,15}$/", $apellido_usuario)) {
-        header("Location: ./secretario-usuario.php?error=ApellidoInvalido");
-        exit;
-
     } else if((!preg_match("/^[0-9]{8}$/", $ci_usuario))) {
         header("Location: ./secretario-usuario.php?error=CiInvalida");
         exit;
@@ -97,8 +84,7 @@ function validaciones($conn, $ci_usuario, $nombre_usuario, $apellido_usuario,
     } else if (!preg_match("/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[A-Za-z\d@$!%*?&]{8,20}$/", $contrasenia_usuario)) {
         header("Location: ./secretario-usuario.php?error=ContraseniaInvalida");
         exit;
-    } else if (!consultarBD($conn, $ci_usuario, $gmail_usuario, $telefono_usuario)) {
-
+    } else if (!consultarBD($conn, $ci_usuario, $gmail_usuario)) {
         header("Location: ./secretario-usuario.php?error=UsuarioYaExistente");
         exit;
     } else {
@@ -107,16 +93,15 @@ function validaciones($conn, $ci_usuario, $nombre_usuario, $apellido_usuario,
         
 }
 
-function consultarBD($conn, $ci_usuario, $gmail_usuario, $telefono_usuario) {
-    $query_val = "SELECT * FROM usuario WHERE ci_usuario = ? OR gmail_usuario = ? OR telefono_usuario = ?";
+function consultarBD($conn, $ci_usuario) {
+    $query_val = "SELECT * FROM usuario WHERE ci_usuario = ? ";
     $stmt = mysqli_prepare($conn, $query_val);
-    mysqli_stmt_bind_param($stmt, "sss", $ci_usuario, $gmail_usuario, $telefono_usuario);
+    mysqli_stmt_bind_param($stmt, "s", $ci_usuario);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     mysqli_stmt_close($stmt);
 
     return mysqli_num_rows($result) === 0;
 }
-
 
 ?>
