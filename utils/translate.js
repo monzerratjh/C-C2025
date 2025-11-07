@@ -189,13 +189,23 @@ i18next.init({
         enterTheGroup:"Ingrese el nombre del grupo",
         orientationsCorrespond:"La orientación debe coincidir con una de las opciones del sistema.",
         seletAShift:"Seleccionar un turno.",
-        invalidNumber:"Cantidad de alumnos inválida. Debe ser entre 1 y 50",
+        invalidNumberOfStudent:"Cantidad de alumnos inválida. Debe ser entre 1 y 50",
         requestNoProcessed:"No se pudo procesar la solicitud",
         yesDelete:"Si, eliminar",
         deleteGroup:"Eliminar grupo?",
         actionNotBeUndone:"Esta acción no se puede deshacer",
         //
         leaveBlank:"Dejar en blanco si no se quiere cambiar la contraseña.",
+        shift:"Turno",
+        numberOfStudents:"Número de estudiantes",
+        emptyFields:"Campos vacíos",
+        //
+        pleaseFillIn:"Por favor complete todos los campos.",
+        IDMustContain8Digits:"Debe tener 8 dígitos.",
+        invalidPhoneNumber:"Teléfono inválido",
+        numberContains9Digits:"Debe tener 9 dígitos.",
+        invalidID:"Cédula inválida",
+
       }
     },
     en: {
@@ -390,11 +400,21 @@ i18next.init({
         tryAgain:"Please try again.",
         invalidpassword:"Invalid password",
         passwordCharacters:"It must be between 8 and 20 characters long and include at least one uppercase letter, one lowercase letter, and one number.",
-        invalidNumber:"Invalid phone number.",
+        invalidNumberOfStudent:"Invalid phone number.",
         digitsNumber:"The phone number must contain 9 digits.",
         invalidID:"Invalid ID number.",
         digits:"It must contain 8 digits.",
-        notBeEmpty:"Fields cannot be empty."
+        notBeEmpty:"Fields cannot be empty.",
+        shift:"Shift",
+        numberOfStudents:"Number of students",
+        //
+        emptyFields:"Empty fields",
+        pleaseFillIn:"Please fill in all the fields.",
+        IDMustContain8Digits:"It must contain 8 digits.",
+        invalidPhoneNumber:"Invalid Phone Number",
+        numberContains9Digits:"It must contain 9 digits",
+    
+
 
      }
     }

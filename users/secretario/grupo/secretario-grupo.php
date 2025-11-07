@@ -213,10 +213,10 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
     <div class="contenido-dia grupos-usuarios-responsive">
 <!-- Tabla para pantallas pequeñas -->
     <table class="tabla-grupos-usuarios-responsive ">
-        <tr><td><b>Orientación:</b> <?php echo htmlspecialchars($row['orientacion_grupo']); ?></td></tr>
-        <tr><td><b>Turno:</b> <?php echo htmlspecialchars($row['turno_grupo']); ?></td></tr>
-        <tr><td><b>Cantidad de alumnos:</b> <?php echo $row['cantidad_alumno_grupo']; ?></td></tr>
-        <tr><td><b>Adscripto:</b> <?php echo htmlspecialchars($row['nombre_usuario'].' '.$row['apellido_usuario']); ?></td></tr>
+        <tr><td><b data-i18n="orientation">Orientación:</b> <?php echo htmlspecialchars($row['orientacion_grupo']); ?></td></tr>
+        <tr><td><b data-i18n="shift">Turno:</b> <?php echo htmlspecialchars($row['turno_grupo']); ?></td></tr>
+        <tr><td><b data-i18n="numberOfStudents">Cantidad de alumnos:</b> <?php echo $row['cantidad_alumno_grupo']; ?></td></tr>
+        <tr><td><b data-i18n="adscripto">Adscripto:</b> <?php echo htmlspecialchars($row['nombre_usuario'].' '.$row['apellido_usuario']); ?></td></tr>
         <tr class="editar">
           <th class="grupos-usuarios-responsive"> <i class="btn btn-sm bi bi-pencil-square"
                               data-bs-toggle="modal"
@@ -253,10 +253,10 @@ $con->close(); // cierro conexión cuando ya tengo todos los datos
 <table class="tabla-secretario">
         <thead>
           <tr>
-            <th>Orientación</th>
-            <th>Turno</th>
-            <th>Cantidad de alumnos</th>
-            <th>Adscripto</th>
+            <th data-i18n="orientation">Orientación</th>
+            <th data-i18n="shift">Turno</th>
+            <th data-i18n="numberOfStudents">Cantidad de alumnos</th>
+            <th data-i18n="adscripto">Adscripto</th>
             <th> <i class="btn btn-sm bi bi-pencil-square"
                     data-bs-toggle="modal"
                     data-bs-target="#modalGrupo"
