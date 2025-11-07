@@ -42,6 +42,21 @@ if (!preg_match("/^[0-9]{8}$/", $ci_usuario)) {
     header("Location: ./secretario-usuario.php?error=CiInvalida&abrirModal=true&id_usuario=$id_usuario");
     exit;
 }
+            //verificación con dígito verificador
+
+        //substr se usa para extraer una parte de una cadena de texto. 
+        //En este caso tomar los primeros 7 caracteres y los guarda en la variable
+        $numeroBase = substr($ci_usuario, 0, 7);
+
+        //Toma el último dígito de la cédula (el dígito verificador ingresado por el usuario) y lo convierte a número
+        $digitoIngresado = intval(substr($ci_usuario, -1));
+
+        $digitoCorrecto = calcularDigitoVerificadorCedula($numeroBase);
+
+        if ($digitoCorrecto === null || $digitoIngresado !== $digitoCorrecto) {
+            header("Location: ./secretario-usuario.php?error=CiInvalida&abrirModal=true");
+            exit;
+        }
 
 // Nombre: solo letras, tildes o espacios, entre 3 y 30 caracteres
 if (!preg_match("/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{3,30}$/", $nombre_usuario)) {
@@ -199,4 +214,24 @@ function verificarDuplicados($conn, $ci_usuario, $gmail_usuario, $telefono_usuar
     }
     return null;
 }
+
+function calcularDigitoVerificadorCedula($numeroBase) {
+    $factores = [2, 9, 8, 7, 6, 3, 4];
+
+    // Validar que sea numérico y de 7 dígitos
+    if (!is_numeric($numeroBase) || strlen($numeroBase) !== 7) {
+        return null;
+    }
+
+    $suma = 0;
+    for ($i = 0; $i < strlen($numeroBase); $i++) {
+        $suma += intval($numeroBase[$i]) * $factores[$i];
+    }
+
+    $modulo = $suma % 10;
+    $digitoVerificador = ($modulo === 0) ? 0 : 10 - $modulo;
+
+    return $digitoVerificador;
+}
+
 ?>
