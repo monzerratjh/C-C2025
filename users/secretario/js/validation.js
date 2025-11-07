@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const error = params.get("error");
     const campo = params.get("campo") || "dato";
 
+   // objeto errores
     const errores = {
       CamposVacios: {
         title: "Campos vacíos",
@@ -17,6 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
       CiInvalida: {
         title: "Cédula inválida",
         text: "Debe tener 8 dígitos.",
+      },
+      CedulaInvalidaDigito: {
+        title: "Cédula inválida",
+        text: "El dígito verificador de la cédula no es válido.",
       },
       TelefonoInvalido: {
         title: "Teléfono inválido",

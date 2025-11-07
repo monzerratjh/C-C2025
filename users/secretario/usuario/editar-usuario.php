@@ -54,7 +54,7 @@ if (!preg_match("/^[0-9]{8}$/", $ci_usuario)) {
         $digitoCorrecto = calcularDigitoVerificadorCedula($numeroBase);
 
         if ($digitoCorrecto === null || $digitoIngresado !== $digitoCorrecto) {
-            header("Location: ./secretario-usuario.php?error=CiInvalida&abrirModal=true");
+            header("Location: ./secretario-usuario.php?error=CedulaInvalidaDigito&abrirModal=true&id_usuario=$id_usuario");
             exit;
         }
 

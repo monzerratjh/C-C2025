@@ -87,7 +87,7 @@ function validaciones($conn, $ci_usuario, $nombre_usuario, $apellido_usuario,
         $digitoCorrecto = calcularDigitoVerificadorCedula($numeroBase);
 
         if ($digitoCorrecto === null || $digitoIngresado !== $digitoCorrecto) {
-            header("Location: ./secretario-usuario.php?error=CiInvalida&abrirModal=true");
+            header("Location: ./secretario-usuario.php?error=CedulaInvalidaDigito&abrirModal=true");
             exit;
         }
 
