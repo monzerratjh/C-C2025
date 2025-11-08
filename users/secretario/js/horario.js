@@ -8,15 +8,21 @@ function validarHorario() {
     const hora_fin = document.getElementById('hora_fin').value;
 
     if (hora_inicio === '') { 
-        Swal.fire({ icon: 'error', title: 'Error', text: 'Ingrese la hora de inicio de las clases' }); 
+        Swal.fire({ icon: 'error', 
+            title: 'Error', 
+            text:  i18next.t('indicateStartTime') });
         return false; 
     }
     if (hora_fin === '') { 
-        Swal.fire({ icon: 'error', title: 'Error', text: 'Ingrese la hora de finalización de las clases' }); 
+        Swal.fire({ icon: 'error',
+             title: 'Error', 
+             text: i18next.t('enterClassEndTime') }); 
         return false; 
     }
     if (hora_inicio >= hora_fin) { 
-        Swal.fire({ icon: 'error', title: 'Error', text: 'La hora de inicio debe ser menor que la hora de finalización.' }); 
+        Swal.fire({ icon: 'error',
+             title: 'Error',
+              text: i18next.t('timeEarlier') }); 
         return false; 
     }    
 
@@ -61,7 +67,9 @@ function enviarHorario(formData) {
         });
     })
     .catch(err => {
-        Swal.fire({ icon: 'error', title: 'Error', text: 'No se pudo procesar la solicitud' });
+        Swal.fire({ icon: 'error',
+             title: 'Error',
+              text: i18next.t('requestNoProcessed') });
         console.error(err);
     });
 }
@@ -87,12 +95,12 @@ document.addEventListener('click', function(e){
     if (boton) {
         const id = boton.dataset.id;
         Swal.fire({
-            title: '¿Desea eliminar este horario?',
-            text: "Esta acción no se puede deshacer.",
+            title: i18next.t('deleteSchedule'),
+            text: i18next.t('actionNotBeUndone'),
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Sí, eliminar',
-            cancelButtonText: 'Cancelar'
+            confirmButtonText: i18next.t('yesDelete'),
+            cancelButtonText: i18next.t('cancel')
         }).then((result) => {
             if(result.isConfirmed){
                 const form = new FormData();
