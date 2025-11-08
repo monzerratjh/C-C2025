@@ -130,7 +130,7 @@ while ($row = mysqli_fetch_array($query)) {
               <tr><td><b data-i18n="position">Cargo:</b> <?= htmlspecialchars($row['cargo_usuario']) ?></td></tr>
               <tr><td><b data-i18n="idCard2">Cédula:</b> <?= htmlspecialchars($row['ci_usuario']) ?></td></tr>
               <tr><td><b data-i18n="phone"p>Teléfono:</b> <?= htmlspecialchars($row['telefono_usuario']) ?></td></tr>
-              <tr><td><b data-i18n="email">Email:</b> <?= htmlspecialchars($row['gmail_usuario']) ?></td></tr>
+              <tr><td><b>Email:</b> <?= htmlspecialchars($row['gmail_usuario']) ?></td></tr>
               <tr class="editar">
                 <th class="grupos-usuarios-responsive">
                   <a class="editar btn" data-bs-toggle="modal" data-bs-target="#update_modal<?= $row['id_usuario'] ?>">
@@ -238,7 +238,7 @@ while ($row = mysqli_fetch_array($query)) {
                 <div class="mb-3">
                   <label data-i18n="password">Contraseña</label>
                   <input type="password" name="contrasenia_usuario" class="form-control" value="">
-                  <small class="text-muted" data-i18n="leaveBlank">Dejar en blanco si no se quiere cambiar la contraseña.</small>
+                  <small class="text-muted" data-i18n="leaveBlank" ><span>Dejar en blanco si no se quiere cambiar la contraseña.</span></small>
                 </div>
               </div>
               <div class="modal-footer">
@@ -281,7 +281,7 @@ while ($row = mysqli_fetch_array($query)) {
           </div>
 
           <div class="mb-3">
-            <label class="form-label" data-i18n="email">Email</label>
+            <label class="form-label">Email</label>
             <input type="email" name="gmail_usuario" class="form-control"
                    value="<?= htmlspecialchars($old['gmail_usuario'] ?? '') ?>">
           </div>
