@@ -205,6 +205,22 @@ i18next.init({
         invalidPhoneNumber:"Teléfono inválido",
         numberContains9Digits:"Debe tener 9 dígitos.",
         invalidID:"Cédula inválida",
+        //
+        indicateStartTime:"Ingrese la hora de inicio de las clases",
+        enterClassEndTime:"Ingrese la hora de finalización de las clases.",
+        timeEarlier:"La hora de inicio debe ser menor que la hora de finalización.",
+        deleteSchedule:"¿Desea eliminar este horario?",
+        verificationDigit:"El dígito verificador de la cédula no es válido.",
+        duplicateUser:"Usuario duplicado",
+        userAlreadyRegistered:"Ya existe un usuario con ese",
+        yesCreate:"Si, crear.",
+        wantSaveChanges:"¿Deseas guardar los cambios?",
+        yesDelete:"Si, eliminar",
+        createUser:"¿Crear usuario?",
+        addNewUser:"Se agregará un nuevo usuario",
+        deleteUser:"¿Eliminar usuario?",
+        
+
 
       }
     },
@@ -413,7 +429,22 @@ i18next.init({
         IDMustContain8Digits:"It must contain 8 digits.",
         invalidPhoneNumber:"Invalid Phone Number",
         numberContains9Digits:"It must contain 9 digits",
-    
+        //
+        indicateStartTime:"Please indicate the class start time.",
+        enterClassEndTime:"Please enter the class end time.",
+        timeEarlier:"The start time must be earlier than the end time.",
+        deleteSchedule:"Do you want to delete this schedule?",
+        verificationDigit:"The verification digit of the ID number is invalid.",
+        duplicateUser:"Duplicate user.",
+        userAlreadyRegistered:"A user with that ${campo} is already registered.",
+        yesCreate:"Yes, create",
+        wantSaveChanges:"Do you want to save the changes?",
+        yesDelete:"Yes, delete",
+        createUser:"Create user?",
+        addNewUser:"This will add a new user.",
+        deleteUser:"Delete user?",
+
+
 
 
      }
