@@ -219,7 +219,20 @@ i18next.init({
         createUser:"¿Crear usuario?",
         addNewUser:"Se agregará un nuevo usuario",
         deleteUser:"¿Eliminar usuario?",
+        //
+        invalidName:"Nombre invalido",
+        containName:"El nombre debe contener solo letras y tener entre 3 y 30 caracteres",
+        lastNameContain:"El apellido debe contener solo letras y tener entre 3 y 30 caracteres",
+        invalidLastName:"Apellido inválido",
+        invalidEmail:"Email inválido",
+        pleaseValidEmail:"Por favor ingrese un email válido",
+        passwordRequired:"Contraseña requerida",
+        enterPassword:"Debe ingresar una contraseña",
+        require1:"Debe contener al menos una MAYÚSCULA, una minúscula y un número",
+        require2:"Debe tener entre 8 y 20 caracteres",
         
+
+
 
 
       }
@@ -443,6 +456,21 @@ i18next.init({
         createUser:"Create user?",
         addNewUser:"This will add a new user.",
         deleteUser:"Delete user?",
+        //
+        invalidName:"Invalid name",
+        containName:"The name must contain only letters and be between 3 and 30 characters long.",
+        lastNameContain:"The last name must contain only letters and be between 3 and 30 characters long.",
+        invalidLastName:"Invalid last name",
+        invalidEmail:"Invalid email",
+        pleaseValidEmail:"Please enter a valid email.",
+        passwordRequired:"Password required",
+        enterPassword:"You must enter a password.",
+        require1:"At least one uppercase letter, one lowercase letter, and one digit is required.",
+        require2:"It must be between 8 and 20 characters long.",
+      
+
+
+
 
 
 
