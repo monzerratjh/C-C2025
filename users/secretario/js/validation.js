@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       Duplicado: {
         title: i18next.t('duplicateUser'),
-        text: i18next.t('userAlreadyRegistered')`${campo}`,
+       text: `Ya existe un usuario con ese ${campo} registrado.`,
       },
     };
 
