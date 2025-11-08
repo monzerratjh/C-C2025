@@ -127,10 +127,10 @@ while ($row = mysqli_fetch_array($query)) {
 
           <div class="contenido-dia grupos-usuarios-responsive">
             <table class="tabla-grupos-usuarios-responsive">
-              <tr><td><b>Cargo:</b> <?= htmlspecialchars($row['cargo_usuario']) ?></td></tr>
-              <tr><td><b>Cédula:</b> <?= htmlspecialchars($row['ci_usuario']) ?></td></tr>
-              <tr><td><b>Teléfono:</b> <?= htmlspecialchars($row['telefono_usuario']) ?></td></tr>
-              <tr><td><b>Email:</b> <?= htmlspecialchars($row['gmail_usuario']) ?></td></tr>
+              <tr><td><b data-i18n="position">Cargo:</b> <?= htmlspecialchars($row['cargo_usuario']) ?></td></tr>
+              <tr><td><b data-i18n="idCard2">Cédula:</b> <?= htmlspecialchars($row['ci_usuario']) ?></td></tr>
+              <tr><td><b data-i18n="phone"p>Teléfono:</b> <?= htmlspecialchars($row['telefono_usuario']) ?></td></tr>
+              <tr><td><b data-i18n="email">Email:</b> <?= htmlspecialchars($row['gmail_usuario']) ?></td></tr>
               <tr class="editar">
                 <th class="grupos-usuarios-responsive">
                   <a class="editar btn" data-bs-toggle="modal" data-bs-target="#update_modal<?= $row['id_usuario'] ?>">
@@ -156,8 +156,8 @@ while ($row = mysqli_fetch_array($query)) {
         <table class="tabla-secretario">
           <thead>
             <tr>
-              <th>Nombre</th><th>Apellido</th><th>Email</th><th>Teléfono</th>
-              <th>Cédula</th><th>Cargo</th><th></th><th></th>
+              <th data-i18n="name">Nombre</th><th data-i18n="lastName">Apellido</th><th data-i18n="email">Email</th><th data-i18n="phone">Teléfono</th>
+              <th data-i18n="idCard2">Cédula</th><th data-i18n="position">Cargo</th><th></th><th></th>
             </tr>
           </thead>
           <tbody>
@@ -199,51 +199,51 @@ while ($row = mysqli_fetch_array($query)) {
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Editar Usuario</h5>
+              <h5 class="modal-title" data-i18n="editUser">Editar Usuario</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <form method="POST" action="./editar-usuario.php" id="editarUsuarioForm<?= $row['id_usuario'] ?>">
               <div class="modal-body">
                 <input type="hidden" name="id_usuario" value="<?= $row['id_usuario'] ?>">
                 <div class="mb-3">
-                  <label>Cédula de identidad</label>
+                  <label data-i18n="idCard">Cédula de identidad</label>
                   <input type="number" name="ci_usuario" class="form-control" value="<?= $row['ci_usuario'] ?>">
                 </div>
                 <div class="mb-3">
-                  <label>Nombre</label>
+                  <label data-i18n="name">Nombre</label>
                   <input type="text" name="nombre_usuario" class="form-control" value="<?= htmlspecialchars($old_edit['nombre_usuario'] ?? $row['nombre_usuario'] ?? '') ?>"
 >
                 </div>
                 <div class="mb-3">
-                  <label>Apellido</label>
+                  <label data-i18n="lastName">Apellido</label>
                   <input type="text" name="apellido_usuario" class="form-control" value="<?= htmlspecialchars($old_edit['apellido_usuario'] ?? $row['apellido_usuario'] ?? '') ?>">
                 </div>
                 <div class="mb-3">
-                  <label>Email</label>
+                  <label data-i18n="email">Email</label>
                   <input type="email" name="gmail_usuario" class="form-control" value="<?= htmlspecialchars($old_edit['gmail_usuario'] ?? $row['gmail_usuario'] ?? '') ?>">
                 </div>
                 <div class="mb-3">
-                  <label>Teléfono</label>
+                  <label data-i18n="phone">Teléfono</label>
                   <input type="number" name="telefono_usuario" class="form-control" value="<?= htmlspecialchars($old_edit['telefono_usuario'] ?? $row['telefono_usuario'] ?? '') ?>">
                 </div>
                 <div class="mb-3">
-                  <label>Cargo</label>
+                  <label data-i18n="position">Cargo</label>
                   <select name="cargo_usuario" class="form-select">
-                    <option value="">Seleccionar</option>
+                    <option value=""data-i18n="select">Seleccionar</option>
                     <option value="Docente" <?= (($old_edit['cargo_usuario'] ?? $row['cargo_usuario'] ?? '') === 'Docente') ? 'selected' : '' ?>>Docente</option>
                     <option value="Adscripto" <?= (($old_edit['cargo_usuario'] ?? $row['cargo_usuario'] ?? '') === 'Adscripto') ? 'selected' : '' ?>>Adscripto</option>
                     <option value="Secretario" <?= (($old_edit['cargo_usuario'] ?? $row['cargo_usuario'] ?? '') === 'Secretario') ? 'selected' : '' ?>>Secretario</option>
                   </select>
                 </div>
                 <div class="mb-3">
-                  <label>Contraseña</label>
+                  <label data-i18n="password">Contraseña</label>
                   <input type="password" name="contrasenia_usuario" class="form-control" value="">
-                  <small class="text-muted">Dejar en blanco si no se quiere cambiar la contraseña.</small>
+                  <small class="text-muted" data-i18n="leaveBlank">Dejar en blanco si no se quiere cambiar la contraseña.</small>
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="cancel">Cerrar</button>
+                <button type="submit" class="btn btn-primary" data-i18n="save">Guardar</button>
               </div>
             </form>
           </div>
@@ -256,46 +256,46 @@ while ($row = mysqli_fetch_array($query)) {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalUsuarioLabel">Agregar Usuario</h5>
+        <h5 class="modal-title" id="modalUsuarioLabel" data-i18n="addUser">Agregar Usuario</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
 
       <form action="./agregar-usuario.php" method="POST">
         <div class="modal-body">
           <div class="mb-3">
-            <label class="form-label">Cédula de identidad</label>
+            <label class="form-label" data-i18n="idCard">Cédula de identidad</label>
             <input type="text" name="ci_usuario" class="form-control" 
                    value="<?= htmlspecialchars($old['ci_usuario'] ?? '') ?>">
           </div>
 
           <div class="mb-3">
-            <label class="form-label">Nombre</label>
+            <label class="form-label" data-i18n="name">Nombre</label>
             <input type="text" name="nombre_usuario" class="form-control"
                    value="<?= htmlspecialchars($old['nombre_usuario'] ?? '') ?>">
           </div>
 
           <div class="mb-3">
-            <label class="form-label">Apellido</label>
+            <label class="form-label" data-i18n="lastName">Apellido</label>
             <input type="text" name="apellido_usuario" class="form-control"
                    value="<?= htmlspecialchars($old['apellido_usuario'] ?? '') ?>">
           </div>
 
           <div class="mb-3">
-            <label class="form-label">Email</label>
+            <label class="form-label" data-i18n="email">Email</label>
             <input type="email" name="gmail_usuario" class="form-control"
                    value="<?= htmlspecialchars($old['gmail_usuario'] ?? '') ?>">
           </div>
 
           <div class="mb-3">
-            <label class="form-label">Teléfono</label>
+            <label class="form-label" data-i18n="phone">Teléfono</label>
             <input type="text" name="telefono_usuario" class="form-control"
                    value="<?= htmlspecialchars($old['telefono_usuario'] ?? '') ?>">
           </div>
 
           <div class="mb-3">
-            <label class="form-label">Cargo</label>
+            <label class="form-label" data-i18n="position">Cargo</label>
             <select name="cargo_usuario" class="form-select">
-              <option value="">Seleccionar</option>
+              <option value="" data-i18n="select">Seleccionar</option>
               <option value="Secretario" <?= (isset($old['cargo_usuario']) && $old['cargo_usuario'] === 'Secretario') ? 'selected' : '' ?>>Secretario</option>
               <option value="Docente" <?= (isset($old['cargo_usuario']) && $old['cargo_usuario'] === 'Docente') ? 'selected' : '' ?>>Docente</option>
               <option value="Adscripto" <?= (isset($old['cargo_usuario']) && $old['cargo_usuario'] === 'Adscripto') ? 'selected' : '' ?>>Adscripto</option>
@@ -303,15 +303,15 @@ while ($row = mysqli_fetch_array($query)) {
           </div>
 
           <div class="mb-3">
-            <label class="form-label">Contraseña</label>
+            <label class="form-label" data-i18n="password">Contraseña</label>
             <input type="password" name="contrasenia_usuario" class="form-control"
                    value="<?= htmlspecialchars($old['contrasenia_usuario'] ?? '') ?>">
           </div>
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-success">Guardar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="cancel">Cerrar</button>
+          <button type="submit" class="btn btn-success" data-i18n="save">Guardar</button>
         </div>
       </form>
     </div>
