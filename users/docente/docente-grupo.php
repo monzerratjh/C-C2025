@@ -50,7 +50,96 @@ $grupos = $stmt2->get_result();
    <!-- CSS propio -->
     <link rel="stylesheet" href="./../../css/style.css">
 </head>
+<style>
+/* ESTO TIENE Q SER REVISADO Y DESPUES SE AGREGA AL CSS PRINCIPAL*/
 
+
+
+
+
+/* Tabla normal (pantallas grandes) */
+.tabla-docente {
+  width: 100%;
+  max-width: 800px;
+  border-collapse: collapse;
+  background-color: #fce8d2; /* color pastel similar al rol docente */
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 1rem;
+  display: table;
+}
+
+.tabla-docente th {
+  background-color: var(--color-docente);
+  color: #000;
+  font-weight: 600;
+}
+
+.tabla-docente th, .tabla-docente td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #f4d6b8;
+}
+
+/* Tabla responsive (para pantallas pequeñas) */
+.tabla-docente-responsive {
+  display: none;
+}
+
+/* Contenedor colapsable */
+.contenido-grupo {
+  display: none; /* Oculto al inicio */
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.contenido-grupo.activo {
+  display: block; /* Se muestra al hacer clic */
+  animation: fadeIn 0.4s ease;
+}
+
+/* Mostrar solo en pantallas ≤ 780px */
+@media (max-width: 780px) {
+  /* Ocultar tabla grande */
+  .tabla-docente {
+    display: none;
+  }
+
+  /* Mostrar versión “card” */
+  .tabla-docente-responsive {
+    display: block;
+    background-color: #fce8d2;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 15px;
+    margin-top: 10px;
+    font-size: 0.95rem;
+    width: 100%;
+  }
+
+  .tabla-docente-responsive tr {
+    background-color: #fce8d2;
+    border: 1px solid #f4d6b8;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 10px;
+    display: block;
+  }
+
+  .tabla-docente-responsive td {
+    display: block;
+    padding: 8px 0;
+    text-align: left;
+    color: #333;
+  }
+
+  .tabla-docente-responsive td b {
+    color: #000;
+    margin-right: 5px;
+  }
+}
+
+</style>
 <body>
 
   <!-- Menú hamburguesa para móviles -->
@@ -120,23 +209,44 @@ $grupos = $stmt2->get_result();
       <div>
         <h2 id="tituloGruposCargo" data-i18n="assignedGroups">Grupos a Cargo</h2>
       </div>
+      <br>       
+      <p>Selecciona un grupo para ver sus horarios.</p>
+
       <div class="caja-grupos-cargo">
         <div class="acordion">
           <?php if ($grupos->num_rows > 0): ?>
             <?php while ($g = $grupos->fetch_assoc()): ?>
-              <div class="mb-2">
-                <button class="boton-opciones docente">
-                  <?= htmlspecialchars($g['nombre_grupo']) ?> 
-                  <span class="text-muted small">(
-                    <?= htmlspecialchars($g['orientacion_grupo']) ?> - 
-                    <?= htmlspecialchars($g['turno_grupo']) ?>)
-                  </span>
-                </button>
-                <div class="dia"></div>
-              </div>
-            <?php endwhile; ?>
-          <?php else: ?>
-            <p class="text-muted">No tenés grupos asignados actualmente.</p>
+  <div class="dia">
+    <button class="boton-opciones docente" data-id="<?= $g['id_grupo'] ?>">
+      <?= htmlspecialchars($g['nombre_grupo']) ?>
+      <span class="capacidad-modal">(<?= htmlspecialchars($g['turno_grupo']) ?>)</span>
+    </button>
+
+    <!-- Contenedor oculto por defecto -->
+    <div class="contenido-grupo grupos-docente-responsive">
+      <table class="tabla-docente">
+        <thead>
+          <tr>
+            <th>Día</th>
+            <th>Asignatura</th>
+            <th>Hora Inicio</th>
+            <th>Hora Fin</th>
+            <th>Espacio</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <!-- Tabla responsive para móviles -->
+      <table class="tabla-docente-responsive">
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+<?php endwhile; ?>
+
+   <?php else: ?>
+            <p class="text-muted">No tienes grupos asignados actualmente.</p>
           <?php endif; ?>
         </div>
       </div>
@@ -151,5 +261,6 @@ $grupos = $stmt2->get_result();
  <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
   <script src="./../../utils/translate.js"></script>
 
+<script src="./js/grupo.js"></script>
 </body>
 </html>
