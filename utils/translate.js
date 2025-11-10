@@ -239,6 +239,8 @@ i18next.init({
         otherSpecify:"Otro (especificar).",
         nameAttribute:"Nombre del atributo",
         quantity:"Cantidad",
+        //
+        scheduleNotBeDelete:"No se puede eliminar el horario.",
 
 
 
@@ -485,7 +487,9 @@ i18next.init({
         otherSpecify:"Other (please specify)",
         nameAttribute:"Name of the attribute",
         quantity:"Quantity",
-
+        //
+        scheduleNotBeDelete:"The schedule cannot be deleted.",
+        
       
 
 
