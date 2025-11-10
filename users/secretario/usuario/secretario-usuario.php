@@ -156,7 +156,7 @@ while ($row = mysqli_fetch_array($query)) {
         <table class="tabla-secretario">
           <thead>
             <tr>
-              <th data-i18n="name">Nombre</th><th data-i18n="lastName">Apellido</th><th data-i18n="email">Email</th><th data-i18n="phone">Teléfono</th>
+              <th data-i18n="name">Nombre</th><th data-i18n="lastName">Apellido</th><th>Email</th><th data-i18n="phone">Teléfono</th>
               <th data-i18n="idCard2">Cédula</th><th data-i18n="position">Cargo</th><th></th><th></th>
             </tr>
           </thead>
@@ -219,7 +219,7 @@ while ($row = mysqli_fetch_array($query)) {
                   <input type="text" name="apellido_usuario" class="form-control" value="<?= htmlspecialchars($old_edit['apellido_usuario'] ?? $row['apellido_usuario'] ?? '') ?>">
                 </div>
                 <div class="mb-3">
-                  <label data-i18n="email">Email</label>
+                  <label>Email</label>
                   <input type="email" name="gmail_usuario" class="form-control" value="<?= htmlspecialchars($old_edit['gmail_usuario'] ?? $row['gmail_usuario'] ?? '') ?>">
                 </div>
                 <div class="mb-3">
@@ -238,7 +238,7 @@ while ($row = mysqli_fetch_array($query)) {
                 <div class="mb-3">
                   <label data-i18n="password">Contraseña</label>
                   <input type="password" name="contrasenia_usuario" class="form-control" value="">
-                  <small class="text-muted" data-i18n="leaveBlank" ><span>Dejar en blanco si no se quiere cambiar la contraseña.</span></small>
+                  <small class="text-muted"><span data-i18n="leaveBlank">Dejar en blanco si no se quiere cambiar la contraseña.</span></small>
                 </div>
               </div>
               <div class="modal-footer">
@@ -281,7 +281,7 @@ while ($row = mysqli_fetch_array($query)) {
           </div>
 
           <div class="mb-3">
-            <label class="form-label">Email</label>
+            <label>Email</label>
             <input type="email" name="gmail_usuario" class="form-control"
                    value="<?= htmlspecialchars($old['gmail_usuario'] ?? '') ?>">
           </div>
