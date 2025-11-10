@@ -41,19 +41,19 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!dia || !horario || !gada) {
       Swal.fire({
         icon: "error",
-        title: "Campos incompletos",
-        text: "Complete todos los campos antes de guardar.",
+        title: i18next.t('emptyFields'),
+        text: i18next.t('pleaseFillIn'),
         confirmButtonColor: "#198754",
       });
       return;
     }
 
     const result = await Swal.fire({
-      title: "¿Desea guardar los cambios?",
+      title: i18next.t('wantSaveChanges'),
       icon: "question",
       showCancelButton: true,
-      confirmButtonText: "Sí, guardar",
-      cancelButtonText: "Cancelar",
+      confirmButtonText: i18next.t('yesSave'),
+      cancelButtonText: i18next.t('cancel'),
       confirmButtonColor: "#198754",
     });
 
@@ -86,12 +86,12 @@ document.querySelectorAll(".eliminar-btn").forEach(btn => {
     const grupo = btn.dataset.grupo;
 
     Swal.fire({
-      title: "¿Eliminar este horario?",
-      text: "Esta acción no se puede deshacer.",
+      title: i18next.t('deleteSchedule'),
+      text: i18next.t('actionNotBeUndone'),
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: "Sí, eliminar",
-      cancelButtonText: "Cancelar",
+      confirmButtonText: i18next.t('yesDelete'),
+      cancelButtonText: i18next.t('cancel'),
       confirmButtonColor: "#dc3545",
     }).then(async result => {
       if (result.isConfirmed) {
@@ -107,7 +107,7 @@ document.querySelectorAll(".eliminar-btn").forEach(btn => {
             .then(()=> { if(data.type==='success') location.reload(); });
         } catch (err) {
           console.error(err);
-          Swal.fire({icon:'error', title:'Error', text:'No se pudo eliminar el horario.'});
+          Swal.fire({icon:'error', title:'Error', text: i18next.t('scheduleNotBeUndone')});
         }
       }
     });
