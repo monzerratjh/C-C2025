@@ -230,7 +230,7 @@ i18next.init({
         enterPassword:"Debe ingresar una contraseña",
         require1:"Debe contener al menos una MAYÚSCULA, una minúscula y un número",
         require2:"Debe tener entre 8 y 20 caracteres",
-        
+        email:"Gmail"
 
 
 
@@ -346,6 +346,7 @@ i18next.init({
         position:"Position",
         addUser:"Add user",
         editUser:"Edit user",
+        email:"Email",
         //
         close:"Close",
         courseManagement:"Course Management",
