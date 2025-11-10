@@ -115,17 +115,10 @@ $con->close();
       </div>
     </div>
 
-    <!-- Listado -->
-<style>
-  .cursor-pointer {
-  cursor: pointer;
-}
-
-</style>
     <?php while($esp = $espacios->fetch_assoc()): ?>
     <div class="col-6 mb-4">
       
-          <!-- Cuerpo clickeable -->
+        
     <div class="espacio-card cursor-pointer" data-id="<?= (int)$esp['id_espacio'] ?>">
         
       <div class="espacio-cuerpo"> </div>
@@ -155,7 +148,7 @@ $con->close();
     <div class="modal-content">
 
       <div class="modal-header">
-        <h5 id="modalTitulo" class="modal-title">Agregar espacio</h5>
+        <h5 id="modalTitulo" class="modal-title" data-i18n="addFacility">Agregar espacio</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
@@ -167,7 +160,7 @@ $con->close();
           <input type="hidden" id="tipo_espacio" name="tipo_espacio" value="<?= htmlspecialchars($tipoDetectado) ?>">
 
           <div class="mb-3">
-            <label for="nombre_espacio" class="form-label">Nombre del espacio</label>
+            <label for="nombre_espacio" class="form-label" data-i18n="nameFacility">Nombre del espacio</label>
             <input type="text" id="nombre_espacio" name="nombre_espacio" class="form-control" required>
           </div>
 
@@ -179,7 +172,7 @@ $con->close();
          
 
           <div class="mb-3">
-            <label for="historial_espacio" class="form-label">Historial / Observaciones</label>
+            <label for="historial_espacio" class="form-label" data-i18n="historyNotes">Historial / Observaciones</label>
             <textarea id="historial_espacio" name="historial_espacio" class="form-control" rows="3"></textarea>
           </div>
         </form>
@@ -211,9 +204,9 @@ $con->close();
       </div>
 
       <div class="modal-footer">
-        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button class="btn btn-primary" id="btnSiguiente">Siguiente</button>
-        <button class="btn btn-success d-none" id="btnGuardarAtributos">Guardar</button>
+        <button class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="cancel">Cancelar</button>
+        <button class="btn btn-primary" id="btnSiguiente" data-i18n="next">Siguiente</button>
+        <button class="btn btn-success d-none" id="btnGuardarAtributos" data-i18n="save">Guardar</button>
       </div>
 
     </div>

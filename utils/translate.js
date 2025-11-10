@@ -230,7 +230,11 @@ i18next.init({
         enterPassword:"Debe ingresar una contraseña",
         require1:"Debe contener al menos una MAYÚSCULA, una minúscula y un número",
         require2:"Debe tener entre 8 y 20 caracteres",
-        email:"Gmail"
+        //
+        addFacility:"Agregar espacio.",
+        nameFacility:"Nombre del espacio.",
+        editFacility:"Editar espacio.",
+        edit:"Editar",
 
 
 
@@ -468,6 +472,11 @@ i18next.init({
         enterPassword:"You must enter a password.",
         require1:"At least one uppercase letter, one lowercase letter, and one digit is required.",
         require2:"It must be between 8 and 20 characters long.",
+        addFacility:"Add facility.",
+        nameFacility:"Name of the facility.",
+        editFacility:"Edit facility.",
+        edit:"Edit",
+
       
 
 

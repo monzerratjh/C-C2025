@@ -145,7 +145,7 @@ $attrs = ['Mesas','Sillas','Proyector','Televisor','Aire Acondicionado','Computa
         <?php endif; ?>
 
         <div class="text-center mt-4">
-          <button type="button" id="btnEditar" class="btn btn-success px-4">Editar</button>
+          <button type="button" id="btnEditar" class="btn btn-success px-4" data-i18n="edit" >Editar</button>
           <button type="button" id="btnEliminar" class="btn btn-danger ms-3 px-4">Eliminar</button>
         </div>
 

@@ -1255,3 +1255,8 @@ h4{
     border-bottom: none; 
   }
 }
+
+
+.cursor-pointer {
+  cursor: pointer;
+}
