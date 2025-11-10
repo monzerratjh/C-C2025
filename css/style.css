@@ -1209,14 +1209,48 @@ h4{
   animation: fadeIn 0.4s ease;
 }
 
+  /* ===========================================
+    RESERVAS RESPONSIVE
+   =========================================== */
 
+/* Por defecto: oculto en pantallas grandes */
+#verReservasBtn {
+  display: none;
+}
+  .tabla-docente-responsive tbody {
+    display: none;
+  }
 
-/* Mostrar solo en pantallas ≤ 780px */
-@media (max-width: 780px) {
+  #reservasMovil{
+    display: none;
+  }
+
+@media (max-width: 1253px) {
+
   /* Ocultar tabla grande */
   .tabla-docente {
     display: none;
   }
+
+  #reservasMovil{
+    display: block;
+  }
+
+  #verReservasBtn {
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    background-color: var(--color-docente);
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
 
   .tabla-docente-responsive {
     display: block;

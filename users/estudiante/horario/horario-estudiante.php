@@ -28,9 +28,15 @@ $gada = mysqli_query($con, "
   JOIN docente d ON d.id_docente = gada.id_docente
   JOIN usuario u ON u.id_usuario = d.id_usuario
   WHERE gada.id_grupo = $id_grupo
-  ORDER BY a.nombre_asignatura
 ");
+// GADA 
+// G -> grupo
+// A -> asignatura 
+// D -> docente 
+// A -> aula = TABLA ESPACIO
 
+
+// AS renombra 
 // a.nombre_asignatura = asignatura.nomnbre_asignatura
 //  JOIN usuario u ON u.id_usuario = d.id_usuario -> une las tablas docente y usuario para obtener el nombre completo del docente
 
@@ -154,7 +160,7 @@ if ($enum_query) {
           <?php
             // Agrupar los horarios por día
             $horariosPorDia = [];
-            mysqli_data_seek($horarios_asignados, 0);
+            mysqli_data_seek($horarios_asignados, 0); // vuelve al inicio del resultado (indice 0)
             while ($h = mysqli_fetch_assoc($horarios_asignados)) {
               $horariosPorDia[$h['dia']][] = $h;
             }

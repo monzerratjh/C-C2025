@@ -27,7 +27,7 @@ if (!$id_usuario) {
 
 </head>
 
-<body>
+<body class="grupo-user-page">
 
   <!-- Menú móvil -->
   <nav class="d-md-none">
@@ -95,40 +95,56 @@ if (!$id_usuario) {
       <img src="./../../../img/logo.png" alt="Logo" class="logo"> 
 
       <div class="acordion">
-        <!-- Botón Ver reservas -->
-        <div>
-          <button class="boton-opciones docente mb-3" id="verReservasBtn" data-i18n="viewReservations">Ver reservas</button>
-
-          <div class="table-responsive">
-            <table class="table table-sm align-middle" id="tablaReservas">
-              <thead>
-                <tr>
-                  <th>Grupo</th>
-                  <th>Asignatura</th>
-                  <th>Espacio</th>
-                  <th>Día</th>
-                  <th>Fecha</th>
-                  <th>Hora inicio</th>
-                  <th>Hora fin</th>
-                  <th>Estado</th>
-                  <th>Acción</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
-          <div id="sinReservas" class="text-muted"></div>
-        </div>
-
         <!-- Botón Hacer reservas -->
         <div class="mt-4">
           <button class="boton-opciones docente sin-flecha" id="hacerReservaBtn" data-bs-toggle="modal" data-bs-target="#modalReserva">
             Hacer reserva
           </button>
         </div>
+
+
+<div>
+  <!-- Reservas: responsive -->
+      <button class="boton-opciones docente sin-flecha" id="verReservasBtn">
+        Ver mis reservas
+      </button>
+
+      <div class="tabla-docente-responsive " id="reservasResponsive">
+        <div class="dia" id="reservasMovil">
+          <!-- JS cards-->
+        </div>
+        <p id="sinReservasMovil" class="text-muted text-center mt-2"></p>
       </div>
+      </div>
+      <!-- Fin acorden -->
+      </div>
+
+      <!-- Tabla para pantallas grandes -->
+      <div class="table-responsive" id="reservasDesktop">
+        <table class="tabla-docente" id="tablaReservas">
+          <thead>
+            <tr>
+              <th>Grupo</th>
+              <th>Asignatura</th>
+              <th>Espacio</th>
+              <th>Día</th>
+              <th>Fecha</th>
+              <th>Hora inicio</th>
+              <th>Hora fin</th>
+              <th>Estado</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div id="sinReservasDesktop" class="text-muted"></div>
+      </div>
+
+
     </main>
   </div>
+
+
 
   <!-- Modal de Reserva -->
   <div class="modal fade" id="modalReserva" tabindex="-1" aria-hidden="true">
