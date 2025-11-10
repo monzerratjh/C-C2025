@@ -1137,7 +1137,7 @@ h4{
 
 
   .btn-cerrar-sesion-bajo {
-  margin-top: auto;               /* empuja hacia el fondo */
+  margin-top: auto; /* empuja hacia el fondo */
   display: flex;
   align-items: center;
   gap: 10px;
@@ -1158,4 +1158,100 @@ h4{
   display: flex;
   flex-direction: column;
   margin-top: 3rem;
+}
+
+/* Tabla normal (pantallas grandes) */
+.tabla-docente {
+  width: 100%;
+  max-width: 800px;
+  border-collapse: collapse;
+  background-color: #fce8d2; /* color pastel similar al rol docente */
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 1rem;
+  display: table;
+}
+
+.tabla-docente th {
+  background-color: var(--color-docente);
+  color: #000;
+  font-weight: 600;
+}
+
+.tabla-docente th, .tabla-docente td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #f4d6b8;
+}
+
+.tabla-docente tbody tr:nth-child(even) {
+  background: #f4d6b8;
+}
+
+/* Tabla responsive (para pantallas pequeñas) */
+.tabla-docente-responsive {
+  display: none;
+}
+
+.tabla-docente-responsive tbody tr:nth-child(even) {
+  background: #f4d6b8;
+}
+
+/* Contenedor colapsable */
+.contenido-grupo {
+  display: none; /* Oculto al inicio */
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.contenido-grupo.activo {
+  display: block; /* Se muestra al hacer clic */
+  animation: fadeIn 0.4s ease;
+}
+
+
+
+/* Mostrar solo en pantallas ≤ 780px */
+@media (max-width: 780px) {
+  /* Ocultar tabla grande */
+  .tabla-docente {
+    display: none;
+  }
+
+  .tabla-docente-responsive {
+    display: block;
+    background-color: transparent;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-size: 0.95rem;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .tabla-docente-responsive tbody {
+    display: block;  /*<tr> se comporten como flex */
+    width: 100%;
+  }
+
+  .tabla-docente-responsive tr {
+    display: flex;
+    flex-direction: column;  
+    width: 100%;
+    background-color: #fce8d2;
+    border: 1px solid #f4d6b8;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+
+  .tabla-docente-responsive td {
+    width: 100%;
+    padding: 8px 0;
+    text-align: left;
+    border-bottom: 1px solid #f4d6b8;
+  }
+
+  .tabla-docente-responsive td:last-child {
+    border-bottom: none; 
+  }
 }
