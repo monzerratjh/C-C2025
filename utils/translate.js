@@ -235,6 +235,11 @@ i18next.init({
         nameFacility:"Nombre del espacio.",
         editFacility:"Editar espacio.",
         edit:"Editar",
+        attributesFacility:"Atributos del espacio",
+        otherSpecify:"Otro (especificar).",
+        nameAttribute:"Nombre del atributo",
+        quantity:"Cantidad",
+
 
 
 
@@ -476,6 +481,10 @@ i18next.init({
         nameFacility:"Name of the facility.",
         editFacility:"Edit facility.",
         edit:"Edit",
+        attributesFacility:"Attributes of the facility",
+        otherSpecify:"Other (please specify)",
+        nameAttribute:"Name of the attribute",
+        quantity:"Quantity",
 
       
 

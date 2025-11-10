@@ -179,7 +179,7 @@ $con->close();
 
         <!-- PASO 2 -->
         <form id="formPaso2" class="d-none">
-          <h6 class="text-center mb-3">Atributos del espacio</h6>
+          <h6 class="text-center mb-3" data-i18n="attributesFacility">Atributos del espacio</h6>
           <input type="hidden" id="id_espacio_attr" name="id_espacio">
 
           <?php foreach (['Mesas','Sillas','Proyector','Televisor','Aire_Acondicionado','Computadora_de_escritorio','Enchufes','Ventilador'] as $attr): ?>
@@ -192,11 +192,11 @@ $con->close();
 
           <!-- Campo "Otro" -->
           <div class="row align-items-center mb-2">
-            <div class="col-4 text-end">Otro (especificar)</div>
+            <div class="col-4 text-end" data-i18n="otherSpecify">Otro (especificar)</div>
             <div class="col-4"><input type="checkbox" class="form-check-input toggleCantidad" data-target="otro_personalizado"></div>
             <div class="col-4">
-              <input type="text" name="otro_descripcion" id="otro_descripcion" class="form-control form-control-sm mb-1" placeholder="Nombre del atributo" disabled>
-              <input type="number" name="otro_cantidad" id="otro_personalizado" class="form-control form-control-sm bg-light border-0" placeholder="Cantidad" disabled>
+              <input type="text" name="otro_descripcion" id="otro_descripcion" class="form-control form-control-sm mb-1" data-i18n-placeholder="nameAttribute" disabled>
+              <input type="number" name="otro_cantidad" id="otro_personalizado" class="form-control form-control-sm bg-light border-0" data-i18n-placeholder="quantity" disabled>
             </div>
           </div>
         </form>
