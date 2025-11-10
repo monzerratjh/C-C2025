@@ -7,8 +7,9 @@ $sqlGrupos = "SELECT id_grupo, nombre_grupo FROM grupo";
 $resultGrupos = mysqli_query($conn, $sqlGrupos);
 $grupos = [];
 
+    // fila           // array asociativo
 while ($row = mysqli_fetch_assoc($resultGrupos)) {
-    $grupos[] = $row; // cada $row tiene ['id_grupo', 'nombre_grupo']
+    $grupos[] = $row; // cada *FILA tiene ['id_grupo', 'nombre_grupo']
 }
 ?>
 <!DOCTYPE html>

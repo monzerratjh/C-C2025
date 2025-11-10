@@ -9,7 +9,7 @@ document.getElementById('grupoInput').addEventListener('change', function() {
 
   let idGrupoSeleccionado = null;
 
-  // bsuca el ID_GRUPO correspondiente al valor ingresado
+  // busca el ID_GRUPO correspondiente al valor ingresado
   for (let i = 0; i < options.length; i++) {
     if (options[i].value === inputValue) {
       idGrupoSeleccionado = options[i].dataset.id;
