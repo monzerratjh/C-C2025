@@ -421,7 +421,7 @@ i18next.init({
         yesDelete:"Yes, delete",
         actionNotBeUndone:"This action cannot be undone.",
         //
-        leaveBlank:"Dejar en blanco si no se quiere cambiar la contraseña.",
+        leaveBlank:"Leave blank if you do not wish to change the password.",
         userCreatedSuccessfully:"Creación de Usuario Exitosa",
         successfulInsertion:"Successful Insertion!",
         deletionSuccesfull:"Deletion Successful!",
