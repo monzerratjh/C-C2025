@@ -20,9 +20,9 @@ include('./../../conexion.php');
 <body>
 
   <!-- Menú hamburguesa para móviles -->
-  <nav class="d-md-none">
+  <nav class="d-md-none"> <!-- Oculta el nav en pantallas medianas hacia arriba -->
     <div class="container-fluid">
-      <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
+      <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral"><!-- Se abre el menu tipo offcanvas (panel lateral) -->
         <img class="menuResponsive" src="./../../img/menu.png" alt="menu">
       </button>
       <img class="logoResponsive" src="./../../img/logo.png" alt="logoResponsive">
@@ -30,7 +30,7 @@ include('./../../conexion.php');
   </nav>
 
   <!-- Menú lateral (para celulares/tablets) -->
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral"> <!-- off-canvas-start hace qeu el menu se abra desde la izquierda y -1 hace que el menu sea enfocable-->
     <div class="offcanvas-header">
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
@@ -83,14 +83,14 @@ include('./../../conexion.php');
         </div>
 
         <form id="form-login" class="formulario" action="/utils/log-in.php" method="POST"> 
-          <div class="input-group mb-3">
-            <span class="input-group-text"><i class="bi bi-person"></i></span>
+          <div class="input-group mb-3"> <!-- Agrupa el ícono y el input juntos. y mb-3 margen inferior-->
+            <span class="input-group-text"><i class="bi bi-person"></i></span> <!-- Estilo para el span que contiene el ícono. -->
             <input data-i18n-placeholder="idCard" type="text" class="form-control" placeholder="Cédula de Identidad"
             name="cedula" id="cedula" required>
           </div>
 
-          <div class="input-group mb-3">
-            <span class="input-group-text"><i class="bi bi-lock"></i></span>
+          <div class="input-group mb-3"> <!-- Agrupa el ícono y el input juntos. y mb-3 margen inferior-->
+            <span class="input-group-text"><i class="bi bi-lock"></i></span> <!-- Estilo para el span que contiene el ícono. -->
             <input data-i18n-placeholder="password" type="password" class="form-control" placeholder="Contraseña"
             name="password" id="password" required>
           </div>

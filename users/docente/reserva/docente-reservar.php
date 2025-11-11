@@ -30,9 +30,9 @@ if (!$id_usuario) {
 <body class="grupo-user-page">
 
   <!-- Menú móvil -->
-  <nav class="d-md-none">
+  <nav class="d-md-none"> <!-- Oculta el nav en pantallas medianas hacia arriba -->
     <div class="container-fluid">
-      <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
+      <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral"> <!-- Se abre el menu tipo offcanvas (panel lateral) -->
         <img class="menuResponsive" src="./../../../img/menu.png" alt="menu">
       </button>
       <img class="logoResponsive" src="./../../../img/logo.png" alt="logoResponsive">
@@ -40,7 +40,7 @@ if (!$id_usuario) {
   </nav>
 
   <!-- Menú lateral -->
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">  <!-- off-canvas-start hace qeu el menu se abra desde la izquierda y -1 hace que el menu sea enfocable-->
     <div class="offcanvas-header">
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
@@ -103,7 +103,7 @@ if (!$id_usuario) {
 
       <div class="acordion">
         <!-- Botón Hacer reservas -->
-        <div class="mt-4">
+        <div class="mt-4"> <!-- Da margen arriba-->
           <button class="boton-opciones docente sin-flecha" id="hacerReservaBtn" data-bs-toggle="modal" data-bs-target="#modalReserva" data-i18n="makeReservations">
             Hacer reservas  
           </button>
@@ -154,8 +154,8 @@ if (!$id_usuario) {
 
 
   <!-- Modal de Reserva -->
-  <div class="modal fade" id="modalReserva" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+  <div class="modal fade" id="modalReserva" tabindex="-1" aria-hidden="true"> <!-- Activa la funcionalidad de modal. / Agrega animación de aparición/desaparición.-->
+    <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- centra el modal y le da el tamaño -->
       <div class="modal-content">
         <div class="modal-header docente">
           <h5 class="modal-title" data-i18n="newReservation" data-i18n="newReservation" >Nueva Reserva</h5>
@@ -163,7 +163,7 @@ if (!$id_usuario) {
         </div>
         <div class="modal-body">
           <form id="formReserva">
-            <div class="mb-3">
+            <div class="mb-3"> <!-- Margen inferior -->
               <label class="form-label" data-i18n="groupAndSubject">Grupo y asignatura</label>
               <select class="form-select" id="id_gada" name="id_grupo" required>
                 <option value="">Cargando...</option>
@@ -178,8 +178,8 @@ if (!$id_usuario) {
             <div class="mb-3">
               <label for="cantidad_horas" class="form-label" data-i18n="howManyHours">¿Cuántas horas desea reservar?</label>
               <input type="number" id="cantidad_horas" name="cantidad_horas" class="form-control" min="1" disabled>
-              <p id="msgHoras" class="text-muted small mt-1" data-i18n="selectGroupDate">
-                Seleccione primero un grupo y una fecha donde tenga clase.
+              <p id="msgHoras" class="text-muted small mt-1" data-i18n="selectGroupDate"> <!-- Texto aclaratorio pequeño y gris. -->
+                Seleccione primero un grupo y una fecha donde tenga clase. 
               </p>
             </div>
 
