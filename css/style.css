@@ -248,6 +248,11 @@ a{
     position: relative;
     top: 4rem;
     }
+    #tituloReservas{
+      font-weight: 700;
+    position: relative;
+    top: 4rem;
+    }
 
     .principal p{
       display: flex;

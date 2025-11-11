@@ -248,8 +248,18 @@ i18next.init({
         //
         enterGroupName:"Ingrese el nombre del espacio.",
         delteFacility:"¿Eliminar espacio?",
-
-
+        delete:"Eliminar",
+        selectGroupViewSchedule:"Selecciona un grupo para ver sus horarios.",
+        anyGroupAssigned:"No tienes grupos asignados actualmente.",
+        pReserveFacility:"Realiza reservas de espacios y consulta el estado de tus solicitudes actuales.",
+        //
+        send:"Enviar",
+        groupAndSubject:"Grupo y asignatura",
+        reservationDate:"Fecha de reserva",
+        howManyHours:"¿Cuántas horas desea reservar?",
+        selectGroupDate:"Seleccione primero un grupo y una fecha donde tenga clase.",
+        observation:"Observación (opcional)",
+        selectDateSchedule:"Seleccione fecha y horarios primero",
 
 
 
@@ -502,9 +512,18 @@ i18next.init({
         action:"Action",
       //
       enterFacilityName:"Enter the facility name.",
-      deleteFacility:"Delete facility?"
-
-
+      deleteFacility:"Delete facility?",
+      delete:"Delete",
+      selectGroupViewSchedule:"Select a group to view its schedules.",
+      anyGroupAssigned:"You don’t have any groups assigned at the moment.",
+      pReserveFacility:"Make classroom reservations and check the status of your current requests.",
+      send:"Send",
+      groupAndSubject:"Group and subject",
+      reservationDate:"Reservation date",
+      howManyHours:"How many hours would you like to reserve?",
+      selectGroupDate:"Select a group and a date where you have a class first.",
+      observation:"Observation (optional)",
+      selectDateSchedule:"Select date and schedules first.",
 
 
 
