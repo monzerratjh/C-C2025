@@ -45,7 +45,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const validar = () => {
       const nombre = document.getElementById('nombre_espacio').value.trim();
       const cap = parseInt(document.getElementById('capacidad_espacio').value, 10);
-      if (!nombre) return Swal.fire('Error', 'Ingrese nombre.', 'error'), false;
+
+
+       if (!nombre) {
+        Swal.fire({ 
+            icon: 'error', 
+            title: 'Error', 
+            text: i18next.t('enterFacilityName') });
+        return false;}
+
       if (isNaN(cap) || cap < 1 || cap > 100)
         return Swal.fire('Error', 'Capacidad debe ser entre 1 y 100.', 'error'), false;
       return true;
@@ -150,12 +158,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const id = btn.dataset.id;
 
       Swal.fire({
-        title: '¿Eliminar espacio?',
-        text: 'Esta acción no se puede deshacer.',
+        title: i18next.t('deleteFacility'),
+        text: i18next.t('actionNotBeUndone'),
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Sí, eliminar',
-        cancelButtonText: 'Cancelar'
+        confirmButtonText: i18next.t('yesDelete'),
+        cancelButtonText: i18next.t('cancel')
       }).then(res => {
         if (!res.isConfirmed) return;
         const fd = new FormData();
@@ -200,12 +208,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('btnEliminar')?.addEventListener('click', () => {
       Swal.fire({
-        title: '¿Eliminar espacio?',
-        text: 'Esta acción no se puede deshacer.',
+        title: i18next.t('deleteFacility'),
+        text: i18next.t('actionNotBeUndone'),
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Sí, eliminar',
-        cancelButtonText: 'Cancelar'
+        confirmButtonText: i18next.t('yesDelete'),
+        cancelButtonText: i18next.t('cancel')
       }).then(res => {
         if (!res.isConfirmed) return;
         const fd = new FormData();

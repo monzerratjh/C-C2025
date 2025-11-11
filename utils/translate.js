@@ -199,6 +199,7 @@ i18next.init({
         shift:"Turno",
         numberOfStudents:"Número de estudiantes",
         emptyFields:"Campos vacíos",
+        userCreatedSuccessfully:"Creación de Usuario Exitosa",
         //
         pleaseFillIn:"Por favor complete todos los campos.",
         IDMustContain8Digits:"Debe tener 8 dígitos.",
@@ -244,6 +245,11 @@ i18next.init({
         onlyDay:"Dia",
         state:"Estado",
         action:"Accion",
+        //
+        enterGroupName:"Ingrese el nombre del espacio.",
+        delteFacility:"¿Eliminar espacio?",
+
+
 
 
 
@@ -435,7 +441,7 @@ i18next.init({
         actionNotBeUndone:"This action cannot be undone.",
         //
         leaveBlank:"Leave blank if you do not wish to change the password.",
-        userCreatedSuccessfully:"Creación de Usuario Exitosa",
+        userCreatedSuccessfully: "User Created Successfully",
         successfulInsertion:"Successful Insertion!",
         deletionSuccesfull:"Deletion Successful!",
         editSuccessfull:"Edit Successful!",
@@ -494,7 +500,9 @@ i18next.init({
         onlyDay:"Day",
         state:"State",
         action:"Action",
-      
+      //
+      enterFacilityName:"Enter the facility name.",
+      deleteFacility:"Delete facility?"
 
 
 
