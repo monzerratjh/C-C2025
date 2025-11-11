@@ -8,6 +8,13 @@ function obtenerDiaSemana(fechaStr) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  const modalReserva = document.getElementById("modalReserva");
+  if (modalReserva) {
+    modalReserva.addEventListener("hidden.bs.modal", () => {
+      location.reload();
+    });
+  }
+  
   cargarGrupos();
   listarReservas();
 
