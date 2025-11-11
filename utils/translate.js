@@ -241,7 +241,9 @@ i18next.init({
         quantity:"Cantidad",
         //
         scheduleNotBeDelete:"No se puede eliminar el horario.",
-
+        onlyDay:"Dia",
+        state:"Estado",
+        action:"Accion",
 
 
 
@@ -489,7 +491,9 @@ i18next.init({
         quantity:"Quantity",
         //
         scheduleNotBeDelete:"The schedule cannot be deleted.",
-        
+        onlyDay:"Day",
+        state:"State",
+        action:"Action",
       
 
 
