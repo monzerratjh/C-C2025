@@ -81,15 +81,15 @@ include('../../conexion.php');
     <main class="principal"> 
       <img src="./../../../img/logo.png" alt="Logo" class="logo">
 
-  <div class="loader"></div>
+  <div class="loader"></div> <!-- llama la clase del circulo con animacion -->
+
   <h1 data-i18n="underMaintenance" >Estamos en mantenimiento</h1>
   <p data-i18n="backSoon" >Volveremos pronto con algo mejor ✨</p>
 
-      </main>
+    </main>
 
 
-  </div> <!-- termina contenedor -->
-
+  </div> 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
