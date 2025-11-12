@@ -11,8 +11,6 @@ elseif (strpos($file, 'salon') !== false) $tipoDetectado = 'Salón';
 
 // Traer espacios de ese tipo
 $espacios = $con->query("SELECT * FROM espacio WHERE tipo_espacio = '$tipoDetectado' ORDER BY nombre_espacio");
-
-$con->close();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -47,34 +45,32 @@ $con->close();
     </div>
     <div class="offcanvas-body d-flex flex-column">
       <div class="banner-parte-superior">
-      <a href="adscripto-espacio.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i><span data-i18n="goBack">Volver</span></a>
-      <i class="bi bi-translate traductor-menu"></i>
+        <a href="adscripto-espacio.php" class="mb-3"><i class="bi bi-arrow-left-circle-fill me-2"></i><span data-i18n="goBack">Volver</span></a>
+          <i class="bi bi-translate traductor-menu"></i>
       </div>
 
       <a href="adscripto-espacio.php" class="fw-semibold seleccionado mb-2" data-i18n="facility">Espacio</a>
       <a href="./../reserva/reserva-adscripto.php" class="nav-opciones mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
       <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2" data-i18n="courseManagement">Gestión de cursos</a>
-     
     
       <!-- BOTÓN CERRAR SESIÓN -->
-   <a href="#" class="btn-cerrar-sesion-bajo btn-cerrar-sesion mb-3">
-    <i class="bi bi-box-arrow-right me-2"></i>
-    <span data-i18n="sessionClose">Cerrar sesión</span>
-  </a>
-    
+      <a href="#" class="btn-cerrar-sesion-bajo btn-cerrar-sesion mb-3">
+        <i class="bi bi-box-arrow-right me-2"></i>
+        <span data-i18n="sessionClose">Cerrar sesión</span>
+      </a>
     </div>
   </div>
 
- <!-- Contenedor general con GRID -->
+  <!-- Contenedor general -->
 <div class="contenedor">
 
   <!-- Banner pantallas grandes -->
-  <div class="barra-lateral d-none d-md-flex">
-    <div class="volverGeneral">
-      <div class="volver">
-        <a href="adscripto-espacio.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
-        <a href="adscripto-espacio.php" data-i18n="goBack">Volver</a>
+  <aside class="barra-lateral d-none d-md-flex flex-column">
+      <div class="volverGeneral">
+        <div class="volver">
+        <a href="./adscripto-espacio.php"><i class="bi bi-arrow-left-circle-fill icono-volver"></i></a>
+        <a href="./adscripto-espacio.php" data-i18n="goBack">Volver</a>
       </div>
       <i class="bi bi-translate traductor-menu"></i>
     </div>
@@ -86,12 +82,11 @@ $con->close();
   
   
       <!-- BOTÓN CERRAR SESIÓN -->
-   <a href="#" class="btn-cerrar-sesion-bajo btn-cerrar-sesion mb-3">
-    <i class="bi bi-box-arrow-right me-2"></i>
-    <span data-i18n="sessionClose">Cerrar sesión</span>
-  </a>
-  
-    </div>
+      <a href="#" class="btn-cerrar-sesion-bajo btn-cerrar-sesion mb-3">
+        <i class="bi bi-box-arrow-right me-2"></i>
+        <span data-i18n="sessionClose">Cerrar sesión</span>
+      </a>
+    </aside>
 
   <!-- Contenido principal -->
   <main class="principal">
@@ -116,9 +111,26 @@ $con->close();
     <div class="col-6 mb-4">
       
     <!-- Muestra la tarjetas con los diversos atributos del espacio el cual los trae desde el array $espacios -->    
-    <div class="espacio-card cursor-pointer" data-id="<?= (int)$esp['id_espacio'] ?>">
-        
-      <div class="espacio-cuerpo"> </div>
+    <div class="espacio-card cursor-pointer">
+      <div class="espacio-cuerpo d-flex justify-content-center align-items-center" data-id="<?= (int)$esp['id_espacio'] ?>">
+
+        <?php if (!empty($esp['id_imagen'])): ?>
+          <?php
+            // Buscar la imagen asociada
+            $imgRes = $con->query("SELECT nombre FROM imagenes WHERE id_imagen = " . (int)$esp['id_imagen']);
+            $imgRow = $imgRes ? $imgRes->fetch_assoc() : null;
+            if ($imgRow && file_exists(__DIR__ . '/../../../uploads/' . $imgRow['nombre'])):
+              $ruta = './../../../uploads/' . htmlspecialchars($imgRow['nombre']);
+          ?>
+              <img src="<?= $ruta ?>" alt="Imagen del espacio" style="max-width:100%; max-height:180px; object-fit:cover;">
+          <?php else: ?>
+              <span class="text-muted">Sin imagen</span>
+          <?php endif; ?>
+        <?php else: ?>
+          <span class="text-muted">Sin imagen</span>
+        <?php endif; ?>
+      </div>
+
 
         <div class="espacio-footer d-flex justify-content-between align-items-center">
           <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#modalEspacio"
@@ -166,12 +178,17 @@ $con->close();
             <label for="capacidad_espacio"> <span data-i18n="capacity">Capacidad</span> <span class="capacidad-modal">(Máx. de alumnos)</span></label>
             <input type="number" id="capacidad_espacio" name="capacidad_espacio" class="form-control" min="1" max="100" required>
           </div>
-         
 
           <div class="mb-3">
             <label for="historial_espacio" class="form-label" data-i18n="historyNotes">Historial / Observaciones</label>
             <textarea id="historial_espacio" name="historial_espacio" class="form-control" rows="3"></textarea>
           </div>
+
+          <div class="mb-3">
+            <label for="imagen_espacio" class="form-label">Imagen del espacio (opcional)</label>
+            <input type="file" id="imagen_espacio" name="imagen_espacio" class="form-control" accept="image/*"> <!-- acepta imagenes de cualquier terminacion-->
+          </div>
+
         </form>
 
         <!-- PASO 2: atributos del espacio -->

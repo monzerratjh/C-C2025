@@ -60,9 +60,29 @@ try {
     if ($cap < 1 || $cap > 100) json_err("Capacidad inválida (1-100).");
     if (!in_array($tipo, $tipos)) json_err("Tipo de espacio inválido.");
 
-    $q = $con->prepare("INSERT INTO espacio (nombre_espacio, capacidad_espacio, historial_espacio, tipo_espacio)
-                        VALUES (?,?,?,?)");
-    $q->bind_param("siss", $nombre, $cap, $hist, $tipo);
+    // --- Imagen (opcional) ---
+    $id_imagen = null;
+    if (isset($_FILES['imagen_espacio']) && $_FILES['imagen_espacio']['error'] === UPLOAD_ERR_OK) {
+      $nombreOriginal = $_FILES['imagen_espacio']['name'];
+      $tmp = $_FILES['imagen_espacio']['tmp_name'];
+      $ext = pathinfo($nombreOriginal, PATHINFO_EXTENSION);
+      $nombreUnico = uniqid() . '.' . $ext;
+      $destino = __DIR__ . '/../../../uploads/' . $nombreUnico;
+
+      if (!file_exists(dirname($destino))) mkdir(dirname($destino), 0777, true);
+
+      if (move_uploaded_file($tmp, $destino)) {
+        $stmt = $con->prepare("INSERT INTO imagenes (nombre) VALUES (?)");
+        $stmt->bind_param("s", $nombreUnico);
+        $stmt->execute();
+        $id_imagen = $stmt->insert_id;
+      }
+    }
+
+    // Crear el espacio
+    $q = $con->prepare("INSERT INTO espacio (nombre_espacio, capacidad_espacio, historial_espacio, tipo_espacio, id_imagen)
+                        VALUES (?,?,?,?,?)");
+    $q->bind_param("sissi", $nombre, $cap, $hist, $tipo, $id_imagen);
     if (!$q->execute()) json_err("Error al crear espacio: ".$con->error);
     json_ok("Espacio creado.", ["id_espacio" => $q->insert_id]);
   }
@@ -77,7 +97,6 @@ try {
     $ch->execute(); $ch->bind_result($existe); $ch->fetch(); $ch->close();
     if (!$existe) json_err("El espacio especificado no existe.");
 
-    // Recibir atributos (incluye nuevos + Otro)
     $map = [
       'Mesas' => (int)($_POST['mesas'] ?? 0),
       'Sillas' => (int)($_POST['sillas'] ?? 0),
@@ -89,37 +108,36 @@ try {
       'Ventilador' => (int)($_POST['ventilador'] ?? 0)
     ];
 
-// Limpiar anteriores
-$del = $con->prepare("DELETE FROM espacio_atributo WHERE id_espacio = ?");
-$del->bind_param("i", $id);
-$del->execute();
-$del->close();
+    // Limpiar anteriores
+    $del = $con->prepare("DELETE FROM espacio_atributo WHERE id_espacio = ?");
+    $del->bind_param("i", $id);
+    $del->execute();
+    $del->close();
 
-// Insertar nuevos atributos
-$ins = $con->prepare("INSERT INTO espacio_atributo (id_espacio, nombre_atributo, cantidad_atributo, descripcion_otro)
-                      VALUES (?, ?, ?, NULL)");
+    // Insertar nuevos
+    $ins = $con->prepare("INSERT INTO espacio_atributo (id_espacio, nombre_atributo, cantidad_atributo, descripcion_otro)
+                          VALUES (?, ?, ?, NULL)");
 
-foreach ($map as $nombre => $cantidad) {
-  if ($cantidad > 0) {
-    $ins->bind_param("isi", $id, $nombre, $cantidad);
-    $ins->execute();
-  }
-}
-$ins->close();
+    foreach ($map as $nombre => $cantidad) {
+      if ($cantidad > 0) {
+        $ins->bind_param("isi", $id, $nombre, $cantidad);
+        $ins->execute();
+      }
+    }
+    $ins->close();
 
-// Guardar campo "Otro"
-if (!empty($_POST['otro_descripcion']) && (int)$_POST['otro_cantidad'] > 0) {
-  $desc = trim($_POST['otro_descripcion']);
-  $cant = (int)$_POST['otro_cantidad'];
-  $stmt = $con->prepare("INSERT INTO espacio_atributo (id_espacio, nombre_atributo, cantidad_atributo, descripcion_otro)
-                         VALUES (?, 'Otro', ?, ?)");
-  $stmt->bind_param("iis", $id, $cant, $desc);
-  $stmt->execute();
-  $stmt->close();
-}
+    // Guardar campo "Otro"
+    if (!empty($_POST['otro_descripcion']) && (int)$_POST['otro_cantidad'] > 0) {
+      $desc = trim($_POST['otro_descripcion']);
+      $cant = (int)$_POST['otro_cantidad'];
+      $stmt = $con->prepare("INSERT INTO espacio_atributo (id_espacio, nombre_atributo, cantidad_atributo, descripcion_otro)
+                             VALUES (?, 'Otro', ?, ?)");
+      $stmt->bind_param("iis", $id, $cant, $desc);
+      $stmt->execute();
+      $stmt->close();
+    }
 
-json_ok("Atributos guardados correctamente.");
-
+    json_ok("Atributos guardados correctamente.");
   }
 
   // ================== EDITAR ==================
@@ -136,13 +154,36 @@ json_ok("Atributos guardados correctamente.");
     if ($cap < 1 || $cap > 100) json_err("Capacidad inválida (1-100).");
     if (!in_array($tipo, $tipos)) json_err("Tipo de espacio inválido.");
 
-    $sql = "UPDATE espacio 
-            SET nombre_espacio=?, capacidad_espacio=?, historial_espacio=?, tipo_espacio=?
-            WHERE id_espacio=?";
-    $q = $con->prepare($sql);
-    $q->bind_param("sissi", $nombre, $cap, $hist, $tipo, $id);
-    if (!$q->execute()) json_err("Error al actualizar: ".$q->error);
+    // --- Imagen (si se sube una nueva) ---
+    $id_imagen = null;
+    if (isset($_FILES['imagen_espacio']) && $_FILES['imagen_espacio']['error'] === UPLOAD_ERR_OK) {
+      $nombreOriginal = $_FILES['imagen_espacio']['name'];
+      $tmp = $_FILES['imagen_espacio']['tmp_name'];
+      $ext = pathinfo($nombreOriginal, PATHINFO_EXTENSION);
+      $nombreUnico = uniqid() . '.' . $ext;
+      $destino = __DIR__ . '/../../../uploads/' . $nombreUnico;
 
+      if (!file_exists(dirname($destino))) mkdir(dirname($destino), 0777, true);
+
+      if (move_uploaded_file($tmp, $destino)) {
+        $stmt = $con->prepare("INSERT INTO imagenes (nombre) VALUES (?)");
+        $stmt->bind_param("s", $nombreUnico);
+        $stmt->execute();
+        $id_imagen = $stmt->insert_id;
+      }
+    }
+
+    if ($id_imagen) {
+      $sql = "UPDATE espacio SET nombre_espacio=?, capacidad_espacio=?, historial_espacio=?, tipo_espacio=?, id_imagen=? WHERE id_espacio=?";
+      $q = $con->prepare($sql);
+      $q->bind_param("sissii", $nombre, $cap, $hist, $tipo, $id_imagen, $id);
+    } else {
+      $sql = "UPDATE espacio SET nombre_espacio=?, capacidad_espacio=?, historial_espacio=?, tipo_espacio=? WHERE id_espacio=?";
+      $q = $con->prepare($sql);
+      $q->bind_param("sissi", $nombre, $cap, $hist, $tipo, $id);
+    }
+
+    if (!$q->execute()) json_err("Error al actualizar: ".$q->error);
     json_ok("Espacio actualizado correctamente.");
   }
 
