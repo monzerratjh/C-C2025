@@ -37,11 +37,8 @@ $gada = mysqli_query($con, "
 
 
 // AS renombra 
-// a.nombre_asignatura = asignatura.nomnbre_asignatura
+// a.nombre_asignatura = asignatura.nombre_asignatura
 //  JOIN usuario u ON u.id_usuario = d.id_usuario -> une las tablas docente y usuario para obtener el nombre completo del docente
-
-
-// --
 
 
 // Horarios asignados actuales
@@ -73,15 +70,18 @@ $horarios_asignados = mysqli_query($con, "
 
 // Obtener ENUM de días
 $enum_dias = [];
-$enum_query = mysqli_query($con, "SHOW COLUMNS FROM horario_asignado LIKE 'dia'");
-if ($enum_query) {
-  $row = mysqli_fetch_assoc($enum_query);
+$enum_query = mysqli_query($con, "SHOW COLUMNS FROM horario_asignado LIKE 'dia'"); //muestra los datos de la columna dia
+if ($enum_query) { //si es verdadera
+  $row = mysqli_fetch_assoc($enum_query); //lo lee y lo convierte en array asociativo
   preg_match("/^enum\((.*)\)$/", $row['Type'], $matches); //extraer lo que hay dentro de los paréntesis del ENUM.
   // del enum('Lunes','Martes'...) extrae y guarda en $matches 'Lunes','Martes',...
   $enum_dias = array_map(fn($v) => trim($v, "'"), explode(',', $matches[1])); 
-  // explode(',', $matches[1]) -> separa la cadena en un array, dividiéndola por las comas: ["'Lunes'", "'Martes'", ...]
-
+  // separa la cadena en un array, dividiéndola por las comas y comillas: ["'Lunes'", "'Martes'", ...]
 }
+
+//preg_match extrae lo que esta entre parentesis
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -154,7 +154,7 @@ if ($enum_query) {
       <div class="acordion-total">
         <div class="acordion">
           <h2 class="titulo-horario"><?= htmlspecialchars($grupo['nombre_grupo']) ?></h2>
-
+<!-- muestra nombre del grupo con los caracteres permitidos del html -->
 
           <!-- DÍAS DE LA SEMANA -->
           <?php
@@ -163,9 +163,10 @@ if ($enum_query) {
             mysqli_data_seek($horarios_asignados, 0); // vuelve al inicio del resultado (indice 0)
             while ($h = mysqli_fetch_assoc($horarios_asignados)) {
               $horariosPorDia[$h['dia']][] = $h;
-            }
+            } // recorre todos los horarios y los guarda en el array para mostrarlos dsp
 
             // Mapeo de nombre de clase y texto visible
+            //array asociativo
             $dias_clases = [
               'Lunes' => ['clase' => 'lunes', 'i18n' => 'monday'],
               'Martes' => ['clase' => 'martes', 'i18n' => 'tuesday'],
@@ -174,18 +175,18 @@ if ($enum_query) {
               'Viernes' => ['clase' => 'viernes', 'i18n' => 'friday']
             ];
 
-            foreach ($enum_dias as $dia):
-              $lista = $horariosPorDia[$dia] ?? [];
-              $claseDia = $dias_clases[$dia]['clase'];
-              $i18nDia = $dias_clases[$dia]['i18n'];
+            foreach ($enum_dias as $dia): // recorre los elementos del array enum_dias
+              $lista = $horariosPorDia[$dia] ?? []; //guarda los horariosPorDia y si no hay es una array vacio
+              $claseDia = $dias_clases[$dia]['clase']; // obtiene la clase del dia actual
+              $i18nDia = $dias_clases[$dia]['i18n']; // lo mismo pero obtiene el nombre en ingles
             ?>
 
           <div class="dia">
            <button class=" toggle-dia boton-opciones colorletrablanco <?= $claseDia ?>" data-i18n="<?= $i18nDia ?>">
               <?= $dia ?>
-           </button>
+           </button> <!-- Muestra el boton del dia, con una clase dinamica (claseDia) y tambien tiene un atributo con el nombre en ingles -->
            <div class="contenido-dia">
-              <?php if ($lista): ?>
+              <?php if ($lista): ?> <!-- si lista tiene horarios asignados muestra la tabla -->
                 <table class="tabla-horario">
                   <tr>
                     <th data-i18n="startTime">Hora entrada</th>
@@ -195,17 +196,19 @@ if ($enum_query) {
                 </tr>
               
                 <tbody>
-                <?php foreach ($lista as $fila): ?>
-                  <tr>
-                    <td><?= substr($fila['hora_inicio'], 0, 5) ?></td>
+                <?php foreach ($lista as $fila): ?> <!-- Se recorren las clases de esta lista-->
+                  <tr> <!-- y se muestra: -->
+                    <td><?= substr($fila['hora_inicio'], 0, 5) ?></td> <!-- empieza del caracter 0 y toma 5 digitos -->
                     <td><?= substr($fila['hora_fin'], 0, 5) ?></td>
                     <td><?= htmlspecialchars($fila['nombre_asignatura']) ?> </td>
                     <td><?= htmlspecialchars($fila['espacio'] ?? '-') ?></td>
                     </tr>
+
+                    <!-- substr - pasa de HH:MM:SS a HH:MM - se tiene en cuenta los dos : -->
                   <?php endforeach; ?>
                   </tbody>
                 </table>
-              <?php else: ?>
+              <?php else: ?> <!-- si lista estaba vacio, muestra un p que dice sin clases cargadas -->
                 <p data-i18n="noClasses">Sin clases cargadas</p>
               <?php endif; ?>
             </div>
@@ -217,7 +220,7 @@ if ($enum_query) {
     </main>
   </div>
 
-  <!-- Bootstrap Bundle JS -->
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
   <script src="./../../../utils/desplegar-acordeon.js"></script>
