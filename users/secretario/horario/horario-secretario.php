@@ -116,12 +116,15 @@ $con->close();
           
         </thead>
         <tbody>
-          <?php while($filaHorario = $resultadoHorarios->fetch_assoc()): ?>
+          <?php while($filaHorario = $resultadoHorarios->fetch_assoc()): 
+            /* Recorre todas las filas del resultado de la consulta a la base de datos */?>
+            
           <tr>
             <td><?= htmlspecialchars($filaHorario['hora_inicio']) ?></td>
             <td><?= htmlspecialchars($filaHorario['hora_fin']) ?></td>
            
             <td>
+                <!-- El botón abre el modal #modalHorario y llama a la función pasándole en JS los datos -->
               <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modalHorario"
                 onclick="cargarEditarHorario(
                   '<?= $filaHorario['id_horario_clase'] ?>',
@@ -132,11 +135,13 @@ $con->close();
               </button>
             </td>
             <td>
+              <!-- Crea un formulario por cada fila para poder eliminar ese horario. -->
               <form id="formEliminar<?= $filaHorario['id_horario_clase']; ?>" method="POST" style="display:inline;">
                 <input type="hidden" name="accionHorario" value="eliminar">
                 <input type="hidden" name="id_horario_clase" value="<?= $filaHorario['id_horario_clase']; ?>">
                 <button type="button" class="btn btn-sm btn-danger eliminar-horario-btn" data-id="<?= $filaHorario['id_horario_clase']; ?>">
-                  <i class="bi bi-trash"></i>
+                <!-- data-id guarda el ID del horario a eliminar. -->  
+                <i class="bi bi-trash"></i>
                 </button>
               </form>
             </td>
@@ -150,6 +155,8 @@ $con->close();
                     data-bs-toggle="modal"
                     data-bs-target="#modalHorario"
                     onclick="document.getElementById('accionHorario').value='insertar';">
+                    <!-- Se le agrega valor al hidden input de accionHorario para luego saber qué acción hacer 
+                     en el javascript.-->
                   +
                   </h4>
               </td>
@@ -181,6 +188,7 @@ $con->close();
             </div>
 
             <input type="hidden" name="id_secretario" value="<?= htmlspecialchars($id_secretario); ?>">
+          <!--Guarda el ID del secretario logueado, para registrar quién hizo el cambio.-->
           </div>
 
           <div class="modal-footer">

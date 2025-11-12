@@ -21,11 +21,12 @@ try {
         if( empty($hora_inicio) || empty($hora_fin) ) {
             throw new Exception("Faltan datos para insertar el horario");
         }
-
+        // Sentencia preparada para evitar inyecciones SQL
         $stmt = $con->prepare("INSERT INTO horario_clase (hora_inicio, hora_fin, id_secretario) VALUES (?, ?, ?)");
         $stmt->bind_param("ssi", $hora_inicio, $hora_fin, $id_secretario);
         if(!$stmt->execute()) throw new Exception($stmt->error);
-        
+        /* thorw new Esxception($stmts -> error): Si ocurre un error (por ejemplo, un valor inválido o conexión 
+        fallida), lanza una excepción con el mensaje de error ($stmt->error).*/
         echo json_encode(["type"=>"success","message"=>"Horario agregado correctamente"]);
 
     } elseif($accionHorario === 'editar') {
@@ -49,4 +50,6 @@ try {
     }
 } catch(Exception $e){
     echo json_encode(["type"=>"error","message"=>"Error: ".$e->getMessage()]);
+    /*$e: es un objeto que guarda información sobre lo que salió mal.
+    Y se envía a través d eun json, para que el js lo interprete.*/
 }
