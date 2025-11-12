@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: i18next.t('yesSure') ,
+      confirmButtonText: i18next.t('yesSave') ,
       cancelButtonText: i18next.t('Cancel') 
     }).then((r) => { if (r.isConfirmed) form.submit(); });
   });

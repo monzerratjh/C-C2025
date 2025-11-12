@@ -207,7 +207,7 @@ $con->close();
       <div class="modal-footer">
         <button class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="cancel">Cancelar</button>
         <button class="btn btn-primary" id="btnSiguiente" data-i18n="next">Siguiente</button>
-        <button class="btn btn-success d-none" id="btnGuardarAtributos" data-i18n="save">Guardar</button>
+        <button class="btn btn-success d-none" id="btnGuardarAtributos" data-i18n="save">Guardar</button> <!-- Cambiado a "Guardar" en paso 2 -->
       </div>
 
     </div>
