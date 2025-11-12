@@ -1,11 +1,11 @@
 <?php
 include('./../../../conexion.php');
-session_start();
+session_start(); //sigue la sesion que ya estaba iniciada
 $con = conectar_bd();
 
-$id_usuario = $_SESSION['id_usuario'] ?? null;
+$id_usuario = $_SESSION['id_usuario'] ?? null; //extrae el id del docente que esta en la sesion
 if (!$id_usuario) {
-  header('Location: ./../../../users/docente/docente-log.php');
+  header('Location: ./../../../users/docente/docente-log.php'); //si no existe lo lleva al login
   exit;
 }
 ?>
