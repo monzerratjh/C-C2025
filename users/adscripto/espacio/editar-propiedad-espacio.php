@@ -4,7 +4,10 @@ $con = conectar_bd();
 
 $id_espacio = $_GET['id_espacio'] ?? null;
 if (!$id_espacio) {
-  echo "<script>alert('Error: Espacio no especificado.'); window.location.href='adscripto-espacio.php';</script>";
+  echo json_encode([
+    "type" => "error",
+    "message" => "Espacio no especificado."
+  ]);
   exit;
 }
 
@@ -13,7 +16,10 @@ $stmt->bind_param("i", $id_espacio);
 $stmt->execute();
 $espacio = $stmt->get_result()->fetch_assoc();
 if (!$espacio) {
-  echo "<script>alert('No se encontró el espacio.'); window.location.href='adscripto-espacio.php';</script>";
+  echo json_encode([
+    "type" => "warning",
+    "message" => "No se encontró el espacio."
+  ]);
   exit;
 }
 
@@ -115,7 +121,8 @@ $attrs = ['Mesas','Sillas','Proyector','Televisor','Aire Acondicionado','Computa
     <div class="container my-4 espacio-contenedor">
       <h2><?= htmlspecialchars($espacio['nombre_espacio']) ?></h2>
 
-      <form class="no-edit text-center">
+      <form id="formEditarEspacio" class="no-edit text-center">
+        <input type="hidden" id="tipo_espacio_actual" value="<?= htmlspecialchars($espacio['tipo_espacio']) ?>">
 
         <div class="row justify-content-center mb-3">
           <div class="col-6 col-md-4 text-end fw-semibold" data-i18n="capacity">Capacidad:</div>
@@ -157,8 +164,53 @@ $attrs = ['Mesas','Sillas','Proyector','Televisor','Aire Acondicionado','Computa
 
       </form>
     </div>
-
   </main>
+</div>
+
+<!-- MODAL DE EDICIÓN DE ATRIBUTOS -->
+<div class="modal fade" id="modalEditarAtributos" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar atributos del espacio</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formAtributos">
+          <input type="hidden" name="id_espacio" value="<?= (int)$espacio['id_espacio'] ?>">
+          <input type="hidden" name="accion" value="atributos">
+
+          <?php foreach ($attrs as $attr):
+            $cantidad = $atributos[$attr]['cantidad'] ?? '';
+            $checked = $cantidad ? 'checked' : '';
+            $disabled = $cantidad ? '' : 'disabled';
+            $id = strtolower(str_replace(' ','_',$attr));
+          ?>
+          <div class="row align-items-center mb-2">
+            <div class="col-4 text-end"><?= $attr ?></div>
+            <div class="col-4"><input type="checkbox" class="form-check-input toggleCantidad" data-target="<?= $id ?>" <?= $checked ?>></div>
+            <div class="col-4"><input type="number" name="<?= $id ?>" id="<?= $id ?>" class="form-control form-control-sm bg-light border-0" value="<?= $cantidad ?>" <?= $disabled ?>></div>
+          </div>
+          <?php endforeach; ?>
+
+          <!-- Campo Otro -->
+          <div class="row align-items-center mb-2">
+            <div class="col-4 text-end">Otro (especificar)</div>
+            <div class="col-4"><input type="checkbox" class="form-check-input toggleCantidad" data-target="otro_personalizado" <?= isset($atributos['Otro']) ? 'checked' : '' ?>></div>
+            <div class="col-4">
+              <input type="text" name="otro_descripcion" id="otro_descripcion" class="form-control form-control-sm mb-1" placeholder="Descripción" value="<?= htmlspecialchars($atributos['Otro']['descripcion'] ?? '') ?>" <?= isset($atributos['Otro']) ? '' : 'disabled' ?>>
+              <input type="number" name="otro_cantidad" id="otro_personalizado" class="form-control form-control-sm bg-light border-0" placeholder="Cantidad" value="<?= htmlspecialchars($atributos['Otro']['cantidad'] ?? '') ?>" <?= isset($atributos['Otro']) ? '' : 'disabled' ?>>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn btn-success" id="guardarAtributosBtn">Guardar</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

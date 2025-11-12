@@ -2,12 +2,12 @@
 //include('../../encabezado.php');
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel adscripto</title>
-    <!-- Bootstrap CSS + Iconos + letras-->
+    <!-- Bootstrap CSS + Iconos + letras -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -27,8 +27,8 @@
     </div>
   </nav>
 
-  <!-- Menú lateral (para celulares/tablets) -->
- <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
+  <!-- Menú lateral -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
     <div class="offcanvas-header">
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
@@ -44,18 +44,17 @@
       <a href="./../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./../reserva/reserva-adscripto.php" class="fw-semibold seleccionado mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2" data-i18n="courseManagement" >Gestión de cursos</a>
+      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2" data-i18n="courseManagement">Gestión de cursos</a>
 
-       <!-- BOTÓN CERRAR SESIÓN -->
-   <a href="#" class="btn-cerrar-sesion-bajo btn-cerrar-sesion mb-3">
-    <i class="bi bi-box-arrow-right me-2"></i>
-    <span data-i18n="sessionClose">Cerrar sesión</span>
-  </a>
-
+      <!-- BOTÓN CERRAR SESIÓN -->
+      <a href="#" class="btn-cerrar-sesion-bajo btn-cerrar-sesion mb-3">
+        <i class="bi bi-box-arrow-right me-2"></i>
+        <span data-i18n="sessionClose">Cerrar sesión</span>
+      </a>
     </div>
   </div>
 
-  <!-- Contenedor general con GRID -->
+  <!-- Contenedor general -->
   <div class="contenedor">
 
     <!-- Barra lateral -->
@@ -71,14 +70,13 @@
       <a href="./../espacio/adscripto-espacio.php" class="nav-opciones mb-2" data-i18n="facility">Espacio</a>
       <a href="./../reserva/reserva-adscripto.php" class="fw-semibold seleccionado mb-2" data-i18n="reservation">Reserva</a>
       <a href="./../falta/falta-docente.php" class="nav-opciones mb-2" data-i18n="teacherAbsence">Falta docente</a>
-      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2" data-i18n="courseManagement"  >Gestión de cursos</a>
-    
-     <!-- BOTÓN CERRAR SESIÓN -->
-   <a href="#" class="btn-cerrar-sesion-bajo btn-cerrar-sesion mb-3">
-    <i class="bi bi-box-arrow-right me-2"></i>
-    <span data-i18n="sessionClose">Cerrar sesión</span>
-  </a>
+      <a href="./../curso/adscripto-curso.php" class="nav-opciones mb-2" data-i18n="courseManagement">Gestión de cursos</a>
 
+      <!-- BOTÓN CERRAR SESIÓN -->
+      <a href="#" class="btn-cerrar-sesion-bajo btn-cerrar-sesion mb-3">
+        <i class="bi bi-box-arrow-right me-2"></i>
+        <span data-i18n="sessionClose">Cerrar sesión</span>
+      </a>
     </aside>
 
     <!-- Contenido principal -->
@@ -90,24 +88,39 @@
       <h2 data-i18n="reservationRequests">Solicitudes de Reserva</h2>
       <p data-i18n="viewReservations">Visualiza las reservas realizadas.</p>
 
-      <table class="tabla-reserva" id="tablaReservas">
-            <thead class="table-light">
-              <tr>
-                <th data-i18n="teacher">Docente</th>
-                <th data-i18n="group">Grupo</th>
-                <th data-i18n="subject">Asignatura</th>
-                <th data-i18n="facility">Espacio</th>
-                <th data-i18n="onlyDay">Día</th>
-                <th data-i18n="date">Fecha</th>
-                <th data-i18n="startTime">Hora inicio</th>
-                <th data-i18n="endTime">Hora fin</th>
-                <th data-i18n="state">Estado</th>
-                <th data-i18n="action">Acción</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        <div id="sinReservas" class="text-muted">Cargando reservas...</div>
+      <!-- BOTÓN RESPONSIVE -->
+      <button id="verReservasAdscriptoBtn" class="boton-opciones adscripto mb-3 w-100">
+        Ver reservas
+      </button>
+
+      <!-- TABLA RESPONSIVE ADSCRIPTO -->
+      <div id="reservasResponsive" class="tabla-adscripto-responsive">
+        <table class="tabla-adscripto-responsive">
+          <tbody></tbody>
+        </table>
+        <p id="sinReservasMovil" class="text-muted text-center mt-2">Cargando reservas...</p>
+      </div>
+
+      <!-- TABLA DESKTOP ADSCRIPTO -->
+      <div class="table-responsive" id="reservasDesktop">
+        <table class="tabla-adscripto" id="tablaReservas">
+          <thead class="table-light">
+            <tr>
+              <th>Docente</th>
+              <th>Grupo</th>
+              <th>Asignatura</th>
+              <th>Espacio</th>
+              <th>Día</th>
+              <th>Fecha</th>
+              <th>Hora inicio</th>
+              <th>Hora fin</th>
+              <th>Estado</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div id="sinReservas" class="text-muted mt-2">Cargando reservas...</div>
       </div>
     </main>
 
@@ -115,12 +128,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
-
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="./../../../utils/form-log-in.js"></script> 
+<script src="./../../../utils/form-log-in.js"></script> 
 <script src="./../../../utils/translate.js"></script>
-
-  <script src="./../js/adscripto-reservas.js"></script>
+<script src="./../js/adscripto-reservas.js"></script>
 </body>
 </html>

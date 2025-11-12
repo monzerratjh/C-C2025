@@ -643,34 +643,157 @@ a {
 
 /*SOLICITUD DE RESERVA*/
 /* La tabla centrada */
-.tabla-reserva {
+/* ===========================================
+   ESTILO DE TABLA ADSCRIPTO (pantallas grandes)
+   =========================================== */
+.tabla-adscripto {
   width: 100%;
   max-width: 800px;
-  border-collapse: collapse;
+  border-collapse: collapse; /* Bordes fusionados */
   background-color: #d9f3f0;
   border-radius: 8px;
   overflow: hidden;
+  margin-top: 1rem;
+  display: table;
 }
 
-.tabla-reserva th,
-.tabla-reserva td {
+.tabla-adscripto th {
+  background-color: var(--color-adscripto);
+  color: #000;
+  font-weight: 600;
+}
+
+.tabla-adscripto th,
+.tabla-adscripto td {
   padding: 12px;
   text-align: center;
+  border-bottom: 1px solid #b2e4e0;
 }
 
-.tabla-reserva th {
-  background-color: var(--color-adscripto);
-}
-
-.tabla-reserva tbody tr:nth-child(even) {
-  /*Las celdas pares cambian d color*/
+.tabla-adscripto tbody tr:nth-child(even) {
   background-color: #eaf8f9;
 }
 
+/* ===========================================
+   TABLA RESPONSIVE ADSCRIPTO
+   =========================================== */
+.tabla-adscripto-responsive {
+  display: none;
+}
+
+.tabla-adscripto-responsive tbody tr:nth-child(even) {
+  background: #eaf8f9; /* color filas pares */
+}
+
+/* Contenedor colapsable */
+.contenido-adscripto {
+  display: none;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.contenido-adscripto.activo {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+/* ===========================================
+   RESERVAS RESPONSIVE
+   =========================================== */
+#verReservasAdscriptoBtn {
+  display: none;
+}
+
+.tabla-adscripto-responsive tbody {
+  display: none;
+}
+
+#reservasMovilAdscripto {
+  display: none;
+}
+
+@media (max-width: 1253px) {
+
+  /* Ocultar tabla grande */
+  .tabla-adscripto {
+    display: none;
+  }
+
+  #reservasMovilAdscripto {
+    display: block;
+  }
+
+  #verReservasAdscriptoBtn {
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    background-color: var(--color-adscripto);
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .tabla-adscripto-responsive {
+    display: block;
+    background-color: transparent;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-size: 0.95rem;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .tabla-adscripto-responsive tbody {
+    display: block;
+    width: 100%;
+  }
+
+  .tabla-adscripto-responsive tr {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #d9f3f0;
+    border: 1px solid #b2e4e0;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+
+  .tabla-adscripto-responsive td {
+    width: 100%;
+    padding: 8px 0;
+    text-align: left;
+    border-bottom: 1px solid #b2e4e0;
+  }
+
+  .tabla-adscripto-responsive td:last-child {
+    border-bottom: none;
+  }
+
+
+  
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* ESTADO RESERVA */
 .confirmada {
   font-weight: bold;
   color: green;
 }
+
+.pendiente {
+  font-weight: bold;
+  color: #0a4f79;
+}
+
 
 .pendiente {
   font-weight: bold;

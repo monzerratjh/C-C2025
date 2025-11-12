@@ -32,15 +32,34 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentMode = 'create';
     let editingId = null;
 
-    // --- Habilitar/deshabilitar inputs de cantidad ---
-    //TOGGEL -> Cambiar un estado entre dos opciones
+    // --- Habilitar/deshabilitar inputs de cantidad + "Otro (descripción)"
     document.querySelectorAll('.toggleCantidad').forEach(chk => {
       chk.addEventListener('change', () => {
-        const target = document.getElementById(chk.dataset.target);
+        const targetId = chk.dataset.target;
+        const target = document.getElementById(targetId);
+
+        // Habilita/deshabilita el input de cantidad
         target.disabled = !chk.checked;
         if (!chk.checked) target.value = '';
+
+        // Si es el checkbox de "Otro", también controla la descripción
+        if (targetId === 'otro_personalizado') {
+          const desc = document.getElementById('otro_descripcion');
+          desc.disabled = !chk.checked;
+          if (!chk.checked) desc.value = '';
+        }
       });
     });
+
+    // Alinear estado inicial de "Otro" al cargar
+    const chkOtro = document.querySelector('.toggleCantidad[data-target="otro_personalizado"]');
+    if (chkOtro) {
+      const desc = document.getElementById('otro_descripcion');
+      const num  = document.getElementById('otro_personalizado');
+      desc.disabled = !chkOtro.checked;
+      num.disabled  = !chkOtro.checked;
+    }
+
 
     // --- Validar formulario ---
     const validar = () => {
@@ -48,15 +67,22 @@ document.addEventListener('DOMContentLoaded', () => {
       const cap = parseInt(document.getElementById('capacidad_espacio').value, 10);
 
 
-       if (!nombre) {
+      // Validar nombre del espacio
+       if (nombre.length < 3 || nombre.length > 20) {
         Swal.fire({ 
             icon: 'error', 
             title: 'Error', 
-            text: i18next.t('enterFacilityName') });
+            text: 'El nombre del espacio debe tener entre 3 y 20 caracteres.' });
         return false;}
 
-      if (isNaN(cap) || cap < 1 || cap > 100)
-        return Swal.fire('Error', 'Capacidad debe ser entre 1 y 100.', 'error'), false;
+      // Validar capacidad (1–100)
+      if (isNaN(cap) || cap < 1 || cap > 100) {
+        Swal.fire({ 
+            icon: 'error', 
+            title: 'Error', 
+            text: 'La capacidad debe ser un número entre 1 y 100.' });
+        return false;}
+
       return true;
     };
 
@@ -141,6 +167,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Guardar atributos ---
     btnGuardarAtributos.addEventListener('click', () => {
+      // Guardar lista de campos deshabilitados para restaurarlos luego
+      const deshabilitadosAntes = [...document.querySelectorAll('#formPaso2 [disabled]')];
+
+      // Habilitar temporalmente todos los campos antes de enviar
+      document.querySelectorAll('#formPaso2 [disabled]').forEach(el => el.disabled = false);
+
+      // Validar solo los inputs de cantidad ACTIVOS cuyos checkboxes estén marcados
+      const checksActivos = document.querySelectorAll('#formPaso2 .toggleCantidad:checked');
+      for (const chk of checksActivos) {
+        const targetId = chk.dataset.target;
+        const input = document.getElementById(targetId);
+        if (!input) continue; // seguridad
+
+        const valor = parseInt(input.value, 10);
+        if (isNaN(valor) || valor < 1 || valor > 100) {
+          const label = chk.closest('.row')?.querySelector('.col-4.text-end')?.textContent?.trim() || 'atributo';
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: `La cantidad del atributo "${label}" debe ser un número entre 1 y 100.`
+          }).then(() => {
+            // 🔙 Restaurar el estado original
+            deshabilitadosAntes.forEach(el => el.disabled = true);
+          });
+          return; // detener validación
+        }
+      }
+
+      // Si todo está OK, enviamos
       const fd = new FormData(paso2);
       fd.append('accion', 'atributos');
       fd.append('id_espacio', idEspacioCreado);
@@ -148,11 +203,29 @@ document.addEventListener('DOMContentLoaded', () => {
       fetch('./../espacio/espacio-accion.php', { method: 'POST', body: fd })
         .then(r => r.json())
         .then(d => {
-          Swal.fire(d.type === 'success' ? 'Éxito' : 'Error', d.message, d.type)
-            .then(() => { if (d.type === 'success') location.reload(); });
+          if (d.type === 'success') {
+            Swal.fire({
+              icon: 'success',
+              title: 'Éxito',
+              text: d.message
+            }).then(() => location.reload()); // solo recarga si fue correcto
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: d.message
+            }).then(() => {
+              // 🔙 Restaurar estado original si backend falla
+              deshabilitadosAntes.forEach(el => el.disabled = true);
+            });
+          }
         })
-        .catch(() => Swal.fire('Error', 'No se pudieron guardar los atributos', 'error'));
+        .catch(() => {
+          Swal.fire('Error', 'No se pudieron guardar los atributos', 'error');
+          deshabilitadosAntes.forEach(el => el.disabled = true);
+        });
     });
+
 
     // --- Eliminar ---
     document.addEventListener('click', e => {
@@ -173,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const fd = new FormData();
         fd.append('accion', 'eliminar');
         fd.append('id_espacio', id);
-        fetch('../espacio-accion.php', { method: 'POST', body: fd })
+        fetch('./../espacio/espacio-accion.php', { method: 'POST', body: fd })
           .then(r => r.json())
           .then(d => {
             Swal.fire(d.type === 'success' ? 'Eliminado' : 'Error', d.message, d.type)
@@ -184,53 +257,153 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ======================================================================
-  // ====================== PÁGINA EDITAR-PROPIEDAD =======================
-  // ======================================================================
-  if (esEditar) {
-    document.querySelectorAll('.toggleCantidad').forEach(chk => {
-      chk.addEventListener('change', () => {
-        const t = document.getElementById(chk.dataset.target);
-        t.disabled = !chk.checked;
-        if (!chk.checked) t.value = '';
-      });
+// ======================================================================
+// ====================== PÁGINA EDITAR-PROPIEDAD =======================
+// ======================================================================
+if (esEditar) {
+
+  // --- Habilitar/deshabilitar inputs al marcar ---
+  document.querySelectorAll('.toggleCantidad').forEach(chk => {
+    chk.addEventListener('change', e => {
+      const targetId = chk.dataset.target;
+      const target = document.getElementById(targetId);
+
+      if (targetId === 'otro_personalizado') {
+        const desc = document.getElementById('otro_descripcion');
+        if (chk.checked) {
+          target.disabled = false;
+          desc.disabled = false;
+          target.classList.remove('bg-light', 'border-0');
+          desc.classList.remove('bg-light', 'border-0');
+        } else {
+          target.disabled = true;
+          desc.disabled = true;
+          target.value = '';
+          desc.value = '';
+          target.classList.add('bg-light', 'border-0');
+          desc.classList.add('bg-light', 'border-0');
+        }
+      } else {
+        if (chk.checked) {
+          target.disabled = false;
+          target.classList.remove('bg-light', 'border-0');
+        } else {
+          target.disabled = true;
+          target.value = '';
+          target.classList.add('bg-light', 'border-0');
+        }
+      }
     });
+  });
 
-    const modalEditar = new bootstrap.Modal(document.getElementById('modalEditarAtributos'));
-    document.getElementById('btnEditar')?.addEventListener('click', () => modalEditar.show());
+  // === VALIDACIONES ===
+  const inputDescripcion = document.getElementById('otro_descripcion');
 
-    document.getElementById('guardarAtributosBtn')?.addEventListener('click', () => {
-      const fd = new FormData(document.getElementById('formAtributos'));
+  // --- Solo letras y espacios para "Otro" ---
+  if (inputDescripcion) {
+    inputDescripcion.addEventListener('input', e => {
+      const valorAnterior = inputDescripcion.value;
+      const soloLetras = valorAnterior.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
+      if (valorAnterior !== soloLetras) {
+        inputDescripcion.value = soloLetras;
+        Swal.fire({
+          icon: 'warning',
+          title: 'Entrada inválida',
+          text: 'Solo se permiten letras y espacios en el campo "Otro".',
+          confirmButtonColor: '#3085d6'
+        });
+      }
+    });
+  }
+
+  // --- Validar antes de guardar atributos ---
+  const validarCampos = () => {
+    const desc = inputDescripcion?.value.trim() || '';
+    const todosLosNumeros = document.querySelectorAll('#formAtributos input[type="number"]:not([disabled])');
+
+    // Validar nombre “Otro”
+    const chkOtro = document.querySelector('.toggleCantidad[data-target="otro_personalizado"]');
+    if (chkOtro && chkOtro.checked) {
+      if (desc.length < 3 || desc.length > 20) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'El nombre del atributo "Otro" debe tener entre 3 y 20 letras.'
+        });
+        return false;
+      }
+    }
+
+    // Validar todas las cantidades (1–100)
+    for (const input of todosLosNumeros) {
+      const valor = parseInt(input.value, 10);
+      if (isNaN(valor) || valor < 1 || valor > 100) {
+        const label = input.closest('.row')?.querySelector('.col-4.text-end')?.textContent?.trim() || 'atributo';
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: `La cantidad del atributo "${label}" debe ser un número entre 1 y 100.`
+        });
+        return false;
+      }
+    }
+
+    return true;
+  };
+
+  const modalEditar = new bootstrap.Modal(document.getElementById('modalEditarAtributos'));
+  document.getElementById('btnEditar')?.addEventListener('click', () => modalEditar.show());
+
+  // --- Guardar atributos ---
+  document.getElementById('guardarAtributosBtn')?.addEventListener('click', () => {
+    if (!validarCampos()) return;
+
+    const fd = new FormData(document.getElementById('formAtributos'));
+    fetch('./../espacio/espacio-accion.php', { method: 'POST', body: fd })
+      .then(r => r.json())
+      .then(d => {
+        Swal.fire(d.type === 'success' ? 'Guardado' : 'Error', d.message, d.type)
+          .then(() => { if (d.type === 'success') location.reload(); });
+      })
+      .catch(() => Swal.fire('Error', 'No se pudo guardar los atributos', 'error'));
+  });
+
+  // --- Eliminar ---
+  document.getElementById('btnEliminar')?.addEventListener('click', () => {
+    Swal.fire({
+      title: i18next.t('deleteFacility'),
+      text: i18next.t('actionNotBeUndone'),
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: i18next.t('yesDelete'),
+      cancelButtonText: i18next.t('cancel')
+    }).then(res => {
+      if (!res.isConfirmed) return;
+
+      const fd = new FormData();
+      fd.append('accion', 'eliminar');
+      fd.append('id_espacio', document.querySelector('[name="id_espacio"]').value);
+
       fetch('./../espacio/espacio-accion.php', { method: 'POST', body: fd })
         .then(r => r.json())
         .then(d => {
-          Swal.fire(d.type === 'success' ? 'Guardado' : 'Error', d.message, d.type)
-            .then(() => { if (d.type === 'success') location.reload(); });
-        })
-        .catch(() => Swal.fire('Error', 'No se pudo guardar los atributos', 'error'));
-    });
+          const tipoEspacio = document.getElementById('tipo_espacio_actual')?.value?.toLowerCase() || '';
+          let redirect = './../espacio/adscripto-espacio.php';
 
-    document.getElementById('btnEliminar')?.addEventListener('click', () => {
-      Swal.fire({
-        title: i18next.t('deleteFacility'),
-        text: i18next.t('actionNotBeUndone'),
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: i18next.t('yesDelete'),
-        cancelButtonText: i18next.t('cancel')
-      }).then(res => {
-        if (!res.isConfirmed) return;
-        const fd = new FormData();
-        fd.append('accion', 'eliminar');
-        fd.append('id_espacio', document.querySelector('[name="id_espacio"]').value);
-        fetch('./../espacio/espacio-accion.php', { method: 'POST', body: fd })
-          .then(r => r.json())
-          .then(d => {
-            Swal.fire(d.type === 'success' ? 'Eliminado' : 'Error', d.message, d.type)
-              .then(() => { if (d.type === 'success') window.location.href = 'adscripto-espacio.php'; });
-          })
-          .catch(() => Swal.fire('Error', 'No se pudo eliminar el espacio', 'error'));
-      });
+          if (tipoEspacio.includes('aula')) redirect = './../espacio/index-aula.php';
+          else if (tipoEspacio.includes('salon')) redirect = './../espacio/index-salon.php';
+          else if (tipoEspacio.includes('laboratorio')) redirect = './../espacio/index-laboratorio.php';
+
+          Swal.fire(
+            d.type === 'success' ? 'Eliminado' : 'Error',
+            d.message,
+            d.type
+          ).then(() => {
+            if (d.type === 'success') window.location.href = redirect;
+          });
+        })
+        .catch(() => Swal.fire('Error', 'No se pudo eliminar el espacio', 'error'));
     });
-  }
+  });
+}
 });
