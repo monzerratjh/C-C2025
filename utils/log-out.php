@@ -1,7 +1,7 @@
 <?php
-session_start();
-session_unset();
-session_destroy();
-header('Location: /index.php');
-exit();
+session_start(); //inicia o reanuda sesion existente
+session_unset(); //elimina variables almacenadas en $_SESSION
+session_destroy();//elimina completamente la sesión del servidor.
+header('Location: /index.php'); //el encabezado lo redirige al index.php
+exit(); // se detiene la ejecucion
 ?>

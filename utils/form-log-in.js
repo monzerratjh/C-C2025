@@ -3,19 +3,21 @@ document.addEventListener('DOMContentLoaded', () => {
 //Validaciones de login (solo si existe el formulario)
   const domForm = document.getElementById('form-login');
   if (domForm) {
-    domForm.addEventListener('submit', function(event) {
-      event.preventDefault();
+    domForm.addEventListener('submit', function(event) { // recibe la info cuando se envia el form
+      event.preventDefault(); // para que no se recargue la pagina
+
+      //obtiene los input y trim le saca los espacios blancos al principio y al final
       const cedula = document.getElementById('cedula').value.trim();
       const password = document.getElementById('password').value.trim();
 
-       // Campos obligatorios
+       // Campos obligatorios // || o
       if (!cedula || !password) {
         Swal.fire({ icon: 'error', title: 'Error', text: i18next.t('allFieldsRequired') });
         return;
       }
 
       // Cédula solo números
-      if (isNaN(cedula)){
+      if (isNaN(cedula)){ //true si no es un valor numerico
         Swal.fire({ icon: 'error', title: 'Error', text: i18next.t('idMustBeNumbers') });
         return;
       }
@@ -26,15 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      //contraseña usuario = Base de Datos? (Sabri va a entender)
-
-        /*    // Validación de contraseña 
-        if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>_]).{6,}$/.test(password)) {
-        Swal.fire({
-        icon: 'error',
-        title: 'Contraseña Incorrecta',
-        text: 'Debe tener mínimo 8 caracteres, al menos una mayúscula, una minúscula, un número y un carácter especial'
-    }); */
 
 //.test() es un método de los objetos RegExp (expresiones regulares).
 //(?=...) -> lookahead positivo, significa "la cadena debe contener esto en algún lugar".
@@ -47,12 +40,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // Si todas las validaciones pasan, se envía el formulario usando fetch
         const formData = new FormData(this);
 
-        fetch(this.action, {
+
+        //fetch funcion para colicitudes HTTP
+        fetch(this.action, { //obtiene atributo action
             method: "POST",
-            body: formData
+            body: formData //donde envia los datos
         })
-        .then(res => res.json())
-        .then(data => {
+        .then(res => res.json()) // pasa a respuesta json
+        .then(data => { //objeto recibido
             console.log(data);
             if (data.success) {
                 // Mensaje de éxito antes de redirigir
@@ -61,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: i18next.t('welcome'),
                 text: i18next.t('successfulLogin'),
                 timer: 2000, // se cierra despues de dos segundos
-                showConfirmButton: false //oculta el boton por defecto
+                showConfirmButton: false //oculta el boton de confirmar
                 }).then(() => {
                   window.location.href = data.redirect;
                 });
@@ -84,15 +79,15 @@ document.addEventListener('DOMContentLoaded', () => {
     Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: i18next.t('serverError') // <--- aquí usamos i18next.t
+        text: i18next.t('serverError') 
     });
 });
     });
   }
 
-  const cerrarSesionBtns = document.querySelectorAll('.btn-cerrar-sesion');
-  cerrarSesionBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
+  const cerrarSesionBtns = document.querySelectorAll('.btn-cerrar-sesion'); //selecciona elementos con esa clase
+  cerrarSesionBtns.forEach(btn => { //recorre cada boton encontrado
+    btn.addEventListener('click', (e) => { //escucha el click
       e.preventDefault();
       Swal.fire({
         title: i18next.t('logoutConfirmTitle'),
@@ -105,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cancelButtonText: i18next.t('cancel')
       }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = './../../../utils/log-out.php';
+            window.location.href = './../../../utils/log-out.php'; //redirige al php encargado de cerrar sesion
         }
       });
     });

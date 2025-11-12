@@ -3,14 +3,18 @@ include('./../../conexion.php');
 $conn = conectar_bd();
 
 // Obtener todos los grupos con su id y nombre
-$sqlGrupos = "SELECT id_grupo, nombre_grupo FROM grupo";
-$resultGrupos = mysqli_query($conn, $sqlGrupos);
-$grupos = [];
+$sqlGrupos = "SELECT id_grupo, nombre_grupo FROM grupo"; // consulta SQL 
+$resultGrupos = mysqli_query($conn, $sqlGrupos); // el resultado de la consulta se guarda en resulGrupos
+$grupos = []; 
 
-    // fila           // array asociativo
+    // fila           // array asociativo      // se pasan los resultados a un arreglo
 while ($row = mysqli_fetch_assoc($resultGrupos)) {
     $grupos[] = $row; // cada *FILA tiene ['id_grupo', 'nombre_grupo']
 }
+
+//Toma todas las filas que vienen del resultado de la consulta SQL 
+// y las guarda una por una dentro del array $grupos.
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -91,10 +95,15 @@ while ($row = mysqli_fetch_assoc($resultGrupos)) {
         <i class="bi bi-search icono-busqueda"></i>
         <input type="text" class="diseno-busqueda" data-i18n-placeholder="enterGroupPlaceholder" placeholder="Ingrese su grupo" list="lista-grupos" id="grupoInput" />
           <datalist id="lista-grupos">
-          <?php foreach ($grupos as $g): ?>
+          <?php foreach ($grupos as $g): ?> <!-- Recorre grupos -->
             <option value="<?php echo htmlspecialchars($g['nombre_grupo'], ENT_QUOTES, 'UTF-8'); ?>" 
                     data-id="<?php echo $g['id_grupo']; ?>">
             </option>
+            
+             <!-- Por cada grupo, se genera una etiqueta <option> dentro del <datalist>.
+                  value: muestra el nombre del grupo al usuario
+                  data-id: guarda el id real del grupo que despues se va a usar en JavaScript)
+             -->
           <?php endforeach; ?>
         </datalist> 
       </div>

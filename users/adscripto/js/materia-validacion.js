@@ -7,24 +7,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const errores = {
       CampoVacio: {
-        title: i18next.t('emptyFields') || 'El campo no puede estar vacío',
-        text: i18next.t('pleaseFillIn') || 'Por favor intente de nuevo'
+        title: i18next.t('emptyFields'),
+        text: i18next.t('pleaseFillIn')
       },
       NombreInvalido: {
-        title: i18next.t('invalidName') || 'El nombre es inválido',
-        text: i18next.t('containName') || 'Por favor intenténtelo con otro nombre.'
+        title: i18next.t('invalidName'),
+        text: i18next.t('containName')
       },
       MateriaDuplicada: {
-        title: i18next.t('duplicateSubject') || 'La materia ya existe',
+        title: i18next.t('duplicateSubject'),
         text: i18next.t('enterAnotherSubject') || 'Por favor ingrese otra materia.'
       },
       InsercionFallida: {
         title: i18next.t('insertFailed') || 'Inserción Fallida',
-        text: i18next.t('tryAgain') || 'Por favor intente otra vez.'
+        text: i18next.t('tryAgain')
       },
       ActualizacionFallida: {
         title: i18next.t('updateFailed') || 'Falla en la actualización',
-        text: i18next.t('tryAgain') || 'Por favor intente otra vez.'
+        text: i18next.t('tryAgain')
       }
     };
 
@@ -44,9 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const msg = params.get("msg");
 
     const exitos = {
-      EdicionExitosa: i18next.t('editSuccessfully') || '¡Edición Exitosa!',
-      InsercionExitosa: i18next.t('insertSuccessfully') || '¡Inserción Exitosa!',
-      EliminacionExitosa: i18next.t('deletionSuccessfully') || '¡Eliminación Exitosa!',
+      EdicionExitosa: i18next.t('succesfulEdit'),
+      InsercionExitosa: i18next.t('successfulAssignment'),
+      EliminacionExitosa: i18next.t('successfulDeletion'),
     };
 
     if (exitos[msg]) {
@@ -70,14 +70,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const url = this.getAttribute("href");
 
       Swal.fire({
-        title: i18next.t('areYouSure') || '¿Está seguro?',
-        text: i18next.t('noRevertAction') || "No podrá deshacer esta acción.",
+        title: i18next.t('areYouSure'),
+        text: i18next.t('actionNotBeUndone'),
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#d33",
         cancelButtonColor: "#3085d6",
-        confirmButtonText: i18next.t('yesDelete') || 'Sí, eliminar',
-        cancelButtonText: i18next.t('cancel') || 'Cancelar'
+        confirmButtonText: i18next.t('yesDelete'),
+        cancelButtonText: i18next.t('cancel')
       }).then((result) => {
         if (result.isConfirmed) {
           window.location.href = url;
