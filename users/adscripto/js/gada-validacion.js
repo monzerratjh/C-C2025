@@ -7,12 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const errores = {
       AsignacionDuplicada: {
-        title: "La asignación ya existe",
-        text: "Por favor ingrese una nueva"
+        title: i18next.t('assignmentExist'),
+        text: i18next.t('enterANewOne')
       },
       FalloInsercion: {
-        title: "Error al insertar",
-        text: "Por favor intente otra vez"
+        title:i18next.t('errorInserting'),
+        text: i18next.t('tryAgain')
       }
     };
 
@@ -31,9 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const msg = params.get("msg");
 
     const exitos = {
-      InsercionExitosa: "¡Asignación exitosa!",
-      EliminacionExitosa: "¡Eliminación exitosa!",
-      EdicionExitosa: "¡Edición exitosa!"
+      InsercionExitosa: i18next.t('successfulAssignment'),
+      EliminacionExitosa: i18next.t('successfulDeletion'),
+      EdicionExitosa: i18next.t('succesfulEdit')
     };
 
     if (exitos[msg]) {
@@ -57,14 +57,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const url = btn.getAttribute("href");
 
       Swal.fire({
-        title: "¿Está seguro?",
-        text: "Esta acción no se puede deshacer.",
+        title: i18next.t('areYouSure'),
+        text: i18next.t('actionNotBeUndone'),
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#d33",
         cancelButtonColor: "#3085d6",
-        confirmButtonText: "Sí, eliminar",
-        cancelButtonText: "Cancelar"
+        confirmButtonText: i18next.t('yesDelete'),
+        cancelButtonText: i18next.t('cancel')
       }).then((result) => {
         if (result.isConfirmed) {
           window.location.href = url;

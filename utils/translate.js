@@ -247,7 +247,7 @@ i18next.init({
         action:"Accion",
         //
         enterGroupName:"Ingrese el nombre del espacio.",
-        delteFacility:"¿Eliminar espacio?",
+        deleteFacility:"¿Eliminar espacio?",
         delete:"Eliminar",
         selectGroupViewSchedule:"Selecciona un grupo para ver sus horarios.",
         anyGroupAssigned:"No tienes grupos asignados actualmente.",
@@ -260,6 +260,17 @@ i18next.init({
         selectGroupDate:"Seleccione primero un grupo y una fecha donde tenga clase.",
         observation:"Observación (opcional)",
         selectDateSchedule:"Seleccione fecha y horarios primero",
+        //
+        assignmentExist:"La asignación ya existe.",
+        enterANewOne:"Por favor ingrese una nueva",
+        errorInserting:"Error al insertar",
+        successfulAssignment:"¡Asignación exitosa!",
+        successfulDeletion:"¡Eliminación exitosa!",
+        succesfulEdit:"¡Edición exitosa!",
+        enterAnotherSubject:"Por favor ingrese otra materia.",
+        insertFailed:"Inserción Fallida",
+        updateFailed:"Falla en la actualización",
+
 
 
 
@@ -524,6 +535,16 @@ i18next.init({
       selectGroupDate:"Select a group and a date where you have a class first.",
       observation:"Observation (optional)",
       selectDateSchedule:"Select date and schedules first.",
+      assignmentExist:"The assignment already exists",
+      enterANewOne:"Please enter a new one.",
+      errorInserting:"Error inserting",
+      successfulAssignment:"Successful assignment!",
+      successfulDeletion:"Successful deletion!",
+      succesfulEdit:"Successful edit!",
+      enterAnotherSubject:"Please enter another subject.",
+      insertFailed:"Insertion Failed",
+      updateFailed:"Update Failed",
+
 
 
 
