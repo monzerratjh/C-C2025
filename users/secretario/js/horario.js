@@ -1,8 +1,6 @@
 
     // HORARIO
-// ----------------------------
 // VALIDAR FORMULARIO HORARIOS
-// ----------------------------
 function validarHorario() {
     const hora_inicio = document.getElementById('hora_inicio').value;
     const hora_fin = document.getElementById('hora_fin').value;
@@ -29,9 +27,7 @@ function validarHorario() {
     return true;
 }
 
-// ----------------------------
 // OBTENER DATOS DEL FORMULARIO
-// ----------------------------
 function obtenerDatosHorario() {
     const formH = document.getElementById('formHorario');
     const formDataH = new FormData(formH); // captura todos los inputs automáticamente
@@ -46,9 +42,7 @@ function obtenerDatosHorario() {
     return formDataH;
 }
 
-// ----------------------------
 // ENVÍO DE DATOS AL PHP
-// ----------------------------
 function enviarHorario(formData) {
     fetch("horario-accion.php", {
         method: "POST",
@@ -74,9 +68,7 @@ function enviarHorario(formData) {
     });
 }
 
-// ----------------------------
 // SUBMIT FORMULARIO HORARIOS
-// ----------------------------
 document.getElementById('formHorario').addEventListener('submit', function(e) {
     e.preventDefault(); // evita envío directo
 
@@ -86,9 +78,7 @@ document.getElementById('formHorario').addEventListener('submit', function(e) {
     }
 });
 
-// ----------------------------
 // ELIMINAR HORARIO
-// ----------------------------
 document.addEventListener('click', function(e){
     // Tomar el botón correcto, incluso si se clickea el <i> dentro del botón
     const boton = e.target.closest('.eliminar-horario-btn');
@@ -112,9 +102,8 @@ document.addEventListener('click', function(e){
     }
 });
 
-// ----------------------------
+
 // CARGAR HORARIO PARA EDITAR
-// ----------------------------
 function cargarEditarHorario(id, inicio, fin) {
     document.getElementById('accionHorario').value = 'editar';
     document.getElementById('id_horario_clase').value = id;
@@ -122,9 +111,7 @@ function cargarEditarHorario(id, inicio, fin) {
     document.getElementById('hora_fin').value = fin;
 }
 
-// ----------------------------
 // Evitar reenvío al recargar
-// ----------------------------
 if (window.history.replaceState) {
     window.history.replaceState(null, null, window.location.pathname);
 }

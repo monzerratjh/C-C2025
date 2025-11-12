@@ -1,9 +1,6 @@
 
     // GRUPOS
-
-// ----------------------------
 // VALIDACIÓN DEL FORMULARIO GRUPOS
-// ----------------------------
 function validarGrupo() {
     const nombre = document.getElementById('nombre').value.trim();
     const orientacion = document.getElementById('orientacionInput').value.trim();
@@ -51,9 +48,7 @@ function validarGrupo() {
     return true; // Todo bien
 }
 
-// ----------------------------
 // OBTENER DATOS DEL FORMULARIO
-// ----------------------------
 function obtenerDatosGrupo() {
     const form = document.getElementById('formGrupo');
     const formData = new FormData(form);
@@ -67,9 +62,7 @@ function obtenerDatosGrupo() {
     return formData;
 }
 
-// ----------------------------
 // ENVÍO DE DATOS AL PHP
-// ----------------------------
 function enviarGrupo(formData) {
     fetch("grupo-accion.php", {
         method: "POST",
@@ -96,9 +89,7 @@ function enviarGrupo(formData) {
     });
 }
 
-// ----------------------------
 // EVENTO SUBMIT FORMULARIO GRUPOS
-// ----------------------------
 document.getElementById('formGrupo').addEventListener('submit', function(e) {
     e.preventDefault(); // Evita envío directo
 
@@ -108,9 +99,7 @@ document.getElementById('formGrupo').addEventListener('submit', function(e) {
     }
 });
 
-// ----------------------------
 // ELIMINAR GRUPO
-// ----------------------------
 document.addEventListener('click', function(e) {
     if (e.target.matches('.eliminar-grupo-btn')) {
         const id = e.target.dataset.id;
@@ -133,9 +122,7 @@ document.addEventListener('click', function(e) {
 });
 
 
-// ----------------------------
 // CARGAR GRUPO PARA EDITAR
-// ----------------------------
 function cargarEditar(id, orientacion, turno, nombre, cantidad, id_adscripto) {
     document.getElementById('accion').value = 'editar';
     document.getElementById('id_grupo').value = id;
@@ -146,9 +133,9 @@ function cargarEditar(id, orientacion, turno, nombre, cantidad, id_adscripto) {
     document.querySelector('select[name="id_adscripto"]').value = id_adscripto;
 }
 
-// ----------------------------
+
 // Evitar reenvío al recargar
-// ----------------------------
+
 if (window.history.replaceState) {
     window.history.replaceState(null, null, window.location.pathname);
 }

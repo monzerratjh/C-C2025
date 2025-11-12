@@ -51,7 +51,6 @@ preg_match_all("/'([^']+)'/", $rowTurno['Type'], $turnoCoincidencias);
 $turnos = $turnoCoincidencias[1];
 
 
-
 // Obtener las opciones del ENUM "orientacion_grupo" directamente desde la BD
 $ENUMresult = $con->query("SHOW COLUMNS FROM grupo LIKE 'orientacion_grupo'");
 $rowENUM = $ENUMresult->fetch_assoc();

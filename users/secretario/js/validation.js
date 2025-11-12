@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Mostrar alertas según parámetros GET (error o mensaje)
+// Mostrar alertas según parámetros GET (error o mensaje)
 
 //obtener y manejar los parámetros que vienen en la URL
   const params = new URLSearchParams(window.location.search);
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Validaciones de formularios (crear y editar)
 
-  // ---- EDICIÓN ----
+  // EDICIÓN 
   document.addEventListener('submit', (e) => {
     const form = e.target;
 
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }).then((r) => { if (r.isConfirmed) form.submit(); });
   });
 
-  // ---- CREACIÓN ----
+  // CREACIÓN 
   // Busca en el documento el formulario cuyo atributo action sea "./agregar-usuario.php"
   const formCreacion = document.querySelector('form[action="./agregar-usuario.php"]');
   if (formCreacion) {
