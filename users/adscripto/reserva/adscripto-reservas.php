@@ -116,7 +116,7 @@ $apellido_adscripto = $_SESSION['apellido_usuario'] ?? '';
                 
               </tr>
             </thead>
-            <tbody></tbody>
+            <tbody></tbody> <!-- Aquí se cargan dinámicamente las reservas -->
           </table>
         <div id="sinReservas" class="text-muted">Cargando reservas...</div>
       </div>

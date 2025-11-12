@@ -1,7 +1,10 @@
+                        //cuando el HTML ya se cargó 
 document.addEventListener("DOMContentLoaded", () => {
   listarReservas();
 });
 
+// "async" indica que la función puede esperar tareas lentas (como una petición al servidor).
+// Permite usar "await" sin bloquear la página.
 async function listarReservas() {
   const tbody = document.querySelector("#tablaReservas tbody");
   tbody.innerHTML = "";
@@ -10,7 +13,7 @@ async function listarReservas() {
   try {
     const fd = new FormData();
     fd.append("accion", "listar");
-    const r = await fetch("./../reserva/adscripto-reservas-accion.php", { method: "POST", body: fd });
+    const r = await fetch("./../reserva/adscripto-reservas-accion.php", { method: "POST", body: fd }); 
     const j = await r.json();
 
     if (!j.ok) throw new Error(j.msg);

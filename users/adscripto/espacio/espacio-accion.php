@@ -9,12 +9,19 @@ if ($accion === 'insertar') $accion = 'crear';
 if ($accion === 'borrar') $accion = 'eliminar';
 
 // ------------------ Helpers ------------------
+
+// Esta función obtiene todos los valores permitidos del campo "tipo_espacio" en la base de datos.
+// Ese campo es un ENUM, por lo que solo puede tener ciertos valores (ej: Aula, Laboratorio, etc).
+// Lo que hacemos es consultar la estructura de la tabla, extraer esos valores y devolverlos como un array.
+// Así podemos validar que el tipo enviado por el usuario sea uno de los permitidos.
 function tiposValidos(mysqli $con): array {
   $res = $con->query("SHOW COLUMNS FROM espacio LIKE 'tipo_espacio'");
   if (!$res) return [];
   preg_match_all("/'([^']+)'/", $res->fetch_assoc()['Type'], $out);
   return $out[1] ?? [];
 }
+
+//q variable que guarda la consulta preparada
 function existeNombre(mysqli $con, string $nombre, ?int $excluirId = null): bool {
   if ($excluirId) {
     $q = $con->prepare("SELECT COUNT(*) FROM espacio WHERE nombre_espacio = ? AND id_espacio <> ?");
@@ -27,6 +34,7 @@ function existeNombre(mysqli $con, string $nombre, ?int $excluirId = null): bool
   $q->bind_result($c); $q->fetch(); $q->close();
   return $c > 0;
 }
+
 function validarNombre(string $nombre): bool {
   return (bool)preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 \-_]+$/u', $nombre);
 }
@@ -42,10 +50,10 @@ try {
 
   // ================== CREAR ==================
   if ($accion === 'crear') {
-    $nombre = trim($_POST['nombre_espacio'] ?? '');
-    $cap = (int)($_POST['capacidad_espacio'] ?? 0);
-    $hist = $_POST['historial_espacio'] ?? '';
-    $tipo = $_POST['tipo_espacio'] ?? '';
+    $nombre = trim($_POST['nombre_espacio'] ?? ''); //quita espacios al inicio/final y evita null.
+    $cap = (int)($_POST['capacidad_espacio'] ?? 0); //fuerza entero (si viene vacío será 0).
+    $hist = $_POST['historial_espacio'] ?? ''; //acepta texto libre.
+    $tipo = $_POST['tipo_espacio'] ?? ''; //toma el tipo.
 
     if ($nombre === '' || !validarNombre($nombre)) json_err("Nombre inválido.");
     if (existeNombre($con, $nombre)) json_err("El nombre '$nombre' ya existe.");

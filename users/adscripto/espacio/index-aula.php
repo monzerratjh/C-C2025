@@ -118,7 +118,7 @@ $con->close();
     <?php while($esp = $espacios->fetch_assoc()): ?>
     <div class="col-6 mb-4">
       
-        
+    <!-- Muestra la tarjetas con los diversos atributos del espacio el cual los trae desde el array $espacios -->    
     <div class="espacio-card cursor-pointer" data-id="<?= (int)$esp['id_espacio'] ?>">
         
       <div class="espacio-cuerpo"> </div>
@@ -153,7 +153,8 @@ $con->close();
       </div>
 
       <div class="modal-body">
-        <!-- PASO 1 -->
+        <!-- PASO 1: datos del espacio -->
+
         <form id="formPaso1" autocomplete="off" novalidate>
           <input type="hidden" id="accion" name="accion" value="crear">
           <input type="hidden" id="id_espacio" name="id_espacio">
@@ -177,7 +178,7 @@ $con->close();
           </div>
         </form>
 
-        <!-- PASO 2 -->
+        <!-- PASO 2: atributos del espacio -->
         <form id="formPaso2" class="d-none">
           <h6 class="text-center mb-3" data-i18n="attributesFacility">Atributos del espacio</h6>
           <input type="hidden" id="id_espacio_attr" name="id_espacio">

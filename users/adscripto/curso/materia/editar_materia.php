@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_asignatura'], $_PO
     $stmt->bind_param("si", $nombre_asignatura, $id_asignatura);
     
     if($validacion_rslt === true) {
-        // Redirigimos al listado de materias
+        // Redirigimos al listado de materias 
         $stmt->execute();
         header("Location: ./carga-materias.php?msg=EdicionExitosa");
         exit;

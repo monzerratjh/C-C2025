@@ -127,7 +127,7 @@ $query = mysqli_query($conn, $sql);
 
              </main>
 
-            <!-- Modal para actualizar -->
+            <!-- Modal para edición -->
             <div class="modal fade" id="update_modal<?= $row['id_asignatura'] ?>" tabindex="-1">  
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -162,88 +162,9 @@ $query = mysqli_query($conn, $sql);
   <script src="./../../../../utils/form-log-in.js"></script> 
 
   <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
-  <script src="/utils/translate.js"></script>
+  <script src="./../../../../utils/translate.js"></script>
+  
+  <script src="../../js/materia-validacion.js"></script>
 
-  <?php if(isset($_GET['error'])) {
-    if($_GET['error'] == 'CampoVacio') { ?>
-    <script>
-       Swal.fire({
-            icon: 'error',
-            title: 'El campo no puede estar vacío',
-            text: 'Por favor intente de nuevo',
-            confirmButtonColor: '#d33'
-        });
-    </script>
-  <?php } else if($_GET['error'] == 'NombreInvalido') {?>
-      <script>
-       Swal.fire({
-            icon: 'error',
-            title: 'El nombre es inválido',
-            text: 'Por favor intenténtelo con otro nombre.',
-            confirmButtonColor: '#d33'
-        });
-    </script>
-  <?php } else if($_GET['error'] == 'MateriaDuplicada'){ ?>
-    <script>
-       Swal.fire({
-            icon: 'error',
-            title: 'La materia ya existe',
-            text: 'Por favor ingrese otra materia.',
-            confirmButtonColor: '#d33'
-        });
-    </script>
-  <?php } else if($_GET['error'] == 'InsercionFallida'){ ?>
-    <script>
-       Swal.fire({
-            icon: 'error',
-            title: 'Inserción Fallida',
-            text: 'Por favor intente otra vez.',
-            confirmButtonColor: '#d33'
-        });
-    </script>
-  <?php } else if($_GET['error'] == 'ActualizacionFallida') { ?>
-    <script>
-       Swal.fire({
-            icon: 'error',
-            title: 'Falla en la actualización',
-            text: 'Por favor intente otra vez.',
-            confirmButtonColor: '#d33'
-        });
-    </script>
-  <?php } else if($_GET['error'] == 'ActualizacionFallida') { ?>
-    <script>
-       Swal.fire({
-            icon: 'error',
-            title: 'Falla en la actualización',
-            text: 'Por favor intente otra vez.',
-            confirmButtonColor: '#d33'
-        });
-    </script>
-  <?php } } else if(isset($_GET['msg'])) {
-    if($_GET['msg'] == 'EdicionExitosa') { ?>
-    <script>
-       Swal.fire({
-            icon: 'success',
-            title: '¡Edición Exitosa!',
-            confirmButtonColor: 'rgba(95, 102, 207, 1)'
-        });
-    </script>
-  <?php } else if($_GET['msg'] == 'InsercionExitosa') { ?>
-    <script>
-       Swal.fire({
-            icon: 'success',
-            title: '¡Inserción Exitosa!',
-            confirmButtonColor: 'rgba(95, 102, 207, 1)'
-        });
-    </script>
-  <?php } else if($_GET['msg'] == 'EliminacionExitosa') { ?>
-    <script>
-       Swal.fire({
-            icon: 'success',
-            title: '¡Eliminación Exitosa!',
-            confirmButtonColor: 'rgba(95, 102, 207, 1)'
-        });
-    </script>
-  <?php } } ?>
 </body>
 </html>

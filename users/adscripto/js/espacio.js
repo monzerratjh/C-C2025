@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let editingId = null;
 
     // --- Habilitar/deshabilitar inputs de cantidad ---
+    //TOGGEL -> Cambiar un estado entre dos opciones
     document.querySelectorAll('.toggleCantidad').forEach(chk => {
       chk.addEventListener('change', () => {
         const target = document.getElementById(chk.dataset.target);
@@ -52,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // --- Preparar nuevo espacio ---
+    // window.prepararNuevoEspacio -> pone la aplicación en modo creación. Limpia formularios y estado, muestra el paso 1 del modal y oculta el paso 2.
     window.prepararNuevoEspacio = () => {
       currentMode = 'create';
       editingId = null;
@@ -125,6 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
+
+    // Paso dos despues de crear espacio
     btnSiguiente.addEventListener('click', handleBtnPrincipal);
 
     // --- Guardar atributos ---
