@@ -93,16 +93,16 @@
       <table class="tabla-reserva" id="tablaReservas">
             <thead class="table-light">
               <tr>
-                <th>Docente</th>
-                <th>Grupo</th>
-                <th>Asignatura</th>
-                <th>Espacio</th>
-                <th>Día</th>
-                <th>Fecha</th>
-                <th>Hora inicio</th>
-                <th>Hora fin</th>
-                <th>Estado</th>
-                <th>Acción</th>
+                <th data-i18n="teacher">Docente</th>
+                <th data-i18n="group">Grupo</th>
+                <th data-i18n="subject">Asignatura</th>
+                <th data-i18n="facility">Espacio</th>
+                <th data-i18n="onlyDay">Día</th>
+                <th data-i18n="date">Fecha</th>
+                <th data-i18n="startTime">Hora inicio</th>
+                <th data-i18n="endTime">Hora fin</th>
+                <th data-i18n="state">Estado</th>
+                <th data-i18n="action">Acción</th>
               </tr>
             </thead>
             <tbody></tbody>

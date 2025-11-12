@@ -28,9 +28,15 @@ $gada = mysqli_query($con, "
   JOIN docente d ON d.id_docente = gada.id_docente
   JOIN usuario u ON u.id_usuario = d.id_usuario
   WHERE gada.id_grupo = $id_grupo
-  ORDER BY a.nombre_asignatura
 ");
+// GADA 
+// G -> grupo
+// A -> asignatura 
+// D -> docente 
+// A -> aula = TABLA ESPACIO
 
+
+// AS renombra 
 // a.nombre_asignatura = asignatura.nomnbre_asignatura
 //  JOIN usuario u ON u.id_usuario = d.id_usuario -> une las tablas docente y usuario para obtener el nombre completo del docente
 
@@ -94,9 +100,9 @@ if ($enum_query) {
 <body>
 
   <!-- Menú hamburguesa para móviles -->
-  <nav class="d-md-none">
+  <nav class="d-md-none"> <!-- Oculta el nav en pantallas medianas hacia arriba -->
     <div class="container-fluid">
-      <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
+      <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral"> <!-- Se abre el menu tipo offcanvas (panel lateral) -->
         <img class="menuResponsive" src="./../../../img/menu.png" alt="menu">
       </button>
       <img class="logoResponsive" src="./../../../img/logo.png" alt="logoResponsive">
@@ -104,7 +110,7 @@ if ($enum_query) {
   </nav>
 
   <!-- Menú lateral (offcanvas para móviles) -->
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral"> <!-- off-canvas-start hace qeu el menu se abra desde la izquierda y -1 hace que el menu sea enfocable-->
     <div class="offcanvas-header">
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
@@ -154,7 +160,7 @@ if ($enum_query) {
           <?php
             // Agrupar los horarios por día
             $horariosPorDia = [];
-            mysqli_data_seek($horarios_asignados, 0);
+            mysqli_data_seek($horarios_asignados, 0); // vuelve al inicio del resultado (indice 0)
             while ($h = mysqli_fetch_assoc($horarios_asignados)) {
               $horariosPorDia[$h['dia']][] = $h;
             }

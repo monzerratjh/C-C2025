@@ -8,30 +8,37 @@ function obtenerDiaSemana(fechaStr) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  const modalReserva = document.getElementById("modalReserva");
+  if (modalReserva) {
+    modalReserva.addEventListener("hidden.bs.modal", () => {
+      location.reload();
+    });
+  }
+  
   cargarGrupos();
   listarReservas();
 
   document.querySelector("#formReserva").addEventListener("submit", enviarReserva);
 
-  // Observadores para controlar habilitación de campos
+  // Observadores
   document.querySelector("#id_gada").addEventListener("change", validarDisponibilidadClases);
   document.querySelector("#fecha_reserva").addEventListener("change", validarDisponibilidadClases);
   document.querySelector("#cantidad_horas").addEventListener("input", generarCamposHoras);
 });
-
 
 // ============================
 // CARGAR GRUPOS ASIGNADOS AL DOCENTE
 // ============================
 async function cargarGrupos() {
   const sel = document.querySelector("#id_gada");
-  sel.innerHTML = `<option>Cargando...</option>`;
+  sel.innerHTML = "";
   try {
     const fd = new FormData();
     fd.append("accion", "cargar_grupos");
     const r = await fetch("./../reserva/reserva-accion.php", { method: "POST", body: fd });
     const j = await r.json();
-    if (!j.ok) throw new Error(j.msg || "Error cargando grupos.");
+
+    if (j.type !== "success") throw new Error(j.message || "Error cargando grupos.");
 
     if (!j.data.length) {
       sel.innerHTML = `<option>No tienes grupos asignados</option>`;
@@ -39,8 +46,9 @@ async function cargarGrupos() {
       return;
     }
 
-    sel.innerHTML = `<option value="">Seleccione</option>` + j.data.map(g =>
-      `<option value="${g.id_grupo}">${g.label}</option>`).join("");
+    sel.innerHTML = `<option value="">Seleccione</option>` +
+      j.data.map(g => `<option value="${g.id_grupo}">${g.nombre_grupo} - ${g.nombre_asignatura} (${g.espacio_base})</option>`).join("");
+
   } catch (e) {
     sel.innerHTML = `<option>Error cargando grupos</option>`;
     Swal.fire("Error", e.message, "error");
@@ -76,7 +84,7 @@ async function validarDisponibilidadClases() {
   // No permitir fechas pasadas
   const hoy = new Date();
   const fechaSel = new Date(fecha + "T00:00:00");
-  if (fechaSel.setHours(0,0,0,0) < hoy.setHours(0,0,0,0)) {
+  if (fechaSel < hoy.setHours(0,0,0,0)) {
     msg.textContent = "No puede reservar en fechas pasadas.";
     return;
   }
@@ -84,9 +92,10 @@ async function validarDisponibilidadClases() {
   const dia = obtenerDiaSemana(fecha);
 
   try {
-    const res = await fetch(`${"./../reserva/reserva-accion.php"}?accion=cargar_horas&id_grupo=${encodeURIComponent(id_grupo)}&dia=${encodeURIComponent(dia)}`);
+    const res = await fetch(`./../reserva/reserva-accion.php?accion=cargar_horas&id_grupo=${id_grupo}&dia=${dia}`);
     const j = await res.json();
-    if (!j.ok) throw new Error(j.msg || "Error al verificar horarios.");
+
+    if (j.type !== "success") throw new Error(j.message || "Error al verificar horarios.");
 
     if (!j.data.length) {
       msg.textContent = "No tienes clases asignadas ese día con este grupo.";
@@ -96,9 +105,10 @@ async function validarDisponibilidadClases() {
     // habilitar cantidad_horas
     inputHoras.disabled = false;
     msg.textContent = "";
-  } catch (err) {
-    msg.textContent = "Error al verificar disponibilidad. Intente nuevamente.";
-    console.error(err);
+
+  } catch (e) {
+    msg.textContent = "Error al verificar disponibilidad.";
+    Swal.fire("Error", e.message, "error");
   }
 }
 
@@ -134,12 +144,12 @@ async function cargarHoras() {
 
   const dia = obtenerDiaSemana(fecha);
   try {
-    const res = await fetch(`${"./../reserva/reserva-accion.php"}?accion=cargar_horas&id_grupo=${encodeURIComponent(id_grupo)}&dia=${encodeURIComponent(dia)}`);
+    const res = await fetch(`./../reserva/reserva-accion.php?accion=cargar_horas&id_grupo=${id_grupo}&dia=${dia}`);
     const j = await res.json();
-    if (!j.ok) throw new Error(j.msg || "Error al cargar horas.");
+    if (j.type !== "success") throw new Error(j.message || "Error al cargar horas.");
 
-    const opts = `<option value="">Seleccione</option>` + j.data.map(h =>
-      `<option value="${h.id_horario_clase}">${h.hora_inicio} - ${h.hora_fin}</option>`).join("");
+    const opts = `<option value="">Seleccione</option>` +
+      j.data.map(h => `<option value="${h.id_horario_clase}"> ${h.hora_inicio} - ${h.hora_fin} </option>`).join("");
 
     document.querySelectorAll(".selHora").forEach(s => s.innerHTML = opts);
     document.querySelector("#id_espacio").disabled = false;
@@ -159,19 +169,30 @@ async function cargarEspaciosLibres() {
   sel.disabled = true;
 
   try {
+    const id_grupo = document.querySelector("#id_gada").value;
+    if (!id_grupo) throw new Error("Seleccione un grupo primero.");
+
+    // espacio asignado
+    const resAsignado = await fetch(`./../reserva/reserva-accion.php?accion=espacio_asignado&id_grupo=${id_grupo}`);
+    const dataAsignado = await resAsignado.json();
+    const id_espacio_asignado = dataAsignado?.id_espacio ?? null;
+
+    // espacios libres
     const fd = new FormData();
     fd.append("accion", "cargar_espacios");
     const r = await fetch("./../reserva/reserva-accion.php", { method: "POST", body: fd });
     const j = await r.json();
-    if (!j.ok) throw new Error(j.msg || "Error al cargar espacios.");
 
-    if (!j.data.length) {
-      sel.innerHTML = `<option value="">No hay espacios libres</option>`;
+    if (j.type !== "success") throw new Error(j.message || "Error al cargar espacios.");
+
+    const espacios = j.data.filter(e => e.id_espacio != id_espacio_asignado);
+    if (!espacios.length) {
+      sel.innerHTML = `<option>No hay espacios libres</option>`;
       return;
     }
 
     sel.innerHTML = `<option value="">Seleccione un espacio</option>` +
-      j.data.map(e =>
+      espacios.map(e =>
         `<option value="${e.id_espacio}">${e.nombre_espacio} (${e.tipo_espacio} - cap. ${e.capacidad_espacio})</option>`
       ).join("");
 
@@ -196,7 +217,7 @@ async function enviarReserva(ev) {
   const observacion = document.querySelector("#observacion")?.value.trim() ?? "";
   const ids_horario = [...document.querySelectorAll(".selHora")].map(s => s.value).filter(Boolean);
 
-  // 🔹 Validaciones
+  // Validaciones
   if (!id_grupo) return Swal.fire("Faltan datos", "Debe seleccionar un grupo.", "warning");
   if (!fecha_reserva) return Swal.fire("Faltan datos", "Debe seleccionar una fecha.", "warning");
   if (!cantidad_horas || cantidad_horas < 1) return Swal.fire("Faltan datos", "Indique cuántas horas reservar.", "warning");
@@ -212,7 +233,7 @@ async function enviarReserva(ev) {
         setTimeout(() => sel.classList.remove("is-invalid"), 2000);
       }
     });
-    return Swal.fire("Horas duplicadas", "Has seleccionado la misma hora más de una vez. Por favor, elige horarios diferentes.", "warning");
+    return Swal.fire("Horas duplicadas", "Has seleccionado la misma hora más de una vez.", "warning");
   }
 
   // Confirmación
@@ -246,14 +267,16 @@ async function enviarReserva(ev) {
   try {
     const r = await fetch("./../reserva/reserva-accion.php", { method: "POST", body: fd });
     const j = await r.json();
-    if (!j.ok) throw new Error(j.msg || "No fue posible guardar la solicitud.");
 
-    await Swal.fire("Listo", j.msg || "Reserva creada correctamente.", "success");
-    location.reload(); // recarga la lista SOLO si todo salió bien
-
-
-
-    listarReservas();
+    if (j.type === "success") {
+      await Swal.fire("Éxito", j.message, "success");
+      location.reload(); // recarga la lista SOLO si todo salió bien
+      listarReservas();
+      document.querySelector("#formReserva").reset();
+      document.querySelector("#contenedorHorarios").innerHTML = "";
+    } else {
+      Swal.fire("Error", j.message, "error");
+    }
   } catch (e) {
     Swal.fire("Error", e.message, "error");
   }
@@ -264,7 +287,14 @@ async function enviarReserva(ev) {
 // ============================
 async function listarReservas() {
   const tbody = document.querySelector("#tablaReservas tbody");
+  const listaMovil = document.querySelector("#reservasMovil");
+  const sinDesktop = document.querySelector("#sinReservasDesktop");
+  const sinMovil = document.querySelector("#sinReservasMovil");
+
   tbody.innerHTML = "";
+  listaMovil.innerHTML = "";
+  sinDesktop.textContent = "Cargando...";
+  sinMovil.textContent = "Cargando...";
 
   try {
     const fd = new FormData();
@@ -272,14 +302,19 @@ async function listarReservas() {
     const r = await fetch("./../reserva/reserva-accion.php", { method: "POST", body: fd });
     const j = await r.json();
 
-    if (!j.ok) throw new Error(j.msg || "Error al listar reservas.");
+    if (j.type !== "success") throw new Error(j.message || "Error al listar reservas.");
+
     if (!j.data.length) {
-      document.querySelector("#sinReservas").textContent = "No tienes reservas aún.";
+      sinDesktop.textContent = "No tienes reservas aún.";
+      sinMovil.textContent = "No tienes reservas aún.";
       return;
     }
 
-    document.querySelector("#sinReservas").textContent = "";
+    sinDesktop.textContent = "";
+    sinMovil.textContent = "";
+
     j.data.forEach(item => {
+      // ====== MODO DESKTOP ======
       const tr = document.createElement("tr");
       tr.innerHTML = `
         <td>${item.nombre_grupo}</td>
@@ -292,17 +327,38 @@ async function listarReservas() {
         <td><span class="badge bg-${colorEstado(item.estado_reserva)}">${item.estado_reserva}</span></td>
         <td>
           ${["Pendiente","Aceptada"].includes(item.estado_reserva)
-            ? `<button class="btn btn-sm btn-danger" data-cancel="1" data-hc="${item.id_horario_clase}" data-esp="${item.id_espacio}">
-                 Cancelar
+            ? `<button class="btn btn-sm  " data-cancel="1" data-hc="${item.id_horario_clase}" data-esp="${item.id_espacio}">
+                 <i class="bi bi-x-circle"></i> Cancelar
                </button>`
-            : `<span class="text-muted small">-</span>`
-          }
+            : `<span class="text-muted small">-</span>`}
         </td>`;
       tbody.appendChild(tr);
+
+      // ====== MODO RESPONSIVE ======
+      const trMovil = document.createElement("tr");
+      trMovil.innerHTML = `
+        <td><b>Grupo:</b> ${item.nombre_grupo}</td>
+        <td><b>Asignatura:</b> ${item.nombre_asignatura}</td>
+        <td><b>Espacio:</b> ${item.nombre_espacio}</td>
+        <td><b>Día:</b> ${item.dia}</td>
+        <td><b>Fecha:</b> ${item.fecha_reserva}</td>
+        <td><b>Inicio:</b> ${item.hora_inicio}</td>
+        <td><b>Fin:</b> ${item.hora_fin}</td>
+        <td><b>Estado:</b> <span class="badge bg-${colorEstado(item.estado_reserva)}">${item.estado_reserva}</span></td>
+        <td>
+          ${
+            ["Pendiente","Aceptada"].includes(item.estado_reserva)
+              ? `<button class="btn btn-sm   w-100 mt-2" data-cancel="1" data-hc="${item.id_horario_clase}" data-esp="${item.id_espacio}">
+                   <i class="bi bi-x-circle"></i> Cancelar
+                 </button>`
+              : `<span class="text-muted small">-</span>`
+          }
+        </td>`;
+      listaMovil.appendChild(trMovil);
     });
 
-    // Botón cancelar
-    document.querySelectorAll("#tablaReservas [data-cancel='1']").forEach(btn => {
+    // Acciones: cancelar reserva
+    document.querySelectorAll("[data-cancel='1']").forEach(btn => {
       btn.addEventListener("click", async (e) => {
         const id_horario_clase = e.currentTarget.dataset.hc;
         const id_espacio = e.currentTarget.dataset.esp;
@@ -324,9 +380,9 @@ async function listarReservas() {
           fd.append("id_espacio", id_espacio);
           const r = await fetch("./../reserva/reserva-accion.php", { method: "POST", body: fd });
           const j = await r.json();
-          if (!j.ok) throw new Error(j.msg || "No se pudo cancelar.");
+          if (j.type !== "success") throw new Error(j.message || "No se pudo cancelar.");
 
-          await Swal.fire("Hecho", j.msg || "Reserva cancelada.", "success");
+          await Swal.fire("Hecho", j.message || "Reserva cancelada.", "success");
           listarReservas();
         } catch (err) {
           Swal.fire("Error", err.message, "error");
@@ -335,7 +391,8 @@ async function listarReservas() {
     });
 
   } catch (e) {
-    document.querySelector("#sinReservas").textContent = "Error al cargar reservas.";
+    sinDesktop.textContent = "Error al cargar reservas.";
+    sinMovil.textContent = "Error al cargar reservas.";
     Swal.fire("Error", e.message, "error");
   }
 }
@@ -345,12 +402,12 @@ async function listarReservas() {
 // ============================
 function colorEstado(e) {
   switch (e) {
-    case "Pendiente": return "secondary";
-    case "Aceptada": return "success";
-    case "Rechazada": return "danger";
-    case "Cancelada": return "warning";
-    case "Finalizada": return "info";
-    default: return "dark";
+    case "Pendiente": return "warning";     // amarillo: esperando
+    case "Aceptada": return "success";      // verde: aceptada
+    case "Rechazada": return "danger";      // rojo: rechazada
+    case "Cancelada": return "secondary";   // gris: cancelada
+    case "Finalizada": return "info";       // celeste: finalizada
+    default: return "dark";                 // fallback
   }
 }
 

@@ -27,12 +27,12 @@ if (!$id_usuario) {
 
 </head>
 
-<body>
+<body class="grupo-user-page">
 
   <!-- Menú móvil -->
-  <nav class="d-md-none">
+  <nav class="d-md-none"> <!-- Oculta el nav en pantallas medianas hacia arriba -->
     <div class="container-fluid">
-      <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
+      <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral"> <!-- Se abre el menu tipo offcanvas (panel lateral) -->
         <img class="menuResponsive" src="./../../../img/menu.png" alt="menu">
       </button>
       <img class="logoResponsive" src="./../../../img/logo.png" alt="logoResponsive">
@@ -40,7 +40,7 @@ if (!$id_usuario) {
   </nav>
 
   <!-- Menú lateral -->
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">  <!-- off-canvas-start hace qeu el menu se abra desde la izquierda y -1 hace que el menu sea enfocable-->
     <div class="offcanvas-header">
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
@@ -94,89 +94,112 @@ if (!$id_usuario) {
     <main class="principal horarios-estudiante">
       <img src="./../../../img/logo.png" alt="Logo" class="logo"> 
 
+       <div>
+        <h2 id="tituloReservas" data-i18n="reserveFacility">Reservar espacio</h2>
+        <br>
+      </div>  
+      <p data-i18n="pReserveFacility">Realiza reservas de espacios y consulta el estado de tus solicitudes actuales.</p>
+
+
       <div class="acordion">
-        <!-- Botón Ver reservas -->
-        <div>
-          <button class="boton-opciones docente mb-3" id="verReservasBtn" data-i18n="viewReservations">Ver reservas</button>
-
-          <div class="table-responsive">
-            <table class="table table-sm align-middle" id="tablaReservas">
-              <thead>
-                <tr>
-                  <th>Grupo</th>
-                  <th>Asignatura</th>
-                  <th>Espacio</th>
-                  <th>Día</th>
-                  <th>Fecha</th>
-                  <th>Hora inicio</th>
-                  <th>Hora fin</th>
-                  <th>Estado</th>
-                  <th>Acción</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
-          <div id="sinReservas" class="text-muted"></div>
-        </div>
-
         <!-- Botón Hacer reservas -->
-        <div class="mt-4">
-          <button class="boton-opciones docente sin-flecha" id="hacerReservaBtn" data-bs-toggle="modal" data-bs-target="#modalReserva">
-            Hacer reserva
+        <div class="mt-4"> <!-- Da margen arriba-->
+          <button class="boton-opciones docente sin-flecha" id="hacerReservaBtn" data-bs-toggle="modal" data-bs-target="#modalReserva" data-i18n="makeReservations">
+            Hacer reservas  
           </button>
         </div>
+
+
+<div>
+  <!-- Reservas: responsive -->
+      <button class="boton-opciones docente sin-flecha" id="verReservasBtn" data-i18n="viewReservations">
+        Ver reservas
+      </button>
+
+      <div class="tabla-docente-responsive " id="reservasResponsive">
+        <div class="dia" id="reservasMovil">
+          <!-- JS cards-->
+        </div>
+        <p id="sinReservasMovil" class="text-muted text-center mt-2"></p>
       </div>
+      </div>
+      <!-- Fin acorden -->
+      </div>
+
+      <!-- Tabla para pantallas grandes -->
+      <div class="table-responsive" id="reservasDesktop">
+        <table class="tabla-docente" id="tablaReservas">
+          <thead>
+            <tr>
+              <th data-i18n="group">Grupo</th>
+              <th data-i18n="subject">Asignatura</th>
+              <th data-i18n="facility">Espacio</th>
+              <th data-i18n="onlyDay">Día</th>
+              <th data-i18n="date">Fecha</th>
+              <th data-i18n="startTime">Hora inicio</th>
+              <th data-i18n="endTime">Hora fin</th>
+              <th data-i18n="state">Estado</th>
+              <th data-i18n="action">Acción</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div id="sinReservasDesktop" class="text-muted"></div>
+      </div>
+
+
     </main>
   </div>
 
+
+
   <!-- Modal de Reserva -->
-  <div class="modal fade" id="modalReserva" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+  <div class="modal fade" id="modalReserva" tabindex="-1" aria-hidden="true"> <!-- Activa la funcionalidad de modal. / Agrega animación de aparición/desaparición.-->
+    <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- centra el modal y le da el tamaño -->
       <div class="modal-content">
         <div class="modal-header docente">
-          <h5 class="modal-title" data-i18n="newReservation">Nueva Reserva</h5>
+          <h5 class="modal-title" data-i18n="newReservation" data-i18n="newReservation" >Nueva Reserva</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
           <form id="formReserva">
-            <div class="mb-3">
-              <label class="form-label">Grupo y asignatura</label>
+            <div class="mb-3"> <!-- Margen inferior -->
+              <label class="form-label" data-i18n="groupAndSubject">Grupo y asignatura</label>
               <select class="form-select" id="id_gada" name="id_grupo" required>
                 <option value="">Cargando...</option>
               </select>
             </div>
 
             <div class="mb-3">
-              <label class="form-label">Fecha de reserva</label>
+              <label class="form-label" data-i18n="reservationDate">Fecha de reserva</label>
               <input type="date" class="form-control" id="fecha_reserva" required>
             </div>
 
             <div class="mb-3">
-              <label for="cantidad_horas" class="form-label">¿Cuántas horas desea reservar?</label>
+              <label for="cantidad_horas" class="form-label" data-i18n="howManyHours">¿Cuántas horas desea reservar?</label>
               <input type="number" id="cantidad_horas" name="cantidad_horas" class="form-control" min="1" disabled>
-              <p id="msgHoras" class="text-muted small mt-1">
-                Seleccione primero un grupo y una fecha donde tenga clase.
+              <p id="msgHoras" class="text-muted small mt-1" data-i18n="selectGroupDate"> <!-- Texto aclaratorio pequeño y gris. -->
+                Seleccione primero un grupo y una fecha donde tenga clase. 
               </p>
             </div>
 
             <div id="contenedorHorarios" class="mb-3"></div>
 
             <div class="mb-3">
-              <label class="form-label">Espacio</label>
+              <label class="form-label" data-i18n="facility">Espacio</label>
               <select class="form-select" id="id_espacio" required disabled>
-                <option value="">Seleccione fecha y horarios primero</option>
+                <option value="" data-i18n="selectDateSchedule">Seleccione fecha y horarios primero</option>
               </select>
             </div>
 
             <div class="mb-3">
-              <label class="form-label">Observación (opcional)</label>
+              <label class="form-label" data-i18n="observation">Observación (opcional)</label>
               <textarea class="form-control" id="observacion" rows="2" maxlength="200"></textarea>
             </div>
 
             <div class="text-end">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="cancel">Cancelar</button>
-              <button type="submit" class="btn btn-primary docente">Enviar</button>
+              <button type="submit" class="btn btn-primary docente" data-i18n="send">Enviar</button>
             </div>
           </form>
         </div>

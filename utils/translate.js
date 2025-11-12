@@ -199,6 +199,7 @@ i18next.init({
         shift:"Turno",
         numberOfStudents:"Número de estudiantes",
         emptyFields:"Campos vacíos",
+        userCreatedSuccessfully:"Creación de Usuario Exitosa",
         //
         pleaseFillIn:"Por favor complete todos los campos.",
         IDMustContain8Digits:"Debe tener 8 dígitos.",
@@ -241,7 +242,24 @@ i18next.init({
         quantity:"Cantidad",
         //
         scheduleNotBeDelete:"No se puede eliminar el horario.",
-
+        onlyDay:"Dia",
+        state:"Estado",
+        action:"Accion",
+        //
+        enterGroupName:"Ingrese el nombre del espacio.",
+        delteFacility:"¿Eliminar espacio?",
+        delete:"Eliminar",
+        selectGroupViewSchedule:"Selecciona un grupo para ver sus horarios.",
+        anyGroupAssigned:"No tienes grupos asignados actualmente.",
+        pReserveFacility:"Realiza reservas de espacios y consulta el estado de tus solicitudes actuales.",
+        //
+        send:"Enviar",
+        groupAndSubject:"Grupo y asignatura",
+        reservationDate:"Fecha de reserva",
+        howManyHours:"¿Cuántas horas desea reservar?",
+        selectGroupDate:"Seleccione primero un grupo y una fecha donde tenga clase.",
+        observation:"Observación (opcional)",
+        selectDateSchedule:"Seleccione fecha y horarios primero",
 
 
 
@@ -433,7 +451,7 @@ i18next.init({
         actionNotBeUndone:"This action cannot be undone.",
         //
         leaveBlank:"Leave blank if you do not wish to change the password.",
-        userCreatedSuccessfully:"Creación de Usuario Exitosa",
+        userCreatedSuccessfully: "User Created Successfully",
         successfulInsertion:"Successful Insertion!",
         deletionSuccesfull:"Deletion Successful!",
         editSuccessfull:"Edit Successful!",
@@ -489,10 +507,23 @@ i18next.init({
         quantity:"Quantity",
         //
         scheduleNotBeDelete:"The schedule cannot be deleted.",
-        
-      
-
-
+        onlyDay:"Day",
+        state:"State",
+        action:"Action",
+      //
+      enterFacilityName:"Enter the facility name.",
+      deleteFacility:"Delete facility?",
+      delete:"Delete",
+      selectGroupViewSchedule:"Select a group to view its schedules.",
+      anyGroupAssigned:"You don’t have any groups assigned at the moment.",
+      pReserveFacility:"Make classroom reservations and check the status of your current requests.",
+      send:"Send",
+      groupAndSubject:"Group and subject",
+      reservationDate:"Reservation date",
+      howManyHours:"How many hours would you like to reserve?",
+      selectGroupDate:"Select a group and a date where you have a class first.",
+      observation:"Observation (optional)",
+      selectDateSchedule:"Select date and schedules first.",
 
 
 

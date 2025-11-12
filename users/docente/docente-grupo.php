@@ -54,9 +54,9 @@ $grupos = $stmt2->get_result();
 <body>
 
   <!-- Menú hamburguesa para móviles -->
-  <nav class="d-md-none">
+  <nav class="d-md-none"> <!-- Oculta el nav en pantallas medianas hacia arriba -->
     <div class="container-fluid">
-      <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
+      <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral"> <!-- Se abre el menu tipo offcanvas (panel lateral) -->
         <img class="menuResponsive" src="./../../img/menu.png" alt="menu">
       </button>
       <img class="logoResponsive" src="./../../img/logo.png" alt="logoResponsive">
@@ -64,7 +64,7 @@ $grupos = $stmt2->get_result();
   </nav>
 
   <!-- Menú lateral (para celulares/tablets) -->
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">  <!-- off-canvas-start hace qeu el menu se abra desde la izquierda y -1 hace que el menu sea enfocable-->
     <div class="offcanvas-header">
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
@@ -121,7 +121,7 @@ $grupos = $stmt2->get_result();
         <h2 id="tituloGruposCargo" data-i18n="assignedGroups">Grupos a Cargo</h2>
       </div>
       <br>       
-      <p>Selecciona un grupo para ver sus horarios.</p>
+      <p data-i18n="selectGroupViewSchedule">Selecciona un grupo para ver sus horarios.</p>
 
       <div class="caja-grupos-cargo">
         <div class="acordion">
@@ -138,11 +138,11 @@ $grupos = $stmt2->get_result();
       <table class="tabla-docente">
         <thead>
           <tr>
-            <th>Día</th>
-            <th>Asignatura</th>
-            <th>Hora Inicio</th>
-            <th>Hora Fin</th>
-            <th>Espacio</th>
+            <th data-i18n="onlyDay">Día</th>
+            <th data-i18n="subject">Asignatura</th>
+            <th data-i18n="startTime">Hora Inicio</th>
+            <th data-i18n="endTime">Hora Fin</th>
+            <th data-i18n="facility">Espacio</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -157,7 +157,7 @@ $grupos = $stmt2->get_result();
 <?php endwhile; ?>
 
    <?php else: ?>
-            <p class="text-muted">No tienes grupos asignados actualmente.</p>
+            <p class="text-muted" data-i18n="anyGroupAssigned">No tienes grupos asignados actualmente.</p>
           <?php endif; ?>
         </div>
       </div>
