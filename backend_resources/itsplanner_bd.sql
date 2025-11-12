@@ -226,3 +226,14 @@ ALTER TABLE grupo_asignatura_docente_aula
 ALTER TABLE horario_asignado
 	ADD CONSTRAINT fk_horario_asignado_horario_clase FOREIGN KEY (id_horario_clase) REFERENCES horario_clase(id_horario_clase) ON DELETE CASCADE ON UPDATE CASCADE,
 	ADD CONSTRAINT fk_horario_asignado_gada FOREIGN KEY (id_gada) REFERENCES grupo_asignatura_docente_aula(id_gada) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- 
+
+CREATE TABLE imagenes (
+  id_imagen INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(255) NOT NULL
+);
+
+ALTER TABLE espacio
+ADD COLUMN id_imagen INT NULL,
+ADD FOREIGN KEY (id_imagen) REFERENCES imagenes(id_imagen) ON DELETE SET NULL;

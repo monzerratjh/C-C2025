@@ -1469,3 +1469,7 @@ h4 {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.espacio-cuerpo {
+   min-height:155px; border-radius:10px; overflow:hidden;
+}

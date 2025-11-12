@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Click sobre tarjetas ---
     document.addEventListener('click', e => {
-      const card = e.target.closest('.espacio-card');
+      const card = e.target.closest('.espacio-cuerpo');
       const isButton = e.target.closest('button');
       if (isButton) return;
       if (card) {
@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Error',
             text: `La cantidad del atributo "${label}" debe ser un número entre 1 y 100.`
           }).then(() => {
-            // 🔙 Restaurar el estado original
+            // Restaurar el estado original
             deshabilitadosAntes.forEach(el => el.disabled = true);
           });
           return; // detener validación
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
               title: 'Error',
               text: d.message
             }).then(() => {
-              // 🔙 Restaurar estado original si backend falla
+              // Restaurar estado original si backend falla
               deshabilitadosAntes.forEach(el => el.disabled = true);
             });
           }
