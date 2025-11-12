@@ -2,8 +2,8 @@
 //Objeto de javascript, no es un JSON
 i18next.init({
   lng: localStorage.getItem('language') || "es", // Recuperar el idioma desde localStorage, si no existe, usar "es" por defecto
-  debug: true,
-  resources: {
+  debug: true, //permite ver información en la consola útil para depuración.
+  resources: { //objeto con las traducciones
     es: {
       translation: {
         welcome: "¡Bienvenido!",
@@ -270,11 +270,6 @@ i18next.init({
         enterAnotherSubject:"Por favor ingrese otra materia.",
         insertFailed:"Inserción Fallida",
         updateFailed:"Falla en la actualización",
-
-
-
-
-
       }
     },
     en: {
@@ -544,11 +539,6 @@ i18next.init({
       enterAnotherSubject:"Please enter another subject.",
       insertFailed:"Insertion Failed",
       updateFailed:"Update Failed",
-
-
-
-
-
 
      }
     }

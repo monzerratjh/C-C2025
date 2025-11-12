@@ -4,9 +4,9 @@ include('./../../../conexion.php');
 $conn = conectar_bd();
 session_start();
 
-// -----------------------------------------------------------------------------
+
 // Capturar datos POST
-// -----------------------------------------------------------------------------
+
 $id_usuario = intval($_POST['id_usuario'] ?? 0);
 $ci_usuario = trim($_POST['ci_usuario'] ?? '');
 $nombre_usuario = trim($_POST['nombre_usuario'] ?? '');
@@ -28,9 +28,9 @@ $_SESSION['old_edit'] = [
   'contrasenia_usuario' => $contrasenia_usuario,
 ];
 
-// -----------------------------------------------------------------------------
+
 // Validaciones
-// -----------------------------------------------------------------------------
+
 if (empty($ci_usuario) || empty($nombre_usuario) || empty($apellido_usuario) ||
     empty($gmail_usuario) || empty($telefono_usuario) || empty($cargo_usuario)) {
     header("Location: ./secretario-usuario.php?error=CamposVacios&abrirModal=true&id_usuario=$id_usuario");
@@ -96,18 +96,16 @@ if (!empty($contrasenia_usuario) &&
     exit;
 }
 
-// -----------------------------------------------------------------------------
+
 // Verificar duplicados (excluyendo el usuario actual)
-// -----------------------------------------------------------------------------
 $campoDuplicado = verificarDuplicados($conn, $ci_usuario, $gmail_usuario, $telefono_usuario, $id_usuario);
 if ($campoDuplicado !== null) {
     header("Location: ./secretario-usuario.php?error=Duplicado&campo={$campoDuplicado}&abrirModal=true&id_usuario=$id_usuario");
     exit;
 }
 
-// -----------------------------------------------------------------------------
+
 // Obtener contraseña actual si no se cambió
-// -----------------------------------------------------------------------------
 if (empty($contrasenia_usuario)) {
     $sql = "SELECT contrasenia_usuario FROM usuario WHERE id_usuario = ?";
     $stmt = $conn->prepare($sql);
@@ -121,9 +119,9 @@ if (empty($contrasenia_usuario)) {
     $hashed_password = password_hash($contrasenia_usuario, PASSWORD_DEFAULT);
 }
 
-// -----------------------------------------------------------------------------
+
 // Obtener cargo anterior
-// -----------------------------------------------------------------------------
+
 $sql_prev = "SELECT cargo_usuario FROM usuario WHERE id_usuario = ?";
 $stmt_prev = $conn->prepare($sql_prev);
 $stmt_prev->bind_param("i", $id_usuario);
@@ -132,9 +130,9 @@ $res_prev = $stmt_prev->get_result();
 $cargo_anterior = $res_prev->fetch_assoc()['cargo_usuario'] ?? null;
 $stmt_prev->close();
 
-// -----------------------------------------------------------------------------
+
 // Actualizar usuario
-// -----------------------------------------------------------------------------
+
 $sql_update = "UPDATE usuario SET 
     ci_usuario = ?, 
     nombre_usuario = ?, 
@@ -154,9 +152,9 @@ if (!$stmt->execute()) {
 }
 $stmt->close();
 
-// -----------------------------------------------------------------------------
+
 // Si cambió el cargo, actualizar tabla correspondiente
-// -----------------------------------------------------------------------------
+
 if ($cargo_anterior !== $cargo_usuario) {
     // Eliminar de tabla anterior
     switch ($cargo_anterior) {
@@ -185,16 +183,16 @@ if ($cargo_anterior !== $cargo_usuario) {
     }
 }
 
-// -----------------------------------------------------------------------------
-// si exito -> eliminar los datos guardados temporalmente
-// -----------------------------------------------------------------------------
+
+// si exito, eliminar los datos guardados temporalmente
+
 unset($_SESSION['old_edit']);
 header("Location: ./secretario-usuario.php?msg=EdicionExitosa");
 exit;
 
-// -----------------------------------------------------------------------------
+
 // FUNCIONES AUXILIARES
-// -----------------------------------------------------------------------------
+
 function verificarDuplicados($conn, $ci_usuario, $gmail_usuario, $telefono_usuario, $id_usuario) {
     $sql = "SELECT ci_usuario, gmail_usuario, telefono_usuario 
             FROM usuario 
