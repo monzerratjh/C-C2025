@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ------------------------------------------------------
   // Mostrar alertas según parámetros GET (error o mensaje)
-  // ------------------------------------------------------
+
+//obtener y manejar los parámetros que vienen en la URL
   const params = new URLSearchParams(window.location.search);
 
   if (window.Swal && params.has("error")) {
@@ -89,14 +89,15 @@ document.addEventListener('DOMContentLoaded', () => {
 }
   
 
-  // ------------------------------------------------------
   // Validaciones de formularios (crear y editar)
-  // ------------------------------------------------------
 
   // ---- EDICIÓN ----
   document.addEventListener('submit', (e) => {
     const form = e.target;
-    if (!form.matches('form[id^="editarUsuarioForm"]')) return;
+
+    // Si el formulario NO tiene un id que empiece con "editarUsuarioForm", se sale y no hace nada.
+  // Esto evita que se ejecute el código con otros formularios.
+    if (!form.matches('form[id^="editarUsuarioForm"]')) return; 
 
     e.preventDefault();
     const ok = validarFormularioEdicion(form);
@@ -115,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ---- CREACIÓN ----
+  // Busca en el documento el formulario cuyo atributo action sea "./agregar-usuario.php"
   const formCreacion = document.querySelector('form[action="./agregar-usuario.php"]');
   if (formCreacion) {
     formCreacion.addEventListener('submit', (e) => {
@@ -135,12 +137,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ------------------------------------------------------
+  
   // Confirmación antes de eliminar usuario
-  // ------------------------------------------------------
+
   document.querySelectorAll('a.eliminar').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
+      // Obtiene la dirección (href) del enlace, que apunta al script de eliminación
       const url = btn.getAttribute('href');
 
       Swal.fire({
@@ -162,11 +165,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// ------------------------------------------------------
+
 // Funciones auxiliares
-// ------------------------------------------------------
+
 function leer(form, name) {
-  const el = form.querySelector(`[name="${name}"]`);
+  const el = form.querySelector(`[name="${name}"]`); //Busca dentro del formulario (form) un elemento que tenga el atributo name igual al valor pasado en la variable name.
+  // Devuelve el valor del campo:
+  // - Si el campo existe, toma su valor
+  // - Si no existe, devuelve una cadena vacía
+  // - Convierte a texto y elimina espacios sobrantes
   return (el?.value ?? '').toString().trim();
 }
 
@@ -289,7 +296,7 @@ function validarFormularioEdicion(form) {
 }
 
 
-function alertSwal(title, text) {
+function alertSwal(title, text) { //si sweets alerts esta disponible sino error.
   if (window.Swal) {
     Swal.fire({ icon: 'error', title, text, confirmButtonColor: '#d33' });
   } else {
@@ -297,9 +304,8 @@ function alertSwal(title, text) {
   }
 }
 
-// ------------------------------------------------------
+
 // Limpieza del URL solo después de alertas exitosas
-// ------------------------------------------------------
 const params = new URLSearchParams(window.location.search);
 const msg = params.get("msg");
 
