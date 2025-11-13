@@ -41,9 +41,6 @@ $gada = mysqli_query($con, "
 //  JOIN usuario u ON u.id_usuario = d.id_usuario -> une las tablas docente y usuario para obtener el nombre completo del docente
 
 
-// --
-
-
 // Horarios asignados actuales
 $horarios_asignados = mysqli_query($con, "
   SELECT 

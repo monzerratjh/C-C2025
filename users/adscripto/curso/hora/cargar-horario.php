@@ -404,7 +404,7 @@ const id = e.relatedTarget.dataset.id; // id_grupo o similar
     document.getElementById('idHorarioAsignado').value = btn.dataset.id;
     diaSelect.value = btn.dataset.dia;         // Día actual
     horaSelect.value = btn.dataset.horario;    // Horario actual
-    gadaSelect.value = btn.dataset.gada;       // 👈 Asignatura + Docente actual (clave)
+    gadaSelect.value = btn.dataset.gada;       // Asignatura + Docente actual (clave)
 
   } else {
     // --- 4. Si es "Agregar", reinicia el formulario ---
