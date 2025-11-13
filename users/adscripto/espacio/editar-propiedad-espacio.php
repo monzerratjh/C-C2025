@@ -47,9 +47,6 @@ $attrs = ['Mesas','Sillas','Proyector','Televisor','Aire Acondicionado','Computa
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 <link rel="stylesheet" href="./../../../css/style.css">
 
-<style>
-  .no-edit input, .no-edit textarea { background-color:#d9d9d9 !important; pointer-events:none; }
-</style>
 </head>
 <body>
 

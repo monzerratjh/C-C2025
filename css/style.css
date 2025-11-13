@@ -1473,3 +1473,7 @@ h4 {
 .espacio-cuerpo {
    min-height:155px; border-radius:10px; overflow:hidden;
 }
+
+.no-edit input, .no-edit textarea { 
+  background-color:#d9d9d9 
+  !important; pointer-events:none; }
