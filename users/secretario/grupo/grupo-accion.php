@@ -74,15 +74,15 @@ try {
         echo json_encode(["type" => "success", "message" => "Grupo agregado correctamente."]);
     } 
         /*
-            prepare() -> Prepara la consulta SQL de forma segura, evitando inyecciones SQL.
+            prepare() - Prepara la consulta SQL de forma segura, evitando inyecciones SQL.
 
-            ? -> Son placeholders para los valores que se insertarán.
+            ? - Son placeholders para los valores que se insertarán.
 
-            bind_param("sssiii", ...) -> Asocia los valores de PHP a los placeholders:
+            bind_param("sssiii", ...) - Asocia los valores de PHP a los placeholders:
 
             "sssiii" significa: string, string, string, int, int, int.
 
-            execute() -> Ejecuta la consulta.
+            execute() - Ejecuta la consulta.
         */
 
     elseif($accion === 'editar') { // WHERE id_grupo=? -> Indica qué grupo se actualizará según su ID.
@@ -125,17 +125,17 @@ try {
 } catch(Exception $e) {
     echo json_encode(["type" => "error", "message" => "Error: ".$e->getMessage()]);
 } 
-// catch -> si algo falla, captura el error y guarda el mensaje en $message y el tipo como error
+// catch - si algo falla, captura el error y guarda el mensaje en $message y el tipo como error
 
 /*
-1. En el JS alguien hace submit → se manda AJAX a grupo-accion.php.
+1. En el JS alguien hace submit , se manda AJAX a grupo-accion.php.
 2. PHP procesa la acción y devuelve algo como:
     { "type": "success", "message": "Grupo agregado correctamente." }
 3. El JS recibe eso y muestra un SweetAlert.
 4. Si es éxito → recarga la lista o cierra el modal.
    Si es error → muestra el error.
 
-    AJAX -> (Asynchronous JavaScript and XML) es una técnica que permite que tu página se comunique con el servidor sin recargar toda la página.Hoy en día se usa JSON
+    AJAX - (Asynchronous JavaScript and XML) es una técnica que permite que tu página se comunique con el servidor sin recargar toda la página.Hoy en día se usa JSON
 */
 
 // Normaliza texto (minúsculas y sin tildes)
