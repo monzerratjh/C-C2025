@@ -266,6 +266,9 @@ while ($row = mysqli_fetch_array($query)) {
             <label class="form-label" data-i18n="idCard">Cédula de identidad</label>
             <input type="text" name="ci_usuario" class="form-control" 
                    value="<?= htmlspecialchars($old['ci_usuario'] ?? '') ?>">
+                   <!--value="..." → define qué valor aparece dentro del input (por ejemplo, si querés mostrar lo que el usuario ya escribió antes).
+
+                   htmlspecialchars(...) → imprime el valor en el input, pero de forma segura-->
           </div>
 
           <div class="mb-3">
